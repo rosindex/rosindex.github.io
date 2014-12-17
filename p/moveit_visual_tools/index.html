@@ -7,16 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>ROS Index</title>
-    <meta name="description" content="A community-maintained index of known ROS packages.
+    <meta name="description" content="a community-maintained index of robotics software
 ">
 
     <link rel="canonical" href="http://rosindex.github.io/p/moveit_visual_tools/">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/main.css">
+    
 
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/toc.js"></script>
 
 </head>
 
@@ -26,7 +31,43 @@
     <header class="site-header">
 
   <div class="wrapper">
+    <div class="container-fluid" style="margin-bottom: 10px">
+      <div class="row">
 
+
+        <div class="col-sm-12 col-md-9" style="margin-top: 8px">
+          <div class="row">
+            <!-- title -->
+            <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+            </div>
+
+            <!-- main links -->
+            <div class="col-xs-12 col-sm-9 col-md-9 text-right">
+              <a class="btn btn-link" href="/about">About</a>
+              <a class="btn btn-link" href="/packages">Packages</a>
+              <a class="btn btn-link" href="/repos">Repos</a>
+              <a class="btn btn-link" href="/contribute">Contribute</a>
+              <a class="btn btn-link" href="/stats">Stats</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- searchbox -->
+        <div class="col-sm-12 col-md-3" style="margin-top: 12px">
+          <form action="/search/" role="form">
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control" name="q" placeholder="Search">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--
     <a class="site-title" href="/">ROS Index</a>
 
     <nav class="site-nav">
@@ -39,12 +80,12 @@
       </a>
 
       <div class="trigger">
-        <!--<a class="page-link" href="/p/moveit_visual_tools/index.html"></a>-->
         <a class="page-link" href="/packages">Packages</a>
         <a class="page-link" href="/repos">Repositories</a>
         <a class="page-link" href="/search">Search</a>
       </div>
     </nav>
+    -->
 
   </div>
 
@@ -53,124 +94,438 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="container-fluid" style="margin:20px">
-  <div class="row">
-    <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/packages">Packages</a></li>
-      <li><a href="/packages/moveit_visual_tools">moveit_visual_tools</a></li>
-      <li class="active">rosdistro</li>
-    </ol>
-  </div>
-  <div class="row">
-    <div class="well well-sm">
-  <table class="table-condensed">
-    <tbody>
-      <tr>
-        <!--<td><span class="pull-right">description</span></td>-->
-        <td>
-          <h4>moveit_visual_tools <small></small></h4>
-          
-        </td>
-      </tr>
-      
-        <tr>
-          <td>
-<div id="repo-switch" class="btn-group btn-group-justified" role="group">
-  <div class="btn-group" role="group">
-    <div class="dropdown">
-      <! -- TODO: add disabled when only 1 version is known -->
-      <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-        <span class="pull-left">
-          <span class="glyphicon glyphicon-star"></span>
-          rosdistro ( https://github.com/davetcoleman/moveit_visual_tools.git )
-        </span>
-        <span class="pull-right"><span class="caret"></span></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        
-          <li role="presentation">
-          <a id="rosdistro" role="menuitem" tabindex="-1" href="/p/moveit_visual_tools/rosdistro" data="rosdistro">
-              <span class="glyphicon glyphicon-star"></span>
-              rosdistro ( https://github.com/davetcoleman/moveit_visual_tools.git )
-            </a>
-          </li>
-        
-      </ul>
+        <div class="container-fluid" style="margin-top: 20px">
+  <div class="container-fluid">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li class="active">moveit_visual_tools</li>
+      </ol>
     </div>
-  </div>
-</div>
-</td>
-        </tr>
+    <div class="row">
       
-      
-        <tr>
-          <td>
-            
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-  <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
+    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+      <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
+    </label>
+  
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
-  <label id="hydro-option" class="distro-button btn btn-xs btn-primary" href="#hydro" data="hydro">
+    <label id="hydro-option" class="distro-button btn btn-xs btn-primary" href="#hydro" data="hydro">
       <input type="radio" name="options" id="hydro-radio" autocomplete="off"> hydro
-    </label>
-  
-  <label id="groovy-option" class="distro-button btn btn-xs btn-default" href="#groovy" data="groovy">
-      <input type="radio" name="options" id="groovy-radio" autocomplete="off"> groovy
     </label>
   
 
   <!-- Older distros -->
   <div class="btn-group dropdown">
     <label type="button" class="btn btn-xs dropdown-toggle btn-default" data-toggle="dropdown" id="older-distro-button">
-    <input type="radio" name="options" autocomplete="off">
-    <span id="older-label">Older</span>
-    <span class="caret"></span>
-  </label>
-  <ul class="dropdown-menu" role="menu">
-    
-      <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
-      <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
-      </li>
-    
-      <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
-      <a href="#electric" data="electric" id="electric-button">electric</a>
-      </li>
-    
-      <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
-      <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
-      </li>
-    
-      <li data="c-turtle" id="c-turtle-option" class="disabled older-distro-option"  href="#c-turtle">
-      <a href="#c-turtle" data="c-turtle" id="c-turtle-button">c-turtle</a>
-      </li>
-    
-  </ul>
-</div>
-</div>
-
-          </td>
-        </tr>
+        <input type="radio" name="options" autocomplete="off">
+      <span id="older-label">Older</span>
+      <span class="caret"></span>
+    </label>
+    <ul class="dropdown-menu" role="menu">
       
-    </tbody>
-  </table>
+        <li data="groovy" id="groovy-option" class="disabled older-distro-option"  href="#groovy">
+          <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
+        </li>
+      
+        <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
+          <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
+        </li>
+      
+        <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
+          <a href="#electric" data="electric" id="electric-button">electric</a>
+        </li>
+      
+        <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
+          <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
+        </li>
+      
+    </ul>
+  </div>
 </div>
 
-  </div>
-  <div class="row">
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      
+        <div class="distro distro-jade">
+        
+      </div>
     
-      <div class="distro distro-indigo">
+        <div class="distro distro-indigo">
+        
+          <div class="well well-sm">
+            
+            
+            
+            
+
+
+<table class="table">
+  <tr>
+    <td width="100px" class="text-center">
+      <img style="width: 80px" src="/assets/package.png">
+    </td>
+    <td>
+      <h3 style="margin-top: 5px">
+        <a style="text-decoration:none" href="/p/moveit_visual_tools">moveit_visual_tools</a> <small>package from <a style="text-decoration:none" href="/r/moveit_visual_tools/github-davetcoleman-moveit_visual_tools">moveit_visual_tools</a> repo</small>
+      </h3>
+      
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> moveit_visual_tools</span>
+        
+      
+    </td>
+  </tr>
+</table>
+<div class="top-buffer">
+  <div class="text-left">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <a target="_blank" href="http://docs.ros.org/indigo/api/moveit_visual_tools/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
+      <a target="_blank" href="https://github.com//davetcoleman/moveit_visual_tools/tree/indigo-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
+      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:moveit_visual_tools/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
+      <a target="_blank" href="http://wiki.ros.org/moveit_visual_tools" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+      
+    </div>
+  </div>
+</div>
+<div class="top-buffer distro distro-indigo">
+  
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/moveit_visual_tools"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-davetcoleman-moveit_visual_tools
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-davetcoleman-moveit_visual_tools" role="menuitem" tabindex="-1" href="/p/moveit_visual_tools/github-davetcoleman-moveit_visual_tools" data="github-davetcoleman-moveit_visual_tools">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-davetcoleman-moveit_visual_tools
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+          </div>
+        
+      </div>
+    
+        <div class="distro distro-hydro">
+        
+          <div class="well well-sm">
+            
+            
+            
+            
+
+
+<table class="table">
+  <tr>
+    <td width="100px" class="text-center">
+      <img style="width: 80px" src="/assets/package.png">
+    </td>
+    <td>
+      <h3 style="margin-top: 5px">
+        <a style="text-decoration:none" href="/p/moveit_visual_tools">moveit_visual_tools</a> <small>package from <a style="text-decoration:none" href="/r/moveit_visual_tools/github-davetcoleman-moveit_visual_tools">moveit_visual_tools</a> repo</small>
+      </h3>
+      
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> moveit_visual_tools</span>
+        
+      
+    </td>
+  </tr>
+</table>
+<div class="top-buffer">
+  <div class="text-left">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <a target="_blank" href="http://docs.ros.org/hydro/api/moveit_visual_tools/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
+      <a target="_blank" href="https://github.com//davetcoleman/moveit_visual_tools/tree/hydro-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
+      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:moveit_visual_tools/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
+      <a target="_blank" href="http://wiki.ros.org/moveit_visual_tools" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+      
+    </div>
+  </div>
+</div>
+<div class="top-buffer distro distro-hydro">
+  
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/moveit_visual_tools"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-davetcoleman-moveit_visual_tools
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-davetcoleman-moveit_visual_tools" role="menuitem" tabindex="-1" href="/p/moveit_visual_tools/github-davetcoleman-moveit_visual_tools" data="github-davetcoleman-moveit_visual_tools">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-davetcoleman-moveit_visual_tools
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+          </div>
+        
+      </div>
+    
+        <div class="distro distro-groovy">
+        
+      </div>
+    
+        <div class="distro distro-fuerte">
+        
+      </div>
+    
+        <div class="distro distro-electric">
+        
+      </div>
+    
+        <div class="distro distro-diamondback">
+        
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Helper functions for displaying and debugging MoveIt! data in Rviz via published markers
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body" style="overflow-x: auto">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>2.2.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/davetcoleman/moveit_visual_tools.git">https://github.com/davetcoleman/moveit_visual_tools.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-10
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
         
           
-          <div class="panel panel-default">
-            <div class="panel-heading">README</div>
-            <div class="readme-" style="margin: 20px">
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Dave Coleman</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Dave Coleman</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="https://github.com/davetcoleman/moveit_visual_tools">Website</a></li>
+                
+                  <li><a href="https://github.com/davetcoleman/moveit_visual_tools/issues">Butracker</a></li>
+                
+                  <li><a href="https://github.com/davetcoleman/moveit_visual_tools/">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1>MoveIt! Visual Tools</h1>
+<h1 id="moveit!-visual-tools">MoveIt! Visual Tools</h1>
 
 <p><strong>NOTE: in ROS Indigo API has changed significantly, see 'Upgrade Notes' below</strong></p>
 
@@ -188,17 +543,17 @@
 
 <p><img align="right" src="https://raw.github.com/davetcoleman/moveit_visual_tools/indigo-devel/resources/demo.png"></p>
 
-<h2>Install</h2>
+<h2 id="install">Install</h2>
 
-<h3>Ubuntu Debian</h3>
+<h3 id="ubuntu-debian">Ubuntu Debian</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install ros-indigo-moveit-visual-tools
 </code></pre></div>
-<h3>Install From Source</h3>
+<h3 id="install-from-source">Install From Source</h3>
 
 <p>Clone this repository into a catkin workspace, then use the rosdep install tool to automatically download its dependencies. Depending on your current version of ROS, use:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">rosdep install --from-paths src --ignore-src --rosdistro indigo
 </code></pre></div>
-<h2>Quick Start</h2>
+<h2 id="quick-start">Quick Start</h2>
 
 <p>To see random shapes generated in Rviz:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">roslaunch moveit_visual_tools visual_tools_test.launch
@@ -210,27 +565,45 @@
 <p>You can also test the collision objects generation:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">roslaunch moveit_visual_tools collision_objects_test.launch
 </code></pre></div>
-<h2>Code API</h2>
+<h2 id="code-api">Code API</h2>
 
 <p>See <a href="http://docs.ros.org/indigo/api/moveit_visual_tools/html/classmoveit__visual__tools_1_1VisualTools.html">VisualTools Class Reference</a></p>
 
-<h2>Upgrade Notes</h2>
+<h2 id="upgrade-notes">Upgrade Notes</h2>
 
 <p>We recently did a major refactor of moveit_visual_tools that caused some API breaking changes. If you do not want to bother, you can still build the old version from source using the branch <code>indigo-devel-old-api</code>.</p>
 
 <p>To upgrade, do the following (or use the upgrade script further down):</p>
 
-<p>Orignal API                                    | New API
----------------------------------------------- | ------------------------------------------------------</p>
-
-<h1>include &lt;moveit_visual_tools/visual_tools.h&gt;  | #include &lt;moveit_visual_tools/moveit_visual_tools.h&gt;</h1>
-
-<p>moveit_visual_tools::VisualTools               | moveit_visual_tools::MoveItVisualTools
-moveit_visual_tools::VisualToolsPtr            | moveit_visual_tools::MoveItVisualToolsPtr
-moveit_visual_tools::rviz_colors               | rviz_visual_tools::colors
-moveit_visual_tools::rviz_scales               | rviz_visual_tools::scales</p>
-
-<h3>Auto Upgrade Script</h3>
+<table>
+<thead><tr>
+<th>Orignal API</th>
+<th>New API</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>#include &lt;moveit_visual_tools/visual_tools.h&gt;</td>
+<td>#include &lt;moveit_visual_tools/moveit_visual_tools.h&gt;</td>
+</tr>
+<tr>
+<td>moveit_visual_tools::VisualTools</td>
+<td>moveit_visual_tools::MoveItVisualTools</td>
+</tr>
+<tr>
+<td>moveit_visual_tools::VisualToolsPtr</td>
+<td>moveit_visual_tools::MoveItVisualToolsPtr</td>
+</tr>
+<tr>
+<td>moveit_visual_tools::rviz_colors</td>
+<td>rviz_visual_tools::colors</td>
+</tr>
+<tr>
+<td>moveit_visual_tools::rviz_scales</td>
+<td>rviz_visual_tools::scales</td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-upgrade-script">Auto Upgrade Script</h3>
 
 <p>Run each line in order in the <code>/src</code> of your catkin workspace:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">findreplace() { grep -lr -e "$1" * | xargs sed -i "s/$1/$2/g" ;}
@@ -239,11 +612,11 @@ findreplace moveit_visual_tools::VisualTools moveit_visual_tools::MoveItVisualTo
 findreplace 'moveit_visual_tools::' 'rviz_visual_tools::'
 findreplace 'rviz_visual_tools::MoveItVisualTools' 'moveit_visual_tools::MoveItVisualTools'
 </code></pre></div>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 
 <p>We'll assume you will be using these helper functions within a class.</p>
 
-<h3>Initialize</h3>
+<h3 id="initialize">Initialize</h3>
 
 <p>Add to your includes:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">#include &lt;moveit_visual_tools/visual_tools.h&gt;
@@ -268,13 +641,13 @@ visual_tools_-&gt;setAlpha(alpha);
 visual_tools_-&gt;setGlobalScale(scale);
 visual_tools_-&gt;setBaseFrame(frame_name);
 </code></pre></div>
-<h3>Tools</h3>
+<h3 id="tools">Tools</h3>
 
 <p>Now in your code you can easily debug your MoveIt! code using visual markers in Rviz</p>
 
 <p>Start rviz and create a new marker using the 'Add' button at the bottom right. Choose the marker topic to be the same as the topic you specified in the constructor.</p>
 
-<h3>Example Code</h3>
+<h3 id="example-code">Example Code</h3>
 
 <p>In the following snippet we create a pose at xyz (0.1, 0.1, 0.1) and rotate the pose down 45 degrees along the Y axis. Then we publish the pose as a arrow for visualziation in Rviz. Make sure your Rviz fixed frame is the same as the one chosen in the code.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">// Create pose
@@ -286,7 +659,7 @@ pose.translation() = Eigen::Vector3d( 0.1, 0.1, 0.1 ); // translate x,y,z
 ROS_INFO_STREAM_NAMED("test","Publishing Arrow");
 visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_tools::LARGE);
 </code></pre></div>
-<h3>Basic Publishing Functions</h3>
+<h3 id="basic-publishing-functions">Basic Publishing Functions</h3>
 
 <p>See <code>visual_tools.h</code> for more details and documentation on the following functions:</p>
 
@@ -301,7 +674,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 </ul>
 <p>And more...</p>
 
-<h3>Collision Object Functions</h3>
+<h3 id="collision-object-functions">Collision Object Functions</h3>
 
 <p>Helpers for adding and removing objects from the MoveIt! planning scene. CO stands for Collision Object and ACO stands for Active Collision Object.</p>
 
@@ -319,7 +692,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 </ul>
 <p>And more...</p>
 
-<h3>Animate Trajectories</h3>
+<h3 id="animate-trajectories">Animate Trajectories</h3>
 
 <p>Higher level robot and trajectory functions</p>
 
@@ -330,14 +703,14 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>publishAnimatedGrasps</li>
 <li>publishIKSolutions</li>
 </ul>
-<h2>Show parts of a robot</h2>
+<h2 id="show-parts-of-a-robot">Show parts of a robot</h2>
 
 <p>These functions are a little more complicated TODO document more</p>
 
 <ul>
 <li>publishEEMarkers</li>
 </ul>
-<h3>Helper Functions</h3>
+<h3 id="helper-functions">Helper Functions</h3>
 
 <p>Reset function</p>
 
@@ -364,7 +737,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>getCenterPoint</li>
 <li>getVectorBetweenPoints</li>
 </ul>
-<h3>Available Colors</h3>
+<h3 id="available-colors">Available Colors</h3>
 
 <p>This package helps you quickly choose colors - feel free to send PRs with more colors as needed</p>
 
@@ -378,7 +751,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>moveit_visual_tools::BLACK</li>
 <li>moveit_visual_tools::YELLOW</li>
 </ul>
-<h3>Available Marker Sizes</h3>
+<h3 id="available-marker-sizes">Available Marker Sizes</h3>
 
 <ul>
 <li>moveit_visual_tools::XXSMALL</li>
@@ -388,7 +761,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>moveit_visual_tools::LARGE</li>
 <li>moveit_visual_tools::XLARGE</li>
 </ul>
-<h3>Lifetime</h3>
+<h3 id="lifetime">Lifetime</h3>
 
 <p>All markers will persist for the duration set by <code>setLifetime</code>, defaulting to 30 seconds. You can reset this earlier by calling</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">resetMarkerCounts();
@@ -398,7 +771,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <p>You can also delete all markers (new in ROS Indigo) by calling</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">deleteAllMarkers();
 </code></pre></div>
-<h2>Developers Notes</h2>
+<h2 id="developers-notes">Developers Notes</h2>
 
 <p>Useful notes for anyone wanting to dig in deeper:</p>
 
@@ -407,25 +780,525 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li> All publish() ROS topics should be followed by a <code>ros::spinOnce();</code> but no sleep</li>
 <li> Do not want to load any features/publishers until they are actually needed since this library contains so many components</li>
 </ul>
-<h2>Contribute</h2>
+<h2 id="contribute">Contribute</h2>
 
 <p>Feel free to send PRs for new helper functions, fixes, etc. - I'll happily discuss and merge them. I do not, however, want to send much time helping people use this because I am a busy grad student. Use at your own risk.</p>
 </div></body></html>
 
-            </div>
+            
           </div>
-        
+        </div>
       </div>
-    
-      <div class="distro distro-hydro">
-        
-          
-          <div class="panel panel-default">
-            <div class="panel-heading">README</div>
-            <div class="readme-" style="margin: 20px">
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1>MoveIt! Visual Tools</h1>
+<h1 id="changelog-for-package-moveit_visual_tools">Changelog for package moveit_visual_tools</h1>
+
+<h2 id="2.2.0-(2015-01-07)">2.2.0 (2015-01-07)</h2>
+
+<ul>
+<li>  Code cleanup</li>
+<li>  Improved naming</li>
+<li>  Joint model bug fix</li>
+<li>  Improved speed of sending collision objects to Rviz Added Manual
+planning scene update mode Ability to apply colors to all collision
+objects (YAY) API: removed removeAllCollisionObjectsPS function
+Removed loadPlanningPub() function Removed
+publishRemoveAllCollisionObjects() function</li>
+<li>  Added backwards compatibile loadCollisionSceneFromFile()</li>
+<li>  New publishCollisionRectangle function API: Changed
+loadCollisionSceneFromFile() to accept a pose instead of x,y</li>
+<li>  Fix for renamed function</li>
+<li>  New publishWorkspaceParameters() function</li>
+<li>  Added ability to publish robot states with color</li>
+<li>  Fixed install method</li>
+<li>  Merge pull request
+<a href="https://github.com/davetcoleman/moveit_visual_tools/issues/5">#5</a>
+from robomakery/feature/fix-collision-objects-test</li>
+<li>  Fixes for missing declarations in collision_objects_test.cpp</li>
+<li>  Refactored how collision ojects are published Created new collision
+objects test and roslaunch file Optimized header file Removed
+loadCollisionPub() function Fixed publishCollisionFloor Added
+publishCollisionRectangle</li>
+<li>  Contributors: Dave Coleman, Dylan Vaughn</li>
+</ul>
+<h2 id="2.1.0-(2014-10-31)">2.1.0 (2014-10-31)</h2>
+
+<ul>
+<li>  Fix for upstream change of RvizVisualTools</li>
+<li>  Set animation speed of grasps</li>
+<li>  Fix publishing end effector</li>
+<li>  New publishCollisionObjectMsg() function</li>
+<li>  New getSharedRobotState() accessor function</li>
+<li>  Consolidated publish marker functions</li>
+<li>  Fixed loadEEMarker() to be called more than once</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="2.0.0-(2014-10-27)">2.0.0 (2014-10-27)</h2>
+
+<ul>
+<li>  Updated README</li>
+<li>  API Upgrade Notes</li>
+<li>  Renamed to have 'MoveIt' prefix in class and file name, moved base
+functionality to rviz_visual_tools</li>
+<li>  Added new publishSphere function and publish_sphere test script</li>
+<li>  Created better test script</li>
+<li>  Better static_id handling for publishText</li>
+<li>  Added mainpage for API docs</li>
+<li>  Enabled colors</li>
+<li>  Improved integer random num generation</li>
+<li>  New publishSpheres functions</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.3.0-(2014-09-17)">1.3.0 (2014-09-17)</h2>
+
+<ul>
+<li>  Added new getRandColor() function</li>
+<li>  Added TRANSLUCENT color</li>
+<li>  Added two new publishSphere() functions</li>
+<li>  New convertPointToPose function</li>
+<li>  Reduced sleep timer for starting all publishers from 0.5 seconds to
+0.2 seconds</li>
+<li>  Removed stacktrace tool because already exists in moveit_core</li>
+<li>  New publishText function that allows custom scale and id number be
+passed in</li>
+<li>  Removed deprecated getEEParentLink() function</li>
+<li>  Added new scale sizes</li>
+<li>  Added new processCollisionObvMsg()</li>
+<li>  Added new setPlanningSceneMonitor()</li>
+<li>  Deprecated removeAllColisionObejcts()</li>
+<li>  Created new removeAllCollisionObjectsPS()</li>
+<li>  Added new publishCollisionFloor()</li>
+<li>  Added new loadCollisionSceneFromFile()</li>
+<li>  New color purple</li>
+<li>  Added new setBaseFrame() function</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.2.1-(2014-08-11)">1.2.1 (2014-08-11)</h2>
+
+<ul>
+<li>  Renamed base_link to base_frame</li>
+<li>  Added new getBaseFrame() function</li>
+<li>  Deprecated getBaseLink() function</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.2.0-(2014-08-08)">1.2.0 (2014-08-08)</h2>
+
+<ul>
+<li>  Added XXLarge size</li>
+<li>  Added global_scale feature</li>
+<li>  Added hideRobot() functionality</li>
+<li>  Added removeAllCollisionObjects from planning scene monitor</li>
+<li>  Added publishCollisionSceneFromFile function</li>
+<li>  Formatting</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.1.0-(2014-07-31)">1.1.0 (2014-07-31)</h2>
+
+<ul>
+<li>  Bug fixes</li>
+<li>  Fixed convertPoint32ToPose</li>
+<li>  Added scale to publishText</li>
+<li>  New publishPolygon, publishMarker, convertPose, convertPointToPose,
+and convertPoint32 functions</li>
+<li>  New deleteAllMarkers, publishPath, publishSpheres, and
+convertPoseToPoint functions</li>
+<li>  Added getCollisionWall</li>
+<li>  Made lines darker</li>
+<li>  Added reset marker feature</li>
+<li>  Namespaces for publishSphere</li>
+<li>  New publishTrajectory function</li>
+<li>  Merging features from OMPL viewer</li>
+<li>  Refactored functions, new robot_model intialization</li>
+<li>  Added more rand functions and made them static</li>
+<li>  Added graph_msgs generated messages dependence so it waits for it
+to be compiled</li>
+<li>  Updated README</li>
+<li>  Contributors: Dave Coleman, Sammy Pfeiffer</li>
+</ul>
+<h2 id="1.0.1-(2014-05-30)">1.0.1 (2014-05-30)</h2>
+
+<ul>
+<li>  Updated README</li>
+<li>  Indigo support</li>
+<li>  Fix for strict cppcheck and g++ warnings/errors</li>
+<li>  Compatibilty fix for Eigen package in ROS Indigo</li>
+<li>  Fix uninitialized</li>
+<li>  Fix functions with no return statement and other cppcheck errors</li>
+<li>  Contributors: Bence Magyar, Dave Coleman, Jordi Pages</li>
+</ul>
+<h2 id="1.0.0-(2014-05-05)">1.0.0 (2014-05-05)</h2>
+
+<ul>
+<li>  Enabled dual arm manipulation</li>
+<li>  Removed notions of a global planning group, ee group name, or ee
+parent link.</li>
+<li>  Changed functionality of loadEEMarker</li>
+<li>  Added new print function</li>
+<li>  Made getPlanningSceneMonitor() private function</li>
+<li>  Renamed loadPathPub()</li>
+<li>  Added tool for visualizing unmangled stack trace</li>
+<li>  Created function for publishing non-animated grasps</li>
+<li>  Created new publishGraph function. Renamed publishCollisionTree to
+publishCollisionGraph</li>
+<li>  Created functions for loading publishers with a delay</li>
+<li>  Removed old method of removing all collision objects</li>
+<li>  Created better testing functionality</li>
+<li>  Changed return type from void to bool for many functions</li>
+<li>  Changed way trajectory is timed</li>
+<li>  Created new publishIKSolutions() function for grasp poses, etc</li>
+<li>  Added new MoveIt robot state functionality</li>
+<li>  Added visualize grasp functionality</li>
+<li>  Removed unnecessary run dependencies</li>
+<li>  Updated README</li>
+</ul>
+<h2 id="0.2.0-(2014-04-11)">0.2.0 (2014-04-11)</h2>
+
+<ul>
+<li>  Improved header comments are re-ordered functions into groups</li>
+<li>  Started to create new trajectory point publisher</li>
+<li>  Added getBaseLink function</li>
+<li>  Added dependency on graph_msgs</li>
+<li>  Added new collision cylinder functionality</li>
+<li>  Created example code in README</li>
+<li>  Renamed visualization to visual keyword</li>
+<li>  Updated README</li>
+</ul>
+<h2 id="0.1.0-(2014-04-04)">0.1.0 (2014-04-04)</h2>
+
+<ul>
+<li>  Split moveit_visual_tools from its original usage within
+block_grasp_generator package</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>See <a href="http://wiki.ros.org/moveit_visual_tools/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Depends On</h3>
+      </div>
+      <div class="panel-body">
+          
+            <li><h4><a class="label label-primary" href="/p/rviz_visual_tools#indigo">rviz_visual_tools</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/eigen_conversions#indigo">eigen_conversions</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/geometry_msgs#indigo">geometry_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/moveit_ros_robot_interaction#indigo">moveit_ros_robot_interaction</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/moveit_core#indigo">moveit_core</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/tf_conversions#indigo">tf_conversions</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/visualization_msgs#indigo">visualization_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/graph_msgs#indigo">graph_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/std_msgs#indigo">std_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/trajectory_msgs#indigo">trajectory_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/cmake_modules#indigo">cmake_modules</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/moveit_msgs#indigo">moveit_msgs</a></h4></li>
+          
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Depended On By</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently computed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launchfiles</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+            <li><a href="https://github.com//davetcoleman/moveit_visual_tools/tree/indigo-devel/./launch/collision_objects_test.launch" target="_blank">launch/collision_objects_test.launch</a></li>
+          
+            <li><a href="https://github.com//davetcoleman/moveit_visual_tools/tree/indigo-devel/./launch/visual_tools_test.launch" target="_blank">launch/visual_tools_test.launch</a></li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Javascript to enable link to tab
+$(function() {
+  var url = document.location.toString();
+  if (url.match('#')) {
+      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+  } 
+
+  // Change hash for page-reload
+  $('.nav-tabs a').on('shown', function (e) {
+      window.location.hash = e.target.hash;
+  })
+});
+</script>
+
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">12</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Helper functions for displaying and debugging MoveIt! data in Rviz via published markers
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body" style="overflow-x: auto">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.3.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/davetcoleman/moveit_visual_tools.git">https://github.com/davetcoleman/moveit_visual_tools.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">hydro-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-09-17
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Dave Coleman</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Dave Coleman</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="https://github.com/davetcoleman/moveit_visual_tools">Website</a></li>
+                
+                  <li><a href="https://github.com/davetcoleman/moveit_visual_tools/issues">Butracker</a></li>
+                
+                  <li><a href="https://github.com/davetcoleman/moveit_visual_tools/">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="moveit!-visual-tools">MoveIt! Visual Tools</h1>
 
 <p>Helper functions for displaying and debugging MoveIt! data in Rviz via published markers, trajectories, and MoveIt! collision objects. It is sometimes hard to understand everything that is going on internally with MoveIt!, but using these quick convenience functions allows one to easily visualize their code.</p>
 
@@ -441,26 +1314,26 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 
 <p><img align="right" src="https://raw.github.com/davetcoleman/moveit_visual_tools/hydro-devel/resources/demo.png"></p>
 
-<h3>Build Status</h3>
+<h3 id="build-status">Build Status</h3>
 
 <p><a href="https://travis-ci.org/davetcoleman/moveit_visual_tools"><img src="https://travis-ci.org/davetcoleman/moveit_visual_tools.png?branch=hydro-devel" alt="Build Status"></a></p>
 
-<h2>Install</h2>
+<h2 id="install">Install</h2>
 
-<h3>Ubuntu Debian</h3>
+<h3 id="ubuntu-debian">Ubuntu Debian</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install ros-hydro-moveit-visual-tools
 sudo apt-get install ros-indigo-moveit-visual-tools
 </code></pre></div>
-<h3>Install From Source</h3>
+<h3 id="install-from-source">Install From Source</h3>
 
 <p>Clone this repository into a catkin workspace, then use the rosdep install tool to automatically download its dependencies. Depending on your current version of ROS, use:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">rosdep install --from-paths src --ignore-src --rosdistro indigo
 </code></pre></div>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 
 <p>We'll assume you will be using these helper functions within a class.</p>
 
-<h3>Initialize</h3>
+<h3 id="initialize">Initialize</h3>
 
 <p>Add to your includes:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">#include &lt;moveit_visual_tools/visual_tools.h&gt;
@@ -485,13 +1358,13 @@ visual_tools_-&gt;setAlpha(alpha);
 visual_tools_-&gt;setGlobalScale(scale);
 visual_tools_-&gt;setBaseFrame(frame_name);
 </code></pre></div>
-<h3>Tools</h3>
+<h3 id="tools">Tools</h3>
 
 <p>Now in your code you can easily debug your MoveIt! code using visual markers in Rviz</p>
 
 <p>Start rviz and create a new marker using the 'Add' button at the bottom right. Choose the marker topic to be the same as the topic you specified in the constructor.</p>
 
-<h3>Example Code</h3>
+<h3 id="example-code">Example Code</h3>
 
 <p>In the following snippet we create a pose at xyz (0.1, 0.1, 0.1) and rotate the pose down 45 degrees along the Y axis. Then we publish the pose as a arrow for visualziation in Rviz. Make sure your Rviz fixed frame is the same as the one chosen in the code.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">// Create pose
@@ -503,7 +1376,7 @@ pose.translation() = Eigen::Vector3d( 0.1, 0.1, 0.1 ); // translate x,y,z
 ROS_INFO_STREAM_NAMED("test","Publishing Arrow");
 visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_tools::LARGE);
 </code></pre></div>
-<h3>Basic Publishing Functions</h3>
+<h3 id="basic-publishing-functions">Basic Publishing Functions</h3>
 
 <p>See <code>visual_tools.h</code> for more details and documentation on the following functions:</p>
 
@@ -518,7 +1391,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 </ul>
 <p>And more...</p>
 
-<h3>Collision Object Functions</h3>
+<h3 id="collision-object-functions">Collision Object Functions</h3>
 
 <p>To</p>
 
@@ -538,7 +1411,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 </ul>
 <p>And more...</p>
 
-<h3>Animate Trajectories</h3>
+<h3 id="animate-trajectories">Animate Trajectories</h3>
 
 <p>Higher level robot and trajectory functions</p>
 
@@ -549,14 +1422,14 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>publishAnimatedGrasps</li>
 <li>publishIKSolutions</li>
 </ul>
-<h2>Show parts of a robot</h2>
+<h2 id="show-parts-of-a-robot">Show parts of a robot</h2>
 
 <p>These functions are a little more complicated TODO document more</p>
 
 <ul>
 <li>publishEEMarkers</li>
 </ul>
-<h3>Helper Functions</h3>
+<h3 id="helper-functions">Helper Functions</h3>
 
 <p>Reset function</p>
 
@@ -583,7 +1456,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>getCenterPoint</li>
 <li>getVectorBetweenPoints</li>
 </ul>
-<h3>Available Colors</h3>
+<h3 id="available-colors">Available Colors</h3>
 
 <p>This package helps you quickly choose colors - feel free to send PRs with more colors as needed</p>
 
@@ -597,7 +1470,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>moveit_visual_tools::BLACK</li>
 <li>moveit_visual_tools::YELLOW</li>
 </ul>
-<h3>Available Marker Sizes</h3>
+<h3 id="available-marker-sizes">Available Marker Sizes</h3>
 
 <ul>
 <li>moveit_visual_tools::XXSMALL</li>
@@ -607,7 +1480,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li>moveit_visual_tools::LARGE</li>
 <li>moveit_visual_tools::XLARGE</li>
 </ul>
-<h3>Lifetime</h3>
+<h3 id="lifetime">Lifetime</h3>
 
 <p>All markers will persist for the duration set by <code>setLifetime</code>, defaulting to 30 seconds. You can reset this earlier by calling</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">resetMarkerCounts();
@@ -617,7 +1490,7 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <p>You can also delete all markers (new in ROS Indigo) by calling</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">deleteAllMarkers();
 </code></pre></div>
-<h2>Developers Notes</h2>
+<h2 id="developers-notes">Developers Notes</h2>
 
 <p>Useful notes for anyone wanting to dig in deeper:</p>
 
@@ -626,90 +1499,351 @@ visual_tools_-&gt;publishArrow(pose, moveit_visual_tools::RED, moveit_visual_too
 <li> All publish() ROS topics should be followed by a <code>ros::spinOnce();</code> but no sleep</li>
 <li> Do not want to load any features/publishers until they are actually needed since this library contains so many components</li>
 </ul>
-<h2>Contribute</h2>
+<h2 id="contribute">Contribute</h2>
 
 <p>Feel free to send PRs for new helper functions, fixes, etc. - I'll happily discuss and merge them. I do not, however, want to send much time helping people use this because I am a busy grad student. Use at your own risk.</p>
 </div></body></html>
 
-            </div>
+            
           </div>
-        
+        </div>
       </div>
-    
-      <div class="distro distro-groovy">
-        
-        <em>No branch for distro <strong>groovy</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-moveit_visual_tools">Changelog for package moveit_visual_tools</h1>
+
+<h2 id="1.3.0-(2014-09-17)">1.3.0 (2014-09-17)</h2>
+
+<ul>
+<li>  Added new getRandColor() function</li>
+<li>  Added TRANSLUCENT2 color</li>
+<li>  Added two new publishSphere() functions</li>
+<li>  New convertPointToPose function</li>
+<li>  Reduced sleep timer for starting all publishers from 0.5 seconds to
+0.2 seconds</li>
+<li>  Removed stacktrace tool because already exists in moveit_core</li>
+<li>  New publishText function that allows custom scale and id number be
+passed in</li>
+<li>  Removed deprecated getEEParentLink() function</li>
+<li>  Added new scale sizes</li>
+<li>  Added new processCollisionObvMsg()</li>
+<li>  Added new setPlanningSceneMonitor()</li>
+<li>  Deprecated removeAllColisionObejcts()</li>
+<li>  Created new removeAllCollisionObjectsPS()</li>
+<li>  Added new publishCollisionFloor()</li>
+<li>  Added new loadCollisionSceneFromFile()</li>
+<li>  New color purple</li>
+<li>  Added new setBaseFrame() function</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.2.1-(2014-08-11)">1.2.1 (2014-08-11)</h2>
+
+<ul>
+<li>  Renamed base_link to base_frame</li>
+<li>  Added new getBaseFrame() function</li>
+<li>  Deprecated getBaseLink() function</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.2.0-(2014-08-08)">1.2.0 (2014-08-08)</h2>
+
+<ul>
+<li>  Added XXLarge size</li>
+<li>  Added global_scale feature</li>
+<li>  Added hideRobot() functionality</li>
+<li>  Added removeAllCollisionObjects from planning scene monitor</li>
+<li>  Added publishCollisionSceneFromFile function</li>
+<li>  Formatting</li>
+<li>  Contributors: Dave Coleman</li>
+</ul>
+<h2 id="1.1.0-(2014-07-31)">1.1.0 (2014-07-31)</h2>
+
+<ul>
+<li>  Bug fixes</li>
+<li>  Fixed convertPoint32ToPose</li>
+<li>  Added scale to publishText</li>
+<li>  New publishPolygon, publishMarker, convertPose, convertPointToPose,
+and convertPoint32 functions</li>
+<li>  New deleteAllMarkers, publishPath, publishSpheres, and
+convertPoseToPoint functions</li>
+<li>  Added getCollisionWall</li>
+<li>  Made lines darker</li>
+<li>  Added reset marker feature</li>
+<li>  Namespaces for publishSphere</li>
+<li>  New publishTrajectory function</li>
+<li>  Merging features from OMPL viewer</li>
+<li>  Refactored functions, new robot_model intialization</li>
+<li>  Added more rand functions and made them static</li>
+<li>  Added graph_msgs generated messages dependence so it waits for it
+to be compiled</li>
+<li>  Updated README</li>
+<li>  Contributors: Dave Coleman, Sammy Pfeiffer</li>
+</ul>
+<h2 id="1.0.1-(2014-05-30)">1.0.1 (2014-05-30)</h2>
+
+<ul>
+<li>  Updated README</li>
+<li>  Indigo support</li>
+<li>  Fix for strict cppcheck and g++ warnings/errors</li>
+<li>  Compatibilty fix for Eigen package in ROS Indigo</li>
+<li>  Fix uninitialized</li>
+<li>  Fix functions with no return statement and other cppcheck errors</li>
+<li>  Contributors: Bence Magyar, Dave Coleman, Jordi Pages</li>
+</ul>
+<h2 id="1.0.0-(2014-05-05)">1.0.0 (2014-05-05)</h2>
+
+<ul>
+<li>  Enabled dual arm manipulation</li>
+<li>  Removed notions of a global planning group, ee group name, or ee
+parent link.</li>
+<li>  Changed functionality of loadEEMarker</li>
+<li>  Added new print function</li>
+<li>  Made getPlanningSceneMonitor() private function</li>
+<li>  Renamed loadPathPub()</li>
+<li>  Added tool for visualizing unmangled stack trace</li>
+<li>  Created function for publishing non-animated grasps</li>
+<li>  Created new publishGraph function. Renamed publishCollisionTree to
+publishCollisionGraph</li>
+<li>  Created functions for loading publishers with a delay</li>
+<li>  Removed old method of removing all collision objects</li>
+<li>  Created better testing functionality</li>
+<li>  Changed return type from void to bool for many functions</li>
+<li>  Changed way trajectory is timed</li>
+<li>  Created new publishIKSolutions() function for grasp poses, etc</li>
+<li>  Added new MoveIt robot state functionality</li>
+<li>  Added visualize grasp functionality</li>
+<li>  Removed unnecessary run dependencies</li>
+<li>  Updated README</li>
+</ul>
+<h2 id="0.2.0-(2014-04-11)">0.2.0 (2014-04-11)</h2>
+
+<ul>
+<li>  Improved header comments are re-ordered functions into groups</li>
+<li>  Started to create new trajectory point publisher</li>
+<li>  Added getBaseLink function</li>
+<li>  Added dependency on graph_msgs</li>
+<li>  Added new collision cylinder functionality</li>
+<li>  Created example code in README</li>
+<li>  Renamed visualization to visual keyword</li>
+<li>  Updated README</li>
+</ul>
+<h2 id="0.1.0-(2014-04-04)">0.1.0 (2014-04-04)</h2>
+
+<ul>
+<li>  Split moveit_visual_tools from its original usage within
+block_grasp_generator package</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
       </div>
-    
-      <div class="distro distro-fuerte">
-        
-        <em>No branch for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
+    </div>
+  </div>
+
+  <div class="tab-pane" id="hydro-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
-    
-      <div class="distro distro-electric">
-        
-        <em>No branch for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
+      <div class="panel-body">
+        <em>See <a href="http://wiki.ros.org/moveit_visual_tools/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
       </div>
-    
-      <div class="distro distro-diamondback">
-        
-        <em>No branch for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
       </div>
-    
-      <div class="distro distro-c-turtle">
-        
-        <em>No branch for distro <strong>c-turtle</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
       </div>
-    
+    </div>
+
+  </div>
+
+  <div class="tab-pane" id="hydro-deps">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Depends On</h3>
+      </div>
+      <div class="panel-body">
+          
+            <li><h4><a class="label label-primary" href="/p/eigen_conversions#hydro">eigen_conversions</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/geometry_msgs#hydro">geometry_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/moveit_ros_robot_interaction#hydro">moveit_ros_robot_interaction</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/moveit_core#hydro">moveit_core</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/tf_conversions#hydro">tf_conversions</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/visualization_msgs#hydro">visualization_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/graph_msgs#hydro">graph_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/moveit_msgs#hydro">moveit_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/trajectory_msgs#hydro">trajectory_msgs</a></h4></li>
+          
+            <li><h4><a class="label label-primary" href="/p/cmake_modules#hydro">cmake_modules</a></h4></li>
+          
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Depended On By</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently computed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="hydro-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launchfiles</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+            <li><a href="https://github.com//davetcoleman/moveit_visual_tools/tree/hydro-devel/./launch/vision_tools_test.launch" target="_blank">launch/vision_tools_test.launch</a></li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+
   </div>
 </div>
 
+<script>
+// Javascript to enable link to tab
+$(function() {
+  var url = document.location.toString();
+  if (url.match('#')) {
+      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+  } 
+
+  // Change hash for page-reload
+  $('.nav-tabs a').on('shown', function (e) {
+      window.location.hash = e.target.hash;
+  })
+});
+</script>
+
+      
+    </div>
+  </div>
+
+  <div class="distro distro-groovy">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>groovy</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-fuerte">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-electric">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-diamondback">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+
 <script src="/js/distro_switch.js"></script>
+
 
       </div>
     </div>
 
     <footer class="site-footer">
-
   <div class="wrapper">
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col  footer-col-1">
-        <ul class="contact-list">
-          <li>ROS Index</li>
-        </ul>
-      </div>
-
-      <div class="footer-col  footer-col-2">
-        <ul class="social-media-list">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4 col-md-4">
           
-          <li>
             <a href="https://github.com/rosindex">
-              <span class="icon  icon--github">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
-                </svg>
-              </span>
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
 
-              <span class="username">rosindex</span>
-            </a>
-          </li>
-          
-
-        </ul>
-      </div>
-
-      <div class="footer-col  footer-col-3">
-        <p class="text">A community-maintained index of known ROS packages.
-</p>
+            <span class="username">rosindex</span>
+          </a>
+          |
+          <em>generated on 2015-01-30</em>
+        
+        </div>
+        <div class="col-sm-8 col-md-8 text-right">
+          <p class="text">a community-maintained index of robotics software
+ | <a href="/privacy.txt">privacy</a></p>
+        </div>
       </div>
     </div>
-
   </div>
 
 </footer>

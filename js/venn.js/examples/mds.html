@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>mds venn.js example</title>
+<style>
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+    <div class="mds"></div>
+</body>
+
+<script src="http://d3js.org/d3.v2.min.js"></script>
+<script src="../venn.js"></script>
+<script src="http://www.benfrederickson.com/images/mds.js"></script>
+<script src="http://www.numericjs.com/lib/numeric-1.2.6.min.js"></script>
+<script>
+
+var sets = [{label : 'A', size : 9}, {label : 'B', size: 15},
+                   {label : 'C', size : 8}, {label : 'D', size:6},
+                   {label : 'E' , size: 9}, {label : 'F', size:9}],
+    overlaps  = [{sets : [0,1], size:3}, 
+                       {sets : [0,2], size:0},
+                       {sets : [0,3], size:0},
+                       {sets : [0,4], size:0},
+                       {sets : [0,5], size:3},
+                       {sets : [1,2], size:3},
+                       {sets : [1,3], size:2},
+                       {sets : [1,4], size:0},
+                       {sets : [1,5], size:3},
+                       {sets : [2,3], size:2},
+                       {sets : [2,4], size:0},
+                       {sets : [2,5], size:0},
+                       {sets : [3,4], size:1},
+                       {sets : [3,5], size:0},
+                       {sets : [4,5], size:1},
+                       ];
+
+// get positions for each set
+sets = venn.venn(sets, overlaps, {layoutFunction: venn.classicMDSLayout})
+
+// draw the diagram in the 'mds' div
+venn.drawD3Diagram(d3.select(".mds"), sets, 300, 300);
+
+
+
+
+</script>
+</html>

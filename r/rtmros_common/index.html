@@ -7,16 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>ROS Index</title>
-    <meta name="description" content="A community-maintained index of known ROS packages.
+    <meta name="description" content="a community-maintained index of robotics software
 ">
 
     <link rel="canonical" href="http://rosindex.github.io/r/rtmros_common/">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/main.css">
+    
 
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/toc.js"></script>
 
 </head>
 
@@ -26,7 +31,43 @@
     <header class="site-header">
 
   <div class="wrapper">
+    <div class="container-fluid" style="margin-bottom: 10px">
+      <div class="row">
 
+
+        <div class="col-sm-12 col-md-9" style="margin-top: 8px">
+          <div class="row">
+            <!-- title -->
+            <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+            </div>
+
+            <!-- main links -->
+            <div class="col-xs-12 col-sm-9 col-md-9 text-right">
+              <a class="btn btn-link" href="/about">About</a>
+              <a class="btn btn-link" href="/packages">Packages</a>
+              <a class="btn btn-link" href="/repos">Repos</a>
+              <a class="btn btn-link" href="/contribute">Contribute</a>
+              <a class="btn btn-link" href="/stats">Stats</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- searchbox -->
+        <div class="col-sm-12 col-md-3" style="margin-top: 12px">
+          <form action="/search/" role="form">
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control" name="q" placeholder="Search">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--
     <a class="site-title" href="/">ROS Index</a>
 
     <nav class="site-nav">
@@ -39,12 +80,12 @@
       </a>
 
       <div class="trigger">
-        <!--<a class="page-link" href="/r/rtmros_common/index.html"></a>-->
         <a class="page-link" href="/packages">Packages</a>
         <a class="page-link" href="/repos">Repositories</a>
         <a class="page-link" href="/search">Search</a>
       </div>
     </nav>
+    -->
 
   </div>
 
@@ -53,194 +94,272 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="container-fluid" style="margin:20px">
-  <div class="row">
-    <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/repos">Repos</a></li>
-      <li><a href="/repos/rtmros_common">rtmros_common</a></li>
-      <li class="active">rosdistro</li>
-    </ol>
-  </div>
-  <div class="row">
-    <div class="well well-sm">
-  <table class="table-condensed">
-    <tbody>
-      <tr>
-        <!--<td><span class="pull-right">description</span></td>-->
-        <td>
-          <h4>rtmros_common <small></small></h4>
-          
-        </td>
-      </tr>
-      
-        <tr>
-          <td>
-<div id="repo-switch" class="btn-group btn-group-justified" role="group">
-  <div class="btn-group" role="group">
-    <div class="dropdown">
-      <! -- TODO: add disabled when only 1 version is known -->
-      <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-        <span class="pull-left">
-          <span class="glyphicon glyphicon-star"></span>
-          rosdistro ( https://github.com/start-jsk/rtmros_common.git )
-        </span>
-        <span class="pull-right"><span class="caret"></span></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        
-          <li role="presentation">
-          <a id="rosdistro" role="menuitem" tabindex="-1" href="/r/rtmros_common/rosdistro" data="rosdistro">
-              <span class="glyphicon glyphicon-star"></span>
-              rosdistro ( https://github.com/start-jsk/rtmros_common.git )
-            </a>
-          </li>
-        
-      </ul>
+        <div class="container-fluid" style="margin-top:20px">
+  <div class="container-fluid">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/repos">Repos</a></li>
+        <li class="active">rtmros_common</li>
+        <!--<li class="active">rtmros_common</li>-->
+      </ol>
     </div>
-  </div>
-</div>
-</td>
-        </tr>
+    <div class="row">
       
-      
-        <tr>
-          <td>
-            
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-  <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+      <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
+    </label>
+  
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
-  <label id="hydro-option" class="distro-button btn btn-xs btn-default" href="#hydro" data="hydro">
+    <label id="hydro-option" class="distro-button btn btn-xs btn-primary" href="#hydro" data="hydro">
       <input type="radio" name="options" id="hydro-radio" autocomplete="off"> hydro
-    </label>
-  
-  <label id="groovy-option" class="distro-button btn btn-xs btn-primary" href="#groovy" data="groovy">
-      <input type="radio" name="options" id="groovy-radio" autocomplete="off"> groovy
     </label>
   
 
   <!-- Older distros -->
   <div class="btn-group dropdown">
-    <label type="button" class="btn btn-xs dropdown-toggle btn-default" data-toggle="dropdown" id="older-distro-button">
-    <input type="radio" name="options" autocomplete="off">
-    <span id="older-label">Older</span>
-    <span class="caret"></span>
-  </label>
-  <ul class="dropdown-menu" role="menu">
-    
-      <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
-      <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
-      </li>
-    
-      <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
-      <a href="#electric" data="electric" id="electric-button">electric</a>
-      </li>
-    
-      <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
-      <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
-      </li>
-    
-      <li data="c-turtle" id="c-turtle-option" class="disabled older-distro-option"  href="#c-turtle">
-      <a href="#c-turtle" data="c-turtle" id="c-turtle-button">c-turtle</a>
-      </li>
-    
-  </ul>
-</div>
+    <label type="button" class="btn btn-xs dropdown-toggle btn-primary" data-toggle="dropdown" id="older-distro-button">
+        <input type="radio" name="options" autocomplete="off">
+      <span id="older-label">Older</span>
+      <span class="caret"></span>
+    </label>
+    <ul class="dropdown-menu" role="menu">
+      
+        <li data="groovy" id="groovy-option" class=" older-distro-option"  href="#groovy">
+          <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
+        </li>
+      
+        <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
+          <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
+        </li>
+      
+        <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
+          <a href="#electric" data="electric" id="electric-button">electric</a>
+        </li>
+      
+        <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
+          <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
+        </li>
+      
+    </ul>
+  </div>
 </div>
 
-          </td>
-        </tr>
-      
-    </tbody>
+    </div>
+    <div class="row">
+      &nbsp;
+    </div>
+    <div class="row">
+      <div class="well well-sm">
+  <div>
+    
+  </div>
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px;" src="/assets/repo.png">
+      </td>
+      <td>
+        <h3><a style="text-decoration:none;" href="/r/rtmros_common">rtmros_common</a> <small>repository</small></h3>
+        
+      </td>
+    </tr>
   </table>
-</div>
+  <div class="top-buffer">
+    
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/repos/rtmros_common"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-star"></span>
+                  github-start-jsk-rtmros_common
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="rtm-ros-robotics-googlecode-svn-trunk-rtmros_common" role="menuitem" tabindex="-1" href="/r/rtmros_common/rtm-ros-robotics-googlecode-svn-trunk-rtmros_common" data="rtm-ros-robotics-googlecode-svn-trunk-rtmros_common">
+                    <span class="glyphicon glyphicon-none"></span>
+                    rtm-ros-robotics-googlecode-svn-trunk-rtmros_common
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-start-jsk-rtmros_common" role="menuitem" tabindex="-1" href="/r/rtmros_common/github-start-jsk-rtmros_common" data="github-start-jsk-rtmros_common">
+                    <span class="glyphicon glyphicon-star"></span>
+                    github-start-jsk-rtmros_common
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
 
   </div>
-  <div class="row">
-    
-      <div class="distro distro-indigo">
-        
-        <em>No branch for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
-      </div>
-    
-      <div class="distro distro-hydro">
-        
-        <em>No branch for distro <strong>hydro</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
-      </div>
-    
-      <div class="distro distro-groovy">
-        
-          <div class="panel panel-default">
-            <div class="panel-heading">Packages</div>
-            <table class="table table-condensed table-hover">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Version</th>
-                </tr>
-              </thead>
-              <tbody>
-              
-                <tr>
-                  <td><a href="/p/hrpsys_ros_bridge/rosdistro">hrpsys_ros_bridge</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-                <tr>
-                  <td><a href="/p/hrpsys_tools/rosdistro">hrpsys_tools</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-                <tr>
-                  <td><a href="/p/openrtm_ros_bridge/rosdistro">openrtm_ros_bridge</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-                <tr>
-                  <td><a href="/p/openrtm_tools/rosdistro">openrtm_tools</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-                <tr>
-                  <td><a href="/p/rosnode_rtc/rosdistro">rosnode_rtc</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-                <tr>
-                  <td><a href="/p/rtmbuild/rosdistro">rtmbuild</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-                <tr>
-                  <td><a href="/p/rtmros_common/rosdistro">rtmros_common</a></td>
-                  <td>1.2.6</td>
-                </tr>
-              
-              </tbody>
-            </table>
-          </div>
+  <div class="top-buffer">
+  </div>
+</div>
 
-          <div class="panel panel-default">
-            <div class="panel-heading">README</div>
-            <div class="readme-" style="margin: 20px">
+    </div>
+  </div>
+</div>
+
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        <div class="panel panel-default">
+          
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/start-jsk/rtmros_common.git">https://github.com/start-jsk/rtmros_common.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/hrpsys_ros_bridge/github-start-jsk-rtmros_common">hrpsys_ros_bridge</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/hrpsys_tools/github-start-jsk-rtmros_common">hrpsys_tools</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/openrtm_ros_bridge/github-start-jsk-rtmros_common">openrtm_ros_bridge</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/openrtm_tools/github-start-jsk-rtmros_common">openrtm_tools</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rosnode_rtc/github-start-jsk-rtmros_common">rosnode_rtc</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtmbuild/github-start-jsk-rtmros_common">rtmbuild</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtmros_common/github-start-jsk-rtmros_common">rtmros_common</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1></h1>
+<h1 id=""></h1>
 
-<h1>rtmros_common  <a href="https://travis-ci.org/start-jsk/rtmros_common"><img src="https://travis-ci.org/start-jsk/rtmros_common.png" alt="Build Status"></a>
+<h1 id="rtmros_common-">rtmros_common  <a href="https://travis-ci.org/start-jsk/rtmros_common"><img src="https://travis-ci.org/start-jsk/rtmros_common.png" alt="Build Status"></a>
 </h1>
 
 <p>A package suite that provides all the capabilities for the ROS users to connect to the robots that run on RT Middleware or RTM-based controllers.</p>
 
 <p>.. contents::</p>
 
-<h1>Install</h1>
+<h1 id="install">Install</h1>
 
 <p>This document explains how to use and how to contribute to rtm-ros-robotics softwares (<a href="https://github.com/start-jsk/openrtm_aist_core">openrtm_aist_core</a>, <a href="https://github.com/start-jsk/openhrp3">openhrp3</a>, <a href="https://github.com/start-jsk/hrpsys">hrpsys</a>, <a href="https://github.com/start-jsk/rtshell_core">rtshell_core</a>, <a href="https://github.com/start-jsk/rtmros_common">rtmros_common</a>, <a href="https://github.com/start-jsk/rtmros_hironx">rtmros_hironx</a>, <a href="https://github.com/start-jsk/rtmros_turorial">rtmros_tutorial</a>, <a href="https://github.com/start-jsk/rtmros_gazebo">rtmros_gazebo</a>). The instruction uses <code>rtmros_common</code> repository as an example, but also works for other rtm-ros-robotics repositories.</p>
 
@@ -315,9 +434,9 @@ before you use them.</p>
 <li>Merge those remote branch into your current branch</li>
 <li><code>git merge &lt;awesome-fork&gt;/&lt;branch-name&gt;</code></li>
 </ul>
-<h1>For maintainers</h1>
+<h1 id="for-maintainers">For maintainers</h1>
 
-<h2>Tweak to release into Groovy</h2>
+<h2 id="tweak-to-release-into-groovy">Tweak to release into Groovy</h2>
 
 <p>While in current design the package depends on <code>pr2_controllers_msgs &lt;http://wiki.ros.org/pr2_controllers_msgs&gt;</code>_ that's catkinized from ROS hydro onward and not available in ROS groovy, some hacks allow the package not to separate <code>branches</code> (regardless it's good or not, doing so is the decision as of March 2014). This requires another hack during release process using <code>bloom</code> as follows:</p>
 
@@ -365,37 +484,549 @@ exit
 </code></pre></div>
 </div></body></html>
 
-            </div>
+            
           </div>
-        
-      </div>
-    
-      <div class="distro distro-fuerte">
-        
-        <em>No branch for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
-      </div>
-    
-      <div class="distro distro-electric">
-        
-        <em>No branch for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
-      </div>
-    
-      <div class="distro distro-diamondback">
-        
-        <em>No branch for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
-      </div>
-    
-      <div class="distro distro-c-turtle">
-        
-        <em>No branch for distro <strong>c-turtle</strong>. Known supported distros are highlighted in the buttons above.</em>
-        
-      </div>
-    
+        </div>
+      
+    </div>
   </div>
-</div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        <div class="panel panel-default">
+          
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/start-jsk/rtmros_common.git">https://github.com/start-jsk/rtmros_common.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/hrpsys_ros_bridge/github-start-jsk-rtmros_common">hrpsys_ros_bridge</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/hrpsys_tools/github-start-jsk-rtmros_common">hrpsys_tools</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/openrtm_ros_bridge/github-start-jsk-rtmros_common">openrtm_ros_bridge</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/openrtm_tools/github-start-jsk-rtmros_common">openrtm_tools</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rosnode_rtc/github-start-jsk-rtmros_common">rosnode_rtc</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtmbuild/github-start-jsk-rtmros_common">rtmbuild</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtmros_common/github-start-jsk-rtmros_common">rtmros_common</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id=""></h1>
+
+<h1 id="rtmros_common-">rtmros_common  <a href="https://travis-ci.org/start-jsk/rtmros_common"><img src="https://travis-ci.org/start-jsk/rtmros_common.png" alt="Build Status"></a>
+</h1>
+
+<p>A package suite that provides all the capabilities for the ROS users to connect to the robots that run on RT Middleware or RTM-based controllers.</p>
+
+<p>.. contents::</p>
+
+<h1 id="install">Install</h1>
+
+<p>This document explains how to use and how to contribute to rtm-ros-robotics softwares (<a href="https://github.com/start-jsk/openrtm_aist_core">openrtm_aist_core</a>, <a href="https://github.com/start-jsk/openhrp3">openhrp3</a>, <a href="https://github.com/start-jsk/hrpsys">hrpsys</a>, <a href="https://github.com/start-jsk/rtshell_core">rtshell_core</a>, <a href="https://github.com/start-jsk/rtmros_common">rtmros_common</a>, <a href="https://github.com/start-jsk/rtmros_hironx">rtmros_hironx</a>, <a href="https://github.com/start-jsk/rtmros_turorial">rtmros_tutorial</a>, <a href="https://github.com/start-jsk/rtmros_gazebo">rtmros_gazebo</a>). The instruction uses <code>rtmros_common</code> repository as an example, but also works for other rtm-ros-robotics repositories.</p>
+
+<ol>
+<li>Install software</li>
+</ol>
+<p>rtm-ros-robotics software is distributed as ros-debian packages, if you already uses ROS system, install the software as follows:
+ - <code>sudo apt-get install ros-$ROS_DISTRO-rtmros-common</code></p>
+
+<p>If you did not installed ROS sysem, please follow <a href="http://wiki.ros.org/hydro/Installation/Ubuntu">this instruction</a>.
+ - <code>sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -a` main" &gt; /etc/apt/sources.list.d/ros-latest.list'</code>
+ - <code>wget http://packages.ros.org/ros.key -O - | sudo apt-key add -</code>
+ - <code>sudo apt-get update</code>
+ - <code>sudo apt-get update ros-hydro-base</code> # you may use ros-groovy-base if you want
+ - <code>sudo rosdep init</code>
+ - <code>rosdep update</code>
+ - <code>source /opt/ros/hydro/setup.bash</code> # it is better to source ROS environment everytime terminal starts (<code>echo "source /opt/ros/hydro/setup.bash" &gt;&gt; ~/.bashrc</code>)</p>
+
+<ol>
+<li>Compile from source code</li>
+</ol>
+<p>You may have two choice, one is to compile all rtm-ros-robotics source code, other is to compile target repository.
+ First, create catkin workspace
+ - <code>mkdir -p ~/catkin_ws/src</code>
+ - <code>cd ~/catkin_ws/src</code>
+ - <code>catkin_init_workspace</code>
+ - <code>wstool init .</code></p>
+
+<p>If compile all source code
+ - <code>wstool merge https://raw.github.com/start-jsk/rtmros_common/master/.rosinstall -y</code></p>
+
+<p>Else if compile only targe repository
+ - <code>wstool set rtm-ros-robotics/rtmros_common https://github.com/start-jsk/rtmros_common --git -y</code></p>
+
+<p>Both methods needs following procedures.
+ - <code>wstool update</code>
+ - <code>cd ..</code>
+ - <code>source /opt/ros/hydro/setup.bash</code>
+ - <code>rosdep install -v -r --from-paths src --ignore-src --rosdistro hydro -y</code>
+ - <code>catkin_make</code></p>
+
+<ol>
+<li>Contributes to rtm-ros-robotics projects.</li>
+</ol>
+<ul>
+<li>First fork the target repository on GitHub</li>
+<li>Move to the package direcotry</li>
+<li><code>source ~/catkin_ws/devel/setup.bash</code></li>
+<li><code>roscd rtmros_common</code></li>
+<li> create branch for your fix</li>
+<li><code>git checkout -b your_awesome_code_branch</code></li>
+<li> write awesome code and commit to local repo</li>
+<li>  ... wite code....</li>
+<li><code>git commit -m "detailed description of what you did"</code></li>
+<li> Add your forked repository as upstream</li>
+<li><code>git remote add experimental https://github.com/&lt;your github user name&gt;/rtmros_common</code></li>
+<li><code>git push experimental your_awesome_code_branch</code></li>
+<li>Submit a pull request on GitHub to the repository</li>
+<li>Please check travic-ci status after sending your pull request.</li>
+</ul>
+<ol>
+<li>Uses other forked repository <em>before</em> merged into master.</li>
+</ol>
+<p>You don't need to wait for the maintainers to merge some pull requests by others
+before you use them.</p>
+
+<ul>
+<li>Adding other's remote repository to your git remote</li>
+<li><code>git remote add &lt;awesome-fork&gt; https://github.com/&lt;user&gt;/rtmros_common</code></li>
+<li>Fetch branches from the remote.</li>
+<li><code>git fetch &lt;awesome-fork&gt;</code></li>
+<li>Merge those remote branch into your current branch</li>
+<li><code>git merge &lt;awesome-fork&gt;/&lt;branch-name&gt;</code></li>
+</ul>
+<h1 id="for-maintainers">For maintainers</h1>
+
+<h2 id="tweak-to-release-into-groovy">Tweak to release into Groovy</h2>
+
+<p>While in current design the package depends on <code>pr2_controllers_msgs &lt;http://wiki.ros.org/pr2_controllers_msgs&gt;</code>_ that's catkinized from ROS hydro onward and not available in ROS groovy, some hacks allow the package not to separate <code>branches</code> (regardless it's good or not, doing so is the decision as of March 2014). This requires another hack during release process using <code>bloom</code> as follows:</p>
+
+<ol>
+<li>Run <code>bloom &lt;http://wiki.ros.org/bloom&gt;</code>_ as normal. E.g. <code>$ bloom-release --rosdistro groovy --track groovy rtmros_common</code>.</li>
+<li>Once <code>bloom</code> halts and its command prompt starts waiting on the same terminal (the output might look as following), edit <code>package.xml</code> to comment out lines for declaring build and run depend on <code>pr2-controllers</code>.</li>
+</ol>
+<p>::</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ bloom-release --rosdistro groovy --track groovy rtmros_common
+:
+&gt;&gt;&gt; Resolve any conflicts and when you have resolved this problem run 'git am --resolved' and then exit the shell using 'exit 0'. &lt;&lt;&lt;
+    To abort use 'exit 1'
+(bloom)emacs package.xml 
+</code></pre></div>
+<p>Modify <code>package.xml</code> as:</p>
+
+<p>::</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">:  
+&lt;!-- &lt;build_depend&gt;pr2_controllers&lt;/build_depend&gt; --&gt;
+:
+&lt;!-- &lt;run_depend&gt;pr2_controllers&lt;/run_depend&gt; --&gt;
+:
+</code></pre></div>
+<ol>
+<li>Run <code>git add</code>, <code>$ git am --skip</code>, <code>git commit</code> like below, and <code>exit 0</code> respectively. If all succeeds then <code>bloom</code> resumes.</li>
+</ol>
+<p>::</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(bloom)git add package.xml
+(bloom)git am --skip
+Resolve operation not in progress, we are not resuming.
+(bloom)git commit -m "3rd trial commentout pr2 pkg" -a
+[release/groovy/hrpsys_ros_bridge 1c05bbc] 3rd trial commentout pr2 pkg
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(bloom)git status
+# On branch release/groovy/hrpsys_ros_bridge
+# Your branch is ahead of 'origin/release/groovy/hrpsys_ros_bridge' by 8 commits.
+#
+nothing to commit (working directory clean)
+(bloom)exit 0
+exit
+ [git-bloom-patch import]: User reports that conflicts have been resolved, continuing.
+ [git-bloom-patch import]: Applied 2 patches
+:
+(bloom continues)
+</code></pre></div>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-groovy">
+    <div class="container-fluid">
+      
+        <div class="panel panel-default">
+          
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/start-jsk/rtmros_common.git">https://github.com/start-jsk/rtmros_common.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/hrpsys_ros_bridge/github-start-jsk-rtmros_common">hrpsys_ros_bridge</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/hrpsys_tools/github-start-jsk-rtmros_common">hrpsys_tools</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/openrtm_ros_bridge/github-start-jsk-rtmros_common">openrtm_ros_bridge</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/openrtm_tools/github-start-jsk-rtmros_common">openrtm_tools</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rosnode_rtc/github-start-jsk-rtmros_common">rosnode_rtc</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtmbuild/github-start-jsk-rtmros_common">rtmbuild</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtmros_common/github-start-jsk-rtmros_common">rtmros_common</a></td>
+                    <td>1.2.7</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id=""></h1>
+
+<h1 id="rtmros_common-">rtmros_common  <a href="https://travis-ci.org/start-jsk/rtmros_common"><img src="https://travis-ci.org/start-jsk/rtmros_common.png" alt="Build Status"></a>
+</h1>
+
+<p>A package suite that provides all the capabilities for the ROS users to connect to the robots that run on RT Middleware or RTM-based controllers.</p>
+
+<p>.. contents::</p>
+
+<h1 id="install">Install</h1>
+
+<p>This document explains how to use and how to contribute to rtm-ros-robotics softwares (<a href="https://github.com/start-jsk/openrtm_aist_core">openrtm_aist_core</a>, <a href="https://github.com/start-jsk/openhrp3">openhrp3</a>, <a href="https://github.com/start-jsk/hrpsys">hrpsys</a>, <a href="https://github.com/start-jsk/rtshell_core">rtshell_core</a>, <a href="https://github.com/start-jsk/rtmros_common">rtmros_common</a>, <a href="https://github.com/start-jsk/rtmros_hironx">rtmros_hironx</a>, <a href="https://github.com/start-jsk/rtmros_turorial">rtmros_tutorial</a>, <a href="https://github.com/start-jsk/rtmros_gazebo">rtmros_gazebo</a>). The instruction uses <code>rtmros_common</code> repository as an example, but also works for other rtm-ros-robotics repositories.</p>
+
+<ol>
+<li>Install software</li>
+</ol>
+<p>rtm-ros-robotics software is distributed as ros-debian packages, if you already uses ROS system, install the software as follows:
+ - <code>sudo apt-get install ros-$ROS_DISTRO-rtmros-common</code></p>
+
+<p>If you did not installed ROS sysem, please follow <a href="http://wiki.ros.org/hydro/Installation/Ubuntu">this instruction</a>.
+ - <code>sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -a` main" &gt; /etc/apt/sources.list.d/ros-latest.list'</code>
+ - <code>wget http://packages.ros.org/ros.key -O - | sudo apt-key add -</code>
+ - <code>sudo apt-get update</code>
+ - <code>sudo apt-get update ros-hydro-base</code> # you may use ros-groovy-base if you want
+ - <code>sudo rosdep init</code>
+ - <code>rosdep update</code>
+ - <code>source /opt/ros/hydro/setup.bash</code> # it is better to source ROS environment everytime terminal starts (<code>echo "source /opt/ros/hydro/setup.bash" &gt;&gt; ~/.bashrc</code>)</p>
+
+<ol>
+<li>Compile from source code</li>
+</ol>
+<p>You may have two choice, one is to compile all rtm-ros-robotics source code, other is to compile target repository.
+ First, create catkin workspace
+ - <code>mkdir -p ~/catkin_ws/src</code>
+ - <code>cd ~/catkin_ws/src</code>
+ - <code>catkin_init_workspace</code>
+ - <code>wstool init .</code></p>
+
+<p>If compile all source code
+ - <code>wstool merge https://raw.github.com/start-jsk/rtmros_common/master/.rosinstall -y</code></p>
+
+<p>Else if compile only targe repository
+ - <code>wstool set rtm-ros-robotics/rtmros_common https://github.com/start-jsk/rtmros_common --git -y</code></p>
+
+<p>Both methods needs following procedures.
+ - <code>wstool update</code>
+ - <code>cd ..</code>
+ - <code>source /opt/ros/hydro/setup.bash</code>
+ - <code>rosdep install -v -r --from-paths src --ignore-src --rosdistro hydro -y</code>
+ - <code>catkin_make</code></p>
+
+<ol>
+<li>Contributes to rtm-ros-robotics projects.</li>
+</ol>
+<ul>
+<li>First fork the target repository on GitHub</li>
+<li>Move to the package direcotry</li>
+<li><code>source ~/catkin_ws/devel/setup.bash</code></li>
+<li><code>roscd rtmros_common</code></li>
+<li> create branch for your fix</li>
+<li><code>git checkout -b your_awesome_code_branch</code></li>
+<li> write awesome code and commit to local repo</li>
+<li>  ... wite code....</li>
+<li><code>git commit -m "detailed description of what you did"</code></li>
+<li> Add your forked repository as upstream</li>
+<li><code>git remote add experimental https://github.com/&lt;your github user name&gt;/rtmros_common</code></li>
+<li><code>git push experimental your_awesome_code_branch</code></li>
+<li>Submit a pull request on GitHub to the repository</li>
+<li>Please check travic-ci status after sending your pull request.</li>
+</ul>
+<ol>
+<li>Uses other forked repository <em>before</em> merged into master.</li>
+</ol>
+<p>You don't need to wait for the maintainers to merge some pull requests by others
+before you use them.</p>
+
+<ul>
+<li>Adding other's remote repository to your git remote</li>
+<li><code>git remote add &lt;awesome-fork&gt; https://github.com/&lt;user&gt;/rtmros_common</code></li>
+<li>Fetch branches from the remote.</li>
+<li><code>git fetch &lt;awesome-fork&gt;</code></li>
+<li>Merge those remote branch into your current branch</li>
+<li><code>git merge &lt;awesome-fork&gt;/&lt;branch-name&gt;</code></li>
+</ul>
+<h1 id="for-maintainers">For maintainers</h1>
+
+<h2 id="tweak-to-release-into-groovy">Tweak to release into Groovy</h2>
+
+<p>While in current design the package depends on <code>pr2_controllers_msgs &lt;http://wiki.ros.org/pr2_controllers_msgs&gt;</code>_ that's catkinized from ROS hydro onward and not available in ROS groovy, some hacks allow the package not to separate <code>branches</code> (regardless it's good or not, doing so is the decision as of March 2014). This requires another hack during release process using <code>bloom</code> as follows:</p>
+
+<ol>
+<li>Run <code>bloom &lt;http://wiki.ros.org/bloom&gt;</code>_ as normal. E.g. <code>$ bloom-release --rosdistro groovy --track groovy rtmros_common</code>.</li>
+<li>Once <code>bloom</code> halts and its command prompt starts waiting on the same terminal (the output might look as following), edit <code>package.xml</code> to comment out lines for declaring build and run depend on <code>pr2-controllers</code>.</li>
+</ol>
+<p>::</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ bloom-release --rosdistro groovy --track groovy rtmros_common
+:
+&gt;&gt;&gt; Resolve any conflicts and when you have resolved this problem run 'git am --resolved' and then exit the shell using 'exit 0'. &lt;&lt;&lt;
+    To abort use 'exit 1'
+(bloom)emacs package.xml 
+</code></pre></div>
+<p>Modify <code>package.xml</code> as:</p>
+
+<p>::</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">:  
+&lt;!-- &lt;build_depend&gt;pr2_controllers&lt;/build_depend&gt; --&gt;
+:
+&lt;!-- &lt;run_depend&gt;pr2_controllers&lt;/run_depend&gt; --&gt;
+:
+</code></pre></div>
+<ol>
+<li>Run <code>git add</code>, <code>$ git am --skip</code>, <code>git commit</code> like below, and <code>exit 0</code> respectively. If all succeeds then <code>bloom</code> resumes.</li>
+</ol>
+<p>::</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(bloom)git add package.xml
+(bloom)git am --skip
+Resolve operation not in progress, we are not resuming.
+(bloom)git commit -m "3rd trial commentout pr2 pkg" -a
+[release/groovy/hrpsys_ros_bridge 1c05bbc] 3rd trial commentout pr2 pkg
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(bloom)git status
+# On branch release/groovy/hrpsys_ros_bridge
+# Your branch is ahead of 'origin/release/groovy/hrpsys_ros_bridge' by 8 commits.
+#
+nothing to commit (working directory clean)
+(bloom)exit 0
+exit
+ [git-bloom-patch import]: User reports that conflicts have been resolved, continuing.
+ [git-bloom-patch import]: Applied 2 patches
+:
+(bloom continues)
+</code></pre></div>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-fuerte">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-electric">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-diamondback">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
 
 <script src="/js/distro_switch.js"></script>
 
@@ -403,41 +1034,30 @@ exit
     </div>
 
     <footer class="site-footer">
-
   <div class="wrapper">
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col  footer-col-1">
-        <ul class="contact-list">
-          <li>ROS Index</li>
-        </ul>
-      </div>
-
-      <div class="footer-col  footer-col-2">
-        <ul class="social-media-list">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4 col-md-4">
           
-          <li>
             <a href="https://github.com/rosindex">
-              <span class="icon  icon--github">
-                <svg viewBox="0 0 16 16">
-                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
-                </svg>
-              </span>
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
 
-              <span class="username">rosindex</span>
-            </a>
-          </li>
-          
-
-        </ul>
-      </div>
-
-      <div class="footer-col  footer-col-3">
-        <p class="text">A community-maintained index of known ROS packages.
-</p>
+            <span class="username">rosindex</span>
+          </a>
+          |
+          <em>generated on 2015-01-30</em>
+        
+        </div>
+        <div class="col-sm-8 col-md-8 text-right">
+          <p class="text">a community-maintained index of robotics software
+ | <a href="/privacy.txt">privacy</a></p>
+        </div>
       </div>
     </div>
-
   </div>
 
 </footer>

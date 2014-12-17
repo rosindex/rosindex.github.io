@@ -1,4 +1,3 @@
-
 $(document).ready(function(){ 
   $('#distro-switch label').click(function (e) {
     console.log(e.target)
@@ -50,13 +49,16 @@ $(document).ready(function(){
 
   var url = document.location.toString();
   if (url.match('#')) {
-    distro = url.split('#')[1];
+    distro = url.split('#')[1].split('-')[0];
     console.log("overriding via anchor "+distro+" distro");
+  }
+
+  if(typeof distro == 'undefined') {
+    distro = "jade";
   }
 
   $('.distro').not('.distro-'+distro).hide(0);
   $('#'+distro+'-option').addClass('active');
   $('#'+distro+'-button').trigger("click");
-
 });
 

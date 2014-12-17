@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Design</title>
+    <meta name="description" content="a community-maintained index of robotics software
+">
+
+    <link rel="canonical" href="http://rosindex.github.io/about/design/">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/main.css">
+    
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/toc.js"></script>
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+    <div class="container-fluid" style="margin-bottom: 10px">
+      <div class="row">
+
+
+        <div class="col-sm-12 col-md-9" style="margin-top: 8px">
+          <div class="row">
+            <!-- title -->
+            <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+            </div>
+
+            <!-- main links -->
+            <div class="col-xs-12 col-sm-9 col-md-9 text-right">
+              <a class="btn btn-link" href="/about">About</a>
+              <a class="btn btn-link" href="/packages">Packages</a>
+              <a class="btn btn-link" href="/repos">Repos</a>
+              <a class="btn btn-link" href="/contribute">Contribute</a>
+              <a class="btn btn-link" href="/stats">Stats</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- searchbox -->
+        <div class="col-sm-12 col-md-3" style="margin-top: 12px">
+          <form action="/search/" role="form">
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control" name="q" placeholder="Search">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <a class="site-title" href="/">ROS Index</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/packages">Packages</a>
+        <a class="page-link" href="/repos">Repositories</a>
+        <a class="page-link" href="/search">Search</a>
+      </div>
+    </nav>
+    -->
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="container-fluid" style="margin-top:20px">
+  <div class="container-fluid">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        
+          <li><a href="/about">about</a></li>
+        
+        <li class="active">Design</li>
+      </ol>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <h1 id="ros-index-design">ROS Index Design</h1>
+
+<p>ROS Index was developed to address the limitations of the <a href="http://wiki.ros.org">ROS
+Wiki</a>. The biggest issue plaguing the Wiki is the lack of
+synchronization between documentation and changing interfaces. Originally, a
+wiki system suited the ROS community well, since most ROS code was contained in
+centralized SVN repositories. In order to contribute documentation, a user
+could do so on the wiki, without needing access to the code. Since ROS was
+first released, however, most code has migrated to distributed version control
+systems which make it much easier for users to contribute back via pull or merge
+requests. ROS Index focuses on presenting documentation which is coupled to
+version-controlled code and on making this documentation aggregated in one
+place.</p>
+
+<p><h2 >Contents</h2 ><div class="" id="toc"></div></p>
+
+<h2 id="index-organization">Index Organization</h2>
+
+<p>ROS Index organizes ROS source code in two ways:</p>
+
+<ul>
+<li>By repository</li>
+<li>By package</li>
+</ul>
+
+<h3 id="repository-organization">Repository Organization</h3>
+
+<p>The repository organization is simple: each repository identifier corresponds
+to a set of repository <code>instances</code>. Repository instances are different versions
+of a repository with the same name but different URIs. This enables ROS Index
+to index forks of known repositories. Within each instance, branches and tags
+correspond to different ROS distributions. So versions of repositories can be
+organized hierarchically like so:</p>
+
+<ol>
+<li>repository identifier</li>
+<li>repository instance</li>
+<li>ROS distribution (branch/tag)</li>
+</ol>
+
+<p>This gives rise to urls like:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">rosindex.github.io/r/&lt;&lt;REPOSITORY&gt;&gt;/&lt;&lt;INSTANCE&gt;&gt;/&lt;&lt;DISTRO&gt;&gt;
+</code></pre></div>
+<p>So for the <code>geometry</code> repository, the default instance would be resolved by:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">rosindex.github.io/r/geometry
+</code></pre></div>
+<p>In this case, this would be equivalent to:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">rosindex.github.io/r/geometry/github-ros-geometry
+</code></pre></div>
+<p>This link would resolve to the repository corresponding to the URI given in the
+<em>latest</em> rosdistro index. Then the user could switch between distros of <em>that
+repository</em> with the distro selector buttons.</p>
+
+<blockquote>
+<p>Note that the repository for a repository identifier can change between
+distributions. In this case, it is expected that older versions of the sources
+are tagged in the <em>latest</em> version of the repository.</p>
+</blockquote>
+
+<p>Specific instances of packages can be resolved by the following:</p>
+
+<ol>
+<li>repository identifier</li>
+<li>repository instance</li>
+<li>package name</li>
+<li>ROS distribution (branch/tag)</li>
+</ol>
+
+<h3 id="package-organization">Package Organization</h3>
+
+<p>Normally, however, users are interested in looking up ROS code by package name.
+In this case, it&#39;s more subtle. Between ROS distributions, a package can migrate
+from one repository to another. As such, a hierarchical organization like that
+used for repositories doesn&#39;t fit as well. It could have the effect of obscuring
+versions of code for a newer or older distribution because it changed
+repositories.</p>
+
+<p>Most importantly, people want to see the documentation for <em>official</em> packages.
+As such, it makes sense that when browsing packages, the default instances for a
+distribution are organized like so:</p>
+
+<ol>
+<li>package name</li>
+<li>ROS distribution (repo/instance/branch/tag)</li>
+</ol>
+
+<p>When viewing the tab for a given ROS distribution, the user can see additional
+metadata about the package, as well as in which repository that package is
+located.</p>
+
+<h2 id="finding-sources">Finding Sources</h2>
+
+<h3 id="official-index">Official Index</h3>
+
+<p>The ROS Index site generator reads <code>rosdistro</code> files to get lists of released
+and unreleased ROS repositories. For all repositories with source links, it
+adds them to a known repositories index. </p>
+
+<p>Files are read from two places in <code>rosdistro</code>:</p>
+
+<ul>
+<li><code>_rosdistro/&lt;&lt;DISTRO&gt;&gt;/distribution.yaml</code></li>
+<li><code>_rosdistro/doc/&lt;&lt;DISTRO&gt;&gt;/*.rosinstall</code></li>
+</ul>
+
+<p>ROS packages are uniquely located in <code>rosdistro</code> by a distribution (groovy,
+hydro, indigo) and a repository identifier. In a given distribution, package
+names are unique.</p>
+
+<h3 id="forks">Forks</h3>
+
+<p>Unfortunately, the <em>rosdistro</em> standard, as defined in
+<a href="http://ros.org/reps/rep-0141.html">REP-141</a>, does not accomodate the indexing
+of <em>forks</em>. Until the standard is extended to do so, ROS Index will support the
+indexing of this additional information.</p>
+
+<p>Forks are described in the YAML-formatted markdown files in the <code>_repos</code>
+directory which correspond to the repository names in <em>rosdistro</em>. Each
+repository fork should be given an identifying name for easy reference on the
+rosindex website.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">instances</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">uri</span><span class="p-Indicator">:</span> <span class="s">&#39;https://github.com/jbohren/conman.git&#39;</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git</span>
+    <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+    <span class="l-Scalar-Plain">purpose</span><span class="p-Indicator">:</span> <span class="s">&#39;original&#39;</span>
+    <span class="l-Scalar-Plain">distros</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">hydro</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">default</span><span class="p-Indicator">:</span> <span class="nv">true</span><span class="p-Indicator">,</span> <span class="nv">version</span><span class="p-Indicator">:</span> <span class="s">&#39;master&#39;</span> <span class="p-Indicator">}</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">uri</span><span class="p-Indicator">:</span> <span class="s">&#39;https://github.com/RCPRG-ros-pkg/conman.git&#39;</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git</span>
+    <span class="l-Scalar-Plain">purpose</span><span class="p-Indicator">:</span> <span class="s">&#39;experimentation&#39;</span>
+    <span class="l-Scalar-Plain">distros</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">hydro</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">version</span><span class="p-Indicator">:</span> <span class="s">&#39;master&#39;</span> <span class="p-Indicator">}</span>
+</code></pre></div>
+<h2 id="scraping-process">Scraping Process</h2>
+
+<p>After creating an index of version control repositories containing ROS code,
+all of these repositories are cloned to the local system. Only Git, Mercurial,
+and SVN repositories are supported. For SVN repositories, the <code>git-svn</code> module
+is used to manage the local checkout. </p>
+
+<p>At this time, checking out all known (and available) ROS code uses less than
+15GB of disk space. These clones of remote repositories persist, and are simply
+updated the next time the index is built.</p>
+
+<p>Each of these repositories is then scraped for information relevant to
+documentation and analysis. See the following section for details on what
+information is collected.</p>
+
+<p>The information collected is then written to disk as a Ruby marshalled data
+structure which can be re-loaded to rapidly experiment with data presentation.
+For details on controlling which parts of the build process are run, see
+<a href="/about/development/">Development</a>.</p>
+
+<h2 id="information-collected-by-ros-index">Information Collected by ROS Index</h2>
+
+<h3 id="repository-information">Repository Information</h3>
+
+<ul>
+<li>Repository URI</li>
+<li>Release status</li>
+<li>Last commit date</li>
+</ul>
+
+<h3 id="package-information">Package Information</h3>
+
+<ul>
+<li>All information contained in the package manifest as described by
+<a href="http://www.ros.org/reps/rep-0127.html">REP-127</a> and
+<a href="http://www.ros.org/reps/rep-0140.html">REP-140</a>.</li>
+<li>Last commit date</li>
+</ul>
+
+<h3 id="package-contents">Package Contents</h3>
+
+<ul>
+<li>ROS Launch files</li>
+<li>ROS Message files</li>
+<li>ROS Service files</li>
+</ul>
+
+<h3 id="ros-index-metadata">ROS Index Metadata</h3>
+
+<p>See <a href="/contribute/metadata">ROS Index Metadata</a> for more details.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(
+    function() {
+      $('#toc').toc({
+        title: '',
+        listType: 'ul',
+        showSpeed: 0,
+        headers: 'h2, h3' });
+});
+</script>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4 col-md-4">
+          
+            <a href="https://github.com/rosindex">
+            <span class="icon  icon--github">
+              <svg viewBox="0 0 16 16">
+                <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+
+            <span class="username">rosindex</span>
+          </a>
+          |
+          <em>generated on 2015-01-30</em>
+        
+        </div>
+        <div class="col-sm-8 col-md-8 text-right">
+          <p class="text">a community-maintained index of robotics software
+ | <a href="/privacy.txt">privacy</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
