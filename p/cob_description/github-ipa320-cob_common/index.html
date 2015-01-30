@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,432 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/brics_actuator/github-ipa320-cob_common">brics_actuator</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_common/github-ipa320-cob_common">cob_common</a>
-        
-      
-        
-          <span class="label label-default"> cob_description</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_msgs/github-ipa320-cob_common">cob_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_srvs/github-ipa320-cob_common">cob_srvs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/raw_description/github-ipa320-cob_common">raw_description</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/cob_description/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_common/tree/indigo_dev/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_common
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_common
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/brics_actuator/github-ipa320-cob_common">brics_actuator</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_common/github-ipa320-cob_common">cob_common</a>
-        
-      
-        
-          <span class="label label-default"> cob_description</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_srvs/github-ipa320-cob_common">cob_srvs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/desire_description/github-ipa320-cob_common">desire_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/raw_description/github-ipa320-cob_common">raw_description</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/cob_description/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_common/tree/hydro_dev/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_common
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_common
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/brics_actuator/github-ipa320-cob_common">brics_actuator</a>
-        
-      
-        
-          <span class="label label-default"> cob_description</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_srvs/github-ipa320-cob_common">cob_srvs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/desire_description/github-ipa320-cob_common">desire_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/raw_description/github-ipa320-cob_common">raw_description</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/cob_description/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_common/tree/groovy/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_common
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_common
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/cob_default_config/github-ipa320-cob_common">cob_default_config</a>
-        
-      
-        
-          <span class="label label-default"> cob_description</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_goco/github-ipa320-cob_common">cob_goco</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_machine/github-ipa320-cob_common">cob_machine</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_msgs/github-ipa320-cob_common">cob_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_srvs/github-ipa320-cob_common">cob_srvs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_utilities/github-ipa320-cob_common">cob_utilities</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_vision_utils/github-ipa320-cob_common">cob_vision_utils</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/desire_description/github-ipa320-cob_common">desire_description</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/diamondback/api/cob_description/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_description" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-diamondback">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_common
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_common
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -597,6 +224,125 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_common/github-ipa320-cob_common">
+
+cob_common
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+cob_description
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_msgs/github-ipa320-cob_common">
+
+cob_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_srvs/github-ipa320-cob_common">
+
+cob_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/raw_description/github-ipa320-cob_common">
+
+raw_description
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_common
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_common
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/cob_description/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_common/tree/indigo_dev/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_description?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -609,31 +355,30 @@
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">1</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This package contains the description (mechanical, kinematic, visual,
-  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
-  a variety of other components. Most users will not interact directly
-  with this package.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -646,7 +391,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.2</td>
+                <td>0.6.5</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -672,7 +417,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -694,7 +439,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-22
         </span>
       </td>
     </tr>
@@ -702,7 +447,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -719,8 +467,26 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This package contains the description (mechanical, kinematic, visual,
+  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
+  a variety of other components. Most users will not interact directly
+  with this package.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -739,17 +505,6 @@
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
                 
               </ul>
             
@@ -782,584 +537,21 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_description">Changelog for package cob_description</h1>
 
-<h2 id="0.6.2-(2014-12-15)">0.6.2 (2014-12-15)</h2>
+<h2 id="0-6-5-2016-04-01">0.6.5 (2016-04-01)</h2>
 
 <ul>
-<li>  fix syntax</li>
-<li>  added velocity and position controllers</li>
-<li>  more output for urdf test</li>
-<li>  static versions for torso and head</li>
-<li>  set limit for sensorring</li>
-<li>  prepare cob4 component descriptions for new structure</li>
-<li>  new reduced stl collision meshes</li>
-<li>  use VelocityJointInterface hardware interfaces for simulation of all
-bases</li>
-<li>  Contributors: Florian Weisshardt, ipa-cob4-2, ipa-fmw, ipa-fxm,
-ipa-nhg</li>
-</ul>
-<h2 id="0.6.1-(2014-09-24)">0.6.1 (2014-09-24)</h2>
-
-<ul>
-<li>  fix mesh due to assimp error</li>
-<li>  fix bumper plugins</li>
-<li>  fixed center of gravity and inertia formulas</li>
-<li>  Contributors: ipa-fxm, ipa-fxm-fm</li>
-</ul>
-<h2 id="0.6.0-(2014-09-16)">0.6.0 (2014-09-16)</h2>
-
-<ul>
-<li>  new sick_s300 collision model</li>
-<li>  gazebo needs a new link for the topic, if we use the origin of the
-scanner (the center), the topic detects only the collision model</li>
-<li>  Deleting s300 stl mesh because the dae file is used</li>
-<li>  make lookat arbitrarily fast</li>
-<li>  use VelocityJointInterface for cob4_torso</li>
-<li>  new collision mesh</li>
-<li>  merge with 320</li>
-<li>  make lookat arbitrarily fast</li>
-<li>  use VelocityJointInterface for cob4_torso</li>
-<li>  Contributors: Florian Weisshardt, ipa-fxm, ipa-nhg</li>
-</ul>
-<h2 id="0.5.5-(2014-08-27)">0.5.5 (2014-08-27)</h2>
-
-<h2 id="0.5.4-(2014-08-25)">0.5.4 (2014-08-25)</h2>
-
-<ul>
-<li>  update changelog</li>
-<li>  consistency changes due to latest gazebo tag format</li>
-<li>  unify materials</li>
-<li>  consitency changes due to new transmission format</li>
-<li>  unify materials</li>
-<li>  include gazebo_ros dependendy to export materials</li>
-<li>  merge with hydro_dev</li>
-<li>  cleanup dependencies</li>
-<li>  new collision mesh</li>
-<li>  beautify indentation + cleaning up</li>
-<li>  beautify indentation</li>
-<li>  merge with hydro_dev</li>
-<li>  for cob3 the topic name should be /cam3d..</li>
-<li>  adapt to latest changes in official ros-industrial repo</li>
-<li>  Coloured mesh files</li>
-<li>  use base mesh with less vertices for collision checking</li>
-<li>  use correct mesh for collision geometry</li>
-<li>  re-export meshes from meshlab to fix assimp error message</li>
-<li>  better approximation of inertias for some more cob4 components</li>
-<li>  fixed center of masses</li>
-<li>  use default damping</li>
-<li>  correct inertias for cob4 torso</li>
-<li>  enable gravity</li>
-<li>  rotate scanner</li>
-<li>  temporary commit for torso inertias</li>
-<li>  merged with ipa320/hydro_dev</li>
-<li>  removed bumpers and changed transmission config to new syntax</li>
-<li>  update gazebo tags for sensor plugins</li>
-<li>  no inertia in base_footprint</li>
-<li>  deleted unnecessary head versions</li>
-<li>  update gazebo tags for sensor plugins</li>
-<li>  wrong topic names</li>
-<li>  un-hardcodize ur-macro</li>
-<li>  beautify mesh files</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/95">#95</a> from
-ipa320/hydro_release_candidate bring back changes from Hydro
-release candidate</li>
-<li>  New head_center_link</li>
-<li>  New maintainer</li>
-<li>  update cob4_base stl file</li>
-<li>  remove material physic properties of wheels to use default, fixes
-<a href="https://github.com/ipa320/cob_common/issues/90">#90</a>
-</li>
-<li>  deleted offset</li>
-<li>  Merge error</li>
-<li>  merge</li>
-<li>  New stl files for cob4</li>
-<li>  fix xacro:include tag</li>
-<li>  New center joint on torso</li>
-<li>  New center joint on torso</li>
-<li>  fix softkinetic settings</li>
-<li>  fix urdf test</li>
-<li>  merge cob4</li>
-<li>  Contributors: Alexander Bubeck, Felix Messmer, Florian Weisshardt,
-Nadia Hammoudeh García, fmw, ipa-cob3-8, ipa-cob4-1, ipa-fxm,
-ipa-fxm-fm, ipa-nhg</li>
-</ul>
-<h2 id="0.5.3-(2014-03-31)">0.5.3 (2014-03-31)</h2>
-
-<ul>
-<li>  reminder comment ;-)</li>
-<li>  ee_link is now back in ur_description</li>
-<li>  Contributors: ipa-fxm</li>
-</ul>
-<h2 id="0.5.2-(2014-03-20)">0.5.2 (2014-03-20)</h2>
-
-<ul>
-<li>  merged with ipa320</li>
-<li>  removed Media folder</li>
-<li>  merge with groovy_dev</li>
-<li>  fix kinect topics for simulation</li>
-<li>  fixes while testing in simulation</li>
-<li>  update xacro file format</li>
-<li>  merge with groovy_dev</li>
-<li>  new structure</li>
-<li>  fixed some includes and property definitions</li>
-<li>  some missed changes</li>
-<li>  merge with groovy_dev_cob4</li>
-<li>  fixed gazebo_plugins</li>
-<li>  added arm_ee_link</li>
-<li>  fixed path to file</li>
-<li>  fixed path to file</li>
-<li>  renamed tray 3DOF</li>
-<li>  Tested on simulation</li>
-<li>  cob_description structuration</li>
-<li>  cleanup</li>
-<li>  update cob4 description</li>
-<li>  renamed files</li>
-<li>  New struture for cob repositories</li>
-<li>  tested on robot</li>
-<li>  cob4 integration</li>
-<li>  cob4 integration</li>
-<li>  bring groovy updates to hydro</li>
-<li>  Adapt tray position</li>
-<li>  Fixed tray powerball</li>
-<li>  Adjust limits for tray and torso</li>
-<li>  modify axis on mesh model</li>
-<li>  some helper makros for default inertia</li>
-<li>  optimize effort and joint limits + use visual mesh as collision for
-upper neck to give arem some more space</li>
-<li>  visual and collision geometry of cameras are now not colliding with
-head_cover anymore</li>
-<li>  update transmission for all components</li>
-<li>  remove obsolete files</li>
-<li>  use default settings</li>
-<li>  update xmlns + beautifying</li>
-<li>  fix xacro include tag deprecation</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/7">#7</a> from
-ipa-fxm/groovy_dev bring groovy updates to hydro</li>
-<li>  remove obsolete experimental files</li>
-<li>  make lookat work with raw</li>
-<li>  ur_connector meshes are now assimp conform</li>
-<li>  fixed torso joint limits</li>
-<li>  adjust limits for ur_connector</li>
-<li>  latest changes in lookat component</li>
-<li>  simplified lookat component</li>
-<li>  new urdf description for lookat</li>
-<li>  fixing simulation for hydro. Still wip</li>
-<li>  unified torso frames</li>
-<li>  unified head frames</li>
-<li>  Revert "depth joint for kinect implemented" This reverts commit
-f3449462cd05a5efc8f47252e28366d6a495acb2.</li>
-<li>  offset back in lbr.urdf.xacro else wrong calibration</li>
-<li>  fixed typo</li>
-<li>  Removed safety controller
-urdf/ur_connector/ur_connector.urdf.xacro</li>
-<li>  Renamed ur_connector</li>
-<li>  New model descriptions for cob3-7</li>
-<li>  offset for lbr set to 0</li>
-<li>  Solved xacro Warning in hydro.</li>
-<li>  Fixed type error</li>
-<li>  changes for hydro gazebo, still not fully working</li>
-<li>  depth joint for kinect implemented</li>
-<li>  new component base_placement for whole body moveit group</li>
-<li>  added fixed links for calibration</li>
-<li>  new urdf description for lookat</li>
-<li>  Contributors: Alexander Bubeck, Denis Štogl, Jannik, Jannik
-Abbenseth, abubeck, ipa-cob3-5, ipa-cob3-7, ipa-fmw, ipa-fxm,
-ipa-nhg</li>
-</ul>
-<h2 id="0.5.1-(2013-08-16-01:14:35--0700)">0.5.1 (2013-08-16 01:14:35 -0700)</h2>
-
-<h2 id="0.5.0-(2013-08-16-01:14:35--0700)">0.5.0 (2013-08-16 01:14:35 -0700)</h2>
-
-<ul>
-<li>  added installer stuff</li>
-<li>  fixed bug after merging</li>
-<li>  merged with upstream changes</li>
-<li>  removed generation of mesh files</li>
-<li>  changed target name to be specific</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/41">#41</a> from
-ipa-fxm/mesh_gen_fix remove mesh file generation from description
-packages - they are not nee...</li>
-<li>  cleanup deps</li>
-<li>  cleanup deps</li>
-<li>  name failed test files for urdf check</li>
-<li>  adapt urdf_check for groovy</li>
-<li>  fix kinect FoV</li>
-<li>  set update rate to 20hz again</li>
-<li>  Catkin for cob_common</li>
-<li>  remove mesh file generation from description packages - they are not
-needed any longer</li>
-<li>  fix meshes and transformation for tray_powerball</li>
-<li>  changed field of view of RGB image to be more realistic (from 57 to
-62)</li>
-<li>  moved all hardcoded offsets to calibration_data</li>
-<li>  merge</li>
-<li>  added colored collada model for sick s300 scanner</li>
-<li>  use collision mesh again</li>
-<li>  clean up gazebo files</li>
-<li>  major adaptions in gazebo.urdf.xacros according to new gazebo format
-for sensors - simulated sensor data still not fully correct</li>
-<li>  major adaptions in gazebo.urdf.xacros according to new gazebo format
-for sensors</li>
-<li>  major adaptions in gazebo.urdf.xacros according to new gazebo format
-for controllers</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/34">#34</a> from
-ipa-fmw/master extend urdf test</li>
-<li>  extended urdf test</li>
-<li>  added ur10 in raw3-1 description</li>
-<li>  Redefined collisions in urdf files</li>
-<li>  Groovy migration</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_common</li>
-<li>  adjust color settings</li>
-<li>  rename topic from scan_top to scan_top_raw</li>
-<li>  merge</li>
-<li>  Deleted texture colors</li>
-<li>  Renamed colors</li>
-<li>  adjusted params for prosilica</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/23">#23</a> from
-ipa-goa/master changed far clip to 100</li>
-<li>  changed far clip to 100</li>
-<li>  extended head cover and upper neck meshes</li>
-<li>  increased torso_v0 limits for the initialization of cob3-1</li>
-<li>  fix colors and powerball tray</li>
-<li>  Renamed the colors</li>
-<li>  Redefined Care-O-bot colors for Gazebo and Rviz</li>
-<li>  Orange color for LBR</li>
-<li>  Defined new colors</li>
-<li>  Updated phiget sensors position</li>
-<li>  Updated joints axis</li>
-<li>  Removed stlb as collision mesh files, fuerte does not support this
-format</li>
-<li>  Minor changes in tray_powerball description</li>
-<li>  Description for tray_powerball</li>
-<li>  Fuerte migration cob_descriptionurdf/base/base.gazebo.xacro</li>
-<li>  removed unused reference position for lbr</li>
-<li>  final raw-model V2</li>
-<li>  update urdf</li>
-<li>  Revert "replaced solid with robot in stl" This reverts commit
-5a415bb7dc12831d2ed8932aa46b8cdcb044d300.</li>
-<li>  fixed stl</li>
-<li>  use stl</li>
-<li>  replaced solid with robot in stl</li>
-<li>  undo previous changes in
-cob_description/urdf/base/base.gazebo.xacro</li>
-<li>  add simulated phidgets sensors to tray</li>
-<li>  changed stl files not using solid</li>
-<li>  Update desire_description</li>
-<li>  fix naming for both kinect plugins</li>
-<li>  fixed field of view for kinect</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/12">#12</a> from
-abubeck/master fuerte support, compatible with electric</li>
-<li>  Merge
-<a href="https://github.com/abubeck/cob_common">https://github.com/abubeck/cob_common</a>
-</li>
-<li>  Merge branch 'master' of github.com:abubeck/cob_common</li>
-<li>  Merge branch 'electric' of github.com:ipa320/cob_common into
-release_electric</li>
-<li>  changed kinect configuration for fuerte, changed stlb links to stl</li>
-<li>  increased upper joint limit and velocity for head_v1</li>
-<li>  fixed cam3d topic for head_v1</li>
-<li>  finished raw3-1 model --- V1</li>
-<li>  limit torso pan and tilt joints</li>
-<li>  moved sick_s300 stl to cob_description</li>
-<li>  added stl for laser scanner</li>
-<li>  substitute 1.57 3.14 6.28 through M_PI</li>
-<li>  additional links on tray</li>
-<li>  read correct torso stl</li>
-<li>  urdf structure change: tray can be calibrated now</li>
-<li>  using calibration for laser scanners</li>
-<li>  renamed icob to raw and merged and cleaned up lots of things</li>
-<li>  Deleted old files and copies</li>
-<li>  fix icob urdf</li>
-<li>  torso urdf change: made torso middle link longer (as in cad)</li>
-<li>  cameras have zero pos/rot offsets in head_v3</li>
-<li>  calibrate cam3d to head axis instead of left camera</li>
-<li>  setup cob3-4</li>
-<li>  don't include urdf files from ros directory</li>
-<li>  python urdf test</li>
-<li>  merge with ipa320</li>
-<li>  added minimum range for kinect</li>
-<li>  -   add dep</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common into
-review-ipa-fmw</li>
-<li>  fix collision problem with floor: lift collision base_footprint</li>
-<li>  fix names in base urdf</li>
-<li>  renamed components</li>
-<li>  renamed folders</li>
-<li>  moved out of ros dir</li>
-<li>  moved out of ros dir</li>
-<li>  removed schunk components</li>
-<li>  removed calibration for now missing calibration link</li>
-<li>  fixed bug with xyz values</li>
-<li>  removed calib_joint</li>
-<li>  merged with goa</li>
-<li>  revert urdf changes because of arm planning collisions</li>
-<li>  new calibration for cob3-3 and cob3-4</li>
-<li>  temporary fix for urdf collision model</li>
-<li>  add configs for cob3-4</li>
-<li>  beautify sdh transmissions</li>
-<li>  adjust cob3-3 torso calibration</li>
-<li>  using now kinect plugin from pr2_gazebo</li>
-<li>  fixed origin offset</li>
-<li>  Merge branch 'master' of github.com:ipa-goa-wt/cob_common into
-review-goa-wt</li>
-<li>  urdf and default configs for cob3-bosch</li>
-<li>  added rgb description for kinect</li>
-<li>  added sdh_tip link</li>
-<li>  new torso calibration</li>
-<li>  merge</li>
-<li>  Updated calibration for Kinect sensor</li>
-<li>  merge</li>
-<li>  added comment</li>
-<li>  bumpers measure in the coordinate system of the fingers</li>
-<li>  Kinect rgb configuration</li>
-<li>  Merge branch 'master' of github.com:ipa-goa/cob_common</li>
-<li>  neck calib</li>
-<li>  added helper coordinate system for calibration, added calibration
-values</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common</li>
-<li>  new calibration offset for tray</li>
-<li>  Updated camera calibration for cob3-3</li>
-<li>  commit from icob</li>
-<li>  added urdf for standard schunk lwa3</li>
-<li>  merge</li>
-<li>  fix head_v3 simulation error</li>
-<li>  modifications for fetch and carry</li>
-<li>  Merge branch 'master' of github.com:ipa-rmb/cob_common into
-review-rmb</li>
-<li>  update cob3-3</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common into
-review-fmw</li>
-<li>  fix head orientation for cob3-3</li>
-<li>  fix head orientation for cob3-3</li>
-<li>  merge</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common into
-review-fmw</li>
-<li>  fix cob3-3 tf</li>
-<li>  calibration for cob3-1</li>
-<li>  new arm configurations for faster table manipulation</li>
-<li>  head urdf for cob3-1</li>
-<li>  changes from b-it-bots</li>
-<li>  calib test</li>
-<li>  calib test</li>
-<li>  Merge branch 'master' of github.com:ipa-taj/cob_common</li>
-<li>  corrected calib values</li>
-<li>  added calib values for cam to neck</li>
-<li>  merge</li>
-<li>  Left tp right camera change in urdf</li>
-<li>  cob_head_axis set</li>
-<li>  corrected the swissranger topics to the unified naming scheme</li>
-<li>  cleanup cob3-2 description</li>
-<li>  calibration for cob3-3 tray</li>
-<li>  fix urdf of cob3-3</li>
-<li>  merge</li>
-<li>  left camea is now reference camera</li>
-<li>  merge</li>
-<li>  merge</li>
-<li>  update for cob3-3</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common</li>
-<li>  alltest launch file</li>
-<li>  torso_v1 added</li>
-<li>  update torso for cob3-3</li>
-<li>  mimic joint for sdh</li>
-<li>  update head description with general tof</li>
-<li>  small modification for dashboard</li>
-<li>  Fix CRLF</li>
-<li>  kinect sensor added</li>
-<li>  kinect sensor added</li>
-<li>  fix names for multiple tof sensors</li>
-<li>  changes in tof.gazebo.xacro</li>
-<li>  inserted new urdf files for cob3-3, need to be adapted</li>
-<li>  merge</li>
-<li>  changed base configuration for cob3-2</li>
-<li>  fixed voxelization + now including sdh</li>
-<li>  new files for prmce voxelization</li>
-<li>  urdf model for voxelization</li>
-<li>  merge with ipa320</li>
-<li>  update cob3-2 arm</li>
-<li>  changed the platform urdf to version 1</li>
-<li>  arm planning</li>
-<li>  beautifying</li>
-<li>  single arm and arm with sdh simulation running</li>
-<li>  modifications sensor fusion</li>
-<li>  Merge branch 'master' of github.com:ipa-jsf/cob_common into
-review-jsf</li>
-<li>  adjust camrea simulation parameters to real cameras</li>
-<li>  renamed cameraone to prosilica</li>
-<li>  fixed camera topics for simulation</li>
-<li>  reduced mass for simulation</li>
-<li>  tuned gazebo controller</li>
-<li>  fix safety controller in lbr</li>
-<li>  simulation working again after merging</li>
-<li>  use stlb files in collision now</li>
-<li>  generate stlb files</li>
-<li>  included calls to base_v1, but still base_v0 is active</li>
-<li>  fixed laser sensor names, version number and visual model</li>
-<li>  modified base_collision_model</li>
-<li>  Merge branch 'review-320'</li>
-<li>  removed falling calibration</li>
-<li>  Merge branch 'review-brudder'</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/brudder/cob_common">https://github.com/brudder/cob_common</a>
-into review-brudder</li>
-<li>  fixed error in lbr</li>
-<li>  Merge branch 'review-brudder'</li>
-<li>  Merge branch 'review-320'</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/ipa320/cob_common">https://github.com/ipa320/cob_common</a>
-into review-320</li>
-<li>  added correct calibration</li>
-<li>  Merge branch 'master' of github.com:ipa-goa/cob_common into
-review-goa</li>
-<li>  modified base collision model for 2dnav_ipa</li>
-<li>  new stl models for collision added and implemented</li>
-<li>  update configurations and added grassp link to sdh</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/ipa320/cob_common">https://github.com/ipa320/cob_common</a>
-into review-320</li>
-<li>  corrected axes and wheel hubs</li>
-<li>  desire robot added</li>
-<li>  restructure urdf files and launch files for simulation</li>
-<li>  changed urdf files for single components</li>
-<li>  changed launch file structure for bringup</li>
-<li>  added safety_controller for pr2_kinematics</li>
-<li>  simple base collision model</li>
-<li>  added swissranger in simulation</li>
-<li>  corrected calibration</li>
-<li>  cleanup in simulation and common</li>
-<li>  added hand-eye-calibration values</li>
-<li>  Merge branch 'master' of github.com:ipa-goa/care-o-bot</li>
-<li>  added camera calibration</li>
-<li>  Head axis working, tested on cob3-1 but adapted parameters (-files)
-should work on both robots</li>
-<li>  added sick scanner to urdf</li>
-<li>  added real scan values to simulation, added scan filters to
-simulation</li>
-<li>  changed mesh files for new transformations</li>
-<li>  added hokuyo support to nav</li>
-<li>  Merge branch 'review-320'</li>
-<li>  added calibration for right camera</li>
-<li>  HeadAxis working</li>
-<li>  new torso tranfsormation</li>
-<li>  update joint limits for lbr</li>
-<li>  cob_base</li>
-<li>  moved ekf domo publisher to nav; update positions for new urdf
-trafos; moved controller_manager to
-cob_controller_configuration_gazebo</li>
-<li>  fix for global frame names</li>
-<li>  lbr working on cob</li>
-<li>  cob_head_axis working</li>
-<li>  inserted cob base mesh file</li>
-<li>  first version of cob_base urdf</li>
-<li>  new trnasformation for base lbr</li>
-<li>  new arm transformation for lbr, set_operation_mode with service
-interface</li>
-<li>  tactile sensors in simulation</li>
-<li>  cleanup in urdfs</li>
-<li>  beautify torso urdf</li>
-<li>  changed dimensions of cameras</li>
-<li>  preparation for blocklaser</li>
-<li>  simulated cameras working</li>
-<li>  head axis working in simulation</li>
-<li>  removed executable status from files</li>
-<li>  preparations for cameras and tof in simulation</li>
-<li>  grasp script optimisations</li>
-<li>  update urdf to be compatible with ctrutle, add 64bit support for
-libntcan</li>
-<li>  changed transmission and filters to namespaces</li>
-<li>  update documentation</li>
-<li>  optimized controllers for simulation</li>
-<li>  changed angle offset after calibration</li>
-<li>  fixed bug with fixed joint</li>
-<li>  fixed bug with fixed joint</li>
-<li>  changed transformation based on box-style-calibration</li>
-<li>  modified urdf and adapted xaml files</li>
-<li>  improved simulation for schunk arm and cleanup in 2dnav package</li>
-<li>  altered sdh mounting for changed lbr naming</li>
-<li>  fixed problem with lbr urdf files occuring on cob3-lbr robot</li>
-<li>  update on robot</li>
-<li>  grasp from cooler scenarion running</li>
-<li>  update for cob3-2</li>
-<li>  update script server yaml and lbr urdf description</li>
-<li>  dual arm cob3 simulation and modified controllers for schunk
-simulation</li>
-<li>  extended calibration files for camera calibration</li>
-<li>  Merge branch 'master' of github.com:abubeck/care-o-bot</li>
-<li>  dual arm setup</li>
-<li>  modified camera coordinate systems</li>
-<li>  added virtual camera support</li>
-<li>  updated lbr description, is now correct</li>
-<li>  improvements of lbr simulation</li>
-<li>  added lbr to simulation</li>
-<li>  lbr meshes and simulation</li>
-<li>  renamed laser topics</li>
-<li>  modified urdf to work with hokuyo simulation</li>
-<li>  modified urdf and changes to sdh driver</li>
-<li>  changed from cob3-1 to cob3-sim</li>
-<li>  small fixes for simulation</li>
-<li>  updated simulation files</li>
-<li>  clean up in cob_common stack</li>
-<li>  added upload file for cob3-1</li>
-<li>  changes on powercube chain to accept direct command without
-actionlib</li>
-<li>  missing files for simulation</li>
-<li>  new files for navigation, e.g. maps and launch files</li>
-<li>  merge</li>
-<li>  arm is now on foot block</li>
-<li>  arm is now on foot block</li>
-<li>  extended limits of joint 1</li>
-<li>  rotated arm meshes and tray mesh</li>
-<li>  calibration file for sim</li>
-<li>  urdf file for cob3-sim</li>
-<li>  missing upload file</li>
-<li>  new simulation interfaces</li>
-<li>  small fix</li>
-<li>  separate urdf files for arm and sdh</li>
-<li>  separate urdf files for arm and sdh</li>
-<li>  missing stl files</li>
-<li>  upload files for simulation</li>
-<li>  merge</li>
-<li>  merge</li>
-<li>  big changes to simulation structure</li>
-<li>  changed stl files</li>
-<li>  modified knoeppkes</li>
-<li>  new stl file for tray</li>
-<li>  adaptions to urdf for tray</li>
-<li>  new stl file for tray</li>
-<li>  changed origin of head_cover</li>
-<li>  new launch file for cob3-sim</li>
-<li>  added sdh controller file</li>
-<li>  Merge branch 'fmw-hj'</li>
-<li>  modified urdf to have less shaking</li>
-<li>  renamed cob launch file</li>
-<li>  modified urdf</li>
-<li>  inserted new stl files</li>
-<li>  new stl file for head cover</li>
-<li>  new stl files for torso</li>
-<li>  added sdh urdf files</li>
-<li>  included calibration files</li>
-<li>  modified manifests for documentation</li>
-<li>  mesh files for lwa</li>
-<li>  included arm</li>
-<li>  stl files for base</li>
-<li>  missing SR400 files</li>
-<li>  missing camera files</li>
-<li>  new files for cob_description</li>
-<li>  merge</li>
-<li>  new urdf desciption</li>
-<li>  modifications for cob3-2</li>
-<li>  new urdf structure for platform and torso</li>
-<li>  Contributors: Alexander Bubeck, COB3-Manipulation, Florian
-Weißhardt, Georg Arbeiter, Lucian Cucu, Mathias Lüdtke, Richard
-Bormann, Sven Schneider, abubeck, b-it-bots-secure, brudder, cob,
-cob3-1-pc1, cpc-pk, fmw-jk, ipa, ipa-bnm, ipa-fmw, ipa-fmw-sh,
-ipa-fxm, ipa-goa, ipa-goa-wt, ipa-jsf, ipa-mig, ipa-nhg, ipa-rmb,
-ipa-taj, ipa-taj-dm, ipa-uhr, ipa-uhr-fm, mxcreator, nhg-ipa, robot,
-root</li>
+<li>  fix cob3_tray_3dof meshes</li>
+<li>  harmonize simulated cam3d topic namespaces</li>
+<li>  restructure simulated lasers and laser topic names</li>
+<li>  remove obsolete sensors</li>
+<li>  Missed \$ key</li>
+<li>  added asus sensorring description</li>
+<li>  Updated topic name</li>
+<li>  added sick sensorring description</li>
+<li>  fix joint origins for torsos</li>
+<li>  Merge branch 'indigo_dev' into fix_torso_urdf</li>
+<li>  fix torso joint orientation in urdf</li>
+<li>  Contributors: Nadia Hammoudeh Garc</li>
 </ul>
 </div></body></html>
 
@@ -1376,7 +568,8 @@ root</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1388,27 +581,42 @@ root</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_ros#indigo">gazebo_ros</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1416,12 +624,12 @@ root</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1430,9 +638,9 @@ root</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1441,9 +649,9 @@ root</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1452,28 +660,35 @@ root</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/cob_description/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_common/tree/indigo_dev/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_description?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1483,6 +698,133 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/brics_actuator/github-ipa320-cob_common">
+
+brics_actuator
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_common/github-ipa320-cob_common">
+
+cob_common
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+cob_description
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_srvs/github-ipa320-cob_common">
+
+cob_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/desire_description/github-ipa320-cob_common">
+
+desire_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/raw_description/github-ipa320-cob_common">
+
+raw_description
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_common
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_common
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/cob_description/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_common/tree/hydro_dev/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_description?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1495,31 +837,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This package contains the description (mechanical, kinematic, visual,
-  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
-  a variety of other components. Most users will not interact directly
-  with this package.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1558,7 +899,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1588,7 +929,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1605,8 +949,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This package contains the description (mechanical, kinematic, visual,
+  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
+  a variety of other components. Most users will not interact directly
+  with this package.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1625,17 +987,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
                 
               </ul>
             
@@ -1668,14 +1019,15 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_description">Changelog for package cob_description</h1>
 
-<h2 id="0.5.3-(2014-03-31)">0.5.3 (2014-03-31)</h2>
+<h2 id="0-5-3-2014-03-31">0.5.3 (2014-03-31)</h2>
 
 <ul>
 <li>  reminder comment ;-)</li>
 <li>  ee_link is now back in ur_description</li>
 <li>  Contributors: ipa-fxm</li>
 </ul>
-<h2 id="0.5.2-(2014-03-20)">0.5.2 (2014-03-20)</h2>
+
+<h2 id="0-5-2-2014-03-20">0.5.2 (2014-03-20)</h2>
 
 <ul>
 <li>  merged with ipa320</li>
@@ -1732,8 +1084,8 @@ ipa-fxm/groovy_dev bring groovy updates to hydro</li>
 <li>  fixing simulation for hydro. Still wip</li>
 <li>  unified torso frames</li>
 <li>  unified head frames</li>
-<li>  Revert "depth joint for kinect implemented" This reverts commit
-f3449462cd05a5efc8f47252e28366d6a495acb2.</li>
+<li>  Revert "depth joint for kinect implemented" This reverts
+commit f3449462cd05a5efc8f47252e28366d6a495acb2.</li>
 <li>  offset back in lbr.urdf.xacro else wrong calibration</li>
 <li>  fixed typo</li>
 <li>  Removed safety controller
@@ -1748,403 +1100,7 @@ urdf/ur_connector/ur_connector.urdf.xacro</li>
 <li>  new component base_placement for whole body moveit group</li>
 <li>  added fixed links for calibration</li>
 <li>  new urdf description for lookat</li>
-<li>  Contributors: Alexander Bubeck, Denis Štogl, Jannik, Jannik
-Abbenseth, abubeck, ipa-cob3-5, ipa-cob3-7, ipa-fmw, ipa-fxm,
-ipa-nhg</li>
-</ul>
-<h2 id="0.5.1-(2013-08-16-01:14:35--0700)">0.5.1 (2013-08-16 01:14:35 -0700)</h2>
-
-<h2 id="0.5.0-(2013-08-16-01:14:35--0700)">0.5.0 (2013-08-16 01:14:35 -0700)</h2>
-
-<ul>
-<li>  added installer stuff</li>
-<li>  fixed bug after merging</li>
-<li>  merged with upstream changes</li>
-<li>  removed generation of mesh files</li>
-<li>  changed target name to be specific</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/41">#41</a> from
-ipa-fxm/mesh_gen_fix remove mesh file generation from description
-packages - they are not nee...</li>
-<li>  cleanup deps</li>
-<li>  cleanup deps</li>
-<li>  name failed test files for urdf check</li>
-<li>  adapt urdf_check for groovy</li>
-<li>  fix kinect FoV</li>
-<li>  set update rate to 20hz again</li>
-<li>  Catkin for cob_common</li>
-<li>  remove mesh file generation from description packages - they are not
-needed any longer</li>
-<li>  fix meshes and transformation for tray_powerball</li>
-<li>  changed field of view of RGB image to be more realistic (from 57 to
-62)</li>
-<li>  moved all hardcoded offsets to calibration_data</li>
-<li>  merge</li>
-<li>  added colored collada model for sick s300 scanner</li>
-<li>  use collision mesh again</li>
-<li>  clean up gazebo files</li>
-<li>  major adaptions in gazebo.urdf.xacros according to new gazebo format
-for sensors - simulated sensor data still not fully correct</li>
-<li>  major adaptions in gazebo.urdf.xacros according to new gazebo format
-for sensors</li>
-<li>  major adaptions in gazebo.urdf.xacros according to new gazebo format
-for controllers</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/34">#34</a> from
-ipa-fmw/master extend urdf test</li>
-<li>  extended urdf test</li>
-<li>  added ur10 in raw3-1 description</li>
-<li>  Redefined collisions in urdf files</li>
-<li>  Groovy migration</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_common</li>
-<li>  adjust color settings</li>
-<li>  rename topic from scan_top to scan_top_raw</li>
-<li>  merge</li>
-<li>  Deleted texture colors</li>
-<li>  Renamed colors</li>
-<li>  adjusted params for prosilica</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/23">#23</a> from
-ipa-goa/master changed far clip to 100</li>
-<li>  changed far clip to 100</li>
-<li>  extended head cover and upper neck meshes</li>
-<li>  increased torso_v0 limits for the initialization of cob3-1</li>
-<li>  fix colors and powerball tray</li>
-<li>  Renamed the colors</li>
-<li>  Redefined Care-O-bot colors for Gazebo and Rviz</li>
-<li>  Orange color for LBR</li>
-<li>  Defined new colors</li>
-<li>  Updated phiget sensors position</li>
-<li>  Updated joints axis</li>
-<li>  Removed stlb as collision mesh files, fuerte does not support this
-format</li>
-<li>  Minor changes in tray_powerball description</li>
-<li>  Description for tray_powerball</li>
-<li>  Fuerte migration cob_descriptionurdf/base/base.gazebo.xacro</li>
-<li>  removed unused reference position for lbr</li>
-<li>  final raw-model V2</li>
-<li>  update urdf</li>
-<li>  Revert "replaced solid with robot in stl" This reverts commit
-5a415bb7dc12831d2ed8932aa46b8cdcb044d300.</li>
-<li>  fixed stl</li>
-<li>  use stl</li>
-<li>  replaced solid with robot in stl</li>
-<li>  undo previous changes in
-cob_description/urdf/base/base.gazebo.xacro</li>
-<li>  add simulated phidgets sensors to tray</li>
-<li>  changed stl files not using solid</li>
-<li>  Update desire_description</li>
-<li>  fix naming for both kinect plugins</li>
-<li>  fixed field of view for kinect</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_common/issues/12">#12</a> from
-abubeck/master fuerte support, compatible with electric</li>
-<li>  Merge
-<a href="https://github.com/abubeck/cob_common">https://github.com/abubeck/cob_common</a>
-</li>
-<li>  Merge branch 'master' of github.com:abubeck/cob_common</li>
-<li>  Merge branch 'electric' of github.com:ipa320/cob_common into
-release_electric</li>
-<li>  changed kinect configuration for fuerte, changed stlb links to stl</li>
-<li>  increased upper joint limit and velocity for head_v1</li>
-<li>  fixed cam3d topic for head_v1</li>
-<li>  finished raw3-1 model --- V1</li>
-<li>  limit torso pan and tilt joints</li>
-<li>  moved sick_s300 stl to cob_description</li>
-<li>  added stl for laser scanner</li>
-<li>  substitute 1.57 3.14 6.28 through M_PI</li>
-<li>  additional links on tray</li>
-<li>  read correct torso stl</li>
-<li>  urdf structure change: tray can be calibrated now</li>
-<li>  using calibration for laser scanners</li>
-<li>  renamed icob to raw and merged and cleaned up lots of things</li>
-<li>  Deleted old files and copies</li>
-<li>  fix icob urdf</li>
-<li>  torso urdf change: made torso middle link longer (as in cad)</li>
-<li>  cameras have zero pos/rot offsets in head_v3</li>
-<li>  calibrate cam3d to head axis instead of left camera</li>
-<li>  setup cob3-4</li>
-<li>  don't include urdf files from ros directory</li>
-<li>  python urdf test</li>
-<li>  merge with ipa320</li>
-<li>  added minimum range for kinect</li>
-<li>  -   add dep</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common into
-review-ipa-fmw</li>
-<li>  fix collision problem with floor: lift collision base_footprint</li>
-<li>  fix names in base urdf</li>
-<li>  renamed components</li>
-<li>  renamed folders</li>
-<li>  moved out of ros dir</li>
-<li>  moved out of ros dir</li>
-<li>  removed schunk components</li>
-<li>  removed calibration for now missing calibration link</li>
-<li>  fixed bug with xyz values</li>
-<li>  removed calib_joint</li>
-<li>  merged with goa</li>
-<li>  revert urdf changes because of arm planning collisions</li>
-<li>  new calibration for cob3-3 and cob3-4</li>
-<li>  temporary fix for urdf collision model</li>
-<li>  add configs for cob3-4</li>
-<li>  beautify sdh transmissions</li>
-<li>  adjust cob3-3 torso calibration</li>
-<li>  using now kinect plugin from pr2_gazebo</li>
-<li>  fixed origin offset</li>
-<li>  Merge branch 'master' of github.com:ipa-goa-wt/cob_common into
-review-goa-wt</li>
-<li>  urdf and default configs for cob3-bosch</li>
-<li>  added rgb description for kinect</li>
-<li>  added sdh_tip link</li>
-<li>  new torso calibration</li>
-<li>  merge</li>
-<li>  Updated calibration for Kinect sensor</li>
-<li>  merge</li>
-<li>  added comment</li>
-<li>  bumpers measure in the coordinate system of the fingers</li>
-<li>  Kinect rgb configuration</li>
-<li>  Merge branch 'master' of github.com:ipa-goa/cob_common</li>
-<li>  neck calib</li>
-<li>  added helper coordinate system for calibration, added calibration
-values</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common</li>
-<li>  new calibration offset for tray</li>
-<li>  Updated camera calibration for cob3-3</li>
-<li>  commit from icob</li>
-<li>  added urdf for standard schunk lwa3</li>
-<li>  merge</li>
-<li>  fix head_v3 simulation error</li>
-<li>  modifications for fetch and carry</li>
-<li>  Merge branch 'master' of github.com:ipa-rmb/cob_common into
-review-rmb</li>
-<li>  update cob3-3</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common into
-review-fmw</li>
-<li>  fix head orientation for cob3-3</li>
-<li>  fix head orientation for cob3-3</li>
-<li>  merge</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common into
-review-fmw</li>
-<li>  fix cob3-3 tf</li>
-<li>  calibration for cob3-1</li>
-<li>  new arm configurations for faster table manipulation</li>
-<li>  head urdf for cob3-1</li>
-<li>  changes from b-it-bots</li>
-<li>  calib test</li>
-<li>  calib test</li>
-<li>  Merge branch 'master' of github.com:ipa-taj/cob_common</li>
-<li>  corrected calib values</li>
-<li>  added calib values for cam to neck</li>
-<li>  merge</li>
-<li>  Left tp right camera change in urdf</li>
-<li>  cob_head_axis set</li>
-<li>  corrected the swissranger topics to the unified naming scheme</li>
-<li>  cleanup cob3-2 description</li>
-<li>  calibration for cob3-3 tray</li>
-<li>  fix urdf of cob3-3</li>
-<li>  merge</li>
-<li>  left camea is now reference camera</li>
-<li>  merge</li>
-<li>  merge</li>
-<li>  update for cob3-3</li>
-<li>  Merge branch 'master' of github.com:ipa-fmw/cob_common</li>
-<li>  alltest launch file</li>
-<li>  torso_v1 added</li>
-<li>  update torso for cob3-3</li>
-<li>  mimic joint for sdh</li>
-<li>  update head description with general tof</li>
-<li>  small modification for dashboard</li>
-<li>  Fix CRLF</li>
-<li>  kinect sensor added</li>
-<li>  kinect sensor added</li>
-<li>  fix names for multiple tof sensors</li>
-<li>  changes in tof.gazebo.xacro</li>
-<li>  inserted new urdf files for cob3-3, need to be adapted</li>
-<li>  merge</li>
-<li>  changed base configuration for cob3-2</li>
-<li>  fixed voxelization + now including sdh</li>
-<li>  new files for prmce voxelization</li>
-<li>  urdf model for voxelization</li>
-<li>  merge with ipa320</li>
-<li>  update cob3-2 arm</li>
-<li>  changed the platform urdf to version 1</li>
-<li>  arm planning</li>
-<li>  beautifying</li>
-<li>  single arm and arm with sdh simulation running</li>
-<li>  modifications sensor fusion</li>
-<li>  Merge branch 'master' of github.com:ipa-jsf/cob_common into
-review-jsf</li>
-<li>  adjust camrea simulation parameters to real cameras</li>
-<li>  renamed cameraone to prosilica</li>
-<li>  fixed camera topics for simulation</li>
-<li>  reduced mass for simulation</li>
-<li>  tuned gazebo controller</li>
-<li>  fix safety controller in lbr</li>
-<li>  simulation working again after merging</li>
-<li>  use stlb files in collision now</li>
-<li>  generate stlb files</li>
-<li>  included calls to base_v1, but still base_v0 is active</li>
-<li>  fixed laser sensor names, version number and visual model</li>
-<li>  modified base_collision_model</li>
-<li>  Merge branch 'review-320'</li>
-<li>  removed falling calibration</li>
-<li>  Merge branch 'review-brudder'</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/brudder/cob_common">https://github.com/brudder/cob_common</a>
-into review-brudder</li>
-<li>  fixed error in lbr</li>
-<li>  Merge branch 'review-brudder'</li>
-<li>  Merge branch 'review-320'</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/ipa320/cob_common">https://github.com/ipa320/cob_common</a>
-into review-320</li>
-<li>  added correct calibration</li>
-<li>  Merge branch 'master' of github.com:ipa-goa/cob_common into
-review-goa</li>
-<li>  modified base collision model for 2dnav_ipa</li>
-<li>  new stl models for collision added and implemented</li>
-<li>  update configurations and added grassp link to sdh</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/ipa320/cob_common">https://github.com/ipa320/cob_common</a>
-into review-320</li>
-<li>  corrected axes and wheel hubs</li>
-<li>  desire robot added</li>
-<li>  restructure urdf files and launch files for simulation</li>
-<li>  changed urdf files for single components</li>
-<li>  changed launch file structure for bringup</li>
-<li>  added safety_controller for pr2_kinematics</li>
-<li>  simple base collision model</li>
-<li>  added swissranger in simulation</li>
-<li>  corrected calibration</li>
-<li>  cleanup in simulation and common</li>
-<li>  added hand-eye-calibration values</li>
-<li>  Merge branch 'master' of github.com:ipa-goa/care-o-bot</li>
-<li>  added camera calibration</li>
-<li>  Head axis working, tested on cob3-1 but adapted parameters (-files)
-should work on both robots</li>
-<li>  added sick scanner to urdf</li>
-<li>  added real scan values to simulation, added scan filters to
-simulation</li>
-<li>  changed mesh files for new transformations</li>
-<li>  added hokuyo support to nav</li>
-<li>  Merge branch 'review-320'</li>
-<li>  added calibration for right camera</li>
-<li>  HeadAxis working</li>
-<li>  new torso tranfsormation</li>
-<li>  update joint limits for lbr</li>
-<li>  cob_base</li>
-<li>  moved ekf domo publisher to nav; update positions for new urdf
-trafos; moved controller_manager to
-cob_controller_configuration_gazebo</li>
-<li>  fix for global frame names</li>
-<li>  lbr working on cob</li>
-<li>  cob_head_axis working</li>
-<li>  inserted cob base mesh file</li>
-<li>  first version of cob_base urdf</li>
-<li>  new trnasformation for base lbr</li>
-<li>  new arm transformation for lbr, set_operation_mode with service
-interface</li>
-<li>  tactile sensors in simulation</li>
-<li>  cleanup in urdfs</li>
-<li>  beautify torso urdf</li>
-<li>  changed dimensions of cameras</li>
-<li>  preparation for blocklaser</li>
-<li>  simulated cameras working</li>
-<li>  head axis working in simulation</li>
-<li>  removed executable status from files</li>
-<li>  preparations for cameras and tof in simulation</li>
-<li>  grasp script optimisations</li>
-<li>  update urdf to be compatible with ctrutle, add 64bit support for
-libntcan</li>
-<li>  changed transmission and filters to namespaces</li>
-<li>  update documentation</li>
-<li>  optimized controllers for simulation</li>
-<li>  changed angle offset after calibration</li>
-<li>  fixed bug with fixed joint</li>
-<li>  fixed bug with fixed joint</li>
-<li>  changed transformation based on box-style-calibration</li>
-<li>  modified urdf and adapted xaml files</li>
-<li>  improved simulation for schunk arm and cleanup in 2dnav package</li>
-<li>  altered sdh mounting for changed lbr naming</li>
-<li>  fixed problem with lbr urdf files occuring on cob3-lbr robot</li>
-<li>  update on robot</li>
-<li>  grasp from cooler scenarion running</li>
-<li>  update for cob3-2</li>
-<li>  update script server yaml and lbr urdf description</li>
-<li>  dual arm cob3 simulation and modified controllers for schunk
-simulation</li>
-<li>  extended calibration files for camera calibration</li>
-<li>  Merge branch 'master' of github.com:abubeck/care-o-bot</li>
-<li>  dual arm setup</li>
-<li>  modified camera coordinate systems</li>
-<li>  added virtual camera support</li>
-<li>  updated lbr description, is now correct</li>
-<li>  improvements of lbr simulation</li>
-<li>  added lbr to simulation</li>
-<li>  lbr meshes and simulation</li>
-<li>  renamed laser topics</li>
-<li>  modified urdf to work with hokuyo simulation</li>
-<li>  modified urdf and changes to sdh driver</li>
-<li>  changed from cob3-1 to cob3-sim</li>
-<li>  small fixes for simulation</li>
-<li>  updated simulation files</li>
-<li>  clean up in cob_common stack</li>
-<li>  added upload file for cob3-1</li>
-<li>  changes on powercube chain to accept direct command without
-actionlib</li>
-<li>  missing files for simulation</li>
-<li>  new files for navigation, e.g. maps and launch files</li>
-<li>  merge</li>
-<li>  arm is now on foot block</li>
-<li>  arm is now on foot block</li>
-<li>  extended limits of joint 1</li>
-<li>  rotated arm meshes and tray mesh</li>
-<li>  calibration file for sim</li>
-<li>  urdf file for cob3-sim</li>
-<li>  missing upload file</li>
-<li>  new simulation interfaces</li>
-<li>  small fix</li>
-<li>  separate urdf files for arm and sdh</li>
-<li>  separate urdf files for arm and sdh</li>
-<li>  missing stl files</li>
-<li>  upload files for simulation</li>
-<li>  merge</li>
-<li>  merge</li>
-<li>  big changes to simulation structure</li>
-<li>  changed stl files</li>
-<li>  modified knoeppkes</li>
-<li>  new stl file for tray</li>
-<li>  adaptions to urdf for tray</li>
-<li>  new stl file for tray</li>
-<li>  changed origin of head_cover</li>
-<li>  new launch file for cob3-sim</li>
-<li>  added sdh controller file</li>
-<li>  Merge branch 'fmw-hj'</li>
-<li>  modified urdf to have less shaking</li>
-<li>  renamed cob launch file</li>
-<li>  modified urdf</li>
-<li>  inserted new stl files</li>
-<li>  new stl file for head cover</li>
-<li>  new stl files for torso</li>
-<li>  added sdh urdf files</li>
-<li>  included calibration files</li>
-<li>  modified manifests for documentation</li>
-<li>  mesh files for lwa</li>
-<li>  included arm</li>
-<li>  stl files for base</li>
-<li>  missing SR400 files</li>
-<li>  missing camera files</li>
-<li>  new files for cob_description</li>
-<li>  merge</li>
-<li>  new urdf desciption</li>
-<li>  modifications for cob3-2</li>
-<li>  new urdf structure for platform and torso</li>
-<li>  Contributors: Alexander Bubeck, COB3-Manipulation, Florian
-Weißhardt, Georg Arbeiter, Lucian Cucu, Mathias Lüdtke, Richard
-Bormann, Sven Schneider, abubeck, b-it-bots-secure, brudder, cob,
-cob3-1-pc1, cpc-pk, fmw-jk, ipa, ipa-bnm, ipa-fmw, ipa-fmw-sh,
-ipa-fxm, ipa-goa, ipa-goa-wt, ipa-jsf, ipa-mig, ipa-nhg, ipa-rmb,
-ipa-taj, ipa-taj-dm, ipa-uhr, ipa-uhr-fm, mxcreator, nhg-ipa, robot,
-root</li>
+<li>  Contributors: Alexander Bubeck, Denis </li>
 </ul>
 </div></body></html>
 
@@ -2161,7 +1117,8 @@ root</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2173,25 +1130,135 @@ root</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_hardware_config/github-ipa320-cob_robots#hydro">cob_hardware_config</a></td>
+                      <td><a href="/r/cob_robots/github-ipa320-cob_robots">github-ipa320-cob_robots</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_hardware_config/github-ipa320-cob_robots#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_common/github-ipa320-cob_common#hydro">cob_common</a></td>
+                      <td><a href="/r/cob_common/github-ipa320-cob_common">github-ipa320-cob_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_common/github-ipa320-cob_common#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/desire_description/github-ipa320-cob_common#hydro">desire_description</a></td>
+                      <td><a href="/r/cob_common/github-ipa320-cob_common">github-ipa320-cob_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/desire_description/github-ipa320-cob_common#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/raw_description/github-ipa320-cob_common#hydro">raw_description</a></td>
+                      <td><a href="/r/cob_common/github-ipa320-cob_common">github-ipa320-cob_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/raw_description/github-ipa320-cob_common#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo/github-ipa320-cob_simulation#hydro">cob_gazebo</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo/github-ipa320-cob_simulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo_objects/github-ipa320-cob_simulation#hydro">cob_gazebo_objects</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo_objects/github-ipa320-cob_simulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2199,12 +1266,12 @@ root</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2213,9 +1280,9 @@ root</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2224,9 +1291,9 @@ root</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2235,28 +1302,35 @@ root</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/cob_description/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_common/tree/hydro_dev/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_description?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2266,6 +1340,125 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/brics_actuator/github-ipa320-cob_common">
+
+brics_actuator
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+cob_description
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_srvs/github-ipa320-cob_common">
+
+cob_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/desire_description/github-ipa320-cob_common">
+
+desire_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/raw_description/github-ipa320-cob_common">
+
+raw_description
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_common
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_common
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/cob_description/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_common/tree/groovy/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_description?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2278,35 +1471,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-  This package contains the description (mechanical, kinematic, visual,
-  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
-  a variety of other components. Most users will not interact directly
-  with this package.
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2345,7 +1533,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2375,7 +1563,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2392,8 +1583,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+  This package contains the description (mechanical, kinematic, visual,
+  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
+  a variety of other components. Most users will not interact directly
+  with this package.
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2408,17 +1621,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
                 
               </ul>
             
@@ -2461,7 +1663,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2473,33 +1676,238 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rostest#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rostest" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rostest#groovy">rostest</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#groovy">urdf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdfdom#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdfdom" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/urdfdom#groovy">urdfdom</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/xacro#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/xacro" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/xacro#groovy">xacro</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/rostest#groovy">rostest</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/urdf#groovy">urdf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/urdfdom#groovy">urdfdom</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/xacro#groovy">xacro</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_hardware_config/github-ipa320-cob_robots#groovy">cob_hardware_config</a></td>
+                      <td><a href="/r/cob_robots/github-ipa320-cob_robots">github-ipa320-cob_robots</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_hardware_config/github-ipa320-cob_robots#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/desire_description/github-ipa320-cob_common#groovy">desire_description</a></td>
+                      <td><a href="/r/cob_common/github-ipa320-cob_common">github-ipa320-cob_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/desire_description/github-ipa320-cob_common#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/raw_description/github-ipa320-cob_common#groovy">raw_description</a></td>
+                      <td><a href="/r/cob_common/github-ipa320-cob_common">github-ipa320-cob_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/raw_description/github-ipa320-cob_common#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo_objects/github-ipa320-cob_environments#groovy">cob_gazebo_objects</a></td>
+                      <td><a href="/r/cob_environments/github-ipa320-cob_environments">github-ipa320-cob_environments</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo_objects/github-ipa320-cob_environments#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo_worlds/github-ipa320-cob_environments#groovy">cob_gazebo_worlds</a></td>
+                      <td><a href="/r/cob_environments/github-ipa320-cob_environments">github-ipa320-cob_environments</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo_worlds/github-ipa320-cob_environments#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_hardware_config/github-ipa320-schunk_robots#groovy">schunk_hardware_config</a></td>
+                      <td><a href="/r/schunk_robots/github-ipa320-schunk_robots">github-ipa320-schunk_robots</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_hardware_config/github-ipa320-schunk_robots#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo/github-ipa320-cob_simulation#groovy">cob_gazebo</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo/github-ipa320-cob_simulation#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2507,12 +1915,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2521,9 +1929,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2532,9 +1940,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2543,28 +1951,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/cob_description/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_common/tree/groovy/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_description?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2590,6 +2005,157 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_description">cob_description</a> <small>package from <a style="text-decoration:none" href="/r/cob_common/github-ipa320-cob_common">cob_common</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_default_config/github-ipa320-cob_common">
+
+cob_default_config
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+cob_description
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_goco/github-ipa320-cob_common">
+
+cob_goco
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_machine/github-ipa320-cob_common">
+
+cob_machine
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_msgs/github-ipa320-cob_common">
+
+cob_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_srvs/github-ipa320-cob_common">
+
+cob_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_utilities/github-ipa320-cob_common">
+
+cob_utilities
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_vision_utils/github-ipa320-cob_common">
+
+cob_vision_utils
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/desire_description/github-ipa320-cob_common">
+
+desire_description
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-diamondback">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_description"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_common
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_common" role="menuitem" tabindex="-1" href="/p/cob_description/github-ipa320-cob_common" data="github-ipa320-cob_common">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_common
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/diamondback/api/cob_description/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_description?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2602,35 +2168,30 @@ $(function() {
     
     
     
+    
     <a href="#diamondback-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#diamondback-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#diamondback-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#diamondback-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="diamondback-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-  This package contains the description (mechanical, kinematic, visual,
-  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
-  a variety of other components. Most users will not interact directly
-  with this package.
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2669,7 +2230,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2699,7 +2260,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2716,8 +2280,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+  This package contains the description (mechanical, kinematic, visual,
+  etc.) of the Care-O-bot robot. The files in this package are parsed and used by
+  a variety of other components. Most users will not interact directly
+  with this package.
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2732,17 +2318,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_description">Website</a></li>
                 
               </ul>
             
@@ -2785,7 +2360,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_description/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2797,31 +2373,190 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="diamondback-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/convex_decomposition#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/convex_decomposition" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/convex_decomposition#diamondback">convex_decomposition</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ivcon#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ivcon" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/ivcon#diamondback">ivcon</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#diamondback">urdf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/convex_decomposition#diamondback">convex_decomposition</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ivcon#diamondback">ivcon</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/urdf#diamondback">urdf</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/desire_description/github-ipa320-cob_common#diamondback">desire_description</a></td>
+                      <td><a href="/r/cob_common/github-ipa320-cob_common">github-ipa320-cob_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/desire_description/github-ipa320-cob_common#diamondback-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_manipulator/github-ipa320-cob_driver#diamondback">cob_manipulator</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_manipulator/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_powercube_chain/github-ipa320-cob_driver#diamondback">cob_powercube_chain</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_powercube_chain/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo/github-ipa320-cob_simulation#diamondback">cob_gazebo</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo/github-ipa320-cob_simulation#diamondback-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_ogre/github-ipa320-cob_simulation#diamondback">cob_ogre</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_ogre/github-ipa320-cob_simulation#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2829,26 +2564,105 @@ $(function() {
   <div class="tab-pane" id="diamondback-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_lbr.launch" target="_blank">ros/robots/upload_lbr.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_base.launch" target="_blank">ros/robots/upload_base.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_sdh.launch" target="_blank">ros/robots/upload_sdh.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_robot.launch" target="_blank">ros/robots/upload_robot.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_cob3_no_arm.launch" target="_blank">ros/robots/upload_cob3_no_arm.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_arm_sdh.launch" target="_blank">ros/robots/upload_arm_sdh.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_arm.launch" target="_blank">ros/robots/upload_arm.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_arm.launch" target="_blank">ros/robots/upload_arm.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_cob3_no_arm.launch" target="_blank">ros/robots/upload_cob3_no_arm.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_robot.launch" target="_blank">ros/robots/upload_robot.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_arm_sdh.launch" target="_blank">ros/robots/upload_arm_sdh.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_lbr.launch" target="_blank">ros/robots/upload_lbr.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_sdh.launch" target="_blank">ros/robots/upload_sdh.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description/ros/robots/upload_base.launch" target="_blank">ros/robots/upload_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2857,9 +2671,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2868,9 +2682,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2879,28 +2693,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/diamondback/api/cob_description/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_common/tree/diamondback/cob_description"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_description/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_description?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_description&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2927,7 +2748,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

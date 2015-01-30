@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,7 +149,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -157,59 +199,78 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/mavros_extras">mavros_extras</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/libmavconn/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>libmavconn</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/mavros/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>mavros</a>
-        
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> mavros_extras</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/mavros_extras/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/mavros_extras" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-indigo">
+
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/mavros_extras">mavros_extras</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libmavconn/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_msgs/github-mavlink-mavros">
+
+mavros_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> test_mavros
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -245,168 +306,63 @@
   </tr>
 </table>
 
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/mavros_extras">mavros_extras</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/libmavconn/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>libmavconn</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/mavros/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>mavros</a>
-        
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> mavros_extras</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/mavros_extras/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/mavros_extras" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-hydro">
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
   
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/mavros_extras"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-mavlink-mavros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/mavros_extras/github-mavlink-mavros" data="github-mavlink-mavros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-mavlink-mavros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
 </div>
 
             </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+            
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            Extra nodes and plugins for mavros
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -419,7 +375,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.10.0</td>
+                <td>0.18.2</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -445,7 +401,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -467,7 +423,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
         </span>
       </td>
     </tr>
@@ -476,9 +432,9 @@
       <td>
         
           
-            <span class="label label-primary">
+            <span class="label label-success">
           
-          MAINTAINED
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -495,8 +451,28 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Extra nodes and plugins for 
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/mavros_extras">Website</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -519,21 +495,6 @@
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/mavros_extras">Website</a></li>
-                
-                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
-                
-                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -551,7 +512,7 @@
 
 <h2 id="px4flow">px4flow</h2>
 
-<p>Plugin for mavros. Publish <code>OPTICAL_FLOW</code> data.</p>
+<p>Plugin for mavros. Publish <code>OPTICAL_FLOW_RAD</code> data.</p>
 
 <h2 id="image_pub">image_pub</h2>
 
@@ -560,6 +521,11 @@
 <h2 id="gcs_image_bridge">gcs_image_bridge</h2>
 
 <p>Variation of <code>gcs_bridge</code> that additionally sends image stream to GCS.</p>
+
+<h2 id="mocap_pose_estimate">mocap_pose_estimate</h2>
+
+<p>Plugin for mavros, to send mocap data to FCU.  Currently, not used by the FCU.
+Data can be send via <code>vision_position</code> plugin.</p>
 
 <h2 id="px-ros-pkg-replacement">px-ros-pkg replacement</h2>
 
@@ -581,15 +547,346 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-mavros_extras">Changelog for package mavros_extras</h1>
 
-<h2 id="0.10.0-(2015-01-24)">0.10.0 (2015-01-24)</h2>
+<h2 id="0-18-2-2016-06-30">0.18.2 (2016-06-30)</h2>
+
+<h2 id="0-18-1-2016-06-24">0.18.1 (2016-06-24)</h2>
+
+<h2 id="0-18-0-2016-06-23">0.18.0 (2016-06-23)</h2>
+
+<ul>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/560">#560</a>: remove
+cv_bridge and image_transport deps</li>
+<li>  extras: Update UAS</li>
+<li>  extras:vision_speed_estimate: Update API</li>
+<li>  extras:vision_pose_estimate: Update API</li>
+<li>  extras:px4flow: Update API</li>
+<li>  extras:mocap_pose_estimate: Update API</li>
+<li>  extras:distance_sensor: Update API</li>
+<li>  extras:cam_imu_sync: Update API</li>
+<li>  extras: Automatic update by sed</li>
+<li>  extras: prepare to update</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/560">#560</a>: Remove
+image streaming over mavlink support. Use external RTP
+streamer, e.g. <a href="https://github.com/ProjectArtemis/gst_video_server">https://github.com/ProjectArtemis/gst_video_server</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-3-2016-05-20">0.17.3 (2016-05-20)</h2>
+
+<h2 id="0-17-2-2016-04-29">0.17.2 (2016-04-29)</h2>
+
+<h2 id="0-17-1-2016-03-28">0.17.1 (2016-03-28)</h2>
+
+<ul>
+<li>  ran uncrustify</li>
+<li>  fixed typos</li>
+<li>  use CUBE_LIST for faster rendering</li>
+<li>  limit track size</li>
+<li>  use local variable</li>
+<li>  fixed indentation</li>
+<li>  added rc modes</li>
+<li>  moved rc to rc_override_control()</li>
+<li>  replaced tabulations with spaces (4)</li>
+<li>  introducing RC modes</li>
+<li>  fixed</li>
+<li>  quality added</li>
+<li>  added visualization for local setpoints</li>
+<li>  Contributors: Joey Gong, francois</li>
+</ul>
+
+<h2 id="0-17-0-2016-02-09">0.17.0 (2016-02-09)</h2>
+
+<ul>
+<li>  rebased with master</li>
+<li>  ran uncrustify</li>
+<li>  removed duplicate include</li>
+<li>  use MarkerArray for vehicle model</li>
+<li>  Updated frame transformations and added odom publisher to local
+position plugin</li>
+<li>  Contributors: Eddy, francois</li>
+</ul>
+
+<h2 id="0-16-6-2016-02-04">0.16.6 (2016-02-04)</h2>
+
+<ul>
+<li>  extras: uncrustify</li>
+<li>  added tf</li>
+<li>  comments</li>
+<li>  configurable vehicle model</li>
+<li>  Contributors: Vladimir Ermakov, francois</li>
+</ul>
+
+<h2 id="0-16-5-2016-01-11">0.16.5 (2016-01-11)</h2>
+
+<h2 id="0-16-4-2015-12-14">0.16.4 (2015-12-14)</h2>
+
+<h2 id="0-16-3-2015-11-19">0.16.3 (2015-11-19)</h2>
+
+<h2 id="0-16-2-2015-11-17">0.16.2 (2015-11-17)</h2>
+
+<h2 id="0-16-1-2015-11-13">0.16.1 (2015-11-13)</h2>
+
+<h2 id="0-16-0-2015-11-09">0.16.0 (2015-11-09)</h2>
+
+<ul>
+<li>  gcs_bridge <a href="https://github.com/mavlink/mavros/issues/394">#394</a>:
+enable both UDPROS and TCPROS transports</li>
+<li>  extras fix <a href="https://github.com/mavlink/mavros/issues/392">#392</a>:
+add additional subscription for PoseWithCovarianceStamped</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-15-0-2015-09-17">0.15.0 (2015-09-17)</h2>
+
+<ul>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>: fix
+header stamp in joint_states</li>
+<li>  extras fix <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+SSP node done.</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+subscriber works, node almost done</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>: load
+URDF</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+initial import of servo_status_publisher</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-14-2-2015-08-20">0.14.2 (2015-08-20)</h2>
+
+<ul>
+<li>  extras: fix catkin lint warnings</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-14-1-2015-08-19">0.14.1 (2015-08-19)</h2>
+
+<h2 id="0-14-0-2015-08-17">0.14.0 (2015-08-17)</h2>
+
+<ul>
+<li>  extras: gcs node: replace deprecated copy function</li>
+<li>  extras: scripts: use API from mavros module</li>
+<li>  package: remove not exist dependency</li>
+<li>  extras: vibration: Fix message include</li>
+<li>  extras: px4flow: Fix message include</li>
+<li>  extras: cam_imu_sync: Fix message include</li>
+<li>  extras: update package description</li>
+<li>  msgs: deprecate mavros::Mavlink and copy utils.</li>
+<li>  msgs <a href="https://github.com/mavlink/mavros/issues/354">#354</a>: move all
+messages to mavros_msgs package.</li>
+<li>  opencv 3.0/2.4 header compatibility</li>
+<li>  fix orientation empty error</li>
+<li>  Contributors: Vladimir Ermakov, andre-nguyen, v01d</li>
+</ul>
+
+<h2 id="0-13-1-2015-08-05">0.13.1 (2015-08-05)</h2>
+
+<h2 id="0-13-0-2015-08-01">0.13.0 (2015-08-01)</h2>
+
+<ul>
+<li>  extras: mocap fix
+<a href="https://github.com/mavlink/mavros/issues/352">#352</a>: use new
+helper for quaternion.</li>
+<li>  Merge pull request
+<a href="https://github.com/mavlink/mavros/issues/312">#312</a> from
+mhkabir/cam_imu_sync Camera IMU synchronisation support added</li>
+<li>  distance_sensor
+<a href="https://github.com/mavlink/mavros/issues/342">#342</a>: correct
+orientation parameter handling.</li>
+<li>  distance_sensor: restructure orientation matching and verification</li>
+<li>  lib <a href="https://github.com/mavlink/mavros/issues/319">#319</a>: Return
+quaternion from UAS::sensor_matching()</li>
+<li>  launch fix <a href="https://github.com/mavlink/mavros/issues/340">#340</a>:
+update default component id of PX4.</li>
+<li>  extras: distance_sensor
+<a href="https://github.com/mavlink/mavros/issues/71">#71</a>: Purt to TF2.</li>
+<li>  plugin: Use UAS::syncronized_header() for reduce LOC.</li>
+<li>  extras: vision_pose
+<a href="https://github.com/mavlink/mavros/issues/71">#71</a>: Use TF2
+listener. Also
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>.</li>
+<li>  launch: Update configs.</li>
+<li>  extras: viz <a href="https://github.com/mavlink/mavros/issues/336">#336</a>:
+convert plugin to node.</li>
+<li>  extras: vision_speed
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>: use eigen
+based transform</li>
+<li>  extras: vibration: Use UAS::synchronized_header()</li>
+<li>  extras: px4flow
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>:
+change transform_frame()</li>
+<li>  extras: mocap <a href="https://github.com/mavlink/mavros/issues/319">#319</a>:
+use eigen based transform</li>
+<li>  Camera IMU synchronisation support added</li>
+<li>  Contributors: Mohammed Kabir, TSC21, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-12-0-2015-07-01">0.12.0 (2015-07-01)</h2>
+
+<ul>
+<li>  coverity: make them happy</li>
+<li>  frame_conversions: use inline functions to identify direction of
+conversion</li>
+<li>  changed frame conversion func name; add 3x3 cov matrix frame
+conversion; general doxygen comment cleanup</li>
+<li>  frame_conversions: added frame_conversion specific lib file;
+applied correct frame conversion between ENU&lt;-&gt;NED</li>
+<li>  vibration_plugin: changed vibration to Vector3</li>
+<li>  vibration_plugin: msg reformulation</li>
+<li>  vibration_plugin: first commit</li>
+<li>  Changes some frames from world to body conversion for NED to ENU.</li>
+<li>  mavros <a href="https://github.com/vooon/mavros/issues/302">#302</a>: fix
+style</li>
+<li>  mavros fix <a href="https://github.com/vooon/mavros/issues/301">#301</a>: move
+sensor orientation util to UAS</li>
+<li>  distance_sensor: typo; style fixe</li>
+<li>  sensor_orientation: corrected rotation set sequence</li>
+<li>  sensor_orientation: updated orientation enum; updated data type</li>
+<li>  sensor_orientation: removed unecessary sum on setting rotation</li>
+<li>  sensor_orientation: added sensor orientation matching helper func</li>
+<li>  distance_sensor: minor correction</li>
+<li>  distance_sensor: sensor position cond changed</li>
+<li>  distance_sensor: tweak param check; cond routines</li>
+<li>  distance_sensor: removed unnecessary comment line</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: define sensor position through param config</li>
+<li>  distance_sensor: minor comment identation correction</li>
+<li>  distance_sensor: tf::Transform creation optional</li>
+<li>  distance_sensor: add tf_broadcaster between 'fcu' and the distance
+sensor</li>
+<li>  distance_sensor: remove commented code</li>
+<li>  distance_sensor: removed dbg msg</li>
+<li>  distance_sensor: cov condition defined</li>
+<li>  distance_sensor: covariance condition changed</li>
+<li>  distance_sensor: conditional state change</li>
+<li>  distance_sensor: covariance condition set - correction</li>
+<li>  distance_sensor: covariance condition set</li>
+<li>  distance_sensor: ctor list update (corrected)</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: small correction</li>
+<li>  distance_sensor: uncrustify</li>
+<li>  distance_sensor: array limiting; cast correction; other minor
+correc</li>
+<li>  distance_sensor: travis build correction</li>
+<li>  distance_sensor: uncrustify distance_sensor.cpp</li>
+<li>  distance_sensor: small corrections on variable definitions, method
+calls</li>
+<li>  distance_sensor: small enhancements</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: uncrustify</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: fix
+travis build.</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: implement
+message handling</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: parse
+mapping configuration.</li>
+<li>  distance_sensor: remove DistanceSensor.msg from CMakeList</li>
+<li>  distance_sensor: removed DistanceSensor.msg</li>
+<li>  distance_sensor: -&gt; use std Range.msg -&gt; published frame_id
+in topics are dinamic - depend on type and id of the sensor</li>
+<li>  distance_sensor: comment correction</li>
+<li>  distance_sensor: minor correction</li>
+<li>  distance_sensor: minor fixes that include use Range.msg to Laser
+data</li>
+<li>  distance_sensor: add plugin file</li>
+<li>  distance_sensor plugin: first commit!</li>
+<li>  Contributors: TSC21, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-2-2015-04-26">0.11.2 (2015-04-26)</h2>
+
+<ul>
+<li>  gcs bridge fix <a href="https://github.com/vooon/mavros/issues/277">#277</a>:
+add link diagnostics</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-1-2015-04-06">0.11.1 (2015-04-06)</h2>
+
+<ul>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+done! Fix <a href="https://github.com/vooon/mavros/issues/129">#129</a>.</li>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+cache file attrs</li>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+initial import</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-0-2015-03-24">0.11.0 (2015-03-24)</h2>
+
+<ul>
+<li>  extras: vision_pose
+<a href="https://github.com/vooon/mavros/issues/247">#247</a>: rename topic</li>
+<li>  extras: launch <a href="https://github.com/vooon/mavros/issues/257">#257</a>:
+use white list for px4flow. Also updates config
+<a href="https://github.com/vooon/mavros/issues/211">#211</a>.</li>
+<li>  uncrustify and fix
+<a href="https://github.com/vooon/mavros/issues/207">#207</a>
+</li>
+<li>  uncrustify extras</li>
+<li>  package: update lic</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: update
+mavros_extras headers</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>: move
+diag updater to UAS.</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>:
+remove global private node handle. Now all plugins should define
+their local node handle (see dummy.cpp). Also partially does
+<a href="https://github.com/vooon/mavros/issues/233">#233</a> (unmerge
+setpoint topic namespace).</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>:
+remove get_name()</li>
+<li>  Add BSD license option
+<a href="https://github.com/vooon/mavros/issues/220">#220</a>
+</li>
+<li>  uncrustify: mocap plugin</li>
+<li>  Switched from mavlink VICON_POSITION_ESTIMATE to ATT_POS_MOCAP.</li>
+<li>  Contributors: Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-2-2015-02-25">0.10.2 (2015-02-25)</h2>
+
+<ul>
+<li>  launch: Fix vim modelines
+<a href="https://github.com/vooon/mavros/issues/213">#213</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-1-2015-02-02">0.10.1 (2015-02-02)</h2>
+
+<ul>
+<li>  Fix @mhkabir name in contributors.</li>
+<li>  Updated mavros_extra README to explain the vision_estimate plugin
+should be used for the mocap data currently.</li>
+<li>  Update px4flow.cpp</li>
+<li>  plguin: px4flow: Remove all ref to old message</li>
+<li>  Merge remote-tracking branch 'upstream/master' into optflow_rad
+Conflicts: mavros_extras/CMakeLists.txt</li>
+<li>  Update</li>
+<li>  Clean up</li>
+<li>  New interface commit</li>
+<li>  Add new interface. Raw message only for now. Removed the tx
+functionality as it doesn't make much sense.</li>
+<li>  Contributors: Mohammed Kabir, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-0-2015-01-24">0.10.0 (2015-01-24)</h2>
 
 <ul>
 <li>  mocap_pose_estimate: Switched from pose to poseStamped.</li>
 <li>  Contributors: Tony Baltovski</li>
 </ul>
-<h2 id="0.9.4-(2015-01-06)">0.9.4 (2015-01-06)</h2>
 
-<h2 id="0.9.3-(2014-12-30)">0.9.3 (2014-12-30)</h2>
+<h2 id="0-9-4-2015-01-06">0.9.4 (2015-01-06)</h2>
+
+<h2 id="0-9-3-2014-12-30">0.9.3 (2014-12-30)</h2>
 
 <ul>
 <li>  Initiliser fix</li>
@@ -597,22 +894,24 @@
 <li>  plugin: visualisation</li>
 <li>  plugin: visualization minor patch</li>
 <li>  plugin: visualization finshed</li>
-<li>  Contributors: M.H.Kabir</li>
+<li>  Contributors: Mohammed Kabir</li>
 </ul>
-<h2 id="0.9.2-(2014-11-04)">0.9.2 (2014-11-04)</h2>
 
-<h2 id="0.9.1-(2014-11-03)">0.9.1 (2014-11-03)</h2>
+<h2 id="0-9-2-2014-11-04">0.9.2 (2014-11-04)</h2>
 
-<h2 id="0.9.0-(2014-11-03)">0.9.0 (2014-11-03)</h2>
+<h2 id="0-9-1-2014-11-03">0.9.1 (2014-11-03)</h2>
 
-<h2 id="0.8.2-(2014-11-03)">0.8.2 (2014-11-03)</h2>
+<h2 id="0-9-0-2014-11-03">0.9.0 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
 
 <ul>
 <li>  REP140: update package.xml format. Hydro don't accept this format
 correctly, but after split i can update.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.1-(2014-11-02)">0.8.1 (2014-11-02)</h2>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
 
 <ul>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
@@ -620,7 +919,8 @@ headers used in mavros. Add readme.</li>
 <li>  Update repo links. Package moved to mavlink organization.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.0-(2014-09-22)">0.8.0 (2014-09-22)</h2>
+
+<h2 id="0-8-0-2014-09-22">0.8.0 (2014-09-22)</h2>
 
 <ul>
 <li>  Revert "Update package.xml format to REP140 (2)." This reverts
@@ -655,7 +955,8 @@ Implemented only RC override of RPYT channels. Issue
 <li>  node: Catch URL open exception. Also update connection pointer type.</li>
 <li>  Contributors: Nuno Marques, Tony Baltovski, Vladimir Ermakov</li>
 </ul>
-<h2 id="0.7.1-(2014-08-25)">0.7.1 (2014-08-25)</h2>
+
+<h2 id="0-7-1-2014-08-25">0.7.1 (2014-08-25)</h2>
 
 <ul>
 <li>  plugins: Change UAS FCU link name. Reduce smart pointer count, that
@@ -675,13 +976,14 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
 <li>  Update readme</li>
 <li>  Contributors: Nuno Marques, Vladimir Ermakov</li>
 </ul>
-<h2 id="0.7.0-(2014-08-12)">0.7.0 (2014-08-12)</h2>
+
+<h2 id="0-7-0-2014-08-12">0.7.0 (2014-08-12)</h2>
 
 <ul>
 <li>  move exras to subdirectory,
 <a href="https://github.com/vooon/mavros/issues/101">#101</a>
 </li>
-<li>  Contributors: Vladimir Ermakov, M.H.Kabir</li>
+<li>  Contributors: Vladimir Ermakov, Mohammed Kabir</li>
 </ul>
 </div></body></html>
 
@@ -692,13 +994,14 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
     </div>
   </div>
 
-  <div class="tab-pane" id="indigo-tutorials">
+  <div class="tab-pane" id="kinetic-tutorials">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/mavros_extras/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/mavros_extras/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -710,58 +1013,372 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
-  <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#kinetic-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#kinetic">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros#kinetic">mavros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#kinetic">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#kinetic">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros_msgs#kinetic">mavros_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#kinetic">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#kinetic">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/visualization_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/visualization_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/visualization_msgs#kinetic">visualization_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#kinetic">urdf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#kinetic">tf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#indigo">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#indigo">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mavlink#indigo">mavlink</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mavros#indigo">mavros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#indigo">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/visualization_msgs#indigo">visualization_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/test_mavros/github-mavlink-mavros#kinetic">test_mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/test_mavros/github-mavlink-mavros#kinetic-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="tab-pane" id="indigo-assets">
+  <div class="tab-pane" id="kinetic-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/teleop.launch" target="_blank">launch/teleop.launch</a></li>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4_image.launch" target="_blank">launch/px4_image.launch</a></li>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4flow.launch" target="_blank">launch/px4flow.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/teleop.launch" target="_blank">launch/teleop.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>teleop_args</strong> <em>&#91;default: -att&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4flow.launch" target="_blank">launch/px4flow.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:921600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 81&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 50&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4_image.launch" target="_blank">launch/px4_image.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:57600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: udp://@&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -770,11 +1387,9 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/msg/OpticalFlowRad.msg" target="_blank">msg/OpticalFlowRad.msg</a></li>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -783,9 +1398,9 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -794,71 +1409,203 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras//mavros_plugins.xml" target="_blank">mavros</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
 
-  <div class="distro distro-hydro">
+  <div class="distro distro-jade">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/mavros_extras">mavros_extras</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libmavconn/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_msgs/github-mavlink-mavros">
+
+mavros_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> test_mavros
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/mavros_extras"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-mavlink-mavros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/mavros_extras/github-mavlink-mavros" data="github-mavlink-mavros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-mavlink-mavros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="jade-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            Extra nodes and plugins for mavros
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -871,7 +1618,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.8.5</td>
+                <td>0.18.2</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -897,7 +1644,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -913,13 +1660,13 @@ $(function() {
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">hydro-devel</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-11-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
         </span>
       </td>
     </tr>
@@ -928,9 +1675,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-primary">
+            <span class="label label-success">
           
-          MAINTAINED
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -947,8 +1694,28 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Extra nodes and plugins for 
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/mavros_extras">Website</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -971,6 +1738,1212 @@ $(function() {
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="mavros-extras">mavros extras</h1>
+
+<p>Some extra plugins and nodes for <a href="https://github.com/mavlink/mavros">mavros</a>.</p>
+
+<h2 id="px4flow">px4flow</h2>
+
+<p>Plugin for mavros. Publish <code>OPTICAL_FLOW_RAD</code> data.</p>
+
+<h2 id="image_pub">image_pub</h2>
+
+<p>Plugin for mavros, publish images from mavlink device.</p>
+
+<h2 id="gcs_image_bridge">gcs_image_bridge</h2>
+
+<p>Variation of <code>gcs_bridge</code> that additionally sends image stream to GCS.</p>
+
+<h2 id="mocap_pose_estimate">mocap_pose_estimate</h2>
+
+<p>Plugin for mavros, to send mocap data to FCU.  Currently, not used by the FCU.
+Data can be send via <code>vision_position</code> plugin.</p>
+
+<h2 id="px-ros-pkg-replacement">px-ros-pkg replacement</h2>
+
+<p>Use <code>roslaunch mavros_extras px4flow.launch</code> for that.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-mavros_extras">Changelog for package mavros_extras</h1>
+
+<h2 id="0-18-2-2016-06-30">0.18.2 (2016-06-30)</h2>
+
+<h2 id="0-18-1-2016-06-24">0.18.1 (2016-06-24)</h2>
+
+<h2 id="0-18-0-2016-06-23">0.18.0 (2016-06-23)</h2>
+
+<ul>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/560">#560</a>: remove
+cv_bridge and image_transport deps</li>
+<li>  extras: Update UAS</li>
+<li>  extras:vision_speed_estimate: Update API</li>
+<li>  extras:vision_pose_estimate: Update API</li>
+<li>  extras:px4flow: Update API</li>
+<li>  extras:mocap_pose_estimate: Update API</li>
+<li>  extras:distance_sensor: Update API</li>
+<li>  extras:cam_imu_sync: Update API</li>
+<li>  extras: Automatic update by sed</li>
+<li>  extras: prepare to update</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/560">#560</a>: Remove
+image streaming over mavlink support. Use external RTP
+streamer, e.g. <a href="https://github.com/ProjectArtemis/gst_video_server">https://github.com/ProjectArtemis/gst_video_server</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-3-2016-05-20">0.17.3 (2016-05-20)</h2>
+
+<h2 id="0-17-2-2016-04-29">0.17.2 (2016-04-29)</h2>
+
+<h2 id="0-17-1-2016-03-28">0.17.1 (2016-03-28)</h2>
+
+<ul>
+<li>  ran uncrustify</li>
+<li>  fixed typos</li>
+<li>  use CUBE_LIST for faster rendering</li>
+<li>  limit track size</li>
+<li>  use local variable</li>
+<li>  fixed indentation</li>
+<li>  added rc modes</li>
+<li>  moved rc to rc_override_control()</li>
+<li>  replaced tabulations with spaces (4)</li>
+<li>  introducing RC modes</li>
+<li>  fixed</li>
+<li>  quality added</li>
+<li>  added visualization for local setpoints</li>
+<li>  Contributors: Joey Gong, francois</li>
+</ul>
+
+<h2 id="0-17-0-2016-02-09">0.17.0 (2016-02-09)</h2>
+
+<ul>
+<li>  rebased with master</li>
+<li>  ran uncrustify</li>
+<li>  removed duplicate include</li>
+<li>  use MarkerArray for vehicle model</li>
+<li>  Updated frame transformations and added odom publisher to local
+position plugin</li>
+<li>  Contributors: Eddy, francois</li>
+</ul>
+
+<h2 id="0-16-6-2016-02-04">0.16.6 (2016-02-04)</h2>
+
+<ul>
+<li>  extras: uncrustify</li>
+<li>  added tf</li>
+<li>  comments</li>
+<li>  configurable vehicle model</li>
+<li>  Contributors: Vladimir Ermakov, francois</li>
+</ul>
+
+<h2 id="0-16-5-2016-01-11">0.16.5 (2016-01-11)</h2>
+
+<h2 id="0-16-4-2015-12-14">0.16.4 (2015-12-14)</h2>
+
+<h2 id="0-16-3-2015-11-19">0.16.3 (2015-11-19)</h2>
+
+<h2 id="0-16-2-2015-11-17">0.16.2 (2015-11-17)</h2>
+
+<h2 id="0-16-1-2015-11-13">0.16.1 (2015-11-13)</h2>
+
+<h2 id="0-16-0-2015-11-09">0.16.0 (2015-11-09)</h2>
+
+<ul>
+<li>  gcs_bridge <a href="https://github.com/mavlink/mavros/issues/394">#394</a>:
+enable both UDPROS and TCPROS transports</li>
+<li>  extras fix <a href="https://github.com/mavlink/mavros/issues/392">#392</a>:
+add additional subscription for PoseWithCovarianceStamped</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-15-0-2015-09-17">0.15.0 (2015-09-17)</h2>
+
+<ul>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>: fix
+header stamp in joint_states</li>
+<li>  extras fix <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+SSP node done.</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+subscriber works, node almost done</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>: load
+URDF</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+initial import of servo_status_publisher</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-14-2-2015-08-20">0.14.2 (2015-08-20)</h2>
+
+<ul>
+<li>  extras: fix catkin lint warnings</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-14-1-2015-08-19">0.14.1 (2015-08-19)</h2>
+
+<h2 id="0-14-0-2015-08-17">0.14.0 (2015-08-17)</h2>
+
+<ul>
+<li>  extras: gcs node: replace deprecated copy function</li>
+<li>  extras: scripts: use API from mavros module</li>
+<li>  package: remove not exist dependency</li>
+<li>  extras: vibration: Fix message include</li>
+<li>  extras: px4flow: Fix message include</li>
+<li>  extras: cam_imu_sync: Fix message include</li>
+<li>  extras: update package description</li>
+<li>  msgs: deprecate mavros::Mavlink and copy utils.</li>
+<li>  msgs <a href="https://github.com/mavlink/mavros/issues/354">#354</a>: move all
+messages to mavros_msgs package.</li>
+<li>  opencv 3.0/2.4 header compatibility</li>
+<li>  fix orientation empty error</li>
+<li>  Contributors: Vladimir Ermakov, andre-nguyen, v01d</li>
+</ul>
+
+<h2 id="0-13-1-2015-08-05">0.13.1 (2015-08-05)</h2>
+
+<h2 id="0-13-0-2015-08-01">0.13.0 (2015-08-01)</h2>
+
+<ul>
+<li>  extras: mocap fix
+<a href="https://github.com/mavlink/mavros/issues/352">#352</a>: use new
+helper for quaternion.</li>
+<li>  Merge pull request
+<a href="https://github.com/mavlink/mavros/issues/312">#312</a> from
+mhkabir/cam_imu_sync Camera IMU synchronisation support added</li>
+<li>  distance_sensor
+<a href="https://github.com/mavlink/mavros/issues/342">#342</a>: correct
+orientation parameter handling.</li>
+<li>  distance_sensor: restructure orientation matching and verification</li>
+<li>  lib <a href="https://github.com/mavlink/mavros/issues/319">#319</a>: Return
+quaternion from UAS::sensor_matching()</li>
+<li>  launch fix <a href="https://github.com/mavlink/mavros/issues/340">#340</a>:
+update default component id of PX4.</li>
+<li>  extras: distance_sensor
+<a href="https://github.com/mavlink/mavros/issues/71">#71</a>: Purt to TF2.</li>
+<li>  plugin: Use UAS::syncronized_header() for reduce LOC.</li>
+<li>  extras: vision_pose
+<a href="https://github.com/mavlink/mavros/issues/71">#71</a>: Use TF2
+listener. Also
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>.</li>
+<li>  launch: Update configs.</li>
+<li>  extras: viz <a href="https://github.com/mavlink/mavros/issues/336">#336</a>:
+convert plugin to node.</li>
+<li>  extras: vision_speed
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>: use eigen
+based transform</li>
+<li>  extras: vibration: Use UAS::synchronized_header()</li>
+<li>  extras: px4flow
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>:
+change transform_frame()</li>
+<li>  extras: mocap <a href="https://github.com/mavlink/mavros/issues/319">#319</a>:
+use eigen based transform</li>
+<li>  Camera IMU synchronisation support added</li>
+<li>  Contributors: Mohammed Kabir, TSC21, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-12-0-2015-07-01">0.12.0 (2015-07-01)</h2>
+
+<ul>
+<li>  coverity: make them happy</li>
+<li>  frame_conversions: use inline functions to identify direction of
+conversion</li>
+<li>  changed frame conversion func name; add 3x3 cov matrix frame
+conversion; general doxygen comment cleanup</li>
+<li>  frame_conversions: added frame_conversion specific lib file;
+applied correct frame conversion between ENU&lt;-&gt;NED</li>
+<li>  vibration_plugin: changed vibration to Vector3</li>
+<li>  vibration_plugin: msg reformulation</li>
+<li>  vibration_plugin: first commit</li>
+<li>  Changes some frames from world to body conversion for NED to ENU.</li>
+<li>  mavros <a href="https://github.com/vooon/mavros/issues/302">#302</a>: fix
+style</li>
+<li>  mavros fix <a href="https://github.com/vooon/mavros/issues/301">#301</a>: move
+sensor orientation util to UAS</li>
+<li>  distance_sensor: typo; style fixe</li>
+<li>  sensor_orientation: corrected rotation set sequence</li>
+<li>  sensor_orientation: updated orientation enum; updated data type</li>
+<li>  sensor_orientation: removed unecessary sum on setting rotation</li>
+<li>  sensor_orientation: added sensor orientation matching helper func</li>
+<li>  distance_sensor: minor correction</li>
+<li>  distance_sensor: sensor position cond changed</li>
+<li>  distance_sensor: tweak param check; cond routines</li>
+<li>  distance_sensor: removed unnecessary comment line</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: define sensor position through param config</li>
+<li>  distance_sensor: minor comment identation correction</li>
+<li>  distance_sensor: tf::Transform creation optional</li>
+<li>  distance_sensor: add tf_broadcaster between 'fcu' and the distance
+sensor</li>
+<li>  distance_sensor: remove commented code</li>
+<li>  distance_sensor: removed dbg msg</li>
+<li>  distance_sensor: cov condition defined</li>
+<li>  distance_sensor: covariance condition changed</li>
+<li>  distance_sensor: conditional state change</li>
+<li>  distance_sensor: covariance condition set - correction</li>
+<li>  distance_sensor: covariance condition set</li>
+<li>  distance_sensor: ctor list update (corrected)</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: small correction</li>
+<li>  distance_sensor: uncrustify</li>
+<li>  distance_sensor: array limiting; cast correction; other minor
+correc</li>
+<li>  distance_sensor: travis build correction</li>
+<li>  distance_sensor: uncrustify distance_sensor.cpp</li>
+<li>  distance_sensor: small corrections on variable definitions, method
+calls</li>
+<li>  distance_sensor: small enhancements</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: uncrustify</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: fix
+travis build.</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: implement
+message handling</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: parse
+mapping configuration.</li>
+<li>  distance_sensor: remove DistanceSensor.msg from CMakeList</li>
+<li>  distance_sensor: removed DistanceSensor.msg</li>
+<li>  distance_sensor: -&gt; use std Range.msg -&gt; published frame_id
+in topics are dinamic - depend on type and id of the sensor</li>
+<li>  distance_sensor: comment correction</li>
+<li>  distance_sensor: minor correction</li>
+<li>  distance_sensor: minor fixes that include use Range.msg to Laser
+data</li>
+<li>  distance_sensor: add plugin file</li>
+<li>  distance_sensor plugin: first commit!</li>
+<li>  Contributors: TSC21, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-2-2015-04-26">0.11.2 (2015-04-26)</h2>
+
+<ul>
+<li>  gcs bridge fix <a href="https://github.com/vooon/mavros/issues/277">#277</a>:
+add link diagnostics</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-1-2015-04-06">0.11.1 (2015-04-06)</h2>
+
+<ul>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+done! Fix <a href="https://github.com/vooon/mavros/issues/129">#129</a>.</li>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+cache file attrs</li>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+initial import</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-0-2015-03-24">0.11.0 (2015-03-24)</h2>
+
+<ul>
+<li>  extras: vision_pose
+<a href="https://github.com/vooon/mavros/issues/247">#247</a>: rename topic</li>
+<li>  extras: launch <a href="https://github.com/vooon/mavros/issues/257">#257</a>:
+use white list for px4flow. Also updates config
+<a href="https://github.com/vooon/mavros/issues/211">#211</a>.</li>
+<li>  uncrustify and fix
+<a href="https://github.com/vooon/mavros/issues/207">#207</a>
+</li>
+<li>  uncrustify extras</li>
+<li>  package: update lic</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: update
+mavros_extras headers</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>: move
+diag updater to UAS.</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>:
+remove global private node handle. Now all plugins should define
+their local node handle (see dummy.cpp). Also partially does
+<a href="https://github.com/vooon/mavros/issues/233">#233</a> (unmerge
+setpoint topic namespace).</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>:
+remove get_name()</li>
+<li>  Add BSD license option
+<a href="https://github.com/vooon/mavros/issues/220">#220</a>
+</li>
+<li>  uncrustify: mocap plugin</li>
+<li>  Switched from mavlink VICON_POSITION_ESTIMATE to ATT_POS_MOCAP.</li>
+<li>  Contributors: Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-2-2015-02-25">0.10.2 (2015-02-25)</h2>
+
+<ul>
+<li>  launch: Fix vim modelines
+<a href="https://github.com/vooon/mavros/issues/213">#213</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-1-2015-02-02">0.10.1 (2015-02-02)</h2>
+
+<ul>
+<li>  Fix @mhkabir name in contributors.</li>
+<li>  Updated mavros_extra README to explain the vision_estimate plugin
+should be used for the mocap data currently.</li>
+<li>  Update px4flow.cpp</li>
+<li>  plguin: px4flow: Remove all ref to old message</li>
+<li>  Merge remote-tracking branch 'upstream/master' into optflow_rad
+Conflicts: mavros_extras/CMakeLists.txt</li>
+<li>  Update</li>
+<li>  Clean up</li>
+<li>  New interface commit</li>
+<li>  Add new interface. Raw message only for now. Removed the tx
+functionality as it doesn't make much sense.</li>
+<li>  Contributors: Mohammed Kabir, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-0-2015-01-24">0.10.0 (2015-01-24)</h2>
+
+<ul>
+<li>  mocap_pose_estimate: Switched from pose to poseStamped.</li>
+<li>  Contributors: Tony Baltovski</li>
+</ul>
+
+<h2 id="0-9-4-2015-01-06">0.9.4 (2015-01-06)</h2>
+
+<h2 id="0-9-3-2014-12-30">0.9.3 (2014-12-30)</h2>
+
+<ul>
+<li>  Initiliser fix</li>
+<li>  plugin: visualisation - Fixes CI build</li>
+<li>  plugin: visualisation</li>
+<li>  plugin: visualization minor patch</li>
+<li>  plugin: visualization finshed</li>
+<li>  Contributors: Mohammed Kabir</li>
+</ul>
+
+<h2 id="0-9-2-2014-11-04">0.9.2 (2014-11-04)</h2>
+
+<h2 id="0-9-1-2014-11-03">0.9.1 (2014-11-03)</h2>
+
+<h2 id="0-9-0-2014-11-03">0.9.0 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
+
+<ul>
+<li>  REP140: update package.xml format. Hydro don't accept this format
+correctly, but after split i can update.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
+
+<ul>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
+headers used in mavros. Add readme.</li>
+<li>  Update repo links. Package moved to mavlink organization.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-8-0-2014-09-22">0.8.0 (2014-09-22)</h2>
+
+<ul>
+<li>  Revert "Update package.xml format to REP140 (2)." This reverts
+commit 81286eb84090a95759591cfab89dd9718ff35b7e. ROS Hydro don't
+fully support REP140: rospack can't find plugin descriptions. Fix
+<a href="https://github.com/vooon/mavros/issues/151">#151</a>.</li>
+<li>  Added arming/disarming for att mode.</li>
+<li>  Added arming and disarming via mavteleop.</li>
+<li>  extras: mocap: Fix param/topic namespace. Fix
+<a href="https://github.com/vooon/mavros/issues/150">#150</a>.</li>
+<li>  extras: launch: Use includes. Fix
+<a href="https://github.com/vooon/mavros/issues/144">#144</a>.</li>
+<li>  Update package.xml format to REP140 (2). Fix
+<a href="https://github.com/vooon/mavros/issues/104">#104</a>.</li>
+<li>  extras: launch: Fix typos.</li>
+<li>  extras: launch: Add teleop launch script.</li>
+<li>  extras: mavteleop: Dirty implementation of position control mode.
+Issue <a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  extras: mavteleop: Implement velocity setpoint control. Issue
+<a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  extras: mavteleop: Implement attitude control mode. Issue
+<a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  extras: Use cmake modules. Issue
+<a href="https://github.com/vooon/mavros/issues/139">#139</a>.</li>
+<li>  Update doxygen documentation. Add split lines in UAS, and make
+UAS.connection atomic. Add rosdoc configuration for mavros_extras.</li>
+<li>  scripts: mavsetp: corrected msg API; mavteleop: added prefix to rc
+override</li>
+<li>  scripts: Initial import mavteleop Now it's just proof of concept.
+Implemented only RC override of RPYT channels. Issue
+<a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  node: Catch URL open exception. Also update connection pointer type.</li>
+<li>  Contributors: Nuno Marques, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-7-1-2014-08-25">0.7.1 (2014-08-25)</h2>
+
+<ul>
+<li>  plugins: Change UAS FCU link name. Reduce smart pointer count, that
+hold fcu link object.</li>
+<li>  Plugins: finish moving plugins</li>
+<li>  Closes <a href="https://github.com/vooon/mavros/issues/122">#122</a>, closes
+<a href="https://github.com/vooon/mavros/issues/123">#123</a>; plugins: move
+mocap &amp; vision plugins to extras, change vision plugins name</li>
+<li>  launch: Add example launch for
+<a href="https://github.com/vooon/mavros/issues/103">#103</a>.</li>
+<li>  extras: image_pub: Update plugin API.</li>
+<li>  extras: px4flow: Update plugin API.</li>
+<li>  plugins: disable most of plugins</li>
+<li>  extras: init ctor</li>
+<li>  extras: Fix package URLs</li>
+<li>  test: temporary travis hack (manually download latest mavlink deb)</li>
+<li>  Update readme</li>
+<li>  Contributors: Nuno Marques, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-7-0-2014-08-12">0.7.0 (2014-08-12)</h2>
+
+<ul>
+<li>  move exras to subdirectory,
+<a href="https://github.com/vooon/mavros/issues/101">#101</a>
+</li>
+<li>  Contributors: Vladimir Ermakov, Mohammed Kabir</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/mavros_extras/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#jade-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#jade">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros#jade">mavros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#jade">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#jade">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros_msgs#jade">mavros_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#jade">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#jade">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/visualization_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/visualization_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/visualization_msgs#jade">visualization_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#jade">urdf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#jade">tf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/test_mavros/github-mavlink-mavros#jade">test_mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/test_mavros/github-mavlink-mavros#jade-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/teleop.launch" target="_blank">launch/teleop.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>teleop_args</strong> <em>&#91;default: -att&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4flow.launch" target="_blank">launch/px4flow.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:921600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 81&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 50&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4_image.launch" target="_blank">launch/px4_image.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:57600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: udp://@&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras//mavros_plugins.xml" target="_blank">mavros</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/mavros_extras">mavros_extras</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libmavconn/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_msgs/github-mavlink-mavros">
+
+mavros_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> test_mavros
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/mavros_extras"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-mavlink-mavros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/mavros_extras/github-mavlink-mavros" data="github-mavlink-mavros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-mavlink-mavros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <span class="label label-default">uav</span> <span class="label label-default">mav</span> <span class="label label-default">mavlink</span> <span class="label label-default">plugin</span> <span class="label label-default">apm</span> <span class="label label-default">px4</span> 
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.18.2</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>GPLv3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/mavlink/mavros.git">https://github.com/mavlink/mavros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Extra nodes and plugins for 
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -982,6 +2955,1254 @@ $(function() {
                   <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
                 
                   <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="mavros-extras">mavros extras</h1>
+
+<p>Some extra plugins and nodes for <a href="https://github.com/mavlink/mavros">mavros</a>.</p>
+
+<h2 id="px4flow">px4flow</h2>
+
+<p>Plugin for mavros. Publish <code>OPTICAL_FLOW_RAD</code> data.</p>
+
+<h2 id="image_pub">image_pub</h2>
+
+<p>Plugin for mavros, publish images from mavlink device.</p>
+
+<h2 id="gcs_image_bridge">gcs_image_bridge</h2>
+
+<p>Variation of <code>gcs_bridge</code> that additionally sends image stream to GCS.</p>
+
+<h2 id="mocap_pose_estimate">mocap_pose_estimate</h2>
+
+<p>Plugin for mavros, to send mocap data to FCU.  Currently, not used by the FCU.
+Data can be send via <code>vision_position</code> plugin.</p>
+
+<h2 id="px-ros-pkg-replacement">px-ros-pkg replacement</h2>
+
+<p>Use <code>roslaunch mavros_extras px4flow.launch</code> for that.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-mavros_extras">Changelog for package mavros_extras</h1>
+
+<h2 id="0-18-2-2016-06-30">0.18.2 (2016-06-30)</h2>
+
+<h2 id="0-18-1-2016-06-24">0.18.1 (2016-06-24)</h2>
+
+<h2 id="0-18-0-2016-06-23">0.18.0 (2016-06-23)</h2>
+
+<ul>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/560">#560</a>: remove
+cv_bridge and image_transport deps</li>
+<li>  extras: Update UAS</li>
+<li>  extras:vision_speed_estimate: Update API</li>
+<li>  extras:vision_pose_estimate: Update API</li>
+<li>  extras:px4flow: Update API</li>
+<li>  extras:mocap_pose_estimate: Update API</li>
+<li>  extras:distance_sensor: Update API</li>
+<li>  extras:cam_imu_sync: Update API</li>
+<li>  extras: Automatic update by sed</li>
+<li>  extras: prepare to update</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/560">#560</a>: Remove
+image streaming over mavlink support. Use external RTP
+streamer, e.g. <a href="https://github.com/ProjectArtemis/gst_video_server">https://github.com/ProjectArtemis/gst_video_server</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-3-2016-05-20">0.17.3 (2016-05-20)</h2>
+
+<h2 id="0-17-2-2016-04-29">0.17.2 (2016-04-29)</h2>
+
+<h2 id="0-17-1-2016-03-28">0.17.1 (2016-03-28)</h2>
+
+<ul>
+<li>  ran uncrustify</li>
+<li>  fixed typos</li>
+<li>  use CUBE_LIST for faster rendering</li>
+<li>  limit track size</li>
+<li>  use local variable</li>
+<li>  fixed indentation</li>
+<li>  added rc modes</li>
+<li>  moved rc to rc_override_control()</li>
+<li>  replaced tabulations with spaces (4)</li>
+<li>  introducing RC modes</li>
+<li>  fixed</li>
+<li>  quality added</li>
+<li>  added visualization for local setpoints</li>
+<li>  Contributors: Joey Gong, francois</li>
+</ul>
+
+<h2 id="0-17-0-2016-02-09">0.17.0 (2016-02-09)</h2>
+
+<ul>
+<li>  rebased with master</li>
+<li>  ran uncrustify</li>
+<li>  removed duplicate include</li>
+<li>  use MarkerArray for vehicle model</li>
+<li>  Updated frame transformations and added odom publisher to local
+position plugin</li>
+<li>  Contributors: Eddy, francois</li>
+</ul>
+
+<h2 id="0-16-6-2016-02-04">0.16.6 (2016-02-04)</h2>
+
+<ul>
+<li>  extras: uncrustify</li>
+<li>  added tf</li>
+<li>  comments</li>
+<li>  configurable vehicle model</li>
+<li>  Contributors: Vladimir Ermakov, francois</li>
+</ul>
+
+<h2 id="0-16-5-2016-01-11">0.16.5 (2016-01-11)</h2>
+
+<h2 id="0-16-4-2015-12-14">0.16.4 (2015-12-14)</h2>
+
+<h2 id="0-16-3-2015-11-19">0.16.3 (2015-11-19)</h2>
+
+<h2 id="0-16-2-2015-11-17">0.16.2 (2015-11-17)</h2>
+
+<h2 id="0-16-1-2015-11-13">0.16.1 (2015-11-13)</h2>
+
+<h2 id="0-16-0-2015-11-09">0.16.0 (2015-11-09)</h2>
+
+<ul>
+<li>  gcs_bridge <a href="https://github.com/mavlink/mavros/issues/394">#394</a>:
+enable both UDPROS and TCPROS transports</li>
+<li>  extras fix <a href="https://github.com/mavlink/mavros/issues/392">#392</a>:
+add additional subscription for PoseWithCovarianceStamped</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-15-0-2015-09-17">0.15.0 (2015-09-17)</h2>
+
+<ul>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>: fix
+header stamp in joint_states</li>
+<li>  extras fix <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+SSP node done.</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+subscriber works, node almost done</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>: load
+URDF</li>
+<li>  extras <a href="https://github.com/mavlink/mavros/issues/387">#387</a>:
+initial import of servo_status_publisher</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-14-2-2015-08-20">0.14.2 (2015-08-20)</h2>
+
+<ul>
+<li>  extras: fix catkin lint warnings</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-14-1-2015-08-19">0.14.1 (2015-08-19)</h2>
+
+<h2 id="0-14-0-2015-08-17">0.14.0 (2015-08-17)</h2>
+
+<ul>
+<li>  extras: gcs node: replace deprecated copy function</li>
+<li>  extras: scripts: use API from mavros module</li>
+<li>  package: remove not exist dependency</li>
+<li>  extras: vibration: Fix message include</li>
+<li>  extras: px4flow: Fix message include</li>
+<li>  extras: cam_imu_sync: Fix message include</li>
+<li>  extras: update package description</li>
+<li>  msgs: deprecate mavros::Mavlink and copy utils.</li>
+<li>  msgs <a href="https://github.com/mavlink/mavros/issues/354">#354</a>: move all
+messages to mavros_msgs package.</li>
+<li>  opencv 3.0/2.4 header compatibility</li>
+<li>  fix orientation empty error</li>
+<li>  Contributors: Vladimir Ermakov, andre-nguyen, v01d</li>
+</ul>
+
+<h2 id="0-13-1-2015-08-05">0.13.1 (2015-08-05)</h2>
+
+<h2 id="0-13-0-2015-08-01">0.13.0 (2015-08-01)</h2>
+
+<ul>
+<li>  extras: mocap fix
+<a href="https://github.com/mavlink/mavros/issues/352">#352</a>: use new
+helper for quaternion.</li>
+<li>  Merge pull request
+<a href="https://github.com/mavlink/mavros/issues/312">#312</a> from
+mhkabir/cam_imu_sync Camera IMU synchronisation support added</li>
+<li>  distance_sensor
+<a href="https://github.com/mavlink/mavros/issues/342">#342</a>: correct
+orientation parameter handling.</li>
+<li>  distance_sensor: restructure orientation matching and verification</li>
+<li>  lib <a href="https://github.com/mavlink/mavros/issues/319">#319</a>: Return
+quaternion from UAS::sensor_matching()</li>
+<li>  launch fix <a href="https://github.com/mavlink/mavros/issues/340">#340</a>:
+update default component id of PX4.</li>
+<li>  extras: distance_sensor
+<a href="https://github.com/mavlink/mavros/issues/71">#71</a>: Purt to TF2.</li>
+<li>  plugin: Use UAS::syncronized_header() for reduce LOC.</li>
+<li>  extras: vision_pose
+<a href="https://github.com/mavlink/mavros/issues/71">#71</a>: Use TF2
+listener. Also
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>.</li>
+<li>  launch: Update configs.</li>
+<li>  extras: viz <a href="https://github.com/mavlink/mavros/issues/336">#336</a>:
+convert plugin to node.</li>
+<li>  extras: vision_speed
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>: use eigen
+based transform</li>
+<li>  extras: vibration: Use UAS::synchronized_header()</li>
+<li>  extras: px4flow
+<a href="https://github.com/mavlink/mavros/issues/319">#319</a>:
+change transform_frame()</li>
+<li>  extras: mocap <a href="https://github.com/mavlink/mavros/issues/319">#319</a>:
+use eigen based transform</li>
+<li>  Camera IMU synchronisation support added</li>
+<li>  Contributors: Mohammed Kabir, TSC21, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-12-0-2015-07-01">0.12.0 (2015-07-01)</h2>
+
+<ul>
+<li>  coverity: make them happy</li>
+<li>  frame_conversions: use inline functions to identify direction of
+conversion</li>
+<li>  changed frame conversion func name; add 3x3 cov matrix frame
+conversion; general doxygen comment cleanup</li>
+<li>  frame_conversions: added frame_conversion specific lib file;
+applied correct frame conversion between ENU&lt;-&gt;NED</li>
+<li>  vibration_plugin: changed vibration to Vector3</li>
+<li>  vibration_plugin: msg reformulation</li>
+<li>  vibration_plugin: first commit</li>
+<li>  Changes some frames from world to body conversion for NED to ENU.</li>
+<li>  mavros <a href="https://github.com/vooon/mavros/issues/302">#302</a>: fix
+style</li>
+<li>  mavros fix <a href="https://github.com/vooon/mavros/issues/301">#301</a>: move
+sensor orientation util to UAS</li>
+<li>  distance_sensor: typo; style fixe</li>
+<li>  sensor_orientation: corrected rotation set sequence</li>
+<li>  sensor_orientation: updated orientation enum; updated data type</li>
+<li>  sensor_orientation: removed unecessary sum on setting rotation</li>
+<li>  sensor_orientation: added sensor orientation matching helper func</li>
+<li>  distance_sensor: minor correction</li>
+<li>  distance_sensor: sensor position cond changed</li>
+<li>  distance_sensor: tweak param check; cond routines</li>
+<li>  distance_sensor: removed unnecessary comment line</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: define sensor position through param config</li>
+<li>  distance_sensor: minor comment identation correction</li>
+<li>  distance_sensor: tf::Transform creation optional</li>
+<li>  distance_sensor: add tf_broadcaster between 'fcu' and the distance
+sensor</li>
+<li>  distance_sensor: remove commented code</li>
+<li>  distance_sensor: removed dbg msg</li>
+<li>  distance_sensor: cov condition defined</li>
+<li>  distance_sensor: covariance condition changed</li>
+<li>  distance_sensor: conditional state change</li>
+<li>  distance_sensor: covariance condition set - correction</li>
+<li>  distance_sensor: covariance condition set</li>
+<li>  distance_sensor: ctor list update (corrected)</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: ctor list update</li>
+<li>  distance_sensor: small correction</li>
+<li>  distance_sensor: uncrustify</li>
+<li>  distance_sensor: array limiting; cast correction; other minor
+correc</li>
+<li>  distance_sensor: travis build correction</li>
+<li>  distance_sensor: uncrustify distance_sensor.cpp</li>
+<li>  distance_sensor: small corrections on variable definitions, method
+calls</li>
+<li>  distance_sensor: small enhancements</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: uncrustify</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: fix
+travis build.</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: implement
+message handling</li>
+<li>  distance_sensor
+<a href="https://github.com/vooon/mavros/issues/292">#292</a>: parse
+mapping configuration.</li>
+<li>  distance_sensor: remove DistanceSensor.msg from CMakeList</li>
+<li>  distance_sensor: removed DistanceSensor.msg</li>
+<li>  distance_sensor: -&gt; use std Range.msg -&gt; published frame_id
+in topics are dinamic - depend on type and id of the sensor</li>
+<li>  distance_sensor: comment correction</li>
+<li>  distance_sensor: minor correction</li>
+<li>  distance_sensor: minor fixes that include use Range.msg to Laser
+data</li>
+<li>  distance_sensor: add plugin file</li>
+<li>  distance_sensor plugin: first commit!</li>
+<li>  Contributors: TSC21, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-2-2015-04-26">0.11.2 (2015-04-26)</h2>
+
+<ul>
+<li>  gcs bridge fix <a href="https://github.com/vooon/mavros/issues/277">#277</a>:
+add link diagnostics</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-1-2015-04-06">0.11.1 (2015-04-06)</h2>
+
+<ul>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+done! Fix <a href="https://github.com/vooon/mavros/issues/129">#129</a>.</li>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+cache file attrs</li>
+<li>  mavftpfuse <a href="https://github.com/vooon/mavros/issues/129">#129</a>:
+initial import</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-0-2015-03-24">0.11.0 (2015-03-24)</h2>
+
+<ul>
+<li>  extras: vision_pose
+<a href="https://github.com/vooon/mavros/issues/247">#247</a>: rename topic</li>
+<li>  extras: launch <a href="https://github.com/vooon/mavros/issues/257">#257</a>:
+use white list for px4flow. Also updates config
+<a href="https://github.com/vooon/mavros/issues/211">#211</a>.</li>
+<li>  uncrustify and fix
+<a href="https://github.com/vooon/mavros/issues/207">#207</a>
+</li>
+<li>  uncrustify extras</li>
+<li>  package: update lic</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: update
+mavros_extras headers</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>: move
+diag updater to UAS.</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>:
+remove global private node handle. Now all plugins should define
+their local node handle (see dummy.cpp). Also partially does
+<a href="https://github.com/vooon/mavros/issues/233">#233</a> (unmerge
+setpoint topic namespace).</li>
+<li>  plugin api <a href="https://github.com/vooon/mavros/issues/241">#241</a>:
+remove get_name()</li>
+<li>  Add BSD license option
+<a href="https://github.com/vooon/mavros/issues/220">#220</a>
+</li>
+<li>  uncrustify: mocap plugin</li>
+<li>  Switched from mavlink VICON_POSITION_ESTIMATE to ATT_POS_MOCAP.</li>
+<li>  Contributors: Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-2-2015-02-25">0.10.2 (2015-02-25)</h2>
+
+<ul>
+<li>  launch: Fix vim modelines
+<a href="https://github.com/vooon/mavros/issues/213">#213</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-1-2015-02-02">0.10.1 (2015-02-02)</h2>
+
+<ul>
+<li>  Fix @mhkabir name in contributors.</li>
+<li>  Updated mavros_extra README to explain the vision_estimate plugin
+should be used for the mocap data currently.</li>
+<li>  Update px4flow.cpp</li>
+<li>  plguin: px4flow: Remove all ref to old message</li>
+<li>  Merge remote-tracking branch 'upstream/master' into optflow_rad
+Conflicts: mavros_extras/CMakeLists.txt</li>
+<li>  Update</li>
+<li>  Clean up</li>
+<li>  New interface commit</li>
+<li>  Add new interface. Raw message only for now. Removed the tx
+functionality as it doesn't make much sense.</li>
+<li>  Contributors: Mohammed Kabir, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-0-2015-01-24">0.10.0 (2015-01-24)</h2>
+
+<ul>
+<li>  mocap_pose_estimate: Switched from pose to poseStamped.</li>
+<li>  Contributors: Tony Baltovski</li>
+</ul>
+
+<h2 id="0-9-4-2015-01-06">0.9.4 (2015-01-06)</h2>
+
+<h2 id="0-9-3-2014-12-30">0.9.3 (2014-12-30)</h2>
+
+<ul>
+<li>  Initiliser fix</li>
+<li>  plugin: visualisation - Fixes CI build</li>
+<li>  plugin: visualisation</li>
+<li>  plugin: visualization minor patch</li>
+<li>  plugin: visualization finshed</li>
+<li>  Contributors: Mohammed Kabir</li>
+</ul>
+
+<h2 id="0-9-2-2014-11-04">0.9.2 (2014-11-04)</h2>
+
+<h2 id="0-9-1-2014-11-03">0.9.1 (2014-11-03)</h2>
+
+<h2 id="0-9-0-2014-11-03">0.9.0 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
+
+<ul>
+<li>  REP140: update package.xml format. Hydro don't accept this format
+correctly, but after split i can update.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
+
+<ul>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
+headers used in mavros. Add readme.</li>
+<li>  Update repo links. Package moved to mavlink organization.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-8-0-2014-09-22">0.8.0 (2014-09-22)</h2>
+
+<ul>
+<li>  Revert "Update package.xml format to REP140 (2)." This reverts
+commit 81286eb84090a95759591cfab89dd9718ff35b7e. ROS Hydro don't
+fully support REP140: rospack can't find plugin descriptions. Fix
+<a href="https://github.com/vooon/mavros/issues/151">#151</a>.</li>
+<li>  Added arming/disarming for att mode.</li>
+<li>  Added arming and disarming via mavteleop.</li>
+<li>  extras: mocap: Fix param/topic namespace. Fix
+<a href="https://github.com/vooon/mavros/issues/150">#150</a>.</li>
+<li>  extras: launch: Use includes. Fix
+<a href="https://github.com/vooon/mavros/issues/144">#144</a>.</li>
+<li>  Update package.xml format to REP140 (2). Fix
+<a href="https://github.com/vooon/mavros/issues/104">#104</a>.</li>
+<li>  extras: launch: Fix typos.</li>
+<li>  extras: launch: Add teleop launch script.</li>
+<li>  extras: mavteleop: Dirty implementation of position control mode.
+Issue <a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  extras: mavteleop: Implement velocity setpoint control. Issue
+<a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  extras: mavteleop: Implement attitude control mode. Issue
+<a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  extras: Use cmake modules. Issue
+<a href="https://github.com/vooon/mavros/issues/139">#139</a>.</li>
+<li>  Update doxygen documentation. Add split lines in UAS, and make
+UAS.connection atomic. Add rosdoc configuration for mavros_extras.</li>
+<li>  scripts: mavsetp: corrected msg API; mavteleop: added prefix to rc
+override</li>
+<li>  scripts: Initial import mavteleop Now it's just proof of concept.
+Implemented only RC override of RPYT channels. Issue
+<a href="https://github.com/vooon/mavros/issues/133">#133</a>.</li>
+<li>  node: Catch URL open exception. Also update connection pointer type.</li>
+<li>  Contributors: Nuno Marques, Tony Baltovski, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-7-1-2014-08-25">0.7.1 (2014-08-25)</h2>
+
+<ul>
+<li>  plugins: Change UAS FCU link name. Reduce smart pointer count, that
+hold fcu link object.</li>
+<li>  Plugins: finish moving plugins</li>
+<li>  Closes <a href="https://github.com/vooon/mavros/issues/122">#122</a>, closes
+<a href="https://github.com/vooon/mavros/issues/123">#123</a>; plugins: move
+mocap &amp; vision plugins to extras, change vision plugins name</li>
+<li>  launch: Add example launch for
+<a href="https://github.com/vooon/mavros/issues/103">#103</a>.</li>
+<li>  extras: image_pub: Update plugin API.</li>
+<li>  extras: px4flow: Update plugin API.</li>
+<li>  plugins: disable most of plugins</li>
+<li>  extras: init ctor</li>
+<li>  extras: Fix package URLs</li>
+<li>  test: temporary travis hack (manually download latest mavlink deb)</li>
+<li>  Update readme</li>
+<li>  Contributors: Nuno Marques, Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-7-0-2014-08-12">0.7.0 (2014-08-12)</h2>
+
+<ul>
+<li>  move exras to subdirectory,
+<a href="https://github.com/vooon/mavros/issues/101">#101</a>
+</li>
+<li>  Contributors: Vladimir Ermakov, Mohammed Kabir</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/mavros_extras/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#indigo-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#indigo">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros#indigo">mavros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#indigo">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros_msgs#indigo">mavros_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/visualization_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/visualization_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/visualization_msgs#indigo">visualization_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#indigo">urdf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#indigo">tf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/test_mavros/github-mavlink-mavros#indigo">test_mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/test_mavros/github-mavlink-mavros#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/teleop.launch" target="_blank">launch/teleop.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>teleop_args</strong> <em>&#91;default: -att&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4flow.launch" target="_blank">launch/px4flow.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:921600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 81&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 50&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras/launch/px4_image.launch" target="_blank">launch/px4_image.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:57600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: udp://@&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/master/mavros_extras//mavros_plugins.xml" target="_blank">mavros</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/master/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/mavros_extras">mavros_extras</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libmavconn/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/mavros_extras"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-mavlink-mavros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/mavros_extras/github-mavlink-mavros" data="github-mavlink-mavros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-mavlink-mavros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <span class="label label-default">uav</span> <span class="label label-default">mav</span> <span class="label label-default">mavlink</span> <span class="label label-default">plugin</span> <span class="label label-default">apm</span> <span class="label label-default">px4</span> 
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.8.6</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>GPLv3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/mavlink/mavros.git">https://github.com/mavlink/mavros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">hydro-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-03-04
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Extra nodes and plugins for mavros
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/mavros_extras">Website</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
                 
               </ul>
             
@@ -1033,20 +4254,23 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-mavros_extras">Changelog for package mavros_extras</h1>
 
-<h2 id="0.8.5-(2014-11-04)">0.8.5 (2014-11-04)</h2>
+<h2 id="0-8-6-2015-03-04">0.8.6 (2015-03-04)</h2>
 
-<h2 id="0.8.4-(2014-11-03)">0.8.4 (2014-11-03)</h2>
+<h2 id="0-8-5-2014-11-04">0.8.5 (2014-11-04)</h2>
 
-<h2 id="0.8.3-(2014-11-03)">0.8.3 (2014-11-03)</h2>
+<h2 id="0-8-4-2014-11-03">0.8.4 (2014-11-03)</h2>
+
+<h2 id="0-8-3-2014-11-03">0.8.3 (2014-11-03)</h2>
 
 <ul>
 <li>  0.8.2</li>
 <li>  prepare minor release 0.8.2 for hydro</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.2-(2014-11-03)">0.8.2 (2014-11-03)</h2>
 
-<h2 id="0.8.1-(2014-11-02)">0.8.1 (2014-11-02)</h2>
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
 
 <ul>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
@@ -1054,7 +4278,8 @@ headers used in mavros. Add readme.</li>
 <li>  Update repo links. Package moved to mavlink organization.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.0-(2014-09-22)">0.8.0 (2014-09-22)</h2>
+
+<h2 id="0-8-0-2014-09-22">0.8.0 (2014-09-22)</h2>
 
 <ul>
 <li>  Revert "Update package.xml format to REP140 (2)." This reverts
@@ -1089,7 +4314,8 @@ Implemented only RC override of RPYT channels. Issue
 <li>  node: Catch URL open exception. Also update connection pointer type.</li>
 <li>  Contributors: Nuno Marques, Tony Baltovski, Vladimir Ermakov</li>
 </ul>
-<h2 id="0.7.1-(2014-08-25)">0.7.1 (2014-08-25)</h2>
+
+<h2 id="0-7-1-2014-08-25">0.7.1 (2014-08-25)</h2>
 
 <ul>
 <li>  plugins: Change UAS FCU link name. Reduce smart pointer count, that
@@ -1109,7 +4335,8 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
 <li>  Update readme</li>
 <li>  Contributors: Nuno Marques, Vladimir Ermakov</li>
 </ul>
-<h2 id="0.7.0-(2014-08-12)">0.7.0 (2014-08-12)</h2>
+
+<h2 id="0-7-0-2014-08-12">0.7.0 (2014-08-12)</h2>
 
 <ul>
 <li>  move exras to subdirectory,
@@ -1132,7 +4359,8 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/mavros_extras/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/mavros_extras/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1144,37 +4372,171 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#hydro">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#hydro">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavlink#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavlink" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavlink#hydro">mavlink</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavros#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavros#hydro">mavros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#hydro">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#hydro">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#hydro">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mavlink#hydro">mavlink</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mavros#hydro">mavros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#hydro">sensor_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1182,18 +4544,97 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/launch/teleop.launch" target="_blank">launch/teleop.launch</a></li>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/launch/px4_image.launch" target="_blank">launch/px4_image.launch</a></li>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/launch/px4flow.launch" target="_blank">launch/px4flow.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/launch/teleop.launch" target="_blank">launch/teleop.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>teleop_args</strong> <em>&#91;default: -att&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/launch/px4flow.launch" target="_blank">launch/px4flow.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:921600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 81&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 50&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/launch/px4_image.launch" target="_blank">launch/px4_image.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>fcu_url</strong> <em>&#91;default: serial:///dev/ttyACM0:57600&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gcs_url</strong> <em>&#91;default: udp://@&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_system</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tgt_component</strong> <em>&#91;default: 50&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1202,11 +4643,13 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/msg/OpticalFlow.msg" target="_blank">msg/OpticalFlow.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras/msg/OpticalFlow.msg" target="_blank">msg/OpticalFlow.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1215,9 +4658,9 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1226,28 +4669,39 @@ mocap &amp; vision plugins to extras, change vision plugins name</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras//mavros_plugins.xml" target="_blank">mavros</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/mavros_extras/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/hydro-devel/mavros_extras"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:mavros_extras/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/mavros_extras?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=mavros_extras&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1306,7 +4760,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

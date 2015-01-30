@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,333 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_gazebo_worlds">cob_gazebo_worlds</a> <small>package from <a style="text-decoration:none" href="/r/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/cob_bringup_sim/github-ipa320-cob_simulation">cob_bringup_sim</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_gazebo/github-ipa320-cob_simulation">cob_gazebo</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_gazebo_objects/github-ipa320-cob_simulation">cob_gazebo_objects</a>
-        
-      
-        
-          <span class="label label-default"> cob_gazebo_worlds</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/cob_gazebo_worlds/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_gazebo_worlds"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_simulation
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_environments" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_environments" data="github-ipa320-cob_environments">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_environments
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_simulation" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_simulation" data="github-ipa320-cob_simulation">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_simulation
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_gazebo_worlds">cob_gazebo_worlds</a> <small>package from <a style="text-decoration:none" href="/r/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/cob_bringup_sim/github-ipa320-cob_simulation">cob_bringup_sim</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_gazebo/github-ipa320-cob_simulation">cob_gazebo</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_gazebo_objects/github-ipa320-cob_simulation">cob_gazebo_objects</a>
-        
-      
-        
-          <span class="label label-default"> cob_gazebo_worlds</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/cob_gazebo_worlds/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_gazebo_worlds"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_simulation
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_environments" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_environments" data="github-ipa320-cob_environments">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_environments
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_simulation" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_simulation" data="github-ipa320-cob_simulation">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_simulation
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_gazebo_worlds">cob_gazebo_worlds</a> <small>package from <a style="text-decoration:none" href="/r/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/cob_controller_configuration_gazebo/github-ipa320-cob_simulation">cob_controller_configuration_gazebo</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_gazebo/github-ipa320-cob_simulation">cob_gazebo</a>
-        
-      
-        
-          <span class="label label-default"> cob_gazebo_worlds</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_ogre/github-ipa320-cob_simulation">cob_ogre</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/diamondback/api/cob_gazebo_worlds/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-diamondback">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_gazebo_worlds"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_simulation
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_environments" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_environments" data="github-ipa320-cob_environments">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_environments
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_simulation" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_simulation" data="github-ipa320-cob_simulation">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_simulation
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -498,6 +224,132 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_gazebo_worlds">cob_gazebo_worlds</a> <small>package from <a style="text-decoration:none" href="/r/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_bringup_sim/github-ipa320-cob_simulation">
+
+cob_bringup_sim
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_gazebo/github-ipa320-cob_simulation">
+
+cob_gazebo
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_gazebo_objects/github-ipa320-cob_simulation">
+
+<span class="glyphicon glyphicon-education"></span> cob_gazebo_objects
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-education"></span> cob_gazebo_worlds
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_simulation/github-ipa320-cob_simulation">
+
+cob_simulation
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_gazebo_worlds"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_simulation
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_environments" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_environments" data="github-ipa320-cob_environments">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_environments
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_simulation" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_simulation" data="github-ipa320-cob_simulation">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_simulation
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/cob_gazebo_worlds/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_gazebo_worlds&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -510,28 +362,30 @@
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">10</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">12</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This package provides some worlds for gazebo simulation.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -544,7 +398,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.2</td>
+                <td>0.6.5</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -570,7 +424,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -592,7 +446,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-16
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-21
         </span>
       </td>
     </tr>
@@ -600,7 +454,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -617,8 +474,23 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This package provides some worlds for gazebo simulation.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_gazebo_worlds">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -637,17 +509,6 @@
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_gazebo_worlds">Website</a></li>
                 
               </ul>
             
@@ -680,7 +541,55 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_gazebo_worlds">Changelog for package cob_gazebo_worlds</h1>
 
-<h2 id="0.6.2-(2014-12-15)">0.6.2 (2014-12-15)</h2>
+<h2 id="0-6-5-2016-04-01">0.6.5 (2016-04-01)</h2>
+
+<ul>
+<li>  enable other gazebo worlds packages</li>
+<li>  remove robot_id</li>
+<li>  changed color of boxes on the belt to grey</li>
+<li>  nicer structure</li>
+<li>  changed name of the environment to automotive-assembly-line</li>
+<li>  added hardwareInterface tag in Joint section of belt_trans
+transmission description</li>
+<li>  minor code cleanup</li>
+<li>  added model files which were left out in previous commit</li>
+<li>  added objects to the environment</li>
+<li>  successful integration of bmw-assembly into cob_simulation</li>
+<li>  error state: problem with loading joint controller</li>
+<li>  Contributors: Felix Gruber, ipa-fmw, ipa-fxm, ipa-mig-mc</li>
+</ul>
+
+<h2 id="0-6-4-2015-08-29">0.6.4 (2015-08-29)</h2>
+
+<ul>
+<li>  cleanup</li>
+<li>  migration to package format 2</li>
+<li>  remove trailing whitespaces</li>
+<li>  remove obsolete autogenerated mainpage.dox files</li>
+<li>  sort dependencies</li>
+<li>  review dependencies</li>
+<li>  removed unnecessary imports</li>
+<li>  added buttons controllers</li>
+<li>  use default inertias</li>
+<li>  use default inertias</li>
+<li>  fix ipa-apartment elevator</li>
+<li>  fix ipa-apartment elevetor controllers</li>
+<li>  use controller_manager spawn</li>
+<li>  Contributors: ipa-fxm, ipa-nhg</li>
+</ul>
+
+<h2 id="0-6-3-2015-06-17">0.6.3 (2015-06-17)</h2>
+
+<ul>
+<li>  beautify CMakeLists</li>
+<li>  catkin_lint</li>
+<li>  fix joint_states for world</li>
+<li>  velocity controller for door</li>
+<li>  catkin_lint'ing</li>
+<li>  Contributors: Florian Weisshardt, ipa-fxm</li>
+</ul>
+
+<h2 id="0-6-2-2014-12-15">0.6.2 (2014-12-15)</h2>
 
 <ul>
 <li>  Merge branch 'indigo_dev' into indigo_release_candidate</li>
@@ -697,14 +606,16 @@ door</li>
 <li>  fix environment to gazebo world frame + proper interia</li>
 <li>  Contributors: Florian Weisshardt, ipa-fxm</li>
 </ul>
-<h2 id="0.6.1-(2014-09-22)">0.6.1 (2014-09-22)</h2>
+
+<h2 id="0-6-1-2014-09-22">0.6.1 (2014-09-22)</h2>
 
 <ul>
 <li>  1 = true</li>
 <li>  fix bumper plugin</li>
 <li>  Contributors: ipa-fxm</li>
 </ul>
-<h2 id="0.6.0-(2014-09-18)">0.6.0 (2014-09-18)</h2>
+
+<h2 id="0-6-0-2014-09-18">0.6.0 (2014-09-18)</h2>
 
 <ul>
 <li>  Merge pull request
@@ -717,7 +628,8 @@ ipa320/hydro_release_candidate Hydro release candidate</li>
 <li>  update changelog</li>
 <li>  Contributors: Florian Weisshardt</li>
 </ul>
-<h2 id="0.5.2-(2014-08-28)">0.5.2 (2014-08-28)</h2>
+
+<h2 id="0-5-2-2014-08-28">0.5.2 (2014-08-28)</h2>
 
 <ul>
 <li>  change to latest transmission format</li>
@@ -737,7 +649,8 @@ hydro_dev</li>
 <li>  Contributors: Alexander Bubeck, Felix Messmer, Florian Weisshardt,
 abubeck, ipa-fxm, ipa-nhg</li>
 </ul>
-<h2 id="0.5.1-(2014-03-21)">0.5.1 (2014-03-21)</h2>
+
+<h2 id="0-5-1-2014-03-21">0.5.1 (2014-03-21)</h2>
 
 <ul>
 <li>  install tags</li>
@@ -856,8 +769,8 @@ worldcob_gazebo_objects/config/ipa-apartment/object_locations.yaml</li>
 <li>  Moved cob_gazebo_worlds from cob_simulation to cob_environments</li>
 <li>  Added missing urdf models</li>
 <li>  Fixed an error in CMakeLists.txt</li>
-<li>  Coordinate system of milk is at the bottom and corresponds to object
-detection. Coordinate system of jodsalz, zwieback, krauter,
+<li>  Coordinate system of milk is at the bottom and corresponds to
+object detection. Coordinate system of jodsalz, zwieback, krauter,
 tomaten_suppe are at the bottom, but not yet tested to fit to
 object detection. All launch files have been adapted to start the
 new urdf models now</li>
@@ -981,10 +894,7 @@ simulation</li>
 <li>  modifide nav package for simulation</li>
 <li>  cleanup in cob_simulation</li>
 <li>  cob worlds</li>
-<li>  Contributors: Alexander Bubeck, Denis Štogl, Florian Weißhardt,
-Frederik Hegger, abubeck, fmw-jk, ipa-bnm, ipa-fmw, ipa-fmw-sh,
-ipa-fxm, ipa-goa, ipa-jsf, ipa-nhg, ipa-taj-dm, ipa-uhr-fm, ipa320,
-nhg-ipa</li>
+<li>  Contributors: Alexander Bubeck, Denis </li>
 </ul>
 </div></body></html>
 
@@ -1001,7 +911,15 @@ nhg-ipa</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials/Create your own world" target="_blank">Create your own world</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1013,49 +931,91 @@ nhg-ipa</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#indigo">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rostest#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rostest" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rostest#indigo">rostest</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roslaunch#indigo">roslaunch</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rostest#indigo">rostest</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#indigo">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_ros#indigo">gazebo_ros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_ros_control#indigo">gazebo_ros_control</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_msgs#indigo">gazebo_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#indigo">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/xacro#indigo">xacro</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/kdl_parser#indigo">kdl_parser</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/robot_state_publisher#indigo">robot_state_publisher</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/joint_state_publisher#indigo">joint_state_publisher</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/controller_manager#indigo">controller_manager</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1063,26 +1023,456 @@ nhg-ipa</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-apartment.launch" target="_blank">launch/ipa-apartment.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-factory.launch" target="_blank">launch/ipa-factory.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/empty.launch" target="_blank">launch/empty.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/world_joint_state_publisher.launch" target="_blank">launch/world_joint_state_publisher.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/world_urdf.launch" target="_blank">launch/world_urdf.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/display_world.launch" target="_blank">launch/display_world.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-kitchen.launch" target="_blank">launch/ipa-kitchen.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/empty.launch" target="_blank">launch/empty.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>pkg_gazebo_worlds</strong> <em>&#91;default: $(find cob_gazebo_worlds)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>world_name</strong> <em>&#91;default: worlds/empty.world&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-apartment.launch" target="_blank">launch/ipa-apartment.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-apartment&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/display_world.launch" target="_blank">launch/display_world.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: $(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/world_urdf.launch" target="_blank">launch/world_urdf.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: empty&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>file_path_urdf</strong> <em>&#91;default: $(find cob_gazebo_worlds)/urdf/$(arg robot_env)/$(arg robot_env).urdf.xacro&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_world_state</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/world_joint_state_publisher.launch" target="_blank">launch/world_joint_state_publisher.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-production-plant.launch" target="_blank">launch/ipa-production-plant.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-production-plant&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/automotive-assembly-line.launch" target="_blank">launch/automotive-assembly-line.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: automotive-assembly-line&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/world.launch" target="_blank">launch/world.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: $(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>pkg_env_config</strong> <em>&#91;default: $(find cob_default_env_config)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>pkg_gazebo_worlds</strong> <em>&#91;default: $(find cob_gazebo_worlds)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-factory.launch" target="_blank">launch/ipa-factory.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-factory&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds/launch/ipa-kitchen.launch" target="_blank">launch/ipa-kitchen.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-kitchen&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1091,9 +1481,9 @@ nhg-ipa</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1102,9 +1492,9 @@ nhg-ipa</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1113,28 +1503,35 @@ nhg-ipa</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/cob_gazebo_worlds/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_simulation/tree/indigo_dev/cob_gazebo_worlds"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_gazebo_worlds&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1144,6 +1541,132 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_gazebo_worlds">cob_gazebo_worlds</a> <small>package from <a style="text-decoration:none" href="/r/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_bringup_sim/github-ipa320-cob_simulation">
+
+cob_bringup_sim
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_gazebo/github-ipa320-cob_simulation">
+
+cob_gazebo
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_gazebo_objects/github-ipa320-cob_simulation">
+
+<span class="glyphicon glyphicon-education"></span> cob_gazebo_objects
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-education"></span> cob_gazebo_worlds
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_simulation/github-ipa320-cob_simulation">
+
+cob_simulation
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_gazebo_worlds"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_simulation
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_environments" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_environments" data="github-ipa320-cob_environments">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_environments
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_simulation" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_simulation" data="github-ipa320-cob_simulation">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_simulation
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/cob_gazebo_worlds/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_gazebo_worlds&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1156,28 +1679,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This package provides some worlds for gazebo simulation.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1216,7 +1741,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1246,7 +1771,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1263,8 +1791,23 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This package provides some worlds for gazebo simulation.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_gazebo_worlds">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1283,17 +1826,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_gazebo_worlds">Website</a></li>
                 
               </ul>
             
@@ -1326,9 +1858,9 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_gazebo_worlds">Changelog for package cob_gazebo_worlds</h1>
 
-<h2 id="0.5.2-(2014-03-31)">0.5.2 (2014-03-31)</h2>
+<h2 id="0-5-2-2014-03-31">0.5.2 (2014-03-31)</h2>
 
-<h2 id="0.5.1-(2014-03-21)">0.5.1 (2014-03-21)</h2>
+<h2 id="0-5-1-2014-03-21">0.5.1 (2014-03-21)</h2>
 
 <ul>
 <li>  install tags</li>
@@ -1447,8 +1979,8 @@ worldcob_gazebo_objects/config/ipa-apartment/object_locations.yaml</li>
 <li>  Moved cob_gazebo_worlds from cob_simulation to cob_environments</li>
 <li>  Added missing urdf models</li>
 <li>  Fixed an error in CMakeLists.txt</li>
-<li>  Coordinate system of milk is at the bottom and corresponds to object
-detection. Coordinate system of jodsalz, zwieback, krauter,
+<li>  Coordinate system of milk is at the bottom and corresponds to
+object detection. Coordinate system of jodsalz, zwieback, krauter,
 tomaten_suppe are at the bottom, but not yet tested to fit to
 object detection. All launch files have been adapted to start the
 new urdf models now</li>
@@ -1572,10 +2104,7 @@ simulation</li>
 <li>  modifide nav package for simulation</li>
 <li>  cleanup in cob_simulation</li>
 <li>  cob worlds</li>
-<li>  Contributors: Alexander Bubeck, Denis Štogl, Florian Weißhardt,
-Frederik Hegger, abubeck, fmw-jk, ipa-bnm, ipa-fmw, ipa-fmw-sh,
-ipa-fxm, ipa-goa, ipa-jsf, ipa-nhg, ipa-taj-dm, ipa-uhr-fm, ipa320,
-nhg-ipa</li>
+<li>  Contributors: Alexander Bubeck, Denis </li>
 </ul>
 </div></body></html>
 
@@ -1592,7 +2121,15 @@ nhg-ipa</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials/Create your own world" target="_blank">Create your own world</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1604,33 +2141,182 @@ nhg-ipa</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/gazebo_ros#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/gazebo_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/gazebo_ros#hydro">gazebo_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#hydro">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/kdl_parser#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/kdl_parser" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/kdl_parser#hydro">kdl_parser</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#hydro">urdf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_ros#hydro">gazebo_ros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#hydro">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/kdl_parser#hydro">kdl_parser</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/urdf#hydro">urdf</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_bringup_sim/github-ipa320-cob_simulation#hydro">cob_bringup_sim</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_bringup_sim/github-ipa320-cob_simulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo/github-ipa320-cob_simulation#hydro">cob_gazebo</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo/github-ipa320-cob_simulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_simulation/github-ipa320-cob_simulation#hydro">cob_simulation</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_simulation/github-ipa320-cob_simulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1638,24 +2324,264 @@ nhg-ipa</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/ipa-apartment.launch" target="_blank">launch/ipa-apartment.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/ipa-factory.launch" target="_blank">launch/ipa-factory.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/empty.launch" target="_blank">launch/empty.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/world_urdf.launch" target="_blank">launch/world_urdf.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/display_world.launch" target="_blank">launch/display_world.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/ipa-kitchen.launch" target="_blank">launch/ipa-kitchen.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/empty.launch" target="_blank">launch/empty.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>world_name</strong> <em>&#91;default: worlds/empty.world&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/ipa-apartment.launch" target="_blank">launch/ipa-apartment.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-apartment&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/display_world.launch" target="_blank">launch/display_world.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: $(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/world_urdf.launch" target="_blank">launch/world_urdf.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: empty&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/ipa-factory.launch" target="_blank">launch/ipa-factory.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-factory&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds/launch/ipa-kitchen.launch" target="_blank">launch/ipa-kitchen.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>headless</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>paused</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_sim_time</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>gui</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>throttled</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_env</strong> <em>&#91;default: ipa-kitchen&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1664,9 +2590,9 @@ nhg-ipa</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1675,9 +2601,9 @@ nhg-ipa</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1686,28 +2612,35 @@ nhg-ipa</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/cob_gazebo_worlds/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_simulation/tree/hydro_dev/cob_gazebo_worlds"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_gazebo_worlds&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1741,6 +2674,124 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_gazebo_worlds">cob_gazebo_worlds</a> <small>package from <a style="text-decoration:none" href="/r/cob_simulation/github-ipa320-cob_simulation">cob_simulation</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_controller_configuration_gazebo/github-ipa320-cob_simulation">
+
+cob_controller_configuration_gazebo
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_gazebo/github-ipa320-cob_simulation">
+
+cob_gazebo
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-education"></span> cob_gazebo_worlds
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_ogre/github-ipa320-cob_simulation">
+
+cob_ogre
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-diamondback">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_gazebo_worlds"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_simulation
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_environments" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_environments" data="github-ipa320-cob_environments">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_environments
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_simulation" role="menuitem" tabindex="-1" href="/p/cob_gazebo_worlds/github-ipa320-cob_simulation" data="github-ipa320-cob_simulation">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_simulation
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/diamondback/api/cob_gazebo_worlds/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_gazebo_worlds&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1753,32 +2804,30 @@ $(function() {
     
     
     
+    
     <a href="#diamondback-assets" data-toggle="tab"><span class="label label-primary">27</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#diamondback-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#diamondback-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#diamondback-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="diamondback-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     This package provides some worlds for gazebo simulation.
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1817,7 +2866,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1847,7 +2896,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1864,8 +2916,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     This package provides some worlds for gazebo simulation.
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_gazebo_worlds">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1880,17 +2951,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_gazebo_worlds">Website</a></li>
                 
               </ul>
             
@@ -1933,7 +2993,15 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials/Create your own world" target="_blank">Create your own world</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/cob_gazebo_worlds/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1945,39 +3013,205 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="diamondback-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/xacro#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/xacro" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/xacro#diamondback">xacro</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/convex_decomposition#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/convex_decomposition" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/convex_decomposition#diamondback">convex_decomposition</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ivcon#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ivcon" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/ivcon#diamondback">ivcon</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                          <span class="label label-danger">0</span>
+                        </td>
+                        <td>ogre_tools</td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/gazebo#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/gazebo" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/gazebo#diamondback">gazebo</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/gazebo_tools#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/gazebo_tools" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/gazebo_tools#diamondback">gazebo_tools</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/gazebo_plugins#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/gazebo_plugins" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/gazebo_plugins#diamondback">gazebo_plugins</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/xacro#diamondback">xacro</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/convex_decomposition#diamondback">convex_decomposition</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ivcon#diamondback">ivcon</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ogre_tools#diamondback">ogre_tools</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo#diamondback">gazebo</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_tools#diamondback">gazebo_tools</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gazebo_plugins#diamondback">gazebo_plugins</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_gazebo/github-ipa320-cob_simulation#diamondback">cob_gazebo</a></td>
+                      <td><a href="/r/cob_simulation/github-ipa320-cob_simulation">github-ipa320-cob_simulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_gazebo/github-ipa320-cob_simulation#diamondback-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1985,66 +3219,365 @@ $(function() {
   <div class="tab-pane" id="diamondback-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/simple-kitchen.launch" target="_blank">ros/launch/simple-kitchen.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/populate_ipa-kitchen_floor.launch" target="_blank">ros/launch/populate_ipa-kitchen_floor.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/zwieback.launch" target="_blank">ros/launch/zwieback.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/populate_ipa-kitchen.launch" target="_blank">ros/launch/populate_ipa-kitchen.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/table.launch" target="_blank">ros/launch/table.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/table_brics_rc_urdf.launch" target="_blank">ros/launch/table_brics_rc_urdf.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/people_around_table.launch" target="_blank">ros/launch/people_around_table.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/table_brics_rc.launch" target="_blank">ros/launch/table_brics_rc.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/empty-world.launch" target="_blank">ros/launch/empty-world.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/jodsalz.launch" target="_blank">ros/launch/jodsalz.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/object_learning_platform.launch" target="_blank">ros/launch/object_learning_platform.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/world_png.launch" target="_blank">ros/launch/world_png.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/cabinet.launch" target="_blank">ros/launch/cabinet.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/milk_box.launch" target="_blank">ros/launch/milk_box.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/brics-rc.launch" target="_blank">ros/launch/brics-rc.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/kraeuter.launch" target="_blank">ros/launch/kraeuter.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/ipa-apartment.launch" target="_blank">ros/launch/ipa-apartment.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/ipa-4th-floor.launch" target="_blank">ros/launch/ipa-4th-floor.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/china_cup.launch" target="_blank">ros/launch/china_cup.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/object_brics_rc.launch" target="_blank">ros/launch/object_brics_rc.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/populate_brics-rc.launch" target="_blank">ros/launch/populate_brics-rc.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/coffee_cup.launch" target="_blank">ros/launch/coffee_cup.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/tomaten_suppe.launch" target="_blank">ros/launch/tomaten_suppe.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/world_urdf.launch" target="_blank">ros/launch/world_urdf.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/world.launch" target="_blank">ros/launch/world.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/ipa-kitchen.launch" target="_blank">ros/launch/ipa-kitchen.launch</a></li>
-          
-            <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/coffee_cup_table.launch" target="_blank">ros/launch/coffee_cup_table.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/populate_ipa-kitchen.launch" target="_blank">ros/launch/populate_ipa-kitchen.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/world_png.launch" target="_blank">ros/launch/world_png.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/populate_ipa-kitchen_floor.launch" target="_blank">ros/launch/populate_ipa-kitchen_floor.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/coffee_cup_table.launch" target="_blank">ros/launch/coffee_cup_table.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/table_brics_rc_urdf.launch" target="_blank">ros/launch/table_brics_rc_urdf.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/china_cup.launch" target="_blank">ros/launch/china_cup.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/ipa-apartment.launch" target="_blank">ros/launch/ipa-apartment.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/empty-world.launch" target="_blank">ros/launch/empty-world.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/populate_brics-rc.launch" target="_blank">ros/launch/populate_brics-rc.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/coffee_cup.launch" target="_blank">ros/launch/coffee_cup.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/object_learning_platform.launch" target="_blank">ros/launch/object_learning_platform.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/world_urdf.launch" target="_blank">ros/launch/world_urdf.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/jodsalz.launch" target="_blank">ros/launch/jodsalz.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/simple-kitchen.launch" target="_blank">ros/launch/simple-kitchen.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/ipa-4th-floor.launch" target="_blank">ros/launch/ipa-4th-floor.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/object_brics_rc.launch" target="_blank">ros/launch/object_brics_rc.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/milk_box.launch" target="_blank">ros/launch/milk_box.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/people_around_table.launch" target="_blank">ros/launch/people_around_table.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/world.launch" target="_blank">ros/launch/world.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/zwieback.launch" target="_blank">ros/launch/zwieback.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/kraeuter.launch" target="_blank">ros/launch/kraeuter.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/cabinet.launch" target="_blank">ros/launch/cabinet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/table_brics_rc.launch" target="_blank">ros/launch/table_brics_rc.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/tomaten_suppe.launch" target="_blank">ros/launch/tomaten_suppe.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/brics-rc.launch" target="_blank">ros/launch/brics-rc.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/ipa-kitchen.launch" target="_blank">ros/launch/ipa-kitchen.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds/ros/launch/table.launch" target="_blank">ros/launch/table.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2053,9 +3586,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2064,9 +3597,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2075,28 +3608,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/diamondback/api/cob_gazebo_worlds/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_simulation/tree/diamondback/cob_gazebo_worlds"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_gazebo_worlds/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_gazebo_worlds?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_gazebo_worlds&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2123,7 +3663,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

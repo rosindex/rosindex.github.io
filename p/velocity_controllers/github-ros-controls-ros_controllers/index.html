@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,7 +149,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -157,432 +199,226 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/diff_drive_controller/github-ros-controls-ros_controllers"><span class="glyphicon glyphicon-file"></span>diff_drive_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/effort_controllers/github-ros-controls-ros_controllers">effort_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">force_torque_sensor_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/forward_command_controller/github-ros-controls-ros_controllers">forward_command_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gripper_action_controller/github-ros-controls-ros_controllers">gripper_action_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">imu_sensor_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/joint_state_controller/github-ros-controls-ros_controllers">joint_state_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers"><span class="glyphicon glyphicon-file"></span>joint_trajectory_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/position_controllers/github-ros-controls-ros_controllers">position_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_joint_trajectory_controller/github-ros-controls-ros_controllers">rqt_joint_trajectory_controller</a>
-        
-      
-        
-          <span class="label label-default"> velocity_controllers</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/velocity_controllers/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/indigo-devel/velocity_controllers" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/velocity_controllers" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-controls-ros_controllers
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-controls-ros_controllers
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/diff_drive_controller/github-ros-controls-ros_controllers"><span class="glyphicon glyphicon-file"></span>diff_drive_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/effort_controllers/github-ros-controls-ros_controllers">effort_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">force_torque_sensor_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/forward_command_controller/github-ros-controls-ros_controllers">forward_command_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gripper_action_controller/github-ros-controls-ros_controllers">gripper_action_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">imu_sensor_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/joint_state_controller/github-ros-controls-ros_controllers">joint_state_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers"><span class="glyphicon glyphicon-file"></span>joint_trajectory_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/position_controllers/github-ros-controls-ros_controllers">position_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a>
-        
-      
-        
-          <span class="label label-default"> velocity_controllers</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/velocity_controllers/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/hydro-devel/velocity_controllers" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/velocity_controllers" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-controls-ros_controllers
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-controls-ros_controllers
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/effort_controllers/github-ros-controls-ros_controllers">effort_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">force_torque_sensor_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/forward_command_controller/github-ros-controls-ros_controllers">forward_command_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">imu_sensor_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/joint_state_controller/github-ros-controls-ros_controllers">joint_state_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers"><span class="glyphicon glyphicon-file"></span>joint_trajectory_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/position_controllers/github-ros-controls-ros_controllers">position_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a>
-        
-      
-        
-          <span class="label label-default"> velocity_controllers</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/velocity_controllers/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/groovy-backported-hydro/velocity_controllers" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/velocity_controllers" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-controls-ros_controllers
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-controls-ros_controllers
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/diff_drive_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> diff_drive_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/effort_controllers/github-ros-controls-ros_controllers">
+
+effort_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">
+
+force_torque_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/forward_command_controller/github-ros-controls-ros_controllers">
+
+forward_command_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gripper_action_controller/github-ros-controls-ros_controllers">
+
+gripper_action_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">
+
+imu_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_state_controller/github-ros-controls-ros_controllers">
+
+joint_state_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/position_controllers/github-ros-controls-ros_controllers">
+
+position_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros_controllers/github-ros-controls-ros_controllers">
+
+ros_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+rqt_joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+velocity_controllers
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-controls-ros_controllers
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-controls-ros_controllers
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/kinetic-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            velocity_controllers
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -595,7 +431,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.9.1</td>
+                <td>0.11.1</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -621,7 +457,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -637,13 +473,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">indigo-devel</span></td>
+      <td><span class="label label-default">kinetic-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-15
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-16
         </span>
       </td>
     </tr>
@@ -652,9 +488,9 @@
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -671,8 +507,27 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            velocity_controllers
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/wiki">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -695,6 +550,678 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/ros_controllers/github-ros-controls-ros_controllers/#kinetic">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-velocity_controllers">Changelog for package velocity_controllers</h1>
+
+<h2 id="0-11-1-2016-05-23">0.11.1 (2016-05-23)</h2>
+
+<h2 id="0-11-0-2016-05-03">0.11.0 (2016-05-03)</h2>
+
+<ul>
+<li>  Add antinwindup to get and setGains logic for underlying PID
+controller</li>
+<li>  Contributors: Paul Bovbel</li>
+</ul>
+
+<h2 id="0-10-0-2015-11-20">0.10.0 (2015-11-20)</h2>
+
+<h2 id="0-9-2-2015-05-04">0.9.2 (2015-05-04)</h2>
+
+<ul>
+<li>  Thread-safe and realtime-safe forward controllers.</li>
+<li>  Contributors: Mathias L</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/angles#kinetic-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/angles" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/angles#kinetic">angles</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/control_msgs#kinetic">control_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_toolbox#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_toolbox" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/control_toolbox#kinetic">control_toolbox</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/controller_interface#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/controller_interface" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/controller_interface#kinetic">controller_interface</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/forward_command_controller#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/forward_command_controller" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/forward_command_controller#kinetic">forward_command_controller</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/realtime_tools#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/realtime_tools" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/realtime_tools#kinetic">realtime_tools</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#kinetic">urdf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros_controllers/github-ros-controls-ros_controllers#kinetic">ros_controllers</a></td>
+                      <td><a href="/r/ros_controllers/github-ros-controls-ros_controllers">github-ros-controls-ros_controllers</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros_controllers/github-ros-controls-ros_controllers#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-controls/ros_controllers/tree/kinetic-devel/velocity_controllers//velocity_controllers_plugins.xml" target="_blank">controller_interface</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/kinetic-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/diff_drive_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> diff_drive_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/effort_controllers/github-ros-controls-ros_controllers">
+
+effort_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">
+
+force_torque_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/forward_command_controller/github-ros-controls-ros_controllers">
+
+forward_command_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gripper_action_controller/github-ros-controls-ros_controllers">
+
+gripper_action_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">
+
+imu_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_state_controller/github-ros-controls-ros_controllers">
+
+joint_state_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/position_controllers/github-ros-controls-ros_controllers">
+
+position_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros_controllers/github-ros-controls-ros_controllers">
+
+ros_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+rqt_joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+velocity_controllers
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-controls-ros_controllers
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-controls-ros_controllers
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/jade-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="jade-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.10.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros-controls/ros_controllers.git">https://github.com/ros-controls/ros_controllers.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">jade-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-26
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            velocity_controllers
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -706,6 +1233,727 @@
                   <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
                 
                   <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Adolfo Rodriguez Tsouroukdissian</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vijay Pradeep</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/ros_controllers/github-ros-controls-ros_controllers/#jade">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-velocity_controllers">Changelog for package velocity_controllers</h1>
+
+<h2 id="0-10-0-2015-11-20">0.10.0 (2015-11-20)</h2>
+
+<h2 id="0-9-2-2015-05-04">0.9.2 (2015-05-04)</h2>
+
+<ul>
+<li>  Thread-safe and realtime-safe forward controllers.</li>
+<li>  Contributors: Mathias L</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/angles#jade-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/angles" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/angles#jade">angles</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/control_msgs#jade">control_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_toolbox#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_toolbox" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/control_toolbox#jade">control_toolbox</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/controller_interface#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/controller_interface" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/controller_interface#jade">controller_interface</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/forward_command_controller#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/forward_command_controller" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/forward_command_controller#jade">forward_command_controller</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/realtime_tools#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/realtime_tools" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/realtime_tools#jade">realtime_tools</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#jade">urdf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros_controllers/github-ros-controls-ros_controllers#jade">ros_controllers</a></td>
+                      <td><a href="/r/ros_controllers/github-ros-controls-ros_controllers">github-ros-controls-ros_controllers</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros_controllers/github-ros-controls-ros_controllers#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-controls/ros_controllers/tree/jade-devel/velocity_controllers//velocity_controllers_plugins.xml" target="_blank">controller_interface</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/jade-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/diff_drive_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> diff_drive_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/effort_controllers/github-ros-controls-ros_controllers">
+
+effort_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">
+
+force_torque_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/forward_command_controller/github-ros-controls-ros_controllers">
+
+forward_command_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gripper_action_controller/github-ros-controls-ros_controllers">
+
+gripper_action_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">
+
+imu_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_state_controller/github-ros-controls-ros_controllers">
+
+joint_state_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/position_controllers/github-ros-controls-ros_controllers">
+
+position_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros_controllers/github-ros-controls-ros_controllers">
+
+ros_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+rqt_joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+velocity_controllers
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-controls-ros_controllers
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-controls-ros_controllers
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/indigo-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.9.3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros-controls/ros_controllers.git">https://github.com/ros-controls/ros_controllers.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-12
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            velocity_controllers
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/wiki">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Adolfo Rodriguez Tsouroukdissian</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vijay Pradeep</li>
                 
               </ul>
             
@@ -738,92 +1986,13 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-velocity_controllers">Changelog for package velocity_controllers</h1>
 
-<h2 id="0.9.1-(2014-11-03)">0.9.1 (2014-11-03)</h2>
+<h2 id="0-9-3-2016-02-12">0.9.3 (2016-02-12)</h2>
+
+<h2 id="0-9-2-2015-05-04">0.9.2 (2015-05-04)</h2>
 
 <ul>
-<li>  Update package maintainers</li>
-<li>  Add missing dependencies</li>
-<li>  Contributors: Adolfo Rodriguez Tsouroukdissian</li>
-</ul>
-<h2 id="0.9.0-(2014-10-31)">0.9.0 (2014-10-31)</h2>
-
-<ul>
-<li>  New controller: velocity_controllers/JointGroupVelocityController
-(multi-joint)</li>
-<li>  New controller: velocity_controllers/JointPositionController</li>
-<li>  Contributors: ipa-fxm, Dave Coleman</li>
-</ul>
-<h2 id="0.8.1-(2014-07-11)">0.8.1 (2014-07-11)</h2>
-
-<h2 id="0.8.0-(2014-05-12)">0.8.0 (2014-05-12)</h2>
-
-<ul>
-<li>  Remove rosbuild artifacts. Fix
-<a href="https://github.com/ros-controls/ros_controllers/issues/90">#90</a>.</li>
-<li>  Contributors: Adolfo Rodriguez Tsouroukdissian</li>
-</ul>
-<h2 id="0.7.2-(2014-04-01)">0.7.2 (2014-04-01)</h2>
-
-<h2 id="0.7.1-(2014-03-31)">0.7.1 (2014-03-31)</h2>
-
-<h2 id="0.7.0-(2014-03-28)">0.7.0 (2014-03-28)</h2>
-
-<h2 id="0.6.0-(2014-02-05)">0.6.0 (2014-02-05)</h2>
-
-<ul>
-<li>  Link shared libraries to catkin libraries GCC is quite lenient with
-missing symbols on shared libraries and doesn't event output any
-warning about it. When building with other compilers, missing
-symbols result in build errors.</li>
-<li>  Contributors: Paul Mathieu</li>
-</ul>
-<h2 id="0.5.4-(2013-09-30)">0.5.4 (2013-09-30)</h2>
-
-<h2 id="0.5.3-(2013-09-04)">0.5.3 (2013-09-04)</h2>
-
-<ul>
-<li>  Removed manifest.xml from all packages to prevent rosdep heirarchy
-issues in Groovy and Hydro</li>
-<li>  Added ignored manifest.xml files, added rule to .gitignore</li>
-</ul>
-<h2 id="0.5.2-(2013-08-06)">0.5.2 (2013-08-06)</h2>
-
-<h2 id="0.5.1-(2013-07-19)">0.5.1 (2013-07-19)</h2>
-
-<h2 id="0.5.0-(2013-07-16)">0.5.0 (2013-07-16)</h2>
-
-<ul>
-<li>  Merged</li>
-<li>  Add meta tags to packages not specifying them.
-
-<ul>
-<li>Website, bugtracker, repository.</li>
-</ul>
-</li>
-<li>  Restore "Fixed PLUGINLIB_DECLARE_CLASS depreacated errors"" This
-reverts commit 0862ad93696b0d736b565cd65ea36690dde0eaa7.</li>
-<li>  Adding install targets for plugin xml files</li>
-<li>  Revert "Fixed PLUGINLIB_DECLARE_CLASS depreacated errors" This
-reverts commit 2314b8b434e35dc9c1c298140118a004e00febd8.</li>
-</ul>
-<h2 id="0.4.0-(2013-06-26)">0.4.0 (2013-06-26)</h2>
-
-<ul>
-<li>  Version 0.4.0</li>
-<li>  Fixed PLUGINLIB_DECLARE_CLASS depreacated errors</li>
-<li>  adding install targets</li>
-<li>  adding switches for hybrid buildsystem</li>
-<li>  adding these packages which weren't seen by catkinize_stack</li>
-<li>
-<p>Extend joint_effort_controller to other interfaces</p>
-
-<ul>
-<li>  Factor-out implementation of simple command-forwarding
-controller.</li>
-<li>Provide specializations (typedefs really) for effort, velocity and
-position interfaces.</li>
-</ul>
-</li>
+<li>  Thread-safe and realtime-safe forward controllers.</li>
+<li>  Contributors: Mathias L</li>
 </ul>
 </div></body></html>
 
@@ -840,7 +2009,8 @@ position interfaces.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -852,39 +2022,228 @@ position interfaces.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/angles#indigo-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/angles" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/angles#indigo">angles</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/control_msgs#indigo">control_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_toolbox#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_toolbox" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/control_toolbox#indigo">control_toolbox</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/controller_interface#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/controller_interface" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/controller_interface#indigo">controller_interface</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/forward_command_controller#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/forward_command_controller" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/forward_command_controller#indigo">forward_command_controller</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/realtime_tools#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/realtime_tools" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/realtime_tools#indigo">realtime_tools</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#indigo">urdf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/angles#indigo">angles</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/control_msgs#indigo">control_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/control_toolbox#indigo">control_toolbox</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/controller_interface#indigo">controller_interface</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/forward_command_controller#indigo">forward_command_controller</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/realtime_tools#indigo">realtime_tools</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/urdf#indigo">urdf</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros_controllers/github-ros-controls-ros_controllers#indigo">ros_controllers</a></td>
+                      <td><a href="/r/ros_controllers/github-ros-controls-ros_controllers">github-ros-controls-ros_controllers</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros_controllers/github-ros-controls-ros_controllers#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/agvs_gazebo/github-RobotnikAutomation-agvs_sim#indigo">agvs_gazebo</a></td>
+                      <td><a href="/r/agvs_sim/github-RobotnikAutomation-agvs_sim">github-RobotnikAutomation-agvs_sim</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/agvs_gazebo/github-RobotnikAutomation-agvs_sim#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -892,12 +2251,12 @@ position interfaces.</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -906,9 +2265,9 @@ position interfaces.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -917,9 +2276,9 @@ position interfaces.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -928,28 +2287,39 @@ position interfaces.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-controls/ros_controllers/tree/indigo-devel/velocity_controllers//velocity_controllers_plugins.xml" target="_blank">controller_interface</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/indigo-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -959,6 +2329,173 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/diff_drive_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> diff_drive_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/effort_controllers/github-ros-controls-ros_controllers">
+
+effort_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">
+
+force_torque_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/forward_command_controller/github-ros-controls-ros_controllers">
+
+forward_command_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gripper_action_controller/github-ros-controls-ros_controllers">
+
+gripper_action_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">
+
+imu_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_state_controller/github-ros-controls-ros_controllers">
+
+joint_state_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/position_controllers/github-ros-controls-ros_controllers">
+
+position_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros_controllers/github-ros-controls-ros_controllers">
+
+ros_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+velocity_controllers
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-controls-ros_controllers
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-controls-ros_controllers
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/hydro-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -971,28 +2508,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            velocity_controllers
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1031,7 +2570,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1062,9 +2601,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1081,8 +2620,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            velocity_controllers
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/wiki">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1101,21 +2659,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Vijay Pradeep</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="https://github.com/ros-controls/ros_controllers/wiki">Website</a></li>
-                
-                  <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
                 
               </ul>
             
@@ -1148,15 +2691,15 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-velocity_controllers">Changelog for package velocity_controllers</h1>
 
-<h2 id="0.7.3-(2014-10-28)">0.7.3 (2014-10-28)</h2>
+<h2 id="0-7-3-2014-10-28">0.7.3 (2014-10-28)</h2>
 
-<h2 id="0.7.2-(2014-04-01)">0.7.2 (2014-04-01)</h2>
+<h2 id="0-7-2-2014-04-01">0.7.2 (2014-04-01)</h2>
 
-<h2 id="0.7.1-(2014-03-31)">0.7.1 (2014-03-31)</h2>
+<h2 id="0-7-1-2014-03-31">0.7.1 (2014-03-31)</h2>
 
-<h2 id="0.7.0-(2014-03-28)">0.7.0 (2014-03-28)</h2>
+<h2 id="0-7-0-2014-03-28">0.7.0 (2014-03-28)</h2>
 
-<h2 id="0.6.0-(2014-02-05)">0.6.0 (2014-02-05)</h2>
+<h2 id="0-6-0-2014-02-05">0.6.0 (2014-02-05)</h2>
 
 <ul>
 <li>  Link shared libraries to catkin libraries GCC is quite lenient with
@@ -1165,20 +2708,22 @@ warning about it. When building with other compilers, missing
 symbols result in build errors.</li>
 <li>  Contributors: Paul Mathieu</li>
 </ul>
-<h2 id="0.5.4-(2013-09-30)">0.5.4 (2013-09-30)</h2>
 
-<h2 id="0.5.3-(2013-09-04)">0.5.3 (2013-09-04)</h2>
+<h2 id="0-5-4-2013-09-30">0.5.4 (2013-09-30)</h2>
+
+<h2 id="0-5-3-2013-09-04">0.5.3 (2013-09-04)</h2>
 
 <ul>
 <li>  Removed manifest.xml from all packages to prevent rosdep heirarchy
 issues in Groovy and Hydro</li>
 <li>  Added ignored manifest.xml files, added rule to .gitignore</li>
 </ul>
-<h2 id="0.5.2-(2013-08-06)">0.5.2 (2013-08-06)</h2>
 
-<h2 id="0.5.1-(2013-07-19)">0.5.1 (2013-07-19)</h2>
+<h2 id="0-5-2-2013-08-06">0.5.2 (2013-08-06)</h2>
 
-<h2 id="0.5.0-(2013-07-16)">0.5.0 (2013-07-16)</h2>
+<h2 id="0-5-1-2013-07-19">0.5.1 (2013-07-19)</h2>
+
+<h2 id="0-5-0-2013-07-16">0.5.0 (2013-07-16)</h2>
 
 <ul>
 <li>  Merged</li>
@@ -1194,7 +2739,8 @@ reverts commit 0862ad93696b0d736b565cd65ea36690dde0eaa7.</li>
 <li>  Revert "Fixed PLUGINLIB_DECLARE_CLASS depreacated errors" This
 reverts commit 2314b8b434e35dc9c1c298140118a004e00febd8.</li>
 </ul>
-<h2 id="0.4.0-(2013-06-26)">0.4.0 (2013-06-26)</h2>
+
+<h2 id="0-4-0-2013-06-26">0.4.0 (2013-06-26)</h2>
 
 <ul>
 <li>  Version 0.4.0</li>
@@ -1206,8 +2752,8 @@ reverts commit 2314b8b434e35dc9c1c298140118a004e00febd8.</li>
 <p>Extend joint_effort_controller to other interfaces</p>
 
 <ul>
-<li>  Factor-out implementation of simple command-forwarding
-controller.</li>
+<li>  Factor-out implementation of simple
+command-forwarding controller.</li>
 <li>Provide specializations (typedefs really) for effort, velocity and
 position interfaces.</li>
 </ul>
@@ -1228,7 +2774,8 @@ position interfaces.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1240,29 +2787,142 @@ position interfaces.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/controller_interface#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/controller_interface" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/controller_interface#hydro">controller_interface</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/forward_command_controller#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/forward_command_controller" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/forward_command_controller#hydro">forward_command_controller</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/controller_interface#hydro">controller_interface</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/forward_command_controller#hydro">forward_command_controller</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_controller_configuration_gazebo/github-ipa320-cob_robots#hydro">cob_controller_configuration_gazebo</a></td>
+                      <td><a href="/r/cob_robots/github-ipa320-cob_robots">github-ipa320-cob_robots</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_controller_configuration_gazebo/github-ipa320-cob_robots#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/agvs_gazebo/github-RobotnikAutomation-agvs#hydro">agvs_gazebo</a></td>
+                      <td><a href="/r/agvs/github-RobotnikAutomation-agvs">github-RobotnikAutomation-agvs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/agvs_gazebo/github-RobotnikAutomation-agvs#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros_controllers/github-ros-controls-ros_controllers#hydro">ros_controllers</a></td>
+                      <td><a href="/r/ros_controllers/github-ros-controls-ros_controllers">github-ros-controls-ros_controllers</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros_controllers/github-ros-controls-ros_controllers#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1270,12 +2930,12 @@ position interfaces.</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1284,9 +2944,9 @@ position interfaces.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1295,9 +2955,9 @@ position interfaces.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1306,28 +2966,39 @@ position interfaces.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-controls/ros_controllers/tree/hydro-devel/velocity_controllers//velocity_controllers_plugins.xml" target="_blank">controller_interface</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/velocity_controllers/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/hydro-devel/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1337,6 +3008,157 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/velocity_controllers">velocity_controllers</a> <small>package from <a style="text-decoration:none" href="/r/ros_controllers/github-ros-controls-ros_controllers">ros_controllers</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/effort_controllers/github-ros-controls-ros_controllers">
+
+effort_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/force_torque_sensor_controller/github-ros-controls-ros_controllers">
+
+force_torque_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/forward_command_controller/github-ros-controls-ros_controllers">
+
+forward_command_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/imu_sensor_controller/github-ros-controls-ros_controllers">
+
+imu_sensor_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_state_controller/github-ros-controls-ros_controllers">
+
+joint_state_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_trajectory_controller/github-ros-controls-ros_controllers">
+
+<span class="glyphicon glyphicon-file"></span> joint_trajectory_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/position_controllers/github-ros-controls-ros_controllers">
+
+position_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros_controllers/github-ros-controls-ros_controllers">
+
+ros_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+velocity_controllers
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/velocity_controllers"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-controls-ros_controllers
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-controls-ros_controllers" role="menuitem" tabindex="-1" href="/p/velocity_controllers/github-ros-controls-ros_controllers" data="github-ros-controls-ros_controllers">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-controls-ros_controllers
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/velocity_controllers/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/groovy-backported-hydro/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1349,28 +3171,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            velocity_controllers
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1409,7 +3233,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1431,7 +3255,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-09-26
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-09-27
         </span>
       </td>
     </tr>
@@ -1440,9 +3264,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1459,8 +3283,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            velocity_controllers
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/wiki">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1479,21 +3322,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Vijay Pradeep</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="https://github.com/ros-controls/ros_controllers/wiki">Website</a></li>
-                
-                  <li><a href="https://github.com/ros-controls/ros_controllers/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/ros-controls/ros_controllers">Repository</a></li>
                 
               </ul>
             
@@ -1526,18 +3354,19 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-velocity_controllers">Changelog for package velocity_controllers</h1>
 
-<h2 id="0.5.3-(2013-09-04)">0.5.3 (2013-09-04)</h2>
+<h2 id="0-5-3-2013-09-04">0.5.3 (2013-09-04)</h2>
 
 <ul>
 <li>  Removed manifest.xml from all packages to prevent rosdep heirarchy
 issues in Groovy and Hydro</li>
 <li>  Added ignored manifest.xml files, added rule to .gitignore</li>
 </ul>
-<h2 id="0.5.2-(2013-08-06)">0.5.2 (2013-08-06)</h2>
 
-<h2 id="0.5.1-(2013-07-19)">0.5.1 (2013-07-19)</h2>
+<h2 id="0-5-2-2013-08-06">0.5.2 (2013-08-06)</h2>
 
-<h2 id="0.5.0-(2013-07-16)">0.5.0 (2013-07-16)</h2>
+<h2 id="0-5-1-2013-07-19">0.5.1 (2013-07-19)</h2>
+
+<h2 id="0-5-0-2013-07-16">0.5.0 (2013-07-16)</h2>
 
 <ul>
 <li>  Merged</li>
@@ -1553,7 +3382,8 @@ reverts commit 0862ad93696b0d736b565cd65ea36690dde0eaa7.</li>
 <li>  Revert "Fixed PLUGINLIB_DECLARE_CLASS depreacated errors" This
 reverts commit 2314b8b434e35dc9c1c298140118a004e00febd8.</li>
 </ul>
-<h2 id="0.4.0-(2013-06-26)">0.4.0 (2013-06-26)</h2>
+
+<h2 id="0-4-0-2013-06-26">0.4.0 (2013-06-26)</h2>
 
 <ul>
 <li>  Version 0.4.0</li>
@@ -1565,8 +3395,8 @@ reverts commit 2314b8b434e35dc9c1c298140118a004e00febd8.</li>
 <p>Extend joint_effort_controller to other interfaces</p>
 
 <ul>
-<li>  Factor-out implementation of simple command-forwarding
-controller.</li>
+<li>  Factor-out implementation of simple
+command-forwarding controller.</li>
 <li>Provide specializations (typedefs really) for effort, velocity and
 position interfaces.</li>
 </ul>
@@ -1587,7 +3417,8 @@ position interfaces.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/velocity_controllers/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1599,29 +3430,114 @@ position interfaces.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/controller_interface#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/controller_interface" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/controller_interface#groovy">controller_interface</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/forward_command_controller#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/forward_command_controller" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/forward_command_controller#groovy">forward_command_controller</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/controller_interface#groovy">controller_interface</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/forward_command_controller#groovy">forward_command_controller</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros_controllers/github-ros-controls-ros_controllers#groovy">ros_controllers</a></td>
+                      <td><a href="/r/ros_controllers/github-ros-controls-ros_controllers">github-ros-controls-ros_controllers</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros_controllers/github-ros-controls-ros_controllers#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1629,12 +3545,12 @@ position interfaces.</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1643,9 +3559,9 @@ position interfaces.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1654,9 +3570,9 @@ position interfaces.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1665,28 +3581,39 @@ position interfaces.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-controls/ros_controllers/tree/groovy-backported-hydro/velocity_controllers//velocity_controllers_plugins.xml" target="_blank">controller_interface</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/velocity_controllers/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-controls/ros_controllers/tree/groovy-backported-hydro/velocity_controllers"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:velocity_controllers/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/velocity_controllers?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=velocity_controllers&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1737,7 +3664,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

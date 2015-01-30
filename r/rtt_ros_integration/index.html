@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,7 +147,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -227,10 +269,585 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/orocos/rtt_ros_integration.git">https://github.com/orocos/rtt_ros_integration.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">jade-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-01
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/rtt_actionlib/github-orocos-rtt_ros_integration">rtt_actionlib</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_dynamic_reconfigure/github-orocos-rtt_ros_integration">rtt_dynamic_reconfigure</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_ros/github-orocos-rtt_ros_integration">rtt_ros</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_ros_integration/github-orocos-rtt_ros_integration">rtt_ros_integration</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_ros_msgs/github-orocos-rtt_ros_integration">rtt_ros_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rosclock/github-orocos-rtt_ros_integration">rtt_rosclock</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_roscomm/github-orocos-rtt_ros_integration">rtt_roscomm</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rosdeployment/github-orocos-rtt_ros_integration">rtt_rosdeployment</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rosnode/github-orocos-rtt_ros_integration">rtt_rosnode</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rospack/github-orocos-rtt_ros_integration">rtt_rospack</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rosparam/github-orocos-rtt_ros_integration">rtt_rosparam</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_tf/github-orocos-rtt_ros_integration">rtt_tf</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_dynamic_reconfigure_tests/github-orocos-rtt_ros_integration">rtt_dynamic_reconfigure_tests</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_ros_tests/github-orocos-rtt_ros_integration">rtt_ros_tests</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rosbuild_tests/github-orocos-rtt_ros_integration">rtt_rosbuild_tests</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_roscomm_tests/github-orocos-rtt_ros_integration">rtt_roscomm_tests</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rospack_tests/github-orocos-rtt_ros_integration">rtt_rospack_tests</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_actionlib_msgs/github-orocos-rtt_ros_integration">rtt_actionlib_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_common_msgs/github-orocos-rtt_ros_integration">rtt_common_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_diagnostic_msgs/github-orocos-rtt_ros_integration">rtt_diagnostic_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_geometry_msgs/github-orocos-rtt_ros_integration">rtt_geometry_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_kdl_conversions/github-orocos-rtt_ros_integration">rtt_kdl_conversions</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_nav_msgs/github-orocos-rtt_ros_integration">rtt_nav_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_ros_comm/github-orocos-rtt_ros_integration">rtt_ros_comm</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_rosgraph_msgs/github-orocos-rtt_ros_integration">rtt_rosgraph_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_sensor_msgs/github-orocos-rtt_ros_integration">rtt_sensor_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_shape_msgs/github-orocos-rtt_ros_integration">rtt_shape_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_std_msgs/github-orocos-rtt_ros_integration">rtt_std_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_std_srvs/github-orocos-rtt_ros_integration">rtt_std_srvs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_stereo_msgs/github-orocos-rtt_ros_integration">rtt_stereo_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_trajectory_msgs/github-orocos-rtt_ros_integration">rtt_trajectory_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/rtt_visualization_msgs/github-orocos-rtt_ros_integration">rtt_visualization_msgs</a></td>
+                    <td>2.8.2</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="orocos-rtt-ros-integration-packages">Orocos RTT / ROS Integration Packages</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This repository contains ROS packages necessary for building OROCOS libraries,
+plugins, and components which communicate with the ROS messaging system and the
+ROS parameter server.</p>
+
+<h2 id="changelog">Changelog</h2>
+
+<p>See the metapackage <a href="rtt_ros_integration/CHANGELOG.rst">rtt_ros_integration/CHANGELOG.rst</a> for a
+comprehensive changelog.</p>
+
+<h2 id="packages">Packages</h2>
+
+<p>The packages in this repository provide:</p>
+
+<ul>
+<li>
+<a href="rtt_ros"><strong>rtt_ros</strong></a> ROS package import plugin as well as wrapper scripts
+and launchfiles for using Orocos with ROS.</li>
+<li>
+<a href="rtt_rosclock"><strong>rtt_rosclock</strong></a> Realtime-Safe NTP clock measurement and ROS
+<code>Time</code> structure construction as well as a simulation-clock-based periodic
+RTT activity.</li>
+<li>
+<a href="rtt_rosnode"><strong>rtt_rosnode</strong></a> Plugin for ROS node instantiation inside an
+Orocos program.</li>
+<li>
+<a href="rtt_rosparam"><strong>rtt_rosparam</strong></a> Plugin for synchronizing ROS parameters
+with Orocos component properties.</li>
+<li>
+<a href="rtt_roscomm"><strong>rtt_roscomm</strong></a> ROS message typekit generation and Orocos
+plugin for publishing and subscribing to ROS topics as well as calling and
+responding to ROS services.</li>
+<li>
+<a href="rtt_rosdeployment"><strong>rtt_rosdeployment</strong></a> An RTT service which advertises
+common DeploymentComponent operations as ROS services.</li>
+<li>
+<a href="rtt_rospack"><strong>rtt_rospack</strong></a> Plugin for locating ROS resources.</li>
+<li>
+<a href="rtt_tf"><strong>rtt_tf</strong></a> RTT-Plugin which uses <a href="http://ros.org/wiki/tf">tf</a> to
+allow RTT components to lookup and publish transforms.</li>
+<li>
+<a href="rtt_actionlib"><strong>rtt_actionlib</strong></a> RTT-Enabled
+<a href="http://ros.org/wiki/actionlib">actionlib</a> action server for providing
+actions from ROS-integrated RTT components.</li>
+<li>
+<a href="rtt_dynamic_reconfigure"><strong>rtt_dynamic_reconfigure</strong></a> A service plugin
+that implements a <a href="http://wiki.ros.org/dynamic_reconfigure">dynamic_reconfigure</a> server to
+update properties dynamically during runtime.</li>
+<li>
+<a href="rtt_ros_msgs"><strong>rtt_ros_msgs</strong></a> ROS .msg and .srv types for use with these
+plugins.</li>
+<li>
+<a href="rtt_ros_integration"><strong>rtt_ros_integration</strong></a> Catkin
+<a href="http://ros.org/wiki/catkin/package.xml#Metapackages">metapackage</a> for this
+repository.</li>
+</ul>
+
+<p><strong><em>See each package's README.md file for more information.</em></strong></p>
+
+<h2 id="usage">Usage</h2>
+
+<p>For numerous examples of usage, see the
+<a href="http://github.com/jhu-lcsr/rtt_ros_examples"><strong>rtt_ros_examples</strong></a>
+stack.</p>
+
+<h3 id="installing-orocos-from-binary-packages">Installing Orocos From Binary Packages</h3>
+
+<p>The Orocos toolchain and the rtt_ros_integration packages are available as 
+binary packages hosted by the Open Source Robotics Foundation (OSRF) and can be
+installed on supported operating systems.</p>
+
+<h3 id="building-orocos-from-source">Building Orocos From Source</h3>
+
+<p>The <a href="http://www.orocos.org/orocos/toolchain">Orocos Toolchain</a> can be built from
+source in a Catkin workspace using <code>catkin_build_isolated</code> since Orocos packages
+now contain Catkin <code>package.xml</code> files. </p>
+
+<p>First, create an isolated underlay for building plain CMake-based packages like
+Orocos:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">OROCOS_TARGET</span><span class="o">=</span>gnulinux
+mkdir -p ~/ws/underlay_isolated/src/orocos
+<span class="nb">cd</span> ~/ws/underlay_isolated
+git clone --recursive git://gitorious.org/orocos-toolchain/orocos_toolchain.git -b toolchain-2.7 src/orocos/orocos_toolchain
+catkin_make_isolated --install
+<span class="nb">source </span>install_isolated/setup.sh
+
+</code></pre></div>
+<p>Then, in the same shell, create an underlay for building Catkin-based packages:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p ~/ws/underlay/src
+<span class="nb">cd</span> ~/ws/underlay
+git clone https://github.com/orocos/rtt_ros_integration.git src/rtt_ros_integration
+catkin_make
+<span class="nb">source </span>devel/setup.sh
+
+</code></pre></div>
+<p>At this point you can create Catkin or rosbuild packages which use the
+rtt_ros_integration tools.</p>
+
+<h3 id="creating-an-orocos-ros-package">Creating an Orocos-ROS Package</h3>
+
+<p>The Orocos and ROS communities have both standardized on using CMake for building source code, and have also both developed independent CMake macros for assisting the process. The ROS community has developed <a href="http://github.com/ros/catkin">catkin</a> and the Orocos toolchain uses Orocos-specific macros. These macros are used for exporting (declaring) and retreiving inter-package dependencies. It's a good, conflict-preventing, practice to decide when a package should be characterized by Catkin-based or Orocos-based macros.</p>
+
+<p>Any package that builds orocos targets (plugins, components, executables, etc) <em>needs_to call the <code>orocos_generate_package()</code> macro so that the appropriate platform-specific pkg-config .pc files are generated. These packages can _depend</em> on ROS libraries, but they should avoid <em>exporting</em> headers, libraries, or other resources via the <code>catkin_package()</code> macro.</p>
+
+<p>A simple Orocos-ROS package looks like the following:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">my_orocos_pkg
+├── README.md
+├── CMakeLists.txt
+├── package.xml
+├── include
+│   └── my_orocos_pkg
+└── src
+
+</code></pre></div>
+<p>Where the CMakeLists.txt has the following directives:</p>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 2.8.3<span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span>my_orocos_pkg<span class="p">)</span>
+
+<span class="c1">### ROS Dependencies ###</span>
+<span class="c1"># Find the RTT-ROS package (this transitively includes the Orocos CMake macros)</span>
+<span class="nb">find_package</span><span class="p">(</span>catkin REQUIRED COMPONENTS
+  rtt_ros
+  <span class="c1"># ADDITIONAL ROS PACKAGES</span>
+  <span class="p">)</span>
+
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
+
+<span class="c1">### Orocos Dependencies ###</span>
+<span class="c1"># Note that orocos_use_package() does not need to be called for any dependency</span>
+<span class="c1"># listed in the package.xml file</span>
+
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">USE_OROCOS_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
+
+<span class="c1">### Orocos Targets ###</span>
+
+<span class="c1"># orocos_component(my_component src/my_component.cpp)</span>
+<span class="c1"># target_link_libraries(my_component ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+
+<span class="c1"># orocos_library(my_library src/my_library.cpp)</span>
+<span class="c1"># target_link_libraries(my_library ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+
+<span class="c1"># orocos_service(my_service src/my_service.cpp)</span>
+<span class="c1"># target_link_libraries(my_service ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+
+<span class="c1"># orocos_plugin(my_plugin src/my_plugin.cpp)</span>
+<span class="c1"># target_link_libraries(my_plugin ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+
+<span class="c1"># orocos_typekit(my_typekit src/my_typekit.cpp)</span>
+<span class="c1"># target_link_libraries(my_typekit ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+
+<span class="c1">### Orocos Package Exports and Install Targets ###</span>
+
+<span class="c1"># Generate install targets for header files</span>
+
+<span class="nf">orocos_install_headers</span><span class="p">(</span>DIRECTORY include/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span><span class="p">)</span>
+
+<span class="c1"># Export package information (replaces catkin_package() macro) </span>
+<span class="nf">orocos_generate_package</span><span class="p">(</span>
+  INCLUDE_DIRS include
+  DEPENDS rtt_ros
+<span class="p">)</span>
+
+</code></pre></div>
+<p>The package.xml file is a normal Catkin package.xml file, with some additional export flags for ROS plugin auto-loading:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;package&gt;</span>
+  <span class="nt">&lt;name&gt;</span>my_orocos_package<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.1.0<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;license&gt;</span>BSD<span class="nt">&lt;/license&gt;</span>
+  <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">"name@domain.com"</span><span class="nt">&gt;</span>Firstname Lastname<span class="nt">&lt;/maintainer&gt;</span>
+  <span class="nt">&lt;description&gt;</span>
+    Package description.
+  <span class="nt">&lt;/description&gt;</span>
+
+  <span class="nt">&lt;buildtool_depend&gt;</span>catkin<span class="nt">&lt;/buildtool_depend&gt;</span>
+
+  <span class="c">&lt;!-- Build deps are queried automatically with orocos_use_package() --&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>rtt<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>ocl<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>rtt_ros<span class="nt">&lt;/build_depend&gt;</span>
+
+  <span class="nt">&lt;run_depend&gt;</span>rtt<span class="nt">&lt;/run_depend&gt;</span>
+  <span class="nt">&lt;run_depend&gt;</span>ocl<span class="nt">&lt;/run_depend&gt;</span>
+  <span class="nt">&lt;run_depend&gt;</span>rtt_ros<span class="nt">&lt;/run_depend&gt;</span>
+
+  <span class="c">&lt;!-- ROS Msg Typekits and Srv Proxies --&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>rtt_sensor_msgs<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;run_depend&gt;</span>rtt_sensor_msgs<span class="nt">&lt;/run_depend&gt;</span>
+
+  <span class="nt">&lt;export&gt;</span>
+    <span class="nt">&lt;rtt_ros&gt;</span>
+      <span class="c">&lt;!-- Plugin deps are loaded automatically by the rtt_ros import service --&gt;</span>
+      <span class="nt">&lt;plugin_depend&gt;</span>rtt_sensor_msgs<span class="nt">&lt;/plugin_depend&gt;</span>
+    <span class="nt">&lt;/rtt_ros&gt;</span>
+  <span class="nt">&lt;/export&gt;</span>
+<span class="nt">&lt;/package&gt;</span>
+
+</code></pre></div>
+<h3 id="building-ros-based-orocos-components">Building ROS-Based Orocos Components</h3>
+
+<p>While the ROS community has standardized on the rosbuild (ROS Hydro and earlier)
+and Catkin (ROS Groovy and later) buildsystems, Orocos has its own
+CMake/PkgConfig-based package description system which uses
+<a href="http://rock-robotics.org/stable/documentation/autoproj/">Autoproj</a> manifest.xml
+files similar to rosbuild manifest.xml files. </p>
+
+<p>This is primarily because Orocos builds its libraries with respect to a given
+<code>$OROCOS_TARGET</code> (gnulinux/xenomai/macosx/etc) so that you can build multiple
+versions of the same library in place without having to rebuild everything
+whenever you change targets.</p>
+
+<p>So in order to build Orocos components in a rosbuild or Catkin package, you need
+to first include the RTT CMake macros. This is done automatically when you find
+the <code>rtt_ros</code> package:</p>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span>catkin REQUIRED COMPONENTS rtt_ros<span class="p">)</span>
+
+</code></pre></div>
+<p>If you need other RTT libraries like the CORBA transport etc, you can use the
+<code>use_orocos()</code> macro provided by the <code>rtt_ros</code> package:</p>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">use_orocos</span><span class="p">(</span>rtt-transport-corba<span class="p">)</span>
+
+</code></pre></div>
+<p>The above is equivalent to calling the following:</p>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span>OROCOS-RTT REQUIRED COMPONENTS rtt-scripting rtt-transport-corba<span class="p">)</span>
+<span class="nb">include</span><span class="p">(</span><span class="si">${</span><span class="nv">OROCOS-RTT_USE_FILE_PATH</span><span class="si">}</span>/UseOROCOS-RTT.cmake <span class="p">)</span>
+
+</code></pre></div>
+<p>When this file is included, it both defines and executes several macros.
+Specifically, it parses the package.xml or manifest.xml of the including
+package, and executes <code>orocos_use_package(pkg-name)</code> on all build dependencies.
+This populates several variables including, but not limited to
+<code>${OROCOS_USE_INCLUDE_DIRS}</code> and  <code>${OROCOS_USE_LIBRARIES}</code> which are used by
+Orocos target- and package-definition macros like <code>orocos_executable()</code>,
+<code>orocos_library()</code> and <code>orocos_generate_package()</code>.</p>
+
+<p>Also, while the <code>orocos_use_package()</code> macro can be used to find both
+Orocos-based packages and normal pkg-config-based packages, you should only use
+it for Orocos-based packages. You should use the normal CMake and Catkin
+mechanisms for all non-Orocos dependencies. As long as the names of <em>orocos</em>
+packages are listed as <code>&lt;build_depend&gt;</code> dependencies in your package.xml file,
+their build flags will automatically be made available when building your
+package. <em>Do not</em> use <code>find_package(catkin COMPONENTS)</code> to find orocos packages,
+since catkin doesn't properly handle the orocos-target-specific packages. Listing 
+them in the package.xml file will also enforce proper build ordering.</p>
+
+<p>To build components, libraries, typekits, and other Orocos plugins, use the
+standard <code>orocos_*()</code> CMake macros. Then to make these available to other
+packages at build-time (through <code>orocos_use_package()</code>), declare an Orocos
+package at the end of your CMakeLists.txt file:</p>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">orocos_generate_package</span><span class="p">(</span>DEPENDS some-other-oro-pkg<span class="p">)</span>
+
+</code></pre></div>
+<p>See the Orocos RTT documentation (or <a href="http://www.orocos.org/stable/documentation/rtt/v2.x/doc-xml/rtt_cheat_sheet.pdf">cheat
+sheet</a>)
+for more info on these macros.</p>
+
+<p><strong>NOTE:</strong> You still need to call <code>find_package(catkin ...)</code> and
+<code>catkin_package(...)</code> for non-orocos dependencies and targets, but you shuold
+use the <code>orocos_*()</code> CMake macros for Orocos-based code.</p>
+
+<h3 id="dynamically-loading-ros-based-orocos-plugins">Dynamically Loading ROS-Based Orocos Plugins</h3>
+
+<p>Orocos plugins (components, typekits, plugins, etc.) are now built into the
+Catkin develspace lib directory.  Specificallly, they are built under
+<code>devel/lib/orocos/$OROCOS_TARGET/PKG_NAME/</code>. These directories should be on the 
+default Orocos search path as long as <code>devel/lib/orocos</code> is in the <code>$RTT_COMPONENT_PATH</code>
+(which happens automatically through the env-hooks supplied by <strong>rtt_ros</strong>).</p>
+
+<p>In order to import Orocos plugins built in a ROS package and all of that plugin's
+dependencies, no matter where it is, you can use the <code>ros.import()</code> service:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">import</span><span class="p">(</span><span class="s">"rtt_ros"</span><span class="p">)</span>
+<span class="n">ros</span><span class="o">.</span><span class="n">import</span><span class="p">(</span><span class="s">"my_pkg_name"</span><span class="p">)</span>
+
+</code></pre></div>
+<p>In this example, first the <code>rtt_ros</code> package is imported using the normal
+mechanism. This loads the <code>ros</code> service, which provides a ROS import
+function, <code>ros.import()</code>, which will parse ROS package metadata and import the
+Orocos plugins from the named package <em>and</em> all packages listed in
+<code>&lt;rtt_ros&gt;&lt;plugin_depend&gt;PKG_NAME&lt;/plugin_depend&gt;&lt;/rtt_ros&gt;</code> tags in the
+<code>&lt;export&gt;</code> section of the package.xml files.</p>
+
+<p>A single ROS package with orocos plugins can still be imported
+with the standard deployer <code>import()</code> function. However, this will only work
+if the named package is built in the same workspace as <code>rtt_ros</code> or a 
+workspace which <code>rtt_ros</code> extends. Additionally, Orocos RTT 2.7 no
+longer parses ROS package metadata in order to import all of a plugin's
+dependencies, so only the named package will be imported.</p>
+
+<p>For more information on specifying RTT plugin dependencies in ROS packages, see
+the README in the <a href="rtt_ros">rtt_ros</a> package.</p>
+
+<h3 id="bulding-ros-based-orocos-plugins">Bulding ROS-Based Orocos Plugins</h3>
+
+<p>Orocos plugins are built normally, with Orocos CMake macros. See
+<a href="rtt_actionlib/CMakeLists.txt">rtt_actionlib</a> for 
+an example of an Orocos RTT service plugin.</p>
+
+<h3 id="running-orocos-programs">Running Orocos Programs</h3>
+
+<p>The <code>rtt_ros</code> package provides several launchfiles and wrapper scripts for
+making it easier to Orocos programs in a ROS environment. See
+<a href="rtt_ros">rtt_ros</a> for more information.</p>
+
+<h3 id="connecting-orocos-ports-to-ros-topics">Connecting Orocos Ports to ROS Topics</h3>
+
+<p>The <code>rtt_roscomm</code> package provides a typekit for the the ROS Message 
+primitives, as well as a plugin which manages construction of ROS publishers
+and subscribers. See <a href="rtt_roscomm">rtt_roscomm</a> for more 
+information. </p>
+
+<h3 id="connecting-orocos-operations-to-ros-services">Connecting Orocos Operations to ROS Services</h3>
+
+<p>The <code>rtt_roscomm</code> package provides RTT services for binding an Orocos RTT
+operation or operation caller to the ROS service server or client,
+respectively. See <a href="rtt_roscomm">rtt_roscomm</a> for more information.</p>
+
+<h3 id="running-an-actionlib-action-server-in-an-orocos-component">Running an Actionlib Action Server in an Orocos Component</h3>
+
+<p>The <code>rtt_actionlib</code> package provides a C++ API and an RTT service for
+implementing <a href="http://www.ros.org/wiki/actionlib">actionlib</a> actions with Orocos
+RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more information.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -238,8 +855,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -256,13 +873,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">hydro-devel</span></td>
+      <td><span class="label label-default">indigo-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-21
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-01
         </span>
       </td>
     </tr>
@@ -270,7 +887,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -302,72 +922,72 @@
                 
                   <tr>
                     <td><a href="/p/rtt_actionlib/github-orocos-rtt_ros_integration">rtt_actionlib</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_dynamic_reconfigure/github-orocos-rtt_ros_integration">rtt_dynamic_reconfigure</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros/github-orocos-rtt_ros_integration">rtt_ros</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_integration/github-orocos-rtt_ros_integration">rtt_ros_integration</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_msgs/github-orocos-rtt_ros_integration">rtt_ros_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosclock/github-orocos-rtt_ros_integration">rtt_rosclock</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_roscomm/github-orocos-rtt_ros_integration">rtt_roscomm</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosdeployment/github-orocos-rtt_ros_integration">rtt_rosdeployment</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosnode/github-orocos-rtt_ros_integration">rtt_rosnode</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rospack/github-orocos-rtt_ros_integration">rtt_rospack</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosparam/github-orocos-rtt_ros_integration">rtt_rosparam</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_tf/github-orocos-rtt_ros_integration">rtt_tf</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_dynamic_reconfigure_tests/github-orocos-rtt_ros_integration">rtt_dynamic_reconfigure_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_tests/github-orocos-rtt_ros_integration">rtt_ros_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
@@ -377,87 +997,87 @@
                 
                   <tr>
                     <td><a href="/p/rtt_roscomm_tests/github-orocos-rtt_ros_integration">rtt_roscomm_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rospack_tests/github-orocos-rtt_ros_integration">rtt_rospack_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_actionlib_msgs/github-orocos-rtt_ros_integration">rtt_actionlib_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_common_msgs/github-orocos-rtt_ros_integration">rtt_common_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_diagnostic_msgs/github-orocos-rtt_ros_integration">rtt_diagnostic_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_geometry_msgs/github-orocos-rtt_ros_integration">rtt_geometry_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_kdl_conversions/github-orocos-rtt_ros_integration">rtt_kdl_conversions</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_nav_msgs/github-orocos-rtt_ros_integration">rtt_nav_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_comm/github-orocos-rtt_ros_integration">rtt_ros_comm</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosgraph_msgs/github-orocos-rtt_ros_integration">rtt_rosgraph_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_sensor_msgs/github-orocos-rtt_ros_integration">rtt_sensor_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_shape_msgs/github-orocos-rtt_ros_integration">rtt_shape_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_std_msgs/github-orocos-rtt_ros_integration">rtt_std_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_std_srvs/github-orocos-rtt_ros_integration">rtt_std_srvs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_stereo_msgs/github-orocos-rtt_ros_integration">rtt_stereo_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_trajectory_msgs/github-orocos-rtt_ros_integration">rtt_trajectory_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_visualization_msgs/github-orocos-rtt_ros_integration">rtt_visualization_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.8.2</td>
                   </tr>
                 
                 </tbody>
@@ -472,7 +1092,7 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="orocos-rtt-/-ros-integration-packages">Orocos RTT / ROS Integration Packages</h1>
+<h1 id="orocos-rtt-ros-integration-packages">Orocos RTT / ROS Integration Packages</h1>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -531,6 +1151,7 @@ plugins.</li>
 <a href="http://ros.org/wiki/catkin/package.xml#Metapackages">metapackage</a> for this
 repository.</li>
 </ul>
+
 <p><strong><em>See each package's README.md file for more information.</em></strong></p>
 
 <h2 id="usage">Usage</h2>
@@ -559,6 +1180,7 @@ mkdir -p ~/ws/underlay_isolated/src/orocos
 git clone --recursive git://gitorious.org/orocos-toolchain/orocos_toolchain.git -b toolchain-2.7 src/orocos/orocos_toolchain
 catkin_make_isolated --install
 <span class="nb">source </span>install_isolated/setup.sh
+
 </code></pre></div>
 <p>Then, in the same shell, create an underlay for building Catkin-based packages:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p ~/ws/underlay/src
@@ -566,6 +1188,7 @@ catkin_make_isolated --install
 git clone https://github.com/orocos/rtt_ros_integration.git src/rtt_ros_integration
 catkin_make
 <span class="nb">source </span>devel/setup.sh
+
 </code></pre></div>
 <p>At this point you can create Catkin or rosbuild packages which use the
 rtt_ros_integration tools.</p>
@@ -577,61 +1200,63 @@ rtt_ros_integration tools.</p>
 <p>Any package that builds orocos targets (plugins, components, executables, etc) <em>needs_to call the <code>orocos_generate_package()</code> macro so that the appropriate platform-specific pkg-config .pc files are generated. These packages can _depend</em> on ROS libraries, but they should avoid <em>exporting</em> headers, libraries, or other resources via the <code>catkin_package()</code> macro.</p>
 
 <p>A simple Orocos-ROS package looks like the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">my_orocos_pkg
+<div class="highlight"><pre><code class="language-" data-lang="">my_orocos_pkg
 ├── README.md
 ├── CMakeLists.txt
 ├── package.xml
 ├── include
 │   └── my_orocos_pkg
 └── src
+
 </code></pre></div>
 <p>Where the CMakeLists.txt has the following directives:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.3</span><span class="p">)</span>
-<span class="nb">project</span><span class="p">(</span><span class="s">my_orocos_pkg</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 2.8.3<span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span>my_orocos_pkg<span class="p">)</span>
 
-<span class="c">### ROS Dependencies ###</span>
-<span class="c"># Find the RTT-ROS package (this transitively includes the Orocos CMake macros)</span>
-<span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span>
-  <span class="s">rtt_ros</span>
-  <span class="c"># ADDITIONAL ROS PACKAGES</span>
+<span class="c1">### ROS Dependencies ###</span>
+<span class="c1"># Find the RTT-ROS package (this transitively includes the Orocos CMake macros)</span>
+<span class="nb">find_package</span><span class="p">(</span>catkin REQUIRED COMPONENTS
+  rtt_ros
+  <span class="c1"># ADDITIONAL ROS PACKAGES</span>
   <span class="p">)</span>
 
-<span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
 
-<span class="c">### Orocos Dependencies ###</span>
-<span class="c"># Note that orocos_use_package() does not need to be called for any dependency</span>
-<span class="c"># listed in the package.xml file</span>
+<span class="c1">### Orocos Dependencies ###</span>
+<span class="c1"># Note that orocos_use_package() does not need to be called for any dependency</span>
+<span class="c1"># listed in the package.xml file</span>
 
-<span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">USE_OROCOS_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">USE_OROCOS_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
 
-<span class="c">### Orocos Targets ###</span>
+<span class="c1">### Orocos Targets ###</span>
 
-<span class="c"># orocos_component(my_component src/my_component.cpp)</span>
-<span class="c"># target_link_libraries(my_component ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_component(my_component src/my_component.cpp)</span>
+<span class="c1"># target_link_libraries(my_component ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_library(my_library src/my_library.cpp)</span>
-<span class="c"># target_link_libraries(my_library ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_library(my_library src/my_library.cpp)</span>
+<span class="c1"># target_link_libraries(my_library ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_service(my_service src/my_service.cpp)</span>
-<span class="c"># target_link_libraries(my_service ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_service(my_service src/my_service.cpp)</span>
+<span class="c1"># target_link_libraries(my_service ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_plugin(my_plugin src/my_plugin.cpp)</span>
-<span class="c"># target_link_libraries(my_plugin ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_plugin(my_plugin src/my_plugin.cpp)</span>
+<span class="c1"># target_link_libraries(my_plugin ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_typekit(my_typekit src/my_typekit.cpp)</span>
-<span class="c"># target_link_libraries(my_typekit ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_typekit(my_typekit src/my_typekit.cpp)</span>
+<span class="c1"># target_link_libraries(my_typekit ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c">### Orocos Package Exports and Install Targets ###</span>
+<span class="c1">### Orocos Package Exports and Install Targets ###</span>
 
-<span class="c"># Generate install targets for header files</span>
+<span class="c1"># Generate install targets for header files</span>
 
-<span class="nb">orocos_install_headers</span><span class="p">(</span><span class="s">DIRECTORY</span> <span class="s">include/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+<span class="nf">orocos_install_headers</span><span class="p">(</span>DIRECTORY include/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span><span class="p">)</span>
 
-<span class="c"># Export package information (replaces catkin_package() macro) </span>
-<span class="nb">orocos_generate_package</span><span class="p">(</span>
-  <span class="s">INCLUDE_DIRS</span> <span class="s">include</span>
-  <span class="s">DEPENDS</span> <span class="s">rtt_ros</span>
+<span class="c1"># Export package information (replaces catkin_package() macro) </span>
+<span class="nf">orocos_generate_package</span><span class="p">(</span>
+  INCLUDE_DIRS include
+  DEPENDS rtt_ros
 <span class="p">)</span>
+
 </code></pre></div>
 <p>The package.xml file is a normal Catkin package.xml file, with some additional export flags for ROS plugin auto-loading:</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;package&gt;</span>
@@ -665,6 +1290,7 @@ rtt_ros_integration tools.</p>
     <span class="nt">&lt;/rtt_ros&gt;</span>
   <span class="nt">&lt;/export&gt;</span>
 <span class="nt">&lt;/package&gt;</span>
+
 </code></pre></div>
 <h3 id="building-ros-based-orocos-components">Building ROS-Based Orocos Components</h3>
 
@@ -682,15 +1308,18 @@ whenever you change targets.</p>
 <p>So in order to build Orocos components in a rosbuild or Catkin package, you need
 to first include the RTT CMake macros. This is done automatically when you find
 the <code>rtt_ros</code> package:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">rtt_ros</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span>catkin REQUIRED COMPONENTS rtt_ros<span class="p">)</span>
+
 </code></pre></div>
 <p>If you need other RTT libraries like the CORBA transport etc, you can use the
 <code>use_orocos()</code> macro provided by the <code>rtt_ros</code> package:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">use_orocos</span><span class="p">(</span><span class="s">rtt-transport-corba</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">use_orocos</span><span class="p">(</span>rtt-transport-corba<span class="p">)</span>
+
 </code></pre></div>
 <p>The above is equivalent to calling the following:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span><span class="s">OROCOS-RTT</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">rtt-scripting</span> <span class="s">rtt-transport-corba</span><span class="p">)</span>
-<span class="nb">include</span><span class="p">(</span><span class="o">${</span><span class="nv">OROCOS-RTT_USE_FILE_PATH</span><span class="o">}</span><span class="s">/UseOROCOS-RTT.cmake</span> <span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span>OROCOS-RTT REQUIRED COMPONENTS rtt-scripting rtt-transport-corba<span class="p">)</span>
+<span class="nb">include</span><span class="p">(</span><span class="si">${</span><span class="nv">OROCOS-RTT_USE_FILE_PATH</span><span class="si">}</span>/UseOROCOS-RTT.cmake <span class="p">)</span>
+
 </code></pre></div>
 <p>When this file is included, it both defines and executes several macros.
 Specifically, it parses the package.xml or manifest.xml of the including
@@ -714,7 +1343,8 @@ them in the package.xml file will also enforce proper build ordering.</p>
 standard <code>orocos_*()</code> CMake macros. Then to make these available to other
 packages at build-time (through <code>orocos_use_package()</code>), declare an Orocos
 package at the end of your CMakeLists.txt file:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">orocos_generate_package</span><span class="p">(</span><span class="s">DEPENDS</span> <span class="s">some-other-oro-pkg</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">orocos_generate_package</span><span class="p">(</span>DEPENDS some-other-oro-pkg<span class="p">)</span>
+
 </code></pre></div>
 <p>See the Orocos RTT documentation (or <a href="http://www.orocos.org/stable/documentation/rtt/v2.x/doc-xml/rtt_cheat_sheet.pdf">cheat
 sheet</a>)
@@ -736,6 +1366,7 @@ default Orocos search path as long as <code>devel/lib/orocos</code> is in the <c
 dependencies, no matter where it is, you can use the <code>ros.import()</code> service:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">import</span><span class="p">(</span><span class="s">"rtt_ros"</span><span class="p">)</span>
 <span class="n">ros</span><span class="o">.</span><span class="n">import</span><span class="p">(</span><span class="s">"my_pkg_name"</span><span class="p">)</span>
+
 </code></pre></div>
 <p>In this example, first the <code>rtt_ros</code> package is imported using the normal
 mechanism. This loads the <code>ros</code> service, which provides a ROS import
@@ -789,6 +1420,9 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -796,8 +1430,8 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -820,7 +1454,7 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-21
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-07-21
         </span>
       </td>
     </tr>
@@ -828,7 +1462,10 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -860,72 +1497,72 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
                 
                   <tr>
                     <td><a href="/p/rtt_actionlib/github-orocos-rtt_ros_integration">rtt_actionlib</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_dynamic_reconfigure/github-orocos-rtt_ros_integration">rtt_dynamic_reconfigure</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros/github-orocos-rtt_ros_integration">rtt_ros</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_integration/github-orocos-rtt_ros_integration">rtt_ros_integration</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_msgs/github-orocos-rtt_ros_integration">rtt_ros_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosclock/github-orocos-rtt_ros_integration">rtt_rosclock</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_roscomm/github-orocos-rtt_ros_integration">rtt_roscomm</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosdeployment/github-orocos-rtt_ros_integration">rtt_rosdeployment</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosnode/github-orocos-rtt_ros_integration">rtt_rosnode</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rospack/github-orocos-rtt_ros_integration">rtt_rospack</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosparam/github-orocos-rtt_ros_integration">rtt_rosparam</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_tf/github-orocos-rtt_ros_integration">rtt_tf</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_dynamic_reconfigure_tests/github-orocos-rtt_ros_integration">rtt_dynamic_reconfigure_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_tests/github-orocos-rtt_ros_integration">rtt_ros_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
@@ -935,87 +1572,87 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
                 
                   <tr>
                     <td><a href="/p/rtt_roscomm_tests/github-orocos-rtt_ros_integration">rtt_roscomm_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rospack_tests/github-orocos-rtt_ros_integration">rtt_rospack_tests</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_actionlib_msgs/github-orocos-rtt_ros_integration">rtt_actionlib_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_common_msgs/github-orocos-rtt_ros_integration">rtt_common_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_diagnostic_msgs/github-orocos-rtt_ros_integration">rtt_diagnostic_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_geometry_msgs/github-orocos-rtt_ros_integration">rtt_geometry_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_kdl_conversions/github-orocos-rtt_ros_integration">rtt_kdl_conversions</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_nav_msgs/github-orocos-rtt_ros_integration">rtt_nav_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_ros_comm/github-orocos-rtt_ros_integration">rtt_ros_comm</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_rosgraph_msgs/github-orocos-rtt_ros_integration">rtt_rosgraph_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_sensor_msgs/github-orocos-rtt_ros_integration">rtt_sensor_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_shape_msgs/github-orocos-rtt_ros_integration">rtt_shape_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_std_msgs/github-orocos-rtt_ros_integration">rtt_std_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_std_srvs/github-orocos-rtt_ros_integration">rtt_std_srvs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_stereo_msgs/github-orocos-rtt_ros_integration">rtt_stereo_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_trajectory_msgs/github-orocos-rtt_ros_integration">rtt_trajectory_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/rtt_visualization_msgs/github-orocos-rtt_ros_integration">rtt_visualization_msgs</a></td>
-                    <td>2.7.0</td>
+                    <td>2.7.2</td>
                   </tr>
                 
                 </tbody>
@@ -1030,7 +1667,7 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="orocos-rtt-/-ros-integration-packages">Orocos RTT / ROS Integration Packages</h1>
+<h1 id="orocos-rtt-ros-integration-packages">Orocos RTT / ROS Integration Packages</h1>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -1089,6 +1726,7 @@ plugins.</li>
 <a href="http://ros.org/wiki/catkin/package.xml#Metapackages">metapackage</a> for this
 repository.</li>
 </ul>
+
 <p><strong><em>See each package's README.md file for more information.</em></strong></p>
 
 <h2 id="usage">Usage</h2>
@@ -1117,6 +1755,7 @@ mkdir -p ~/ws/underlay_isolated/src/orocos
 git clone --recursive git://gitorious.org/orocos-toolchain/orocos_toolchain.git -b toolchain-2.7 src/orocos/orocos_toolchain
 catkin_make_isolated --install
 <span class="nb">source </span>install_isolated/setup.sh
+
 </code></pre></div>
 <p>Then, in the same shell, create an underlay for building Catkin-based packages:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p ~/ws/underlay/src
@@ -1124,6 +1763,7 @@ catkin_make_isolated --install
 git clone https://github.com/orocos/rtt_ros_integration.git src/rtt_ros_integration
 catkin_make
 <span class="nb">source </span>devel/setup.sh
+
 </code></pre></div>
 <p>At this point you can create Catkin or rosbuild packages which use the
 rtt_ros_integration tools.</p>
@@ -1135,61 +1775,63 @@ rtt_ros_integration tools.</p>
 <p>Any package that builds orocos targets (plugins, components, executables, etc) <em>needs_to call the <code>orocos_generate_package()</code> macro so that the appropriate platform-specific pkg-config .pc files are generated. These packages can _depend</em> on ROS libraries, but they should avoid <em>exporting</em> headers, libraries, or other resources via the <code>catkin_package()</code> macro.</p>
 
 <p>A simple Orocos-ROS package looks like the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">my_orocos_pkg
+<div class="highlight"><pre><code class="language-" data-lang="">my_orocos_pkg
 ├── README.md
 ├── CMakeLists.txt
 ├── package.xml
 ├── include
 │   └── my_orocos_pkg
 └── src
+
 </code></pre></div>
 <p>Where the CMakeLists.txt has the following directives:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.3</span><span class="p">)</span>
-<span class="nb">project</span><span class="p">(</span><span class="s">my_orocos_pkg</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 2.8.3<span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span>my_orocos_pkg<span class="p">)</span>
 
-<span class="c">### ROS Dependencies ###</span>
-<span class="c"># Find the RTT-ROS package (this transitively includes the Orocos CMake macros)</span>
-<span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span>
-  <span class="s">rtt_ros</span>
-  <span class="c"># ADDITIONAL ROS PACKAGES</span>
+<span class="c1">### ROS Dependencies ###</span>
+<span class="c1"># Find the RTT-ROS package (this transitively includes the Orocos CMake macros)</span>
+<span class="nb">find_package</span><span class="p">(</span>catkin REQUIRED COMPONENTS
+  rtt_ros
+  <span class="c1"># ADDITIONAL ROS PACKAGES</span>
   <span class="p">)</span>
 
-<span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
 
-<span class="c">### Orocos Dependencies ###</span>
-<span class="c"># Note that orocos_use_package() does not need to be called for any dependency</span>
-<span class="c"># listed in the package.xml file</span>
+<span class="c1">### Orocos Dependencies ###</span>
+<span class="c1"># Note that orocos_use_package() does not need to be called for any dependency</span>
+<span class="c1"># listed in the package.xml file</span>
 
-<span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">USE_OROCOS_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">USE_OROCOS_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
 
-<span class="c">### Orocos Targets ###</span>
+<span class="c1">### Orocos Targets ###</span>
 
-<span class="c"># orocos_component(my_component src/my_component.cpp)</span>
-<span class="c"># target_link_libraries(my_component ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_component(my_component src/my_component.cpp)</span>
+<span class="c1"># target_link_libraries(my_component ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_library(my_library src/my_library.cpp)</span>
-<span class="c"># target_link_libraries(my_library ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_library(my_library src/my_library.cpp)</span>
+<span class="c1"># target_link_libraries(my_library ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_service(my_service src/my_service.cpp)</span>
-<span class="c"># target_link_libraries(my_service ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_service(my_service src/my_service.cpp)</span>
+<span class="c1"># target_link_libraries(my_service ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_plugin(my_plugin src/my_plugin.cpp)</span>
-<span class="c"># target_link_libraries(my_plugin ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_plugin(my_plugin src/my_plugin.cpp)</span>
+<span class="c1"># target_link_libraries(my_plugin ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c"># orocos_typekit(my_typekit src/my_typekit.cpp)</span>
-<span class="c"># target_link_libraries(my_typekit ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
+<span class="c1"># orocos_typekit(my_typekit src/my_typekit.cpp)</span>
+<span class="c1"># target_link_libraries(my_typekit ${catkin_LIBRARIES} ${USE_OROCOS_LIBRARIES})</span>
 
-<span class="c">### Orocos Package Exports and Install Targets ###</span>
+<span class="c1">### Orocos Package Exports and Install Targets ###</span>
 
-<span class="c"># Generate install targets for header files</span>
+<span class="c1"># Generate install targets for header files</span>
 
-<span class="nb">orocos_install_headers</span><span class="p">(</span><span class="s">DIRECTORY</span> <span class="s">include/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+<span class="nf">orocos_install_headers</span><span class="p">(</span>DIRECTORY include/<span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span><span class="p">)</span>
 
-<span class="c"># Export package information (replaces catkin_package() macro) </span>
-<span class="nb">orocos_generate_package</span><span class="p">(</span>
-  <span class="s">INCLUDE_DIRS</span> <span class="s">include</span>
-  <span class="s">DEPENDS</span> <span class="s">rtt_ros</span>
+<span class="c1"># Export package information (replaces catkin_package() macro) </span>
+<span class="nf">orocos_generate_package</span><span class="p">(</span>
+  INCLUDE_DIRS include
+  DEPENDS rtt_ros
 <span class="p">)</span>
+
 </code></pre></div>
 <p>The package.xml file is a normal Catkin package.xml file, with some additional export flags for ROS plugin auto-loading:</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;package&gt;</span>
@@ -1223,6 +1865,7 @@ rtt_ros_integration tools.</p>
     <span class="nt">&lt;/rtt_ros&gt;</span>
   <span class="nt">&lt;/export&gt;</span>
 <span class="nt">&lt;/package&gt;</span>
+
 </code></pre></div>
 <h3 id="building-ros-based-orocos-components">Building ROS-Based Orocos Components</h3>
 
@@ -1240,15 +1883,18 @@ whenever you change targets.</p>
 <p>So in order to build Orocos components in a rosbuild or Catkin package, you need
 to first include the RTT CMake macros. This is done automatically when you find
 the <code>rtt_ros</code> package:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">rtt_ros</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span>catkin REQUIRED COMPONENTS rtt_ros<span class="p">)</span>
+
 </code></pre></div>
 <p>If you need other RTT libraries like the CORBA transport etc, you can use the
 <code>use_orocos()</code> macro provided by the <code>rtt_ros</code> package:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">use_orocos</span><span class="p">(</span><span class="s">rtt-transport-corba</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">use_orocos</span><span class="p">(</span>rtt-transport-corba<span class="p">)</span>
+
 </code></pre></div>
 <p>The above is equivalent to calling the following:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span><span class="s">OROCOS-RTT</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">rtt-scripting</span> <span class="s">rtt-transport-corba</span><span class="p">)</span>
-<span class="nb">include</span><span class="p">(</span><span class="o">${</span><span class="nv">OROCOS-RTT_USE_FILE_PATH</span><span class="o">}</span><span class="s">/UseOROCOS-RTT.cmake</span> <span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">find_package</span><span class="p">(</span>OROCOS-RTT REQUIRED COMPONENTS rtt-scripting rtt-transport-corba<span class="p">)</span>
+<span class="nb">include</span><span class="p">(</span><span class="si">${</span><span class="nv">OROCOS-RTT_USE_FILE_PATH</span><span class="si">}</span>/UseOROCOS-RTT.cmake <span class="p">)</span>
+
 </code></pre></div>
 <p>When this file is included, it both defines and executes several macros.
 Specifically, it parses the package.xml or manifest.xml of the including
@@ -1272,7 +1918,8 @@ them in the package.xml file will also enforce proper build ordering.</p>
 standard <code>orocos_*()</code> CMake macros. Then to make these available to other
 packages at build-time (through <code>orocos_use_package()</code>), declare an Orocos
 package at the end of your CMakeLists.txt file:</p>
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">orocos_generate_package</span><span class="p">(</span><span class="s">DEPENDS</span> <span class="s">some-other-oro-pkg</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">orocos_generate_package</span><span class="p">(</span>DEPENDS some-other-oro-pkg<span class="p">)</span>
+
 </code></pre></div>
 <p>See the Orocos RTT documentation (or <a href="http://www.orocos.org/stable/documentation/rtt/v2.x/doc-xml/rtt_cheat_sheet.pdf">cheat
 sheet</a>)
@@ -1294,6 +1941,7 @@ default Orocos search path as long as <code>devel/lib/orocos</code> is in the <c
 dependencies, no matter where it is, you can use the <code>ros.import()</code> service:</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">import</span><span class="p">(</span><span class="s">"rtt_ros"</span><span class="p">)</span>
 <span class="n">ros</span><span class="o">.</span><span class="n">import</span><span class="p">(</span><span class="s">"my_pkg_name"</span><span class="p">)</span>
+
 </code></pre></div>
 <p>In this example, first the <code>rtt_ros</code> package is imported using the normal
 mechanism. This loads the <code>ros</code> service, which provides a ROS import
@@ -1347,6 +1995,9 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1354,8 +2005,8 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -1386,7 +2037,10 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1445,6 +2099,9 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1452,8 +2109,8 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -1484,7 +2141,10 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1543,6 +2203,9 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1550,8 +2213,8 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
   <div class="distro distro-electric">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -1582,7 +2245,10 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1636,6 +2302,9 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1670,7 +2339,7 @@ RTT components. See <a href="rtt_actionlib">rtt_actionlib</a> for more informati
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

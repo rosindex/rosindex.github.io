@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,206 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/husky_bringup">husky_bringup</a> <small>package from <a style="text-decoration:none" href="/r/husky_bringup/github-husky-husky_bringup">husky_bringup</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> husky_bringup</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/husky_bringup/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//husky/husky_bringup/tree/indigo-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:husky_bringup/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/husky_bringup" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/husky_bringup"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-husky-husky_bringup
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-clearpathrobotics-clearpath_husky" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-clearpathrobotics-clearpath_husky" data="github-clearpathrobotics-clearpath_husky">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-clearpathrobotics-clearpath_husky
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-husky-husky_bringup" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-husky-husky_bringup" data="github-husky-husky_bringup">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-husky-husky_bringup
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/husky_bringup">husky_bringup</a> <small>package from <a style="text-decoration:none" href="/r/husky_bringup/github-husky-husky_bringup">husky_bringup</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> husky_bringup</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/husky_bringup/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//husky/husky_bringup/tree/hydro-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:husky_bringup/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/husky_bringup" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/husky_bringup"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-husky-husky_bringup
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-clearpathrobotics-clearpath_husky" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-clearpathrobotics-clearpath_husky" data="github-clearpathrobotics-clearpath_husky">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-clearpathrobotics-clearpath_husky
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-husky-husky_bringup" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-husky-husky_bringup" data="github-husky-husky_bringup">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-husky-husky_bringup
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -371,6 +224,107 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/husky_bringup">husky_bringup</a> <small>package from <a style="text-decoration:none" href="/r/husky_bringup/github-husky-husky_bringup">husky_bringup</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> husky_bringup
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/husky_bringup"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-husky-husky_bringup
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-clearpathrobotics-clearpath_husky" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-clearpathrobotics-clearpath_husky" data="github-clearpathrobotics-clearpath_husky">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-clearpathrobotics-clearpath_husky
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-husky-husky_bringup" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-husky-husky_bringup" data="github-husky-husky_bringup">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-husky-husky_bringup
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-husky-husky_robot" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-husky-husky_robot" data="github-husky-husky_robot">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-husky-husky_robot
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/husky_bringup/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//husky/husky_bringup/tree/indigo-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:husky_bringup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/husky_bringup?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=husky_bringup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -383,28 +337,30 @@
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">14</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">17</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            Clearpath Husky installation and integration package
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -417,7 +373,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.1.1</td>
+                <td>0.1.2</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -443,7 +399,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -465,7 +421,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-03-23
         </span>
       </td>
     </tr>
@@ -481,7 +437,7 @@
       <td class="text-right"><b>Released</b></td>
       <td>
         
-          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+          <span class="label label-default">UNRELEASED
         </span>
       </td>
     </tr>
@@ -490,8 +446,27 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Clearpath Husky installation and integration package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/husky_bringup">Website</a></li>
+                
+                  <li><a href="https://github.com/husky/husky_bringup/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/husly/husky_bringup">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -513,20 +488,7 @@
                 
                   <li>Paul Bovbel</li>
                 
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/husky_bringup">Website</a></li>
-                
-                  <li><a href="https://github.com/husky/husky_bringup/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/husly/husky_bringup">Repository</a></li>
+                  <li>Devon Ash</li>
                 
               </ul>
             
@@ -564,7 +526,14 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-husky_bringup">Changelog for package husky_bringup</h1>
 
-<h2 id="0.1.1-(2015-01-30)">0.1.1 (2015-01-30)</h2>
+<h2 id="0-1-2-2015-02-12">0.1.2 (2015-02-12)</h2>
+
+<ul>
+<li>  Namespace fixes</li>
+<li>  Contributors: Paul Bovbel</li>
+</ul>
+
+<h2 id="0-1-1-2015-01-30">0.1.1 (2015-01-30)</h2>
 
 <ul>
 <li>  Update website and authors</li>
@@ -577,7 +546,8 @@
 imu_filter_magwick</li>
 <li>  Contributors: Paul Bovbel</li>
 </ul>
-<h2 id="0.1.0-(2015-01-13)">0.1.0 (2015-01-13)</h2>
+
+<h2 id="0-1-0-2015-01-13">0.1.0 (2015-01-13)</h2>
 
 <ul>
 <li>  Port to robot_localization, gyro only pending um6 fixes</li>
@@ -594,18 +564,21 @@ microstrain_config directory.</li>
 <li>  Contributors: Jeff Schmidt, Mike Purvis, Paul Bovbel, Prasenjit
 Mukherjee</li>
 </ul>
-<h2 id="0.0.6-(2013-10-12)">0.0.6 (2013-10-12)</h2>
+
+<h2 id="0-0-6-2013-10-12">0.0.6 (2013-10-12)</h2>
 
 <ul>
 <li>  Restore leading slash in checking the joystick path. This was
 removed by mistake in an earlier commit.</li>
 </ul>
-<h2 id="0.0.5-(2013-10-05)">0.0.5 (2013-10-05)</h2>
+
+<h2 id="0-0-5-2013-10-05">0.0.5 (2013-10-05)</h2>
 
 <ul>
 <li>  Acknowledge the ROBOT_SETUP env variable in the install script.</li>
 </ul>
-<h2 id="0.0.4-(2013-10-03)">0.0.4 (2013-10-03)</h2>
+
+<h2 id="0-0-4-2013-10-03">0.0.4 (2013-10-03)</h2>
 
 <ul>
 <li>  Remove the other launchfile check until we get a chance to fix the
@@ -619,14 +592,16 @@ to to pick whether we want an outdoor or indoor ekf to start</li>
 <li>  adding parameter to lock the altitude at 0</li>
 <li>  set invalid covariance value for enu to really high, instead of -1</li>
 </ul>
-<h2 id="0.0.3-(2013-10-01)">0.0.3 (2013-10-01)</h2>
+
+<h2 id="0-0-3-2013-10-01">0.0.3 (2013-10-01)</h2>
 
 <ul>
 <li>  Add sicktoolbox_wrapper in advance of a config for standard LIDARs.</li>
 <li>  Parameterize from environment variables the IMU and GPS ports, and
 network interface to launch from.</li>
 </ul>
-<h2 id="0.0.2-(2013-09-23)">0.0.2 (2013-09-23)</h2>
+
+<h2 id="0-0-2-2013-09-23">0.0.2 (2013-09-23)</h2>
 
 <ul>
 <li>  Compass startup and inertial ekf</li>
@@ -636,7 +611,8 @@ network interface to launch from.</li>
 <li>  Depend on robot_upstart.</li>
 <li>  Add automatic launchfile checks.</li>
 </ul>
-<h2 id="0.0.1-(2013-09-13)">0.0.1 (2013-09-13)</h2>
+
+<h2 id="0-0-1-2013-09-13">0.0.1 (2013-09-13)</h2>
 
 <ul>
 <li>  Catkinize package.</li>
@@ -657,7 +633,8 @@ network interface to launch from.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/husky_bringup/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/husky_bringup/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -669,53 +646,407 @@ network interface to launch from.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#indigo">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/husky_base#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/husky_base" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/husky_base#indigo">husky_base</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/husky_control#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/husky_control" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/husky_control#indigo">husky_control</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/husky_description#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/husky_description" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/husky_description#indigo">husky_description</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/imu_filter_madgwick#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/imu_filter_madgwick" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/imu_filter_madgwick#indigo">imu_filter_madgwick</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/imu_transformer#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/imu_transformer" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/imu_transformer#indigo">imu_transformer</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/lms1xx#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/lms1xx" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/lms1xx#indigo">lms1xx</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/microstrain_3dmgx2_imu#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/microstrain_3dmgx2_imu" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/microstrain_3dmgx2_imu#indigo">microstrain_3dmgx2_imu</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nmea_comms#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nmea_comms" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/nmea_comms#indigo">nmea_comms</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nmea_navsat_driver#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nmea_navsat_driver" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nmea_navsat_driver#indigo">nmea_navsat_driver</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_localization#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_localization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_localization#indigo">robot_localization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_upstart#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_upstart" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_upstart#indigo">robot_upstart</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#indigo">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_ros#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_ros#indigo">tf2_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/um6#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/um6" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/um6#indigo">um6</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ur_driver#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ur_driver" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/ur_driver#indigo">ur_driver</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-scipy">python-scipy</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roslaunch#indigo">roslaunch</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/husky_base#indigo">husky_base</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/husky_description#indigo">husky_description</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/imu_filter_madgwick#indigo">imu_filter_madgwick</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/imu_transformer#indigo">imu_transformer</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/lms1xx#indigo">lms1xx</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/microstrain_3dmgx2_imu#indigo">microstrain_3dmgx2_imu</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nmea_comms#indigo">nmea_comms</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nmea_navsat_driver#indigo">nmea_navsat_driver</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/python-scipy#indigo">python-scipy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/robot_localization#indigo">robot_localization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/robot_upstart#indigo">robot_upstart</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#indigo">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/um6#indigo">um6</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/husky_robot/github-husky-husky_robot#indigo">husky_robot</a></td>
+                      <td><a href="/r/husky_robot/github-husky-husky_robot">github-husky-husky_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/husky_robot/github-husky-husky_robot#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -723,20 +1054,130 @@ network interface to launch from.</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/navsat_config/navsat.launch" target="_blank">launch/navsat_config/navsat.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/sick_config/sick.launch" target="_blank">launch/sick_config/sick.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/um6_config/um6.launch" target="_blank">launch/um6_config/um6.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/microstrain_config/microstrain.launch" target="_blank">launch/microstrain_config/microstrain.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/um6_config/um6.launch" target="_blank">launch/um6_config/um6.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/sick_config/sick.launch" target="_blank">launch/sick_config/sick.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/navsat_config/navsat.launch" target="_blank">launch/navsat_config/navsat.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/microstrain_config/microstrain.launch" target="_blank">launch/microstrain_config/microstrain.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/indigo-devel/./launch/ur5_arm_config/ur5.launch" target="_blank">launch/ur5_arm_config/ur5.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em>
+Software License Agreement (BSD)
+
+\file      ur5.launch
+\authors   Devon Ash <dash@clearpathrobotics.com>
+\copyright Copyright (c) 2015, Clearpath Robotics, Inc., All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that
+the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this list of conditions and the
+   following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+   following disclaimer in the documentation and/or other materials provided with the distribution.
+ * Neither the name of Clearpath Robotics nor the names of its contributors may be used to endorse or promote
+   products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WAR-
+RANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, IN-
+DIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>ur5_enabled</strong> <em>&#91;default: $(optenv HUSKY_UR5_ENABLED false)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_ip</strong> <em>&#91;default: $(env HUSKY_UR5_IP)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>reverse_port</strong> <em>&#91;default: 50001&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>min_payload</strong> <em>&#91;default: 0.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_payload</strong> <em>&#91;default: 10.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>prefix</strong> <em>&#91;default: ur5_arm_&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_velocity</strong> <em>&#91;default: 10.0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -745,9 +1186,9 @@ network interface to launch from.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -756,9 +1197,9 @@ network interface to launch from.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -767,28 +1208,35 @@ network interface to launch from.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/husky_bringup/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//husky/husky_bringup/tree/indigo-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:husky_bringup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/husky_bringup?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=husky_bringup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -798,6 +1246,107 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/husky_bringup">husky_bringup</a> <small>package from <a style="text-decoration:none" href="/r/husky_bringup/github-husky-husky_bringup">husky_bringup</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> husky_bringup
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/husky_bringup"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-husky-husky_bringup
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-clearpathrobotics-clearpath_husky" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-clearpathrobotics-clearpath_husky" data="github-clearpathrobotics-clearpath_husky">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-clearpathrobotics-clearpath_husky
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-husky-husky_bringup" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-husky-husky_bringup" data="github-husky-husky_bringup">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-husky-husky_bringup
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-husky-husky_robot" role="menuitem" tabindex="-1" href="/p/husky_bringup/github-husky-husky_robot" data="github-husky-husky_robot">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-husky-husky_robot
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/husky_bringup/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//husky/husky_bringup/tree/hydro-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:husky_bringup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/husky_bringup?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=husky_bringup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -810,28 +1359,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            Installation for Husky
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -870,7 +1421,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -917,8 +1468,19 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Installation for Husky
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional links.</em>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -935,13 +1497,6 @@ $(function() {
             
             
               <em>No additional authors.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No additional links.</em>
             
           </div>
         </div>
@@ -977,18 +1532,20 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-husky_bringup">Changelog for package husky_bringup</h1>
 
-<h2 id="0.0.6-(2013-10-12)">0.0.6 (2013-10-12)</h2>
+<h2 id="0-0-6-2013-10-12">0.0.6 (2013-10-12)</h2>
 
 <ul>
 <li>  Restore leading slash in checking the joystick path. This was
 removed by mistake in an earlier commit.</li>
 </ul>
-<h2 id="0.0.5-(2013-10-05)">0.0.5 (2013-10-05)</h2>
+
+<h2 id="0-0-5-2013-10-05">0.0.5 (2013-10-05)</h2>
 
 <ul>
 <li>  Acknowledge the ROBOT_SETUP env variable in the install script.</li>
 </ul>
-<h2 id="0.0.4-(2013-10-03)">0.0.4 (2013-10-03)</h2>
+
+<h2 id="0-0-4-2013-10-03">0.0.4 (2013-10-03)</h2>
 
 <ul>
 <li>  Remove the other launchfile check until we get a chance to fix the
@@ -1002,14 +1559,16 @@ to to pick whether we want an outdoor or indoor ekf to start</li>
 <li>  adding parameter to lock the altitude at 0</li>
 <li>  set invalid covariance value for enu to really high, instead of -1</li>
 </ul>
-<h2 id="0.0.3-(2013-10-01)">0.0.3 (2013-10-01)</h2>
+
+<h2 id="0-0-3-2013-10-01">0.0.3 (2013-10-01)</h2>
 
 <ul>
 <li>  Add sicktoolbox_wrapper in advance of a config for standard LIDARs.</li>
 <li>  Parameterize from environment variables the IMU and GPS ports, and
 network interface to launch from.</li>
 </ul>
-<h2 id="0.0.2-(2013-09-23)">0.0.2 (2013-09-23)</h2>
+
+<h2 id="0-0-2-2013-09-23">0.0.2 (2013-09-23)</h2>
 
 <ul>
 <li>  Compass startup and inertial ekf</li>
@@ -1019,7 +1578,8 @@ network interface to launch from.</li>
 <li>  Depend on robot_upstart.</li>
 <li>  Add automatic launchfile checks.</li>
 </ul>
-<h2 id="0.0.1-(2013-09-13)">0.0.1 (2013-09-13)</h2>
+
+<h2 id="0-0-1-2013-09-13">0.0.1 (2013-09-13)</h2>
 
 <ul>
 <li>  Catkinize package.</li>
@@ -1040,7 +1600,8 @@ network interface to launch from.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/husky_bringup/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/husky_bringup/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1052,51 +1613,311 @@ network interface to launch from.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#hydro">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/enu#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/enu" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/enu#hydro">enu</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/husky_base#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/husky_base" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/husky_base#hydro">husky_base</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/husky_description#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/husky_description" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/husky_description#hydro">husky_description</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/husky_teleop#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/husky_teleop" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/husky_teleop#hydro">husky_teleop</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/imu_compass#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/imu_compass" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/imu_compass#hydro">imu_compass</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nmea_comms#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nmea_comms" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/nmea_comms#hydro">nmea_comms</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nmea_navsat_driver#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nmea_navsat_driver" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nmea_navsat_driver#hydro">nmea_navsat_driver</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_pose_ekf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_pose_ekf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_pose_ekf#hydro">robot_pose_ekf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_upstart#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_upstart" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_upstart#hydro">robot_upstart</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sicktoolbox_wrapper#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sicktoolbox_wrapper" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sicktoolbox_wrapper#hydro">sicktoolbox_wrapper</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#hydro">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/um6#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/um6" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/um6#hydro">um6</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roslaunch#hydro">roslaunch</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/enu#hydro">enu</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/husky_base#hydro">husky_base</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/husky_description#hydro">husky_description</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/husky_teleop#hydro">husky_teleop</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/imu_compass#hydro">imu_compass</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nmea_comms#hydro">nmea_comms</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nmea_navsat_driver#hydro">nmea_navsat_driver</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/robot_pose_ekf#hydro">robot_pose_ekf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/robot_upstart#hydro">robot_upstart</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sicktoolbox_wrapper#hydro">sicktoolbox_wrapper</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#hydro">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/um6#hydro">um6</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1104,26 +1925,105 @@ network interface to launch from.</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/navsat_config/compass.launch" target="_blank">launch/navsat_config/compass.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/navsat_config/navsat.launch" target="_blank">launch/navsat_config/navsat.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/imu_config/ekf.launch" target="_blank">launch/imu_config/ekf.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/imu_config/um6.launch" target="_blank">launch/imu_config/um6.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/sick_config/sick.launch" target="_blank">launch/sick_config/sick.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/microstrain_config/microstrain.launch" target="_blank">launch/microstrain_config/microstrain.launch</a></li>
-          
-            <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/microstrain_config/ekf.launch" target="_blank">launch/microstrain_config/ekf.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/sick_config/sick.launch" target="_blank">launch/sick_config/sick.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/navsat_config/navsat.launch" target="_blank">launch/navsat_config/navsat.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/navsat_config/compass.launch" target="_blank">launch/navsat_config/compass.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/imu_config/ekf.launch" target="_blank">launch/imu_config/ekf.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/imu_config/um6.launch" target="_blank">launch/imu_config/um6.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/microstrain_config/ekf.launch" target="_blank">launch/microstrain_config/ekf.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//husky/husky_bringup/tree/hydro-devel/./launch/microstrain_config/microstrain.launch" target="_blank">launch/microstrain_config/microstrain.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1132,9 +2032,9 @@ network interface to launch from.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1143,9 +2043,9 @@ network interface to launch from.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1154,28 +2054,35 @@ network interface to launch from.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/husky_bringup/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//husky/husky_bringup/tree/hydro-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:husky_bringup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/husky_bringup?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=husky_bringup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1234,7 +2141,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

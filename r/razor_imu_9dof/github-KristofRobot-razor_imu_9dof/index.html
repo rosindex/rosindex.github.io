@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -227,6 +269,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -238,8 +288,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -262,7 +312,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-06
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-02
         </span>
       </td>
     </tr>
@@ -305,7 +355,7 @@
                 
                   <tr>
                     <td><a href="/p/razor_imu_9dof/github-KristofRobot-razor_imu_9dof">razor_imu_9dof</a></td>
-                    <td>1.0.5</td>
+                    <td>1.1.1</td>
                   </tr>
                 
                 </tbody>
@@ -329,10 +379,10 @@
 <h2 id="install-and-configure-ros-package">Install and Configure ROS Package</h2>
 
 <p>1) Install dependencies:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ sudo apt-get install python-visual
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install python-visual
 </code></pre></div>
 <p>2) Download code:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/catkin_workspace/src
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd ~/catkin_workspace/src
 $ git clone https://github.com/KristofRobot/razor_imu_9dof.git
 $ cd ..
 $ catkin_make
@@ -358,16 +408,32 @@ Use this version - it emits linear acceleration and angular velocity data requir
 
 <p>3) Upload Arduino sketch to the Sparkfun 9DOF Razor IMU board</p>
 
+<h2 id="configure">Configure</h2>
+
+<p>In its default configuration, <code>razor_imu_9dof</code> expects a yaml config file <code>my_razor.yaml</code> with:
+* USB port to use
+* Calibration parameters</p>
+
+<p>An example<code>razor.yaml</code> file is provided.
+Copy that file to <code>my_razor.yaml</code> as follows:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roscd razor_imu_9dof/config
+$ cp razor.yaml my_razor.yaml
+</code></pre></div>
+<p>Then, edit <code>my_razor.yaml</code> as needed</p>
+
 <h2 id="launch">Launch</h2>
 
 <p>Publisher and 3D visualization:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch razor_imu_9dof razor-pub-and-display.launch device_port:=/dev/ttyUSB0
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-pub-and-display.launch
 </code></pre></div>
 <p>Publisher only:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch razor_imu_9dof razor-pub.launch device_port:=/dev/ttyUSB0
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-pub.launch
+</code></pre></div>
+<p>Publisher only with diagnostics:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-pub-diags.launch
 </code></pre></div>
 <p>3D visualization only:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch razor_imu_9dof razor-display.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-display.launch
 </code></pre></div>
 <h2 id="calibrate">Calibrate</h2>
 
@@ -376,11 +442,31 @@ Use this version - it emits linear acceleration and angular velocity data requir
 <p><a href="http://wiki.ros.org/razor_imu_9dof">http://wiki.ros.org/razor_imu_9dof</a></p>
 
 <p>A copy of Peter Bartz's magnetometer calibration scripts from <a href="https://github.com/ptrbrtz/razor-9dof-ahrs">https://github.com/ptrbrtz/razor-9dof-ahrs</a> is provided in the <code>magnetometer_calibration</code> directory.</p>
+
+<p>Update <code>my_razor.yaml</code> with the new calibration parameters.</p>
+
+<h2 id="dynamic-reconfigure">Dynamic Reconfigure</h2>
+
+<p>After having launched the publisher with one of the launch commands listed above, 
+it is possible to dynamically reconfigure the yaw calibration.</p>
+
+<p>1) Run:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ rosrun rqt_reconfigure rqt_reconfigure 
+</code></pre></div>
+<p>2) Select <code>imu_node</code>. </p>
+
+<p>3) Change the slider to move the calibration +/- 10 degrees. 
+If you are running the 3D visualization you'll see the display jump when the new calibration takes effect.</p>
+
+<p>The intent of this feature is to let you tune the alignment of the AHRS to the direction of the robot driving direction, so that if you can determine that, for example, the AHRS reads 30 degrees when the robot is actually going at 35 degrees as shown by e.g. GPS, you can tune the calibration to make it read 35. It's the compass-equivalent of bore-sighting a camera.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -388,8 +474,8 @@ Use this version - it emits linear acceleration and angular velocity data requir
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -412,7 +498,7 @@ Use this version - it emits linear acceleration and angular velocity data requir
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-06
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-02
         </span>
       </td>
     </tr>
@@ -455,7 +541,7 @@ Use this version - it emits linear acceleration and angular velocity data requir
                 
                   <tr>
                     <td><a href="/p/razor_imu_9dof/github-KristofRobot-razor_imu_9dof">razor_imu_9dof</a></td>
-                    <td>1.0.5</td>
+                    <td>1.1.1</td>
                   </tr>
                 
                 </tbody>
@@ -479,10 +565,10 @@ Use this version - it emits linear acceleration and angular velocity data requir
 <h2 id="install-and-configure-ros-package">Install and Configure ROS Package</h2>
 
 <p>1) Install dependencies:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ sudo apt-get install python-visual
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install python-visual
 </code></pre></div>
 <p>2) Download code:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/catkin_workspace/src
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd ~/catkin_workspace/src
 $ git clone https://github.com/KristofRobot/razor_imu_9dof.git
 $ cd ..
 $ catkin_make
@@ -508,16 +594,32 @@ Use this version - it emits linear acceleration and angular velocity data requir
 
 <p>3) Upload Arduino sketch to the Sparkfun 9DOF Razor IMU board</p>
 
+<h2 id="configure">Configure</h2>
+
+<p>In its default configuration, <code>razor_imu_9dof</code> expects a yaml config file <code>my_razor.yaml</code> with:
+* USB port to use
+* Calibration parameters</p>
+
+<p>An example<code>razor.yaml</code> file is provided.
+Copy that file to <code>my_razor.yaml</code> as follows:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roscd razor_imu_9dof/config
+$ cp razor.yaml my_razor.yaml
+</code></pre></div>
+<p>Then, edit <code>my_razor.yaml</code> as needed</p>
+
 <h2 id="launch">Launch</h2>
 
 <p>Publisher and 3D visualization:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch razor_imu_9dof razor-pub-and-display.launch device_port:=/dev/ttyUSB0
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-pub-and-display.launch
 </code></pre></div>
 <p>Publisher only:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch razor_imu_9dof razor-pub.launch device_port:=/dev/ttyUSB0
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-pub.launch
+</code></pre></div>
+<p>Publisher only with diagnostics:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-pub-diags.launch
 </code></pre></div>
 <p>3D visualization only:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch razor_imu_9dof razor-display.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch razor_imu_9dof razor-display.launch
 </code></pre></div>
 <h2 id="calibrate">Calibrate</h2>
 
@@ -526,11 +628,31 @@ Use this version - it emits linear acceleration and angular velocity data requir
 <p><a href="http://wiki.ros.org/razor_imu_9dof">http://wiki.ros.org/razor_imu_9dof</a></p>
 
 <p>A copy of Peter Bartz's magnetometer calibration scripts from <a href="https://github.com/ptrbrtz/razor-9dof-ahrs">https://github.com/ptrbrtz/razor-9dof-ahrs</a> is provided in the <code>magnetometer_calibration</code> directory.</p>
+
+<p>Update <code>my_razor.yaml</code> with the new calibration parameters.</p>
+
+<h2 id="dynamic-reconfigure">Dynamic Reconfigure</h2>
+
+<p>After having launched the publisher with one of the launch commands listed above, 
+it is possible to dynamically reconfigure the yaw calibration.</p>
+
+<p>1) Run:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ rosrun rqt_reconfigure rqt_reconfigure 
+</code></pre></div>
+<p>2) Select <code>imu_node</code>. </p>
+
+<p>3) Change the slider to move the calibration +/- 10 degrees. 
+If you are running the 3D visualization you'll see the display jump when the new calibration takes effect.</p>
+
+<p>The intent of this feature is to let you tune the alignment of the AHRS to the direction of the robot driving direction, so that if you can determine that, for example, the AHRS reads 30 degrees when the robot is actually going at 35 degrees as shown by e.g. GPS, you can tune the calibration to make it read 35. It's the compass-equivalent of bore-sighting a camera.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -589,7 +711,7 @@ Use this version - it emits linear acceleration and angular velocity data requir
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

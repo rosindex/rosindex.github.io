@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,801 +196,218 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/mk/github-ros-ros">mk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbuild/github-ros-ros">rosbuild</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslang/github-ros-ros">roslang</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslib/github-ros-ros">roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros/github-ros-ros">ros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbash/github-ros-ros">rosbash</a>
-        
-      
-        
-          <span class="label label-default"> rosboost_cfg</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosclean/github-ros-ros">rosclean</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscreate/github-ros-ros">roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosmake/github-ros-ros">rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosunit/github-ros-ros">rosunit</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/jade/api/rosboost_cfg/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/ros/tree/jade-devel/tools/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-jade">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-ros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-ros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/mk/github-ros-ros">mk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbuild/github-ros-ros">rosbuild</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslang/github-ros-ros">roslang</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslib/github-ros-ros">roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros/github-ros-ros">ros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbash/github-ros-ros">rosbash</a>
-        
-      
-        
-          <span class="label label-default"> rosboost_cfg</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosclean/github-ros-ros">rosclean</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscreate/github-ros-ros">roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosmake/github-ros-ros">rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosunit/github-ros-ros">rosunit</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/rosboost_cfg/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/ros/tree/indigo-devel/tools/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-ros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-ros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/mk/github-ros-ros">mk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbuild/github-ros-ros">rosbuild</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslang/github-ros-ros">roslang</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslib/github-ros-ros">roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros/github-ros-ros">ros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbash/github-ros-ros">rosbash</a>
-        
-      
-        
-          <span class="label label-default"> rosboost_cfg</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosclean/github-ros-ros">rosclean</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscreate/github-ros-ros">roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosmake/github-ros-ros">rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosunit/github-ros-ros">rosunit</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/rosboost_cfg/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/ros/tree/hydro-devel/tools/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-ros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-ros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/mk/github-ros-ros">mk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbuild/github-ros-ros">rosbuild</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslang/github-ros-ros">roslang</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslib/github-ros-ros">roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ros/github-ros-ros">ros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbash/github-ros-ros">rosbash</a>
-        
-      
-        
-          <span class="label label-default"> rosboost_cfg</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosclean/github-ros-ros">rosclean</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscreate/github-ros-ros">roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosmake/github-ros-ros">rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosunit/github-ros-ros">rosunit</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/rosboost_cfg/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/ros/tree/groovy-devel/tools/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-ros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-ros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/mk/github-ros-ros">mk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbuild/github-ros-ros">rosbuild</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslang/github-ros-ros">roslang</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslib/github-ros-ros">roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbash/github-ros-ros">rosbash</a>
-        
-      
-        
-          <span class="label label-default"> rosboost_cfg</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosclean/github-ros-ros">rosclean</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscreate/github-ros-ros">roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosmake/github-ros-ros">rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosunit/github-ros-ros">rosunit</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/rosboost_cfg/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/ros/tree/ros-1.8/tools/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-ros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-ros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/mk/github-ros-ros">mk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbuild/github-ros-ros">rosbuild</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslang/github-ros-ros">roslang</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roslib/github-ros-ros">roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/test_roscreate/github-ros-ros">test_roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/test_rosdep/github-ros-ros">test_rosdep</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/test_roslib/github-ros-ros">test_roslib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/test_rosmake/github-ros-ros">test_rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/test_rospack/github-ros-ros">test_rospack</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosbash/github-ros-ros">rosbash</a>
-        
-      
-        
-          <span class="label label-default"> rosboost_cfg</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosclean/github-ros-ros">rosclean</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscreate/github-ros-ros">roscreate</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosdep/github-ros-ros">rosdep</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosemacs/github-ros-ros">rosemacs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosmake/github-ros-ros">rosmake</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rospack/github-ros-ros">rospack</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosunit/github-ros-ros">rosunit</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/rosboost_cfg/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/ros/tree/ros-1.6/tools/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rosboost_cfg" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-ros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-ros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
+
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros/github-ros-ros">
+
+ros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/kinetic-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#jade-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#jade-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#jade-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#jade-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="jade-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -961,7 +420,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.12.0</td>
+                <td>1.13.1</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -987,7 +446,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1003,13 +462,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">jade-devel</span></td>
+      <td><span class="label label-default">kinetic-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-26
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-12
         </span>
       </td>
     </tr>
@@ -1017,7 +476,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1034,8 +496,25 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1058,6 +537,575 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/ros/github-ros-ros/#kinetic">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-rosboost_cfg">Changelog for package rosboost_cfg</h1>
+
+<h2 id="1-13-1-2016-03-13">1.13.1 (2016-03-13)</h2>
+
+<h2 id="1-13-0-2016-03-10">1.13.0 (2016-03-10)</h2>
+
+<h2 id="1-12-6-2016-03-10">1.12.6 (2016-03-10)</h2>
+
+<h2 id="1-12-5-2015-10-13">1.12.5 (2015-10-13)</h2>
+
+<h2 id="1-12-4-2015-10-12">1.12.4 (2015-10-12)</h2>
+
+<h2 id="1-12-3-2015-09-19">1.12.3 (2015-09-19)</h2>
+
+<h2 id="1-12-2-2015-04-27">1.12.2 (2015-04-27)</h2>
+
+<h2 id="1-12-1-2015-04-16">1.12.1 (2015-04-16)</h2>
+
+<h2 id="1-12-0-2014-12-26">1.12.0 (2014-12-26)</h2>
+
+<h2 id="1-11-6-2014-12-22">1.11.6 (2014-12-22)</h2>
+
+<h2 id="1-11-5-2014-08-18">1.11.5 (2014-08-18)</h2>
+
+<h2 id="1-11-4-2014-07-23">1.11.4 (2014-07-23)</h2>
+
+<ul>
+<li>  fix dry rosboost_cfg to support finding boost in multiarch lib
+folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
+</ul>
+
+<h2 id="1-11-3-2014-07-18">1.11.3 (2014-07-18)</h2>
+
+<h2 id="1-11-2-2014-06-16">1.11.2 (2014-06-16)</h2>
+
+<h2 id="1-11-1-2014-05-07">1.11.1 (2014-05-07)</h2>
+
+<h2 id="1-11-0-2014-01-31">1.11.0 (2014-01-31)</h2>
+
+<h2 id="1-10-9-2014-01-07">1.10.9 (2014-01-07)</h2>
+
+<h2 id="1-10-8-2013-10-15">1.10.8 (2013-10-15)</h2>
+
+<h2 id="1-10-7-2013-10-04">1.10.7 (2013-10-04)</h2>
+
+<h2 id="1-10-6-2013-08-22">1.10.6 (2013-08-22)</h2>
+
+<h2 id="1-10-5-2013-08-21">1.10.5 (2013-08-21)</h2>
+
+<h2 id="1-10-4-2013-07-05">1.10.4 (2013-07-05)</h2>
+
+<h2 id="1-10-3-2013-07-03">1.10.3 (2013-07-03)</h2>
+
+<h2 id="1-10-2-2013-06-18">1.10.2 (2013-06-18)</h2>
+
+<h2 id="1-10-1-2013-06-06">1.10.1 (2013-06-06)</h2>
+
+<h2 id="1-10-0-2013-03-22-09-23">1.10.0 (2013-03-22 09:23)</h2>
+
+<h3 id="1-9-groovy">1.9 (Groovy)</h3>
+
+<h2 id="1-9-44-2013-03-13">1.9.44 (2013-03-13)</h2>
+
+<h2 id="1-9-43-2013-03-08">1.9.43 (2013-03-08)</h2>
+
+<h2 id="1-9-42-2013-01-25">1.9.42 (2013-01-25)</h2>
+
+<h2 id="1-9-41-2013-01-24">1.9.41 (2013-01-24)</h2>
+
+<h2 id="1-9-40-2013-01-13">1.9.40 (2013-01-13)</h2>
+
+<h2 id="1-9-39-2012-12-30">1.9.39 (2012-12-30)</h2>
+
+<ul>
+<li>  first public release for Groovy</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros/github-ros-ros#kinetic">ros</a></td>
+                      <td><a href="/r/ros/github-ros-ros">github-ros-ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros/github-ros-ros#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/kinetic-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros/github-ros-ros">
+
+ros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/jade-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="jade-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.12.7</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros/ros.git">https://github.com/ros/ros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">jade-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-21
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+  
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -1065,6 +1113,28 @@
               <ul class="list-unstyled">
                 
                   <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Dirk Thomas</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Josh Faust</li>
                 
               </ul>
             
@@ -1097,59 +1167,74 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rosboost_cfg">Changelog for package rosboost_cfg</h1>
 
-<h2 id="1.12.0-(2014-12-26)">1.12.0 (2014-12-26)</h2>
+<h2 id="1-12-7-2016-04-21">1.12.7 (2016-04-21)</h2>
 
-<h2 id="1.11.6-(2014-12-22)">1.11.6 (2014-12-22)</h2>
+<h2 id="1-12-6-2016-03-10">1.12.6 (2016-03-10)</h2>
 
-<h2 id="1.11.5-(2014-08-18)">1.11.5 (2014-08-18)</h2>
+<h2 id="1-12-5-2015-10-13">1.12.5 (2015-10-13)</h2>
 
-<h2 id="1.11.4-(2014-07-23)">1.11.4 (2014-07-23)</h2>
+<h2 id="1-12-4-2015-10-12">1.12.4 (2015-10-12)</h2>
+
+<h2 id="1-12-3-2015-09-19">1.12.3 (2015-09-19)</h2>
+
+<h2 id="1-12-2-2015-04-27">1.12.2 (2015-04-27)</h2>
+
+<h2 id="1-12-1-2015-04-16">1.12.1 (2015-04-16)</h2>
+
+<h2 id="1-12-0-2014-12-26">1.12.0 (2014-12-26)</h2>
+
+<h2 id="1-11-6-2014-12-22">1.11.6 (2014-12-22)</h2>
+
+<h2 id="1-11-5-2014-08-18">1.11.5 (2014-08-18)</h2>
+
+<h2 id="1-11-4-2014-07-23">1.11.4 (2014-07-23)</h2>
 
 <ul>
 <li>  fix dry rosboost_cfg to support finding boost in multiarch lib
 folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
 </ul>
-<h2 id="1.11.3-(2014-07-18)">1.11.3 (2014-07-18)</h2>
 
-<h2 id="1.11.2-(2014-06-16)">1.11.2 (2014-06-16)</h2>
+<h2 id="1-11-3-2014-07-18">1.11.3 (2014-07-18)</h2>
 
-<h2 id="1.11.1-(2014-05-07)">1.11.1 (2014-05-07)</h2>
+<h2 id="1-11-2-2014-06-16">1.11.2 (2014-06-16)</h2>
 
-<h2 id="1.11.0-(2014-01-31)">1.11.0 (2014-01-31)</h2>
+<h2 id="1-11-1-2014-05-07">1.11.1 (2014-05-07)</h2>
 
-<h2 id="1.10.9-(2014-01-07)">1.10.9 (2014-01-07)</h2>
+<h2 id="1-11-0-2014-01-31">1.11.0 (2014-01-31)</h2>
 
-<h2 id="1.10.8-(2013-10-15)">1.10.8 (2013-10-15)</h2>
+<h2 id="1-10-9-2014-01-07">1.10.9 (2014-01-07)</h2>
 
-<h2 id="1.10.7-(2013-10-04)">1.10.7 (2013-10-04)</h2>
+<h2 id="1-10-8-2013-10-15">1.10.8 (2013-10-15)</h2>
 
-<h2 id="1.10.6-(2013-08-22)">1.10.6 (2013-08-22)</h2>
+<h2 id="1-10-7-2013-10-04">1.10.7 (2013-10-04)</h2>
 
-<h2 id="1.10.5-(2013-08-21)">1.10.5 (2013-08-21)</h2>
+<h2 id="1-10-6-2013-08-22">1.10.6 (2013-08-22)</h2>
 
-<h2 id="1.10.4-(2013-07-05)">1.10.4 (2013-07-05)</h2>
+<h2 id="1-10-5-2013-08-21">1.10.5 (2013-08-21)</h2>
 
-<h2 id="1.10.3-(2013-07-03)">1.10.3 (2013-07-03)</h2>
+<h2 id="1-10-4-2013-07-05">1.10.4 (2013-07-05)</h2>
 
-<h2 id="1.10.2-(2013-06-18)">1.10.2 (2013-06-18)</h2>
+<h2 id="1-10-3-2013-07-03">1.10.3 (2013-07-03)</h2>
 
-<h2 id="1.10.1-(2013-06-06)">1.10.1 (2013-06-06)</h2>
+<h2 id="1-10-2-2013-06-18">1.10.2 (2013-06-18)</h2>
 
-<h2 id="1.10.0-(2013-03-22-09:23)">1.10.0 (2013-03-22 09:23)</h2>
+<h2 id="1-10-1-2013-06-06">1.10.1 (2013-06-06)</h2>
 
-<h3 id="1.9-(groovy)">1.9 (Groovy)</h3>
+<h2 id="1-10-0-2013-03-22-09-23">1.10.0 (2013-03-22 09:23)</h2>
 
-<h2 id="1.9.44-(2013-03-13)">1.9.44 (2013-03-13)</h2>
+<h3 id="1-9-groovy">1.9 (Groovy)</h3>
 
-<h2 id="1.9.43-(2013-03-08)">1.9.43 (2013-03-08)</h2>
+<h2 id="1-9-44-2013-03-13">1.9.44 (2013-03-13)</h2>
 
-<h2 id="1.9.42-(2013-01-25)">1.9.42 (2013-01-25)</h2>
+<h2 id="1-9-43-2013-03-08">1.9.43 (2013-03-08)</h2>
 
-<h2 id="1.9.41-(2013-01-24)">1.9.41 (2013-01-24)</h2>
+<h2 id="1-9-42-2013-01-25">1.9.42 (2013-01-25)</h2>
 
-<h2 id="1.9.40-(2013-01-13)">1.9.40 (2013-01-13)</h2>
+<h2 id="1-9-41-2013-01-24">1.9.41 (2013-01-24)</h2>
 
-<h2 id="1.9.39-(2012-12-30)">1.9.39 (2012-12-30)</h2>
+<h2 id="1-9-40-2013-01-13">1.9.40 (2013-01-13)</h2>
+
+<h2 id="1-9-39-2012-12-30">1.9.39 (2012-12-30)</h2>
 
 <ul>
 <li>  first public release for Groovy</li>
@@ -1169,7 +1254,8 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1181,25 +1267,149 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="jade-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros/github-ros-ros#jade">ros</a></td>
+                      <td><a href="/r/ros/github-ros-ros">github-ros-ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros/github-ros-ros#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/euscollada/github-jsk-ros-pkg-jsk_model_tools#jade">euscollada</a></td>
+                      <td><a href="/r/jsk_model_tools/github-jsk-ros-pkg-jsk_model_tools">github-jsk-ros-pkg-jsk_model_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/euscollada/github-jsk-ros-pkg-jsk_model_tools#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#jade">jsk_pcl_ros</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#jade">jsk_pcl_ros_utils</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_3rdparty#jade">assimp_devel</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_3rdparty#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_3rdparty#jade">libsiftfast</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_3rdparty#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosping/github-jsk-ros-pkg-jsk_3rdparty#jade">rosping</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosping/github-jsk-ros-pkg-jsk_3rdparty#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1207,12 +1417,12 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
   <div class="tab-pane" id="jade-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1221,9 +1431,9 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1232,9 +1442,9 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1243,28 +1453,35 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/jade-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1274,6 +1491,173 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros/github-ros-ros">
+
+ros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/indigo-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1286,30 +1670,30 @@ $(function() {
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#indigo-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1322,7 +1706,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.11.6</td>
+                <td>1.11.13</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -1348,7 +1732,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1370,7 +1754,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-22
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-27
         </span>
       </td>
     </tr>
@@ -1378,7 +1762,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1395,8 +1782,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1415,17 +1819,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Josh Faust</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
                 
               </ul>
             
@@ -1458,57 +1851,72 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rosboost_cfg">Changelog for package rosboost_cfg</h1>
 
-<h2 id="1.11.6-(2014-12-22)">1.11.6 (2014-12-22)</h2>
+<h2 id="1-11-13-2016-06-27">1.11.13 (2016-06-27)</h2>
 
-<h2 id="1.11.5-(2014-08-18)">1.11.5 (2014-08-18)</h2>
+<h2 id="1-11-12-2016-03-10">1.11.12 (2016-03-10)</h2>
 
-<h2 id="1.11.4-(2014-07-23)">1.11.4 (2014-07-23)</h2>
+<h2 id="1-11-11-2015-10-13">1.11.11 (2015-10-13)</h2>
+
+<h2 id="1-11-10-2015-10-12">1.11.10 (2015-10-12)</h2>
+
+<h2 id="1-11-9-2015-09-19">1.11.9 (2015-09-19)</h2>
+
+<h2 id="1-11-8-2015-04-27">1.11.8 (2015-04-27)</h2>
+
+<h2 id="1-11-7-2015-04-16">1.11.7 (2015-04-16)</h2>
+
+<h2 id="1-11-6-2014-12-22">1.11.6 (2014-12-22)</h2>
+
+<h2 id="1-11-5-2014-08-18">1.11.5 (2014-08-18)</h2>
+
+<h2 id="1-11-4-2014-07-23">1.11.4 (2014-07-23)</h2>
 
 <ul>
 <li>  fix dry rosboost_cfg to support finding boost in multiarch lib
 folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
 </ul>
-<h2 id="1.11.3-(2014-07-18)">1.11.3 (2014-07-18)</h2>
 
-<h2 id="1.11.2-(2014-06-16)">1.11.2 (2014-06-16)</h2>
+<h2 id="1-11-3-2014-07-18">1.11.3 (2014-07-18)</h2>
 
-<h2 id="1.11.1-(2014-05-07)">1.11.1 (2014-05-07)</h2>
+<h2 id="1-11-2-2014-06-16">1.11.2 (2014-06-16)</h2>
 
-<h2 id="1.11.0-(2014-01-31)">1.11.0 (2014-01-31)</h2>
+<h2 id="1-11-1-2014-05-07">1.11.1 (2014-05-07)</h2>
 
-<h2 id="1.10.9-(2014-01-07)">1.10.9 (2014-01-07)</h2>
+<h2 id="1-11-0-2014-01-31">1.11.0 (2014-01-31)</h2>
 
-<h2 id="1.10.8-(2013-10-15)">1.10.8 (2013-10-15)</h2>
+<h2 id="1-10-9-2014-01-07">1.10.9 (2014-01-07)</h2>
 
-<h2 id="1.10.7-(2013-10-04)">1.10.7 (2013-10-04)</h2>
+<h2 id="1-10-8-2013-10-15">1.10.8 (2013-10-15)</h2>
 
-<h2 id="1.10.6-(2013-08-22)">1.10.6 (2013-08-22)</h2>
+<h2 id="1-10-7-2013-10-04">1.10.7 (2013-10-04)</h2>
 
-<h2 id="1.10.5-(2013-08-21)">1.10.5 (2013-08-21)</h2>
+<h2 id="1-10-6-2013-08-22">1.10.6 (2013-08-22)</h2>
 
-<h2 id="1.10.4-(2013-07-05)">1.10.4 (2013-07-05)</h2>
+<h2 id="1-10-5-2013-08-21">1.10.5 (2013-08-21)</h2>
 
-<h2 id="1.10.3-(2013-07-03)">1.10.3 (2013-07-03)</h2>
+<h2 id="1-10-4-2013-07-05">1.10.4 (2013-07-05)</h2>
 
-<h2 id="1.10.2-(2013-06-18)">1.10.2 (2013-06-18)</h2>
+<h2 id="1-10-3-2013-07-03">1.10.3 (2013-07-03)</h2>
 
-<h2 id="1.10.1-(2013-06-06)">1.10.1 (2013-06-06)</h2>
+<h2 id="1-10-2-2013-06-18">1.10.2 (2013-06-18)</h2>
 
-<h2 id="1.10.0-(2013-03-22-09:23)">1.10.0 (2013-03-22 09:23)</h2>
+<h2 id="1-10-1-2013-06-06">1.10.1 (2013-06-06)</h2>
 
-<h3 id="1.9-(groovy)">1.9 (Groovy)</h3>
+<h2 id="1-10-0-2013-03-22-09-23">1.10.0 (2013-03-22 09:23)</h2>
 
-<h2 id="1.9.44-(2013-03-13)">1.9.44 (2013-03-13)</h2>
+<h3 id="1-9-groovy">1.9 (Groovy)</h3>
 
-<h2 id="1.9.43-(2013-03-08)">1.9.43 (2013-03-08)</h2>
+<h2 id="1-9-44-2013-03-13">1.9.44 (2013-03-13)</h2>
 
-<h2 id="1.9.42-(2013-01-25)">1.9.42 (2013-01-25)</h2>
+<h2 id="1-9-43-2013-03-08">1.9.43 (2013-03-08)</h2>
 
-<h2 id="1.9.41-(2013-01-24)">1.9.41 (2013-01-24)</h2>
+<h2 id="1-9-42-2013-01-25">1.9.42 (2013-01-25)</h2>
 
-<h2 id="1.9.40-(2013-01-13)">1.9.40 (2013-01-13)</h2>
+<h2 id="1-9-41-2013-01-24">1.9.41 (2013-01-24)</h2>
 
-<h2 id="1.9.39-(2012-12-30)">1.9.39 (2012-12-30)</h2>
+<h2 id="1-9-40-2013-01-13">1.9.40 (2013-01-13)</h2>
+
+<h2 id="1-9-39-2012-12-30">1.9.39 (2012-12-30)</h2>
 
 <ul>
 <li>  first public release for Groovy</li>
@@ -1528,7 +1936,8 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1540,25 +1949,149 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros/github-ros-ros#indigo">ros</a></td>
+                      <td><a href="/r/ros/github-ros-ros">github-ros-ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros/github-ros-ros#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/euscollada/github-jsk-ros-pkg-jsk_model_tools#indigo">euscollada</a></td>
+                      <td><a href="/r/jsk_model_tools/github-jsk-ros-pkg-jsk_model_tools">github-jsk-ros-pkg-jsk_model_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/euscollada/github-jsk-ros-pkg-jsk_model_tools#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#indigo">jsk_pcl_ros</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#indigo">jsk_pcl_ros_utils</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_3rdparty#indigo">assimp_devel</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_3rdparty#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_3rdparty#indigo">libsiftfast</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_3rdparty#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosping/github-jsk-ros-pkg-jsk_3rdparty#indigo">rosping</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosping/github-jsk-ros-pkg-jsk_3rdparty#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1566,12 +2099,12 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1580,9 +2113,9 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1591,9 +2124,9 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1602,28 +2135,35 @@ folder (<a href="https://github.com/ros/ros/issues/62">#62</a>)</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/indigo-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1633,6 +2173,173 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros/github-ros-ros">
+
+ros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/hydro-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1645,30 +2352,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1707,7 +2414,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1729,7 +2436,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-29
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-04-13
         </span>
       </td>
     </tr>
@@ -1737,7 +2444,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1754,8 +2464,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1774,17 +2501,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Josh Faust</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
                 
               </ul>
             
@@ -1817,43 +2533,43 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rosboost_cfg">Changelog for package rosboost_cfg</h1>
 
-<h2 id="1.10.11-(2014-12-29)">1.10.11 (2014-12-29)</h2>
+<h2 id="1-10-11-2014-12-29">1.10.11 (2014-12-29)</h2>
 
-<h2 id="1.10.10-(2014-06-02)">1.10.10 (2014-06-02)</h2>
+<h2 id="1-10-10-2014-06-02">1.10.10 (2014-06-02)</h2>
 
-<h2 id="1.10.9-(2014-01-07)">1.10.9 (2014-01-07)</h2>
+<h2 id="1-10-9-2014-01-07">1.10.9 (2014-01-07)</h2>
 
-<h2 id="1.10.8-(2013-10-15)">1.10.8 (2013-10-15)</h2>
+<h2 id="1-10-8-2013-10-15">1.10.8 (2013-10-15)</h2>
 
-<h2 id="1.10.7-(2013-10-04)">1.10.7 (2013-10-04)</h2>
+<h2 id="1-10-7-2013-10-04">1.10.7 (2013-10-04)</h2>
 
-<h2 id="1.10.6-(2013-08-22)">1.10.6 (2013-08-22)</h2>
+<h2 id="1-10-6-2013-08-22">1.10.6 (2013-08-22)</h2>
 
-<h2 id="1.10.5-(2013-08-21)">1.10.5 (2013-08-21)</h2>
+<h2 id="1-10-5-2013-08-21">1.10.5 (2013-08-21)</h2>
 
-<h2 id="1.10.4-(2013-07-05)">1.10.4 (2013-07-05)</h2>
+<h2 id="1-10-4-2013-07-05">1.10.4 (2013-07-05)</h2>
 
-<h2 id="1.10.3-(2013-07-03)">1.10.3 (2013-07-03)</h2>
+<h2 id="1-10-3-2013-07-03">1.10.3 (2013-07-03)</h2>
 
-<h2 id="1.10.2-(2013-06-18)">1.10.2 (2013-06-18)</h2>
+<h2 id="1-10-2-2013-06-18">1.10.2 (2013-06-18)</h2>
 
-<h2 id="1.10.1-(2013-06-06)">1.10.1 (2013-06-06)</h2>
+<h2 id="1-10-1-2013-06-06">1.10.1 (2013-06-06)</h2>
 
-<h2 id="1.10.0-(2013-03-22-09:23)">1.10.0 (2013-03-22 09:23)</h2>
+<h2 id="1-10-0-2013-03-22-09-23">1.10.0 (2013-03-22 09:23)</h2>
 
-<h3 id="1.9-(groovy)">1.9 (Groovy)</h3>
+<h3 id="1-9-groovy">1.9 (Groovy)</h3>
 
-<h2 id="1.9.44-(2013-03-13)">1.9.44 (2013-03-13)</h2>
+<h2 id="1-9-44-2013-03-13">1.9.44 (2013-03-13)</h2>
 
-<h2 id="1.9.43-(2013-03-08)">1.9.43 (2013-03-08)</h2>
+<h2 id="1-9-43-2013-03-08">1.9.43 (2013-03-08)</h2>
 
-<h2 id="1.9.42-(2013-01-25)">1.9.42 (2013-01-25)</h2>
+<h2 id="1-9-42-2013-01-25">1.9.42 (2013-01-25)</h2>
 
-<h2 id="1.9.41-(2013-01-24)">1.9.41 (2013-01-24)</h2>
+<h2 id="1-9-41-2013-01-24">1.9.41 (2013-01-24)</h2>
 
-<h2 id="1.9.40-(2013-01-13)">1.9.40 (2013-01-13)</h2>
+<h2 id="1-9-40-2013-01-13">1.9.40 (2013-01-13)</h2>
 
-<h2 id="1.9.39-(2012-12-30)">1.9.39 (2012-12-30)</h2>
+<h2 id="1-9-39-2012-12-30">1.9.39 (2012-12-30)</h2>
 
 <ul>
 <li>  first public release for Groovy</li>
@@ -1873,7 +2589,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1885,25 +2602,135 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros/github-ros-ros#hydro">ros</a></td>
+                      <td><a href="/r/ros/github-ros-ros">github-ros-ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros/github-ros-ros#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#hydro">jsk_pcl_ros</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#hydro">jsk_pcl_ros_utils</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_3rdparty#hydro">assimp_devel</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_3rdparty#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_3rdparty#hydro">libsiftfast</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_3rdparty#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosping/github-jsk-ros-pkg-jsk_3rdparty#hydro">rosping</a></td>
+                      <td><a href="/r/jsk_3rdparty/github-jsk-ros-pkg-jsk_3rdparty">github-jsk-ros-pkg-jsk_3rdparty</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosping/github-jsk-ros-pkg-jsk_3rdparty#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1911,12 +2738,12 @@ $(function() {
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1925,9 +2752,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1936,9 +2763,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1947,28 +2774,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/hydro-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1978,6 +2812,173 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ros/github-ros-ros">
+
+ros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/groovy-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1990,30 +2991,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2052,7 +3053,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2082,7 +3083,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2099,8 +3103,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2119,17 +3140,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Josh Faust</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
                 
               </ul>
             
@@ -2162,35 +3172,35 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rosboost_cfg">Changelog for package rosboost_cfg</h1>
 
-<h2 id="1.9.53-(2013-10-15)">1.9.53 (2013-10-15)</h2>
+<h2 id="1-9-53-2013-10-15">1.9.53 (2013-10-15)</h2>
 
-<h2 id="1.9.52-(2013-10-04)">1.9.52 (2013-10-04)</h2>
+<h2 id="1-9-52-2013-10-04">1.9.52 (2013-10-04)</h2>
 
-<h2 id="1.9.51-(2013-08-22)">1.9.51 (2013-08-22)</h2>
+<h2 id="1-9-51-2013-08-22">1.9.51 (2013-08-22)</h2>
 
-<h2 id="1.9.50-(2013-08-21)">1.9.50 (2013-08-21)</h2>
+<h2 id="1-9-50-2013-08-21">1.9.50 (2013-08-21)</h2>
 
-<h2 id="1.9.49-(2013-07-05)">1.9.49 (2013-07-05)</h2>
+<h2 id="1-9-49-2013-07-05">1.9.49 (2013-07-05)</h2>
 
-<h2 id="1.9.48-(2013-07-03)">1.9.48 (2013-07-03)</h2>
+<h2 id="1-9-48-2013-07-03">1.9.48 (2013-07-03)</h2>
 
-<h2 id="1.9.47-(2013-06-18)">1.9.47 (2013-06-18)</h2>
+<h2 id="1-9-47-2013-06-18">1.9.47 (2013-06-18)</h2>
 
-<h2 id="1.9.46-(2013-06-06)">1.9.46 (2013-06-06)</h2>
+<h2 id="1-9-46-2013-06-06">1.9.46 (2013-06-06)</h2>
 
-<h2 id="1.9.45-(2013-03-22-09:18)">1.9.45 (2013-03-22 09:18)</h2>
+<h2 id="1-9-45-2013-03-22-09-18">1.9.45 (2013-03-22 09:18)</h2>
 
-<h2 id="1.9.44-(2013-03-13)">1.9.44 (2013-03-13)</h2>
+<h2 id="1-9-44-2013-03-13">1.9.44 (2013-03-13)</h2>
 
-<h2 id="1.9.43-(2013-03-08)">1.9.43 (2013-03-08)</h2>
+<h2 id="1-9-43-2013-03-08">1.9.43 (2013-03-08)</h2>
 
-<h2 id="1.9.42-(2013-01-25)">1.9.42 (2013-01-25)</h2>
+<h2 id="1-9-42-2013-01-25">1.9.42 (2013-01-25)</h2>
 
-<h2 id="1.9.41-(2013-01-24)">1.9.41 (2013-01-24)</h2>
+<h2 id="1-9-41-2013-01-24">1.9.41 (2013-01-24)</h2>
 
-<h2 id="1.9.40-(2013-01-13)">1.9.40 (2013-01-13)</h2>
+<h2 id="1-9-40-2013-01-13">1.9.40 (2013-01-13)</h2>
 
-<h2 id="1.9.39-(2012-12-30)">1.9.39 (2012-12-30)</h2>
+<h2 id="1-9-39-2012-12-30">1.9.39 (2012-12-30)</h2>
 
 <ul>
 <li>  first public release for Groovy</li>
@@ -2210,7 +3220,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2222,25 +3233,107 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ros/github-ros-ros#groovy">ros</a></td>
+                      <td><a href="/r/ros/github-ros-ros">github-ros-ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ros/github-ros-ros#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/euscollada/github-jsk-ros-pkg-jsk_model_tools#groovy">euscollada</a></td>
+                      <td><a href="/r/jsk_model_tools/github-jsk-ros-pkg-jsk_model_tools">github-jsk-ros-pkg-jsk_model_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/euscollada/github-jsk-ros-pkg-jsk_model_tools#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#groovy">jsk_pcl_ros</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros/github-jsk-ros-pkg-jsk_recognition#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#groovy">jsk_pcl_ros_utils</a></td>
+                      <td><a href="/r/jsk_recognition/github-jsk-ros-pkg-jsk_recognition">github-jsk-ros-pkg-jsk_recognition</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pcl_ros_utils/github-jsk-ros-pkg-jsk_recognition#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2248,12 +3341,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2262,9 +3355,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2273,9 +3366,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2284,28 +3377,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/groovy-devel/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2315,6 +3415,165 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/ros-1.8/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2327,32 +3586,30 @@ $(function() {
     
     
     
+    
     <a href="#fuerte-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#fuerte-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2391,7 +3648,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2421,7 +3678,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2438,8 +3698,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2454,17 +3733,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Josh Faust</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
                 
               </ul>
             
@@ -2507,7 +3775,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2519,25 +3788,42 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2545,12 +3831,12 @@ $(function() {
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2559,9 +3845,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2570,9 +3856,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2581,28 +3867,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/ros-1.8/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2612,6 +3905,229 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rosboost_cfg">rosboost_cfg</a> <small>package from <a style="text-decoration:none" href="/r/ros/github-ros-ros">ros</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mk/github-ros-ros">
+
+mk
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbuild/github-ros-ros">
+
+rosbuild
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslang/github-ros-ros">
+
+roslang
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roslib/github-ros-ros">
+
+roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_roscreate/github-ros-ros">
+
+test_roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_rosdep/github-ros-ros">
+
+test_rosdep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_roslib/github-ros-ros">
+
+test_roslib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_rosmake/github-ros-ros">
+
+test_rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_rospack/github-ros-ros">
+
+test_rospack
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosbash/github-ros-ros">
+
+rosbash
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rosboost_cfg
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosclean/github-ros-ros">
+
+rosclean
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roscreate/github-ros-ros">
+
+roscreate
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosdep/github-ros-ros">
+
+<span class="glyphicon glyphicon-education"></span> rosdep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosemacs/github-ros-ros">
+
+rosemacs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosmake/github-ros-ros">
+
+rosmake
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rospack/github-ros-ros">
+
+rospack
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rosunit/github-ros-ros">
+
+rosunit
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-electric">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rosboost_cfg"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-ros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-ros" role="menuitem" tabindex="-1" href="/p/rosboost_cfg/github-ros-ros" data="github-ros-ros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-ros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/electric/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/ros/tree/ros-1.6/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2624,32 +4140,30 @@ $(function() {
     
     
     
+    
     <a href="#electric-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#electric-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#electric-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="electric-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2688,7 +4202,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2718,7 +4232,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2735,8 +4252,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc. of boost on your system
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2751,17 +4287,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Josh Faust</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rosboost_cfg">Website</a></li>
                 
               </ul>
             
@@ -2804,7 +4329,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rosboost_cfg/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2816,25 +4342,42 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2842,12 +4385,12 @@ $(function() {
   <div class="tab-pane" id="electric-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2856,9 +4399,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2867,9 +4410,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2878,28 +4421,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/electric/api/rosboost_cfg/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/ros/tree/ros-1.6/tools/rosboost_cfg"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rosboost_cfg/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rosboost_cfg?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rosboost_cfg&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2935,7 +4485,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

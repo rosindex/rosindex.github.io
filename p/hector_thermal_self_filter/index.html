@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,7 +146,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -154,442 +196,178 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_heat_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_motion_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_qrcode_detection</a>
-        
-      
-        
-          <span class="label label-default"> hector_thermal_self_filter</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/hector_thermal_self_filter/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-hector_vision
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-hector_vision
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_heat_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_motion_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_qrcode_detection</a>
-        
-      
-        
-          <span class="label label-default"> hector_thermal_self_filter</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/hector_thermal_self_filter/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-hector_vision
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-hector_vision
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_heat_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_motion_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_qrcode_detection</a>
-        
-      
-        
-          <span class="label label-default"> hector_thermal_self_filter</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/hector_thermal_self_filter/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-hector_vision
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-hector_vision
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_heat_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_motion_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">hector_qrcode_detection</a>
-        
-      
-        
-          <span class="label label-default"> hector_thermal_self_filter</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/hector_thermal_self_filter/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-hector_vision
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-hector_vision
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
       
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_heat_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_motion_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_qrcode_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_soft_obstacle_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_soft_obstacle_detection
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+hector_thermal_self_filter
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-hector_vision
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-hector_vision
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="jade-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
-     
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -628,7 +406,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -650,7 +428,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-07-24
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-01
         </span>
       </td>
     </tr>
@@ -675,8 +453,26 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
+     
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -695,6 +491,533 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <em>No CHANGELOG found.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_self_filter#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_self_filter" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_self_filter#jade">robot_self_filter</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl_ros#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl_ros#jade">pcl_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hector_worldmodel_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hector_worldmodel_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hector_worldmodel_msgs#jade">hector_worldmodel_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_tracker_ugv.launch" target="_blank">launch/thermal_self_filter_tracker_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_heat_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_motion_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_qrcode_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_soft_obstacle_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_soft_obstacle_detection
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+hector_thermal_self_filter
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-hector_vision
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-hector_vision
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>UNKNOWN</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-default">
+                  
+                    ROSBUILD</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/tu-darmstadt-ros-pkg/hector_vision.git">https://github.com/tu-darmstadt-ros-pkg/hector_vision.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-01
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          <span class="label label-warning">UNMAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
+     
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -702,6 +1025,24 @@
               <ul class="list-unstyled">
                 
                   <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No known maintainers.</em>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Stefan Kohlbrecher</li>
                 
               </ul>
             
@@ -744,7 +1085,8 @@
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -756,31 +1098,111 @@
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_self_filter#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_self_filter" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_self_filter#indigo">robot_self_filter</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl_ros#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl_ros#indigo">pcl_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hector_worldmodel_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hector_worldmodel_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hector_worldmodel_msgs#indigo">hector_worldmodel_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/robot_self_filter#indigo">robot_self_filter</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pcl_ros#indigo">pcl_ros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/hector_worldmodel_msgs#indigo">hector_worldmodel_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -788,16 +1210,53 @@
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_tracker_ugv.launch" target="_blank">launch/thermal_self_filter_tracker_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -806,9 +1265,9 @@
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -817,9 +1276,9 @@
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -828,28 +1287,35 @@
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -859,6 +1325,125 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_heat_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_motion_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_qrcode_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_soft_obstacle_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_soft_obstacle_detection
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+hector_thermal_self_filter
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-hector_vision
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-hector_vision
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -871,31 +1456,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
-     
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -934,7 +1518,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -956,7 +1540,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-07-24
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-01
         </span>
       </td>
     </tr>
@@ -981,8 +1565,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
+     
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -997,17 +1599,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Stefan Kohlbrecher</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
                 
               </ul>
             
@@ -1050,7 +1641,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1062,31 +1654,111 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_self_filter#hydro-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_self_filter" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_self_filter#hydro">robot_self_filter</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl_ros#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl_ros#hydro">pcl_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hector_worldmodel_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hector_worldmodel_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hector_worldmodel_msgs#hydro">hector_worldmodel_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/robot_self_filter#hydro">robot_self_filter</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pcl_ros#hydro">pcl_ros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/hector_worldmodel_msgs#hydro">hector_worldmodel_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1094,16 +1766,53 @@ $(function() {
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_tracker_ugv.launch" target="_blank">launch/thermal_self_filter_tracker_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1112,9 +1821,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1123,9 +1832,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1134,28 +1843,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1165,6 +1881,125 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_heat_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_motion_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_qrcode_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_soft_obstacle_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_soft_obstacle_detection
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+hector_thermal_self_filter
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-hector_vision
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-hector_vision
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1177,31 +2012,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
-     
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1240,7 +2074,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1262,7 +2096,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-07-24
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-01
         </span>
       </td>
     </tr>
@@ -1287,8 +2121,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
+     
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1303,17 +2155,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Stefan Kohlbrecher</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
                 
               </ul>
             
@@ -1356,7 +2197,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1368,31 +2210,111 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_self_filter#groovy-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_self_filter" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_self_filter#groovy">robot_self_filter</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl_ros#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl_ros#groovy">pcl_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hector_worldmodel_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hector_worldmodel_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hector_worldmodel_msgs#groovy">hector_worldmodel_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/robot_self_filter#groovy">robot_self_filter</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pcl_ros#groovy">pcl_ros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/hector_worldmodel_msgs#groovy">hector_worldmodel_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1400,16 +2322,53 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_tracker_ugv.launch" target="_blank">launch/thermal_self_filter_tracker_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1418,9 +2377,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1429,9 +2388,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1440,28 +2399,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1471,6 +2437,125 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/hector_thermal_self_filter">hector_thermal_self_filter</a> <small>package from <a style="text-decoration:none" href="/r/hector_vision/github-tu-darmstadt-ros-pkg-hector_vision">hector_vision</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_heat_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_heat_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_motion_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_motion_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_qrcode_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_qrcode_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/hector_soft_obstacle_detection/github-tu-darmstadt-ros-pkg-hector_vision">
+
+hector_soft_obstacle_detection
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+hector_thermal_self_filter
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/hector_thermal_self_filter"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-hector_vision
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-hector_vision" role="menuitem" tabindex="-1" href="/p/hector_thermal_self_filter/github-tu-darmstadt-ros-pkg-hector_vision" data="github-tu-darmstadt-ros-pkg-hector_vision">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-hector_vision
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1483,31 +2568,30 @@ $(function() {
     
     
     
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
-     
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1546,7 +2630,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1568,7 +2652,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-07-24
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-01
         </span>
       </td>
     </tr>
@@ -1593,8 +2677,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     hector_thermal_self_filter provides a hector_worldmodel_msgs/VerifyPercept service server for the
+     
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1609,17 +2711,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Stefan Kohlbrecher</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/hector_thermal_self_filter">Website</a></li>
                 
               </ul>
             
@@ -1662,7 +2753,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/hector_thermal_self_filter/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1674,31 +2766,111 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_self_filter#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_self_filter" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_self_filter#fuerte">robot_self_filter</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl_ros#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl_ros#fuerte">pcl_ros</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hector_worldmodel_msgs#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hector_worldmodel_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hector_worldmodel_msgs#fuerte">hector_worldmodel_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/robot_self_filter#fuerte">robot_self_filter</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pcl_ros#fuerte">pcl_ros</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/hector_worldmodel_msgs#fuerte">hector_worldmodel_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1706,16 +2878,53 @@ $(function() {
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_obelix_ugv.launch" target="_blank">launch/thermal_self_filter_obelix_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_tracker_ugv.launch" target="_blank">launch/thermal_self_filter_tracker_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter/launch/thermal_self_filter_hector_ugv.launch" target="_blank">launch/thermal_self_filter_hector_ugv.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1724,9 +2933,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1735,9 +2944,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1746,28 +2955,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/hector_thermal_self_filter/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/hector_vision/tree/master/hector_thermal_self_filter"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:hector_thermal_self_filter/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/hector_thermal_self_filter?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=hector_thermal_self_filter&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1811,7 +3027,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

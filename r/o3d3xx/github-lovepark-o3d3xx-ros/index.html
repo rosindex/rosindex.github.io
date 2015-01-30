@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,8 +281,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +305,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-09
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-01
         </span>
       </td>
     </tr>
@@ -295,7 +345,7 @@
                 
                   <tr>
                     <td><a href="/p/o3d3xx/github-lovepark-o3d3xx-ros">o3d3xx</a></td>
-                    <td>0.1.0</td>
+                    <td>0.2.5</td>
                   </tr>
                 
                 </tbody>
@@ -320,27 +370,88 @@ systems.</p>
 <h2 id="software-compatibility-matrix">Software Compatibility Matrix</h2>
 
 <table>
-<tr>
-<th>libo3d3xx version</th>
-               <th>o3d3xx-ros</th>
-               <th>ROS distribution</th>
+         <tr>
+             <th>o3d3xx-ros version</th>
+             <th>libo3d3xx version</th>
+             <th>ROS distribution(s)</th>
          </tr>
-<tr>
-<td>0.1.3</td>
-             <td>0.1.0</td>
+         <tr>
+             <td>0.1.3</td>
+             <td>0.1.9</td>
              <td>Indigo</td>
          </tr>
+         <tr>
+             <td>0.1.4</td>
+             <td>0.1.9</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.1.5</td>
+             <td>0.1.11</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.1.6</td>
+             <td>0.1.11</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.1.7</td>
+             <td>0.2.0</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.1.8</td>
+             <td>0.2.0</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.2.0</td>
+             <td>0.3.0</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.2.1</td>
+             <td>0.4.0</td>
+             <td>Indigo</td>
+         </tr>
+         <tr>
+             <td>0.2.2</td>
+             <td>0.4.0, 0.4.1, 0.4.2</td>
+             <td>Indigo</td>
+        </tr>
+        <tr>
+             <td>0.2.3</td>
+             <td>0.4.3</td>
+             <td>Indigo, Kinetic</td>
+        </tr>
+        <tr>
+             <td>0.2.4</td>
+             <td>0.4.4</td>
+             <td>Indigo, Kinetic</td>
+        </tr>
+        <tr>
+             <td>0.2.5</td>
+             <td>0.4.5</td>
+             <td>Indigo, Kinetic</td>
+        </tr>
 </table>
+
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ol>
-<li><a href="http://www.ubuntu.com">Ubuntu 14.04</a></li>
-<li><a href="http://wiki.ros.org/indigo">ROS Indigo</a></li>
+<li><a href="http://www.ubuntu.com">Ubuntu 14.04 or 16.04</a></li>
+<li><a href="http://www.ros.org/install">ROS Indigo or Kinetic</a></li>
 <li><a href="https://github.com/lovepark/libo3d3xx">libo3d3xx</a></li>
 </ol>
-<p>Additionally, your compiler must support C++11. This package was initially
-developed and tested using g++ 4.8.2 on Ubuntu 14.04 LTS. This is the stock
-gcc-based C++ compiler on Ubuntu 14.04.</p>
+
+<p>Additionally, your compiler must support C++11. This package has been validated
+with:</p>
+
+<ul>
+<li>g++ 4.8.2 on Ubuntu 14.04 LTS, ROS Indigo</li>
+<li>g++ 5.3.x on Ubuntu 16.04 LTS, ROS Kinetic</li>
+</ul>
 
 <h2 id="building-and-installing-the-software">Building and Installing the Software</h2>
 
@@ -355,25 +466,12 @@ Linux.</p>
 <a href="https://github.com/lovepark/libo3d3xx">libo3d3xx</a>. This ROS package assumes
 you have installed libo3d3xx via the supported debian installer. Step-by-step
 instructions for that process now follows:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ git clone https://github.com/lovepark/libo3d3xx.git
+<div class="highlight"><pre><code class="language-" data-lang="">$ git clone https://github.com/lovepark/libo3d3xx.git
 $ cd libo3d3xx
 $ mkdir build
 $ cd build
 $ cmake ..
 $ make
-$ make check
-$ make package
-$ sudo dpkg -i libo3d3xx_0.1.3_amd64.deb
-</code></pre></div>
-<p><strong>NOTE</strong>: The version string in the deb file may be different based upon the
-version of libo3d3xx that you are building.</p>
-
-<p>If everything above went successfully, you should have libo3d3xx installed at
-<code>/opt/libo3d3xx</code>. Per the libo3d3xx README, it is also recommended that you add
-the following to your <code>~/.bash_profile</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">if [ -f /opt/libo3d3xx/etc/setup.bash ]; then
-    source /opt/libo3d3xx/etc/setup.bash
-fi
 </code></pre></div>
 <p>We now move on to building o3d3xx-ros.</p>
 
@@ -389,7 +487,7 @@ instructions that now follow represent how we choose to use catkin to build and
 installed. For purposes of this document, we will assume that we will install
 our ROS packages at <code>~/ros</code>. For convenience, we add the following to our
 <code>~/.bash_profile</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">if [ -f /opt/ros/indigo/setup.bash ]; then
+<div class="highlight"><pre><code class="language-" data-lang="">if [ -f /opt/ros/indigo/setup.bash ]; then
     source /opt/ros/indigo/setup.bash
 fi
 
@@ -409,13 +507,13 @@ fi
 </code></pre></div>
 <p>Next, we need to get the code from github. We assume we keep all of our git
 repositories in <code>~/dev</code>.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/dev
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd ~/dev
 $ git clone https://github.com/lovepark/o3d3xx-ros.git
 </code></pre></div>
 <p>We now have the code in <code>~/dev/o3d3xx-ros</code>. Next, we want to create a <em>catkin
 workspace</em> that we can use to build and install that code from. It is the
 catkin philosophy that we do not do this directly in the source directory.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/dev
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd ~/dev
 $ mkdir o3d3xx-catkin
 $ cd o3d3xx-catkin
 $ mkdir src
@@ -425,7 +523,7 @@ $ ln -s ~/dev/o3d3xx-ros o3d3xx
 </code></pre></div>
 <p>So, you should have a catkin workspace set up to build the o3d3xx-ros code that
 looks basically like:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[ ~/dev/o3d3xx-catkin/src ]
+<div class="highlight"><pre><code class="language-" data-lang="">[ ~/dev/o3d3xx-catkin/src ]
 tpanzarella@jelly: $ pwd
 /home/tpanzarella/dev/o3d3xx-catkin/src
 
@@ -435,17 +533,18 @@ total 0
 lrwxrwxrwx 1 tpanzarella tpanzarella 49 Dec  2 15:26 CMakeLists.txt -&gt; /opt/ros/indigo/share/catkin/cmake/toplevel.cmake
 lrwxrwxrwx 1 tpanzarella tpanzarella 32 Dec  2 15:24 o3d3xx -&gt; /home/tpanzarella/dev/o3d3xx-ros
 </code></pre></div>
-<p>Now we are ready to build the code:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/dev/o3d3xx-catkin
-$ catkin_make -DCMAKE_INSTALL_PREFIX=${LPR_ROS}/o3d3xx
-$ catkin_make install
+<p>Now we are ready to build the code.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd ~/dev/o3d3xx-catkin
+$ catkin_make -DCATKIN_ENABLE_TESTING=ON
+$ catkin_make run_tests
+$ catkin_make -DCMAKE_INSTALL_PREFIX=${LPR_ROS}/o3d3xx install
 </code></pre></div>
 <p>The ROS package should now be installed in <code>~/ros/o3d3xx</code>. To test everything
 out you should open a fresh bash shell, and start up a ROS core:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roscore
+<div class="highlight"><pre><code class="language-" data-lang="">$ roscore
 </code></pre></div>
 <p>Open another shell and start the primary camera node:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx camera.launch ip:=192.168.10.69
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx camera.launch ip:=192.168.10.69
 </code></pre></div>
 <p><strong>NOTE</strong>: The IP address of your camera may differ. If you are using the
 factory default (192.168.0.69), you do not need to specify it on the above
@@ -453,12 +552,8 @@ factory default (192.168.0.69), you do not need to specify it on the above
 
 <p>Open another shell and start the rviz node to visualize the data coming from
 the camera:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ optirun roslaunch o3d3xx rviz.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx rviz.launch
 </code></pre></div>
-<p><strong>NOTE</strong>: You will likely not need to specify the <code>optirun</code> piece of the above
-command. We utilize that to manage an Optimus-based NVIDIA GPU via the linux
-<code>bumblebee</code> package.</p>
-
 <p>At this point, you should see an rviz window that looks something like:</p>
 
 <p><img src="https://raw.githubusercontent.com//lovepark/o3d3xx-ros/master//doc/figures/rviz1.png" alt="rviz1"></p>
@@ -467,16 +562,16 @@ command. We utilize that to manage an Optimus-based NVIDIA GPU via the linux
 
 <h2 id="nodes">Nodes</h2>
 
-<h3 id="/o3d3xx/camera">/o3d3xx/camera</h3>
+<h3 id="o3d3xx-camera">/o3d3xx/camera</h3>
 
 <p>This node provides a real-time feed to the camera data. This node is started
 from the primary <code>camera.launch</code> file:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx camera.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx camera.launch
 </code></pre></div>
 <p>The naming of the camera can be customized via the <code>ns</code> (namespace) and <code>nn</code>
 (node name) command line arguments passed to the <code>camera.launch</code> file. For
 example, if you specify your roslaunch command as:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx camera.launch ns:=robot nn:=front_camera
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx camera.launch ns:=robot nn:=front_camera
 </code></pre></div>
 <p>The node will have the name <code>/robot/front_camera</code> in the ROS computation
 graph.</p>
@@ -484,18 +579,26 @@ graph.</p>
 <h4 id="published-topics">Published Topics</h4>
 
 <table>
-<tr>
-<th>Topic</th>
+         <tr>
+             <th>Topic</th>
              <th>Message</th>
              <th>Description</th>
          </tr>
-<tr>
-<td>/o3d3xx/camera/amplitude</td>
+
+         <tr>
+             <td>/o3d3xx/camera/amplitude</td>
              <td>sensor_msgs/Image</td>
-             <td>16-bit gray scale encoding of the sensor Amplitude image </td>
+             <td>16-bit gray scale encoding of the sensor Amplitude image
+             normalized wrt exposure time. </td>
          </tr>
-<tr>
-<td>/o3d3xx/camera/cloud</td>
+         <tr>
+             <td>/o3d3xx/camera/raw_amplitude</td>
+             <td>sensor_msgs/Image</td>
+             <td>16-bit gray scale encoding of the sensor Amplitude image
+             non-normalized.</td>
+         </tr>
+         <tr>
+             <td>/o3d3xx/camera/cloud</td>
              <td>sensor_msgs/PointCloud2</td>
              <td>
              A 3D PCL point cloud of point type `XYZI`. In this encoding the
@@ -503,8 +606,8 @@ graph.</p>
              amplitude data. The units of this point cloud are in meters.
              </td>
          </tr>
-<tr>
-<td>/o3d3xx/camera/confidence</td>
+         <tr>
+             <td>/o3d3xx/camera/confidence</td>
              <td>sensor_msgs/Image</td>
              <td>
              An 8-bit mono image encoding of the confidence image. The meaning
@@ -512,16 +615,16 @@ graph.</p>
              documentation for the camera.
              </td>
          </tr>
-<tr>
-<td>/o3d3xx/camera/depth</td>
+         <tr>
+             <td>/o3d3xx/camera/depth</td>
              <td>sensor_msgs/Image</td>
              <td>
              A 16-bit mono image encoding of the radial depth map from the
              camera. The depth units are in millimeters.
              </td>
          </tr>
-<tr>
-<td>/o3d3xx/camera/depth_viz</td>
+         <tr>
+             <td>/o3d3xx/camera/depth_viz</td>
              <td>sensor_msgs/Image</td>
              <td>
              A rendering of the depth image utilizing a colormap more
@@ -530,8 +633,8 @@ graph.</p>
              `publish_viz_images` parameter is set to true at launch time.
              </td>
          </tr>
-<tr>
-<td>/o3d3xx/camera/good_bad_pixels</td>
+         <tr>
+             <td>/o3d3xx/camera/good_bad_pixels</td>
              <td>sensor_msgs/Image</td>
              <td>
              A binary image showing good vs. bad pixels on the pixel array. Bad
@@ -542,28 +645,53 @@ graph.</p>
              `publish_viz_images` parameter is set to true at launch time.
              </td>
          </tr>
-<tr>
-<td>/o3d3xx/camera/hist</td>
+         <tr>
+             <td>/o3d3xx/camera/xyz_image</td>
              <td>sensor_msgs/Image</td>
              <td>
-             An image showing gray level distribution of the pixels in the
-             amplitude image. This is a simple way to visualize the dynamic
-             range of the current imager settings. For performance
-             reasons, messages are only published to this topic when the
-             `publish_viz_images` parameter is set to true at launch time.
+             An OpenCV image encoding (CV_16SC3) of the same point cloud that
+             is published to `/o3d3xx/camera/cloud` where the three image planes
+             are 0 = x, 1 = y, 2 = z. Units are in millimeters yet the coord
+             frame is consistent with the point cloud.
+             </td>
+         </tr>
+         <tr>
+             <td>/o3d3xx/camera/unit_vectors</td>
+             <td>sensor_msgs/Image</td>
+             <td>
+             An OpenCV image encoding (CV_32FC3) of the rotated unit vectors
+             that can be used together with the translation vector from the
+             camera extrinsics and the radial distance image to compute the
+             cartesian coordinates for each pixel in the imager array off-board
+             the camera. This topic is latched.
+             </td>
+         </tr>
+         <tr>
+             <td>/o3d3xx/camera/extrinsics</td>
+             <td><a href="msg/Extrinsics.msg">Extrinsics.msg</a></td>
+             <td>
+             Extrinsics as reported by the camera. The translation vector here
+             is used together with the unit vectors and the radial distance
+             image to compute the Cartesian coordinates for each pixel in the
+             imager array. It should be noted that for this message, the
+             translational units are in mm and the rotational units are in
+             degrees. This is to be consistent with the camera eventhough it is
+             not necessarily consistent with ROS conventions. Usage of this
+             message is really for very specialized use-cases.
              </td>
          </tr>
 </table>
+
 <h4 id="advertised-services">Advertised Services</h4>
 
 <table>
-<tr>
-<th>Service Name</th>
+    <tr>
+        <th>Service Name</th>
         <th>Service Definition</th>
         <th>Description</th>
     </tr>
-<tr>
-<td>/o3d3xx/camera/Config</td>
+    <tr>
+        <td>/o3d3xx/camera/Config</td>
         <td><a href="srv/Config.srv">Config.srv</a></td>
         <td>
         Mutates camera settings based upon an input JSON file. <b>NOTE:</b> Due
@@ -574,8 +702,8 @@ graph.</p>
         explained in further detail below.
         </td>
     </tr>
-<tr>
-<td>/o3d3xx/camera/Dump</td>
+    <tr>
+        <td>/o3d3xx/camera/Dump</td>
         <td><a href="srv/Dump.srv">Dump.srv</a></td>
         <td>
         Dumps the current configuration of the camera to a JSON string. The
@@ -583,8 +711,8 @@ graph.</p>
         service for configuring the camera.
         </td>
     </tr>
-<tr>
-<td>/o3d3xx/camera/GetVersion</td>
+    <tr>
+        <td>/o3d3xx/camera/GetVersion</td>
         <td><a href="srv/GetVersion.srv">GetVersion.srv</a></td>
         <td>
         Returns the current version of the underlying
@@ -592,76 +720,124 @@ graph.</p>
         that this ROS node is linked to.
         </td>
     </tr>
-<tr>
-<td>/o3d3xx/camera/Rm</td>
+    <tr>
+        <td>/o3d3xx/camera/Rm</td>
         <td><a href="srv/Rm.srv">Rm.srv</a></td>
         <td>Removes an application from the camera. This service will restrict
         removing the current active application.
         </td>
     </tr>
+    <tr>
+        <td>/o3d3xx/camera/Trigger</td>
+        <td><a href="srv/Trigger.srv">Trigger.srv</a></td>
+        <td>
+        Sends a software trigger signal to the camera.
+        </td>
+    </tr>
 </table>
+
 <h4 id="parameters">Parameters</h4>
 
 <table>
-<tr>
+    <tr>
 <th>Name</th>
 <th>Data Type</th>
 <th>Description</th>
 </tr>
-<tr>
-<td>ip</td>
+    <tr>
+        <td>ip</td>
         <td>string</td>
         <td>IP address of the camera</td>
     </tr>
-<tr>
-<td>xmlrpc_port</td>
+    <tr>
+        <td>xmlrpc_port</td>
         <td>int</td>
         <td>TCP port the camera's XMLRPC server is listening on</td>
     </tr>
-<tr>
-<td>password</td>
+    <tr>
+        <td>password</td>
         <td>string</td>
         <td>Password to use to connect to the camera</td>
     </tr>
-<tr>
-<td>timeout_millis</td>
+    <tr>
+        <td>schema_mask</td>
+        <td>uint16_t</td>
+        <td>Mask controlling which image types to stream back from the
+           camera. This is useful for numerous reasons. It allows for
+           conserving bandwidth between the host computer and the camera or
+           lessens the CPU cycles required by the camera to compute image data
+           which may result in an increased frame rate. See the o3d3xx-schema
+           command line tool for generating custom masks.</td>
+    </tr>
+    <tr>
+        <td>timeout_millis</td>
         <td>int</td>
         <td>Time, in milliseconds, to block when waiting for a frame from the
         camera before timing out.</td>
     </tr>
-<tr>
-<td>publish_viz_images</td>
+    <tr>
+        <td>timeout_tolerance_secs</td>
+        <td>double</td>
+        <td>Time, in seconds, to wait before trying to restart the underlying
+        framegrabber if it is currently experiencing timeouts while trying to
+        capture image data.</td>
+    </tr>
+    <tr>
+        <td>publish_viz_images</td>
         <td>bool</td>
         <td>
         In general, for a runtime system, the core data a system will want from
         this camera include the `cloud`, `depth`, `amplitude`, and `confidence`
         images. This node will always publish those data. However, if you set
         this parameter to `true` a few additional images are published. These
-        are `depth_viz`, `good_bad_pixels`, and `hist` (they are described
+        are `depth_viz` and `good_bad_pixels` (they are described
         above in the `Topics` section). These <i>viz images</i> are intended
         for human analysis and visualization in `rviz`.
         </td>
     </tr>
+    <tr>
+        <td>assume_sw_trigger</td>
+        <td>bool</td>
+        <td>
+        If your application intends to use software triggering (as opposed to a
+        free-running framegrabber), this parameter does four things. First, it
+        will not print out framegrabber timeout messages to the
+        rosconsole. Second, it will set, a-priori, the `timeout_millis`
+        parameter to 500 milliseconds (this is so that the node will release
+        the framegrabber mutex in the main publishing loop). Third, this will
+        set the `timeout_tolerance_secs` to 600 seconds so that the
+        framegrabber is not constantly getting recycled unnecessarily. Fourth,
+        it sets the `GLOG_minloglevel` environment variable to 3 (ERROR). This
+        is so the underlying `libo3d3xx` library does not fill your log files
+        with timeout messages which it emits at the WARNING level.
+        </td>
+    </tr>
+    <tr>
+        <td>frame_id_base</td>
+        <td>string</td>
+        <td>tf frame prefix</td>
+    </tr>
 </table>
-<h3 id="/o3d3xx/camera_tf">/o3d3xx/camera_tf</h3>
+
+<h3 id="o3d3xx-camera_tf">/o3d3xx/camera_tf</h3>
 
 <p>This node is of type <code>tf/static_transform_publisher</code>. It establishes a frame_id
 for the camera in the global tf tree. This node is launched from the primary
 <code>camera.launch</code> file:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx camera.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx camera.launch
 </code></pre></div>
 <p>When run as above, the tf publishing node would be named <code>/o3d3xx/camera_tf</code>
-and the camera coordinate frame would be <code>/o3d3xx/camera_link</code> in the tf tree.</p>
+and the camera coordinate frame would be <code>o3d3xx/camera_link</code> in the tf tree.</p>
 
-<p>You can customize this naming (to an extent) via the <code>ns</code> (namespace) and <code>nn</code>
-(node name) command line arguments passed to the <code>camera.launch</code> file. For
-example, if you specify your roslaunch command as:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx camera.launch ns:=robot nn:=front_camera
+<p>You can customize this naming via the <code>frame_id_base</code> arg or implicitly through
+the <code>ns</code> (namespace) and <code>nn</code> (node name) command line arguments passed to the
+<code>camera.launch</code> file. For example, if you specify your roslaunch command as:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx camera.launch ns:=robot nn:=front_camera
 </code></pre></div>
 <p>The node name will be <code>/robot/front_camera_tf</code> and the camera frame will
-be <code>/robot/front_camera_link</code> in the tf tree.</p>
+be <code>robot/front_camera_link</code> in the tf tree.</p>
 
-<h3 id="/o3d3xx/camera/config_node">/o3d3xx/camera/config_node</h3>
+<h3 id="o3d3xx-camera-config_node">/o3d3xx/camera/config_node</h3>
 
 <p>This node is used as a proxy to simplify calling the <code>/o3d3xx/camera/Config</code>
 service offered by the <code>/o3d3xx/camera</code> node. It was noted above that there
@@ -671,18 +847,18 @@ string to a variable. This is the reason for this node. This is not a
 long-running node but rather works like a typical command-line tool would: you
 invoke it, it runs, and exits. The following command line will launch this
 node:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx config.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx config.launch
 </code></pre></div>
 <h4 id="parameters">Parameters</h4>
 
 <table>
-<tr>
+    <tr>
 <th>Name</th>
 <th>Data Type</th>
 <th>Description</th>
 </tr>
-<tr>
-<td>infile</td>
+    <tr>
+        <td>infile</td>
         <td>string</td>
         <td>
         By default, this node will read `stdin` for a JSON string to use to
@@ -691,20 +867,48 @@ node:</p>
         </td>
     </tr>
 </table>
-<h3 id="/rviz">/rviz</h3>
+
+<h3 id="rviz">/rviz</h3>
 
 <p>This package offers a launch script that wraps the execution of <code>rviz</code> so that
 the display will be conveniently configured for visualizing the
 <code>/o3d3xx/camera</code> data. To launch this node:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ optirun roslaunch o3d3xx rviz.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx rviz.launch
 </code></pre></div>
-<p><strong>NOTE</strong>: You will likely not need to specify the <code>optirun</code> piece of the above
-command. We utilize that to manage an Optimus-based NVIDIA GPU via the linux
-<code>bumblebee</code> package.</p>
+<p>Running the command as above will color the point cloud with the
+data from the normalized amplitude image (i.e., the intensity).</p>
 
-<p>The rviz window should look something like:</p>
+<p>The rviz window should look something like (assuming you are coloring the point
+cloud with the intensity data):</p>
 
 <p><img src="https://raw.githubusercontent.com//lovepark/o3d3xx-ros/master//doc/figures/rviz1.png" alt="rviz1"></p>
+
+<h3 id="o3d3xx-camera-xxx_throttler">/o3d3xx/camera/XXX_throttler</h3>
+
+<p>This package offers a launch script that wraps the
+<a href="http://wiki.ros.org/topic_tools/throttle">topic_tools/throttler</a> node
+so that it can throttle the core topics from the camera. Specifically, it will
+throttle <code>/o3d3xx/camera/cloud</code> to <code>/o3d3xx/camera/cloud_throttle</code>,
+<code>/o3d3xx/camera/amplitude</code> to <code>/o3d3xx/camera/amplitude_throttle</code>,
+<code>/o3d3xx/camera/raw_amplitude_throttle</code>,
+<code>/o3d3xx/camera/depth</code> to <code>/o3d3xx/camera/depth_throttle</code>,
+<code>/o3d3xx/camera/confidence</code> to <code>/o3d3xx/camera/confidence_throttle</code>. To launch
+this node:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx throttled.launch
+</code></pre></div>
+<p>By default, it will throttle the above named topics to 1 Hz. You can change the
+frequency with the <code>hz</code> command line argument. For example, to send data at 2
+Hz:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx throttled.launch hz:=2.0
+</code></pre></div>
+<p>Using this launch file to launch this set of nodes is strictly optional. We
+have found use for it in two ways. First, to slow down the publishing frequency
+of the topics when used in conjunction with the <code>/o3d3xx/camera/file_writer</code>
+node for collecting data (i.e., in those instances when we really do not need
+all the data but rather some subsampling of it). Second, if we are running the
+camera on a drone (for example) that has a slower radio link down to a ground
+control station running <code>rviz</code> where we want to see what the camera sees while
+the drone is in flight. Clearly there are other uses for this, YMMV.</p>
 
 <h2 id="configuring-camera-settings">Configuring Camera Settings</h2>
 
@@ -721,6 +925,7 @@ makes it very convenient for headless embedded systems.</li>
 <li>The JSON data is machine parsable, so configuring the camera on the fly via
 programmable logic is also possible.</li>
 </ol>
+
 <p>There are also a few downfalls to using JSON. Most notably the lack of comments
 and an enforceable schema. One could argue that the latter keeps things
 flexible. None-the-less, JSON is the format used by <code>libo3d3xx</code> and, by
@@ -754,27 +959,28 @@ after changing the camera's network parameters. Additionally, you will
 likely need to restart the <code>/o3d3xx/camera</code> node pointing it to the new IP
 address (if that is what you changed).</li>
 </ol>
+
 <p>It should also be noted that any portion of the JSON tree can be specfied to
 configure only that part of the camera. The only rule to follow is that all
 keys should be fully qualified. For example, to simply set the active
 application, you can use a JSON snippet like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">{
-    "o3d3xx":
-    {
-        "Device":
-        {
-            "ActiveApplication": "2"
-        }
-    }
-}
-</code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang=""><span class="p">{</span><span class="w">
+    </span><span class="nt">"o3d3xx"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"Device"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"ActiveApplication"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>The above snippet is provided as an example <a href="json/ex_set_active.json">here</a>. To
 apply this to your camera, you can:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx config.launch infile:=/path/to/ex_set_active.json
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx config.launch infile:=/path/to/ex_set_active.json
 </code></pre></div>
 <p>It was also noted above that the <code>/o3d3xx/camera/config_node</code> will read <code>stdin</code>
 by default, so you could also:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ echo '{"o3d3xx":{"Device":{"ActiveApplication":"2"}}}' | roslaunch o3d3xx config.launch
+<div class="highlight"><pre><code class="language-" data-lang="">$ echo '{"o3d3xx":{"Device":{"ActiveApplication":"2"}}}' | roslaunch o3d3xx config.launch
 </code></pre></div>
 <p><a href="json/ex_add_app.json">Here</a> is another example JSON file. This one will add a
 new application to the camera, using the default values for the high-dynamic
@@ -786,7 +992,7 @@ this configuration.</p>
 <p>In general, a simple way to configure camera settings without having to
 memorize the JSON syntax would be to simply dump the current camera settings to
 a file:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ rosservice call /o3d3xx/camera/Dump &gt; /tmp/camera.json
+<div class="highlight"><pre><code class="language-" data-lang="">$ rosservice call /o3d3xx/camera/Dump &gt; /tmp/camera.json
 </code></pre></div>
 <p>Then, open <code>/tmp/camera.json</code> with a text editor to create a declarative JSON
 configuration for your camera. You should be sure to delete the variable names
@@ -795,7 +1001,7 @@ from the <code>rosservice</code> output if you are following this example
 like, however it is not strictly necessary as the <code>/o3d3xx/camera/Config</code>
 service will leave unedited values unchanged on the camera. Once you have a
 configuration that you like, you can:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ roslaunch o3d3xx config.launch infile:=/tmp/camera.json
+<div class="highlight"><pre><code class="language-" data-lang="">$ roslaunch o3d3xx config.launch infile:=/tmp/camera.json
 </code></pre></div>
 <p>You can check that your configuration is active by calling the
 <code>/o3d3xx/camera/Dump</code> service again.</p>
@@ -816,6 +1022,9 @@ configuration that you like, you can:</p>
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -882,7 +1091,7 @@ configuration that you like, you can:</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

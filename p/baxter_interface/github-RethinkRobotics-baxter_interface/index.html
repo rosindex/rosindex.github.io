@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,11 +149,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -157,192 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/baxter_interface">baxter_interface</a> <small>package from <a style="text-decoration:none" href="/r/baxter_interface/github-RethinkRobotics-baxter_interface">baxter_interface</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> baxter_interface</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/baxter_interface/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/baxter_interface" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/baxter_interface"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-RethinkRobotics-baxter_interface
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-RethinkRobotics-baxter_interface" role="menuitem" tabindex="-1" href="/p/baxter_interface/github-RethinkRobotics-baxter_interface" data="github-RethinkRobotics-baxter_interface">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-RethinkRobotics-baxter_interface
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/baxter_interface">baxter_interface</a> <small>package from <a style="text-decoration:none" href="/r/baxter_interface/github-RethinkRobotics-baxter_interface">baxter_interface</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> baxter_interface</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/baxter_interface/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/baxter_interface" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/baxter_interface"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-RethinkRobotics-baxter_interface
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-RethinkRobotics-baxter_interface" role="menuitem" tabindex="-1" href="/p/baxter_interface/github-RethinkRobotics-baxter_interface" data="github-RethinkRobotics-baxter_interface">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-RethinkRobotics-baxter_interface
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -355,53 +222,131 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/baxter_interface">baxter_interface</a> <small>package from <a style="text-decoration:none" href="/r/baxter_interface/github-RethinkRobotics-baxter_interface">baxter_interface</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> baxter_interface
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/baxter_interface"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-RethinkRobotics-baxter_interface
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-RethinkRobotics-baxter_interface" role="menuitem" tabindex="-1" href="/p/baxter_interface/github-RethinkRobotics-baxter_interface" data="github-RethinkRobotics-baxter_interface">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-RethinkRobotics-baxter_interface
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/baxter_interface/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/baxter_interface?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=baxter_interface&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Convenient python interface classes for control
-    of the Baxter Research Robot from Rethink Robotics.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -414,7 +359,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.1.0</td>
+                <td>1.2.0</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -440,7 +385,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -462,7 +407,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-21
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-12-30
         </span>
       </td>
     </tr>
@@ -490,8 +435,34 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Convenient python interface classes for control
+    of the Baxter Research Robot from Rethink Robotics.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://sdk.rethinkrobotics.com">Website</a></li>
+                
+                  <li><a href="
+    https://github.com/RethinkRobotics/baxter_interface
+  ">Repository</a></li>
+                
+                  <li><a href="
+    https://github.com/RethinkRobotics/baxter_interface/issues
+  ">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -516,25 +487,6 @@
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://sdk.rethinkrobotics.com">Website</a></li>
-                
-                  <li><a href="
-    https://github.com/RethinkRobotics/baxter_interface
-  ">Repository</a></li>
-                
-                  <li><a href="
-    https://github.com/RethinkRobotics/baxter_interface/issues
-  ">Bugtracker</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -551,19 +503,20 @@
 <p>Python interface classes and action servers for control of the Baxter
 Research Robot from Rethink Robotics</p>
 
-<h2 id="code-&amp;-tickets">Code &amp; Tickets</h2>
+<h2 id="code-amp-tickets">Code &amp; Tickets</h2>
 
 <hr>
-<p>Documentation   <a href="http://sdk.rethink%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20robotics.com/wiki">http://sdk.rethinkrobotics.com/wiki</a></p>
 
-<p>Issues          <a href="https://github.com/RethinkRobotics/baxter_interfac%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20e/issues">https://github.com/RethinkRobotics/baxter_interface/is
-                  sues</a></p>
+<p>Documentation   <a href="http://sdk.rethinkrobotics.com/wiki">http://sdk.rethinkrobotics.com/wiki</a></p>
 
-<p>Contributions   <a href="http%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20://sdk.rethinkrobotics.com/wiki/Contributions">http://sdk.rethinkrobotics.com/wiki/Contributions</a></p>
+<p>Issues          <https: ues></https:></p>
+
+<p>Contributions   <a href="http://sdk.rethinkrobotics.com/wiki/Contributions">http://sdk.rethinkrobotics.com/wiki/Contributions</a></p>
 
 <hr>
+
 <h2 id="baxter_interface-repository-overview">baxter_interface Repository Overview</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">.
+<div class="highlight"><pre><code class="language-" data-lang="">.
 |
 +-- src/                                  baxter_interface api
 |   +-- baxter_interface/                 baxter component classes
@@ -593,15 +546,14 @@ Research Robot from Rethink Robotics</p>
 <h2 id="other-baxter-repositories">Other Baxter Repositories</h2>
 
 <hr>
-<p>baxter             <a href="https://g%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ithub.com/RethinkRobotics/baxter">https://github.com/RethinkRobotics/baxter</a></p>
 
-<p>baxter_tools      <a href="ht%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tps://github.com/RethinkRobotics/baxter_tools">https://github.com/RethinkRobotics/baxter_tools</a></p>
-
-<p>baxter_examples   <a href="https://github.com/RethinkRobotics/baxter_examples">https://github.com/RethinkRobotics/baxter_examples</a></p>
-
-<p>baxter_common     <a href="h%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ttps://github.com/RethinkRobotics/baxter_common">https://github.com/RethinkRobotics/baxter_common</a></p>
+<p>baxter             <a href="https://github.com/RethinkRobotics/baxter">https://github.com/RethinkRobotics/baxter</a>
+  baxter_tools      <a href="https://github.com/RethinkRobotics/baxter_tools">https://github.com/RethinkRobotics/baxter_tools</a>
+  baxter_examples   <a href="https://github.com/RethinkRobotics/baxter_examples">https://github.com/RethinkRobotics/baxter_examples</a>
+  baxter_common     <a href="https://github.com/RethinkRobotics/baxter_common">https://github.com/RethinkRobotics/baxter_common</a></p>
 
 <hr>
+
 <h2 id="latest-release-information">Latest Release Information</h2>
 
 <p><a href="http://sdk.rethinkrobotics.com/wiki/Release-Changes">http://sdk.rethinkrobotics.com/wiki/Release-Changes</a></p>
@@ -620,7 +572,36 @@ Research Robot from Rethink Robotics</p>
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="1.1.0-(2015-1-2)">1.1.0 (2015-1-2)</h1>
+<h1 id="1-2-0-2015-12-21">1.2.0 (2015-12-21)</h1>
+
+<ul>
+<li>  Added an optional parameter to Limb
+interface's move_to_joint_positions() to allow it to be aborted
+by test function Thanks to Yoan Mollard (ymollard) for submitting
+this pull request!</li>
+<li>  Added a wait for the endpoint_state messages to be received before
+exiting Limb init</li>
+<li>  Fixed a bug in the JTAS that would cause the robot to jump back into
+the last commanded pose when the robot is Disabled/Re-enabled</li>
+<li>  Fixed a bug that would cause the Limb's on_joint_states method to
+fail if extra &lt;side&gt; joints are added to the robot's
+/robot/joint_states</li>
+<li>  Due to baxter_core_msgs change, updated EndEffectorProperties
+CUSTOM_GRIPPER to PASSIVE_GRIPPER</li>
+<li>  Due to baxter_core_msgs change, updated head interface's speed
+range from [0, 100] to [0, 1.0]</li>
+<li>  Due to baxter_core_msgs change, updated Navigator interface to use
+update Nav topics and lights msg field</li>
+</ul>
+
+<h1 id="1-1-1-2015-5-15">1.1.1 (2015-5-15)</h1>
+
+<ul>
+<li>  Fixed a bug that caused the JTAS to error with a path of one or two
+points is supplied as a trajectory</li>
+</ul>
+
+<h1 id="1-1-0-2015-1-2">1.1.0 (2015-1-2)</h1>
 
 <ul>
 <li>  Updates baxter_interface to ROS Indigo</li>
@@ -644,7 +625,8 @@ Baxter's head pan joint (thanks to @aginika for contributing this)</li>
 Build Date instead of Build Version (SDK gripper version 1.1
 conflicted with Manufacturing versions)</li>
 </ul>
-<h1 id="1.0.0-(2014-5-1)">1.0.0 (2014-5-1)</h1>
+
+<h1 id="1-0-0-2014-5-1">1.0.0 (2014-5-1)</h1>
 
 <ul>
 <li>  Adds new 'raw' joint position control mode</li>
@@ -670,7 +652,8 @@ since last value</li>
 <li>  Renames Gripper class hardware_version to hardware_name</li>
 <li>  Fixes Head's nod incorrect wait_for validation</li>
 </ul>
-<h1 id="0.7.0-(2013-11-21)">0.7.0 (2013-11-21)</h1>
+
+<h1 id="0-7-0-2013-11-21">0.7.0 (2013-11-21)</h1>
 
 <ul>
 <li>  Creation of baxter_interface repository from
@@ -702,17 +685,901 @@ commands for execution.</li>
 <li>  Adds ability to specify a gripper/object mass.</li>
 <li>  Cameras interface adds ability to reset cameras. Useful if not all
 cameras are enumerated at boot.</li>
-<li>  Adds gripper action server. Follows standard ROS gripper action type
-control_msgs/GripperCommand.</li>
+<li>  Adds gripper action server. Follows standard ROS gripper action
+type control_msgs/GripperCommand.</li>
 <li>  Digital IO interface now uses signals/slots method.</li>
-<li>  Digital IO interface now uses read-only state property (no longer
-callable).</li>
+<li>  Digital IO interface now uses read-only state property (no
+longer callable).</li>
 <li>  Adds clear_calibration to gripper interface. Sequences gripper
 commands for robust usage.</li>
 <li>  Adds Limb move_to_neutral command timeout parameter.</li>
 <li>  Renames trajectory_controller.py to
-joint_trajectory_action_server.py matching form of
-gripper_action_server.py.</li>
+joint_trajectory_action_server.py matching form
+of gripper_action_server.py.</li>
+<li>  Fixes reset errors on non-fatal error states.</li>
+<li>  Adds feedback to the joint trajectory action server.</li>
+<li>  Clarifies timeout messages to be explicit.</li>
+<li>  Removes Limb state_rate method.</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/baxter_interface/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#indigo">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib#indigo">actionlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/baxter_core_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/baxter_core_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/baxter_core_msgs#indigo">baxter_core_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/control_msgs#indigo">control_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#indigo">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/trajectory_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/trajectory_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/trajectory_msgs#indigo">trajectory_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_sdk/github-RethinkRobotics-baxter#indigo">baxter_sdk</a></td>
+                      <td><a href="/r/baxter/github-RethinkRobotics-baxter">github-RethinkRobotics-baxter</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_sdk/github-RethinkRobotics-baxter#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_examples/github-RethinkRobotics-baxter_examples#indigo">baxter_examples</a></td>
+                      <td><a href="/r/baxter_examples/github-RethinkRobotics-baxter_examples">github-RethinkRobotics-baxter_examples</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_examples/github-RethinkRobotics-baxter_examples#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_tools/github-RethinkRobotics-baxter_tools#indigo">baxter_tools</a></td>
+                      <td><a href="/r/baxter_tools/github-RethinkRobotics-baxter_tools">github-RethinkRobotics-baxter_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_tools/github-RethinkRobotics-baxter_tools#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot#indigo">baxtereus</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot#indigo">jsk_baxter_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_sim_examples/github-RethinkRobotics-baxter_simulator#indigo">baxter_sim_examples</a></td>
+                      <td><a href="/r/baxter_simulator/github-RethinkRobotics-baxter_simulator">github-RethinkRobotics-baxter_simulator</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_sim_examples/github-RethinkRobotics-baxter_simulator#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/baxter_interface/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/baxter_interface?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=baxter_interface&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/baxter_interface">baxter_interface</a> <small>package from <a style="text-decoration:none" href="/r/baxter_interface/github-RethinkRobotics-baxter_interface">baxter_interface</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> baxter_interface
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/baxter_interface"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-RethinkRobotics-baxter_interface
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-RethinkRobotics-baxter_interface" role="menuitem" tabindex="-1" href="/p/baxter_interface/github-RethinkRobotics-baxter_interface" data="github-RethinkRobotics-baxter_interface">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-RethinkRobotics-baxter_interface
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/baxter_interface/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/baxter_interface?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=baxter_interface&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.2.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/RethinkRobotics/baxter_interface.git">https://github.com/RethinkRobotics/baxter_interface.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-12-30
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Convenient python interface classes for control
+    of the Baxter Research Robot from Rethink Robotics.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://sdk.rethinkrobotics.com">Website</a></li>
+                
+                  <li><a href="
+    https://github.com/RethinkRobotics/baxter_interface
+  ">Repository</a></li>
+                
+                  <li><a href="
+    https://github.com/RethinkRobotics/baxter_interface/issues
+  ">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>
+    Rethink Robotics Inc.
+  </li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Rethink Robotics Inc.</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="baxter_interface">baxter_interface</h1>
+
+<p>Python interface classes and action servers for control of the Baxter
+Research Robot from Rethink Robotics</p>
+
+<h2 id="code-amp-tickets">Code &amp; Tickets</h2>
+
+<hr>
+
+<p>Documentation   <a href="http://sdk.rethinkrobotics.com/wiki">http://sdk.rethinkrobotics.com/wiki</a></p>
+
+<p>Issues          <https: ues></https:></p>
+
+<p>Contributions   <a href="http://sdk.rethinkrobotics.com/wiki/Contributions">http://sdk.rethinkrobotics.com/wiki/Contributions</a></p>
+
+<hr>
+
+<h2 id="baxter_interface-repository-overview">baxter_interface Repository Overview</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">.
+|
++-- src/                                  baxter_interface api
+|   +-- baxter_interface/                 baxter component classes
+|       +-- analog_io.py
+|       +-- camera.py
+|       +-- digital_io.py
+|       +-- gripper.py
+|       +-- head.py
+|       +-- limb.py
+|       +-- navigator.py
+|       +-- robot_enable.py
+|       +-- robust_controller.py
+|       +-- settings.py
+|   +-- baxter_control/                   generic control utilities
+|   +-- baxter_dataflow/                  timing/program flow utilities
+|   +-- joint_trajectory_action/          joint trajectory action implementation
+|   +-- gripper_action/                   gripper action implementation
+|   +-- head_action/                      head action implementation
+|
++-- scripts/                              action server executables
+|   +-- joint_trajectory_action_server.py
+|   +-- gripper_action_server.py
+|   +-- head_action_server.py
+|
++-- cfg/                                  dynamic reconfigure action configs
+</code></pre></div>
+<h2 id="other-baxter-repositories">Other Baxter Repositories</h2>
+
+<hr>
+
+<p>baxter             <a href="https://github.com/RethinkRobotics/baxter">https://github.com/RethinkRobotics/baxter</a>
+  baxter_tools      <a href="https://github.com/RethinkRobotics/baxter_tools">https://github.com/RethinkRobotics/baxter_tools</a>
+  baxter_examples   <a href="https://github.com/RethinkRobotics/baxter_examples">https://github.com/RethinkRobotics/baxter_examples</a>
+  baxter_common     <a href="https://github.com/RethinkRobotics/baxter_common">https://github.com/RethinkRobotics/baxter_common</a></p>
+
+<hr>
+
+<h2 id="latest-release-information">Latest Release Information</h2>
+
+<p><a href="http://sdk.rethinkrobotics.com/wiki/Release-Changes">http://sdk.rethinkrobotics.com/wiki/Release-Changes</a></p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="1-2-0-2015-12-21">1.2.0 (2015-12-21)</h1>
+
+<ul>
+<li>  Added an optional parameter to Limb
+interface's move_to_joint_positions() to allow it to be aborted
+by test function Thanks to Yoan Mollard (ymollard) for submitting
+this pull request!</li>
+<li>  Added a wait for the endpoint_state messages to be received before
+exiting Limb init</li>
+<li>  Fixed a bug in the JTAS that would cause the robot to jump back into
+the last commanded pose when the robot is Disabled/Re-enabled</li>
+<li>  Fixed a bug that would cause the Limb's on_joint_states method to
+fail if extra &lt;side&gt; joints are added to the robot's
+/robot/joint_states</li>
+<li>  Due to baxter_core_msgs change, updated EndEffectorProperties
+CUSTOM_GRIPPER to PASSIVE_GRIPPER</li>
+<li>  Due to baxter_core_msgs change, updated head interface's speed
+range from [0, 100] to [0, 1.0]</li>
+<li>  Due to baxter_core_msgs change, updated Navigator interface to use
+update Nav topics and lights msg field</li>
+</ul>
+
+<h1 id="1-1-1-2015-5-15">1.1.1 (2015-5-15)</h1>
+
+<ul>
+<li>  Fixed a bug that caused the JTAS to error with a path of one or two
+points is supplied as a trajectory</li>
+</ul>
+
+<h1 id="1-1-0-2015-1-2">1.1.0 (2015-1-2)</h1>
+
+<ul>
+<li>  Updates baxter_interface to ROS Indigo</li>
+<li>  Upgrades to the Indigo robot required a reworking of how cameras
+power <strong>on</strong> / <strong>off</strong> - Three cameras can no longer be powered at
+the same time, and closing cameras turns power <strong>off</strong> to the
+specified camera and <strong>on</strong> to the other two</li>
+<li>  Updates joint trajectory action server to use new Inverse Dynamics
+Feed Forward Commands and configurations for smoother &amp; more
+accurate MoveIt trajectory execution</li>
+<li>  Updates joint trajectory action server default control mode from
+<em>position</em> to <em>position_w_id</em> which uses 'raw' joint position
+control</li>
+<li>  Updates joint trajectory action server to replace linear, cubic, and
+quintic spline fitting with <em>Cubic Bezier Spline</em> interpolation.
+These splines can use Position, Velocity, and/or Acceleration to
+more accurately interpolate supplied trajectories</li>
+<li>  Adds head trajectory action server interface for controlling
+Baxter's head pan joint (thanks to @aginika for contributing this)</li>
+<li>  Updates verification of Gripper software versions to check firmware
+Build Date instead of Build Version (SDK gripper version 1.1
+conflicted with Manufacturing versions)</li>
+</ul>
+
+<h1 id="1-0-0-2014-5-1">1.0.0 (2014-5-1)</h1>
+
+<ul>
+<li>  Adds new 'raw' joint position control mode</li>
+<li>  Updates robot_enable to validate SDK versus robot software versions</li>
+<li>  Updates joint trajectory action server adding linear, cubic and
+quintic spline fitting</li>
+<li>  Updates joint trajectory action server adding raw joint position
+control mode option for trajectory execution</li>
+<li>  Updates joint trajectory action server allowing execution parameters
+from messages to override parameter server options</li>
+<li>  Updates Limb class to use tcp_nodelay transport hint for joint
+states, endpoint state, and joint commands</li>
+<li>  Updates Limb class move_to_joint_positions adding optional
+accuracy threshold argument</li>
+<li>  Updates Gripper class to validate compatible gripper firmware
+versions</li>
+<li>  Updates Gripper class adding signaling on type, gripping, and moving
+state changes</li>
+<li>  Updates Gripper class adding convenience reset methods for reverting
+custom gripper properties</li>
+<li>  Updates Navigator class wheel_changed signal to use difference
+since last value</li>
+<li>  Renames Gripper class hardware_version to hardware_name</li>
+<li>  Fixes Head's nod incorrect wait_for validation</li>
+</ul>
+
+<h1 id="0-7-0-2013-11-21">0.7.0 (2013-11-21)</h1>
+
+<ul>
+<li>  Creation of baxter_interface repository from
+sdk-examples/baxter_interface package.</li>
+<li>  Adds joint torque control through the Limb interface.</li>
+<li>  Significant joint position accuracy improvements. Low level controls
+are responsible. The limb interface exploits these gains by
+introducing a low-pass filter in the move_to_joint_positions
+method allowing the robot to achieve &lt;0.5 degrees accuracy across
+each joint.</li>
+<li>  Adds ability to set joint position command execution speed.</li>
+<li>  Package restructure in support of Catkin expected standards.</li>
+<li>  Limb interface API changes. Supports introduction of new singular
+joint command message, baxter_core_msgs/JointCommand, allowing for
+control in joint position, velocity and torque modes. The
+set_command_timeout method has been added to allow user
+specification of a safety timeout for joint velocity or torque
+control mode. If this timeout is not met, the robot will disable.
+Upon exiting one of these control modes, the user must specify
+another new method exit_control_mode which will enter the robot
+back into position control mode which has no command timeout.</li>
+<li>  Gripper interface API changes. Supports introduction of new gripper
+plugin robot interface. This new robot gripper software requires the
+use of the three main baxter_core_msgs gripper messages,
+EndEffectorCommand, EndEffectorState, and EndEffectorProperties.
+Commands to the gripper now require json strings containing the
+parameters which will describe the grippers actuation as well as the
+commands for execution.</li>
+<li>  Adds ability to specify a gripper/object mass.</li>
+<li>  Cameras interface adds ability to reset cameras. Useful if not all
+cameras are enumerated at boot.</li>
+<li>  Adds gripper action server. Follows standard ROS gripper action
+type control_msgs/GripperCommand.</li>
+<li>  Digital IO interface now uses signals/slots method.</li>
+<li>  Digital IO interface now uses read-only state property (no
+longer callable).</li>
+<li>  Adds clear_calibration to gripper interface. Sequences gripper
+commands for robust usage.</li>
+<li>  Adds Limb move_to_neutral command timeout parameter.</li>
+<li>  Renames trajectory_controller.py to
+joint_trajectory_action_server.py matching form
+of gripper_action_server.py.</li>
 <li>  Fixes reset errors on non-fatal error states.</li>
 <li>  Adds feedback to the joint trajectory action server.</li>
 <li>  Clarifies timeout messages to be explicit.</li>
@@ -733,7 +1600,8 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/baxter_interface/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/baxter_interface/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -745,41 +1613,290 @@ gripper_action_server.py.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#hydro">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib#hydro">actionlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/baxter_core_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/baxter_core_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/baxter_core_msgs#hydro">baxter_core_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/control_msgs#hydro">control_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#hydro">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/trajectory_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/trajectory_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/trajectory_msgs#hydro">trajectory_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#hydro">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib#hydro">actionlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/baxter_core_msgs#hydro">baxter_core_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/control_msgs#hydro">control_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#hydro">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/trajectory_msgs#hydro">trajectory_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_sdk/github-RethinkRobotics-baxter#hydro">baxter_sdk</a></td>
+                      <td><a href="/r/baxter/github-RethinkRobotics-baxter">github-RethinkRobotics-baxter</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_sdk/github-RethinkRobotics-baxter#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_examples/github-RethinkRobotics-baxter_examples#hydro">baxter_examples</a></td>
+                      <td><a href="/r/baxter_examples/github-RethinkRobotics-baxter_examples">github-RethinkRobotics-baxter_examples</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_examples/github-RethinkRobotics-baxter_examples#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_tools/github-RethinkRobotics-baxter_tools#hydro">baxter_tools</a></td>
+                      <td><a href="/r/baxter_tools/github-RethinkRobotics-baxter_tools">github-RethinkRobotics-baxter_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_tools/github-RethinkRobotics-baxter_tools#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot#hydro">baxtereus</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot#hydro">jsk_baxter_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -787,12 +1904,12 @@ gripper_action_server.py.</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -801,9 +1918,9 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -812,9 +1929,9 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -823,28 +1940,35 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/baxter_interface/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/baxter_interface?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=baxter_interface&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -854,6 +1978,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/baxter_interface">baxter_interface</a> <small>package from <a style="text-decoration:none" href="/r/baxter_interface/github-RethinkRobotics-baxter_interface">baxter_interface</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> baxter_interface
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/baxter_interface"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-RethinkRobotics-baxter_interface
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-RethinkRobotics-baxter_interface" role="menuitem" tabindex="-1" href="/p/baxter_interface/github-RethinkRobotics-baxter_interface" data="github-RethinkRobotics-baxter_interface">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-RethinkRobotics-baxter_interface
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/baxter_interface/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/baxter_interface?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=baxter_interface&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -866,31 +2077,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Convenient python interface classes for control
-    of the Baxter Research Robot from Rethink Robotics.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -903,7 +2113,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.1.0</td>
+                <td>1.2.0</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -929,7 +2139,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -951,7 +2161,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-21
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-12-30
         </span>
       </td>
     </tr>
@@ -979,8 +2189,34 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Convenient python interface classes for control
+    of the Baxter Research Robot from Rethink Robotics.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://sdk.rethinkrobotics.com">Website</a></li>
+                
+                  <li><a href="
+    https://github.com/RethinkRobotics/baxter_interface
+  ">Repository</a></li>
+                
+                  <li><a href="
+    https://github.com/RethinkRobotics/baxter_interface/issues
+  ">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1005,25 +2241,6 @@ $(function() {
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://sdk.rethinkrobotics.com">Website</a></li>
-                
-                  <li><a href="
-    https://github.com/RethinkRobotics/baxter_interface
-  ">Repository</a></li>
-                
-                  <li><a href="
-    https://github.com/RethinkRobotics/baxter_interface/issues
-  ">Bugtracker</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -1040,19 +2257,20 @@ $(function() {
 <p>Python interface classes and action servers for control of the Baxter
 Research Robot from Rethink Robotics</p>
 
-<h2 id="code-&amp;-tickets">Code &amp; Tickets</h2>
+<h2 id="code-amp-tickets">Code &amp; Tickets</h2>
 
 <hr>
-<p>Documentation   <a href="http://sdk.rethink%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20robotics.com/wiki">http://sdk.rethinkrobotics.com/wiki</a></p>
 
-<p>Issues          <a href="https://github.com/RethinkRobotics/baxter_interfac%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20e/issues">https://github.com/RethinkRobotics/baxter_interface/is
-                  sues</a></p>
+<p>Documentation   <a href="http://sdk.rethinkrobotics.com/wiki">http://sdk.rethinkrobotics.com/wiki</a></p>
 
-<p>Contributions   <a href="http%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20://sdk.rethinkrobotics.com/wiki/Contributions">http://sdk.rethinkrobotics.com/wiki/Contributions</a></p>
+<p>Issues          <https: ues></https:></p>
+
+<p>Contributions   <a href="http://sdk.rethinkrobotics.com/wiki/Contributions">http://sdk.rethinkrobotics.com/wiki/Contributions</a></p>
 
 <hr>
+
 <h2 id="baxter_interface-repository-overview">baxter_interface Repository Overview</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">.
+<div class="highlight"><pre><code class="language-" data-lang="">.
 |
 +-- src/                                  baxter_interface api
 |   +-- baxter_interface/                 baxter component classes
@@ -1082,15 +2300,14 @@ Research Robot from Rethink Robotics</p>
 <h2 id="other-baxter-repositories">Other Baxter Repositories</h2>
 
 <hr>
-<p>baxter             <a href="https://g%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ithub.com/RethinkRobotics/baxter">https://github.com/RethinkRobotics/baxter</a></p>
 
-<p>baxter_tools      <a href="ht%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20tps://github.com/RethinkRobotics/baxter_tools">https://github.com/RethinkRobotics/baxter_tools</a></p>
-
-<p>baxter_examples   <a href="https://github.com/RethinkRobotics/baxter_examples">https://github.com/RethinkRobotics/baxter_examples</a></p>
-
-<p>baxter_common     <a href="h%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ttps://github.com/RethinkRobotics/baxter_common">https://github.com/RethinkRobotics/baxter_common</a></p>
+<p>baxter             <a href="https://github.com/RethinkRobotics/baxter">https://github.com/RethinkRobotics/baxter</a>
+  baxter_tools      <a href="https://github.com/RethinkRobotics/baxter_tools">https://github.com/RethinkRobotics/baxter_tools</a>
+  baxter_examples   <a href="https://github.com/RethinkRobotics/baxter_examples">https://github.com/RethinkRobotics/baxter_examples</a>
+  baxter_common     <a href="https://github.com/RethinkRobotics/baxter_common">https://github.com/RethinkRobotics/baxter_common</a></p>
 
 <hr>
+
 <h2 id="latest-release-information">Latest Release Information</h2>
 
 <p><a href="http://sdk.rethinkrobotics.com/wiki/Release-Changes">http://sdk.rethinkrobotics.com/wiki/Release-Changes</a></p>
@@ -1109,7 +2326,36 @@ Research Robot from Rethink Robotics</p>
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="1.1.0-(2015-1-2)">1.1.0 (2015-1-2)</h1>
+<h1 id="1-2-0-2015-12-21">1.2.0 (2015-12-21)</h1>
+
+<ul>
+<li>  Added an optional parameter to Limb
+interface's move_to_joint_positions() to allow it to be aborted
+by test function Thanks to Yoan Mollard (ymollard) for submitting
+this pull request!</li>
+<li>  Added a wait for the endpoint_state messages to be received before
+exiting Limb init</li>
+<li>  Fixed a bug in the JTAS that would cause the robot to jump back into
+the last commanded pose when the robot is Disabled/Re-enabled</li>
+<li>  Fixed a bug that would cause the Limb's on_joint_states method to
+fail if extra &lt;side&gt; joints are added to the robot's
+/robot/joint_states</li>
+<li>  Due to baxter_core_msgs change, updated EndEffectorProperties
+CUSTOM_GRIPPER to PASSIVE_GRIPPER</li>
+<li>  Due to baxter_core_msgs change, updated head interface's speed
+range from [0, 100] to [0, 1.0]</li>
+<li>  Due to baxter_core_msgs change, updated Navigator interface to use
+update Nav topics and lights msg field</li>
+</ul>
+
+<h1 id="1-1-1-2015-5-15">1.1.1 (2015-5-15)</h1>
+
+<ul>
+<li>  Fixed a bug that caused the JTAS to error with a path of one or two
+points is supplied as a trajectory</li>
+</ul>
+
+<h1 id="1-1-0-2015-1-2">1.1.0 (2015-1-2)</h1>
 
 <ul>
 <li>  Updates baxter_interface to ROS Indigo</li>
@@ -1133,7 +2379,8 @@ Baxter's head pan joint (thanks to @aginika for contributing this)</li>
 Build Date instead of Build Version (SDK gripper version 1.1
 conflicted with Manufacturing versions)</li>
 </ul>
-<h1 id="1.0.0-(2014-5-1)">1.0.0 (2014-5-1)</h1>
+
+<h1 id="1-0-0-2014-5-1">1.0.0 (2014-5-1)</h1>
 
 <ul>
 <li>  Adds new 'raw' joint position control mode</li>
@@ -1159,7 +2406,8 @@ since last value</li>
 <li>  Renames Gripper class hardware_version to hardware_name</li>
 <li>  Fixes Head's nod incorrect wait_for validation</li>
 </ul>
-<h1 id="0.7.0-(2013-11-21)">0.7.0 (2013-11-21)</h1>
+
+<h1 id="0-7-0-2013-11-21">0.7.0 (2013-11-21)</h1>
 
 <ul>
 <li>  Creation of baxter_interface repository from
@@ -1191,17 +2439,17 @@ commands for execution.</li>
 <li>  Adds ability to specify a gripper/object mass.</li>
 <li>  Cameras interface adds ability to reset cameras. Useful if not all
 cameras are enumerated at boot.</li>
-<li>  Adds gripper action server. Follows standard ROS gripper action type
-control_msgs/GripperCommand.</li>
+<li>  Adds gripper action server. Follows standard ROS gripper action
+type control_msgs/GripperCommand.</li>
 <li>  Digital IO interface now uses signals/slots method.</li>
-<li>  Digital IO interface now uses read-only state property (no longer
-callable).</li>
+<li>  Digital IO interface now uses read-only state property (no
+longer callable).</li>
 <li>  Adds clear_calibration to gripper interface. Sequences gripper
 commands for robust usage.</li>
 <li>  Adds Limb move_to_neutral command timeout parameter.</li>
 <li>  Renames trajectory_controller.py to
-joint_trajectory_action_server.py matching form of
-gripper_action_server.py.</li>
+joint_trajectory_action_server.py matching form
+of gripper_action_server.py.</li>
 <li>  Fixes reset errors on non-fatal error states.</li>
 <li>  Adds feedback to the joint trajectory action server.</li>
 <li>  Clarifies timeout messages to be explicit.</li>
@@ -1222,7 +2470,8 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/baxter_interface/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/baxter_interface/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1234,41 +2483,262 @@ gripper_action_server.py.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#groovy">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib#groovy">actionlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/baxter_core_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/baxter_core_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/baxter_core_msgs#groovy">baxter_core_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/control_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/control_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/control_msgs#groovy">control_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#groovy">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#groovy">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#groovy">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/trajectory_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/trajectory_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/trajectory_msgs#groovy">trajectory_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#groovy">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib#groovy">actionlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/baxter_core_msgs#groovy">baxter_core_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/control_msgs#groovy">control_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#groovy">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#groovy">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#groovy">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/trajectory_msgs#groovy">trajectory_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_sdk/github-RethinkRobotics-baxter#groovy">baxter_sdk</a></td>
+                      <td><a href="/r/baxter/github-RethinkRobotics-baxter">github-RethinkRobotics-baxter</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_sdk/github-RethinkRobotics-baxter#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_examples/github-RethinkRobotics-baxter_examples#groovy">baxter_examples</a></td>
+                      <td><a href="/r/baxter_examples/github-RethinkRobotics-baxter_examples">github-RethinkRobotics-baxter_examples</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_examples/github-RethinkRobotics-baxter_examples#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/baxter_tools/github-RethinkRobotics-baxter_tools#groovy">baxter_tools</a></td>
+                      <td><a href="/r/baxter_tools/github-RethinkRobotics-baxter_tools">github-RethinkRobotics-baxter_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/baxter_tools/github-RethinkRobotics-baxter_tools#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1276,12 +2746,12 @@ gripper_action_server.py.</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1290,9 +2760,9 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1301,9 +2771,9 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1312,28 +2782,35 @@ gripper_action_server.py.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/baxter_interface/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//RethinkRobotics/baxter_interface/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:baxter_interface/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/baxter_interface?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=baxter_interface&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1384,7 +2861,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,75 +196,110 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/gazebo_concert">gazebo_concert</a> <small>package from <a style="text-decoration:none" href="/r/rocon_tutorials/github-robotics-in-concert-rocon_tutorials">rocon_tutorials</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/chatter_concert/github-robotics-in-concert-rocon_tutorials">chatter_concert</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/concert_tutorial/github-robotics-in-concert-rocon_tutorials">concert_tutorial</a>
-        
-      
-        
-          <span class="label label-default"> gazebo_concert</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/turtle_concert/github-robotics-in-concert-rocon_tutorials">turtle_concert</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_app_manager_tutorials/github-robotics-in-concert-rocon_tutorials">rocon_app_manager_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_gateway_tutorials/github-robotics-in-concert-rocon_tutorials">rocon_gateway_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_tutorials/github-robotics-in-concert-rocon_tutorials">rocon_tutorials</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/gazebo_concert/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//robotics-in-concert/rocon_tutorials/tree/indigo/concert_tutorials/gazebo_concert" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:gazebo_concert/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/gazebo_concert" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-indigo">
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/gazebo_concert">gazebo_concert</a> <small>package from <a style="text-decoration:none" href="/r/rocon_tutorials/github-robotics-in-concert-rocon_tutorials">rocon_tutorials</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/chatter_concert/github-robotics-in-concert-rocon_tutorials">
+
+<span class="glyphicon glyphicon-education"></span> chatter_concert
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_tutorial/github-robotics-in-concert-rocon_tutorials">
+
+concert_tutorial
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+gazebo_concert
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/turtle_concert/github-robotics-in-concert-rocon_tutorials">
+
+<span class="glyphicon glyphicon-education"></span> turtle_concert
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_app_manager_tutorials/github-robotics-in-concert-rocon_tutorials">
+
+rocon_app_manager_tutorials
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_gateway_tutorials/github-robotics-in-concert-rocon_tutorials">
+
+<span class="glyphicon glyphicon-education"></span> rocon_gateway_tutorials
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_tutorials/github-robotics-in-concert-rocon_tutorials">
+
+<span class="glyphicon glyphicon-education"></span> rocon_tutorials
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -258,49 +335,27 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/gazebo_concert/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//robotics-in-concert/rocon_tutorials/tree/indigo/concert_tutorials/gazebo_concert"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:gazebo_concert/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/gazebo_concert?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=gazebo_concert&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -313,33 +368,30 @@
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    A simple software concert describing how multiple robots launched in
-    simulation can be used by the concert framework. This package follows the
-    same pattern as turtle_concert. It is multi typed gazebo robot version of turtle_concert. 
-    Adopted a lot from segbot_gazebo_concert by Piyush Khandelwal 
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -352,7 +404,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.4</td>
+                <td>0.6.7</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -378,7 +430,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -400,7 +452,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-20
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-05-06
         </span>
       </td>
     </tr>
@@ -428,8 +480,32 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    A simple software concert describing how multiple robots launched in
+    simulation can be used by the concert framework. This package follows the
+    same pattern as turtle_concert. It is multi typed gazebo robot version of turtle_concert. 
+    Adopted a lot from segbot_gazebo_concert by Piyush Khandelwal 
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/gazebo_concert">Website</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_tutorials">Repository</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_tutorials/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -446,21 +522,6 @@
             
             
               <em>No additional authors.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/gazebo_concert">Website</a></li>
-                
-                  <li><a href="https://github.com/robotics-in-concert/rocon_tutorials">Repository</a></li>
-                
-                  <li><a href="https://github.com/robotics-in-concert/rocon_tutorials/issues">Bugtracker</a></li>
-                
-              </ul>
             
           </div>
         </div>
@@ -491,9 +552,20 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-gazebo_concert">Changelog for package gazebo_concert</h1>
 
-<h2 id="0.6.4-(2015-01-07)">0.6.4 (2015-01-07)</h2>
+<h2 id="0-6-7-2015-05-06">0.6.7 (2015-05-06)</h2>
 
-<h2 id="0.6.3-(2015-01-05)">0.6.3 (2015-01-05)</h2>
+<h2 id="0-6-6-2015-02-27">0.6.6 (2015-02-27)</h2>
+
+<h2 id="0-6-5-2015-02-09">0.6.5 (2015-02-09)</h2>
+
+<ul>
+<li>  change name of auto enable service argument</li>
+<li>  Contributors: dwlee</li>
+</ul>
+
+<h2 id="0-6-4-2015-01-07">0.6.4 (2015-01-07)</h2>
+
+<h2 id="0-6-3-2015-01-05">0.6.3 (2015-01-05)</h2>
 
 <ul>
 <li>  robots were spawning on same xyz closes
@@ -501,7 +573,8 @@
 </li>
 <li>  Contributors: Jihoon Lee</li>
 </ul>
-<h2 id="0.6.2-(2014-11-29)">0.6.2 (2014-11-29)</h2>
+
+<h2 id="0-6-2-2014-11-29">0.6.2 (2014-11-29)</h2>
 
 <ul>
 <li>  update gazebo_concert package version</li>
@@ -514,48 +587,49 @@
 <li>  add world_canvas</li>
 <li>  gazebo concert ready</li>
 <li>  add gazebo_concert init</li>
-<li><p>Contributors: Jihoon Lee</p></li>
-<li><p>update gazebo_concert package version</p></li>
-<li><p>update package.xml</p></li>
-<li><p>local client is now argument</p></li>
-<li><p>remove initialisation service</p></li>
-<li><p>add kobuki</p></li>
-<li><p>add prameters for gazebo</p></li>
-<li><p>fix install rule</p></li>
-<li><p>add world_canvas</p></li>
-<li><p>gazebo concert ready</p></li>
-<li><p>add gazebo_concert init</p></li>
-<li><p>Contributors: Jihoon Lee</p></li>
+<li>  Contributors: Jihoon Lee</li>
+<li>  update gazebo_concert package version</li>
+<li>  update package.xml</li>
+<li>  local client is now argument</li>
+<li>  remove initialisation service</li>
+<li>  add kobuki</li>
+<li>  add prameters for gazebo</li>
+<li>  fix install rule</li>
+<li>  add world_canvas</li>
+<li>  gazebo concert ready</li>
+<li>  add gazebo_concert init</li>
+<li>  Contributors: Jihoon Lee</li>
 </ul>
-<h2 id="0.6.1-(2014-08-26-10:19)">0.6.1 (2014-08-26 10:19)</h2>
 
-<h2 id="0.6.0-(2014-08-26-09:53)">0.6.0 (2014-08-26 09:53)</h2>
+<h2 id="0-6-1-2014-08-26-10-19">0.6.1 (2014-08-26 10:19)</h2>
 
-<h2 id="0.5.6-(2013-08-30)">0.5.6 (2013-08-30)</h2>
+<h2 id="0-6-0-2014-08-26-09-53">0.6.0 (2014-08-26 09:53)</h2>
 
-<h2 id="0.5.5-(2013-08-07)">0.5.5 (2013-08-07)</h2>
+<h2 id="0-5-6-2013-08-30">0.5.6 (2013-08-30)</h2>
 
-<h2 id="0.5.4-(2013-07-18)">0.5.4 (2013-07-18)</h2>
+<h2 id="0-5-5-2013-08-07">0.5.5 (2013-08-07)</h2>
 
-<h2 id="0.5.3-(2013-06-04)">0.5.3 (2013-06-04)</h2>
+<h2 id="0-5-4-2013-07-18">0.5.4 (2013-07-18)</h2>
 
-<h2 id="0.5.2-(2013-05-28)">0.5.2 (2013-05-28)</h2>
+<h2 id="0-5-3-2013-06-04">0.5.3 (2013-06-04)</h2>
 
-<h2 id="0.5.1-(2013-05-27-11:49)">0.5.1 (2013-05-27 11:49)</h2>
+<h2 id="0-5-2-2013-05-28">0.5.2 (2013-05-28)</h2>
 
-<h2 id="0.5.0-(2013-05-27-11:09)">0.5.0 (2013-05-27 11:09)</h2>
+<h2 id="0-5-1-2013-05-27-11-49">0.5.1 (2013-05-27 11:49)</h2>
 
-<h2 id="0.3.5-(2013-04-09)">0.3.5 (2013-04-09)</h2>
+<h2 id="0-5-0-2013-05-27-11-09">0.5.0 (2013-05-27 11:09)</h2>
 
-<h2 id="0.3.4-(2013-04-08)">0.3.4 (2013-04-08)</h2>
+<h2 id="0-3-5-2013-04-09">0.3.5 (2013-04-09)</h2>
 
-<h2 id="0.3.3-(2013-04-07-23:11)">0.3.3 (2013-04-07 23:11)</h2>
+<h2 id="0-3-4-2013-04-08">0.3.4 (2013-04-08)</h2>
 
-<h2 id="0.3.2-(2013-04-07-23:08)">0.3.2 (2013-04-07 23:08)</h2>
+<h2 id="0-3-3-2013-04-07-23-11">0.3.3 (2013-04-07 23:11)</h2>
 
-<h2 id="0.3.1-(2013-04-07-23:06)">0.3.1 (2013-04-07 23:06)</h2>
+<h2 id="0-3-2-2013-04-07-23-08">0.3.2 (2013-04-07 23:08)</h2>
 
-<h2 id="0.3.0-(2013-04-07-21:34)">0.3.0 (2013-04-07 21:34)</h2>
+<h2 id="0-3-1-2013-04-07-23-06">0.3.1 (2013-04-07 23:06)</h2>
+
+<h2 id="0-3-0-2013-04-07-21-34">0.3.0 (2013-04-07 21:34)</h2>
 </div></body></html>
 
             
@@ -571,7 +645,8 @@
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/gazebo_concert/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/gazebo_concert/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -583,51 +658,334 @@
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/concert_master#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/concert_master" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/concert_master#indigo">concert_master</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/concert_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/concert_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/concert_msgs#indigo">concert_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/concert_scheduler_requests#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/concert_scheduler_requests" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/concert_scheduler_requests#indigo">concert_scheduler_requests</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/concert_service_admin#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/concert_service_admin" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/concert_service_admin#indigo">concert_service_admin</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/concert_service_gazebo#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/concert_service_gazebo" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/concert_service_gazebo#indigo">concert_service_gazebo</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#indigo">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_app_manager#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_app_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_app_manager#indigo">rocon_app_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_apps#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_apps" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_apps#indigo">rocon_apps</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_bubble_icons#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_bubble_icons" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_bubble_icons#indigo">rocon_bubble_icons</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_python_comms#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_python_comms" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_python_comms#indigo">rocon_python_comms</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_python_utils#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_python_utils" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_python_utils#indigo">rocon_python_utils</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_uri#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_uri" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_uri#indigo">rocon_uri</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#indigo">rospy</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/concert_master#indigo">concert_master</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/concert_msgs#indigo">concert_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/concert_scheduler_requests#indigo">concert_scheduler_requests</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/concert_service_admin#indigo">concert_service_admin</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/concert_service_gazebo#indigo">concert_service_gazebo</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#indigo">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_app_manager#indigo">rocon_app_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_apps#indigo">rocon_apps</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_bubble_icons#indigo">rocon_bubble_icons</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_python_comms#indigo">rocon_python_comms</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_python_utils#indigo">rocon_python_utils</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_uri#indigo">rocon_uri</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#indigo">rospy</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_tutorials/github-robotics-in-concert-rocon_tutorials#indigo">rocon_tutorials</a></td>
+                      <td><a href="/r/rocon_tutorials/github-robotics-in-concert-rocon_tutorials">github-robotics-in-concert-rocon_tutorials</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_tutorials/github-robotics-in-concert-rocon_tutorials#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -635,14 +993,55 @@
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_tutorials/tree/indigo/concert_tutorials/gazebo_concert/solutions/concert.launch" target="_blank">solutions/concert.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_tutorials/tree/indigo/concert_tutorials/gazebo_concert/solutions/concert.launch" target="_blank">solutions/concert.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>gazebo_services</strong> <em>&#91;default: gazebo_concert/gazebo.services&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>concert_name</strong> <em>&#91;default: Gazebo Concert&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scheduler_type</strong> <em>&#91;default: compatibility_tree&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>local_clients_only</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -651,9 +1050,9 @@
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -662,9 +1061,9 @@
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -673,28 +1072,35 @@
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/gazebo_concert/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//robotics-in-concert/rocon_tutorials/tree/indigo/concert_tutorials/gazebo_concert"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:gazebo_concert/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/gazebo_concert?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=gazebo_concert&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -762,7 +1168,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

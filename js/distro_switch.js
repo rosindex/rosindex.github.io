@@ -54,10 +54,11 @@ $(document).ready(function(){
   }
 
   if(typeof distro == 'undefined') {
-    distro = "jade";
+    distro = "kinetic";
   }
 
   $('.distro').not('.distro-'+distro).hide(0);
+  $('.distro-'+distro).show(0);
   $('#'+distro+'-option').addClass('active');
   $('#'+distro+'-button').trigger("click");
 });

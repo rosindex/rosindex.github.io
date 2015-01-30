@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,7 +147,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -220,10 +262,428 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/introlab/rtabmap_ros.git">https://github.com/introlab/rtabmap_ros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">kinetic-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-06
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/rtabmap_ros/github-introlab-rtabmap_ros">rtabmap_ros</a></td>
+                    <td>0.11.7</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="rtabmap_ros">rtabmap_ros</h1>
+
+<p>RTAB-Map's ROS package.</p>
+
+<p>For more information, demos and tutorials about this package, visit <a href="http://wiki.ros.org/rtabmap_ros">rtabmap_ros</a> page on ROS wiki.</p>
+
+<p>For the RTAB-Map libraries and standalone application, visit <a href="http://introlab.github.io/rtabmap">RTAB-Map's home page</a> or <a href="https://github.com/introlab/rtabmap/wiki">RTAB-Map's wiki</a>.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="ros-distribution">ROS distribution</h3>
+
+<p>RTAB-Map is released as binaries in the ROS distribution. For <strong>latest binaries</strong>, use <a href="http://wiki.ros.org/ShadowRepository">ros-shadow-fixed</a> repository.
+ * Kinetic</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-kinetic-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Jade</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-jade-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Indigo</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-indigo-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Hydro:</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-hydro-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Note that rtabmap_ros Hydro binaries are stuck at version 0.8.12. To use the latest version, see <a href="https://github.com/introlab/rtabmap_ros#build-from-source">Build from source</a> below.</li>
+</ul>
+
+<h3 id="build-from-source">Build from source</h3>
+
+<p>This section shows how to install RTAB-Map ros-pkg on <strong>ROS Hydro/Indigo/Jade/Kinetic</strong> (Catkin build). RTAB-Map works only with the PCL 1.7, which is the default version installed with ROS Hydro/Indigo/Jade/Kinetic (<strong>Fuerte and Groovy are not supported</strong>).</p>
+
+<ul>
+<li>The next instructions assume that you have set up your ROS workspace using this <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">tutorial</a>. I will use kinetic prefix for convenience, but it should work with Hydro, Indigo and Jade. The workspace path is <code>~/catkin_ws</code> and your <code>~/.bashrc</code> contains:</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">source</span> /opt/ros/kinetic/setup.bash
+<span class="gp">$ </span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+
+</code></pre></div>
+<ul>
+<li>Make sure you don't have the binaries installed too (if you tried them before):</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sudo apt-get remove ros-kinetic-rtabmap
+
+</code></pre></div>
+<ol>
+<li>Optional dependencies
+
+<ul>
+<li>If you want SURF/SIFT on Indigo/Jade/Kinetic (Hydro has already SIFT/SURF), you have to build <a href="%5BOpenCV%5D(http://opencv.org/)">OpenCV</a> from source to have access to <em>nonfree</em> module. Install it in <code>/usr/local</code> (default) and the rtabmap library should link with it instead of the one installed in ROS. I recommend to use latest 2.4 version (<a href="https://github.com/Itseez/opencv/archive/2.4.11.zip">2.4.11</a>) and build it from source following these <a href="http://docs.opencv.org/doc/tutorials/introduction/linux_install/linux_install.html#building-opencv-from-source-using-cmake-using-the-command-line">instructions</a>. RTAB-Map can build with OpenCV3+<a href="https://github.com/Itseez/opencv_contrib/tree/master/modules/xfeatures2d">xfeatures2d</a> module, but rtabmap_ros package will have libraries conflict as cv-bridge is depending on OpenCV2. If you want OpenCV3, you should build ros <a href="https://github.com/ros-perception/vision_opencv">vision-opencv</a> package yourself (and all ros packages depending on it) so it can link on OpenCV3.</li>
+</ul>
+</li>
+</ol>
+
+<ul>
+<li>ROS (Qt, PCL, dc1394, OpenNI, OpenNI2, Freenect, g2o, Costmap2d, Rviz, Octomap, CvBridge). Note that I've found that <a href="https://github.com/RainerKuemmerle/g2o">latest g2o version</a> built from source is faster (install <code>libsuitesparse-dev</code> before building <code>g2o</code>) and would be <a href="http://official-rtab-map-forum.67519.x6.nabble.com/ROS-2D-occupancy-grid-tp1204p1215.html">required to avoid some crashes</a>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sudo apt-get install libqt4-dev libpcl-1.7-all-dev libdc1394-dev ros-kinetic-openni-launch ros-kinetic-openni2-launch ros-kinetic-freenect-launch ros-kinetic-costmap-2d ros-kinetic-octomap-ros ros-kinetic-g2o ros-kinetic-rviz ros-kinetic-cv-bridge
+
+</code></pre></div>
+<ul>
+<li><p><a href="https://collab.cc.gatech.edu/borg/gtsam">GTSAM</a>: Follow installation instructions from <a href="https://collab.cc.gatech.edu/borg/gtsam/#quickstart">here</a>. RTAB-Map needs latest version from source (<code>git clone https://bitbucket.org/gtborg/gtsam.git</code>), it will not build with 3.2.1.</p></li>
+<li><p><a href="http://www.uco.es/investiga/grupos/ava/node/39">cvsba</a>: Follow installation instructions from <a href="http://www.uco.es/investiga/grupos/ava/node/39">here</a>. Their installation is not standard CMake, you need these extra steps so RTAB-Map can find it:</p></li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>mkdir /usr/local/lib/cmake/cvsba 
+<span class="gp">$ </span>mv /usr/local/lib/cmake/Findcvsba.cmake /usr/local/lib/cmake/cvsba/cvsbaConfig.cmake
+
+</code></pre></div>
+<ul>
+<li>
+<a href="https://github.com/OpenKinect/libfreenect2">Freenect2</a>: Follow installation instructions from <a href="https://github.com/OpenKinect/libfreenect2#debianubuntu-1404-perhaps-earlier">here</a>.</li>
+</ul>
+
+<ol>
+<li>Install RTAB-Map standalone libraries (<strong>don't checkout in the Catkin workspace</strong> but install in your Catkin's devel folder).</li>
+</ol>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd</span> ~
+<span class="gp">$ </span>git clone https://github.com/introlab/rtabmap.git rtabmap
+<span class="gp">$ </span><span class="nb">cd </span>rtabmap/build
+<span class="gp">$ </span>cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span>~/catkin_ws/devel ..  <span class="o">[</span>&lt;---double dots included]
+<span class="gp">$ </span>make -j4
+<span class="gp">$ </span>make install
+
+</code></pre></div>
+<ol>
+<li>Install RTAB-Map ros-pkg in your src folder of your Catkin workspace.</li>
+</ol>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd</span> ~/catkin_ws
+<span class="gp">$ </span>git clone https://github.com/introlab/rtabmap_ros.git src/rtabmap_ros
+<span class="gp">$ </span>catkin_make
+
+</code></pre></div>
+<h4 id="update-to-new-version">Update to new version</h4>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd </span>rtabmap
+<span class="gp">$ </span>git pull origin master
+<span class="gp">$ </span><span class="nb">cd </span>build
+<span class="gp">$ </span>make
+<span class="gp">$ </span>make install
+
+<span class="gp">$ </span>roscd rtabmap_ros
+<span class="gp">$ </span>git pull origin master
+<span class="gp">$ </span><span class="nb">cd</span> ~/catkin_ws
+<span class="gp">$ </span>catkin_make
+
+</code></pre></div>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/introlab/rtabmap_ros.git">https://github.com/introlab/rtabmap_ros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">jade-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-06
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/rtabmap_ros/github-introlab-rtabmap_ros">rtabmap_ros</a></td>
+                    <td>0.11.7</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="rtabmap_ros">rtabmap_ros</h1>
+
+<p>RTAB-Map's ROS package.</p>
+
+<p>For more information, demos and tutorials about this package, visit <a href="http://wiki.ros.org/rtabmap_ros">rtabmap_ros</a> page on ROS wiki.</p>
+
+<p>For the RTAB-Map libraries and standalone application, visit <a href="http://introlab.github.io/rtabmap">RTAB-Map's home page</a> or <a href="https://github.com/introlab/rtabmap/wiki">RTAB-Map's wiki</a>.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="ros-distribution">ROS distribution</h3>
+
+<p>RTAB-Map is released as binaries in the ROS distribution. For <strong>latest binaries</strong>, use <a href="http://wiki.ros.org/ShadowRepository">ros-shadow-fixed</a> repository.
+ * Kinetic</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-kinetic-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Jade</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-jade-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Indigo</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-indigo-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Hydro:</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-hydro-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Note that rtabmap_ros Hydro binaries are stuck at version 0.8.12. To use the latest version, see <a href="https://github.com/introlab/rtabmap_ros#build-from-source">Build from source</a> below.</li>
+</ul>
+
+<h3 id="build-from-source">Build from source</h3>
+
+<p>This section shows how to install RTAB-Map ros-pkg on <strong>ROS Hydro/Indigo/Jade/Kinetic</strong> (Catkin build). RTAB-Map works only with the PCL 1.7, which is the default version installed with ROS Hydro/Indigo/Jade/Kinetic (<strong>Fuerte and Groovy are not supported</strong>).</p>
+
+<ul>
+<li>The next instructions assume that you have set up your ROS workspace using this <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">tutorial</a>. I will use kinetic prefix for convenience, but it should work with Hydro, Indigo and Jade. The workspace path is <code>~/catkin_ws</code> and your <code>~/.bashrc</code> contains:</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">source</span> /opt/ros/kinetic/setup.bash
+<span class="gp">$ </span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+
+</code></pre></div>
+<ul>
+<li>Make sure you don't have the binaries installed too (if you tried them before):</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sudo apt-get remove ros-kinetic-rtabmap
+
+</code></pre></div>
+<ol>
+<li>Optional dependencies
+
+<ul>
+<li>If you want SURF/SIFT on Indigo/Jade/Kinetic (Hydro has already SIFT/SURF), you have to build <a href="%5BOpenCV%5D(http://opencv.org/)">OpenCV</a> from source to have access to <em>nonfree</em> module. Install it in <code>/usr/local</code> (default) and the rtabmap library should link with it instead of the one installed in ROS. I recommend to use latest 2.4 version (<a href="https://github.com/Itseez/opencv/archive/2.4.11.zip">2.4.11</a>) and build it from source following these <a href="http://docs.opencv.org/doc/tutorials/introduction/linux_install/linux_install.html#building-opencv-from-source-using-cmake-using-the-command-line">instructions</a>. RTAB-Map can build with OpenCV3+<a href="https://github.com/Itseez/opencv_contrib/tree/master/modules/xfeatures2d">xfeatures2d</a> module, but rtabmap_ros package will have libraries conflict as cv-bridge is depending on OpenCV2. If you want OpenCV3, you should build ros <a href="https://github.com/ros-perception/vision_opencv">vision-opencv</a> package yourself (and all ros packages depending on it) so it can link on OpenCV3.</li>
+</ul>
+</li>
+</ol>
+
+<ul>
+<li>ROS (Qt, PCL, dc1394, OpenNI, OpenNI2, Freenect, g2o, Costmap2d, Rviz, Octomap, CvBridge). Note that I've found that <a href="https://github.com/RainerKuemmerle/g2o">latest g2o version</a> built from source is faster (install <code>libsuitesparse-dev</code> before building <code>g2o</code>) and would be <a href="http://official-rtab-map-forum.67519.x6.nabble.com/ROS-2D-occupancy-grid-tp1204p1215.html">required to avoid some crashes</a>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sudo apt-get install libqt4-dev libpcl-1.7-all-dev libdc1394-dev ros-kinetic-openni-launch ros-kinetic-openni2-launch ros-kinetic-freenect-launch ros-kinetic-costmap-2d ros-kinetic-octomap-ros ros-kinetic-g2o ros-kinetic-rviz ros-kinetic-cv-bridge
+
+</code></pre></div>
+<ul>
+<li><p><a href="https://collab.cc.gatech.edu/borg/gtsam">GTSAM</a>: Follow installation instructions from <a href="https://collab.cc.gatech.edu/borg/gtsam/#quickstart">here</a>. RTAB-Map needs latest version from source (<code>git clone https://bitbucket.org/gtborg/gtsam.git</code>), it will not build with 3.2.1.</p></li>
+<li><p><a href="http://www.uco.es/investiga/grupos/ava/node/39">cvsba</a>: Follow installation instructions from <a href="http://www.uco.es/investiga/grupos/ava/node/39">here</a>. Their installation is not standard CMake, you need these extra steps so RTAB-Map can find it:</p></li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>mkdir /usr/local/lib/cmake/cvsba 
+<span class="gp">$ </span>mv /usr/local/lib/cmake/Findcvsba.cmake /usr/local/lib/cmake/cvsba/cvsbaConfig.cmake
+
+</code></pre></div>
+<ul>
+<li>
+<a href="https://github.com/OpenKinect/libfreenect2">Freenect2</a>: Follow installation instructions from <a href="https://github.com/OpenKinect/libfreenect2#debianubuntu-1404-perhaps-earlier">here</a>.</li>
+</ul>
+
+<ol>
+<li>Install RTAB-Map standalone libraries (<strong>don't checkout in the Catkin workspace</strong> but install in your Catkin's devel folder).</li>
+</ol>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd</span> ~
+<span class="gp">$ </span>git clone https://github.com/introlab/rtabmap.git rtabmap
+<span class="gp">$ </span><span class="nb">cd </span>rtabmap/build
+<span class="gp">$ </span>cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span>~/catkin_ws/devel ..  <span class="o">[</span>&lt;---double dots included]
+<span class="gp">$ </span>make -j4
+<span class="gp">$ </span>make install
+
+</code></pre></div>
+<ol>
+<li>Install RTAB-Map ros-pkg in your src folder of your Catkin workspace.</li>
+</ol>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd</span> ~/catkin_ws
+<span class="gp">$ </span>git clone https://github.com/introlab/rtabmap_ros.git src/rtabmap_ros
+<span class="gp">$ </span>catkin_make
+
+</code></pre></div>
+<h4 id="update-to-new-version">Update to new version</h4>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd </span>rtabmap
+<span class="gp">$ </span>git pull origin master
+<span class="gp">$ </span><span class="nb">cd </span>build
+<span class="gp">$ </span>make
+<span class="gp">$ </span>make install
+
+<span class="gp">$ </span>roscd rtabmap_ros
+<span class="gp">$ </span>git pull origin master
+<span class="gp">$ </span><span class="nb">cd</span> ~/catkin_ws
+<span class="gp">$ </span>catkin_make
+
+</code></pre></div>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -231,8 +691,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -249,13 +709,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
+      <td><span class="label label-default">indigo-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-22
         </span>
       </td>
     </tr>
@@ -298,7 +758,7 @@
                 
                   <tr>
                     <td><a href="/p/rtabmap_ros/github-introlab-rtabmap_ros">rtabmap_ros</a></td>
-                    <td>0.8.1</td>
+                    <td>0.11.7</td>
                   </tr>
                 
                 </tbody>
@@ -317,69 +777,126 @@
 
 <p>RTAB-Map's ROS package.</p>
 
-<p>For more information, demos and tutorials about this package, visit the <a href="http://wiki.ros.org/rtabmap_ros">rtabmap_ros</a> page on the ROS wiki.</p>
+<p>For more information, demos and tutorials about this package, visit <a href="http://wiki.ros.org/rtabmap_ros">rtabmap_ros</a> page on ROS wiki.</p>
 
-<p>For the RTAB-Map libraries and standalone application, visit the <a href="http://introlab.github.io/rtabmap">RTAB-Map's home page</a> or the <a href="https://github.com/introlab/rtabmap/wiki">RTAB-Map's wiki</a>.</p>
+<p>For the RTAB-Map libraries and standalone application, visit <a href="http://introlab.github.io/rtabmap">RTAB-Map's home page</a> or <a href="https://github.com/introlab/rtabmap/wiki">RTAB-Map's wiki</a>.</p>
 
 <h2 id="installation">Installation</h2>
 
 <h3 id="ros-distribution">ROS distribution</h3>
 
-<p>RTAB-Map is released as binaries in the ROS distribution.
- * Indigo</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ sudo apt-get install ros-indigo-rtabmap-ros
+<p>RTAB-Map is released as binaries in the ROS distribution. For <strong>latest binaries</strong>, use <a href="http://wiki.ros.org/ShadowRepository">ros-shadow-fixed</a> repository.
+ * Kinetic</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-kinetic-rtabmap-ros
+
 </code></pre></div>
 <ul>
-<li>Hydro</li>
+<li>Jade</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ sudo apt-get install ros-hydro-rtabmap-ros
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-jade-rtabmap-ros
+
 </code></pre></div>
-<p><strong>Note for Hydro: there are some issues on the actual version released (0.7.3) on ROS, visit <a href="https://github.com/introlab/rtabmap_ros/issues">issues</a>.</strong></p>
+<ul>
+<li>Indigo</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-indigo-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Hydro:</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-hydro-rtabmap-ros
+
+</code></pre></div>
+<ul>
+<li>Note that rtabmap_ros Hydro binaries are stuck at version 0.8.12. To use the latest version, see <a href="https://github.com/introlab/rtabmap_ros#build-from-source">Build from source</a> below.</li>
+</ul>
 
 <h3 id="build-from-source">Build from source</h3>
 
-<p>This section shows how to install RTAB-Map ros-pkg on <strong>ROS Hydro</strong> (Catkin build). RTAB-Map works only with the PCL 1.7, which is the default version installed with ROS Hydro (<strong>Fuerte and Groovy are not supported</strong>).
- * <strong>Note for ROS Indigo</strong>: If you want SURF/SIFT, you have to build OpenCV from source to have access to <strong>nonfree module</strong>. See <a href="https://code.google.com/p/rtabmap/issues/detail?id=8&amp;can=1">issue 8</a> for more details.</p>
+<p>This section shows how to install RTAB-Map ros-pkg on <strong>ROS Hydro/Indigo/Jade/Kinetic</strong> (Catkin build). RTAB-Map works only with the PCL 1.7, which is the default version installed with ROS Hydro/Indigo/Jade/Kinetic (<strong>Fuerte and Groovy are not supported</strong>).</p>
 
 <ul>
-<li>The next instructions assume that you have setup your ROS workspace using this <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">tutorial</a>. The workspace path is <code>~/catkin_ws</code> and your <code>~/.bashrc</code> contains:</li>
+<li>The next instructions assume that you have set up your ROS workspace using this <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">tutorial</a>. I will use kinetic prefix for convenience, but it should work with Hydro, Indigo and Jade. The workspace path is <code>~/catkin_ws</code> and your <code>~/.bashrc</code> contains:</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">source /opt/ros/hydro/setup.bash
-source ~/catkin_ws/devel/setup.bash
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">source</span> /opt/ros/kinetic/setup.bash
+<span class="gp">$ </span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+
+</code></pre></div>
+<ul>
+<li>Make sure you don't have the binaries installed too (if you tried them before):</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sudo apt-get remove ros-kinetic-rtabmap
+
 </code></pre></div>
 <ol>
-<li>First, you need to install the RTAB-Map standalone libraries (<strong>don't checkout in the Catkin workspace</strong>).</li>
+<li>Optional dependencies
+
+<ul>
+<li>If you want SURF/SIFT on Indigo/Jade/Kinetic (Hydro has already SIFT/SURF), you have to build <a href="%5BOpenCV%5D(http://opencv.org/)">OpenCV</a> from source to have access to <em>nonfree</em> module. Install it in <code>/usr/local</code> (default) and the rtabmap library should link with it instead of the one installed in ROS. I recommend to use latest 2.4 version (<a href="https://github.com/Itseez/opencv/archive/2.4.11.zip">2.4.11</a>) and build it from source following these <a href="http://docs.opencv.org/doc/tutorials/introduction/linux_install/linux_install.html#building-opencv-from-source-using-cmake-using-the-command-line">instructions</a>. RTAB-Map can build with OpenCV3+<a href="https://github.com/Itseez/opencv_contrib/tree/master/modules/xfeatures2d">xfeatures2d</a> module, but rtabmap_ros package will have libraries conflict as cv-bridge is depending on OpenCV2. If you want OpenCV3, you should build ros <a href="https://github.com/ros-perception/vision_opencv">vision-opencv</a> package yourself (and all ros packages depending on it) so it can link on OpenCV3.</li>
+</ul>
+</li>
 </ol>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ git clone https://github.com/introlab/rtabmap.git rtabmap
-$ cd rtabmap/build
-$ cmake -DCMAKE_INSTALL_PREFIX=~/catkin_ws/devel ..  [&lt;---double dots included]
-$ make -j4
-$ make install
+
+<ul>
+<li>ROS (Qt, PCL, dc1394, OpenNI, OpenNI2, Freenect, g2o, Costmap2d, Rviz, Octomap, CvBridge). Note that I've found that <a href="https://github.com/RainerKuemmerle/g2o">latest g2o version</a> built from source is faster (install <code>libsuitesparse-dev</code> before building <code>g2o</code>) and would be <a href="http://official-rtab-map-forum.67519.x6.nabble.com/ROS-2D-occupancy-grid-tp1204p1215.html">required to avoid some crashes</a>.</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sudo apt-get install libqt4-dev libpcl-1.7-all-dev libdc1394-dev ros-kinetic-openni-launch ros-kinetic-openni2-launch ros-kinetic-freenect-launch ros-kinetic-costmap-2d ros-kinetic-octomap-ros ros-kinetic-g2o ros-kinetic-rviz ros-kinetic-cv-bridge
+
+</code></pre></div>
+<ul>
+<li><p><a href="https://collab.cc.gatech.edu/borg/gtsam">GTSAM</a>: Follow installation instructions from <a href="https://collab.cc.gatech.edu/borg/gtsam/#quickstart">here</a>. RTAB-Map needs latest version from source (<code>git clone https://bitbucket.org/gtborg/gtsam.git</code>), it will not build with 3.2.1.</p></li>
+<li><p><a href="http://www.uco.es/investiga/grupos/ava/node/39">cvsba</a>: Follow installation instructions from <a href="http://www.uco.es/investiga/grupos/ava/node/39">here</a>. Their installation is not standard CMake, you need these extra steps so RTAB-Map can find it:</p></li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>mkdir /usr/local/lib/cmake/cvsba 
+<span class="gp">$ </span>mv /usr/local/lib/cmake/Findcvsba.cmake /usr/local/lib/cmake/cvsba/cvsbaConfig.cmake
+
+</code></pre></div>
+<ul>
+<li>
+<a href="https://github.com/OpenKinect/libfreenect2">Freenect2</a>: Follow installation instructions from <a href="https://github.com/OpenKinect/libfreenect2#debianubuntu-1404-perhaps-earlier">here</a>.</li>
+</ul>
+
+<ol>
+<li>Install RTAB-Map standalone libraries. Add <code>-DCMAKE_INSTALL_PREFIX=~/catkin_ws/devel</code> to <code>cmake</code> command below if you want to install in your Catkin's devel folder without <code>sudo</code>.</li>
+</ol>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd</span> ~
+<span class="gp">$ </span>git clone https://github.com/introlab/rtabmap.git rtabmap
+<span class="gp">$ </span><span class="nb">cd </span>rtabmap/build
+<span class="gp">$ </span>cmake ..  <span class="o">[</span>&lt;---double dots included]
+<span class="gp">$ </span>make -j4
+<span class="gp">$ </span>sudo make install
+
 </code></pre></div>
 <ol>
-<li>Now install the RTAB-Map ros-pkg in your src folder of your Catkin workspace.</li>
+<li>Install RTAB-Map ros-pkg in your src folder of your Catkin workspace.</li>
 </ol>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/catkin_ws
-$ git clone https://github.com/introlab/rtabmap_ros.git src/rtabmap_ros
-$ catkin_make
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd</span> ~/catkin_ws
+<span class="gp">$ </span>git clone https://github.com/introlab/rtabmap_ros.git src/rtabmap_ros
+<span class="gp">$ </span>catkin_make
+
 </code></pre></div>
 <h4 id="update-to-new-version">Update to new version</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd rtabmap
-$ git pull origin master
-$ cd build
-$ make
-$ make install
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd </span>rtabmap
+<span class="gp">$ </span>git pull origin master
+<span class="gp">$ </span><span class="nb">cd </span>build
+<span class="gp">$ </span>make
+<span class="gp">$ </span>make install
 
-$ roscd rtabmap_ros
-$ git pull origin master
-$ cd ~/catkin_ws
-$ catkin_make
+<span class="gp">$ </span>roscd rtabmap_ros
+<span class="gp">$ </span>git pull origin master
+<span class="gp">$ </span><span class="nb">cd</span> ~/catkin_ws
+<span class="gp">$ </span>catkin_make
+
 </code></pre></div>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -387,8 +904,8 @@ $ catkin_make
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -405,13 +922,13 @@ $ catkin_make
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
+      <td><span class="label label-default">hydro-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-05-10
         </span>
       </td>
     </tr>
@@ -454,7 +971,7 @@ $ catkin_make
                 
                   <tr>
                     <td><a href="/p/rtabmap_ros/github-introlab-rtabmap_ros">rtabmap_ros</a></td>
-                    <td>0.8.1</td>
+                    <td>0.8.12</td>
                   </tr>
                 
                 </tbody>
@@ -483,44 +1000,47 @@ $ catkin_make
 
 <p>RTAB-Map is released as binaries in the ROS distribution.
  * Indigo</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ sudo apt-get install ros-indigo-rtabmap-ros
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-indigo-rtabmap-ros
+
 </code></pre></div>
 <ul>
 <li>Hydro</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ sudo apt-get install ros-hydro-rtabmap-ros
-</code></pre></div>
-<p><strong>Note for Hydro: there are some issues on the actual version released (0.7.3) on ROS, visit <a href="https://github.com/introlab/rtabmap_ros/issues">issues</a>.</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ sudo apt-get install ros-hydro-rtabmap-ros
 
+</code></pre></div>
 <h3 id="build-from-source">Build from source</h3>
 
-<p>This section shows how to install RTAB-Map ros-pkg on <strong>ROS Hydro</strong> (Catkin build). RTAB-Map works only with the PCL 1.7, which is the default version installed with ROS Hydro (<strong>Fuerte and Groovy are not supported</strong>).
- * <strong>Note for ROS Indigo</strong>: If you want SURF/SIFT, you have to build OpenCV from source to have access to <strong>nonfree module</strong>. See <a href="https://code.google.com/p/rtabmap/issues/detail?id=8&amp;can=1">issue 8</a> for more details.</p>
+<p>This section shows how to install RTAB-Map ros-pkg on <strong>ROS Hydro/Indigo</strong> (Catkin build). RTAB-Map works only with the PCL 1.7, which is the default version installed with ROS Hydro/Indigo (<strong>Fuerte and Groovy are not supported</strong>).
+ * <strong>Note for ROS Indigo</strong>: If you want SURF/SIFT, you have to build OpenCV from source to have access to <em>nonfree</em> module. Install it in <code>/usr/local</code> (default) and the rtabmap library should link with it instead of the one installed in ROS.</p>
 
 <ul>
 <li>The next instructions assume that you have setup your ROS workspace using this <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">tutorial</a>. The workspace path is <code>~/catkin_ws</code> and your <code>~/.bashrc</code> contains:</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">source /opt/ros/hydro/setup.bash
+<div class="highlight"><pre><code class="language-" data-lang="">source /opt/ros/hydro/setup.bash
 source ~/catkin_ws/devel/setup.bash
+
 </code></pre></div>
 <ol>
-<li>First, you need to install the RTAB-Map standalone libraries (<strong>don't checkout in the Catkin workspace</strong>).</li>
+<li>First, you need to install the RTAB-Map standalone libraries (<strong>don't checkout in the Catkin workspace</strong> but install in your Catkin's devel folder).</li>
 </ol>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ git clone https://github.com/introlab/rtabmap.git rtabmap
+<div class="highlight"><pre><code class="language-" data-lang="">$ git clone https://github.com/introlab/rtabmap.git rtabmap
 $ cd rtabmap/build
 $ cmake -DCMAKE_INSTALL_PREFIX=~/catkin_ws/devel ..  [&lt;---double dots included]
 $ make -j4
 $ make install
+
 </code></pre></div>
 <ol>
 <li>Now install the RTAB-Map ros-pkg in your src folder of your Catkin workspace.</li>
 </ol>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd ~/catkin_ws
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd ~/catkin_ws
 $ git clone https://github.com/introlab/rtabmap_ros.git src/rtabmap_ros
 $ catkin_make
+
 </code></pre></div>
 <h4 id="update-to-new-version">Update to new version</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd rtabmap
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd rtabmap
 $ git pull origin master
 $ cd build
 $ make
@@ -530,12 +1050,16 @@ $ roscd rtabmap_ros
 $ git pull origin master
 $ cd ~/catkin_ws
 $ catkin_make
+
 </code></pre></div>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -594,7 +1118,7 @@ $ catkin_make
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

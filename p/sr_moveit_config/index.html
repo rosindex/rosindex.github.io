@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,115 +196,190 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/sr_moveit_config">sr_moveit_config</a> <small>package from <a style="text-decoration:none" href="/r/shadow_robot/github-shadow-robot-sr-ros-interface">shadow_robot</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/shadow_robot/github-shadow-robot-sr-ros-interface">shadow_robot</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_description/github-shadow-robot-sr-ros-interface">sr_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_example/github-shadow-robot-sr-ros-interface">sr_example</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_gazebo_plugins/github-shadow-robot-sr-ros-interface">sr_gazebo_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_hand/github-shadow-robot-sr-ros-interface">sr_hand</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_hardware_interface/github-shadow-robot-sr-ros-interface">sr_hardware_interface</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_kinematics/github-shadow-robot-sr-ros-interface">sr_kinematics</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_mechanism_controllers/github-shadow-robot-sr-ros-interface">sr_mechanism_controllers</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_mechanism_model/github-shadow-robot-sr-ros-interface">sr_mechanism_model</a>
-        
-      
-        
-          <span class="label label-default"> sr_moveit_config</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_movements/github-shadow-robot-sr-ros-interface">sr_movements</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_robot_msgs/github-shadow-robot-sr-ros-interface">sr_robot_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_self_test/github-shadow-robot-sr-ros-interface">sr_self_test</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_standalone/github-shadow-robot-sr-ros-interface">sr_standalone</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_tactile_sensors/github-shadow-robot-sr-ros-interface">sr_tactile_sensors</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sr_utilities/github-shadow-robot-sr-ros-interface">sr_utilities</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/sr_moveit_config/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:sr_moveit_config/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/sr_moveit_config" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-hydro">
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/sr_moveit_config">sr_moveit_config</a> <small>package from <a style="text-decoration:none" href="/r/shadow_robot/github-shadow-robot-sr-ros-interface">shadow_robot</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/shadow_robot/github-shadow-robot-sr-ros-interface">
+
+<span class="glyphicon glyphicon-education"></span> shadow_robot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_description/github-shadow-robot-sr-ros-interface">
+
+sr_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_example/github-shadow-robot-sr-ros-interface">
+
+sr_example
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_gazebo_plugins/github-shadow-robot-sr-ros-interface">
+
+sr_gazebo_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_hand/github-shadow-robot-sr-ros-interface">
+
+<span class="glyphicon glyphicon-education"></span> sr_hand
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_hardware_interface/github-shadow-robot-sr-ros-interface">
+
+sr_hardware_interface
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_kinematics/github-shadow-robot-sr-ros-interface">
+
+sr_kinematics
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_mechanism_controllers/github-shadow-robot-sr-ros-interface">
+
+<span class="glyphicon glyphicon-education"></span> sr_mechanism_controllers
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_mechanism_model/github-shadow-robot-sr-ros-interface">
+
+sr_mechanism_model
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+sr_moveit_config
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_movements/github-shadow-robot-sr-ros-interface">
+
+sr_movements
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_robot_msgs/github-shadow-robot-sr-ros-interface">
+
+sr_robot_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_self_test/github-shadow-robot-sr-ros-interface">
+
+sr_self_test
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_standalone/github-shadow-robot-sr-ros-interface">
+
+sr_standalone
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_tactile_sensors/github-shadow-robot-sr-ros-interface">
+
+<span class="glyphicon glyphicon-education"></span> sr_tactile_sensors
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sr_utilities/github-shadow-robot-sr-ros-interface">
+
+sr_utilities
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -298,53 +415,27 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
 
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-        
-        
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/sr_moveit_config/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:sr_moveit_config/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/sr_moveit_config?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=sr_moveit_config&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -357,30 +448,30 @@
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">9</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">17</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     An automatically generated package with all the configuration and launch files for using the shadowhand_motor with the MoveIt Motion Planning Framework
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -419,7 +510,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -449,7 +540,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -466,8 +560,29 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     An automatically generated package with all the configuration and launch files for using the shadowhand_motor with the MoveIt Motion Planning Framework
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://moveit.ros.org/">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-planning/moveit_setup_assistant/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ros-planning/moveit_setup_assistant">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -486,21 +601,6 @@
               <ul class="list-unstyled">
                 
                   <li>MoveIt Setup Assistant</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://moveit.ros.org/">Website</a></li>
-                
-                  <li><a href="https://github.com/ros-planning/moveit_setup_assistant/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/ros-planning/moveit_setup_assistant">Repository</a></li>
                 
               </ul>
             
@@ -533,9 +633,9 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-sr_moveit_config">Changelog for package sr_moveit_config</h1>
 
-<h2 id="1.3.5-(2014-09-22)">1.3.5 (2014-09-22)</h2>
+<h2 id="1-3-5-2014-09-22">1.3.5 (2014-09-22)</h2>
 
-<h2 id="1.3.4-(2014-09-19)">1.3.4 (2014-09-19)</h2>
+<h2 id="1-3-4-2014-09-19">1.3.4 (2014-09-19)</h2>
 
 <ul>
 <li>  First release of this package</li>
@@ -555,7 +655,8 @@
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/sr_moveit_config/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/sr_moveit_config/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -567,39 +668,214 @@
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sr_description#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sr_description" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sr_description#hydro">sr_description</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/moveit_ros_move_group#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/moveit_ros_move_group" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/moveit_ros_move_group#hydro">moveit_ros_move_group</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/moveit_planners_ompl#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/moveit_planners_ompl" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/moveit_planners_ompl#hydro">moveit_planners_ompl</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/moveit_ros_visualization#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/moveit_ros_visualization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/moveit_ros_visualization#hydro">moveit_ros_visualization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/joint_state_publisher#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/joint_state_publisher" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/joint_state_publisher#hydro">joint_state_publisher</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/robot_state_publisher#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/robot_state_publisher" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/robot_state_publisher#hydro">robot_state_publisher</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/xacro#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/xacro" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/xacro#hydro">xacro</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/sr_description#hydro">sr_description</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/moveit_ros_move_group#hydro">moveit_ros_move_group</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/moveit_planners_ompl#hydro">moveit_planners_ompl</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/moveit_ros_visualization#hydro">moveit_ros_visualization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/joint_state_publisher#hydro">joint_state_publisher</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/robot_state_publisher#hydro">robot_state_publisher</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/xacro#hydro">xacro</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/shadow_robot/github-shadow-robot-sr-ros-interface#hydro">shadow_robot</a></td>
+                      <td><a href="/r/shadow_robot/github-shadow-robot-sr-ros-interface">github-shadow-robot-sr-ros-interface</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/shadow_robot/github-shadow-robot-sr-ros-interface#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -607,30 +883,417 @@
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/run_benchmark_ompl.launch" target="_blank">launch/run_benchmark_ompl.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/planning_context.launch" target="_blank">launch/planning_context.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/default_warehouse_db.launch" target="_blank">launch/default_warehouse_db.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/warehouse.launch" target="_blank">launch/warehouse.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/demo.launch" target="_blank">launch/demo.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/moveit_rviz.launch" target="_blank">launch/moveit_rviz.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/setup_assistant.launch" target="_blank">launch/setup_assistant.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/moveit_planning_and_execution.launch" target="_blank">launch/moveit_planning_and_execution.launch</a></li>
-          
-            <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/move_group.launch" target="_blank">launch/move_group.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/default_warehouse_db.launch" target="_blank">launch/default_warehouse_db.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>reset</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/move_group.launch" target="_blank">launch/move_group.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>hand_urdf</strong> <em>&#91;default: $(find sr_description)/robots/shadowhand_motor.urdf.xacro&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>hand_srdf</strong> <em>&#91;default: $(find sr_moveit_config)/config/shadowhand_motor.srdf&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>info</strong> <em>&#91;default: $(arg debug)&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>allow_trajectory_execution</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>fake_execution</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_safe_path_cost</strong> <em>&#91;default: 1&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>jiggle_fraction</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_monitored_planning_scene</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/warehouse.launch" target="_blank">launch/warehouse.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>moveit_warehouse_database_path</strong>  </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/moveit_planning_and_execution.launch" target="_blank">launch/moveit_planning_and_execution.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>hand_urdf</strong> <em>&#91;default: $(find sr_description)/robots/shadowhand_motor.urdf.xacro&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>hand_srdf</strong> <em>&#91;default: $(find sr_moveit_config)/config/shadowhand_motor.srdf&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/planning_context.launch" target="_blank">launch/planning_context.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>load_robot_description</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>hand_urdf</strong> <em>&#91;default: $(find sr_description)/robots/shadowhand_motor.urdf.xacro&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>hand_srdf</strong> <em>&#91;default: $(find sr_moveit_config)/config/shadowhand_motor.srdf&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>robot_description</strong> <em>&#91;default: robot_description&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/moveit_rviz.launch" target="_blank">launch/moveit_rviz.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>config</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/run_benchmark_ompl.launch" target="_blank">launch/run_benchmark_ompl.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>cfg</strong>  </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/demo.launch" target="_blank">launch/demo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>db</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/setup_assistant.launch" target="_blank">launch/setup_assistant.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Re-launch the MoveIt Setup Assistant with this configuration package already loaded </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/planning_pipeline.launch.xml" target="_blank">launch/planning_pipeline.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>pipeline</strong> <em>&#91;default: ompl&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/warehouse_settings.launch.xml" target="_blank">launch/warehouse_settings.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>moveit_warehouse_port</strong> <em>&#91;default: 33829&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>moveit_warehouse_host</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/shadowhand_motor_moveit_sensor_manager.launch.xml" target="_blank">launch/shadowhand_motor_moveit_sensor_manager.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/ompl_planning_pipeline.launch.xml" target="_blank">launch/ompl_planning_pipeline.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/trajectory_execution.launch.xml" target="_blank">launch/trajectory_execution.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>moveit_manage_controllers</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>moveit_controller_manager</strong> <em>&#91;default: shadowhand_motor&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/fake_moveit_controller_manager.launch.xml" target="_blank">launch/fake_moveit_controller_manager.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/shadowhand_motor_moveit_controller_manager.launch.xml" target="_blank">launch/shadowhand_motor_moveit_controller_manager.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config/launch/sensor_manager.launch.xml" target="_blank">launch/sensor_manager.launch.xml</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>moveit_sensor_manager</strong> <em>&#91;default: shadowhand_motor&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -639,9 +1302,9 @@
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -650,9 +1313,9 @@
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -661,28 +1324,35 @@
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/sr_moveit_config/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//shadow-robot/sr-ros-interface/tree/hydro-devel/sr_moveit_config"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:sr_moveit_config/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/sr_moveit_config?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=sr_moveit_config&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -742,7 +1412,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

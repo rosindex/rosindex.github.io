@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,11 +147,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,7 +281,151 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ipa320/cob_calibration.git">https://github.com/ipa320/cob_calibration.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo_dev</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-06-16
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          <span class="label label-warning">UNMAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/cob_calibration/github-ipa320-cob_calibration">cob_calibration</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_calibration_config/github-ipa320-cob_calibration">cob_calibration_config</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_calibration_executive/github-ipa320-cob_calibration">cob_calibration_executive</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_calibration_msgs/github-ipa320-cob_calibration">cob_calibration_msgs</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_calibration_urdf_update/github-ipa320-cob_calibration">cob_calibration_urdf_update</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_camera_calibration/github-ipa320-cob_calibration">cob_camera_calibration</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_image_capture/github-ipa320-cob_calibration">cob_image_capture</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_laser_calibration/github-ipa320-cob_calibration">cob_laser_calibration</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_robot_calibration/github-ipa320-cob_calibration">cob_robot_calibration</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_robot_calibration_est/github-ipa320-cob_calibration">cob_robot_calibration_est</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/cob_torso_calibration/github-ipa320-cob_calibration">cob_torso_calibration</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/urdf_parser_py/github-ipa320-cob_calibration">urdf_parser_py</a></td>
+                    <td>0.5.0</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">This is a repository for Care-O-bot calibration packages.
+
+Documentation and tutorials can be found at http://ros.org/wiki/cob_calibration.
+
+</code></pre></div></div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -239,8 +433,8 @@
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -372,149 +566,18 @@
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown">
-<h1 id="cob_calibration">cob_calibration</h1>
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">This is a repository for Care-O-bot calibration packages.
 
-<p>Calibrates cameras, arm and torso of Care-O-bot</p>
+Documentation and tutorials can be found at http://ros.org/wiki/cob_calibration.
 
-<h1 id="prepare-the-robot-for-calibration">Prepare the robot for calibration</h1>
-
-<hr>
-<p>described <a href="http://www.ros.org/wiki/cob_calibration/Tutorials/preparation">here</a></p>
-
-<!---
-1. move to calibration position
-
-```roslaunch cob_calibration_executive move_arm_to_calibration_position.launch
-```
-mount calibration object(defined in step 4 of configuration) on arm
---->
-
-<h1 id="automatic-camera-and-robot-calibration">Automatic camera and robot calibration</h1>
-
-<hr>
-<h2 id="overview">Overview</h2>
-
-<p>This tutorial guides you through the automatic calibration of
-the cameras and kinematic components of the Care-O-bot 3. The calibration 
-procedure is divided into two automated steps:</p>
-
-<ol>
-<li><p><strong>Camera calibration</strong>: The stereo camera system of Care-O-bot is calibrated intrinsically.</p></li>
-<li><p><strong>Kinematic robot calibration</strong>: This step performs extrinsic camera calibration 
-(hand-eye calibration of the stereo camera and kinect) and estimates various kinematic parameters of the robot (position and orientation of arm and torso on the base of Care-O-bot).</p></li>
-</ol>
-<h2 id="prerequisites">Prerequisites</h2>
-
-<ul>
-<li>
-<code>roscore
-</code> is running
-* Care-O-bot bringup software is running.
-* Cameras, head-axis, arm and torso are initialized and working.
-* Calibration pattern is attached to arm.
-* You created a temporary overlay of "cob_calibration_data". The calibration
-results are stored in this unary stack. The overlay should be deleted again after
-the calibration process.</li>
-</ul>
-<h2 id="running-calibration">Running calibration</h2>
-
-<ol>
-<li><strong>Collect data</strong></li>
-</ol>
-<p>start the data collection by calling 
-<code>roslaunch cob_calibration_executive collect_robot_calibration_data.launch
-</code>.</p>
-
-<p>This will start all needed nodes and services. The robot now moves to the sample positions calculated 
- in step 6 of the configuration.</p>
-
-<p>The progress can be seen by 
-<code>rostopic echo /calibration/data_collection/progress
-</code>.</p>
-
-<p>Wait until capture is finished and stop it with CTRL-C.
- The bagfile with the measurement and the images for the camera calibration are stored in "/tmp/cal/".</p>
-
-<ol>
-<li>
-<strong>Calibrate cameras</strong>
-Execute 
-<code>roslaunch cob_camera_calibration calibrate_stereo.launch
-</code> to start the stereo camera calibration.</li>
-</ol>
-<p>The results will be stored in the calibration file specified in the "camera.yaml" configuration file. </p>
-
-<p>This step should take approximately 3 minutes.</p>
-
-<p>For robots with only one calibrated camera this step is not required.</p>
-
-<ol>
-<li>
-<strong>Calibrate robot</strong>
-To calibrate the robot run</li>
-</ol>
-<p><code>roslaunch cob_robot_calibration run_robot_calibration.launch
-</code>.</p>
-
-<p>The calculation takes about 5 to 10 minutes.</p>
-
-<ol>
-<li><strong>Update urdf</strong></li>
-</ol>
-<p><code>roslaunch cob_robot_calibration update_calibration_urdf.launch
-</code></p>
-
-<p>copies the result of the optimization to the robot urdf file</p>
-
-<ol>
-<li><strong>Restart bringup</strong></li>
-</ol>
-<h2 id="final-steps">Final steps</h2>
-
-<ol>
-<li>Verify the calibration result with rviz by checking the kinect pointcloud while the arm with checkerboard is in front of the cameras. The point cloud should align with the simulated arm.</li>
-<li>Commit the new calibration to git (cob_calibration_data) and push it to github. Create a pull request for ipa320/cob_calibration_data and ask your robot administrator to pull the new calibration to the robot for everybody.</li>
-<li>Once the pull request has been accepted and the calibration has been updated on the robot, you can remove your local overlay of cob_calibration_data.</li>
-<li>Remove the checkerboard from the arm and reattach the hand. (activate the emergency stop before attaching the schunk hand).</li>
-</ol>
-<h1 id="configure-calibration(needs-to-be-more-verbose)">Configure calibration(needs to be more verbose)</h1>
-
-<hr>
-<ol>
-<li><p>create a new configuration folder in the package "cob_calibration_config"
-named after the robot.</p></li>
-<li><p>create the file "user_defined/cameras.yaml"
-define how many cameras are involved
-for each camera define "topic";"frame_id"(from robot urdf), " property"( position in urdf)
-"file_prefix" (for camera calibration)</p></li>
-<li><p>calibration_seed.yaml: teach in on hardware(or simulation)</p></li>
-<li><p>calibration_pattern:
-in most cases copy the existing cb9x6 for robots at the ipa</p></li>
-<li><p>generate template for optimization and autogenerated files
-bringup robot (in simulation or on real robot)</p></li>
-</ol>
-<p><code>roslaunch cob_robot_calibration generate_config.launch
-</code></p>
-
-<ol>
-<li>generate calibration positions
-with running ik services</li>
-</ol>
-<p><code>roslaunch cob_calibration_executive
-</code> </p>
-
-<ol>
-<li>create free_0.yaml --&gt; free_2.yaml
-for care-o-bot first step with free cb_arm transformation
-second step with cameras mount position added
-third step with all unknown transformations</li>
-</ol>
-</div></body></html>
+</code></pre></div></div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -522,8 +585,8 @@ third step with all unknown transformations</li>
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -655,149 +718,18 @@ third step with all unknown transformations</li>
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown">
-<h1 id="cob_calibration">cob_calibration</h1>
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">This is a repository for Care-O-bot calibration packages.
 
-<p>Calibrates cameras, arm and torso of Care-O-bot</p>
+Documentation and tutorials can be found at http://ros.org/wiki/cob_calibration.
 
-<h1 id="prepare-the-robot-for-calibration">Prepare the robot for calibration</h1>
-
-<hr>
-<p>described <a href="http://www.ros.org/wiki/cob_calibration/Tutorials/preparation">here</a></p>
-
-<!---
-1. move to calibration position
-
-```roslaunch cob_calibration_executive move_arm_to_calibration_position.launch
-```
-mount calibration object(defined in step 4 of configuration) on arm
---->
-
-<h1 id="automatic-camera-and-robot-calibration">Automatic camera and robot calibration</h1>
-
-<hr>
-<h2 id="overview">Overview</h2>
-
-<p>This tutorial guides you through the automatic calibration of
-the cameras and kinematic components of the Care-O-bot 3. The calibration 
-procedure is divided into two automated steps:</p>
-
-<ol>
-<li><p><strong>Camera calibration</strong>: The stereo camera system of Care-O-bot is calibrated intrinsically.</p></li>
-<li><p><strong>Kinematic robot calibration</strong>: This step performs extrinsic camera calibration 
-(hand-eye calibration of the stereo camera and kinect) and estimates various kinematic parameters of the robot (position and orientation of arm and torso on the base of Care-O-bot).</p></li>
-</ol>
-<h2 id="prerequisites">Prerequisites</h2>
-
-<ul>
-<li>
-<code>roscore
-</code> is running
-* Care-O-bot bringup software is running.
-* Cameras, head-axis, arm and torso are initialized and working.
-* Calibration pattern is attached to arm.
-* You created a temporary overlay of "cob_calibration_data". The calibration
-results are stored in this unary stack. The overlay should be deleted again after
-the calibration process.</li>
-</ul>
-<h2 id="running-calibration">Running calibration</h2>
-
-<ol>
-<li><strong>Collect data</strong></li>
-</ol>
-<p>start the data collection by calling 
-<code>roslaunch cob_calibration_executive collect_robot_calibration_data.launch
-</code>.</p>
-
-<p>This will start all needed nodes and services. The robot now moves to the sample positions calculated 
- in step 6 of the configuration.</p>
-
-<p>The progress can be seen by 
-<code>rostopic echo /calibration/data_collection/progress
-</code>.</p>
-
-<p>Wait until capture is finished and stop it with CTRL-C.
- The bagfile with the measurement and the images for the camera calibration are stored in "/tmp/cal/".</p>
-
-<ol>
-<li>
-<strong>Calibrate cameras</strong>
-Execute 
-<code>roslaunch cob_camera_calibration calibrate_stereo.launch
-</code> to start the stereo camera calibration.</li>
-</ol>
-<p>The results will be stored in the calibration file specified in the "camera.yaml" configuration file. </p>
-
-<p>This step should take approximately 3 minutes.</p>
-
-<p>For robots with only one calibrated camera this step is not required.</p>
-
-<ol>
-<li>
-<strong>Calibrate robot</strong>
-To calibrate the robot run</li>
-</ol>
-<p><code>roslaunch cob_robot_calibration run_robot_calibration.launch
-</code>.</p>
-
-<p>The calculation takes about 5 to 10 minutes.</p>
-
-<ol>
-<li><strong>Update urdf</strong></li>
-</ol>
-<p><code>roslaunch cob_robot_calibration update_calibration_urdf.launch
-</code></p>
-
-<p>copies the result of the optimization to the robot urdf file</p>
-
-<ol>
-<li><strong>Restart bringup</strong></li>
-</ol>
-<h2 id="final-steps">Final steps</h2>
-
-<ol>
-<li>Verify the calibration result with rviz by checking the kinect pointcloud while the arm with checkerboard is in front of the cameras. The point cloud should align with the simulated arm.</li>
-<li>Commit the new calibration to git (cob_calibration_data) and push it to github. Create a pull request for ipa320/cob_calibration_data and ask your robot administrator to pull the new calibration to the robot for everybody.</li>
-<li>Once the pull request has been accepted and the calibration has been updated on the robot, you can remove your local overlay of cob_calibration_data.</li>
-<li>Remove the checkerboard from the arm and reattach the hand. (activate the emergency stop before attaching the schunk hand).</li>
-</ol>
-<h1 id="configure-calibration(needs-to-be-more-verbose)">Configure calibration(needs to be more verbose)</h1>
-
-<hr>
-<ol>
-<li><p>create a new configuration folder in the package "cob_calibration_config"
-named after the robot.</p></li>
-<li><p>create the file "user_defined/cameras.yaml"
-define how many cameras are involved
-for each camera define "topic";"frame_id"(from robot urdf), " property"( position in urdf)
-"file_prefix" (for camera calibration)</p></li>
-<li><p>calibration_seed.yaml: teach in on hardware(or simulation)</p></li>
-<li><p>calibration_pattern:
-in most cases copy the existing cb9x6 for robots at the ipa</p></li>
-<li><p>generate template for optimization and autogenerated files
-bringup robot (in simulation or on real robot)</p></li>
-</ol>
-<p><code>roslaunch cob_robot_calibration generate_config.launch
-</code></p>
-
-<ol>
-<li>generate calibration positions
-with running ik services</li>
-</ol>
-<p><code>roslaunch cob_calibration_executive
-</code> </p>
-
-<ol>
-<li>create free_0.yaml --&gt; free_2.yaml
-for care-o-bot first step with free cb_arm transformation
-second step with cameras mount position added
-third step with all unknown transformations</li>
-</ol>
-</div></body></html>
+</code></pre></div></div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -805,8 +737,8 @@ third step with all unknown transformations</li>
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -913,14 +845,18 @@ third step with all unknown transformations</li>
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-text" data-lang="text">This is a repository for Care-O-bot calibration packages.
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">This is a repository for Care-O-bot calibration packages.
 
 Documentation and tutorials can be found at http://ros.org/wiki/cob_calibration.
+
 </code></pre></div></div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -963,7 +899,7 @@ Documentation and tutorials can be found at http://ros.org/wiki/cob_calibration.
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

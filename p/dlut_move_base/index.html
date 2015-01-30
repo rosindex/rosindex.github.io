@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,11 +146,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -154,75 +196,86 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/dlut_move_base">dlut_move_base</a> <small>package from <a style="text-decoration:none" href="/r/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">dlut_smartrob</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/dlut_motor_hokuyo/github-ZhuangYanDLUT-dlut_smartrob">dlut_motor_hokuyo</a>
-        
-      
-        
-          <span class="label label-default"> dlut_move_base</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/dlut_pc_odom/github-ZhuangYanDLUT-dlut_smartrob">dlut_pc_odom</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/dlut_place_recognition/github-ZhuangYanDLUT-dlut_smartrob"><span class="glyphicon glyphicon-file"></span>dlut_place_recognition</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">dlut_smartrob</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/dlut_move_base/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/dlut_move_base" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-groovy">
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/dlut_move_base">dlut_move_base</a> <small>package from <a style="text-decoration:none" href="/r/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">dlut_smartrob</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_motor_hokuyo/github-ZhuangYanDLUT-dlut_smartrob">
+
+dlut_motor_hokuyo
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+dlut_move_base
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_pc_odom/github-ZhuangYanDLUT-dlut_smartrob">
+
+dlut_pc_odom
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">
+
+dlut_smartrob
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -265,202 +318,63 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/dlut_move_base">dlut_move_base</a> <small>package from <a style="text-decoration:none" href="/r/dlut-ros-pkg/github-ZhuangYanDLUT-dlut-ros-pkg">dlut-ros-pkg</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/dlut_place_recognition/github-ZhuangYanDLUT-dlut-ros-pkg"><span class="glyphicon glyphicon-file"></span>dlut_place_recognition</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/camera_laser_calibration/github-ZhuangYanDLUT-dlut-ros-pkg"><span class="glyphicon glyphicon-file"></span>camera_laser_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/dlut_vision/github-ZhuangYanDLUT-dlut-ros-pkg"><span class="glyphicon glyphicon-file"></span>dlut_vision</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/laser_points_colouration/github-ZhuangYanDLUT-dlut-ros-pkg"><span class="glyphicon glyphicon-file"></span>laser_points_colouration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sick_laser/github-ZhuangYanDLUT-dlut-ros-pkg"><span class="glyphicon glyphicon-file"></span>sick_laser</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/dlut_motor_hokuyo/github-ZhuangYanDLUT-dlut-ros-pkg">dlut_motor_hokuyo</a>
-        
-      
-        
-          <span class="label label-default"> dlut_move_base</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/dlut_pc_odom/github-ZhuangYanDLUT-dlut-ros-pkg">dlut_pc_odom</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/dlut_move_base/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/dlut_move_base" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-fuerte">
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/dlut_move_base/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/dlut_move_base?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=dlut_move_base&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
   
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/dlut_move_base"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ZhuangYanDLUT-dlut-ros-pkg
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ZhuangYanDLUT-dlut-ros-pkg" role="menuitem" tabindex="-1" href="/p/dlut_move_base/github-ZhuangYanDLUT-dlut-ros-pkg" data="github-ZhuangYanDLUT-dlut-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ZhuangYanDLUT-dlut-ros-pkg
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-ZhuangYanDLUT-dlut_smartrob" role="menuitem" tabindex="-1" href="/p/dlut_move_base/github-ZhuangYanDLUT-dlut_smartrob" data="github-ZhuangYanDLUT-dlut_smartrob">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ZhuangYanDLUT-dlut_smartrob
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
 </div>
 
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
-
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>hydro</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-groovy">
-    <div class="container-fluid">
-      
-        
-        
+            </div>
+            
 
 
 
-<ul class="nav nav-tabs nav-justified" id="groovy-tabs" style="margin-bottom:20px">
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#groovy-overview" data-toggle="tab">Overview</a>
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="groovy-overview">
+  <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The dlut_move_base package
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -499,7 +413,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -515,13 +429,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">groovy-devel</span></td>
+      <td><span class="label label-default">indigo-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-02-28
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-06-17
         </span>
       </td>
     </tr>
@@ -546,8 +460,25 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The dlut_move_base package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/dlut_move_base">Website</a></li>
+                
+                  <li><a href="https://github.com/ZhuangYanDLUT/dlut_smartrob.git">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -576,6 +507,559 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob/#indigo">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <em>No CHANGELOG found.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/dlut_move_base/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#indigo">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob#indigo">dlut_smartrob</a></td>
+                      <td><a href="/r/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">github-ZhuangYanDLUT-dlut_smartrob</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base/msg/Velocity.msg" target="_blank">msg/Velocity.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base/msg/Twist.msg" target="_blank">msg/Twist.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base/msg/Vector3.msg" target="_blank">msg/Vector3.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base/msg/Pose.msg" target="_blank">msg/Pose.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base/msg/Color.msg" target="_blank">msg/Color.msg</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/dlut_move_base/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/indigo-devel/dlut_move_base"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/dlut_move_base?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=dlut_move_base&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>hydro</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-groovy">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/dlut_move_base">dlut_move_base</a> <small>package from <a style="text-decoration:none" href="/r/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">dlut_smartrob</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_motor_hokuyo/github-ZhuangYanDLUT-dlut_smartrob">
+
+dlut_motor_hokuyo
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+dlut_move_base
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_pc_odom/github-ZhuangYanDLUT-dlut_smartrob">
+
+dlut_pc_odom
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_place_recognition/github-ZhuangYanDLUT-dlut_smartrob">
+
+<span class="glyphicon glyphicon-file"></span> dlut_place_recognition
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">
+
+dlut_smartrob
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/dlut_move_base"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ZhuangYanDLUT-dlut_smartrob
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ZhuangYanDLUT-dlut-ros-pkg" role="menuitem" tabindex="-1" href="/p/dlut_move_base/github-ZhuangYanDLUT-dlut-ros-pkg" data="github-ZhuangYanDLUT-dlut-ros-pkg">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ZhuangYanDLUT-dlut-ros-pkg
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ZhuangYanDLUT-dlut_smartrob" role="menuitem" tabindex="-1" href="/p/dlut_move_base/github-ZhuangYanDLUT-dlut_smartrob" data="github-ZhuangYanDLUT-dlut_smartrob">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ZhuangYanDLUT-dlut_smartrob
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/dlut_move_base/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/dlut_move_base?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=dlut_move_base&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="groovy-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#groovy-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="groovy-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.0.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ZhuangYanDLUT/dlut_smartrob.git">https://github.com/ZhuangYanDLUT/dlut_smartrob.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">groovy-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-06-19
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          <span class="label label-warning">UNMAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The dlut_move_base package
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -585,6 +1069,34 @@
                   <li><a href="http://ros.org/wiki/dlut_move_base">Website</a></li>
                 
                   <li><a href="https://github.com/ZhuangYanDLUT/dlut_smartrob.git">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Zhuang Yan</li>
+                
+                  <li>Wu Nai Liang</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Zhuang Yan</li>
+                
+                  <li>Yan Fei</li>
+                
+                  <li>Dong Bing Bing</li>
                 
               </ul>
             
@@ -627,7 +1139,8 @@
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/dlut_move_base/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/dlut_move_base/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -639,33 +1152,154 @@
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#groovy">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#groovy">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#groovy">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#groovy">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#groovy">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#groovy">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#groovy">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#groovy">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob#groovy">dlut_smartrob</a></td>
+                      <td><a href="/r/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob">github-ZhuangYanDLUT-dlut_smartrob</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/dlut_smartrob/github-ZhuangYanDLUT-dlut_smartrob#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -673,12 +1307,12 @@
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -687,19 +1321,21 @@
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Vector3.msg" target="_blank">msg/Vector3.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Pose.msg" target="_blank">msg/Pose.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Color.msg" target="_blank">msg/Color.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Velocity.msg" target="_blank">msg/Velocity.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Twist.msg" target="_blank">msg/Twist.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Velocity.msg" target="_blank">msg/Velocity.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Twist.msg" target="_blank">msg/Twist.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Vector3.msg" target="_blank">msg/Vector3.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Pose.msg" target="_blank">msg/Pose.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base/msg/Color.msg" target="_blank">msg/Color.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -708,9 +1344,9 @@
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -719,28 +1355,35 @@
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/dlut_move_base/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ZhuangYanDLUT/dlut_smartrob/tree/groovy-devel/dlut_move_base"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/dlut_move_base?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=dlut_move_base&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -750,6 +1393,156 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/dlut_move_base">dlut_move_base</a> <small>package from <a style="text-decoration:none" href="/r/dlut-ros-pkg/github-ZhuangYanDLUT-dlut-ros-pkg">dlut-ros-pkg</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_place_recognition/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+<span class="glyphicon glyphicon-file"></span> dlut_place_recognition
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/camera_laser_calibration/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+<span class="glyphicon glyphicon-file"></span> camera_laser_calibration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_vision/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+<span class="glyphicon glyphicon-file"></span> dlut_vision
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/laser_points_colouration/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+<span class="glyphicon glyphicon-file"></span> laser_points_colouration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/sick_laser/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+<span class="glyphicon glyphicon-file"></span> sick_laser
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_motor_hokuyo/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+dlut_motor_hokuyo
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+dlut_move_base
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/dlut_pc_odom/github-ZhuangYanDLUT-dlut-ros-pkg">
+
+dlut_pc_odom
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/dlut_move_base"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ZhuangYanDLUT-dlut-ros-pkg
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ZhuangYanDLUT-dlut-ros-pkg" role="menuitem" tabindex="-1" href="/p/dlut_move_base/github-ZhuangYanDLUT-dlut-ros-pkg" data="github-ZhuangYanDLUT-dlut-ros-pkg">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ZhuangYanDLUT-dlut-ros-pkg
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ZhuangYanDLUT-dlut_smartrob" role="menuitem" tabindex="-1" href="/p/dlut_move_base/github-ZhuangYanDLUT-dlut_smartrob" data="github-ZhuangYanDLUT-dlut_smartrob">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ZhuangYanDLUT-dlut_smartrob
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/dlut_move_base/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/dlut_move_base?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=dlut_move_base&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -762,32 +1555,30 @@ $(function() {
     
     
     
+    
     <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     dlut_move_base
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -826,7 +1617,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -873,8 +1664,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     dlut_move_base
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/dlut_move_base">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -889,17 +1699,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Zhuang Yan,Yan Fei,Dong Bingbing/zhuang <AT> dlut.edu.cn</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/dlut_move_base">Website</a></li>
                 
               </ul>
             
@@ -942,7 +1741,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/dlut_move_base/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/dlut_move_base/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -954,35 +1754,151 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#fuerte">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#fuerte">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#fuerte">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#fuerte">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#fuerte">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#fuerte">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#fuerte">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#fuerte">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nav_msgs#fuerte">nav_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#fuerte">std_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -990,12 +1906,12 @@ $(function() {
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1004,19 +1920,21 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Vector3.msg" target="_blank">msg/Vector3.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Pose.msg" target="_blank">msg/Pose.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Color.msg" target="_blank">msg/Color.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Velocity.msg" target="_blank">msg/Velocity.msg</a></li>
-          
-            <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Twist.msg" target="_blank">msg/Twist.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Velocity.msg" target="_blank">msg/Velocity.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Twist.msg" target="_blank">msg/Twist.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Vector3.msg" target="_blank">msg/Vector3.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Pose.msg" target="_blank">msg/Pose.msg</a></li>
+            
+              <li><a href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base/msg/Color.msg" target="_blank">msg/Color.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1025,9 +1943,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1036,28 +1954,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/dlut_move_base/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ZhuangYanDLUT/dlut-ros-pkg/tree/master/smartrob/dlut_move_base"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:dlut_move_base/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/dlut_move_base?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=dlut_move_base&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1101,7 +2026,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

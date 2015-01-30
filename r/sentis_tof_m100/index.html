@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,8 +281,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +305,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-05-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-30
         </span>
       </td>
     </tr>
@@ -312,7 +362,17 @@
 <html><body><div class="rendered-markdown">
 <h1 id="sentis_tof_m100_ros_pkg">sentis_tof_m100_ros_pkg</h1>
 
-<h3 id="ros-package-for-bluetechnix-sentis-tof-m100-camera.">ROS package for Bluetechnix Sentis ToF M100 camera.</h3>
+<hr>
+
+<p>This ROS package uses an old api for the Bluetechnix Sentis ToF m100 sensor.</p>
+
+<p>There is a new package (<a href="https://github.com/voxel-dot-at/bta_tof_driver">https://github.com/voxel-dot-at/bta_tof_driver</a>) that uses the new <a href="https://support.bluetechnix.at/wiki/Bluetechnix_'Time_of_Flight'_API">BltToFApi</a> developed by Bluetechnix for interacting with their sensors.</p>
+
+<p>We recommend to use the new bta_tof_driver package.</p>
+
+<hr>
+
+<h3 id="ros-package-for-bluetechnix-sentis-tof-m100-camera">ROS package for Bluetechnix Sentis ToF M100 camera.</h3>
 
 <h1 id="summary">Summary</h1>
 
@@ -320,7 +380,7 @@
 It includes an example allowing you to visualize point clouds using the rviz viewer included in ROS.
 It shows you how to use the camera together with ROS and how you can modify different parameters of the Sentis ToF M100.</p>
 
-<h2 id="first-step:-get-ros">First step: Get Ros</h2>
+<h2 id="first-step-get-ros">First step: Get Ros</h2>
 
 <p>The sentis_tof_m100_ros_pkg works with ROS versions groovy and hydro. You can use catkin workspaces or the previous rosbuild to configure, compile and get ready ROS.</p>
 
@@ -354,22 +414,22 @@ Follow the ROS installation tutorial: </p>
 <p>Be sure your libboost library version is &gt;= 1.49.
 Previous versions as 1.46 generate error while compiling sentis_tof_m100_ros_pkg.</p>
 
-<h1 id="1.-installing-the-sentis_m100-api">1. Installing the sentis_m100 API</h1>
+<h1 id="1-installing-the-sentis_m100-api">1. Installing the sentis_m100 API</h1>
 
 <p>With your M100 camera you will get the developer API for Linux systems in both versions, amd64 and i386. If you are using Ubuntu or a Debian-derived distribution simply install the deb package corresponding to your system. </p>
 
 <p>You can also manually install the libraries and headers of the API. Please read the API instructions to get help for installing them.</p>
 
-<h1 id="2.-compiling-the-package">2. Compiling the package</h1>
+<h1 id="2-compiling-the-package">2. Compiling the package</h1>
 
-<h4 id="2.1-install-dependencies">2.1 Install dependencies</h4>
+<h4 id="2-1-install-dependencies">2.1 Install dependencies</h4>
 
 <p>Make sure you have the following ROS dependencies already installed:
 </p>
 <pre><code> apt-get install ros-hydro-pcl-ros ros-hydro-pcl-conversions ros-hydro-perception-pcl 
 </code></pre>
 
-<h4 id="2.2-install-the-package">2.2 Install the package</h4>
+<h4 id="2-2-install-the-package">2.2 Install the package</h4>
 
 <p>Clone from repository: <a href="https://github.com/voxel-dot-at/sentis_tof_m100_pkg.git">https://github.com/voxel-dot-at/sentis_tof_m100_pkg.git</a>
 to the src/ folder in your catkin workspace.
@@ -383,17 +443,17 @@ cd ..
 catkin_make
 </code></pre>
 
-<h1 id="3.-usage">3. Usage</h1>
+<h1 id="3-usage">3. Usage</h1>
 
 <p>We have included a .launch file to help you to get the camera working in a very simple way. We coded this ROS package to use the ROS parameter server. We will explain you in the following lines how you can write your own configuration for the Sentis ToF Camera. You can also run the package node standalone and set the camera configuration by line commands.</p>
 
-<h3 id="*-watch-our-demo-video:">* Watch our demo video:</h3>
+<h3 id="watch-our-demo-video">* Watch our demo video:</h3>
 
 <blockquote>
 <p><a href="http://youtu.be/3xegxf5VFWc">http://youtu.be/3xegxf5VFWc</a></p>
 </blockquote>
 
-<h3 id="3.1-use-roslaunch">3.1 Use roslaunch</h3>
+<h3 id="3-1-use-roslaunch">3.1 Use roslaunch</h3>
 
 <p>To easily start using the sentis_tof_m100 ROS package you can use the roslaunch config_file we have included. It will launch the ROS core, start the camera node loading the parameter configuration, start the run-time reconfiguration gui and the ROS viewer rviz already configured to show the depth information readed by the ToF camera.</p>
 
@@ -402,22 +462,22 @@ catkin_make
 <pre><code>roslaunch sentis_tof_m100 start.launch
 </code></pre>
 
-<h4 id="3.1.1-write-you-own-configuration-to-the-parameter-server">3.1.1 Write you own configuration to the parameter server</h4>
+<h4 id="3-1-1-write-you-own-configuration-to-the-parameter-server">3.1.1 Write you own configuration to the parameter server</h4>
 
 <p>As we pointed out before, you can load the camera configuration to the parameter server. The file "launch/start.launch" includes, inside the tag "node", the tag "rosparam" in which you can indicate a file containing the server parameters. We have include the configuration file "/launch/sentis_tof_m100_1.yaml" that defines default configuration values for the camera. You may modify this file or add yours to load your own configuration.</p>
 
 <p>To get more information about the Sentis_ToF_M100 camera parameter, please refer to the section 4. </p>
 
-<h3 id="3.2-running-the-package-without-roslaunch">3.2 running the package without roslaunch</h3>
+<h3 id="3-2-running-the-package-without-roslaunch">3.2 running the package without roslaunch</h3>
 
 <p>You can start up the camera without the help of roslaunch with the following steps.</p>
 
-<h4 id="3.2.1-start-the-ros-core">3.2.1 Start the ROS core</h4>
+<h4 id="3-2-1-start-the-ros-core">3.2.1 Start the ROS core</h4>
 
 <pre><code>roscore &amp;
 </code></pre>
 
-<h4 id="3.2.2-start-capturing">3.2.2 Start capturing</h4>
+<h4 id="3-2-2-start-capturing">3.2.2 Start capturing</h4>
 
 <pre><code>rosrun sentis_tof_m100 sentis_tof_m100_node #[options]
 </code></pre>
@@ -515,7 +575,7 @@ catkin_make
 rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001 -it 1500 -mf 20000 -fr 20 
 </options></code></pre>
 
-<h4 id="3.2.3-visualization-in-rviz">3.2.3 Visualization in rviz</h4>
+<h4 id="3-2-3-visualization-in-rviz">3.2.3 Visualization in rviz</h4>
 
 <pre><code>rosrun rviz rviz
 </code></pre>
@@ -528,6 +588,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <li>At the bottom in the "Display" sidebar click on the <strong>add</strong> Button</li>
 <li>In the "Create visualization" dialog that opens, select the "By topic" tab and select the <strong>/depth_non_filtered</strong> topic.</li>
 </ol>
+
 <p>Add a Pointcloud2 topic to visualize the clouds. Two different point sets are published with following topic names:</p>
 
 <blockquote>
@@ -539,7 +600,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 </ul>
 </blockquote>
 
-<h4 id="3.2.4-using-filters-and-parameters-configuration">3.2.4 Using filters and parameters configuration</h4>
+<h4 id="3-2-4-using-filters-and-parameters-configuration">3.2.4 Using filters and parameters configuration</h4>
 
 <p>To use the filters and change camera parameters at runtime, use rqt_reconfigure from ROS. To use it just run (after launching sentis_tof_m100_ros_pkg):</p>
 
@@ -555,6 +616,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <ul>
 <li>Network options</li>
 </ul>
+
 <blockquote>
 <p><strong>Note1:</strong> Make sure your network is correctly configured. We recommend you to follow the API instructions to check whether the camera and your network are working without any problem.</p>
 
@@ -567,6 +629,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <li>* <strong>UDP_IP_Address :</strong> The multicast data connection.</li>
 <li>* <strong>UDP_IP_Port :</strong> The port used by the data connection.</li>
 </ul>
+
 <blockquote>
 <p><strong>Note3 :</strong> Following camera parameters and filtering methods can be accessed in runtime using the rqt_reconfigure. </p>
 </blockquote>
@@ -664,6 +727,9 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -671,8 +737,8 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -695,7 +761,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-05-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-30
         </span>
       </td>
     </tr>
@@ -752,7 +818,17 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <html><body><div class="rendered-markdown">
 <h1 id="sentis_tof_m100_ros_pkg">sentis_tof_m100_ros_pkg</h1>
 
-<h3 id="ros-package-for-bluetechnix-sentis-tof-m100-camera.">ROS package for Bluetechnix Sentis ToF M100 camera.</h3>
+<hr>
+
+<p>This ROS package uses an old api for the Bluetechnix Sentis ToF m100 sensor.</p>
+
+<p>There is a new package (<a href="https://github.com/voxel-dot-at/bta_tof_driver">https://github.com/voxel-dot-at/bta_tof_driver</a>) that uses the new <a href="https://support.bluetechnix.at/wiki/Bluetechnix_'Time_of_Flight'_API">BltToFApi</a> developed by Bluetechnix for interacting with their sensors.</p>
+
+<p>We recommend to use the new bta_tof_driver package.</p>
+
+<hr>
+
+<h3 id="ros-package-for-bluetechnix-sentis-tof-m100-camera">ROS package for Bluetechnix Sentis ToF M100 camera.</h3>
 
 <h1 id="summary">Summary</h1>
 
@@ -760,7 +836,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 It includes an example allowing you to visualize point clouds using the rviz viewer included in ROS.
 It shows you how to use the camera together with ROS and how you can modify different parameters of the Sentis ToF M100.</p>
 
-<h2 id="first-step:-get-ros">First step: Get Ros</h2>
+<h2 id="first-step-get-ros">First step: Get Ros</h2>
 
 <p>The sentis_tof_m100_ros_pkg works with ROS versions groovy and hydro. You can use catkin workspaces or the previous rosbuild to configure, compile and get ready ROS.</p>
 
@@ -794,22 +870,22 @@ Follow the ROS installation tutorial: </p>
 <p>Be sure your libboost library version is &gt;= 1.49.
 Previous versions as 1.46 generate error while compiling sentis_tof_m100_ros_pkg.</p>
 
-<h1 id="1.-installing-the-sentis_m100-api">1. Installing the sentis_m100 API</h1>
+<h1 id="1-installing-the-sentis_m100-api">1. Installing the sentis_m100 API</h1>
 
 <p>With your M100 camera you will get the developer API for Linux systems in both versions, amd64 and i386. If you are using Ubuntu or a Debian-derived distribution simply install the deb package corresponding to your system. </p>
 
 <p>You can also manually install the libraries and headers of the API. Please read the API instructions to get help for installing them.</p>
 
-<h1 id="2.-compiling-the-package">2. Compiling the package</h1>
+<h1 id="2-compiling-the-package">2. Compiling the package</h1>
 
-<h4 id="2.1-install-dependencies">2.1 Install dependencies</h4>
+<h4 id="2-1-install-dependencies">2.1 Install dependencies</h4>
 
 <p>Make sure you have the following ROS dependencies already installed:
 </p>
 <pre><code> apt-get install ros-hydro-pcl-ros ros-hydro-pcl-conversions ros-hydro-perception-pcl 
 </code></pre>
 
-<h4 id="2.2-install-the-package">2.2 Install the package</h4>
+<h4 id="2-2-install-the-package">2.2 Install the package</h4>
 
 <p>Clone from repository: <a href="https://github.com/voxel-dot-at/sentis_tof_m100_pkg.git">https://github.com/voxel-dot-at/sentis_tof_m100_pkg.git</a>
 to the src/ folder in your catkin workspace.
@@ -823,17 +899,17 @@ cd ..
 catkin_make
 </code></pre>
 
-<h1 id="3.-usage">3. Usage</h1>
+<h1 id="3-usage">3. Usage</h1>
 
 <p>We have included a .launch file to help you to get the camera working in a very simple way. We coded this ROS package to use the ROS parameter server. We will explain you in the following lines how you can write your own configuration for the Sentis ToF Camera. You can also run the package node standalone and set the camera configuration by line commands.</p>
 
-<h3 id="*-watch-our-demo-video:">* Watch our demo video:</h3>
+<h3 id="watch-our-demo-video">* Watch our demo video:</h3>
 
 <blockquote>
 <p><a href="http://youtu.be/3xegxf5VFWc">http://youtu.be/3xegxf5VFWc</a></p>
 </blockquote>
 
-<h3 id="3.1-use-roslaunch">3.1 Use roslaunch</h3>
+<h3 id="3-1-use-roslaunch">3.1 Use roslaunch</h3>
 
 <p>To easily start using the sentis_tof_m100 ROS package you can use the roslaunch config_file we have included. It will launch the ROS core, start the camera node loading the parameter configuration, start the run-time reconfiguration gui and the ROS viewer rviz already configured to show the depth information readed by the ToF camera.</p>
 
@@ -842,22 +918,22 @@ catkin_make
 <pre><code>roslaunch sentis_tof_m100 start.launch
 </code></pre>
 
-<h4 id="3.1.1-write-you-own-configuration-to-the-parameter-server">3.1.1 Write you own configuration to the parameter server</h4>
+<h4 id="3-1-1-write-you-own-configuration-to-the-parameter-server">3.1.1 Write you own configuration to the parameter server</h4>
 
 <p>As we pointed out before, you can load the camera configuration to the parameter server. The file "launch/start.launch" includes, inside the tag "node", the tag "rosparam" in which you can indicate a file containing the server parameters. We have include the configuration file "/launch/sentis_tof_m100_1.yaml" that defines default configuration values for the camera. You may modify this file or add yours to load your own configuration.</p>
 
 <p>To get more information about the Sentis_ToF_M100 camera parameter, please refer to the section 4. </p>
 
-<h3 id="3.2-running-the-package-without-roslaunch">3.2 running the package without roslaunch</h3>
+<h3 id="3-2-running-the-package-without-roslaunch">3.2 running the package without roslaunch</h3>
 
 <p>You can start up the camera without the help of roslaunch with the following steps.</p>
 
-<h4 id="3.2.1-start-the-ros-core">3.2.1 Start the ROS core</h4>
+<h4 id="3-2-1-start-the-ros-core">3.2.1 Start the ROS core</h4>
 
 <pre><code>roscore &amp;
 </code></pre>
 
-<h4 id="3.2.2-start-capturing">3.2.2 Start capturing</h4>
+<h4 id="3-2-2-start-capturing">3.2.2 Start capturing</h4>
 
 <pre><code>rosrun sentis_tof_m100 sentis_tof_m100_node #[options]
 </code></pre>
@@ -955,7 +1031,7 @@ catkin_make
 rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001 -it 1500 -mf 20000 -fr 20 
 </options></code></pre>
 
-<h4 id="3.2.3-visualization-in-rviz">3.2.3 Visualization in rviz</h4>
+<h4 id="3-2-3-visualization-in-rviz">3.2.3 Visualization in rviz</h4>
 
 <pre><code>rosrun rviz rviz
 </code></pre>
@@ -968,6 +1044,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <li>At the bottom in the "Display" sidebar click on the <strong>add</strong> Button</li>
 <li>In the "Create visualization" dialog that opens, select the "By topic" tab and select the <strong>/depth_non_filtered</strong> topic.</li>
 </ol>
+
 <p>Add a Pointcloud2 topic to visualize the clouds. Two different point sets are published with following topic names:</p>
 
 <blockquote>
@@ -979,7 +1056,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 </ul>
 </blockquote>
 
-<h4 id="3.2.4-using-filters-and-parameters-configuration">3.2.4 Using filters and parameters configuration</h4>
+<h4 id="3-2-4-using-filters-and-parameters-configuration">3.2.4 Using filters and parameters configuration</h4>
 
 <p>To use the filters and change camera parameters at runtime, use rqt_reconfigure from ROS. To use it just run (after launching sentis_tof_m100_ros_pkg):</p>
 
@@ -995,6 +1072,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <ul>
 <li>Network options</li>
 </ul>
+
 <blockquote>
 <p><strong>Note1:</strong> Make sure your network is correctly configured. We recommend you to follow the API instructions to check whether the camera and your network are working without any problem.</p>
 
@@ -1007,6 +1085,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <li>* <strong>UDP_IP_Address :</strong> The multicast data connection.</li>
 <li>* <strong>UDP_IP_Port :</strong> The port used by the data connection.</li>
 </ul>
+
 <blockquote>
 <p><strong>Note3 :</strong> Following camera parameters and filtering methods can be accessed in runtime using the rqt_reconfigure. </p>
 </blockquote>
@@ -1104,6 +1183,9 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1111,8 +1193,8 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -1135,7 +1217,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-05-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-30
         </span>
       </td>
     </tr>
@@ -1192,7 +1274,17 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <html><body><div class="rendered-markdown">
 <h1 id="sentis_tof_m100_ros_pkg">sentis_tof_m100_ros_pkg</h1>
 
-<h3 id="ros-package-for-bluetechnix-sentis-tof-m100-camera.">ROS package for Bluetechnix Sentis ToF M100 camera.</h3>
+<hr>
+
+<p>This ROS package uses an old api for the Bluetechnix Sentis ToF m100 sensor.</p>
+
+<p>There is a new package (<a href="https://github.com/voxel-dot-at/bta_tof_driver">https://github.com/voxel-dot-at/bta_tof_driver</a>) that uses the new <a href="https://support.bluetechnix.at/wiki/Bluetechnix_'Time_of_Flight'_API">BltToFApi</a> developed by Bluetechnix for interacting with their sensors.</p>
+
+<p>We recommend to use the new bta_tof_driver package.</p>
+
+<hr>
+
+<h3 id="ros-package-for-bluetechnix-sentis-tof-m100-camera">ROS package for Bluetechnix Sentis ToF M100 camera.</h3>
 
 <h1 id="summary">Summary</h1>
 
@@ -1200,7 +1292,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 It includes an example allowing you to visualize point clouds using the rviz viewer included in ROS.
 It shows you how to use the camera together with ROS and how you can modify different parameters of the Sentis ToF M100.</p>
 
-<h2 id="first-step:-get-ros">First step: Get Ros</h2>
+<h2 id="first-step-get-ros">First step: Get Ros</h2>
 
 <p>The sentis_tof_m100_ros_pkg works with ROS versions groovy and hydro. You can use catkin workspaces or the previous rosbuild to configure, compile and get ready ROS.</p>
 
@@ -1234,22 +1326,22 @@ Follow the ROS installation tutorial: </p>
 <p>Be sure your libboost library version is &gt;= 1.49.
 Previous versions as 1.46 generate error while compiling sentis_tof_m100_ros_pkg.</p>
 
-<h1 id="1.-installing-the-sentis_m100-api">1. Installing the sentis_m100 API</h1>
+<h1 id="1-installing-the-sentis_m100-api">1. Installing the sentis_m100 API</h1>
 
 <p>With your M100 camera you will get the developer API for Linux systems in both versions, amd64 and i386. If you are using Ubuntu or a Debian-derived distribution simply install the deb package corresponding to your system. </p>
 
 <p>You can also manually install the libraries and headers of the API. Please read the API instructions to get help for installing them.</p>
 
-<h1 id="2.-compiling-the-package">2. Compiling the package</h1>
+<h1 id="2-compiling-the-package">2. Compiling the package</h1>
 
-<h4 id="2.1-install-dependencies">2.1 Install dependencies</h4>
+<h4 id="2-1-install-dependencies">2.1 Install dependencies</h4>
 
 <p>Make sure you have the following ROS dependencies already installed:
 </p>
 <pre><code> apt-get install ros-hydro-pcl-ros ros-hydro-pcl-conversions ros-hydro-perception-pcl 
 </code></pre>
 
-<h4 id="2.2-install-the-package">2.2 Install the package</h4>
+<h4 id="2-2-install-the-package">2.2 Install the package</h4>
 
 <p>Clone from repository: <a href="https://github.com/voxel-dot-at/sentis_tof_m100_pkg.git">https://github.com/voxel-dot-at/sentis_tof_m100_pkg.git</a>
 to the src/ folder in your catkin workspace.
@@ -1263,17 +1355,17 @@ cd ..
 catkin_make
 </code></pre>
 
-<h1 id="3.-usage">3. Usage</h1>
+<h1 id="3-usage">3. Usage</h1>
 
 <p>We have included a .launch file to help you to get the camera working in a very simple way. We coded this ROS package to use the ROS parameter server. We will explain you in the following lines how you can write your own configuration for the Sentis ToF Camera. You can also run the package node standalone and set the camera configuration by line commands.</p>
 
-<h3 id="*-watch-our-demo-video:">* Watch our demo video:</h3>
+<h3 id="watch-our-demo-video">* Watch our demo video:</h3>
 
 <blockquote>
 <p><a href="http://youtu.be/3xegxf5VFWc">http://youtu.be/3xegxf5VFWc</a></p>
 </blockquote>
 
-<h3 id="3.1-use-roslaunch">3.1 Use roslaunch</h3>
+<h3 id="3-1-use-roslaunch">3.1 Use roslaunch</h3>
 
 <p>To easily start using the sentis_tof_m100 ROS package you can use the roslaunch config_file we have included. It will launch the ROS core, start the camera node loading the parameter configuration, start the run-time reconfiguration gui and the ROS viewer rviz already configured to show the depth information readed by the ToF camera.</p>
 
@@ -1282,22 +1374,22 @@ catkin_make
 <pre><code>roslaunch sentis_tof_m100 start.launch
 </code></pre>
 
-<h4 id="3.1.1-write-you-own-configuration-to-the-parameter-server">3.1.1 Write you own configuration to the parameter server</h4>
+<h4 id="3-1-1-write-you-own-configuration-to-the-parameter-server">3.1.1 Write you own configuration to the parameter server</h4>
 
 <p>As we pointed out before, you can load the camera configuration to the parameter server. The file "launch/start.launch" includes, inside the tag "node", the tag "rosparam" in which you can indicate a file containing the server parameters. We have include the configuration file "/launch/sentis_tof_m100_1.yaml" that defines default configuration values for the camera. You may modify this file or add yours to load your own configuration.</p>
 
 <p>To get more information about the Sentis_ToF_M100 camera parameter, please refer to the section 4. </p>
 
-<h3 id="3.2-running-the-package-without-roslaunch">3.2 running the package without roslaunch</h3>
+<h3 id="3-2-running-the-package-without-roslaunch">3.2 running the package without roslaunch</h3>
 
 <p>You can start up the camera without the help of roslaunch with the following steps.</p>
 
-<h4 id="3.2.1-start-the-ros-core">3.2.1 Start the ROS core</h4>
+<h4 id="3-2-1-start-the-ros-core">3.2.1 Start the ROS core</h4>
 
 <pre><code>roscore &amp;
 </code></pre>
 
-<h4 id="3.2.2-start-capturing">3.2.2 Start capturing</h4>
+<h4 id="3-2-2-start-capturing">3.2.2 Start capturing</h4>
 
 <pre><code>rosrun sentis_tof_m100 sentis_tof_m100_node #[options]
 </code></pre>
@@ -1395,7 +1487,7 @@ catkin_make
 rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001 -it 1500 -mf 20000 -fr 20 
 </options></code></pre>
 
-<h4 id="3.2.3-visualization-in-rviz">3.2.3 Visualization in rviz</h4>
+<h4 id="3-2-3-visualization-in-rviz">3.2.3 Visualization in rviz</h4>
 
 <pre><code>rosrun rviz rviz
 </code></pre>
@@ -1408,6 +1500,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <li>At the bottom in the "Display" sidebar click on the <strong>add</strong> Button</li>
 <li>In the "Create visualization" dialog that opens, select the "By topic" tab and select the <strong>/depth_non_filtered</strong> topic.</li>
 </ol>
+
 <p>Add a Pointcloud2 topic to visualize the clouds. Two different point sets are published with following topic names:</p>
 
 <blockquote>
@@ -1419,7 +1512,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 </ul>
 </blockquote>
 
-<h4 id="3.2.4-using-filters-and-parameters-configuration">3.2.4 Using filters and parameters configuration</h4>
+<h4 id="3-2-4-using-filters-and-parameters-configuration">3.2.4 Using filters and parameters configuration</h4>
 
 <p>To use the filters and change camera parameters at runtime, use rqt_reconfigure from ROS. To use it just run (after launching sentis_tof_m100_ros_pkg):</p>
 
@@ -1435,6 +1528,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <ul>
 <li>Network options</li>
 </ul>
+
 <blockquote>
 <p><strong>Note1:</strong> Make sure your network is correctly configured. We recommend you to follow the API instructions to check whether the camera and your network are working without any problem.</p>
 
@@ -1447,6 +1541,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
 <li>* <strong>UDP_IP_Address :</strong> The multicast data connection.</li>
 <li>* <strong>UDP_IP_Port :</strong> The port used by the data connection.</li>
 </ul>
+
 <blockquote>
 <p><strong>Note3 :</strong> Following camera parameters and filtering methods can be accessed in runtime using the rqt_reconfigure. </p>
 </blockquote>
@@ -1544,6 +1639,9 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1594,7 +1692,7 @@ rosrun sentis_tof_m100 sentis_tof_m100_node -tcp_ip 192.168.0.10 -tcp_port 10001
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

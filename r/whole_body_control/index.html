@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -263,8 +313,8 @@
   <div class="distro distro-electric">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -281,13 +331,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">bughunt-boost-thread-resource-error</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-03-23
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-06-12
         </span>
       </td>
     </tr>
@@ -326,11 +376,6 @@
                 <tbody>
                 
                   <tr>
-                    <td><a href="/p/reflexxes_otg/github-poftwaresatent-whole_body_control">reflexxes_otg</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
                     <td><a href="/p/wbc_core/github-poftwaresatent-whole_body_control">wbc_core</a></td>
                     <td>UNKNOWN</td>
                   </tr>
@@ -346,17 +391,17 @@
                   </tr>
                 
                   <tr>
-                    <td><a href="/p/wbc_opspace/github-poftwaresatent-whole_body_control">wbc_opspace</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
                     <td><a href="/p/wbc_pr2_ctrl/github-poftwaresatent-whole_body_control">wbc_pr2_ctrl</a></td>
                     <td>UNKNOWN</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/wbc_urdf/github-poftwaresatent-whole_body_control">wbc_urdf</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/wbc_uta_opspace/github-poftwaresatent-whole_body_control">wbc_uta_opspace</a></td>
                     <td>UNKNOWN</td>
                   </tr>
                 
@@ -374,35 +419,34 @@
 <html><body><div class="rendered-markdown">
 <h1 id="whole-body-control-ros-stack">Whole-Body Control ROS Stack</h1>
 
-<p>The integration of Stanford-WBC in ROS started in late 2009, as part
-of a project at the <a href="http://cs.stanford.edu/groups/manips/">Stanford Robotics and AI Lab</a> which was
-supported by <a href="http://www.willowgarage.com/">Willow Garage</a>. The aim of this project was to
-perform whole-body control in <a href="http://www.willowgarage.com/pages/pr2/overview">PR2</a>, and as a result one of the main
-outcomes has been to open-source the core Stanford-WBC codebase. In
-the meantime, we have added support for the <a href="http://mekabot.com/">Meka Robot</a> at the
-<a href="http://www.me.utexas.edu/%7Ehcrl/">Human-Centered Robotics Group</a> of the University of Texas at
-Austin. The long term objective is to provide an easy to reuse
-framework for creating new compliant whole-body behavior by composing
-existing ones and adding new custom tasks, for any mobile manipulator
-that can be used with torque control.</p>
+<p>The Whole-Body Control framework developed at the <a href="http://cs.stanford.edu/groups/manips/">Stanford Robotics
+and AI Lab</a> provides advanced control for human-centered
+robotics and mobile manipulation.  This project provides a framework
+for developing robot behaviors that use operational-space hierarchical
+task decompositions, based on the work of many contributors over many
+years, under the guidance of and in collaboration with <a href="http://cs.stanford.edu/groups/manips/people/oussama-khatib">Oussama
+Khatib</a>: most notably <a href="http://plaza4.snu.ac.kr/%7Epark73/wiki/index.php5/People">Jaeheung Park</a>, K. C. Chang, Diego Ruspini,
+<a href="http://users.cecs.anu.edu.au/%7Eroy/">Roy Featherstone</a>, Bob Holmberg, <a href="http://cs.stanford.edu/groups/manips/people/francois-conti">Francois Conti</a>, <a href="http://cs.stanford.edu/groups/manips/people/roland-philippsen">Roland
+Philippsen</a> and <a href="http://www.me.utexas.edu/directory/faculty/sentis/luis/">Luis Sentis</a>.</p>
 
-<p>In late 2010 we finalized a first release on PR2 that enables
-compliant control of operational tasks in the end effectors while
-controlling compliant postures in the null-space of the task. In early
-2011 we achieved first results with heuristics to take into account
-motor torque limitations, integrate motion of the mobile base, and
-other PR2-specific characteristics.</p>
+<p>The integration of Stanford-WBC as a PR2-specific plugin in ROS
+started in late 2009, as part of a project at the <a href="http://cs.stanford.edu/groups/manips/">Stanford Robotics
+and AI Lab</a> which was supported by <a href="http://www.willowgarage.com/">Willow Garage</a>. The
+aim of this project was to perform whole-body control in <a href="http://www.willowgarage.com/pages/pr2/overview">PR2</a>: in
+late 2010 we finalized a first release on PR2 that enables compliant
+control of operational tasks in the end effectors while controlling
+compliant postures in the null-space of the task. In early 2011 we
+achieved first results with heuristics to take into account motor
+torque limitations, integrate motion of the mobile base, and other
+PR2-specific characteristics.</p>
 
-<h2 id="contributors">Contributors</h2>
-
-<p>The driving forces behind these developments are Luis Sentis for the
-theoretical foundations and Roland Philippsen for the software. The
-wealth of experience of Oussama Khatib has repeatedly fed into this
-project, especially during its early stages, and Josh Petersen worked
-on many PR2-specific experiments. The project relies on many
-third-party sources and we are grateful for all their contributors who
-produce the high-quality open-source code that allows us to focus on
-our core goals.</p>
+<p>In the meantime, we have added support for the <a href="http://mekabot.com/">Meka Robot</a> at
+the <a href="http://www.me.utexas.edu/%7Ehcrl/">Human-Centered Robotics Group (HCRL)</a> of the University of
+Texas at Austin. The long term objective of HCRL's developments within
+ROS is to provide an easy to reuse framework for creating new
+compliant whole-body behavior by composing existing ones and adding
+new custom tasks, for any mobile manipulator that can be used with
+torque control.</p>
 
 <h1 id="installation">Installation</h1>
 
@@ -425,6 +469,7 @@ our core goals.</p>
 </ul>
 </li>
 </ol>
+
 <h2 id="stack-contents">Stack Contents</h2>
 
 <ul>
@@ -435,12 +480,10 @@ packages decoupled from each other.</p></li>
 library. This core is based on earlier work at Stanford University,
 most notably the TAO dynamics engine, and is kept entirely
 independent of ROS.</p></li>
-<li><p><code>wbc_opspace</code> is a ROS wrapper around the core
-<a href="https://github.com/poftwaresatent/utaustin_wbc_opspace">utaustin_wbc_opspace</a> library, which provides operational space
-utilities that build on top of stanford_wbc and is likewise kept
-ROS-independent. Inspired by preliminary work done at Stanford, it
-has been completely redesigned and rewritten from scratch at the
-University of Texas at Austin.</p></li>
+<li><p><code>wbc_uta_opspace</code> is a ROS wrapper around the operational space
+extensions, developed at UT Austin, to the core Stanford_WBC
+operational space library. It is taken from the ROS-independent code
+base in the <a href="https://github.com/poftwaresatent/utaustin-wbc">UT Austin Whole-Body Control project</a>.</p></li>
 <li><p><code>wbc_urdf</code> contains code for converting rigid body dynamic models
 from <a href="http://www.ros.org/wiki/urdf">URDF</a> descriptions to the representation used by
 stanford_wbc, along with a few other utilities.</p></li>
@@ -450,78 +493,9 @@ that uses the pr2_controller_interface approach).</p></li>
 <li><p><code>wbc_m3_ctrl</code> uses the torque-shared-memory mode provided by Meka to
 control their M3 arm. It implements an <a href="http://www.rtai.org/">RTAI</a> executable and ROS
 bindings in the form of messages and service.</p></li>
-<li><p><code>reflexxes_otg</code> is a library for online generation of
-acceleration-bounded trajectories, developed by <a href="http://www.reflexxes.net/">Reflexxes
-GmbH</a>.  It is used for our current (December 2010)
-development efforts on handling motor torque limitations.  The idea
-is to limit task accelerations, such that the resulting joint
-torques stay within bounds.</p></li>
 </ul>
-<h2 id="some-notes-about-git-subtree">Some Notes About git-subtree</h2>
 
-<p>We've stopped using <code>git-submodule</code> for the <code>wbc_core/src</code> directory
-and have replaced it with an in-tree copy via <a href="https://github.com/apenwarr/git-subtree">git-subtree</a>. This
-should make it possible to merge changes across projects that use the
-upstream <a href="https://github.com/poftwaresatent/stanford_wbc">Stanford WBC</a> codebase. Similarly, the
-<code>wbc_opspace/opspace</code> directory is an in-tree copy of <a href="https://github.com/poftwaresatent/utaustin_wbc_opspace">UT Austin
-WBC</a>.</p>
-
-<p>Here are the instructions for <a href="https://github.com/poftwaresatent/stanford_wbc">Stanford WBC</a>. Adapt the
-URLs and paths when pushing/pulling upstream <a href="https://github.com/poftwaresatent/utaustin_wbc_opspace">UT Autsin
-WBC</a>.</p>
-
-<ul>
-<li><p><strong>Do not mix</strong> commits to <code>wbc_core/src</code> with commits to other
-locations of the <code>whole_body_control</code> stack. Well, this is not a
-super strict requirement, but it avoids confusing spurious
-commits upstream...</p></li>
-<li><p>In order to <strong>pull updates</strong> from upstream, follow these steps:</p></li>
-</ul>
-<ol>
-<li><p>If you don't have it yet, check out (and optionally "install")
- <a href="https://github.com/apenwarr/git-subtree">git-subtree</a>.</p></li>
-<li>
-<p>If you don't yet have the upstream remote in your clone, add it
- like this (adapt the URL to suit your needs, in this example we
- use read-only access):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    git remote add stanford_wbc git://github.com/poftwaresatent/stanford_wbc.git
-</code></pre></div>
-</li>
-<li>
-<p>Fetch the upstream changes and merge them into <code>wbc_core/src</code>
- using <code>git-subtree</code>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    git fetch stanford_wbc
-    git subtree merge -P wbc_core/src stanford_wbc/master
-</code></pre></div>
-<p>Here we assume you have <code>git-subtree</code> properly
- installed. Otherwise, replace "<code>git subtree</code>" with
- "<code>/path/to/git-subtree.sh</code>" in the command above.</p>
-</li>
-</ol>
-<ul>
-<li>In order to <strong>push changes</strong> upstream, follow these steps:</li>
-</ul>
-<ol>
-<li><p>If you don't have it yet, check out (and optionally "install")
- <a href="https://github.com/apenwarr/git-subtree">git-subtree</a></p></li>
-<li>
-<p>If you don't yet have the upstream remote in your clone, add it
- like this (here we'll need write access, so maybe adapt the URL
- to point to a fork):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    git remote add stanford_wbc git@github.com:poftwaresatent/stanford_wbc.git
-</code></pre></div>
-</li>
-<li>
-<p>Use a temporary branch to split out the changes and push them upstream:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    git subtree split -P wbc_core/src -b foo
-    git push stanford_wbc foo:master
-    git branch -D foo
-</code></pre></div>
-<p>Again, this assumes you have properly installed
-<code>git-subtree</code>. Otherwise, say "<code>/path/to/git-subtree.sh</code>" instead.</p>
-</li>
-</ol>
-<h2 id="run-the-pr2-task-/-nullspace-posture-example-in-gazebo">Run the PR2 Task / Nullspace-Posture Example in Gazebo</h2>
+<h1 id="run-the-pr2-task-nullspace-posture-example-in-gazebo">Run the PR2 Task / Nullspace-Posture Example in Gazebo</h1>
 
 <p>After successfully installing ROS and building the
 <code>whole_body_control</code> stack, in particular the <code>wbc_pr2_ctrl</code> package,
@@ -534,48 +508,51 @@ of <strong>dynamically consistent nullspace projection</strong> techniques, whic
 the foundations for the power and expressiveness of the whole-body
 controller.</p>
 
-<p>This example is implemented in the <code>wbc_pr2_ctrl/src/wbc_plugin.cpp</code>
-file. Please note that this implementation is <strong>not intended for
-real-time</strong> execution on the physical PR2: it produces very verbose
-console output and uses a somewhat ad-hoc approach for integrating a
-ROS service server into the plugin to allow modifying goals and gains
-while the controller is running.</p>
+<p>This example is implemented in the
+<code>wbc_pr2_ctrl/src/opspace_servo.cpp</code> file. You can also use that as-is
+for real-time execution on the physical PR2. The <code>opspace_servo</code> uses
+the freshly designed and implemented <strong>runtime configuration and
+parameter reflection</strong> capabilities of the UT Austin opspace library,
+which allows changing the tasks and skills at startup time using a
+YAML file, and lets us modify goals, gains, and other parameters while
+the controller is running. These are all quite nifty features which we
+are excited to share with the community.</p>
 
-<ul>
-<li>
-<p>terminal 1:</p>
-
-<ul>
-<li>roscd wbc_pr2_ctrl/launch</li>
-<li>roslaunch pr2_gazebo.launch</li>
-</ul>
-</li>
-<li>
-<p>terminal 2:</p>
-
-<ul>
-<li>roscd wbc_pr2_ctrl/launch</li>
-<li>roslaunch pr2_wbc_plugin.launch</li>
-</ul>
-</li>
-<li>
-<p>terminal 3:</p>
-
-<ul>
-<li>roscd wbc_pr2_ctrl/scripts</li>
-<li>./task_posture_gui.py</li>
-<li>Click "initialize"</li>
-<li>Change some values</li>
-<li>Click on the "Set FOO_BAR" buttons</li>
-<li>See what happens, pause Gazebo to read the debug output.</li>
-</ul>
-</li>
-</ul>
+<p><strong>1. Launch PR2 in Gazebo</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">roscd wbc_pr2_ctrl/launch
+roslaunch pr2_gazebo.launch
+</code></pre></div>
+<p><strong>2. Launch the WBC pump plugin</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">roscd wbc_pr2_ctrl/launch
+roslaunch pr2_pump_plugin.launch
+</code></pre></div>
+<p><strong>3. Launch the WBC opspace controller</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">roscd wbc_pr2_ctrl/launch
+roslaunch pr2_opspace.launch
+</code></pre></div>
+<p><strong>4. List services and messages</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">rostopic list | fgrep opspace
+rosservice list | fgrep opspace
+</code></pre></div>
+<p><strong>5. Get and set end-effector trajectory goal using service</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">rosservice call /opspace_servo/get_param '{ com_type: task, com_name: eepos, param_name: trjgoal }'
+rosservice call /opspace_servo/set_param '{ com_type: task, com_name: eepos, param: { name: trjgoal, type: 4, realval: [0.6, 0.1, 1.0] } }'
+rosservice call /opspace_servo/set_param '{ com_type: task, com_name: eepos, param: { name: trjgoal, type: 4, realval: [0.7, -0.1, 0.8] } }'
+</code></pre></div>
+<p><strong>6. Set end-effector trajectory goal using message (param channel)</strong></p>
+<div class="highlight"><pre><code class="language-" data-lang="">rosservice call /opspace_servo/open_channel '{ com_type: task, com_name: eepos, param_name: trjgoal }'
+(note the channel_id in the reply, it will probably be 0)
+rostopic pub -1 /opspace_servo/vector_channel wbc_msgs/VectorChannel '{ channel_id: 0, value: [0.5, -0.1, 0.8] }'
+rostopic pub -1 /opspace_servo/vector_channel wbc_msgs/VectorChannel '{ channel_id: 0, value: [0.5, 0.1, 0.8] }'
+</code></pre></div>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -610,7 +587,7 @@ while the controller is running.</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

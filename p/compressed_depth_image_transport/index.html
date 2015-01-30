@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,7 +146,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -154,442 +196,162 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"> compressed_depth_image_transport</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">compressed_image_transport</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">theora_image_transport</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/compressed_depth_image_transport/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-perception-image_transport_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-perception-image_transport_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"> compressed_depth_image_transport</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">compressed_image_transport</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">theora_image_transport</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/compressed_depth_image_transport/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/hydro-devel/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-perception-image_transport_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-perception-image_transport_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"> compressed_depth_image_transport</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">compressed_image_transport</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">theora_image_transport</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/compressed_depth_image_transport/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/groovy-devel/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-perception-image_transport_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-perception-image_transport_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"> compressed_depth_image_transport</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">compressed_image_transport</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libtheora/github-ros-perception-image_transport_plugins">libtheora</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">theora_image_transport</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/compressed_depth_image_transport/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/fuerte-devel/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-perception-image_transport_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-perception-image_transport_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
 
-  <div class="distro distro-indigo">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+compressed_depth_image_transport
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">
+
+compressed_image_transport
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">
+
+image_transport_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">
+
+theora_image_transport
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-perception-image_transport_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-perception-image_transport_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
-    depth images (raw, floating-point) using PNG compression.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -602,7 +364,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.9.1</td>
+                <td>1.9.3</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -628,7 +390,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -650,7 +412,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-07-18
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-01-20
         </span>
       </td>
     </tr>
@@ -658,7 +420,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -675,8 +440,26 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
+    depth images (raw, floating-point) using PNG compression.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -695,17 +478,6 @@
               <ul class="list-unstyled">
                 
                   <li>Julius Kammerl</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
                 
               </ul>
             
@@ -734,7 +506,1558 @@
           <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
           <div class="panel-body">
             
-              <em>No CHANGELOG found.</em>
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-compressed_depth_image_transport">Changelog for package compressed_depth_image_transport</h1>
+
+<h2 id="1-9-3-2016-01-17">1.9.3 (2016-01-17)</h2>
+
+<ul>
+<li>  Refactor the codec into its own .h and .cpp.</li>
+<li>  remove useless tf dependencies</li>
+<li>  Contributors: Mac Mason, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-9-2-2015-04-25">1.9.2 (2015-04-25)</h2>
+
+<ul>
+<li>  use compression parameters for both depths fixes
+<a href="https://github.com/ros-perception/image_transport_plugins/issues/12">#12</a>
+</li>
+<li>  get code to compile with OpenCV3</li>
+<li>  Contributors: Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-9-1-2014-07-18">1.9.1 (2014-07-18)</h2>
+
+<h2 id="1-9-0-2014-05-16">1.9.0 (2014-05-16)</h2>
+
+<h2 id="1-8-21-2013-06-27">1.8.21 (2013-06-27)</h2>
+
+<ul>
+<li>  maintainer: david gossow</li>
+<li>  Contributors: David Gossow</li>
+</ul>
+
+<h2 id="1-8-20-2013-03-18">1.8.20 (2013-03-18)</h2>
+
+<ul>
+<li>  1.8.19 -&gt; 1.8.20</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-19-2013-02-24">1.8.19 (2013-02-24)</h2>
+
+<ul>
+<li>  1.8.18 -&gt; 1.8.19</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-18-2013-02-07-17-59">1.8.18 (2013-02-07 17:59)</h2>
+
+<ul>
+<li>  1.8.17 -&gt; 1.8.18</li>
+<li>  fixing input format checks (enabling rgba, bgra) + minor fixes</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-17-2013-01-18">1.8.17 (2013-01-18)</h2>
+
+<ul>
+<li>  1.8.16 -&gt; 1.8.17</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-16-2013-01-17">1.8.16 (2013-01-17)</h2>
+
+<ul>
+<li>  1.8.15 -&gt; 1.8.16</li>
+<li>  use the pluginlib script to remove some runtime warnings</li>
+<li>  Contributors: Julius Kammerl, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-8-15-2012-12-28-20-11">1.8.15 (2012-12-28 20:11)</h2>
+
+<h2 id="1-8-14-2012-12-28-20-02">1.8.14 (2012-12-28 20:02)</h2>
+
+<h2 id="1-8-13-2012-12-28-19-06">1.8.13 (2012-12-28 19:06)</h2>
+
+<ul>
+<li>  fix the bad exports</li>
+<li>  make sure the plugins are visible by image_transport</li>
+<li>  added license headers to various cpp and h files</li>
+<li>  Contributors: Aaron Blasdel, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-8-12-2012-12-19-19-30">1.8.12 (2012-12-19 19:30)</h2>
+
+<ul>
+<li>  fix downstream stuff in cmake</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-11-2012-12-19-17-17">1.8.11 (2012-12-19 17:17)</h2>
+
+<ul>
+<li>  fix cmake order</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-10-2012-12-19-17-03">1.8.10 (2012-12-19 17:03)</h2>
+
+<ul>
+<li>  fix dyn reconf</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-9-2012-12-19-00-26">1.8.9 (2012-12-19 00:26)</h2>
+
+<ul>
+<li>  switching to verion 1.8.9</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-8-2012-12-17">1.8.8 (2012-12-17)</h2>
+
+<ul>
+<li>  adding build_deb on message_generation &amp; mrun_deb on
+message_runtime</li>
+<li>  Updated package.xml for new buildtool_depend tag for catkin
+requirement</li>
+<li>  Contributors: Julius Kammerl, mirzashah</li>
+</ul>
+
+<h2 id="1-8-7-2012-12-10-15-29">1.8.7 (2012-12-10 15:29)</h2>
+
+<ul>
+<li>  adding missing tf build dependency</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-6-2012-12-10-15-08">1.8.6 (2012-12-10 15:08)</h2>
+
+<ul>
+<li>  switching to version 1.8.6</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-5-2012-12-09">1.8.5 (2012-12-09)</h2>
+
+<ul>
+<li>  adding missing build debs</li>
+<li>  added class_loader_hide_library_symbols macros to CMakeList</li>
+<li>  switching to 1.8.5</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-4-2012-11-30">1.8.4 (2012-11-30)</h2>
+
+<ul>
+<li>  switching to version 1.8.4</li>
+<li>  adding plugin.xml exports for pluginlib</li>
+<li>  catkinizing theora_image_transport</li>
+<li>  catkinizing compressed_depth_image_transport</li>
+<li>  github migration from code.ros.org (r40053)</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#kinetic">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#kinetic">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#kinetic">image_transport</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#kinetic">image_transport_plugins</a></td>
+                      <td><a href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">github-ros-perception-image_transport_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport//plugin_description.xml" target="_blank">rviz</a></li>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport//compressed_depth_plugins.xml" target="_blank">image_transport</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+compressed_depth_image_transport
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">
+
+compressed_image_transport
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">
+
+image_transport_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">
+
+theora_image_transport
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-perception-image_transport_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-perception-image_transport_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="jade-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.9.3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros-perception/image_transport_plugins.git">https://github.com/ros-perception/image_transport_plugins.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-01-20
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
+    depth images (raw, floating-point) using PNG compression.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>David Gossow</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Julius Kammerl</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-compressed_depth_image_transport">Changelog for package compressed_depth_image_transport</h1>
+
+<h2 id="1-9-3-2016-01-17">1.9.3 (2016-01-17)</h2>
+
+<ul>
+<li>  Refactor the codec into its own .h and .cpp.</li>
+<li>  remove useless tf dependencies</li>
+<li>  Contributors: Mac Mason, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-9-2-2015-04-25">1.9.2 (2015-04-25)</h2>
+
+<ul>
+<li>  use compression parameters for both depths fixes
+<a href="https://github.com/ros-perception/image_transport_plugins/issues/12">#12</a>
+</li>
+<li>  get code to compile with OpenCV3</li>
+<li>  Contributors: Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-9-1-2014-07-18">1.9.1 (2014-07-18)</h2>
+
+<h2 id="1-9-0-2014-05-16">1.9.0 (2014-05-16)</h2>
+
+<h2 id="1-8-21-2013-06-27">1.8.21 (2013-06-27)</h2>
+
+<ul>
+<li>  maintainer: david gossow</li>
+<li>  Contributors: David Gossow</li>
+</ul>
+
+<h2 id="1-8-20-2013-03-18">1.8.20 (2013-03-18)</h2>
+
+<ul>
+<li>  1.8.19 -&gt; 1.8.20</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-19-2013-02-24">1.8.19 (2013-02-24)</h2>
+
+<ul>
+<li>  1.8.18 -&gt; 1.8.19</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-18-2013-02-07-17-59">1.8.18 (2013-02-07 17:59)</h2>
+
+<ul>
+<li>  1.8.17 -&gt; 1.8.18</li>
+<li>  fixing input format checks (enabling rgba, bgra) + minor fixes</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-17-2013-01-18">1.8.17 (2013-01-18)</h2>
+
+<ul>
+<li>  1.8.16 -&gt; 1.8.17</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-16-2013-01-17">1.8.16 (2013-01-17)</h2>
+
+<ul>
+<li>  1.8.15 -&gt; 1.8.16</li>
+<li>  use the pluginlib script to remove some runtime warnings</li>
+<li>  Contributors: Julius Kammerl, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-8-15-2012-12-28-20-11">1.8.15 (2012-12-28 20:11)</h2>
+
+<h2 id="1-8-14-2012-12-28-20-02">1.8.14 (2012-12-28 20:02)</h2>
+
+<h2 id="1-8-13-2012-12-28-19-06">1.8.13 (2012-12-28 19:06)</h2>
+
+<ul>
+<li>  fix the bad exports</li>
+<li>  make sure the plugins are visible by image_transport</li>
+<li>  added license headers to various cpp and h files</li>
+<li>  Contributors: Aaron Blasdel, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-8-12-2012-12-19-19-30">1.8.12 (2012-12-19 19:30)</h2>
+
+<ul>
+<li>  fix downstream stuff in cmake</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-11-2012-12-19-17-17">1.8.11 (2012-12-19 17:17)</h2>
+
+<ul>
+<li>  fix cmake order</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-10-2012-12-19-17-03">1.8.10 (2012-12-19 17:03)</h2>
+
+<ul>
+<li>  fix dyn reconf</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-9-2012-12-19-00-26">1.8.9 (2012-12-19 00:26)</h2>
+
+<ul>
+<li>  switching to verion 1.8.9</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-8-2012-12-17">1.8.8 (2012-12-17)</h2>
+
+<ul>
+<li>  adding build_deb on message_generation &amp; mrun_deb on
+message_runtime</li>
+<li>  Updated package.xml for new buildtool_depend tag for catkin
+requirement</li>
+<li>  Contributors: Julius Kammerl, mirzashah</li>
+</ul>
+
+<h2 id="1-8-7-2012-12-10-15-29">1.8.7 (2012-12-10 15:29)</h2>
+
+<ul>
+<li>  adding missing tf build dependency</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-6-2012-12-10-15-08">1.8.6 (2012-12-10 15:08)</h2>
+
+<ul>
+<li>  switching to version 1.8.6</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-5-2012-12-09">1.8.5 (2012-12-09)</h2>
+
+<ul>
+<li>  adding missing build debs</li>
+<li>  added class_loader_hide_library_symbols macros to CMakeList</li>
+<li>  switching to 1.8.5</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-4-2012-11-30">1.8.4 (2012-11-30)</h2>
+
+<ul>
+<li>  switching to version 1.8.4</li>
+<li>  adding plugin.xml exports for pluginlib</li>
+<li>  catkinizing theora_image_transport</li>
+<li>  catkinizing compressed_depth_image_transport</li>
+<li>  github migration from code.ros.org (r40053)</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#jade">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#jade">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#jade">image_transport</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#jade">image_transport_plugins</a></td>
+                      <td><a href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">github-ros-perception-image_transport_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport//plugin_description.xml" target="_blank">rviz</a></li>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport//compressed_depth_plugins.xml" target="_blank">image_transport</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+compressed_depth_image_transport
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">
+
+compressed_image_transport
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">
+
+image_transport_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">
+
+theora_image_transport
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-perception-image_transport_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-perception-image_transport_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.9.3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros-perception/image_transport_plugins.git">https://github.com/ros-perception/image_transport_plugins.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-01-20
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
+    depth images (raw, floating-point) using PNG compression.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>David Gossow</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Julius Kammerl</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-compressed_depth_image_transport">Changelog for package compressed_depth_image_transport</h1>
+
+<h2 id="1-9-3-2016-01-17">1.9.3 (2016-01-17)</h2>
+
+<ul>
+<li>  Refactor the codec into its own .h and .cpp.</li>
+<li>  remove useless tf dependencies</li>
+<li>  Contributors: Mac Mason, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-9-2-2015-04-25">1.9.2 (2015-04-25)</h2>
+
+<ul>
+<li>  use compression parameters for both depths fixes
+<a href="https://github.com/ros-perception/image_transport_plugins/issues/12">#12</a>
+</li>
+<li>  get code to compile with OpenCV3</li>
+<li>  Contributors: Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-9-1-2014-07-18">1.9.1 (2014-07-18)</h2>
+
+<h2 id="1-9-0-2014-05-16">1.9.0 (2014-05-16)</h2>
+
+<h2 id="1-8-21-2013-06-27">1.8.21 (2013-06-27)</h2>
+
+<ul>
+<li>  maintainer: david gossow</li>
+<li>  Contributors: David Gossow</li>
+</ul>
+
+<h2 id="1-8-20-2013-03-18">1.8.20 (2013-03-18)</h2>
+
+<ul>
+<li>  1.8.19 -&gt; 1.8.20</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-19-2013-02-24">1.8.19 (2013-02-24)</h2>
+
+<ul>
+<li>  1.8.18 -&gt; 1.8.19</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-18-2013-02-07-17-59">1.8.18 (2013-02-07 17:59)</h2>
+
+<ul>
+<li>  1.8.17 -&gt; 1.8.18</li>
+<li>  fixing input format checks (enabling rgba, bgra) + minor fixes</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-17-2013-01-18">1.8.17 (2013-01-18)</h2>
+
+<ul>
+<li>  1.8.16 -&gt; 1.8.17</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-16-2013-01-17">1.8.16 (2013-01-17)</h2>
+
+<ul>
+<li>  1.8.15 -&gt; 1.8.16</li>
+<li>  use the pluginlib script to remove some runtime warnings</li>
+<li>  Contributors: Julius Kammerl, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-8-15-2012-12-28-20-11">1.8.15 (2012-12-28 20:11)</h2>
+
+<h2 id="1-8-14-2012-12-28-20-02">1.8.14 (2012-12-28 20:02)</h2>
+
+<h2 id="1-8-13-2012-12-28-19-06">1.8.13 (2012-12-28 19:06)</h2>
+
+<ul>
+<li>  fix the bad exports</li>
+<li>  make sure the plugins are visible by image_transport</li>
+<li>  added license headers to various cpp and h files</li>
+<li>  Contributors: Aaron Blasdel, Vincent Rabaud</li>
+</ul>
+
+<h2 id="1-8-12-2012-12-19-19-30">1.8.12 (2012-12-19 19:30)</h2>
+
+<ul>
+<li>  fix downstream stuff in cmake</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-11-2012-12-19-17-17">1.8.11 (2012-12-19 17:17)</h2>
+
+<ul>
+<li>  fix cmake order</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-10-2012-12-19-17-03">1.8.10 (2012-12-19 17:03)</h2>
+
+<ul>
+<li>  fix dyn reconf</li>
+<li>  Contributors: Dirk Thomas</li>
+</ul>
+
+<h2 id="1-8-9-2012-12-19-00-26">1.8.9 (2012-12-19 00:26)</h2>
+
+<ul>
+<li>  switching to verion 1.8.9</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-8-2012-12-17">1.8.8 (2012-12-17)</h2>
+
+<ul>
+<li>  adding build_deb on message_generation &amp; mrun_deb on
+message_runtime</li>
+<li>  Updated package.xml for new buildtool_depend tag for catkin
+requirement</li>
+<li>  Contributors: Julius Kammerl, mirzashah</li>
+</ul>
+
+<h2 id="1-8-7-2012-12-10-15-29">1.8.7 (2012-12-10 15:29)</h2>
+
+<ul>
+<li>  adding missing tf build dependency</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-6-2012-12-10-15-08">1.8.6 (2012-12-10 15:08)</h2>
+
+<ul>
+<li>  switching to version 1.8.6</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-5-2012-12-09">1.8.5 (2012-12-09)</h2>
+
+<ul>
+<li>  adding missing build debs</li>
+<li>  added class_loader_hide_library_symbols macros to CMakeList</li>
+<li>  switching to 1.8.5</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+
+<h2 id="1-8-4-2012-11-30">1.8.4 (2012-11-30)</h2>
+
+<ul>
+<li>  switching to version 1.8.4</li>
+<li>  adding plugin.xml exports for pluginlib</li>
+<li>  catkinizing theora_image_transport</li>
+<li>  catkinizing compressed_depth_image_transport</li>
+<li>  github migration from code.ros.org (r40053)</li>
+<li>  Contributors: Julius Kammerl</li>
+</ul>
+</div></body></html>
+
             
           </div>
         </div>
@@ -748,7 +2071,8 @@
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -760,33 +2084,134 @@
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#indigo">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#indigo">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#indigo">image_transport</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#indigo">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#indigo">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#indigo">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#indigo">tf</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#indigo">image_transport_plugins</a></td>
+                      <td><a href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">github-ros-perception-image_transport_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -794,12 +2219,12 @@
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -808,9 +2233,9 @@
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -819,9 +2244,9 @@
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -830,28 +2255,41 @@
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport//plugin_description.xml" target="_blank">rviz</a></li>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport//compressed_depth_plugins.xml" target="_blank">image_transport</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/indigo-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -861,6 +2299,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+compressed_depth_image_transport
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">
+
+compressed_image_transport
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">
+
+image_transport_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">
+
+theora_image_transport
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-perception-image_transport_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-perception-image_transport_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/hydro-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -873,31 +2422,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
-    depth images (raw, floating-point) using PNG compression.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -936,7 +2484,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -966,7 +2514,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -983,8 +2534,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
+    depth images (raw, floating-point) using PNG compression.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1003,17 +2572,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Julius Kammerl</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
                 
               </ul>
             
@@ -1056,7 +2614,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1068,33 +2627,154 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#hydro">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#hydro">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#hydro">tf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#hydro">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#hydro">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#hydro">tf</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#hydro">image_transport_plugins</a></td>
+                      <td><a href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">github-ros-perception-image_transport_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1102,12 +2782,12 @@ $(function() {
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1116,9 +2796,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1127,9 +2807,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1138,28 +2818,41 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/hydro-devel/compressed_depth_image_transport//plugin_description.xml" target="_blank">rviz</a></li>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/hydro-devel/compressed_depth_image_transport//compressed_depth_plugins.xml" target="_blank">image_transport</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/hydro-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1169,6 +2862,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+compressed_depth_image_transport
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">
+
+compressed_image_transport
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins">
+
+image_transport_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">
+
+theora_image_transport
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-perception-image_transport_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-perception-image_transport_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/groovy-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1181,31 +2985,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
-    depth images (raw, floating-point) using PNG compression.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1244,7 +3047,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1274,7 +3077,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1291,8 +3097,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Compressed_depth_image_transport provides a plugin to image_transport for transparently sending
+    depth images (raw, floating-point) using PNG compression.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1311,17 +3135,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Julius Kammerl</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/image_transport_plugins">Website</a></li>
                 
               </ul>
             
@@ -1364,7 +3177,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1376,33 +3190,179 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#groovy">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#groovy">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#groovy">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#groovy">tf</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#groovy">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#groovy">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#groovy">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#groovy">tf</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#groovy">image_transport_plugins</a></td>
+                      <td><a href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">github-ros-perception-image_transport_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/image_transport_plugins/github-ros-perception-image_transport_plugins#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pr2_surrogate/github-ros-interactive-manipulation-pr2_surrogate#groovy">pr2_surrogate</a></td>
+                      <td><a href="/r/pr2_surrogate/github-ros-interactive-manipulation-pr2_surrogate">github-ros-interactive-manipulation-pr2_surrogate</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_surrogate/github-ros-interactive-manipulation-pr2_surrogate#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><a href="/p/pr2_surrogate/github-PR2-pr2_surrogate#groovy">pr2_surrogate</a></td>
+                      <td><a href="/r/pr2_surrogate/github-PR2-pr2_surrogate">github-PR2-pr2_surrogate</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_surrogate/github-PR2-pr2_surrogate#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1410,12 +3370,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1424,9 +3384,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1435,9 +3395,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1446,28 +3406,41 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/groovy-devel/compressed_depth_image_transport//plugin_description.xml" target="_blank">rviz</a></li>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/groovy-devel/compressed_depth_image_transport//compressed_depth_plugins.xml" target="_blank">image_transport</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/groovy-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1477,6 +3450,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/compressed_depth_image_transport">compressed_depth_image_transport</a> <small>package from <a style="text-decoration:none" href="/r/image_transport_plugins/github-ros-perception-image_transport_plugins">image_transport_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+compressed_depth_image_transport
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/compressed_image_transport/github-ros-perception-image_transport_plugins">
+
+compressed_image_transport
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libtheora/github-ros-perception-image_transport_plugins">
+
+libtheora
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/theora_image_transport/github-ros-perception-image_transport_plugins">
+
+theora_image_transport
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/compressed_depth_image_transport"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-perception-image_transport_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-perception-image_transport_plugins" role="menuitem" tabindex="-1" href="/p/compressed_depth_image_transport/github-ros-perception-image_transport_plugins" data="github-ros-perception-image_transport_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-perception-image_transport_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/fuerte-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1489,33 +3573,30 @@ $(function() {
     
     
     
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     compressed_depth_image_transport provides a plugin to image_transport for transparently sending
-     depth images (raw, floating-point) using PNG compression.
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1554,7 +3635,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1576,7 +3657,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-02-07
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-02-08
         </span>
       </td>
     </tr>
@@ -1584,7 +3665,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1601,8 +3685,28 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     compressed_depth_image_transport provides a plugin to image_transport for transparently sending
+     depth images (raw, floating-point) using PNG compression.
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/compressed_depth_image_transport">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1617,17 +3721,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Julius Kammerl</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/compressed_depth_image_transport">Website</a></li>
                 
               </ul>
             
@@ -1670,7 +3763,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/compressed_depth_image_transport/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1682,31 +3776,111 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#fuerte">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#fuerte">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#fuerte">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#fuerte">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#fuerte">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#fuerte">dynamic_reconfigure</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1714,12 +3888,12 @@ $(function() {
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1728,9 +3902,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1739,9 +3913,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1750,28 +3924,39 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-perception/image_transport_plugins/tree/fuerte-devel/compressed_depth_image_transport//compressed_depth_plugins.xml" target="_blank">image_transport</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/compressed_depth_image_transport/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-perception/image_transport_plugins/tree/fuerte-devel/compressed_depth_image_transport"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:compressed_depth_image_transport/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/compressed_depth_image_transport?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=compressed_depth_image_transport&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1815,7 +4000,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

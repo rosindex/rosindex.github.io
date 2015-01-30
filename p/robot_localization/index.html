@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,383 +196,138 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> robot_localization</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/jade/api/robot_localization/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/robot_localization" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-jade">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-cra-ros-pkg-robot_localization
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-cra-ros-pkg-robot_localization
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> robot_localization</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/robot_localization/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/robot_localization" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-cra-ros-pkg-robot_localization
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-cra-ros-pkg-robot_localization
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> robot_localization</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/robot_localization/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/robot_localization" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-cra-ros-pkg-robot_localization
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-cra-ros-pkg-robot_localization
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> robot_localization</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/robot_localization/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/robot_localization" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-cra-ros-pkg-robot_localization
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-cra-ros-pkg-robot_localization
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
+
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> robot_localization
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-cra-ros-pkg-robot_localization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-cra-ros-pkg-robot_localization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/robot_localization?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#jade-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">12</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">16</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#jade-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-primary">4</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="jade-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -543,7 +340,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>2.1.7</td>
+                <td>2.2.3</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -569,7 +366,847 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/cra-ros-pkg/robot_localization.git">https://github.com/cra-ros-pkg/robot_localization.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">kinetic-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-19
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Tom Moore</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Tom Moore</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="robot_localization">robot_localization</h1>
+
+<p>robot_localization is a package of nonlinear state estimation nodes. The package was developed by Charles River Analytics, Inc.</p>
+
+<p>Please see documentation here: <a href="http://wiki.ros.org/robot_localization">http://wiki.ros.org/robot_localization</a></p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-robot_localization">Changelog for package robot_localization</h1>
+
+<h2 id="2-2-3-2016-04-24">2.2.3 (2016-04-24)</h2>
+
+<ul>
+<li>  Cleaning up callback data structure and callbacks and updating
+doxygen comments in headers</li>
+<li>  Removing MessageFilters</li>
+<li>  Removing deprecated parameters</li>
+<li>  Adding the ability to handle GPS offsets from the vehicle's origin</li>
+<li>  Cleaning up navsat_transform.h</li>
+<li>  Making variables in navsat_transform conform to ROS coding
+standards</li>
+</ul>
+
+<h2 id="2-2-2-2016-02-04">2.2.2 (2016-02-04)</h2>
+
+<ul>
+<li>  Updating trig functions to use sincos for efficiency</li>
+<li>  Updating licensing information and adding Eigen MPL-only flag</li>
+<li>  Added state to imu frame transformation</li>
+<li>  Using state orientation if imu orientation is missing</li>
+<li>  Manually adding second spin for odometry and IMU data that is passed
+to message filters</li>
+<li>  Reducing delay between measurement reception and filter output</li>
+<li>  Zero altitute in intital transform too, when zero altitude param is
+set</li>
+<li>  Fixing regression with conversion back to GPS coordinates</li>
+<li>  Switched cropping of orientation data in inovationSubset with
+mahalanobis check to prevent excluding measurements with
+orientations bigger/smaller than </li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/GPS Integration" target="_blank">GPS Integration</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Migration from robot_pose_ekf" target="_blank">Migration from robot_pose_ekf</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Preparing Your Sensor Data" target="_blank">Preparing Your Sensor Data</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Sensor Configuration" target="_blank">Sensor Configuration</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#kinetic">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslint#kinetic-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslint" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslint#kinetic">roslint</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#kinetic-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#kinetic">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_msgs#kinetic">diagnostic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_updater#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_updater" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_updater#kinetic">diagnostic_updater</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geographic_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geographic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geographic_msgs#kinetic">geographic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#kinetic">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_filters#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_filters" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_filters#kinetic">message_filters</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#kinetic">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#kinetic">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#kinetic">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#kinetic">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2#kinetic">tf2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_geometry_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_geometry_msgs#kinetic">tf2_geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_ros#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_ros#kinetic">tf2_ros</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/eigen">eigen</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/./launch/navsat_transform_template.launch" target="_blank">launch/navsat_transform_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for navsat_transform_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/./srv/SetDatum.srv" target="_blank">srv/SetDatum.srv</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/kinetic-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/robot_localization?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> robot_localization
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-cra-ros-pkg-robot_localization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-cra-ros-pkg-robot_localization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/robot_localization?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">16</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-primary">4</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="jade-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>2.2.3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
             
             
             
@@ -591,7 +1228,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-05
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-19
         </span>
       </td>
     </tr>
@@ -610,7 +1247,7 @@
       <td class="text-right"><b>Released</b></td>
       <td>
         
-          <span class="label label-default">UNRELEASED
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
         </span>
       </td>
     </tr>
@@ -619,8 +1256,23 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -639,17 +1291,6 @@
               <ul class="list-unstyled">
                 
                   <li>Tom Moore</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
                 
               </ul>
             
@@ -687,64 +1328,35 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-robot_localization">Changelog for package robot_localization</h1>
 
-<h2 id="2.1.7-(2015-01-05)">2.1.7 (2015-01-05)</h2>
+<h2 id="2-2-3-2016-04-24">2.2.3 (2016-04-24)</h2>
 
 <ul>
-<li>  Added some checks to eliminate unnecessary callbacks</li>
-<li>  Updated launch file templates</li>
-<li>  Added measurement outlier rejection</li>
-<li>  Added failure callbacks for tf message filters</li>
-<li>  Added optional broadcast of world_frame-&gt;utm transform for
-navsat_transform_node</li>
-<li>  Bug fixes for differential mode and handling of Z acceleration in 2D
-mode</li>
+<li>  Cleaning up callback data structure and callbacks and updating
+doxygen comments in headers</li>
+<li>  Removing MessageFilters</li>
+<li>  Removing deprecated parameters</li>
+<li>  Adding the ability to handle GPS offsets from the vehicle's origin</li>
+<li>  Cleaning up navsat_transform.h</li>
+<li>  Making variables in navsat_transform conform to ROS coding
+standards</li>
 </ul>
-<h2 id="2.1.6-(2014-11-06)">2.1.6 (2014-11-06)</h2>
+
+<h2 id="2-2-2-2016-02-04">2.2.2 (2016-02-04)</h2>
 
 <ul>
-<li>  Added unscented Kalman filter (UKF) localization node</li>
-<li>  Fixed map-&gt;odom tf calculation</li>
-<li>  Acceleration data from IMUs is now used in computing the state
-estimate</li>
-<li>  Added 2D mode</li>
-</ul>
-<h2 id="2.1.5-(2014-10-07)">2.1.5 (2014-10-07)</h2>
-
-<ul>
-<li>  Changed initial estimate error covariance to be much smaller</li>
-<li>  Fixed some debug output</li>
-<li>  Added test suite</li>
-<li>  Better compliance with REP-105</li>
-<li>  Fixed differential measurement handling</li>
-<li>  Implemented message filters</li>
-<li>  Added navsat_transform_node</li>
-</ul>
-<h2 id="2.1.4-(2014-08-22)">2.1.4 (2014-08-22)</h2>
-
-<ul>
-<li>  Adding utm_transform_node to install targets</li>
-</ul>
-<h2 id="2.1.3-(2014-06-22)">2.1.3 (2014-06-22)</h2>
-
-<ul>
-<li>  Some changes to ease GPS integration</li>
-<li>  Addition of differential integration of pose data</li>
-<li>  Some documentation cleanup</li>
-<li>  Added UTM transform node and launch file</li>
-<li>  Bug fixes</li>
-</ul>
-<h2 id="2.1.2-(2014-04-11)">2.1.2 (2014-04-11)</h2>
-
-<ul>
-<li>  Updated covariance correction formulation to "Joseph form" to
-improve filter stability.</li>
-<li>  Implemented new versioning scheme.</li>
-</ul>
-<h2 id="2.1.1-(2014-04-11)">2.1.1 (2014-04-11)</h2>
-
-<ul>
-<li>  Added cmake_modules dependency for Eigen support, and added include
-to silence boost::signals warning from tf include</li>
+<li>  Updating trig functions to use sincos for efficiency</li>
+<li>  Updating licensing information and adding Eigen MPL-only flag</li>
+<li>  Added state to imu frame transformation</li>
+<li>  Using state orientation if imu orientation is missing</li>
+<li>  Manually adding second spin for odometry and IMU data that is passed
+to message filters</li>
+<li>  Reducing delay between measurement reception and filter output</li>
+<li>  Zero altitute in intital transform too, when zero altitude param is
+set</li>
+<li>  Fixing regression with conversion back to GPS coordinates</li>
+<li>  Switched cropping of orientation data in inovationSubset with
+mahalanobis check to prevent excluding measurements with
+orientations bigger/smaller than </li>
 </ul>
 </div></body></html>
 
@@ -761,7 +1373,21 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/GPS Integration" target="_blank">GPS Integration</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Migration from robot_pose_ekf" target="_blank">Migration from robot_pose_ekf</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Preparing Your Sensor Data" target="_blank">Preparing Your Sensor Data</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Sensor Configuration" target="_blank">Sensor Configuration</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -773,49 +1399,387 @@ to silence boost::signals warning from tf include</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="jade-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#jade">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslint#jade-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslint" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslint#jade">roslint</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#jade-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#jade">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_msgs#jade">diagnostic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_updater#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_updater" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_updater#jade">diagnostic_updater</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geographic_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geographic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geographic_msgs#jade">geographic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#jade">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_filters#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_filters" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_filters#jade">message_filters</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#jade">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#jade">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#jade">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#jade">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2#jade">tf2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_geometry_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_geometry_msgs#jade">tf2_geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_ros#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_ros#jade">tf2_ros</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/eigen">eigen</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#jade">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#jade">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#jade">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nav_msgs#jade">nav_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#jade">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#jade">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_filters#jade">message_filters</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cmake_modules#jade">cmake_modules</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/eigen#jade">eigen</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gps_common#jade">gps_common</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#jade">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#jade">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/grizzly_navigation/github-g-grizzly#jade">grizzly_navigation</a></td>
+                      <td><a href="/r/grizzly/github-g-grizzly">github-g-grizzly</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/grizzly_navigation/github-g-grizzly#jade-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -823,20 +1787,53 @@ to silence boost::signals warning from tf include</li>
   <div class="tab-pane" id="jade-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/navsat_transform.launch" target="_blank">launch/navsat_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/utm_transform.launch" target="_blank">launch/utm_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/navsat_transform_template.launch" target="_blank">launch/navsat_transform_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for navsat_transform_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -845,9 +1842,9 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -856,11 +1853,15 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/./srv/SetDatum.srv" target="_blank">srv/SetDatum.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -869,28 +1870,35 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/jade-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/robot_localization?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -900,6 +1908,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> robot_localization
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-cra-ros-pkg-robot_localization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-cra-ros-pkg-robot_localization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/robot_localization?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -912,28 +2007,30 @@ $(function() {
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">12</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">16</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-primary">4</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -946,7 +2043,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>2.1.7</td>
+                <td>2.2.3</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -972,7 +2069,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -994,7 +2091,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-05
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-19
         </span>
       </td>
     </tr>
@@ -1022,8 +2119,23 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1042,17 +2154,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Tom Moore</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
                 
               </ul>
             
@@ -1090,64 +2191,35 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-robot_localization">Changelog for package robot_localization</h1>
 
-<h2 id="2.1.7-(2015-01-05)">2.1.7 (2015-01-05)</h2>
+<h2 id="2-2-3-2016-04-24">2.2.3 (2016-04-24)</h2>
 
 <ul>
-<li>  Added some checks to eliminate unnecessary callbacks</li>
-<li>  Updated launch file templates</li>
-<li>  Added measurement outlier rejection</li>
-<li>  Added failure callbacks for tf message filters</li>
-<li>  Added optional broadcast of world_frame-&gt;utm transform for
-navsat_transform_node</li>
-<li>  Bug fixes for differential mode and handling of Z acceleration in 2D
-mode</li>
+<li>  Cleaning up callback data structure and callbacks and updating
+doxygen comments in headers</li>
+<li>  Removing MessageFilters</li>
+<li>  Removing deprecated parameters</li>
+<li>  Adding the ability to handle GPS offsets from the vehicle's origin</li>
+<li>  Cleaning up navsat_transform.h</li>
+<li>  Making variables in navsat_transform conform to ROS coding
+standards</li>
 </ul>
-<h2 id="2.1.6-(2014-11-06)">2.1.6 (2014-11-06)</h2>
+
+<h2 id="2-2-2-2016-02-04">2.2.2 (2016-02-04)</h2>
 
 <ul>
-<li>  Added unscented Kalman filter (UKF) localization node</li>
-<li>  Fixed map-&gt;odom tf calculation</li>
-<li>  Acceleration data from IMUs is now used in computing the state
-estimate</li>
-<li>  Added 2D mode</li>
-</ul>
-<h2 id="2.1.5-(2014-10-07)">2.1.5 (2014-10-07)</h2>
-
-<ul>
-<li>  Changed initial estimate error covariance to be much smaller</li>
-<li>  Fixed some debug output</li>
-<li>  Added test suite</li>
-<li>  Better compliance with REP-105</li>
-<li>  Fixed differential measurement handling</li>
-<li>  Implemented message filters</li>
-<li>  Added navsat_transform_node</li>
-</ul>
-<h2 id="2.1.4-(2014-08-22)">2.1.4 (2014-08-22)</h2>
-
-<ul>
-<li>  Adding utm_transform_node to install targets</li>
-</ul>
-<h2 id="2.1.3-(2014-06-22)">2.1.3 (2014-06-22)</h2>
-
-<ul>
-<li>  Some changes to ease GPS integration</li>
-<li>  Addition of differential integration of pose data</li>
-<li>  Some documentation cleanup</li>
-<li>  Added UTM transform node and launch file</li>
-<li>  Bug fixes</li>
-</ul>
-<h2 id="2.1.2-(2014-04-11)">2.1.2 (2014-04-11)</h2>
-
-<ul>
-<li>  Updated covariance correction formulation to "Joseph form" to
-improve filter stability.</li>
-<li>  Implemented new versioning scheme.</li>
-</ul>
-<h2 id="2.1.1-(2014-04-11)">2.1.1 (2014-04-11)</h2>
-
-<ul>
-<li>  Added cmake_modules dependency for Eigen support, and added include
-to silence boost::signals warning from tf include</li>
+<li>  Updating trig functions to use sincos for efficiency</li>
+<li>  Updating licensing information and adding Eigen MPL-only flag</li>
+<li>  Added state to imu frame transformation</li>
+<li>  Using state orientation if imu orientation is missing</li>
+<li>  Manually adding second spin for odometry and IMU data that is passed
+to message filters</li>
+<li>  Reducing delay between measurement reception and filter output</li>
+<li>  Zero altitute in intital transform too, when zero altitude param is
+set</li>
+<li>  Fixing regression with conversion back to GPS coordinates</li>
+<li>  Switched cropping of orientation data in inovationSubset with
+mahalanobis check to prevent excluding measurements with
+orientations bigger/smaller than </li>
 </ul>
 </div></body></html>
 
@@ -1164,7 +2236,21 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/GPS Integration" target="_blank">GPS Integration</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Migration from robot_pose_ekf" target="_blank">Migration from robot_pose_ekf</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Preparing Your Sensor Data" target="_blank">Preparing Your Sensor Data</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Sensor Configuration" target="_blank">Sensor Configuration</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1176,49 +2262,468 @@ to silence boost::signals warning from tf include</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslint#indigo-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslint" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslint#indigo">roslint</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#indigo-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#indigo">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_msgs#indigo">diagnostic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_updater#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_updater" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_updater#indigo">diagnostic_updater</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geographic_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geographic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geographic_msgs#indigo">geographic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#indigo">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_filters#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_filters" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_filters#indigo">message_filters</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#indigo">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2#indigo">tf2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_geometry_msgs#indigo">tf2_geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf2_ros#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf2_ros" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf2_ros#indigo">tf2_ros</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/eigen">eigen</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#indigo">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#indigo">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nav_msgs#indigo">nav_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#indigo">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#indigo">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_filters#indigo">message_filters</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cmake_modules#indigo">cmake_modules</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/eigen#indigo">eigen</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gps_common#indigo">gps_common</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#indigo">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#indigo">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/grizzly_navigation/github-g-grizzly#indigo">grizzly_navigation</a></td>
+                      <td><a href="/r/grizzly/github-g-grizzly">github-g-grizzly</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/grizzly_navigation/github-g-grizzly#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/husky_bringup/github-husky-husky_bringup#indigo">husky_bringup</a></td>
+                      <td><a href="/r/husky_bringup/github-husky-husky_bringup">github-husky-husky_bringup</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/husky_bringup/github-husky-husky_bringup#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><a href="/p/husky_bringup/github-husky-husky_robot#indigo">husky_bringup</a></td>
+                      <td><a href="/r/husky_robot/github-husky-husky_robot">github-husky-husky_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/husky_bringup/github-husky-husky_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/husky_control/github-husky-husky#indigo">husky_control</a></td>
+                      <td><a href="/r/husky/github-husky-husky">github-husky-husky</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/husky_control/github-husky-husky#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jackal_control/github-jackal-jackal#indigo">jackal_control</a></td>
+                      <td><a href="/r/jackal/github-jackal-jackal">github-jackal-jackal</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jackal_control/github-jackal-jackal#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/mrp2_control/github-milvusrobotics-mrp2_common#indigo">mrp2_control</a></td>
+                      <td><a href="/r/mrp2_common/github-milvusrobotics-mrp2_common">github-milvusrobotics-mrp2_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/mrp2_control/github-milvusrobotics-mrp2_common#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/p3dx_dpl/github-hrnr-robo-rescue#indigo">p3dx_dpl</a></td>
+                      <td><a href="/r/robo_rescue/github-hrnr-robo-rescue">github-hrnr-robo-rescue</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/p3dx_dpl/github-hrnr-robo-rescue#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1226,20 +2731,53 @@ to silence boost::signals warning from tf include</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/navsat_transform.launch" target="_blank">launch/navsat_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/utm_transform.launch" target="_blank">launch/utm_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/navsat_transform_template.launch" target="_blank">launch/navsat_transform_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for navsat_transform_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1248,9 +2786,9 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1259,11 +2797,15 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/./srv/SetDatum.srv" target="_blank">srv/SetDatum.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1272,28 +2814,35 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/indigo-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/robot_localization?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1303,6 +2852,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> robot_localization
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-cra-ros-pkg-robot_localization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-cra-ros-pkg-robot_localization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/robot_localization?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1315,28 +2951,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">12</span> Dependencies</a>
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-primary">4</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1349,7 +2987,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.1.7</td>
+                <td>1.2.2</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -1375,7 +3013,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1397,7 +3035,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-05
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-05-27
         </span>
       </td>
     </tr>
@@ -1425,8 +3063,23 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1445,17 +3098,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Tom Moore</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
                 
               </ul>
             
@@ -1493,7 +3135,45 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-robot_localization">Changelog for package robot_localization</h1>
 
-<h2 id="1.1.7-(2015-01-05)">1.1.7 (2015-01-05)</h2>
+<h2 id="1-2-2-2015-05-27">1.2.2 (2015-05-27)</h2>
+
+<ul>
+<li>  Fixed handling of IMU data w.r.t. differential mode and relative
+mode</li>
+</ul>
+
+<h2 id="1-2-1-2015-05-22">1.2.1 (2015-05-22)</h2>
+
+<ul>
+<li>  Fixed issue with out-of-order measurements and pose resets</li>
+<li>  Nodes now assume ENU standard for yaw data</li>
+<li>  Removed gps_common dependency</li>
+<li>  Adding option to navsat_transform_node that enables the use of the
+heading from the odometry message instead of an IMU.</li>
+<li>  Changed frame_id used in setPoseCallback to be the world_frame</li>
+<li>  Optimized Eigen arithmetic for signficiant performance boost</li>
+<li>  Code refactoring and reorganization</li>
+<li>  Removed roll and pitch from navsat_transform calculations</li>
+<li>  Fixed transform for IMU data to better support mounting IMUs in
+non-standard orientations</li>
+<li>  Added feature to navsat_transform_node whereby filtered odometry
+data can be coverted back into navsat data</li>
+<li>  Added a parameter to allow future dating the
+world_frame-&gt;base_link_frame transform.</li>
+<li>  Removed deprecated differential setting handler</li>
+<li>  Added relative mode</li>
+<li>  Updated and improved tests</li>
+<li>  Fixing source frame_id in pose data handling</li>
+<li>  Added initial covariance parameter</li>
+<li>  Fixed bug in covariance copyinh</li>
+<li>  Added parameters for topic queue sizes</li>
+<li>  Improved motion model's handling of angular velocities when robot
+has non-zero roll and pitch</li>
+<li>  Changed the way differential measurements are handled</li>
+<li>  Added diagnostics</li>
+</ul>
+
+<h2 id="1-1-7-2015-01-05">1.1.7 (2015-01-05)</h2>
 
 <ul>
 <li>  Added some checks to eliminate unnecessary callbacks</li>
@@ -1505,7 +3185,8 @@ navsat_transform_node</li>
 <li>  Bug fixes for differential mode and handling of Z acceleration in 2D
 mode</li>
 </ul>
-<h2 id="1.1.6-(2014-11-06)">1.1.6 (2014-11-06)</h2>
+
+<h2 id="1-1-6-2014-11-06">1.1.6 (2014-11-06)</h2>
 
 <ul>
 <li>  Added unscented Kalman filter (UKF) localization node</li>
@@ -1514,7 +3195,8 @@ mode</li>
 estimate</li>
 <li>  Added 2D mode</li>
 </ul>
-<h2 id="1.1.5-(2014-10-07)">1.1.5 (2014-10-07)</h2>
+
+<h2 id="1-1-5-2014-10-07">1.1.5 (2014-10-07)</h2>
 
 <ul>
 <li>  Changed initial estimate error covariance to be much smaller</li>
@@ -1525,12 +3207,14 @@ estimate</li>
 <li>  Implemented message filters</li>
 <li>  Added navsat_transform_node</li>
 </ul>
-<h2 id="1.1.4-(2014-08-22)">1.1.4 (2014-08-22)</h2>
+
+<h2 id="1-1-4-2014-08-22">1.1.4 (2014-08-22)</h2>
 
 <ul>
 <li>  Adding utm_transform_node to install targets</li>
 </ul>
-<h2 id="1.1.3-(2014-06-22)">1.1.3 (2014-06-22)</h2>
+
+<h2 id="1-1-3-2014-06-22">1.1.3 (2014-06-22)</h2>
 
 <ul>
 <li>  Some changes to ease GPS integration</li>
@@ -1539,14 +3223,16 @@ estimate</li>
 <li>  Added UTM transform node and launch file</li>
 <li>  Bug fixes</li>
 </ul>
-<h2 id="1.1.2-(2014-04-11)">1.1.2 (2014-04-11)</h2>
+
+<h2 id="1-1-2-2014-04-11">1.1.2 (2014-04-11)</h2>
 
 <ul>
 <li>  Updated covariance correction formulation to "Joseph form" to
 improve filter stability.</li>
 <li>  Implemented new versioning scheme.</li>
 </ul>
-<h2 id="1.1.1-(2014-04-11)">1.1.1 (2014-04-11)</h2>
+
+<h2 id="1-1-1-2014-04-11">1.1.1 (2014-04-11)</h2>
 
 <ul>
 <li>  Added cmake_modules dependency for Eigen support, and added include
@@ -1567,7 +3253,21 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/GPS Integration" target="_blank">GPS Integration</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Migration from robot_pose_ekf" target="_blank">Migration from robot_pose_ekf</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Preparing Your Sensor Data" target="_blank">Preparing Your Sensor Data</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Sensor Configuration" target="_blank">Sensor Configuration</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1579,49 +3279,327 @@ to silence boost::signals warning from tf include</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#hydro">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#hydro">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#hydro">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#hydro">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_msgs#hydro">diagnostic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_updater#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_updater" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_updater#hydro">diagnostic_updater</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#hydro">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_filters#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_filters" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_filters#hydro">message_filters</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#hydro-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#hydro">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#hydro">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#hydro">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/eigen">eigen</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#hydro">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nav_msgs#hydro">nav_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#hydro">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#hydro">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_filters#hydro">message_filters</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cmake_modules#hydro">cmake_modules</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/eigen#hydro">eigen</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/gps_common#hydro">gps_common</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#hydro">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#hydro">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro">rosjava_messages</a></td>
+                      <td><a href="/r/rosjava_messages/github-rosjava-rosjava_messages">github-rosjava-rosjava_messages</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1629,20 +3607,53 @@ to silence boost::signals warning from tf include</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/navsat_transform.launch" target="_blank">launch/navsat_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/utm_transform.launch" target="_blank">launch/utm_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for ekf_localization_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/navsat_transform.launch" target="_blank">launch/navsat_transform.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for navsat_transform_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./launch/ukf_template.launch" target="_blank">launch/ukf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for ukf_localization_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1651,9 +3662,9 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1662,11 +3673,13 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/./srv/SetPose.srv" target="_blank">srv/SetPose.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1675,28 +3688,35 @@ to silence boost::signals warning from tf include</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/hydro-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/robot_localization?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1706,6 +3726,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/robot_localization">robot_localization</a> <small>package from <a style="text-decoration:none" href="/r/robot_localization/github-cra-ros-pkg-robot_localization">robot_localization</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> robot_localization
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/robot_localization"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-cra-ros-pkg-robot_localization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-cra-ros-pkg-robot_localization" role="menuitem" tabindex="-1" href="/p/robot_localization/github-cra-ros-pkg-robot_localization" data="github-cra-ros-pkg-robot_localization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-cra-ros-pkg-robot_localization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/robot_localization?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1718,28 +3825,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">9</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-primary">4</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1778,7 +3887,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1800,7 +3909,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-10-05
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-10-06
         </span>
       </td>
     </tr>
@@ -1828,8 +3937,23 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1848,17 +3972,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Tom Moore</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/robot_localization">Website</a></li>
                 
               </ul>
             
@@ -1896,20 +4009,22 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-robot_localization">Changelog for package robot_localization</h1>
 
-<h2 id="x.1.1-(2014-04-11)">x.1.1 (2014-04-11)</h2>
+<h2 id="x-1-1-2014-04-11">x.1.1 (2014-04-11)</h2>
 
 <ul>
 <li>  Added cmake_modules dependency for Eigen support, and added include
 to silence boost::signals warning from tf include</li>
 </ul>
-<h2 id="x.1.2-(2014-04-11)">x.1.2 (2014-04-11)</h2>
+
+<h2 id="x-1-2-2014-04-11">x.1.2 (2014-04-11)</h2>
 
 <ul>
 <li>  Updated covariance correction formulation to "Joseph form" to
 improve filter stability.</li>
 <li>  Implemented new versioning scheme.</li>
 </ul>
-<h2 id="x.1.3-(2014-06-22)">x.1.3 (2014-06-22)</h2>
+
+<h2 id="x-1-3-2014-06-22">x.1.3 (2014-06-22)</h2>
 
 <ul>
 <li>  Some changes to ease GPS integration</li>
@@ -1918,7 +4033,8 @@ improve filter stability.</li>
 <li>  Added UTM transform node and launch file</li>
 <li>  Bug fixes</li>
 </ul>
-<h2 id="x.1.4-(2014-08-22)">x.1.4 (2014-08-22)</h2>
+
+<h2 id="x-1-4-2014-08-22">x.1.4 (2014-08-22)</h2>
 
 <ul>
 <li>  Adding utm_transform_node to install targets</li>
@@ -1938,7 +4054,21 @@ improve filter stability.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/GPS Integration" target="_blank">GPS Integration</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Migration from robot_pose_ekf" target="_blank">Migration from robot_pose_ekf</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Preparing Your Sensor Data" target="_blank">Preparing Your Sensor Data</a></li>
+            
+              <li><a href="http://wiki.ros.org/robot_localization/Tutorials/Sensor Configuration" target="_blank">Sensor Configuration</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/robot_localization/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1950,43 +4080,224 @@ improve filter stability.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#groovy">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#groovy">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#groovy">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#groovy">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#groovy">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#groovy">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_filters#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_filters" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_filters#groovy">message_filters</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cmake_modules#groovy-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cmake_modules" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cmake_modules#groovy">cmake_modules</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/eigen">eigen</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#groovy">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#groovy">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#groovy">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nav_msgs#groovy">nav_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#groovy">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#groovy">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_filters#groovy">message_filters</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cmake_modules#groovy">cmake_modules</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/eigen#groovy">eigen</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1994,16 +4305,40 @@ improve filter stability.</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/./launch/utm_transform.launch" target="_blank">launch/utm_transform.launch</a></li>
-          
-            <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/./launch/ekf_template.launch" target="_blank">launch/ekf_template.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for ekf_localization_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/./launch/utm_transform.launch" target="_blank">launch/utm_transform.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launch file for utm_transform_node </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2012,9 +4347,9 @@ improve filter stability.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2023,9 +4358,9 @@ improve filter stability.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2034,28 +4369,35 @@ improve filter stability.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/robot_localization/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//cra-ros-pkg/robot_localization/tree/groovy-devel/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:robot_localization/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/robot_localization?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=robot_localization&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2107,7 +4449,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

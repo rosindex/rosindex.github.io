@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,360 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_grasp_generation">cob_grasp_generation</a> <small>package from <a style="text-decoration:none" href="/r/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> cob_grasp_generation</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_kinematics/github-ipa320-cob_manipulation">cob_kinematics</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_lookat_action/github-ipa320-cob_manipulation">cob_lookat_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_moveit_config/github-ipa320-cob_manipulation">cob_moveit_config</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_moveit_interface/github-ipa320-cob_manipulation">cob_moveit_interface</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_pick_place_action/github-ipa320-cob_manipulation">cob_pick_place_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_tactiletools/github-ipa320-cob_manipulation">cob_tactiletools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_tray_monitor/github-ipa320-cob_manipulation">cob_tray_monitor</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/cob_grasp_generation/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/indigo_dev/cob_grasp_generation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_grasp_generation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_grasp_generation"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_manipulation
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_manipulation" role="menuitem" tabindex="-1" href="/p/cob_grasp_generation/github-ipa320-cob_manipulation" data="github-ipa320-cob_manipulation">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_manipulation
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_grasp_generation">cob_grasp_generation</a> <small>package from <a style="text-decoration:none" href="/r/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> cob_grasp_generation</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_kinematics/github-ipa320-cob_manipulation">cob_kinematics</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_lookat_action/github-ipa320-cob_manipulation">cob_lookat_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_moveit_config/github-ipa320-cob_manipulation">cob_moveit_config</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_moveit_interface/github-ipa320-cob_manipulation">cob_moveit_interface</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_pick_place_action/github-ipa320-cob_manipulation">cob_pick_place_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_tactiletools/github-ipa320-cob_manipulation">cob_tactiletools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_tray_monitor/github-ipa320-cob_manipulation">cob_tray_monitor</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/cob_grasp_generation/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/hydro_dev/cob_grasp_generation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_grasp_generation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_grasp_generation"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_manipulation
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_manipulation" role="menuitem" tabindex="-1" href="/p/cob_grasp_generation/github-ipa320-cob_manipulation" data="github-ipa320-cob_manipulation">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_manipulation
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_grasp_generation">cob_grasp_generation</a> <small>package from <a style="text-decoration:none" href="/r/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> cob_grasp_generation</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_kinematics/github-ipa320-cob_manipulation">cob_kinematics</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_lookat_action/github-ipa320-cob_manipulation">cob_lookat_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_moveit_config/github-ipa320-cob_manipulation">cob_moveit_config</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_moveit_interface/github-ipa320-cob_manipulation">cob_moveit_interface</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_pick_place_action/github-ipa320-cob_manipulation">cob_pick_place_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_tactiletools/github-ipa320-cob_manipulation">cob_tactiletools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cob_tray_monitor/github-ipa320-cob_manipulation">cob_tray_monitor</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/cob_grasp_generation/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/groovy/cob_grasp_generation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_grasp_generation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_grasp_generation"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_manipulation
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_manipulation" role="menuitem" tabindex="-1" href="/p/cob_grasp_generation/github-ipa320-cob_manipulation" data="github-ipa320-cob_manipulation">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_manipulation
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -525,6 +224,173 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_grasp_generation">cob_grasp_generation</a> <small>package from <a style="text-decoration:none" href="/r/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_collision_monitor/github-ipa320-cob_manipulation">
+
+cob_collision_monitor
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> cob_grasp_generation
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_kinematics/github-ipa320-cob_manipulation">
+
+cob_kinematics
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_lookat_action/github-ipa320-cob_manipulation">
+
+cob_lookat_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_manipulation/github-ipa320-cob_manipulation">
+
+cob_manipulation
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_moveit_config/github-ipa320-cob_manipulation">
+
+cob_moveit_config
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_moveit_interface/github-ipa320-cob_manipulation">
+
+cob_moveit_interface
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_obstacle_distance_moveit/github-ipa320-cob_manipulation">
+
+cob_obstacle_distance_moveit
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_pick_place_action/github-ipa320-cob_manipulation">
+
+cob_pick_place_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_tactiletools/github-ipa320-cob_manipulation">
+
+cob_tactiletools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_tray_monitor/github-ipa320-cob_manipulation">
+
+cob_tray_monitor
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_grasp_generation"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_manipulation
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_manipulation" role="menuitem" tabindex="-1" href="/p/cob_grasp_generation/github-ipa320-cob_manipulation" data="github-ipa320-cob_manipulation">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_manipulation
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/cob_grasp_generation/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/indigo_dev/cob_grasp_generation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/cob_grasp_generation?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_grasp_generation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -537,30 +403,30 @@
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">9</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     Grasp generation for Care-O-bot based on OpenRAVE
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -573,7 +439,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.0</td>
+                <td>0.6.4</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -599,7 +465,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -621,7 +487,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-22
         </span>
       </td>
     </tr>
@@ -630,9 +496,9 @@
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -649,8 +515,29 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     Grasp generation for Care-O-bot based on OpenRAVE
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_manipulation/">Website</a></li>
+                
+                  <li><a href="https://github.com/ipa320/cob_manipulation/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ipa320/cob_manipulation">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -671,21 +558,6 @@
                   <li>Witalij Siebert</li>
                 
                   <li>Felix Messmer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_manipulation/">Website</a></li>
-                
-                  <li><a href="https://github.com/ipa320/cob_manipulation/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/ipa320/cob_manipulation">Repository</a></li>
                 
               </ul>
             
@@ -722,7 +594,43 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_grasp_generation">Changelog for package cob_grasp_generation</h1>
 
-<h2 id="0.6.0-(2014-09-18)">0.6.0 (2014-09-18)</h2>
+<h2 id="0-6-4-2016-04-01">0.6.4 (2016-04-01)</h2>
+
+<h2 id="0-6-3-2015-08-31">0.6.3 (2015-08-31)</h2>
+
+<h2 id="0-6-2-2015-08-29">0.6.2 (2015-08-29)</h2>
+
+<ul>
+<li>  boost revision</li>
+<li>  migration to package format 2</li>
+<li>  remove trailing whitespaces</li>
+<li>  remove obsolete autogenerated mainpage.dox files</li>
+<li>  sort dependencies</li>
+<li>  review dependencies</li>
+<li>  Contributors: ipa-fxm</li>
+</ul>
+
+<h2 id="0-6-1-2015-06-17">0.6.1 (2015-06-17)</h2>
+
+<ul>
+<li>  beautify CMakeLists</li>
+<li>  fixes, hacks and helpers for cob4-pick-place</li>
+<li>  gripper -&gt; gripper_type</li>
+<li>  consider different grippers in cob_grasp_generation</li>
+<li>  rename manipulator in collada description</li>
+<li>  add gripper to action</li>
+<li>  rename environment file</li>
+<li>  renamed grasptables</li>
+<li>  no timestamp</li>
+<li>  new launch file exporting env variable OPENRAVE_DATA</li>
+<li>  add model - and fixes for latest openRAVE and collada compatibility</li>
+<li>  fix trajectory message</li>
+<li>  minor restructuring</li>
+<li>  missing dependency</li>
+<li>  Contributors: ipa-fxm</li>
+</ul>
+
+<h2 id="0-6-0-2014-09-18">0.6.0 (2014-09-18)</h2>
 
 <ul>
 <li>  Merge branch 'hydro_dev' into hydro_release_candidate</li>
@@ -731,9 +639,10 @@
 <li>  add changelogs</li>
 <li>  Contributors: Florian Weisshardt, ipa-fxm</li>
 </ul>
-<h2 id="0.5.2-(2014-08-28)">0.5.2 (2014-08-28)</h2>
 
-<h2 id="0.5.1-(2014-03-26)">0.5.1 (2014-03-26)</h2>
+<h2 id="0-5-2-2014-08-28">0.5.2 (2014-08-28)</h2>
+
+<h2 id="0-5-1-2014-03-26">0.5.1 (2014-03-26)</h2>
 
 <ul>
 <li>  Merge branch 'hydro_dev' into hydro_release_candidate</li>
@@ -771,8 +680,7 @@ adaptions + some improvements</li>
 <li>  fully implemented as class + improvements</li>
 <li>  merge with ws</li>
 <li>  Merge branch 'pick_n_place' of
-<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a>
-into pick_n_place</li>
+<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a> into pick_n_place</li>
 <li>  remove obsolete sleep</li>
 <li>  server now uses class from or_grasp_generation and a threshold</li>
 <li>  added threshold, num_grasps and grasp_id for grasp database</li>
@@ -798,8 +706,7 @@ github.com:ipa-fxm/cob_manipulation into pick_n_place</li>
 <li>  added grasptable for instanttomatosoup</li>
 <li>  find package_paths using roslib</li>
 <li>  Merge branch 'pick_n_place' of
-<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a>
-into pick_n_place</li>
+<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a> into pick_n_place</li>
 <li>  add new db fruittea</li>
 <li>  Todo added</li>
 <li>  Merge remote-tracking branch 'origin-fxm/pick_n_place' into
@@ -856,7 +763,8 @@ ipa-fxm</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_grasp_generation/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_grasp_generation/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -868,43 +776,134 @@ ipa-fxm</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib_msgs#indigo">actionlib_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/moveit_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/moveit_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/moveit_msgs#indigo">moveit_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#indigo">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#indigo">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib#indigo">actionlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib_msgs#indigo">actionlib_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#indigo">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/moveit_msgs#indigo">moveit_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#indigo">message_runtime</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#indigo">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#indigo">geometry_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_pick_place_action/github-ipa320-cob_manipulation#indigo">cob_pick_place_action</a></td>
+                      <td><a href="/r/cob_manipulation/github-ipa320-cob_manipulation">github-ipa320-cob_manipulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_pick_place_action/github-ipa320-cob_manipulation#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -912,12 +911,27 @@ ipa-fxm</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ipa320/cob_manipulation/tree/indigo_dev/cob_grasp_generation/launch/grasp_generation.launch" target="_blank">launch/grasp_generation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -926,9 +940,9 @@ ipa-fxm</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -937,9 +951,9 @@ ipa-fxm</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -948,28 +962,35 @@ ipa-fxm</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/cob_grasp_generation/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/indigo_dev/cob_grasp_generation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/cob_grasp_generation?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_grasp_generation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -979,6 +1000,157 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_grasp_generation">cob_grasp_generation</a> <small>package from <a style="text-decoration:none" href="/r/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> cob_grasp_generation
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_kinematics/github-ipa320-cob_manipulation">
+
+cob_kinematics
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_lookat_action/github-ipa320-cob_manipulation">
+
+cob_lookat_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_manipulation/github-ipa320-cob_manipulation">
+
+cob_manipulation
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_moveit_config/github-ipa320-cob_manipulation">
+
+cob_moveit_config
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_moveit_interface/github-ipa320-cob_manipulation">
+
+cob_moveit_interface
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_pick_place_action/github-ipa320-cob_manipulation">
+
+cob_pick_place_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_tactiletools/github-ipa320-cob_manipulation">
+
+cob_tactiletools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_tray_monitor/github-ipa320-cob_manipulation">
+
+cob_tray_monitor
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_grasp_generation"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_manipulation
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_manipulation" role="menuitem" tabindex="-1" href="/p/cob_grasp_generation/github-ipa320-cob_manipulation" data="github-ipa320-cob_manipulation">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_manipulation
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/cob_grasp_generation/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/hydro_dev/cob_grasp_generation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/cob_grasp_generation?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_grasp_generation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -991,30 +1163,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">9</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     Grasp generation for Care-O-bot based on OpenRAVE
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1053,7 +1225,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1084,9 +1256,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1103,8 +1275,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     Grasp generation for Care-O-bot based on OpenRAVE
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_manipulation/">Website</a></li>
+                
+                  <li><a href="https://github.com/ipa320/cob_manipulation/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/ipa320/cob_manipulation">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1125,21 +1318,6 @@ $(function() {
                   <li>Witalij Siebert</li>
                 
                   <li>Felix Messmer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_manipulation/">Website</a></li>
-                
-                  <li><a href="https://github.com/ipa320/cob_manipulation/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/ipa320/cob_manipulation">Repository</a></li>
                 
               </ul>
             
@@ -1176,7 +1354,7 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_grasp_generation">Changelog for package cob_grasp_generation</h1>
 
-<h2 id="0.5.1-(2014-03-21)">0.5.1 (2014-03-21)</h2>
+<h2 id="0-5-1-2014-03-21">0.5.1 (2014-03-21)</h2>
 
 <ul>
 <li>  move cob_mmcontroller + groovy_updates</li>
@@ -1206,8 +1384,7 @@ adaptions + some improvements</li>
 <li>  fully implemented as class + improvements</li>
 <li>  merge with ws</li>
 <li>  Merge branch 'pick_n_place' of
-<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a>
-into pick_n_place</li>
+<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a> into pick_n_place</li>
 <li>  remove obsolete sleep</li>
 <li>  server now uses class from or_grasp_generation and a threshold</li>
 <li>  added threshold, num_grasps and grasp_id for grasp database</li>
@@ -1233,8 +1410,7 @@ github.com:ipa-fxm/cob_manipulation into pick_n_place</li>
 <li>  added grasptable for instanttomatosoup</li>
 <li>  find package_paths using roslib</li>
 <li>  Merge branch 'pick_n_place' of
-<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a>
-into pick_n_place</li>
+<a href="https://github.com/ipa-fmw-ws/cob_manipulation">https://github.com/ipa-fmw-ws/cob_manipulation</a> into pick_n_place</li>
 <li>  add new db fruittea</li>
 <li>  Todo added</li>
 <li>  Merge remote-tracking branch 'origin-fxm/pick_n_place' into
@@ -1290,7 +1466,8 @@ openrave</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_grasp_generation/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_grasp_generation/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1302,43 +1479,282 @@ openrave</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#hydro">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#hydro">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib#hydro">actionlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib_msgs#hydro">actionlib_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#hydro">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/moveit_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/moveit_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/moveit_msgs#hydro">moveit_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#hydro">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#hydro">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#hydro">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#hydro">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#hydro">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib#hydro">actionlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib_msgs#hydro">actionlib_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/moveit_msgs#hydro">moveit_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#hydro">message_runtime</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#hydro">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#hydro">geometry_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_manipulation/github-ipa320-cob_manipulation#hydro">cob_manipulation</a></td>
+                      <td><a href="/r/cob_manipulation/github-ipa320-cob_manipulation">github-ipa320-cob_manipulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_manipulation/github-ipa320-cob_manipulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_pick_place_action/github-ipa320-cob_manipulation#hydro">cob_pick_place_action</a></td>
+                      <td><a href="/r/cob_manipulation/github-ipa320-cob_manipulation">github-ipa320-cob_manipulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_pick_place_action/github-ipa320-cob_manipulation#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro">rosjava_messages</a></td>
+                      <td><a href="/r/rosjava_messages/github-rosjava-rosjava_messages">github-rosjava-rosjava_messages</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1346,12 +1762,12 @@ openrave</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1360,9 +1776,9 @@ openrave</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1371,9 +1787,9 @@ openrave</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1382,28 +1798,35 @@ openrave</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/cob_grasp_generation/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/hydro_dev/cob_grasp_generation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/cob_grasp_generation?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_grasp_generation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1413,6 +1836,149 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_grasp_generation">cob_grasp_generation</a> <small>package from <a style="text-decoration:none" href="/r/cob_manipulation/github-ipa320-cob_manipulation">cob_manipulation</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> cob_grasp_generation
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_kinematics/github-ipa320-cob_manipulation">
+
+cob_kinematics
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_lookat_action/github-ipa320-cob_manipulation">
+
+cob_lookat_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_moveit_config/github-ipa320-cob_manipulation">
+
+cob_moveit_config
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_moveit_interface/github-ipa320-cob_manipulation">
+
+cob_moveit_interface
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_pick_place_action/github-ipa320-cob_manipulation">
+
+cob_pick_place_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_tactiletools/github-ipa320-cob_manipulation">
+
+cob_tactiletools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_tray_monitor/github-ipa320-cob_manipulation">
+
+cob_tray_monitor
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_grasp_generation"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_manipulation
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_manipulation" role="menuitem" tabindex="-1" href="/p/cob_grasp_generation/github-ipa320-cob_manipulation" data="github-ipa320-cob_manipulation">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_manipulation
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/cob_grasp_generation/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/groovy/cob_grasp_generation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/cob_grasp_generation?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_grasp_generation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1425,32 +1991,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     cob_grasp_generation
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1489,7 +2053,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1520,9 +2084,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1539,8 +2103,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     cob_grasp_generation
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_grasp_generation">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1555,17 +2138,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Felix Messmer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_grasp_generation">Website</a></li>
                 
               </ul>
             
@@ -1612,7 +2184,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_grasp_generation/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_grasp_generation/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1624,31 +2197,134 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#groovy">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib#groovy">actionlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/manipulation_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/manipulation_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/manipulation_msgs#groovy">manipulation_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#groovy">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib#groovy">actionlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/manipulation_msgs#groovy">manipulation_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_pick_place_action/github-ipa320-cob_manipulation#groovy">cob_pick_place_action</a></td>
+                      <td><a href="/r/cob_manipulation/github-ipa320-cob_manipulation">github-ipa320-cob_manipulation</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_pick_place_action/github-ipa320-cob_manipulation#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1656,12 +2332,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1670,9 +2346,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1681,9 +2357,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1692,28 +2368,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/cob_grasp_generation/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_manipulation/tree/groovy/cob_grasp_generation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_grasp_generation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/cob_grasp_generation?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_grasp_generation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1764,7 +2447,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

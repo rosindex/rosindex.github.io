@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,11 +146,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -154,119 +196,230 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/jsk_robot_startup">jsk_robot_startup</a> <small>package from <a style="text-decoration:none" href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">jsk_robot</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot">baxtereus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_baxter_desktop/github-jsk-ros-pkg-jsk_robot">jsk_baxter_desktop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot">jsk_baxter_startup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_baxter_web/github-jsk-ros-pkg-jsk_robot">jsk_baxter_web</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_nao_startup/github-jsk-ros-pkg-jsk_robot">jsk_nao_startup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nao_jsk_teleop/github-jsk-ros-pkg-jsk_robot">nao_jsk_teleop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/naoeus/github-jsk-ros-pkg-jsk_robot">naoeus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pepper_startup/github-jsk-ros-pkg-jsk_robot">jsk_pepper_startup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pepper_bringup/github-jsk-ros-pkg-jsk_robot">pepper_bringup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pepper_description/github-jsk-ros-pkg-jsk_robot">pepper_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/peppereus/github-jsk-ros-pkg-jsk_robot">peppereus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_accessories/github-jsk-ros-pkg-jsk_robot">jsk_pr2_accessories</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_calibration/github-jsk-ros-pkg-jsk_robot">jsk_pr2_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_desktop/github-jsk-ros-pkg-jsk_robot">jsk_pr2_desktop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot"><span class="glyphicon glyphicon-file"></span>jsk_pr2_startup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_base_trajectory_action/github-jsk-ros-pkg-jsk_robot">pr2_base_trajectory_action</a>
-        
-      
-        
-          <span class="label label-default"> jsk_robot_startup</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/jsk_robot_startup/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_robot_startup/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/jsk_robot_startup" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-hydro">
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_robot_startup">jsk_robot_startup</a> <small>package from <a style="text-decoration:none" href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">jsk_robot</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot">
+
+baxtereus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_baxter_desktop/github-jsk-ros-pkg-jsk_robot">
+
+jsk_baxter_desktop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_baxter_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_baxter_web/github-jsk-ros-pkg-jsk_robot">
+
+jsk_baxter_web
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/fetcheus/github-jsk-ros-pkg-jsk_robot">
+
+fetcheus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_fetch_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_201504_miraikan/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_201504_miraikan
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_nao_startup/github-jsk-ros-pkg-jsk_robot">
+
+jsk_nao_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pepper_startup/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pepper_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nao_jsk_teleop/github-jsk-ros-pkg-jsk_robot">
+
+nao_jsk_teleop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/naoeus/github-jsk-ros-pkg-jsk_robot">
+
+naoeus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/naoqieus/github-jsk-ros-pkg-jsk_robot">
+
+naoqieus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/peppereus/github-jsk-ros-pkg-jsk_robot">
+
+peppereus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_accessories/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pr2_accessories
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_calibration/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pr2_calibration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_desktop/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pr2_desktop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_pr2_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_base_trajectory_action/github-jsk-ros-pkg-jsk_robot">
+
+pr2_base_trajectory_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_robot/github-jsk-ros-pkg-jsk_robot">
+
+jsk_robot
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> jsk_robot_startup
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_robot_utils/github-jsk-ros-pkg-jsk_robot">
+
+jsk_robot_utils
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roseus_remote/github-jsk-ros-pkg-jsk_robot">
+
+roseus_remote
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -302,87 +455,63 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/jsk_robot_startup/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_robot_startup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/jsk_robot_startup?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_robot_startup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">12</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">11</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The jsk_robot_startup package
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -395,7 +524,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.0.4</td>
+                <td>1.0.6</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -421,7 +550,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -443,7 +572,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-29
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-04
         </span>
       </td>
     </tr>
@@ -471,8 +600,19 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The jsk_robot_startup package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional links.</em>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -491,13 +631,6 @@
               <em>No additional authors.</em>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No additional links.</em>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -507,10 +640,62 @@
           <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
           <div class="panel-body">
             
-              <em>No README found.</em>
-              
-                <em><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot/#hydro">See repository README.</a></em>
-              
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="jsk_robot_startup">jsk_robot_startup</h1>
+
+<h2 id="lifelog-mongodb-launch">lifelog/mongodb.launch</h2>
+
+<p>Launch file for logging data of robots.</p>
+
+<h3 id="setup">setup</h3>
+
+<h4 id="specify-robot-identifier">specify robot identifier</h4>
+
+<ul>
+<li>set param for your own robot identifier:</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rosparam <span class="nb">set </span>robot/name pr1012 <span class="c"># pr1040, baxter, pepper, etc...</span>
+
+</code></pre></div>
+<ul>
+<li>include <code>launch/mongodb.launch</code> in your robot startup launch file.</li>
+</ul>
+
+<h2 id="scripts-constantheightframepublisher-py">scripts/ConstantHeightFramePublisher.py</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_robot/master/jsk_robot_common/jsk_robot_startup//images/pointcloud_to_scan_base_tf_squat.png" alt="pointcloud_to_scan_base_tf_squat.png">
+<img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_robot/master/jsk_robot_common/jsk_robot_startup//images/pointcloud_to_scan_base_tf_stand.png" alt="pointcloud_to_scan_base_tf_stand.png"></p>
+
+<p>This script provides a constant height frame from the ground to get a imagenary laser scan for pointcloud_to_laserscan package.
+Biped robots need to use this constant frame to get constant laser scan for 2D SLAM package for wheeled ones like gmapping,
+because the pose of biped robots including height of the base link changes during a task in contrast to wheeled ones.
+In this frame, x, y and yaw is same as base frame of the robot body, z is constant and roll and pitch is same as the ground.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<ul>
+<li><p><code>~parent_frame</code> (String, default: "BODY")
+This parameter indicates the parent frame of the constant height frame, which is expected to be a base frame of the robot body.</p></li>
+<li><p><code>~odom_frame</code> (String, default: "odom")
+This parameter indicates the odometry frame on the ground.</p></li>
+<li><p><code>~frame_name</code> (String, default: "pointcloud_to_scan_base")
+This parameter indicates the name of the constant frame.</p></li>
+<li><p><code>~rate</code> (Double, default: 10.0)
+This parameter indicates publish rate [Hz] of the constant frame.</p></li>
+<li><p><code>~height</code> (Double, default: 1.0)
+This parameter indicates initial height [m] of the constant frame.</p></li>
+</ul>
+
+<h3 id="subscribing-topics">Subscribing Topics</h3>
+
+<ul>
+<li>
+<code>~height</code> (<code>std_msgs/Float64</code>)
+This topic modifies height [m] of the constant frame.</li>
+</ul>
+</div></body></html>
+
             
           </div>
         </div>
@@ -526,13 +711,2658 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-jsk_robot_startup">Changelog for package jsk_robot_startup</h1>
 
-<h2 id="0.0.4-(2015-01-30)">0.0.4 (2015-01-30)</h2>
+<h2 id="1-0-6-2016-06-17">1.0.6 (2016-06-17)</h2>
 
-<h2 id="0.0.3-(2015-01-09)">0.0.3 (2015-01-09)</h2>
+<ul>
+<li>  [jsk_robot_startup] Define publisher before callback definition
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/615">#615</a>)</li>
+<li>
+<p>Combine EKF and GPF for more constant odometry output
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/617">#617</a>)</p>
 
-<h2 id="0.0.2-(2015-01-08)">0.0.2 (2015-01-08)</h2>
+<ul>
+<li>  [jsk_robot_startup] Add script for odometry calculation with
+combination of EKF and GPF</li>
+<li>  [jsk_robot_startup] Fix some misses</li>
+<li>  [jsk_robot_startup] Use ekf+gpf odometry instead of particle
+odometry and thus iir filter is no longer used</li>
+</ul>
 
-<h2 id="0.0.1-(2014-12-25)">0.0.1 (2014-12-25)</h2>
+<p>* [jsk_robot_startup] Tune jaxon_red odometry param</p>
+</li>
+<li><p>[jsk_robot_startup] add multisense_local.launch</p></li>
+<li>
+<p>Use only important partilces when estimating output distribution of
+particle odom
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/601">#601</a>)</p>
+
+<ul>
+<li>  [jsk_robot_startup] Use only important particles to guess
+output distribution</li>
+<li>  [jsk_robot_startup] Rename parameter name for valid
+particles</li>
+<li>  [jsk_robot_startup] Use 1/3 particles for estimate normal
+distribution and make initial distribution narrower</li>
+<li>  [jsk_robot_startup] Rename value name to match with rosparam
+name</li>
+</ul>
+
+<p>* [jsk_robot_startup] Add comments</p>
+</li>
+<li><p>activate_user.l : fix for non pr2 robot, see
+<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/589">#589</a>
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/590">#590</a>)</p></li>
+<li><p>[jsk_robot_startup] Add jsk_recognition_msgs to dependency
+because of histgram msgs</p></li>
+<li><p>[jsk_robot_startup] Fix typo</p></li>
+<li><p>[jsk_robot_startup] Add publish_histogram option to visualize
+particles</p></li>
+<li><p>[jsk_robot_startup] Use parameter_yaml arg instead of ROBOT
+environmental value for odometry params</p></li>
+<li><p>[jsk_robot_startup] Tune z direction parameter for JAXON_RED
+odometry</p></li>
+<li><p>Contributors: Iori Kumagai, Kei Okada, Yohei Kakiuchi</p></li>
+</ul>
+
+<h2 id="1-0-5-2016-04-18">1.0.5 (2016-04-18)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Use robot_center_pointcloud_bbox_clipped
+as input for octomap server</li>
+<li>  Contributors: leus</li>
+</ul>
+
+<h2 id="1-0-4-2016-03-21">1.0.4 (2016-03-21)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Overwrite pdf threshould was too small:
+1e-6-&gt;1e-3</li>
+<li>  Contributors: Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-3-2016-03-05">1.0.3 (2016-03-05)</h2>
+
+<ul>
+<li>  jsk_robot_startup/lifelog: fix
+<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/259">#259</a> rename
+mongod_watcher.py -&gt; mongod_kill_watcher.py</li>
+<li>  [jsk_robot_startup] Tune cutoff freq for iir filter in
+JAXON_RED</li>
+<li>  [jsk_robot_startup] Adjust filter rate to 40Hz, which is same as
+raw particle_odometry rate</li>
+<li>  [jsk_robot_startup] Rename node of IIRFilter</li>
+<li>  [jsk_robot_startup] Fix some bags in IIRFilter</li>
+<li>  [jsk_robot_startup] Apply iir filter to particle odometry to
+improve stability of map</li>
+<li>  Contributors: Kei Okada, Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-2-2016-02-14">1.0.2 (2016-02-14)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Make distribution more larger in x and y in
+JAXON_RED</li>
+<li>  [jsk_robot_startup] Use prev_rpy to prevent orientation jump at
+around 180[deg]. This approach may not work at singular points
+because it only consider arctan/arcsin uncertainty</li>
+<li>  [jsk_robot_startup] theta + pi is not same pose as theta</li>
+<li>  [jsk_robot_startup] Consider previous euler angle in
+transform_quaternion_to_euler, but this solution is temporal</li>
+<li>  [jsk_robot_startup] Automatically clear octomap when robot
+stands on the ground</li>
+<li>  [jsk_robot_startup] Add octomap launch using slam Added:
+
+<ul>
+<li>jsk_robot_common/jsk_robot_startup/launch/slam_octomap.launch</li>
+</ul>
+</li>
+<li>  [jsk_robot_startup] Update yaw rotation sigma for ignoring
+stopping state model</li>
+<li>  [jsk_robot_startup] Remove / from tf frame name which is not
+supported by tf2</li>
+<li>  [jsk_robot_startup] Make distribution larger to make estimation
+more robust to pose</li>
+<li>  [jsk_robot_startup] Also fix old version odometry param
+definitions in defaut_odometry_params.yaml</li>
+<li>  [jsk_robot_startup] Tune HRP2JSKNT odometry params</li>
+<li>  [jsk_robot_startup] Fix default and min/max values in
+OdometryOffsetReconfigure</li>
+<li>  [jsk_robot_startup] Fix odometry param definitions for HRP2JSKNT
+which was a old version</li>
+<li>  [jsk_robot_startup] Use odom_init_transform from footcoords
+instead of HrpsysSeqStateROSBridge</li>
+<li>  [jsk_robot_startup] Fix frame_id of imu_rootlink to base_link</li>
+<li>  [jsk_robot_startup] Add ImuRootlinkCalculator, calculate
+base_link relative imu orientation for ParticleOdometry to be
+compatible with HrpsysSeqStateROSBridge</li>
+<li>  [jsk_robot_startup] It seems that transformations in tfMessage
+needs to be sorted by timestamp</li>
+<li>  [jsk_robot_startup] Use original publisher for tfMessage because
+tf.broadcaster cannot receive transformation msg list</li>
+<li>  [jsk_robot_startup] Put broadcast_tf function together in
+execute function to reduce tf rate</li>
+<li>  [jsk_robot_startup] Configure odometry parameters for JAXON_RED</li>
+<li>  [jsk_robot_startup] Publish slam_odom topic because
+transformations of odometry topics are already separated into
+/localization/tf</li>
+<li>  [jsk_robot_startup] Fix bag in stop condicion check when
+overwrite pdf</li>
+<li>  [jsk_robot_startup] Output base_link-&gt;pointcloud_scan
+transform to /tf for simualted scan</li>
+<li>  [jsk_robot_startup] Remap /tf to /tf_null to reduce unnecessary
+tf</li>
+<li>  [jsk_robot_startup] Fix topic name bugs and remap bags</li>
+<li>  [jsk_robot_startup] Separate odometry transform and make only
+one broadcaster</li>
+<li>  [jsk_robot_startup] Use odom_init_transform from
+HrpsysSeqStateROSBridge</li>
+<li>  [jsk_robot_startup] Use imu_rootlink, base_link_frame
+relative imu orientation</li>
+<li>  [jsk_robot_startup] Use
+calculate_init_to_base_link_transform as initial transform of
+odometry_offset and particle odometry</li>
+<li>  [jsk_robot_startup] Add node to calculate
+odom_init-&gt;base_link transform using odom-&gt;base_link and
+odom-&gt;odom_init topics without tf</li>
+<li>  [jsk_robot_startup] publish slam_odom only when
+use_slam_feedback is true</li>
+<li>  [jsk_robot_startup] Fix launch remaps and params for new offset
+calculation</li>
+<li>  [jsk_robot_startup] Remove tf listener and use odometry and
+transformation topics in offset calculation</li>
+<li>  [jsk_robot_startup] Remove unnecessary groups in
+biped_localization.launch</li>
+<li>  [jsk_robot_startup] Remove transform listener in feedback
+wrapper which is no longer needed</li>
+<li>  [jsk_robot_startup] forgot import broadcast_transform in
+ParticleOdometry</li>
+<li>  [jsk_robot_startup] Twist proportional sigma option should be
+processed by individual class, not common utils</li>
+<li>  [jsk_robot_startup] Remove twist_proportional_sigma from
+OdometryFeedbackWrapper</li>
+<li>  [jsk_robot_startup] Trust stopping status when mean offset is
+accumulated to twist in OdometryOffset</li>
+<li>  [jsk_robot_startup] Fix import bug of CameraToBaseOffset</li>
+<li>  [jsk_robot_startup] Set default publish_tf as False in
+unnecessary tfs and do not make broadcast when publish_tf is false</li>
+<li>  [jsk_robot_startup] Update default odometry paremeter set to
+overwrite viso covariance in OdometryOffset</li>
+<li>  [jsk_robot_startup] Use common odometry utilities in
+ParticleOdometry</li>
+<li>  [jsk_robot_startup] Put odometry calculation together in
+OdometryOffset and OdometryFeedbackWrapper is only calculate
+feedback</li>
+<li>  [jsk_robot_startup] Fix bags related to feedback wrapper and
+odoemtry utils</li>
+<li>  [jsk_robot_startup] Remove lookup transforms using odometry
+topic information</li>
+<li>  [jsk_robot_startup] Separate commonly used utilities for
+odometry calculation</li>
+<li>  [jsk_robot_startup] Remove use_imu option from launch files and
+describe in config file</li>
+<li>  [jsk_robot_startup] Fix calculation for initial offset of viso
+camera offset to reduce linalg.inv</li>
+<li>  [jsk_robot_startup] Fix calculation for imu rotation and modify
+base coordinate from base_link to odom</li>
+<li>  [jsk_robot_startup] Calculate imu rotation when imu coordinate
+is not same as global</li>
+<li>  [jsk_robot_startup] Initialize imu buffer in __init__ for
+ParticleOdometry</li>
+<li>  [jsk_robot_startup] Tune odometry parameters for JAXON using
+calculate_covariance option</li>
+<li>  [jsk_robot_startup] Trust stop state in covariance calculation
+in OdometryOffset when twist_proportional_sigma is false</li>
+<li>  [jsk_robot_startup] Preserve odometry information when
+calculate_covarinace is True</li>
+<li>  [jsk_robot_startup] Add options to overwrite covariance in
+odometry_offset</li>
+<li>  [jsk_robot_startup] Adjust timestamp for viso offset calculation
+in camera_to_base_offset</li>
+<li>  [jsk_robot_startup] Fix camera offset calculation</li>
+<li>  [jsk_robot_startup] Add offset script to compensate camera
+motion relative to base_link in viso</li>
+<li>  [jsk_robot_startup] Add jaxon odometry parameter files</li>
+<li>  [jsk_robot_startup/lifelog/mongodb_local.launch] add launch
+file for local mongodb</li>
+<li>  [jsk_robot_startup] Tune filter and viso parameters for
+HRP2JSKNT</li>
+<li>  [jsk_robot_startup] Enable twist filter in HRP2JSKNT</li>
+<li>  [jsk_robot_startup] fix fogotten Vector3 import</li>
+<li>  [jsk_robot_startup] Remove source_skip_dt of ParticleOdometry
+and implement median filter in OdometryOffset</li>
+<li>  [jsk_robot_startup] Add source_skip_dt for HRP2JSKNT</li>
+<li>  [jsk_robot_startup] Tune robot specific params for HRP2JSKNT</li>
+<li>  [jsk_robot_startup] Separate parameter config file from launch
+to tune robot specific params</li>
+<li>  [jsk_robot_startup] Pass soruce_odom without dt check when
+source_odom is not initialized</li>
+<li>  [jsk_robot_startup] Add source_skip_dt to detect and skip
+stacked odometry</li>
+<li>  [jsk_robot_startup] Update twist covariance in calculate
+odometry for feedback wrapper</li>
+<li>  {jsk_pr2_robot, jsk_robot_startup}/README.md: fix
+section/subsection</li>
+<li>  [jsk_robot_startup] Rewrite weighted gaussian covariance
+estimation using numpy to speed up</li>
+<li>  README.md: fix section/subsection</li>
+<li>  [jsk_robot_startup] numpy was more efficient in average and
+covairance calculation, but weighted cov is supported from numpy
+1.10</li>
+<li>  [jsk_robot_startup] Calculate weighted mean and covariance
+directly, not through numpy</li>
+<li>  [jsk_robot_startup] Calculate inverse matrix for
+norm_pdf_multivariate before weighting</li>
+<li>  Merge branch 'speed-up-particle-odometry' of
+<a href="http://github.com/orikuma/jsk_robot">http://github.com/orikuma/jsk_robot</a> into
+speed-up-particle-odometry</li>
+<li>  [jsk_robot_startup] Replace
+tf.transformations.euler_from_quaternion to
+transform_quaternion_to_euler</li>
+<li>  [jsk_robot_startup] sampling number of multivariate_normal
+should be integer</li>
+<li>  [jsk_robot_startup] Call multivariate_normal once in sampling</li>
+<li>  [jsk_robot_startup] stereo_namespace is no longer used in
+particle_odometry because viso is separated</li>
+<li>  [jsk_robot_startup] Pass update when global twist cannot be
+calcluated because of tf problem</li>
+<li>  [jsk_robot_startup] Separate viso from particle_odometry.launch</li>
+<li>  [jsk_robot_startup] Modify constant height for slam through
+rqt_reconfigure</li>
+<li>  [jsk_robot_startup] Add height options for slam_laser_scan</li>
+<li>  [jsk_robot_startup] Fix forgotten subst_value in rosparam of
+slam_odom_scan_distance_filtered</li>
+<li>  [jsk_robot_startup] Add stereo_namespace for viso to set
+multisense prefix</li>
+<li>  [jsk_robot_startup] Separate laser nodelets for slam to reuse in
+other system</li>
+<li>  Merge pull request
+<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/490">#490</a> from
+orikuma/closed-loop-slam-odom-system [jsk_robot_startup] Add
+launch file to launch full SLAM and odometry system for biped robot</li>
+<li>  [jsk_robot_startup] Add option to toggle setting
+multisense_laser options and using slam feedback</li>
+<li>  [jsk_robot_startup] Add use_salm_feedback option to
+particle_odometry.launch to select standalone odometry or slam
+combination</li>
+<li>  [jsk_robot_startup] Add full launch file for localization, which
+has integrate slam laser pointcloud parameters from
+multisense_local.launch of robots</li>
+<li>  [jsk_robot_startup] Fix source_odom of viso feedbackwrapper:
+viso_odom-&gt;viso_odom_offset and make update rate from 50 to
+100 instead of particles 50 to 20.</li>
+<li>  [jsk_robot_startup] Add options for gmapping: iterations,
+lsigma, temporal_update and map_update_interval. defaults are
+same as gmapping default.</li>
+<li>  [jsk_robot_startup] Add range_max option to determine simulated
+laser_scan range</li>
+<li>  [jsk_robot_startup] Move viso_gaussian_point_cloud to
+use_ekf block</li>
+<li>  [jsk_robot_startup] Broadcast /biped_odom_particle as parent
+of init_odom</li>
+<li>  [jsk_robot_startup] Add OdomDiffTransformPublisher to broadcast
+tf as difference of target and intermediate frame</li>
+<li>  [jsk_robot_startup] Enable map infromation feedback and modify
+some parameters for particle odometry</li>
+<li>  [jsk_robot_startup] Add script to convert map information from
+slam to odometry msg</li>
+<li>  [jsk_robot_startup] Time feedback is prevented when
+max_feedback_time &lt;= 0</li>
+<li>  [jsk_robot_startup] Normalize quaternion and fix matrix for
+quaternion integration</li>
+<li>  [jsk_robot_startup] Use direct diviasion as same as particle
+odometry in odometry feedback wrapper</li>
+<li>  [jsk_robot_startup] Use quaternion diviasion directly instead of
+using euler angle</li>
+<li>  [jsk_robot_startup] Add some comments</li>
+<li>  [jsk_robot_startup] Add odometry_offset to
+odometry_integration.launch</li>
+<li>  [jsk_robot_startup] Update rate of particle odometries</li>
+<li>  [jsk_robot_startup] Add queue_size option</li>
+<li>  [jsk_robot_startup] Fix parameters for particle odometry</li>
+<li>  [jsk_robot_startup] Add distribution_feedback_minimum_sigma,
+limit minimum sigma for check distribution error and do not execute
+feedback when feedback_odom has too small distribution</li>
+<li>  [jsk_robot_startup] Fix offset calculation: wrong multipling
+homogeneous matrix order</li>
+<li>  [jsk_robot_startup] Add use_imu_yaw option</li>
+<li>  [jsk_robot_startup] Add comment</li>
+<li>  [jsk_robot_startup] delegate offset calculation to
+OdometryOffset.py</li>
+<li>  [jsk_robot_startup] Calculate transformation instead of
+integrate velocity in feedback wrapper</li>
+<li>  [jsk_robot_startup] Use odometry feedback to prevent drift of
+viso</li>
+<li>  [jsk_robot_startup] Integrate odometry when odometry feedback is
+enabled</li>
+<li>  [jsk_robot_startup] Resume trapezoidal odometry integration and
+add init_sigma param</li>
+<li>  Contributors: Yuki Furuta, Kei Okada, Kohei Kimura, Ryohei Ueda,
+Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-1-2015-11-19">1.0.1 (2015-11-19)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Fix namespace of param for
+pointcloud_to_laserscan</li>
+<li>  Contributors: Eisoku Kuroiwa</li>
+</ul>
+
+<h2 id="1-0-0-2015-11-06">1.0.0 (2015-11-06)</h2>
+
+<h2 id="0-0-13-2015-11-06">0.0.13 (2015-11-06)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Add scripts to caclulate odometry with
+particle filter to integrate odometries (from pattern generator or
+visual odometry etc) and imu</li>
+<li>  [jsk_robot_startup] Add script to set offset from a frame
+(like init_odom) to odometry source</li>
+<li>  Contributors: Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-12-2015-11-06">0.0.12 (2015-11-06)</h2>
+
+<ul>
+<li>  [jsk_robot_startup/lifelog/mongodb.launch] use machine attribute
+for mongodb server/client ref:
+<a href="https://github.com/strands-project/mongodb_store/pull/151">https://github.com/strands-project/mongodb_store/pull/151</a>
+</li>
+<li>  [jsk_robot_startup] Modify pose difference threshould from sigma
+to 3*sigma</li>
+<li>  [jsk_robot_startup] Rename twist_proportional_covariance to
+twist_proportional_sigma for accuracy</li>
+<li>  [jsk_robot_startup] Add twist proportional sigma option to
+odometry feedback wrapper</li>
+<li>  [db_client] add machine option for mongodb client</li>
+<li>  [jsk_robot_startup] Fix timestamp problem of transform and odom
+in feedback process</li>
+<li>  [jsk_robot_startup] use deepcopy instead of copy because coipy
+method copies reference of object members</li>
+<li>  [jsk_robot_startup] Reset odometry buffer when
+initialize_odometry</li>
+<li>  [jsk_robot_startup] Remove unnecessary lock in initialize</li>
+<li>  [jsk_robot_startup] Prevent dead lock in initialize_odometry</li>
+<li>  [jsk_robot_startup] Initialize odometry using odom_init_frame
+in tf instead of init_odom topic</li>
+<li>  [jsk_robot_startup] Add init_signal subscriber to catch contact
+signal to ground and reset odometry wrapper</li>
+<li>  [jsk_robot_startup] Revert calculation of orientation, which is
+probably deleted by mistake</li>
+<li>  [jsk_robot_startup] Modify parameters for real robot</li>
+<li>  [jsk_robot_startup] Fix description of integration</li>
+<li>  [jsk_robot_startup] Modify integration method from rectangular
+to trapezoidal, and add prev_global_twist as argument of
+update_pose</li>
+<li>  [jsk_robot_startup] Extend queue_size from 1 to 100</li>
+<li>  [jsk_robot_startup] Modify ref_frame_change_method parameter
+from 0 to 1 to prevent drift in viso</li>
+<li>  [jsk_robot_startup] Add init_odom to indicate initialize soruce
+of odom</li>
+<li>  [jsk_robot_startup] Update documents for
+ConstantHeightFramePublisher</li>
+<li>  [jsk_robot_startup] Add arguments to select odom frame name of
+ConstantHeightFramePublisher</li>
+<li>  [jsk_robot_startup] Fix typo in error warning</li>
+<li>  [jsk_robot_startup] Print warning when faield to solve tf</li>
+<li>  [jsk_robot_startup] Pass odom frame name as rosparam in
+ConstantHeightFramePublisher</li>
+<li>  [jsk_robot_startup] Add script to integrate odometry soruce</li>
+<li>  [jsk_robot_startup] Add wrapper script to odometry feedback</li>
+<li>  [jsk_robot_startup/lifelog/periodic_replicator_client.py]
+cancel replication when no wired network connection</li>
+<li>  [jsk_robot_startup] Add args to determine frame name of odom and
+map to gmapping</li>
+<li>  [jsk_robot_startup] Add invert_viso_tf option to use
+invert_tf of viso, which is invert parent and child of viso_odom
+transformation</li>
+<li>  [jsk_robot_startup/lifelog/periodic_replicator_client.py] fix
+fetching argument</li>
+<li>  [jsk_robot_startup] Respawn viso to restart by rosnode kill</li>
+<li>  [jsk_robot_startup] Add args to remap image topic name for viso</li>
+<li>  [jsk_robot_startup/lifelog/tweet.launch] use image_saver
+instead of extract_images for tweeting with image</li>
+<li>  [jsk_robot_startup] add jenkins/musca to database replication
+node</li>
+<li>  Contributors: Yuki Furuta, Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-11-2015-09-01">0.0.11 (2015-09-01)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Add visualization node for viso
+odom_combined</li>
+<li>  [jsk_robot_startup] Add viso.launch for visual odometry</li>
+<li>  Contributors: Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-10-2015-08-16">0.0.10 (2015-08-16)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] fix camera namespace openni -&gt;
+kinect_head</li>
+<li>  [jsk_robot_startup] Add odometry accuracy parameters for
+gmapping</li>
+<li>  [jsk_robot_startup] Add scripts to reset slam and heightmap
+according to /odom_init_trigger topic</li>
+<li>  [jsk_robot_startup] Add gmapping.rviz for gmapping.launch</li>
+<li>  [jsk_robot_startup] Add delta/particle/minimum_score parameters
+for gmapping</li>
+<li>  [jsk_robot_startup] use param "robot/name" [jsk_pr2_startup]
+use daemon mongod</li>
+<li>  [jsk_robot_startup] Add rate param to modify tf publish rate and
+set 10.0 as defalut</li>
+<li>  add run depend for mapping</li>
+<li>  [jsk_robot_startup] Enable inf value in
+pointcloud_to_laserscan to prevent robot from obtaining wrong
+obstacles</li>
+<li>  Contributors: Yuki Furuta, Ryohei Ueda, Yu Ohara, Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-9-2015-08-03">0.0.9 (2015-08-03)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Modify node name of gmapping and
+pointcloud_to_laserscan</li>
+<li>  [jsk_robot_startup] Add respawn to gmapping</li>
+<li>  [jsk_robot_startup] Add angle_max and angle_min arguments to
+determine horizontal scan range</li>
+<li>  [jsk_robot_startup] Fix x, y and yaw of pointcloud_toscan_base
+to parent, roll and pitch to /odom</li>
+<li>  [jsk_robot_startup] Fix roll and pitch angle of cosntant height
+frame same as /odom</li>
+<li>  [jsk_robot_startup] Add gmapping to run_depend</li>
+<li>  [jsk_robot_startup] Add scripts and launch files for gmapping</li>
+<li>  [jsk_robot_startup] support daemon mode mongod; enable
+replication to jsk robot-database</li>
+<li>  Contributors: Iori Kumagai, Yuki Furuta</li>
+</ul>
+
+<h2 id="0-0-8-2015-07-16">0.0.8 (2015-07-16)</h2>
+
+<h2 id="0-0-7-2015-06-11">0.0.7 (2015-06-11)</h2>
+
+<h2 id="0-0-6-2015-04-10">0.0.6 (2015-04-10)</h2>
+
+<h2 id="0-0-5-2015-04-08">0.0.5 (2015-04-08)</h2>
+
+<ul>
+<li>  [jsk_baxter_startup] update to add position diff paramter for
+tweet</li>
+<li>  [jsk_baxter_startup] modify to prevent baxter.launch fail</li>
+<li>  [jsk_robot_startup/package.xml: add diagnostic_msgs,
+pr2_mechanism_controllers, sensor_msgs to build dependencies</li>
+<li>  [sk_robot_startup/CMakeLists.txt] update to set permission for
+installed script files</li>
+<li>  [jsk_robot_startup] modfiy CMakeLists.txt to install
+jsk_robot_startup correctly</li>
+<li>  [jsk_robot_startup/lifelog/active_user.l] repair tweet lifelog</li>
+<li>  [jsk_robot_startup/lifelog/mongodb.launch] fix typo of option in
+launch</li>
+<li>  [jsk_robot_startup/lifelog/mongodb.launch: add mongodb launch;
+mongod kill watcher</li>
+<li>  Contributors: Yuki Furuta, Yuto Inagaki</li>
+</ul>
+
+<h2 id="0-0-4-2015-01-30">0.0.4 (2015-01-30)</h2>
+
+<h2 id="0-0-3-2015-01-09">0.0.3 (2015-01-09)</h2>
+
+<h2 id="0-0-2-2015-01-08">0.0.2 (2015-01-08)</h2>
+
+<h2 id="0-0-1-2014-12-25">0.0.1 (2014-12-25)</h2>
+
+<ul>
+<li>  check joint state and set movep for odom disable robot</li>
+<li>  Add sound when launching pr2.launch</li>
+<li>  Say something at the end of pr2.launch</li>
+<li>  move twitter related program to robot_common from jsk_pr2_startup</li>
+<li>  add ros-info</li>
+<li>  robot time signal</li>
+<li>  add tweet.l, see jsk_nao_startup.launch for example</li>
+<li>  repiar mongodb.launch</li>
+<li>  repair mongodb.launch and add param</li>
+<li>  add jsk_robot_common/jsk_robot_startup</li>
+<li>  Contributors: Kanae Kochigami, Ryohei Ueda, Yuto Inagaki, Yusuke
+Furuta</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/jsk_robot_startup/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mongodb_store#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mongodb_store" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mongodb_store#indigo">mongodb_store</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#indigo">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roseus#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roseus" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roseus#indigo">roseus</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_msgs#indigo">diagnostic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_mechanism_controllers#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_mechanism_controllers" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_mechanism_controllers#indigo">pr2_mechanism_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#indigo">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/gmapping#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/gmapping" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/gmapping#indigo">gmapping</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pointcloud_to_laserscan#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pointcloud_to_laserscan" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/pointcloud_to_laserscan#indigo">pointcloud_to_laserscan</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/jsk_recognition_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/jsk_recognition_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/jsk_recognition_msgs#indigo">jsk_recognition_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot#indigo">jsk_fetch_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#indigo">jsk_pr2_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_robot/github-jsk-ros-pkg-jsk_robot#indigo">jsk_robot</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_robot/github-jsk-ros-pkg-jsk_robot#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/viso.launch" target="_blank">launch/viso.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>stereo</strong> <em>&#91;default: multisense&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image</strong> <em>&#91;default: image_rect&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_frame_id</strong> <em>&#91;default: viso_odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>base_link_frame_id</strong> <em>&#91;default: BODY&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>sensor_frame_id</strong> <em>&#91;default: left_camera_optical_frame&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>output_odom_topic</strong> <em>&#91;default: viso_odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_viso_tf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>invert_viso_tf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_robot_pose_ekf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_used</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_data</strong> <em>&#91;default: /odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>imu_used</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>imu_data</strong> <em>&#91;default: /imu&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/odometry_integration.launch" target="_blank">launch/odometry_integration.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>stereo</strong> <em>&#91;default: multisense&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image</strong> <em>&#91;default: image_rect&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_robot_pose_ekf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_viso_tf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>invert_viso_tf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/slam_laser_nodelets.launch" target="_blank">launch/slam_laser_nodelets.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>nodelet_index</strong> <em>&#91;default: 2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>laser_input</strong> <em>&#91;default: /multisense/cloud_self_filtered&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>assemble_base_frame</strong> <em>&#91;default: odom_init&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/slam_octomap.launch" target="_blank">launch/slam_octomap.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>input_cloud</strong> <em>&#91;default: /robot_center_pointcloud_bbox_clipped/output&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/multisense_local.launch" target="_blank">launch/multisense_local.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>ip_address</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>mtu</strong> <em>&#91;default: 1500&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>SELF_FILTER_PARAM</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>ODOMETRY_PARAM</strong> <em>&#91;default: $(find jsk_robot_startup)/config/default_odometry_params.yaml&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>RUN_DRIVER</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>USE_RESIZE</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>HEIGHTMAP_FILTER_Z</strong> <em>&#91;default: 1.3&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>USE_BIPED_LOCALIZATION</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>use_particle_odom</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>parameter_yaml</strong> <em>&#91;default: $(arg ODOMETRY_PARAM)&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/pointcloud_to_laserscan.launch" target="_blank">launch/pointcloud_to_laserscan.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> original : navigation_global/move_base.xml (electric) </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>cloud_in</strong> <em>&#91;default: /multisense/organized_image_points2_color&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame</strong> <em>&#91;default: pointcloud_to_scan_base&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_height</strong> <em>&#91;default: 0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>min_height</strong> <em>&#91;default: -0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_max</strong> <em>&#91;default: 2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_min</strong> <em>&#91;default: -2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>range_max</strong> <em>&#91;default: 50.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_height</strong> <em>&#91;default: 1.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame_parent</strong> <em>&#91;default: BODY&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame_odom</strong> <em>&#91;default: odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_fixed_frame</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/gmapping.launch" target="_blank">launch/gmapping.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> original : navigation_global/move_base.xml (electric) </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>scan_frame_parent</strong> <em>&#91;default: BODY&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame</strong> <em>&#91;default: pointcloud_to_scan_base&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>map_frame</strong> <em>&#91;default: map&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_frame</strong> <em>&#91;default: odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cloud_in</strong> <em>&#91;default: /multisense/organized_image_points2_color&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_height</strong> <em>&#91;default: 1.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_height</strong> <em>&#91;default: 0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>min_height</strong> <em>&#91;default: -0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_max</strong> <em>&#91;default: 2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_min</strong> <em>&#91;default: -2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>range_max</strong> <em>&#91;default: 30.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_fixed_frame</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>particles</strong> <em>&#91;default: 30&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>iterations</strong> <em>&#91;default: 5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>lsigma</strong> <em>&#91;default: 0.075&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>temporal_update</strong> <em>&#91;default: -1.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>map_update_interval</strong> <em>&#91;default: 5.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>minimum_score</strong> <em>&#91;default: 0.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>delta</strong> <em>&#91;default: 0.025&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>srr</strong> <em>&#91;default: 0.025&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>srt</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>str</strong> <em>&#91;default: 0.025&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>stt</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/biped_localization.launch" target="_blank">launch/biped_localization.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>set_slam_laser_params</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_particle_odom</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_slam_feedback</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>nodelet_index</strong> <em>&#91;default: 2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>stereo_namespace</strong> <em>&#91;default: multisense&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>slam_laser_scan_height</strong> <em>&#91;default: 0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>slam_laser_max_height</strong> <em>&#91;default: 0.2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>slam_laser_min_height</strong> <em>&#91;default: -0.2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>parameter_yaml</strong> <em>&#91;default: $(find jsk_robot_startup)/config/default_odometry_params.yaml&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>stereo</strong> <em>&#91;default: $(arg stereo_namespace)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image</strong> <em>&#91;default: image_rect&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_robot_pose_ekf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_viso_tf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>invert_viso_tf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/particle_odometry.launch" target="_blank">launch/particle_odometry.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>use_slam_feedback</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_odometry_iir_filter</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>parameter_yaml</strong> <em>&#91;default: $(find jsk_robot_startup)/config/default_odometry_params.yaml&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/mongodb.launch" target="_blank">lifelog/mongodb.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>db_path</strong> <em>&#91;default: /var/lib/robot/mongodb_store&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>port</strong> <em>&#91;default: 62345&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>repl_set_mode</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_daemon</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>db_name</strong> <em>&#91;default: jsk_robot_lifelog&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>machine</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>replicate</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>replicator_dump_path</strong> <em>&#91;default: /tmp/replicator_dumps&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/tweet.launch" target="_blank">lifelog/tweet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_name</strong> <em>&#91;default: PR2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>worktime_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>uptime_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tablet_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>warning_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>motor_subscribe</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_subscribe</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>joint_state_subscribe</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>position_diff_threshold</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_motor_state</strong> <em>&#91;default: /pr2_ethercat/motors_halted&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_odom_state</strong> <em>&#91;default: /base_odometry/odometer&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_joint_states</strong> <em>&#91;default: /joint_states&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_diagnostics</strong> <em>&#91;default: /diagnostics&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image_topics</strong> <em>&#91;default: /kinect_head_c2/rgb/image_rect_color /wide_stereo/left/image_rect_color&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>machine</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>output</strong> <em>&#91;default: screen&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>account_info</strong> <em>&#91;default: /var/lib/robot/twitter_account_pr2jsk.yaml&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/mongodb_local.launch" target="_blank">lifelog/mongodb_local.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/jsk_robot_startup/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_robot_startup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/jsk_robot_startup?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_robot_startup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_robot_startup">jsk_robot_startup</a> <small>package from <a style="text-decoration:none" href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">jsk_robot</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/baxtereus/github-jsk-ros-pkg-jsk_robot">
+
+baxtereus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_baxter_desktop/github-jsk-ros-pkg-jsk_robot">
+
+jsk_baxter_desktop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_baxter_startup/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_baxter_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_baxter_web/github-jsk-ros-pkg-jsk_robot">
+
+jsk_baxter_web
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/fetcheus/github-jsk-ros-pkg-jsk_robot">
+
+fetcheus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_fetch_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_201504_miraikan/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_201504_miraikan
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_nao_startup/github-jsk-ros-pkg-jsk_robot">
+
+jsk_nao_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pepper_startup/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pepper_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nao_jsk_teleop/github-jsk-ros-pkg-jsk_robot">
+
+nao_jsk_teleop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/naoeus/github-jsk-ros-pkg-jsk_robot">
+
+naoeus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/naoqieus/github-jsk-ros-pkg-jsk_robot">
+
+naoqieus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/peppereus/github-jsk-ros-pkg-jsk_robot">
+
+peppereus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_accessories/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pr2_accessories
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_calibration/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pr2_calibration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_desktop/github-jsk-ros-pkg-jsk_robot">
+
+jsk_pr2_desktop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot">
+
+<span class="glyphicon glyphicon-file"></span> jsk_pr2_startup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_base_trajectory_action/github-jsk-ros-pkg-jsk_robot">
+
+pr2_base_trajectory_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_robot/github-jsk-ros-pkg-jsk_robot">
+
+jsk_robot
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> jsk_robot_startup
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_robot_utils/github-jsk-ros-pkg-jsk_robot">
+
+jsk_robot_utils
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/roseus_remote/github-jsk-ros-pkg-jsk_robot">
+
+roseus_remote
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_robot_startup"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_robot
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_robot" role="menuitem" tabindex="-1" href="/p/jsk_robot_startup/github-jsk-ros-pkg-jsk_robot" data="github-jsk-ros-pkg-jsk_robot">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_robot
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/jsk_robot_startup/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_robot_startup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/jsk_robot_startup?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_robot_startup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">12</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">11</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.0.6</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_robot.git">https://github.com/jsk-ros-pkg/jsk_robot.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-04
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The jsk_robot_startup package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional links.</em>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>inagaki</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional authors.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="jsk_robot_startup">jsk_robot_startup</h1>
+
+<h2 id="lifelog-mongodb-launch">lifelog/mongodb.launch</h2>
+
+<p>Launch file for logging data of robots.</p>
+
+<h3 id="setup">setup</h3>
+
+<h4 id="specify-robot-identifier">specify robot identifier</h4>
+
+<ul>
+<li>set param for your own robot identifier:</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rosparam <span class="nb">set </span>robot/name pr1012 <span class="c"># pr1040, baxter, pepper, etc...</span>
+
+</code></pre></div>
+<ul>
+<li>include <code>launch/mongodb.launch</code> in your robot startup launch file.</li>
+</ul>
+
+<h2 id="scripts-constantheightframepublisher-py">scripts/ConstantHeightFramePublisher.py</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_robot/master/jsk_robot_common/jsk_robot_startup//images/pointcloud_to_scan_base_tf_squat.png" alt="pointcloud_to_scan_base_tf_squat.png">
+<img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_robot/master/jsk_robot_common/jsk_robot_startup//images/pointcloud_to_scan_base_tf_stand.png" alt="pointcloud_to_scan_base_tf_stand.png"></p>
+
+<p>This script provides a constant height frame from the ground to get a imagenary laser scan for pointcloud_to_laserscan package.
+Biped robots need to use this constant frame to get constant laser scan for 2D SLAM package for wheeled ones like gmapping,
+because the pose of biped robots including height of the base link changes during a task in contrast to wheeled ones.
+In this frame, x, y and yaw is same as base frame of the robot body, z is constant and roll and pitch is same as the ground.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<ul>
+<li><p><code>~parent_frame</code> (String, default: "BODY")
+This parameter indicates the parent frame of the constant height frame, which is expected to be a base frame of the robot body.</p></li>
+<li><p><code>~odom_frame</code> (String, default: "odom")
+This parameter indicates the odometry frame on the ground.</p></li>
+<li><p><code>~frame_name</code> (String, default: "pointcloud_to_scan_base")
+This parameter indicates the name of the constant frame.</p></li>
+<li><p><code>~rate</code> (Double, default: 10.0)
+This parameter indicates publish rate [Hz] of the constant frame.</p></li>
+<li><p><code>~height</code> (Double, default: 1.0)
+This parameter indicates initial height [m] of the constant frame.</p></li>
+</ul>
+
+<h3 id="subscribing-topics">Subscribing Topics</h3>
+
+<ul>
+<li>
+<code>~height</code> (<code>std_msgs/Float64</code>)
+This topic modifies height [m] of the constant frame.</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-jsk_robot_startup">Changelog for package jsk_robot_startup</h1>
+
+<h2 id="1-0-6-2016-06-17">1.0.6 (2016-06-17)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Define publisher before callback definition
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/615">#615</a>)</li>
+<li>
+<p>Combine EKF and GPF for more constant odometry output
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/617">#617</a>)</p>
+
+<ul>
+<li>  [jsk_robot_startup] Add script for odometry calculation with
+combination of EKF and GPF</li>
+<li>  [jsk_robot_startup] Fix some misses</li>
+<li>  [jsk_robot_startup] Use ekf+gpf odometry instead of particle
+odometry and thus iir filter is no longer used</li>
+</ul>
+
+<p>* [jsk_robot_startup] Tune jaxon_red odometry param</p>
+</li>
+<li><p>[jsk_robot_startup] add multisense_local.launch</p></li>
+<li>
+<p>Use only important partilces when estimating output distribution of
+particle odom
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/601">#601</a>)</p>
+
+<ul>
+<li>  [jsk_robot_startup] Use only important particles to guess
+output distribution</li>
+<li>  [jsk_robot_startup] Rename parameter name for valid
+particles</li>
+<li>  [jsk_robot_startup] Use 1/3 particles for estimate normal
+distribution and make initial distribution narrower</li>
+<li>  [jsk_robot_startup] Rename value name to match with rosparam
+name</li>
+</ul>
+
+<p>* [jsk_robot_startup] Add comments</p>
+</li>
+<li><p>activate_user.l : fix for non pr2 robot, see
+<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/589">#589</a>
+(<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/590">#590</a>)</p></li>
+<li><p>[jsk_robot_startup] Add jsk_recognition_msgs to dependency
+because of histgram msgs</p></li>
+<li><p>[jsk_robot_startup] Fix typo</p></li>
+<li><p>[jsk_robot_startup] Add publish_histogram option to visualize
+particles</p></li>
+<li><p>[jsk_robot_startup] Use parameter_yaml arg instead of ROBOT
+environmental value for odometry params</p></li>
+<li><p>[jsk_robot_startup] Tune z direction parameter for JAXON_RED
+odometry</p></li>
+<li><p>Contributors: Iori Kumagai, Kei Okada, Yohei Kakiuchi</p></li>
+</ul>
+
+<h2 id="1-0-5-2016-04-18">1.0.5 (2016-04-18)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Use robot_center_pointcloud_bbox_clipped
+as input for octomap server</li>
+<li>  Contributors: leus</li>
+</ul>
+
+<h2 id="1-0-4-2016-03-21">1.0.4 (2016-03-21)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Overwrite pdf threshould was too small:
+1e-6-&gt;1e-3</li>
+<li>  Contributors: Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-3-2016-03-05">1.0.3 (2016-03-05)</h2>
+
+<ul>
+<li>  jsk_robot_startup/lifelog: fix
+<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/259">#259</a> rename
+mongod_watcher.py -&gt; mongod_kill_watcher.py</li>
+<li>  [jsk_robot_startup] Tune cutoff freq for iir filter in
+JAXON_RED</li>
+<li>  [jsk_robot_startup] Adjust filter rate to 40Hz, which is same as
+raw particle_odometry rate</li>
+<li>  [jsk_robot_startup] Rename node of IIRFilter</li>
+<li>  [jsk_robot_startup] Fix some bags in IIRFilter</li>
+<li>  [jsk_robot_startup] Apply iir filter to particle odometry to
+improve stability of map</li>
+<li>  Contributors: Kei Okada, Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-2-2016-02-14">1.0.2 (2016-02-14)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Make distribution more larger in x and y in
+JAXON_RED</li>
+<li>  [jsk_robot_startup] Use prev_rpy to prevent orientation jump at
+around 180[deg]. This approach may not work at singular points
+because it only consider arctan/arcsin uncertainty</li>
+<li>  [jsk_robot_startup] theta + pi is not same pose as theta</li>
+<li>  [jsk_robot_startup] Consider previous euler angle in
+transform_quaternion_to_euler, but this solution is temporal</li>
+<li>  [jsk_robot_startup] Automatically clear octomap when robot
+stands on the ground</li>
+<li>  [jsk_robot_startup] Add octomap launch using slam Added:
+
+<ul>
+<li>jsk_robot_common/jsk_robot_startup/launch/slam_octomap.launch</li>
+</ul>
+</li>
+<li>  [jsk_robot_startup] Update yaw rotation sigma for ignoring
+stopping state model</li>
+<li>  [jsk_robot_startup] Remove / from tf frame name which is not
+supported by tf2</li>
+<li>  [jsk_robot_startup] Make distribution larger to make estimation
+more robust to pose</li>
+<li>  [jsk_robot_startup] Also fix old version odometry param
+definitions in defaut_odometry_params.yaml</li>
+<li>  [jsk_robot_startup] Tune HRP2JSKNT odometry params</li>
+<li>  [jsk_robot_startup] Fix default and min/max values in
+OdometryOffsetReconfigure</li>
+<li>  [jsk_robot_startup] Fix odometry param definitions for HRP2JSKNT
+which was a old version</li>
+<li>  [jsk_robot_startup] Use odom_init_transform from footcoords
+instead of HrpsysSeqStateROSBridge</li>
+<li>  [jsk_robot_startup] Fix frame_id of imu_rootlink to base_link</li>
+<li>  [jsk_robot_startup] Add ImuRootlinkCalculator, calculate
+base_link relative imu orientation for ParticleOdometry to be
+compatible with HrpsysSeqStateROSBridge</li>
+<li>  [jsk_robot_startup] It seems that transformations in tfMessage
+needs to be sorted by timestamp</li>
+<li>  [jsk_robot_startup] Use original publisher for tfMessage because
+tf.broadcaster cannot receive transformation msg list</li>
+<li>  [jsk_robot_startup] Put broadcast_tf function together in
+execute function to reduce tf rate</li>
+<li>  [jsk_robot_startup] Configure odometry parameters for JAXON_RED</li>
+<li>  [jsk_robot_startup] Publish slam_odom topic because
+transformations of odometry topics are already separated into
+/localization/tf</li>
+<li>  [jsk_robot_startup] Fix bag in stop condicion check when
+overwrite pdf</li>
+<li>  [jsk_robot_startup] Output base_link-&gt;pointcloud_scan
+transform to /tf for simualted scan</li>
+<li>  [jsk_robot_startup] Remap /tf to /tf_null to reduce unnecessary
+tf</li>
+<li>  [jsk_robot_startup] Fix topic name bugs and remap bags</li>
+<li>  [jsk_robot_startup] Separate odometry transform and make only
+one broadcaster</li>
+<li>  [jsk_robot_startup] Use odom_init_transform from
+HrpsysSeqStateROSBridge</li>
+<li>  [jsk_robot_startup] Use imu_rootlink, base_link_frame
+relative imu orientation</li>
+<li>  [jsk_robot_startup] Use
+calculate_init_to_base_link_transform as initial transform of
+odometry_offset and particle odometry</li>
+<li>  [jsk_robot_startup] Add node to calculate
+odom_init-&gt;base_link transform using odom-&gt;base_link and
+odom-&gt;odom_init topics without tf</li>
+<li>  [jsk_robot_startup] publish slam_odom only when
+use_slam_feedback is true</li>
+<li>  [jsk_robot_startup] Fix launch remaps and params for new offset
+calculation</li>
+<li>  [jsk_robot_startup] Remove tf listener and use odometry and
+transformation topics in offset calculation</li>
+<li>  [jsk_robot_startup] Remove unnecessary groups in
+biped_localization.launch</li>
+<li>  [jsk_robot_startup] Remove transform listener in feedback
+wrapper which is no longer needed</li>
+<li>  [jsk_robot_startup] forgot import broadcast_transform in
+ParticleOdometry</li>
+<li>  [jsk_robot_startup] Twist proportional sigma option should be
+processed by individual class, not common utils</li>
+<li>  [jsk_robot_startup] Remove twist_proportional_sigma from
+OdometryFeedbackWrapper</li>
+<li>  [jsk_robot_startup] Trust stopping status when mean offset is
+accumulated to twist in OdometryOffset</li>
+<li>  [jsk_robot_startup] Fix import bug of CameraToBaseOffset</li>
+<li>  [jsk_robot_startup] Set default publish_tf as False in
+unnecessary tfs and do not make broadcast when publish_tf is false</li>
+<li>  [jsk_robot_startup] Update default odometry paremeter set to
+overwrite viso covariance in OdometryOffset</li>
+<li>  [jsk_robot_startup] Use common odometry utilities in
+ParticleOdometry</li>
+<li>  [jsk_robot_startup] Put odometry calculation together in
+OdometryOffset and OdometryFeedbackWrapper is only calculate
+feedback</li>
+<li>  [jsk_robot_startup] Fix bags related to feedback wrapper and
+odoemtry utils</li>
+<li>  [jsk_robot_startup] Remove lookup transforms using odometry
+topic information</li>
+<li>  [jsk_robot_startup] Separate commonly used utilities for
+odometry calculation</li>
+<li>  [jsk_robot_startup] Remove use_imu option from launch files and
+describe in config file</li>
+<li>  [jsk_robot_startup] Fix calculation for initial offset of viso
+camera offset to reduce linalg.inv</li>
+<li>  [jsk_robot_startup] Fix calculation for imu rotation and modify
+base coordinate from base_link to odom</li>
+<li>  [jsk_robot_startup] Calculate imu rotation when imu coordinate
+is not same as global</li>
+<li>  [jsk_robot_startup] Initialize imu buffer in __init__ for
+ParticleOdometry</li>
+<li>  [jsk_robot_startup] Tune odometry parameters for JAXON using
+calculate_covariance option</li>
+<li>  [jsk_robot_startup] Trust stop state in covariance calculation
+in OdometryOffset when twist_proportional_sigma is false</li>
+<li>  [jsk_robot_startup] Preserve odometry information when
+calculate_covarinace is True</li>
+<li>  [jsk_robot_startup] Add options to overwrite covariance in
+odometry_offset</li>
+<li>  [jsk_robot_startup] Adjust timestamp for viso offset calculation
+in camera_to_base_offset</li>
+<li>  [jsk_robot_startup] Fix camera offset calculation</li>
+<li>  [jsk_robot_startup] Add offset script to compensate camera
+motion relative to base_link in viso</li>
+<li>  [jsk_robot_startup] Add jaxon odometry parameter files</li>
+<li>  [jsk_robot_startup/lifelog/mongodb_local.launch] add launch
+file for local mongodb</li>
+<li>  [jsk_robot_startup] Tune filter and viso parameters for
+HRP2JSKNT</li>
+<li>  [jsk_robot_startup] Enable twist filter in HRP2JSKNT</li>
+<li>  [jsk_robot_startup] fix fogotten Vector3 import</li>
+<li>  [jsk_robot_startup] Remove source_skip_dt of ParticleOdometry
+and implement median filter in OdometryOffset</li>
+<li>  [jsk_robot_startup] Add source_skip_dt for HRP2JSKNT</li>
+<li>  [jsk_robot_startup] Tune robot specific params for HRP2JSKNT</li>
+<li>  [jsk_robot_startup] Separate parameter config file from launch
+to tune robot specific params</li>
+<li>  [jsk_robot_startup] Pass soruce_odom without dt check when
+source_odom is not initialized</li>
+<li>  [jsk_robot_startup] Add source_skip_dt to detect and skip
+stacked odometry</li>
+<li>  [jsk_robot_startup] Update twist covariance in calculate
+odometry for feedback wrapper</li>
+<li>  {jsk_pr2_robot, jsk_robot_startup}/README.md: fix
+section/subsection</li>
+<li>  [jsk_robot_startup] Rewrite weighted gaussian covariance
+estimation using numpy to speed up</li>
+<li>  README.md: fix section/subsection</li>
+<li>  [jsk_robot_startup] numpy was more efficient in average and
+covairance calculation, but weighted cov is supported from numpy
+1.10</li>
+<li>  [jsk_robot_startup] Calculate weighted mean and covariance
+directly, not through numpy</li>
+<li>  [jsk_robot_startup] Calculate inverse matrix for
+norm_pdf_multivariate before weighting</li>
+<li>  Merge branch 'speed-up-particle-odometry' of
+<a href="http://github.com/orikuma/jsk_robot">http://github.com/orikuma/jsk_robot</a> into
+speed-up-particle-odometry</li>
+<li>  [jsk_robot_startup] Replace
+tf.transformations.euler_from_quaternion to
+transform_quaternion_to_euler</li>
+<li>  [jsk_robot_startup] sampling number of multivariate_normal
+should be integer</li>
+<li>  [jsk_robot_startup] Call multivariate_normal once in sampling</li>
+<li>  [jsk_robot_startup] stereo_namespace is no longer used in
+particle_odometry because viso is separated</li>
+<li>  [jsk_robot_startup] Pass update when global twist cannot be
+calcluated because of tf problem</li>
+<li>  [jsk_robot_startup] Separate viso from particle_odometry.launch</li>
+<li>  [jsk_robot_startup] Modify constant height for slam through
+rqt_reconfigure</li>
+<li>  [jsk_robot_startup] Add height options for slam_laser_scan</li>
+<li>  [jsk_robot_startup] Fix forgotten subst_value in rosparam of
+slam_odom_scan_distance_filtered</li>
+<li>  [jsk_robot_startup] Add stereo_namespace for viso to set
+multisense prefix</li>
+<li>  [jsk_robot_startup] Separate laser nodelets for slam to reuse in
+other system</li>
+<li>  Merge pull request
+<a href="https://github.com/jsk-ros-pkg/jsk_robot/issues/490">#490</a> from
+orikuma/closed-loop-slam-odom-system [jsk_robot_startup] Add
+launch file to launch full SLAM and odometry system for biped robot</li>
+<li>  [jsk_robot_startup] Add option to toggle setting
+multisense_laser options and using slam feedback</li>
+<li>  [jsk_robot_startup] Add use_salm_feedback option to
+particle_odometry.launch to select standalone odometry or slam
+combination</li>
+<li>  [jsk_robot_startup] Add full launch file for localization, which
+has integrate slam laser pointcloud parameters from
+multisense_local.launch of robots</li>
+<li>  [jsk_robot_startup] Fix source_odom of viso feedbackwrapper:
+viso_odom-&gt;viso_odom_offset and make update rate from 50 to
+100 instead of particles 50 to 20.</li>
+<li>  [jsk_robot_startup] Add options for gmapping: iterations,
+lsigma, temporal_update and map_update_interval. defaults are
+same as gmapping default.</li>
+<li>  [jsk_robot_startup] Add range_max option to determine simulated
+laser_scan range</li>
+<li>  [jsk_robot_startup] Move viso_gaussian_point_cloud to
+use_ekf block</li>
+<li>  [jsk_robot_startup] Broadcast /biped_odom_particle as parent
+of init_odom</li>
+<li>  [jsk_robot_startup] Add OdomDiffTransformPublisher to broadcast
+tf as difference of target and intermediate frame</li>
+<li>  [jsk_robot_startup] Enable map infromation feedback and modify
+some parameters for particle odometry</li>
+<li>  [jsk_robot_startup] Add script to convert map information from
+slam to odometry msg</li>
+<li>  [jsk_robot_startup] Time feedback is prevented when
+max_feedback_time &lt;= 0</li>
+<li>  [jsk_robot_startup] Normalize quaternion and fix matrix for
+quaternion integration</li>
+<li>  [jsk_robot_startup] Use direct diviasion as same as particle
+odometry in odometry feedback wrapper</li>
+<li>  [jsk_robot_startup] Use quaternion diviasion directly instead of
+using euler angle</li>
+<li>  [jsk_robot_startup] Add some comments</li>
+<li>  [jsk_robot_startup] Add odometry_offset to
+odometry_integration.launch</li>
+<li>  [jsk_robot_startup] Update rate of particle odometries</li>
+<li>  [jsk_robot_startup] Add queue_size option</li>
+<li>  [jsk_robot_startup] Fix parameters for particle odometry</li>
+<li>  [jsk_robot_startup] Add distribution_feedback_minimum_sigma,
+limit minimum sigma for check distribution error and do not execute
+feedback when feedback_odom has too small distribution</li>
+<li>  [jsk_robot_startup] Fix offset calculation: wrong multipling
+homogeneous matrix order</li>
+<li>  [jsk_robot_startup] Add use_imu_yaw option</li>
+<li>  [jsk_robot_startup] Add comment</li>
+<li>  [jsk_robot_startup] delegate offset calculation to
+OdometryOffset.py</li>
+<li>  [jsk_robot_startup] Calculate transformation instead of
+integrate velocity in feedback wrapper</li>
+<li>  [jsk_robot_startup] Use odometry feedback to prevent drift of
+viso</li>
+<li>  [jsk_robot_startup] Integrate odometry when odometry feedback is
+enabled</li>
+<li>  [jsk_robot_startup] Resume trapezoidal odometry integration and
+add init_sigma param</li>
+<li>  Contributors: Yuki Furuta, Kei Okada, Kohei Kimura, Ryohei Ueda,
+Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-1-2015-11-19">1.0.1 (2015-11-19)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Fix namespace of param for
+pointcloud_to_laserscan</li>
+<li>  Contributors: Eisoku Kuroiwa</li>
+</ul>
+
+<h2 id="1-0-0-2015-11-06">1.0.0 (2015-11-06)</h2>
+
+<h2 id="0-0-13-2015-11-06">0.0.13 (2015-11-06)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Add scripts to caclulate odometry with
+particle filter to integrate odometries (from pattern generator or
+visual odometry etc) and imu</li>
+<li>  [jsk_robot_startup] Add script to set offset from a frame
+(like init_odom) to odometry source</li>
+<li>  Contributors: Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-12-2015-11-06">0.0.12 (2015-11-06)</h2>
+
+<ul>
+<li>  [jsk_robot_startup/lifelog/mongodb.launch] use machine attribute
+for mongodb server/client ref:
+<a href="https://github.com/strands-project/mongodb_store/pull/151">https://github.com/strands-project/mongodb_store/pull/151</a>
+</li>
+<li>  [jsk_robot_startup] Modify pose difference threshould from sigma
+to 3*sigma</li>
+<li>  [jsk_robot_startup] Rename twist_proportional_covariance to
+twist_proportional_sigma for accuracy</li>
+<li>  [jsk_robot_startup] Add twist proportional sigma option to
+odometry feedback wrapper</li>
+<li>  [db_client] add machine option for mongodb client</li>
+<li>  [jsk_robot_startup] Fix timestamp problem of transform and odom
+in feedback process</li>
+<li>  [jsk_robot_startup] use deepcopy instead of copy because coipy
+method copies reference of object members</li>
+<li>  [jsk_robot_startup] Reset odometry buffer when
+initialize_odometry</li>
+<li>  [jsk_robot_startup] Remove unnecessary lock in initialize</li>
+<li>  [jsk_robot_startup] Prevent dead lock in initialize_odometry</li>
+<li>  [jsk_robot_startup] Initialize odometry using odom_init_frame
+in tf instead of init_odom topic</li>
+<li>  [jsk_robot_startup] Add init_signal subscriber to catch contact
+signal to ground and reset odometry wrapper</li>
+<li>  [jsk_robot_startup] Revert calculation of orientation, which is
+probably deleted by mistake</li>
+<li>  [jsk_robot_startup] Modify parameters for real robot</li>
+<li>  [jsk_robot_startup] Fix description of integration</li>
+<li>  [jsk_robot_startup] Modify integration method from rectangular
+to trapezoidal, and add prev_global_twist as argument of
+update_pose</li>
+<li>  [jsk_robot_startup] Extend queue_size from 1 to 100</li>
+<li>  [jsk_robot_startup] Modify ref_frame_change_method parameter
+from 0 to 1 to prevent drift in viso</li>
+<li>  [jsk_robot_startup] Add init_odom to indicate initialize soruce
+of odom</li>
+<li>  [jsk_robot_startup] Update documents for
+ConstantHeightFramePublisher</li>
+<li>  [jsk_robot_startup] Add arguments to select odom frame name of
+ConstantHeightFramePublisher</li>
+<li>  [jsk_robot_startup] Fix typo in error warning</li>
+<li>  [jsk_robot_startup] Print warning when faield to solve tf</li>
+<li>  [jsk_robot_startup] Pass odom frame name as rosparam in
+ConstantHeightFramePublisher</li>
+<li>  [jsk_robot_startup] Add script to integrate odometry soruce</li>
+<li>  [jsk_robot_startup] Add wrapper script to odometry feedback</li>
+<li>  [jsk_robot_startup/lifelog/periodic_replicator_client.py]
+cancel replication when no wired network connection</li>
+<li>  [jsk_robot_startup] Add args to determine frame name of odom and
+map to gmapping</li>
+<li>  [jsk_robot_startup] Add invert_viso_tf option to use
+invert_tf of viso, which is invert parent and child of viso_odom
+transformation</li>
+<li>  [jsk_robot_startup/lifelog/periodic_replicator_client.py] fix
+fetching argument</li>
+<li>  [jsk_robot_startup] Respawn viso to restart by rosnode kill</li>
+<li>  [jsk_robot_startup] Add args to remap image topic name for viso</li>
+<li>  [jsk_robot_startup/lifelog/tweet.launch] use image_saver
+instead of extract_images for tweeting with image</li>
+<li>  [jsk_robot_startup] add jenkins/musca to database replication
+node</li>
+<li>  Contributors: Yuki Furuta, Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-11-2015-09-01">0.0.11 (2015-09-01)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Add visualization node for viso
+odom_combined</li>
+<li>  [jsk_robot_startup] Add viso.launch for visual odometry</li>
+<li>  Contributors: Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-10-2015-08-16">0.0.10 (2015-08-16)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] fix camera namespace openni -&gt;
+kinect_head</li>
+<li>  [jsk_robot_startup] Add odometry accuracy parameters for
+gmapping</li>
+<li>  [jsk_robot_startup] Add scripts to reset slam and heightmap
+according to /odom_init_trigger topic</li>
+<li>  [jsk_robot_startup] Add gmapping.rviz for gmapping.launch</li>
+<li>  [jsk_robot_startup] Add delta/particle/minimum_score parameters
+for gmapping</li>
+<li>  [jsk_robot_startup] use param "robot/name" [jsk_pr2_startup]
+use daemon mongod</li>
+<li>  [jsk_robot_startup] Add rate param to modify tf publish rate and
+set 10.0 as defalut</li>
+<li>  add run depend for mapping</li>
+<li>  [jsk_robot_startup] Enable inf value in
+pointcloud_to_laserscan to prevent robot from obtaining wrong
+obstacles</li>
+<li>  Contributors: Yuki Furuta, Ryohei Ueda, Yu Ohara, Iori Kumagai</li>
+</ul>
+
+<h2 id="0-0-9-2015-08-03">0.0.9 (2015-08-03)</h2>
+
+<ul>
+<li>  [jsk_robot_startup] Modify node name of gmapping and
+pointcloud_to_laserscan</li>
+<li>  [jsk_robot_startup] Add respawn to gmapping</li>
+<li>  [jsk_robot_startup] Add angle_max and angle_min arguments to
+determine horizontal scan range</li>
+<li>  [jsk_robot_startup] Fix x, y and yaw of pointcloud_toscan_base
+to parent, roll and pitch to /odom</li>
+<li>  [jsk_robot_startup] Fix roll and pitch angle of cosntant height
+frame same as /odom</li>
+<li>  [jsk_robot_startup] Add gmapping to run_depend</li>
+<li>  [jsk_robot_startup] Add scripts and launch files for gmapping</li>
+<li>  [jsk_robot_startup] support daemon mode mongod; enable
+replication to jsk robot-database</li>
+<li>  Contributors: Iori Kumagai, Yuki Furuta</li>
+</ul>
+
+<h2 id="0-0-8-2015-07-16">0.0.8 (2015-07-16)</h2>
+
+<h2 id="0-0-7-2015-06-11">0.0.7 (2015-06-11)</h2>
+
+<h2 id="0-0-6-2015-04-10">0.0.6 (2015-04-10)</h2>
+
+<h2 id="0-0-5-2015-04-08">0.0.5 (2015-04-08)</h2>
+
+<ul>
+<li>  [jsk_baxter_startup] update to add position diff paramter for
+tweet</li>
+<li>  [jsk_baxter_startup] modify to prevent baxter.launch fail</li>
+<li>  [jsk_robot_startup/package.xml: add diagnostic_msgs,
+pr2_mechanism_controllers, sensor_msgs to build dependencies</li>
+<li>  [sk_robot_startup/CMakeLists.txt] update to set permission for
+installed script files</li>
+<li>  [jsk_robot_startup] modfiy CMakeLists.txt to install
+jsk_robot_startup correctly</li>
+<li>  [jsk_robot_startup/lifelog/active_user.l] repair tweet lifelog</li>
+<li>  [jsk_robot_startup/lifelog/mongodb.launch] fix typo of option in
+launch</li>
+<li>  [jsk_robot_startup/lifelog/mongodb.launch: add mongodb launch;
+mongod kill watcher</li>
+<li>  Contributors: Yuki Furuta, Yuto Inagaki</li>
+</ul>
+
+<h2 id="0-0-4-2015-01-30">0.0.4 (2015-01-30)</h2>
+
+<h2 id="0-0-3-2015-01-09">0.0.3 (2015-01-09)</h2>
+
+<h2 id="0-0-2-2015-01-08">0.0.2 (2015-01-08)</h2>
+
+<h2 id="0-0-1-2014-12-25">0.0.1 (2014-12-25)</h2>
 
 <ul>
 <li>  check joint state and set movep for odom disable robot</li>
@@ -563,7 +3393,8 @@ Furuta</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/jsk_robot_startup/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/jsk_robot_startup/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -575,31 +3406,322 @@ Furuta</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mongodb_store#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mongodb_store" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mongodb_store#hydro">mongodb_store</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#hydro">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#hydro">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roseus#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roseus" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roseus#hydro">roseus</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/diagnostic_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/diagnostic_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/diagnostic_msgs#hydro">diagnostic_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_mechanism_controllers#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_mechanism_controllers" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_mechanism_controllers#hydro">pr2_mechanism_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/gmapping#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/gmapping" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/gmapping#hydro">gmapping</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pointcloud_to_laserscan#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pointcloud_to_laserscan" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/pointcloud_to_laserscan#hydro">pointcloud_to_laserscan</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/jsk_recognition_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/jsk_recognition_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/jsk_recognition_msgs#hydro">jsk_recognition_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/mongodb_store#hydro">mongodb_store</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#hydro">rospy</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot#hydro">jsk_fetch_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#hydro">jsk_pr2_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_robot/github-jsk-ros-pkg-jsk_robot#hydro">jsk_robot</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_robot/github-jsk-ros-pkg-jsk_robot#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -607,16 +3729,734 @@ Furuta</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/tweet.launch" target="_blank">lifelog/tweet.launch</a></li>
-          
-            <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/mongodb.launch" target="_blank">lifelog/mongodb.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/viso.launch" target="_blank">launch/viso.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>stereo</strong> <em>&#91;default: multisense&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image</strong> <em>&#91;default: image_rect&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_frame_id</strong> <em>&#91;default: viso_odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>base_link_frame_id</strong> <em>&#91;default: BODY&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>sensor_frame_id</strong> <em>&#91;default: left_camera_optical_frame&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>output_odom_topic</strong> <em>&#91;default: viso_odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_viso_tf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>invert_viso_tf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_robot_pose_ekf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_used</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_data</strong> <em>&#91;default: /odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>imu_used</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>imu_data</strong> <em>&#91;default: /imu&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/odometry_integration.launch" target="_blank">launch/odometry_integration.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>stereo</strong> <em>&#91;default: multisense&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image</strong> <em>&#91;default: image_rect&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_robot_pose_ekf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_viso_tf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>invert_viso_tf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/slam_laser_nodelets.launch" target="_blank">launch/slam_laser_nodelets.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>nodelet_index</strong> <em>&#91;default: 2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>laser_input</strong> <em>&#91;default: /multisense/cloud_self_filtered&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>assemble_base_frame</strong> <em>&#91;default: odom_init&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/slam_octomap.launch" target="_blank">launch/slam_octomap.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>input_cloud</strong> <em>&#91;default: /robot_center_pointcloud_bbox_clipped/output&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/multisense_local.launch" target="_blank">launch/multisense_local.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>ip_address</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>mtu</strong> <em>&#91;default: 1500&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>SELF_FILTER_PARAM</strong> <em>&#91;default: &#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>ODOMETRY_PARAM</strong> <em>&#91;default: $(find jsk_robot_startup)/config/default_odometry_params.yaml&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>RUN_DRIVER</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>USE_RESIZE</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>HEIGHTMAP_FILTER_Z</strong> <em>&#91;default: 1.3&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>USE_BIPED_LOCALIZATION</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>use_particle_odom</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>parameter_yaml</strong> <em>&#91;default: $(arg ODOMETRY_PARAM)&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/pointcloud_to_laserscan.launch" target="_blank">launch/pointcloud_to_laserscan.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> original : navigation_global/move_base.xml (electric) </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>cloud_in</strong> <em>&#91;default: /multisense/organized_image_points2_color&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame</strong> <em>&#91;default: pointcloud_to_scan_base&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_height</strong> <em>&#91;default: 0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>min_height</strong> <em>&#91;default: -0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_max</strong> <em>&#91;default: 2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_min</strong> <em>&#91;default: -2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>range_max</strong> <em>&#91;default: 50.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_height</strong> <em>&#91;default: 1.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame_parent</strong> <em>&#91;default: BODY&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame_odom</strong> <em>&#91;default: odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_fixed_frame</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/gmapping.launch" target="_blank">launch/gmapping.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> original : navigation_global/move_base.xml (electric) </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>scan_frame_parent</strong> <em>&#91;default: BODY&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_frame</strong> <em>&#91;default: pointcloud_to_scan_base&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>map_frame</strong> <em>&#91;default: map&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_frame</strong> <em>&#91;default: odom&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cloud_in</strong> <em>&#91;default: /multisense/organized_image_points2_color&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>scan_height</strong> <em>&#91;default: 1.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_height</strong> <em>&#91;default: 0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>min_height</strong> <em>&#91;default: -0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_max</strong> <em>&#91;default: 2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>angle_min</strong> <em>&#91;default: -2.35619&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>range_max</strong> <em>&#91;default: 30.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_fixed_frame</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>particles</strong> <em>&#91;default: 30&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>iterations</strong> <em>&#91;default: 5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>lsigma</strong> <em>&#91;default: 0.075&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>temporal_update</strong> <em>&#91;default: -1.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>map_update_interval</strong> <em>&#91;default: 5.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>minimum_score</strong> <em>&#91;default: 0.0&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>delta</strong> <em>&#91;default: 0.025&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>srr</strong> <em>&#91;default: 0.025&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>srt</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>str</strong> <em>&#91;default: 0.025&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>stt</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/biped_localization.launch" target="_blank">launch/biped_localization.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>set_slam_laser_params</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_particle_odom</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_slam_feedback</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>nodelet_index</strong> <em>&#91;default: 2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>stereo_namespace</strong> <em>&#91;default: multisense&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>slam_laser_scan_height</strong> <em>&#91;default: 0.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>slam_laser_max_height</strong> <em>&#91;default: 0.2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>slam_laser_min_height</strong> <em>&#91;default: -0.2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>parameter_yaml</strong> <em>&#91;default: $(find jsk_robot_startup)/config/default_odometry_params.yaml&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><strong>stereo</strong> <em>&#91;default: $(arg stereo_namespace)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image</strong> <em>&#91;default: image_rect&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_robot_pose_ekf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>publish_viso_tf</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>invert_viso_tf</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/launch/particle_odometry.launch" target="_blank">launch/particle_odometry.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>use_slam_feedback</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_odometry_iir_filter</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>parameter_yaml</strong> <em>&#91;default: $(find jsk_robot_startup)/config/default_odometry_params.yaml&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/mongodb.launch" target="_blank">lifelog/mongodb.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>db_path</strong> <em>&#91;default: /var/lib/robot/mongodb_store&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>port</strong> <em>&#91;default: 62345&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>repl_set_mode</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>use_daemon</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>db_name</strong> <em>&#91;default: jsk_robot_lifelog&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>machine</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>replicate</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>replicator_dump_path</strong> <em>&#91;default: /tmp/replicator_dumps&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/tweet.launch" target="_blank">lifelog/tweet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>robot_name</strong> <em>&#91;default: PR2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>worktime_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>uptime_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>tablet_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>warning_enable</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>motor_subscribe</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>odom_subscribe</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>joint_state_subscribe</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>position_diff_threshold</strong> <em>&#91;default: 0.05&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_motor_state</strong> <em>&#91;default: /pr2_ethercat/motors_halted&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_odom_state</strong> <em>&#91;default: /base_odometry/odometer&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_joint_states</strong> <em>&#91;default: /joint_states&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>remap_diagnostics</strong> <em>&#91;default: /diagnostics&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>image_topics</strong> <em>&#91;default: /kinect_head_c2/rgb/image_rect_color /wide_stereo/left/image_rect_color&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>machine</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>output</strong> <em>&#91;default: screen&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>account_info</strong> <em>&#91;default: /var/lib/robot/twitter_account_pr2jsk.yaml&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup/lifelog/mongodb_local.launch" target="_blank">lifelog/mongodb_local.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -625,9 +4465,9 @@ Furuta</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -636,9 +4476,9 @@ Furuta</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -647,28 +4487,35 @@ Furuta</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/jsk_robot_startup/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_robot/tree/master/jsk_robot_common/jsk_robot_startup"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_robot_startup/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/jsk_robot_startup?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_robot_startup&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -728,7 +4575,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

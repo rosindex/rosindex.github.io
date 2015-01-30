@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,8 +281,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +305,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-05-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-30
         </span>
       </td>
     </tr>
@@ -312,7 +362,17 @@
 <html><body><div class="rendered-markdown">
 <h1 id="argos3d_p100_ros_pkg">argos3d_p100_ros_pkg</h1>
 
-<h3 id="ros-package-for-bluetechnix-argos3d-p100-tof-camera.">ROS package for Bluetechnix Argos3D P100 ToF camera.</h3>
+<hr>
+
+<p>This ROS package uses an old api for the Bluetechnix Argos 3d p100 sensor.</p>
+
+<p>There is a new package (<a href="https://github.com/voxel-dot-at/bta_tof_driver">https://github.com/voxel-dot-at/bta_tof_driver</a>) that uses the new <a href="https://support.bluetechnix.at/wiki/Bluetechnix_'Time_of_Flight'_API">BltToFApi</a> developed by Bluetechnix for interacting with their sensors.</p>
+
+<p>We recommend to use the new bta_tof_driver package.</p>
+
+<hr>
+
+<h3 id="ros-package-for-bluetechnix-argos3d-p100-tof-camera">ROS package for Bluetechnix Argos3D P100 ToF camera.</h3>
 
 <h1 id="summary">Summary</h1>
 
@@ -324,7 +384,7 @@ as well as its capabilities.</p>
 <p>To get more information about the Time of Flight camera Argos3D P100 please visit Bluetechnix website:
 <a href="http://ww2.bluetechnix.com/en/products/depthsensing/product/argos3d-p100/">http://ww2.bluetechnix.com/en/products/depthsensing/product/argos3d-p100/</a></p>
 
-<h2 id="first-step:-get-ros">First step: Get ROS</h2>
+<h2 id="first-step-get-ros">First step: Get ROS</h2>
 
 <p>The argos3d_p100_ros_kg works with ROS versions groovy and hydro. 
 You can use catkin workspaces or the previous rosbuild to configure, compile and get ready ROS.</p>
@@ -359,14 +419,14 @@ from the tutorials of the ROS web site.</p>
 <p>Be sure your libboost library version is &gt;= 1.49.
 Previous versions as 1.46 generate errors while compiling argos3d_p100-ros-pkg.</p>
 
-<h1 id="1.-configuration">1. Configuration</h1>
+<h1 id="1-configuration">1. Configuration</h1>
 
 <h2 id="setup-p100-usb-rules-and-native-libraries">Setup P100 USB rules and native libraries</h2>
 
 <p>The first step is to add the PMDSDK to our system. 
 (The PMDSDK is copyrighted software and it is distributed with your Argos3D P100)</p>
 
-<h4 id="1.1-usb-device-rules">1.1 Usb Device rules</h4>
+<h4 id="1-1-usb-device-rules">1.1 Usb Device rules</h4>
 
 <p>After unziping the software distributed with your Argos3D P100 camera, browse to the directory 
 of your operating system version. </p>
@@ -380,13 +440,14 @@ sudo cp 10-pmd-ubuntu.rules /etc/udev/rules.d/
 </code></pre>
 This will set the right permissions to allow not sudo users to use the camera.
 
-<h4 id="1.2-libraries-setup">1.2 Libraries setup</h4>
+<h4 id="1-2-libraries-setup">1.2 Libraries setup</h4>
 
 <p>Add PMDSDK to your system (use the right version for your system 32 or 64 bits).</p>
 
 <ol>
 <li>Add the dynamically linked shared object library libpmdaccess2. Use one of the following options:</li>
 </ol>
+
 <p>You have different ways to add it to the <strong>LD_LIBRARY_PATH</strong>.
 - You can simply copy the libpmdaccess2.so file to <strong>/usr/local/lib</strong> as root (or the defauld search library path of your system)
 - Add a .conf file (like pmd_camera_L64.conf) with the path of your library in <strong>/etc/ld.so.conf.d</strong>. The file must contaning the following lines:</p>
@@ -401,25 +462,27 @@ This will set the right permissions to allow not sudo users to use the camera.
 <ol>
 <li>Add includes and dynamic plugin libraries</li>
 </ol>
+
 <ul>
 <li>Move the PMDSDK folder to a directory where the operating system can find it (/usr/include)</li>
 <li>or set an environment variable called $PMDDIR to the path where there is the PMDSDK.</li>
 </ul>
+
 <p>After adding libraries, update the links and cache of the share libraries with:</p>
 
 <pre><code>ldconfig
 </code></pre>
 
-<h1 id="2.-installation">2. Installation</h1>
+<h1 id="2-installation">2. Installation</h1>
 
-<h4 id="2.1-install-dependencies">2.1 Install dependencies</h4>
+<h4 id="2-1-install-dependencies">2.1 Install dependencies</h4>
 
 <p>Make sure you have the following dependencies already installed:
 </p>
 <pre><code> apt-get install ros-hydro-pcl-ros ros-hydro-pcl-conversions ros-hydro-perception-pcl 
 </code></pre>
 
-<h4 id="2.2-install-the-package">2.2 Install the package</h4>
+<h4 id="2-2-install-the-package">2.2 Install the package</h4>
 
 <p>Clone from repository: <a href="https://github.com/voxel-dot-at/argos3d_p100_ros_pkg.git">https://github.com/voxel-dot-at/argos3d_p100_ros_pkg.git</a>
 to your src/ folder in your catkin workspace.
@@ -433,20 +496,20 @@ cd ..
 catkin_make
 </code></pre>
 
-<h1 id="3.-usage">3. Usage</h1>
+<h1 id="3-usage">3. Usage</h1>
 
-<h4 id="*-watch-our-demo-video:">* Watch our demo video:</h4>
+<h4 id="watch-our-demo-video">* Watch our demo video:</h4>
 
 <blockquote>
 <p><a href="http://youtu.be/1yVNbUQoMrU">http://youtu.be/1yVNbUQoMrU</a></p>
 </blockquote>
 
-<h4 id="3.1-start-the-ros-core">3.1 Start the ROS core</h4>
+<h4 id="3-1-start-the-ros-core">3.1 Start the ROS core</h4>
 
 <pre><code>roscore &amp;
 </code></pre>
 
-<h4 id="3.2-start-capturing">3.2 Start capturing</h4>
+<h4 id="3-2-start-capturing">3.2 Start capturing</h4>
 
 <pre><code>cd catkin_ws
 source devel/setup.bash
@@ -493,7 +556,7 @@ rosrun argos3d_p100 argos3d_p100_node
  rosrun argos3d_p100 argos3d_p100_node -it 1500 -mf 30000000 
 </code></pre>
 
-<h4 id="*-use-calibration-file">* Use calibration file</h4>
+<h4 id="use-calibration-file">* Use calibration file</h4>
 
 <p>In the software distibuted with your camera there is a calibration file that provides precise 3D position calculation.
 The file is load when the connection with you Argos3D is established.</p>
@@ -507,7 +570,7 @@ rosrun argos3d_p100 argos3d_p100_node
 
 <p>The argos3d_p100_node will show a message that confirmes you if the calibration file was loaded successfully.</p>
 
-<h4 id="3.3-visualization-in-rviz">3.3 Visualization in rviz</h4>
+<h4 id="3-3-visualization-in-rviz">3.3 Visualization in rviz</h4>
 
 <pre><code>rosrun rviz rviz 
 </code></pre>
@@ -534,7 +597,8 @@ Two different point sets are published with following topic names:</p>
 <li>At the bottom in "Display" click on the button <strong>add</strong> to open a dialog titled "Create visualization"</li>
 <li>In the dialog opened after, choose the tab "By topic" and select the <strong>/depth_non_filtered</strong> topic.</li>
 </ol>
-<h4 id="3.4-using-filters-and-parameters-configuration">3.4 Using filters and parameters configuration</h4>
+
+<h4 id="3-4-using-filters-and-parameters-configuration">3.4 Using filters and parameters configuration</h4>
 
 <p>To apply point filters and change camera parameters, use dynamic_reconfigure from ros. 
 To use, it run the configuration interface (after launching argos3d_p100_ros_pkg)</p>
@@ -569,6 +633,9 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -576,8 +643,8 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -600,7 +667,7 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-05-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-30
         </span>
       </td>
     </tr>
@@ -657,7 +724,17 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
 <html><body><div class="rendered-markdown">
 <h1 id="argos3d_p100_ros_pkg">argos3d_p100_ros_pkg</h1>
 
-<h3 id="ros-package-for-bluetechnix-argos3d-p100-tof-camera.">ROS package for Bluetechnix Argos3D P100 ToF camera.</h3>
+<hr>
+
+<p>This ROS package uses an old api for the Bluetechnix Argos 3d p100 sensor.</p>
+
+<p>There is a new package (<a href="https://github.com/voxel-dot-at/bta_tof_driver">https://github.com/voxel-dot-at/bta_tof_driver</a>) that uses the new <a href="https://support.bluetechnix.at/wiki/Bluetechnix_'Time_of_Flight'_API">BltToFApi</a> developed by Bluetechnix for interacting with their sensors.</p>
+
+<p>We recommend to use the new bta_tof_driver package.</p>
+
+<hr>
+
+<h3 id="ros-package-for-bluetechnix-argos3d-p100-tof-camera">ROS package for Bluetechnix Argos3D P100 ToF camera.</h3>
 
 <h1 id="summary">Summary</h1>
 
@@ -669,7 +746,7 @@ as well as its capabilities.</p>
 <p>To get more information about the Time of Flight camera Argos3D P100 please visit Bluetechnix website:
 <a href="http://ww2.bluetechnix.com/en/products/depthsensing/product/argos3d-p100/">http://ww2.bluetechnix.com/en/products/depthsensing/product/argos3d-p100/</a></p>
 
-<h2 id="first-step:-get-ros">First step: Get ROS</h2>
+<h2 id="first-step-get-ros">First step: Get ROS</h2>
 
 <p>The argos3d_p100_ros_kg works with ROS versions groovy and hydro. 
 You can use catkin workspaces or the previous rosbuild to configure, compile and get ready ROS.</p>
@@ -704,14 +781,14 @@ from the tutorials of the ROS web site.</p>
 <p>Be sure your libboost library version is &gt;= 1.49.
 Previous versions as 1.46 generate errors while compiling argos3d_p100-ros-pkg.</p>
 
-<h1 id="1.-configuration">1. Configuration</h1>
+<h1 id="1-configuration">1. Configuration</h1>
 
 <h2 id="setup-p100-usb-rules-and-native-libraries">Setup P100 USB rules and native libraries</h2>
 
 <p>The first step is to add the PMDSDK to our system. 
 (The PMDSDK is copyrighted software and it is distributed with your Argos3D P100)</p>
 
-<h4 id="1.1-usb-device-rules">1.1 Usb Device rules</h4>
+<h4 id="1-1-usb-device-rules">1.1 Usb Device rules</h4>
 
 <p>After unziping the software distributed with your Argos3D P100 camera, browse to the directory 
 of your operating system version. </p>
@@ -725,13 +802,14 @@ sudo cp 10-pmd-ubuntu.rules /etc/udev/rules.d/
 </code></pre>
 This will set the right permissions to allow not sudo users to use the camera.
 
-<h4 id="1.2-libraries-setup">1.2 Libraries setup</h4>
+<h4 id="1-2-libraries-setup">1.2 Libraries setup</h4>
 
 <p>Add PMDSDK to your system (use the right version for your system 32 or 64 bits).</p>
 
 <ol>
 <li>Add the dynamically linked shared object library libpmdaccess2. Use one of the following options:</li>
 </ol>
+
 <p>You have different ways to add it to the <strong>LD_LIBRARY_PATH</strong>.
 - You can simply copy the libpmdaccess2.so file to <strong>/usr/local/lib</strong> as root (or the defauld search library path of your system)
 - Add a .conf file (like pmd_camera_L64.conf) with the path of your library in <strong>/etc/ld.so.conf.d</strong>. The file must contaning the following lines:</p>
@@ -746,25 +824,27 @@ This will set the right permissions to allow not sudo users to use the camera.
 <ol>
 <li>Add includes and dynamic plugin libraries</li>
 </ol>
+
 <ul>
 <li>Move the PMDSDK folder to a directory where the operating system can find it (/usr/include)</li>
 <li>or set an environment variable called $PMDDIR to the path where there is the PMDSDK.</li>
 </ul>
+
 <p>After adding libraries, update the links and cache of the share libraries with:</p>
 
 <pre><code>ldconfig
 </code></pre>
 
-<h1 id="2.-installation">2. Installation</h1>
+<h1 id="2-installation">2. Installation</h1>
 
-<h4 id="2.1-install-dependencies">2.1 Install dependencies</h4>
+<h4 id="2-1-install-dependencies">2.1 Install dependencies</h4>
 
 <p>Make sure you have the following dependencies already installed:
 </p>
 <pre><code> apt-get install ros-hydro-pcl-ros ros-hydro-pcl-conversions ros-hydro-perception-pcl 
 </code></pre>
 
-<h4 id="2.2-install-the-package">2.2 Install the package</h4>
+<h4 id="2-2-install-the-package">2.2 Install the package</h4>
 
 <p>Clone from repository: <a href="https://github.com/voxel-dot-at/argos3d_p100_ros_pkg.git">https://github.com/voxel-dot-at/argos3d_p100_ros_pkg.git</a>
 to your src/ folder in your catkin workspace.
@@ -778,20 +858,20 @@ cd ..
 catkin_make
 </code></pre>
 
-<h1 id="3.-usage">3. Usage</h1>
+<h1 id="3-usage">3. Usage</h1>
 
-<h4 id="*-watch-our-demo-video:">* Watch our demo video:</h4>
+<h4 id="watch-our-demo-video">* Watch our demo video:</h4>
 
 <blockquote>
 <p><a href="http://youtu.be/1yVNbUQoMrU">http://youtu.be/1yVNbUQoMrU</a></p>
 </blockquote>
 
-<h4 id="3.1-start-the-ros-core">3.1 Start the ROS core</h4>
+<h4 id="3-1-start-the-ros-core">3.1 Start the ROS core</h4>
 
 <pre><code>roscore &amp;
 </code></pre>
 
-<h4 id="3.2-start-capturing">3.2 Start capturing</h4>
+<h4 id="3-2-start-capturing">3.2 Start capturing</h4>
 
 <pre><code>cd catkin_ws
 source devel/setup.bash
@@ -838,7 +918,7 @@ rosrun argos3d_p100 argos3d_p100_node
  rosrun argos3d_p100 argos3d_p100_node -it 1500 -mf 30000000 
 </code></pre>
 
-<h4 id="*-use-calibration-file">* Use calibration file</h4>
+<h4 id="use-calibration-file">* Use calibration file</h4>
 
 <p>In the software distibuted with your camera there is a calibration file that provides precise 3D position calculation.
 The file is load when the connection with you Argos3D is established.</p>
@@ -852,7 +932,7 @@ rosrun argos3d_p100 argos3d_p100_node
 
 <p>The argos3d_p100_node will show a message that confirmes you if the calibration file was loaded successfully.</p>
 
-<h4 id="3.3-visualization-in-rviz">3.3 Visualization in rviz</h4>
+<h4 id="3-3-visualization-in-rviz">3.3 Visualization in rviz</h4>
 
 <pre><code>rosrun rviz rviz 
 </code></pre>
@@ -879,7 +959,8 @@ Two different point sets are published with following topic names:</p>
 <li>At the bottom in "Display" click on the button <strong>add</strong> to open a dialog titled "Create visualization"</li>
 <li>In the dialog opened after, choose the tab "By topic" and select the <strong>/depth_non_filtered</strong> topic.</li>
 </ol>
-<h4 id="3.4-using-filters-and-parameters-configuration">3.4 Using filters and parameters configuration</h4>
+
+<h4 id="3-4-using-filters-and-parameters-configuration">3.4 Using filters and parameters configuration</h4>
 
 <p>To apply point filters and change camera parameters, use dynamic_reconfigure from ros. 
 To use, it run the configuration interface (after launching argos3d_p100_ros_pkg)</p>
@@ -914,6 +995,9 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -921,8 +1005,8 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -945,7 +1029,7 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-05-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-30
         </span>
       </td>
     </tr>
@@ -1002,7 +1086,17 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
 <html><body><div class="rendered-markdown">
 <h1 id="argos3d_p100_ros_pkg">argos3d_p100_ros_pkg</h1>
 
-<h3 id="ros-package-for-bluetechnix-argos3d-p100-tof-camera.">ROS package for Bluetechnix Argos3D P100 ToF camera.</h3>
+<hr>
+
+<p>This ROS package uses an old api for the Bluetechnix Argos 3d p100 sensor.</p>
+
+<p>There is a new package (<a href="https://github.com/voxel-dot-at/bta_tof_driver">https://github.com/voxel-dot-at/bta_tof_driver</a>) that uses the new <a href="https://support.bluetechnix.at/wiki/Bluetechnix_'Time_of_Flight'_API">BltToFApi</a> developed by Bluetechnix for interacting with their sensors.</p>
+
+<p>We recommend to use the new bta_tof_driver package.</p>
+
+<hr>
+
+<h3 id="ros-package-for-bluetechnix-argos3d-p100-tof-camera">ROS package for Bluetechnix Argos3D P100 ToF camera.</h3>
 
 <h1 id="summary">Summary</h1>
 
@@ -1014,7 +1108,7 @@ as well as its capabilities.</p>
 <p>To get more information about the Time of Flight camera Argos3D P100 please visit Bluetechnix website:
 <a href="http://ww2.bluetechnix.com/en/products/depthsensing/product/argos3d-p100/">http://ww2.bluetechnix.com/en/products/depthsensing/product/argos3d-p100/</a></p>
 
-<h2 id="first-step:-get-ros">First step: Get ROS</h2>
+<h2 id="first-step-get-ros">First step: Get ROS</h2>
 
 <p>The argos3d_p100_ros_kg works with ROS versions groovy and hydro. 
 You can use catkin workspaces or the previous rosbuild to configure, compile and get ready ROS.</p>
@@ -1049,14 +1143,14 @@ from the tutorials of the ROS web site.</p>
 <p>Be sure your libboost library version is &gt;= 1.49.
 Previous versions as 1.46 generate errors while compiling argos3d_p100-ros-pkg.</p>
 
-<h1 id="1.-configuration">1. Configuration</h1>
+<h1 id="1-configuration">1. Configuration</h1>
 
 <h2 id="setup-p100-usb-rules-and-native-libraries">Setup P100 USB rules and native libraries</h2>
 
 <p>The first step is to add the PMDSDK to our system. 
 (The PMDSDK is copyrighted software and it is distributed with your Argos3D P100)</p>
 
-<h4 id="1.1-usb-device-rules">1.1 Usb Device rules</h4>
+<h4 id="1-1-usb-device-rules">1.1 Usb Device rules</h4>
 
 <p>After unziping the software distributed with your Argos3D P100 camera, browse to the directory 
 of your operating system version. </p>
@@ -1070,13 +1164,14 @@ sudo cp 10-pmd-ubuntu.rules /etc/udev/rules.d/
 </code></pre>
 This will set the right permissions to allow not sudo users to use the camera.
 
-<h4 id="1.2-libraries-setup">1.2 Libraries setup</h4>
+<h4 id="1-2-libraries-setup">1.2 Libraries setup</h4>
 
 <p>Add PMDSDK to your system (use the right version for your system 32 or 64 bits).</p>
 
 <ol>
 <li>Add the dynamically linked shared object library libpmdaccess2. Use one of the following options:</li>
 </ol>
+
 <p>You have different ways to add it to the <strong>LD_LIBRARY_PATH</strong>.
 - You can simply copy the libpmdaccess2.so file to <strong>/usr/local/lib</strong> as root (or the defauld search library path of your system)
 - Add a .conf file (like pmd_camera_L64.conf) with the path of your library in <strong>/etc/ld.so.conf.d</strong>. The file must contaning the following lines:</p>
@@ -1091,25 +1186,27 @@ This will set the right permissions to allow not sudo users to use the camera.
 <ol>
 <li>Add includes and dynamic plugin libraries</li>
 </ol>
+
 <ul>
 <li>Move the PMDSDK folder to a directory where the operating system can find it (/usr/include)</li>
 <li>or set an environment variable called $PMDDIR to the path where there is the PMDSDK.</li>
 </ul>
+
 <p>After adding libraries, update the links and cache of the share libraries with:</p>
 
 <pre><code>ldconfig
 </code></pre>
 
-<h1 id="2.-installation">2. Installation</h1>
+<h1 id="2-installation">2. Installation</h1>
 
-<h4 id="2.1-install-dependencies">2.1 Install dependencies</h4>
+<h4 id="2-1-install-dependencies">2.1 Install dependencies</h4>
 
 <p>Make sure you have the following dependencies already installed:
 </p>
 <pre><code> apt-get install ros-hydro-pcl-ros ros-hydro-pcl-conversions ros-hydro-perception-pcl 
 </code></pre>
 
-<h4 id="2.2-install-the-package">2.2 Install the package</h4>
+<h4 id="2-2-install-the-package">2.2 Install the package</h4>
 
 <p>Clone from repository: <a href="https://github.com/voxel-dot-at/argos3d_p100_ros_pkg.git">https://github.com/voxel-dot-at/argos3d_p100_ros_pkg.git</a>
 to your src/ folder in your catkin workspace.
@@ -1123,20 +1220,20 @@ cd ..
 catkin_make
 </code></pre>
 
-<h1 id="3.-usage">3. Usage</h1>
+<h1 id="3-usage">3. Usage</h1>
 
-<h4 id="*-watch-our-demo-video:">* Watch our demo video:</h4>
+<h4 id="watch-our-demo-video">* Watch our demo video:</h4>
 
 <blockquote>
 <p><a href="http://youtu.be/1yVNbUQoMrU">http://youtu.be/1yVNbUQoMrU</a></p>
 </blockquote>
 
-<h4 id="3.1-start-the-ros-core">3.1 Start the ROS core</h4>
+<h4 id="3-1-start-the-ros-core">3.1 Start the ROS core</h4>
 
 <pre><code>roscore &amp;
 </code></pre>
 
-<h4 id="3.2-start-capturing">3.2 Start capturing</h4>
+<h4 id="3-2-start-capturing">3.2 Start capturing</h4>
 
 <pre><code>cd catkin_ws
 source devel/setup.bash
@@ -1183,7 +1280,7 @@ rosrun argos3d_p100 argos3d_p100_node
  rosrun argos3d_p100 argos3d_p100_node -it 1500 -mf 30000000 
 </code></pre>
 
-<h4 id="*-use-calibration-file">* Use calibration file</h4>
+<h4 id="use-calibration-file">* Use calibration file</h4>
 
 <p>In the software distibuted with your camera there is a calibration file that provides precise 3D position calculation.
 The file is load when the connection with you Argos3D is established.</p>
@@ -1197,7 +1294,7 @@ rosrun argos3d_p100 argos3d_p100_node
 
 <p>The argos3d_p100_node will show a message that confirmes you if the calibration file was loaded successfully.</p>
 
-<h4 id="3.3-visualization-in-rviz">3.3 Visualization in rviz</h4>
+<h4 id="3-3-visualization-in-rviz">3.3 Visualization in rviz</h4>
 
 <pre><code>rosrun rviz rviz 
 </code></pre>
@@ -1224,7 +1321,8 @@ Two different point sets are published with following topic names:</p>
 <li>At the bottom in "Display" click on the button <strong>add</strong> to open a dialog titled "Create visualization"</li>
 <li>In the dialog opened after, choose the tab "By topic" and select the <strong>/depth_non_filtered</strong> topic.</li>
 </ol>
-<h4 id="3.4-using-filters-and-parameters-configuration">3.4 Using filters and parameters configuration</h4>
+
+<h4 id="3-4-using-filters-and-parameters-configuration">3.4 Using filters and parameters configuration</h4>
 
 <p>To apply point filters and change camera parameters, use dynamic_reconfigure from ros. 
 To use, it run the configuration interface (after launching argos3d_p100_ros_pkg)</p>
@@ -1259,6 +1357,9 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1309,7 +1410,7 @@ To use, it run the configuration interface (after launching argos3d_p100_ros_pkg
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

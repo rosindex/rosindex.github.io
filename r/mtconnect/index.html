@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -255,8 +305,8 @@
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -273,13 +323,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">ROS_action_client</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-02-07
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-04-25
         </span>
       </td>
     </tr>
@@ -318,17 +368,57 @@
                 <tbody>
                 
                   <tr>
-                    <td><a href="/p/mtconnect_cnc_robot_example/github-mtconnect-ros_bridge">mtconnect_cnc_robot_example</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
                     <td><a href="/p/mtconnect_msgs/github-mtconnect-ros_bridge">mtconnect_msgs</a></td>
                     <td>UNKNOWN</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/mtconnect_ros_bridge/github-mtconnect-ros_bridge">mtconnect_ros_bridge</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_cnc_robot_example/github-mtconnect-ros_bridge">mtconnect_cnc_robot_example</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_example_gui/github-mtconnect-ros_bridge">mtconnect_example_gui</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_example_launch/github-mtconnect-ros_bridge">mtconnect_example_launch</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_example_msgs/github-mtconnect-ros_bridge">mtconnect_example_msgs</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_grasp_action/github-mtconnect-ros_bridge">mtconnect_grasp_action</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_irb2400_arm_navigation/github-mtconnect-ros_bridge">mtconnect_irb2400_arm_navigation</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_m16ib20_arm_navigation/github-mtconnect-ros_bridge">mtconnect_m16ib20_arm_navigation</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_state_machine/github-mtconnect-ros_bridge">mtconnect_state_machine</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mtconnect_task_parser/github-mtconnect-ros_bridge">mtconnect_task_parser</a></td>
                     <td>UNKNOWN</td>
                   </tr>
                 
@@ -344,7 +434,7 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h2 id="python-adapter-for-mtconnect-c++-agent">Python Adapter for MTConnect C++ Agent</h2>
+<h2 id="python-adapter-for-mtconnect-c-agent">Python Adapter for MTConnect C++ Agent</h2>
 
 <p>This is a simple adapter library written in Python to support the ROS
 robotics integration project. The adapter supports multiple connections,
@@ -371,12 +461,13 @@ heartbeats and the following MTConnect data item types:</p>
 <li><p>SimpleCondition - Similar to Condition, except that when the alarm is cleared, use
         the remove method with the code.</p></li>
 </ul>
+
 <h2 id="adapter-creation">Adapter Creation</h2>
 
 <p>To create an adapter, import the Adapter from the mtconnect_adapter and add
 data items. You need to tell it what host and port it should bind to. The default
 port is 7878:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">adapter = Adapter(('0.0.0.0', 7878))
+<div class="highlight"><pre><code class="language-" data-lang="">adapter = Adapter(('0.0.0.0', 7878))
 di = Event('event_1')
 adapter.add_data_item(di)
 adapter.start()
@@ -384,23 +475,23 @@ adapter.start()
 <p>This creates an adapter, adds an Event and then starts the adapter. To change
 values of the data item, you need to begin gathering data and then complete the
 data gathering process to send all the data.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">adapter.begin_gather()
+<div class="highlight"><pre><code class="language-" data-lang="">adapter.begin_gather()
 di.set_value('hello')
 adapter.complete_gather()
 </code></pre></div>
 <p>Working with conditions are very similar to the events:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">c1 = SimpleCondition('c1')
+<div class="highlight"><pre><code class="language-" data-lang="">c1 = SimpleCondition('c1')
 adapter.add_data_item(c1)
 
 ...
 </code></pre></div>
 <p>Add a fault</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">adapter.begin_gather()
+<div class="highlight"><pre><code class="language-" data-lang="">adapter.begin_gather()
 c1.add('fault', 'A fault', '123')
 adapter.complete_gather()
 </code></pre></div>
 <p>And to clear the condition:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">adapter.begin_gather()
+<div class="highlight"><pre><code class="language-" data-lang="">adapter.begin_gather()
 c1.remove('123')
 adapter.complete_gather()
 </code></pre></div>
@@ -418,18 +509,18 @@ To run the demo, install the turtlesim and then run the adapter: (this assumes
 the python_adapter is cloned under ~/)</p>
 
 <p>Install the turtle sim -- see ros wiki...</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">roscore&amp;
+<div class="highlight"><pre><code class="language-" data-lang="">roscore&amp;
 rosrun turtlesim turtlesim_node
 </code></pre></div>
 <p>There is an example for the ROS turtlesim tutorial that subscribes to the ROS
 poses and then sends them to the MTConnect agent as PATH_POSITION data items. 
 To run the demo, install the turtlesim and then run the adapter: (this assumes
 the python_adapter is cloned under ~/)</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ~/python_adapter/examples
+<div class="highlight"><pre><code class="language-" data-lang="">cd ~/python_adapter/examples
 python ros_adapter.py
 </code></pre></div>
 <p>Next, install the MTConnect agent in another directory:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ~
+<div class="highlight"><pre><code class="language-" data-lang="">cd ~
 git clone http://github.com/mtconnect/cppagent.git
 mkdir agent_build
 cd agent_build
@@ -437,11 +528,11 @@ cmake ../cppagent
 make
 </code></pre></div>
 <p>Run the agent:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ~/python_adapter/examples
+<div class="highlight"><pre><code class="language-" data-lang="">cd ~/python_adapter/examples
 ~/agent_build/agent/agent debug
 </code></pre></div>
 <p>Now your done, test the agent:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">curl http://localhost:5000/current
+<div class="highlight"><pre><code class="language-" data-lang="">curl http://localhost:5000/current
 </code></pre></div>
 <p>You should see an MTConnect streams document with Availabity AVAILABLE and a PathPosition for the Path.</p>
 
@@ -462,7 +553,7 @@ allow for actions to be sent that are not initiated by an external device.</p>
 
 <p>The CNC simulator requires ruby 1.9.x and the statemachine gem. Install
 ruby and the type</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">gem install statemachine
+<div class="highlight"><pre><code class="language-" data-lang="">gem install statemachine
 </code></pre></div>
 <p>Once you have installed the ruby gem you can use a pre-compiled agent with
 the agent.cfg file and the BothDevices.xml to represent a CNC and a robot.
@@ -471,21 +562,21 @@ actions and will drive some states on the simulator.</p>
 
 <p>To run the CNC simulator, cd to the simulator directory and start the agent
 (assuming it is in the same simulator directory):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">./agent debug
+<div class="highlight"><pre><code class="language-" data-lang="">./agent debug
 </code></pre></div>
 <p>Next start the CNC simulator:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">ruby cnc_simulator.rb
+<div class="highlight"><pre><code class="language-" data-lang="">ruby cnc_simulator.rb
 </code></pre></div>
 <p>You will need to type the following commands to enable the cnc, the first puts
 it in automatic mode and the second enables the link:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">auto
+<div class="highlight"><pre><code class="language-" data-lang="">auto
 enable
 </code></pre></div>
 <p>Next you will need to start the robot sim:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">ruby robot.rb
+<div class="highlight"><pre><code class="language-" data-lang="">ruby robot.rb
 </code></pre></div>
 <p>Within five seconds give the following command to the CNC:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">run
+<div class="highlight"><pre><code class="language-" data-lang="">run
 </code></pre></div>
 <p>This process will be made simplier as the CNC becomes more complete. This is the
 first step to a fully functioning sim.</p>
@@ -516,6 +607,9 @@ Additional licensing and copyright information are in the file: src/scanner.py.<
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -558,7 +652,7 @@ Additional licensing and copyright information are in the file: src/scanner.py.<
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

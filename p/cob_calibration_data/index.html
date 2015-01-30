@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,267 +196,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_calibration_data">cob_calibration_data</a> <small>package from <a style="text-decoration:none" href="/r/cob_calibration_data/github-ipa320-cob_calibration_data">cob_calibration_data</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> cob_calibration_data</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/cob_calibration_data/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/indigo_dev/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_calibration_data" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_calibration_data"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_calibration_data
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_calibration_data" role="menuitem" tabindex="-1" href="/p/cob_calibration_data/github-ipa320-cob_calibration_data" data="github-ipa320-cob_calibration_data">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_calibration_data
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_calibration_data">cob_calibration_data</a> <small>package from <a style="text-decoration:none" href="/r/cob_calibration_data/github-ipa320-cob_calibration_data">cob_calibration_data</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> cob_calibration_data</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/cob_calibration_data/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/hydro_dev/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_calibration_data" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_calibration_data"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_calibration_data
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_calibration_data" role="menuitem" tabindex="-1" href="/p/cob_calibration_data/github-ipa320-cob_calibration_data" data="github-ipa320-cob_calibration_data">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_calibration_data
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/cob_calibration_data">cob_calibration_data</a> <small>package from <a style="text-decoration:none" href="/r/cob_calibration_data/github-ipa320-cob_calibration_data">cob_calibration_data</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> cob_calibration_data</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/cob_calibration_data/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/groovy/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/cob_calibration_data" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/cob_calibration_data"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_calibration_data
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_calibration_data" role="menuitem" tabindex="-1" href="/p/cob_calibration_data/github-ipa320-cob_calibration_data" data="github-ipa320-cob_calibration_data">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_calibration_data
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -429,6 +221,93 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_calibration_data">cob_calibration_data</a> <small>package from <a style="text-decoration:none" href="/r/cob_calibration_data/github-ipa320-cob_calibration_data">cob_calibration_data</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> cob_calibration_data
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_calibration_data"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_calibration_data
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_calibration_data" role="menuitem" tabindex="-1" href="/p/cob_calibration_data/github-ipa320-cob_calibration_data" data="github-ipa320-cob_calibration_data">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_calibration_data
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/cob_calibration_data/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/indigo_dev/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_calibration_data?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_calibration_data&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -441,28 +320,30 @@
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#indigo-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This repository holds the current calibration data for Care-O-bot.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -475,7 +356,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.2</td>
+                <td>0.6.5</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -501,7 +382,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -523,7 +404,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-15
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-25
         </span>
       </td>
     </tr>
@@ -531,7 +412,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -548,8 +432,23 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This repository holds the current calibration data for Care-O-bot.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_calibration_data">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -574,17 +473,6 @@
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_calibration_data">Website</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -602,7 +490,7 @@
 
 <p>This repository holds the current calibration data for various robots of the Care-O-bot family.</p>
 
-<h1 id="!!!-warning:-normally-you-should-not-have-an-overlay-of-this-package-on-the-robot-!!!">!!! WARNING: Normally you should <strong>NOT</strong> have an overlay of this package on the robot !!!</h1>
+<h1 id="warning-normally-you-should-not-have-an-overlay-of-this-package-on-the-robot">!!! WARNING: Normally you should <strong>NOT</strong> have an overlay of this package on the robot !!!</h1>
 </div></body></html>
 
             
@@ -620,551 +508,76 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_calibration_data">Changelog for package cob_calibration_data</h1>
 
-<h2 id="0.6.2-(2014-12-15)">0.6.2 (2014-12-15)</h2>
-
-<ul>
-<li>  Merge branch 'indigo_dev' of
-<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a>
-into indigo_dev</li>
-<li>  remove cob3-3</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/73">#73</a>
-from ipa320/indigo_release_candidate Indigo release candidate</li>
-<li>  Contributors: Florian Weisshardt</li>
-</ul>
-<h2 id="0.6.1-(2014-12-15)">0.6.1 (2014-12-15)</h2>
-
-<ul>
-<li>  Merge branch 'indigo_dev' into indigo_release_candidate</li>
-<li>  delete cob3-3</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/72">#72</a>
-from ipa-fmw/indigo_dev cleanup: cob4-1 with torso and head; cob4-2
-without torso and head</li>
-<li>  cleanup: cob4-1 with torso and head; cob4-2 without torso and head</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/71">#71</a>
-from ipa-nhg/cob3-9 Cob3 9</li>
-<li>  cob3-9</li>
-<li>  cob3-9</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/70">#70</a>
-from ipa-fmw/delete_unsupported_robots [indigo] Delete unsupported
-robots</li>
-<li>  delete desire</li>
-<li>  delete cob3-8</li>
-<li>  delete cob3-7</li>
-<li>  delete cob3-5</li>
-<li>  delete cob3-4</li>
-<li>  delete cob3-2</li>
-<li>  delete cob3-1</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/2">#2</a> from
-ipa320/indigo_dev Indigo dev</li>
-<li>  Contributors: Florian Weisshardt, Nadia Hammoudeh García, ipa-nhg</li>
-</ul>
-<h2 id="0.6.0-(2014-09-16)">0.6.0 (2014-09-16)</h2>
+<h2 id="0-6-5-2016-04-01">0.6.5 (2016-04-01)</h2>
 
 <ul>
 <li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/68">#68</a>
-from ipa-fxm/indigo_dev [Indigo] Bring in Hydro updates</li>
-<li>  Merge branch 'hydro_dev' of
-github.com:ipa320/cob_calibration_data into indigo_dev</li>
+<a href="https://github.com/ipa320/cob_calibration_data/issues/96">#96</a>
+from ipa-nhg/CalibCam Adjusted offset calibration of the torso
+cameras</li>
+<li>  calibrated the torso cameras</li>
 <li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/67">#67</a>
-from ipa-cob4-2/hydro_dev added cob4-2 to the robot list</li>
-<li>  Merge branch 'hydro_dev' of
-<a href="https://github.com/ipa-cob4-2/cob_calibration_data">https://github.com/ipa-cob4-2/cob_calibration_data</a>
-into hydro_dev</li>
-<li>  Added cob4-2 robot CMakeLists</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/66">#66</a>
-from ipa320/indigo_release_candidate Indigo release candidate</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/65">#65</a>
-from ipa-fxm/indigo_dev Hydro updates</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/11">#11</a>
-from ipa-fxm/hydro_dev Hydro updates</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/64">#64</a>
-from ipa-cob3-8/hydro_dev cob3-8 calibration</li>
-<li>  Merge branch 'hydro_dev' of
-github.com:ipa-cob3-8/cob_calibration_data into hydro_dev</li>
-<li>  cob3-8 calibration</li>
-<li>  cob3-8 calibration</li>
-<li>  Contributors: Florian Weisshardt, Nadia Hammoudeh García,
-ipa-cob3-8, ipa-cob4-2, ipa-fxm, ipa-nhg</li>
-</ul>
-<h2 id="0.5.2-(2014-08-25)">0.5.2 (2014-08-25)</h2>
-
-<ul>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/63">#63</a>
-from ipa-fxm/indigo_dev Indigo rockz</li>
-<li>  fix property name for cob3-8 pg70</li>
-<li>  Merge branch 'hydro_dev' of
-github.com:ipa-fxm/cob_calibration_data into indigo_dev</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/62">#62</a>
-from ipa-cob3-8/hydro_dev setup cob3-8</li>
-<li>  setup cob3-8</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/61">#61</a>
-from ipa-cob3-8/hydro_dev setup cob3-8</li>
-<li>  setup cob3-8</li>
-<li>  Merge branch 'indigo_dev' of
-github.com:ipa320/cob_calibration_data into indigo_dev</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/59">#59</a>
-from ipa-nhg/hydro_dev cob3-8 has pg70 as gripper</li>
-<li>  cob3-8 has pg70 as gripper</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/57">#57</a>
-from ipa-fxm/indigo_dev Indigo dev</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/58">#58</a>
-from ipa-nhg/cob3-8 calibration files for cob3-8</li>
-<li>  calibration files for cob3-8</li>
-<li>  updated calibration from automatica14</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/56">#56</a>
-from ipa-fxm/hydro_dev added missing offset</li>
-<li>  correct offset</li>
-<li>  added missing offset</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/54">#54</a>
-from ipa-cob4-1/hydro_dev rename cam3d calibration files</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/55">#55</a>
-from abubeck/feature/raw3-4-update added calibration for ur on
-raw3-4</li>
-<li>  Retabbing</li>
-<li>  added calibration for ur on raw3-4</li>
-<li>  rename cam3d calibration files</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/53">#53</a>
-from ipa-nhg/cob4-2 add cob4-2</li>
-<li>  add cob4-2</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/52">#52</a>
-from ipa-fxm/hydro_dev undo wrong calib offsets</li>
-<li>  undo wrong calib offsets</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/51">#51</a>
-from ipa-fxm/hydro_dev Hydro Updates</li>
-<li>  Merge branch 'hydro_dev' of
-github.com:ipa320/cob_calibration_data into hydro_dev</li>
-<li>  Update package.xml</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/50">#50</a>
-from ipa-nhg/hydro_dev New maintainer</li>
-<li>  New maintainer</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa320/cob_calibration_data into merge-groovy_dev</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/49">#49</a>
-from ipa-nhg/hydro_dev merge cob4</li>
-<li>  merge cob4</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/48">#48</a>
-from ipa-cob4-1/groovy_dev Added sensors to cob4 description</li>
-<li>  Merge branch 'groovy_dev' of
-<a href="http://github.com/ipa-nhg/cob_calibration_data">http://github.com/ipa-nhg/cob_calibration_data</a>
-into groovy_dev</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/47">#47</a>
-from ipa-bnm/groovy_dev added calibration offsets for raw3-3s head
-and neck</li>
-<li>  Added sensors to cob4 description</li>
-<li>  added calibration offsets for raw3-3s head</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/46">#46</a>
-from ipa320/hydro_release_candidate Hydro release candidate</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa320/cob_calibration_data into groovy_dev Conflicts:
-raw3-1/calibration/calibration_default.urdf.xacro</li>
-<li>  changed camera calibration</li>
-<li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa-raw3-1/cob_calibration_data">https://github.com/ipa-raw3-1/cob_calibration_data</a>
-into groovy_dev</li>
-<li>  changed calibration of camera head</li>
-<li>  new prosilica camera calibration</li>
-<li>  Contributors: Alexander Bubeck, Felix Messmer, Florian Weisshardt,
-Nadia Hammoudeh García, abubeck, ipa-bnm, ipa-cob3-8, ipa-cob4-1,
-ipa-fxm, ipa-nhg, ipa-raw3-3, raw3-1 administrator</li>
-</ul>
-<h2 id="0.5.1-(2014-03-20)">0.5.1 (2014-03-20)</h2>
-
-<ul>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/44">#44</a>
-from ipa-fxm/hydro_dev raw3-1 has not been calibrated yet</li>
-<li>  raw3-1 has not been calibrated yet</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/43">#43</a>
-from ipa-fxm/hydro_dev Hydro Updates</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/10">#10</a>
-from ipa-fxm/groovy_dev bring groovy updates to hydro</li>
-<li>  merge with ipa-320</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/42">#42</a>
-from ipa-nhg/groovy_dev_cob4 cob4 integration</li>
-<li>  Renamed sensorring</li>
-<li>  tested on robot</li>
-<li>  cob4 integration</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/41">#41</a>
-from ipa-nhg/hydro_dev New cob3-3 calibration</li>
-<li>  New cob3-3 calibration</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/39">#39</a>
-from ipa-fxm/hydro_dev bring groovy updates to hydro</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/40">#40</a>
-from ipa-nhg/groovy_dev New cob3-3 calibration</li>
-<li>  New cob3-3 calibration</li>
-<li>  removing cob3-5b</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/9">#9</a> from
-ipa-fxm/groovy_dev bring groovy updates to hydro</li>
-<li>  merge with ipa320</li>
-<li>  new calibration - 20140123</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/37">#37</a>
-from ipa-nhg/merge Merge from cob3-3 calibration user</li>
-<li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a>
-into merge</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/36">#36</a>
-from ipa-cob3-6/groovy_dev cob3-6 setup</li>
-<li>  Merge branch 'groovy_dev' of
-<a href="http://github.com/ipa-nhg/cob_calibration_data">http://github.com/ipa-nhg/cob_calibration_data</a>
-into stable</li>
-<li>  Last calibration update (cob3-3)</li>
-<li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa-cob3-5/cob_calibration_data">https://github.com/ipa-cob3-5/cob_calibration_data</a>
-into groovy_dev</li>
-<li>  adapt calibration</li>
-<li>  merge</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/34">#34</a>
-from ipa-rmb/groovy_dev Manual offsets for cob3-5 and setup for
-cob3-5b</li>
-<li>  manual calibration for cob3-5b done</li>
-<li>  fixed wrong minus sign bug</li>
-<li>  added the manually adjusted offsets from cob3-5 and some intial
-values for cob3-5b</li>
-<li>  added data for cob3-5b</li>
-<li>  reset wrong calibration of cob3-5</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/33">#33</a>
-from mas-group/hydro_dev updated cob3-1 calibration</li>
-<li>  correct calibration offsets for cob3-1</li>
-<li>  Merge branch 'hydro_dev' of
-github.com:ipa320/cob_calibration_data into hydro_dev Conflicts:
-cob3-1/calibration/calibration_offset.urdf.xacro</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/32">#32</a>
-from ipa-fxm/hydro_dev bring groovy updates to hydro + make it work</li>
-<li>  first rough calibration of the camera head</li>
-<li>  remove files which have moved to cob_hardware_config</li>
-<li>  Merge branch 'hydro_dev' of
-github.com:ipa320/cob_calibration_data into hydro_dev</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-nhg/cob_calibration_data into groovy_dev</li>
-<li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a>
-into groovy_dev</li>
-<li>  Added calibration parameter for ur_connector</li>
+<a href="https://github.com/ipa320/cob_calibration_data/issues/95">#95</a>
+from ipa-fmw/travis use script based travis config</li>
+<li>  use script based travis config</li>
+<li>  Merge branch 'travis' of github.com:ipa-fmw/cob_calibration_data
+into travis</li>
+<li>  use script based travis config</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/7">#7</a> from
-ipa-fxm/groovy_dev bring groovy updates to hydro</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/31">#31</a>
-from ipa-fxm/groovy_dev Harmonizing and beautifying</li>
-<li>  beautifying</li>
-<li>  merge fix</li>
-<li>  merge fix</li>
-<li>  harmonize with cob structure</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/30">#30</a>
-from ipa-fxm/groovy_dev remove obsolete files</li>
-<li>  remove obsolete files</li>
-<li>  fix merge</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-nhg/cob_calibration_data into groovy_dev
-Conflicts: cob3-5/calibration/calibration_default.urdf.xacro</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/29">#29</a>
-from ipa-fxm/groovy_dev minor cleaning up</li>
-<li>  merge with ipa320</li>
-<li>  adapt gitignore</li>
-<li>  merge</li>
-<li>  removed obsolete entry</li>
-<li>  merge with ja</li>
-<li>  Merge branch 'stable' of
-github.com:ipa-fmw-ja/cob_calibration_data into stable</li>
-<li>  3DOF Tray for cob3-5</li>
-<li>  Merge branch 'stable' of
-github.com:ipa-fmw-ja/cob_calibration_data into stable</li>
-<li>  loadable intrinsic calibration for kinect</li>
-<li>  calibration offset for cob3-7 resetted</li>
-<li>  merge with 320 and ja</li>
-<li>  offset cam_reference and cam_l differ</li>
-<li>  calibration for cob3-3 after modification</li>
-<li>  merge</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/26">#26</a>
-from ipa-cob3-7/groovy_dev Renamed ur_connector</li>
-<li>  Renamed ur_connector</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/25">#25</a>
-from ipa-cob3-7/groovy_dev Update calibration cob3-7</li>
-<li>  Update calibration cob3-7</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-nhg/cob_calibration_data into groovy_dev</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-nhg/cob_calibration_data into groovy_dev
-Conflicts: cob3-5/calibration/calibration_offset.urdf.xacro</li>
-<li>  Update kinect_rgb.yaml changed camera_name (not in use)</li>
-<li>  gitignore</li>
-<li>  new cob3-7 data (copied from cob3-6)</li>
-<li>  move calibration</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/24">#24</a>
-from ipa-raw3-1/groovy_dev changed cal from icra</li>
-<li>  changed cal from icra</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/23">#23</a>
-from abubeck/groovy_dev Added calibrations for rob@work towers</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:abubeck/cob_calibration_data into groovy_dev</li>
-<li>  added tower configs to all raw's</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/21">#21</a>
-from abubeck/hydro_dev Updates and catkin for hydro</li>
-<li>  Merge branch 'groovy_catkin' of
-github.com:ipa320/cob_calibration_data into ipa320_catkin</li>
-<li>  set torso reference positions of cob3-1 to zero</li>
-<li>  added installer stuff</li>
-<li>  Merge branch 'feature/catkin' of
-github.com:abubeck/cob_calibration_data into feature/catkin</li>
-<li>  Merge branch 'review320' into feature/catkin</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/1">#1</a> from
-ipa320/groovy_dev Groovy dev</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/20">#20</a>
-from abubeck/feature/catkin Feature/catkin</li>
-<li>  merge</li>
-<li>  update calibration for cob3-5</li>
-<li>  Merge branch 'groovy_dev' into feature/catkin</li>
-<li>  initial catkin version</li>
-<li>  calibration for cob3-3</li>
-<li>  move to cob_hardware_config</li>
-<li>  set all schunk defaults and offsets to 0.0</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/19">#19</a>
-from ipa-cob3-7/groovy_dev added cob3-7</li>
-<li>  deleted files</li>
-<li>  CAlibration data for cob3-7</li>
-<li>  fix calibration urdfs for cob3-6 and cob3-5</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/18">#18</a>
-from ipa-bnm/groovy_dev calibration fixes</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/17">#17</a>
-from ipa-cob3-4/groovy_dev Update default calibration value</li>
-<li>  calibration for cob3-3</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-cob3-5/cob_calibration_data into groovy_dev</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa320/cob_calibration_data into groovy_dev</li>
-<li>  Added calibration datas for powerball</li>
-<li>  Update default calibration value</li>
-<li>  updated torso references as aquired on 2013-05-23</li>
-<li>  unifying</li>
-<li>  raw3-3 calibration fixes (whitespaces)</li>
-<li>  merge</li>
-<li>  merge</li>
-<li>  update arm7 ref</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/16">#16</a>
-from ipa-fxm/groovy_dev fix transformation for tray_powerball</li>
-<li>  fix transformation for tray_powerball</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/15">#15</a>
-from ipa-fxm/test_groovy_calibration Test groovy calibration</li>
+ipa-fmw/indigo_dev updates from ipa320</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/5">#5</a> from
-ipa-fxm/groovy_dev Groovy dev</li>
-<li>  adjusted calibration structure for desire</li>
-<li>  adjusted calibration structure for all raw's</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/4">#4</a> from
-ipa-fxm/groovy_dev Groovy dev</li>
-<li>  introducing macros for head and sdh, fixing def_head mount position</li>
-<li>  introducing macros for sdh, fixing def_head mount position</li>
-<li>  introducing macros for sdh, fixing def_head mount position</li>
-<li>  introducing macros for sdh, fixing def_head mount position, using
-param from real robot cob3-3</li>
-<li>  introducing macros for head and sdh</li>
-<li>  introducing macros for head and sdh</li>
-<li>  consequently use old values from ipa320/electric_dev branch in
-calibration_default - all calibration_offsets are 0.0</li>
-<li>  fix wrong orientation of kinect</li>
-<li>  delete obsolete files</li>
-<li>  delete obsolete files</li>
-<li>  fixes in calibration structure</li>
-<li>  delete obsolete file</li>
-<li>  fix wrong orientation of kinect</li>
-<li>  delete obsolete file</li>
-<li>  fix wrong orientation of kinect</li>
-<li>  new structure - old values for cob3-2</li>
-<li>  new structure - old values for cob3-1</li>
-<li>  Merge branch 'groovy_dev' of
-git://github.com/ipa-fxm/cob_calibration_data into groovy_dev</li>
-<li>  rename cam_ref_X back to cam_l_X for compatibiliy with
-cob_common and cob_robots</li>
-<li>  Merge branch 'groovy_dev' of
-git://github.com/ipa-raw3-1/cob_calibration_data into groovy_dev</li>
-<li>  added new robot raw3-6</li>
-<li>  new manual calibration for raw3-1</li>
-<li>  fixed arm_base_link orientation</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-raw3-1/cob_calibration_data into groovy_dev</li>
-<li>  fixed arm_moount_position</li>
-<li>  Merge branch 'groovy_dev' of
-github.com:ipa-raw3-1/cob_calibration_data into groovy_dev</li>
-<li>  merged new calibration_data</li>
-<li>  raw with offset calibration</li>
-<li>  default values for arm and torso mount positions for r@w</li>
-<li>  calibration for cam3d</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/12">#12</a>
-from ipa-bnm/raw3-5 added raw3-5 calibration data</li>
-<li>  added raw3-5 calibration data</li>
-<li>  Merge branch 'master' of
-github.com:ipa-fmw-ja/cob_calibration_data Conflicts:
-cob3-6/calibration/calibration.urdf.xacro</li>
-<li>  new calibration</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/3">#3</a> from
-ipa320/groovy_dev adjust cob3-6 tray</li>
-<li>  Update calibration.urdf.xacro reference for arm7 link changed</li>
-<li>  calibration for cob3-6</li>
-<li>  camera reference cob3-6</li>
-<li>  moved default</li>
-<li>  moved default values</li>
-<li>  calibration files for new robot model</li>
-<li>  adopted cob3-3 calibration to new robot model</li>
-<li>  adjust cob3-6 tray</li>
-<li>  reset of camera mount position</li>
-<li>  powerball tray and new head reference reset of camera mount position</li>
-<li>  calibration for cob3-3</li>
-<li>  raw calibration for cob3-5</li>
-<li>  release 0.1.2</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/11">#11</a>
-from b-it-bots/master updated calibration parameters for cob3-1</li>
-<li>  arm_6_ref changed for cob3-5</li>
-<li>  update kinect arm calibration cob3-1</li>
-<li>  update camera calibration for cob3-1</li>
-<li>  calibration reset</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/10">#10</a>
-from b-it-bots/master update calibration parameter for cob3-1</li>
-<li>  add calibration files for cob3-1 cameras</li>
-<li>  update calibration parameter for cob3-1</li>
-<li>  using powerball tray for cob3-6</li>
-<li>  update tray offset for cob3-1</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/9">#9</a> from
-ipa-mig/master Calibration data for raw3-3</li>
-<li>  add calibration data for raw3-3 (copied from raw3-1)</li>
-<li>  offset calibration</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_calibration_data</li>
-<li>  new arm references for cob3-6</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_calibration_data</li>
-<li>  new calibration for cob3-3</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/8">#8</a> from
-ipa-bnm/master raw3-1 torso calibration</li>
-<li>  changed torso pan calibration</li>
-<li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/7">#7</a> from
-ipa-mdl/master new arm calibration data for cob3-6</li>
-<li>  new arm calibration for cob3-6 (calibrated modules 5 and 7 manually)</li>
-<li>  cob3-6 lwa calibration</li>
-<li>  calibrated tray</li>
+ipa320/indigo_dev updates from ipa320</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/6">#6</a> from
-abubeck/master empty calibration for raw3-4</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_calibration_data</li>
-<li>  New reference position for lwa in cob3-6</li>
-<li>  Merge branch 'master' of
-<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a>
-</li>
-<li>  added calibration of raw3-4</li>
+ipa-fmw/travis Travis</li>
 <li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/5">#5</a> from
-ipa-fxm/master new calibration for cob3-3</li>
-<li>  new calibration for cob3-3</li>
-<li>  fix merge</li>
+<a href="https://github.com/ipa320/cob_calibration_data/issues/94">#94</a>
+from ipa-fmw/travis update travis config</li>
+<li>  Merge pull request
+<a href="https://github.com/ipa320/cob_calibration_data/issues/93">#93</a>
+from ipa-fxm/feature_cob4-1_without_arms remove cob4-1 arms and
+gripper</li>
+<li>  Create .travis.rosinstall</li>
+<li>  Update .travis.yml</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/4">#4</a> from
-abubeck/master Updated raw3-1 calibration</li>
-<li>  updated calibration from actual robot</li>
-<li>  fixed calibration structure</li>
+ipa320/indigo_dev update from ipa320</li>
+<li>  remove cob4-1 arms and gripper</li>
 <li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/2">#2</a> from
-ipa-nhg/master New reference parameters for cob3-4</li>
-<li>  fix calibration for cob3-1 and cob3-2</li>
-<li>  adapt calibration for desire</li>
+<a href="https://github.com/ipa320/cob_calibration_data/issues/92">#92</a>
+from ipa-nhg/sensorring Added asus to sensorring</li>
+<li>  added kinect to sensorring</li>
+<li>  Merge pull request
+<a href="https://github.com/ipa320/cob_calibration_data/issues/90">#90</a>
+from ipa-fmw/indigo_dev travis support for indigo</li>
+<li>  Update .travis.yml</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/3">#3</a> from
-ipa-jsf-mf/master new calibration for cob3-3</li>
-<li>  Merge remote-tracking branch 'origin/master'</li>
-<li>  The calibration parameters for the kuka arm should be 0</li>
-<li>  new calibration for cob3-3git</li>
-<li>  New calibration for cob3-4</li>
-<li>  reference position update</li>
-<li>  new arm reference for cob3-5</li>
-<li>  calibration for cob3-6</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_calibration_data</li>
-<li>  new ref pos for torso of cob3-5</li>
-<li>  new calibration for cob3-2</li>
-<li>  torso and arm calibration for cob3-5</li>
-<li>  Merge branch 'master' of github.com:ipa320/cob_calibration_data</li>
-<li>  initial calibration for cob3-5</li>
-<li>  new calibration for torso and arm for cob3-2</li>
+ipa320/indigo_dev updates from ipa320</li>
 <li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/1">#1</a> from
-ipa-fmw/master new calibration for cob3-3 after changes in camera
-focus</li>
+<a href="https://github.com/ipa320/cob_calibration_data/issues/89">#89</a>
+from ipa-cob4-3/indigo_dev added cob4-3</li>
 <li>  Merge pull request
-<a href="https://github.com/ipa320/cob_calibration_data/issues/1">#1</a> from
-ipa-jsf-mf/master update calibration after image sharpness
-improvment by jsf</li>
-<li>  new calibration for cob3-3</li>
-<li>  release 0.1.1</li>
-<li>  release 0.1.0</li>
-<li>  update manifest</li>
-<li>  new calibration for cob3-3</li>
-<li>  copied all calibration data</li>
-<li>  add warning</li>
-<li>  initial version</li>
-<li>  Initial commit</li>
-<li>  Contributors: Alexander Bubeck, Felix Messmer, Florian Weißhardt,
-Frederik Hegger, Jannik, Jannik Abbenseth, Nadia Hammoudeh García,
-Richard Bormann, abubeck, calibration, cob3-1-pc1, cob3-5,
-demo@cob3-1-pc1, ipa-bnm, ipa-cob3-4, ipa-cob3-5, ipa-cob3-7,
-ipa-fmw, ipa-fxm, ipa-jsf-mf, ipa-mdl, ipa-mig, ipa-nhg, raw3-1
-administrator, robot</li>
+<a href="https://github.com/ipa320/cob_calibration_data/issues/88">#88</a>
+from ipa320/indigo_release_candidate Updates from release
+candidate</li>
+<li>  added cob4-3</li>
+<li>  Contributors: Felix Messmer, Florian Weisshardt, ipa-cob4-3,
+ipa-fxm, ipa-nhg</li>
+</ul>
+
+<h2 id="0-6-4-2015-08-25">0.6.4 (2015-08-25)</h2>
+
+<ul>
+<li>  remove obsolete autogenerated mainpage.dox files</li>
+<li>  add explicit exec_depend to xacro</li>
+<li>  remove trailing whitespaces</li>
+<li>  migrate to package format 2</li>
+<li>  cleanup</li>
+<li>  Contributors: Felix Messmer, Florian Weisshardt, Nadia Hammoudeh
+Garc</li>
 </ul>
 </div></body></html>
 
@@ -1181,7 +594,8 @@ administrator, robot</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_calibration_data/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_calibration_data/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1193,25 +607,65 @@ administrator, robot</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_robot_calibration/github-ipa320-cob_calibration#indigo">cob_robot_calibration</a></td>
+                      <td><a href="/r/cob_calibration/github-ipa320-cob_calibration">github-ipa320-cob_calibration</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_robot_calibration/github-ipa320-cob_calibration#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1219,12 +673,12 @@ administrator, robot</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1233,9 +687,9 @@ administrator, robot</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1244,9 +698,9 @@ administrator, robot</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1255,28 +709,35 @@ administrator, robot</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/cob_calibration_data/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/indigo_dev/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_calibration_data?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_calibration_data&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1286,6 +747,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_calibration_data">cob_calibration_data</a> <small>package from <a style="text-decoration:none" href="/r/cob_calibration_data/github-ipa320-cob_calibration_data">cob_calibration_data</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> cob_calibration_data
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_calibration_data"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_calibration_data
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_calibration_data" role="menuitem" tabindex="-1" href="/p/cob_calibration_data/github-ipa320-cob_calibration_data" data="github-ipa320-cob_calibration_data">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_calibration_data
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/cob_calibration_data/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/hydro_dev/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_calibration_data?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_calibration_data&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1298,28 +846,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This repository holds the current calibration data for Care-O-bot.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1358,7 +908,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1388,7 +938,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1405,8 +958,23 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This repository holds the current calibration data for Care-O-bot.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_calibration_data">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1431,17 +999,6 @@ $(function() {
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_calibration_data">Website</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -1457,7 +1014,7 @@ $(function() {
 
 <p>This repository holds the current calibration data for Care-O-bot.</p>
 
-<h1 id="!!!-warning:-normally-you-should-not-have-an-overlay-of-this-stack-!!!">!!! WARNING: Normally you should <strong>NOT</strong> have an overlay of this stack !!!</h1>
+<h1 id="warning-normally-you-should-not-have-an-overlay-of-this-stack">!!! WARNING: Normally you should <strong>NOT</strong> have an overlay of this stack !!!</h1>
 </div></body></html>
 
             
@@ -1475,7 +1032,7 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-cob_calibration_data">Changelog for package cob_calibration_data</h1>
 
-<h2 id="0.5.1-(2014-03-20)">0.5.1 (2014-03-20)</h2>
+<h2 id="0-5-1-2014-03-20">0.5.1 (2014-03-20)</h2>
 
 <ul>
 <li>  Merge pull request
@@ -1516,18 +1073,16 @@ ipa-fxm/groovy_dev bring groovy updates to hydro</li>
 <a href="https://github.com/ipa320/cob_calibration_data/issues/37">#37</a>
 from ipa-nhg/merge Merge from cob3-3 calibration user</li>
 <li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a>
-into merge</li>
+<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a> into merge</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/36">#36</a>
 from ipa-cob3-6/groovy_dev cob3-6 setup</li>
 <li>  Merge branch 'groovy_dev' of
-<a href="http://github.com/ipa-nhg/cob_calibration_data">http://github.com/ipa-nhg/cob_calibration_data</a>
-into stable</li>
+<a href="http://github.com/ipa-nhg/cob_calibration_data">http://github.com/ipa-nhg/cob_calibration_data</a> into stable</li>
 <li>  Last calibration update (cob3-3)</li>
 <li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa-cob3-5/cob_calibration_data">https://github.com/ipa-cob3-5/cob_calibration_data</a>
-into groovy_dev</li>
+<a href="https://github.com/ipa-cob3-5/cob_calibration_data">https://github.com/ipa-cob3-5/cob_calibration_data</a> into
+groovy_dev</li>
 <li>  adapt calibration</li>
 <li>  merge</li>
 <li>  Merge pull request
@@ -1557,8 +1112,7 @@ github.com:ipa320/cob_calibration_data into hydro_dev</li>
 <li>  Merge branch 'groovy_dev' of
 github.com:ipa-nhg/cob_calibration_data into groovy_dev</li>
 <li>  Merge branch 'groovy_dev' of
-<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a>
-into groovy_dev</li>
+<a href="https://github.com/ipa320/cob_calibration_data">https://github.com/ipa320/cob_calibration_data</a> into groovy_dev</li>
 <li>  Added calibration parameter for ur_connector</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/7">#7</a> from
@@ -1620,7 +1174,7 @@ from ipa-raw3-1/groovy_dev changed cal from icra</li>
 <li>  changed cal from icra</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/23">#23</a>
-from abubeck/groovy_dev Added calibrations for rob@work towers</li>
+from abubeck/groovy_dev Added calibrations for <a href="mailto:rob@work">rob@work</a> towers</li>
 <li>  Merge branch 'groovy_dev' of
 github.com:abubeck/cob_calibration_data into groovy_dev</li>
 <li>  added tower configs to all raw's</li>
@@ -1707,11 +1261,11 @@ calibration_default - all calibration_offsets are 0.0</li>
 <li>  new structure - old values for cob3-2</li>
 <li>  new structure - old values for cob3-1</li>
 <li>  Merge branch 'groovy_dev' of
-git://github.com/ipa-fxm/cob_calibration_data into groovy_dev</li>
+<a href="git://github.com/ipa-fxm/cob_calibration_data">git://github.com/ipa-fxm/cob_calibration_data</a> into groovy_dev</li>
 <li>  rename cam_ref_X back to cam_l_X for compatibiliy with
 cob_common and cob_robots</li>
 <li>  Merge branch 'groovy_dev' of
-git://github.com/ipa-raw3-1/cob_calibration_data into groovy_dev</li>
+<a href="git://github.com/ipa-raw3-1/cob_calibration_data">git://github.com/ipa-raw3-1/cob_calibration_data</a> into groovy_dev</li>
 <li>  added new robot raw3-6</li>
 <li>  new manual calibration for raw3-1</li>
 <li>  fixed arm_base_link orientation</li>
@@ -1722,7 +1276,8 @@ github.com:ipa-raw3-1/cob_calibration_data into groovy_dev</li>
 github.com:ipa-raw3-1/cob_calibration_data into groovy_dev</li>
 <li>  merged new calibration_data</li>
 <li>  raw with offset calibration</li>
-<li>  default values for arm and torso mount positions for r@w</li>
+<li>  default values for arm and torso mount positions for <a href="mailto:r@w">r@w</a>
+</li>
 <li>  calibration for cam3d</li>
 <li>  Merge pull request
 <a href="https://github.com/ipa320/cob_calibration_data/issues/12">#12</a>
@@ -1839,12 +1394,7 @@ improvment by jsf</li>
 <li>  add warning</li>
 <li>  initial version</li>
 <li>  Initial commit</li>
-<li>  Contributors: Alexander Bubeck, Felix Messmer, Florian Weißhardt,
-Frederik Hegger, Jannik, Jannik Abbenseth, Nadia Hammoudeh García,
-Richard Bormann, abubeck, calibration, cob3-1-pc1, cob3-5,
-demo@cob3-1-pc1, ipa-bnm, ipa-cob3-4, ipa-cob3-5, ipa-cob3-7,
-ipa-fmw, ipa-fxm, ipa-jsf-mf, ipa-mdl, ipa-mig, ipa-nhg, raw3-1
-administrator, robot</li>
+<li>  Contributors: Alexander Bubeck, Felix Messmer, Florian Wei</li>
 </ul>
 </div></body></html>
 
@@ -1861,7 +1411,8 @@ administrator, robot</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_calibration_data/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_calibration_data/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1873,25 +1424,93 @@ administrator, robot</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_hardware_config/github-ipa320-cob_robots#hydro">cob_hardware_config</a></td>
+                      <td><a href="/r/cob_robots/github-ipa320-cob_robots">github-ipa320-cob_robots</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_hardware_config/github-ipa320-cob_robots#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_robot_calibration/github-ipa320-cob_calibration#hydro">cob_robot_calibration</a></td>
+                      <td><a href="/r/cob_calibration/github-ipa320-cob_calibration">github-ipa320-cob_calibration</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_robot_calibration/github-ipa320-cob_calibration#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/care_o_bot_robot/github-ipa320-care-o-bot#hydro">care_o_bot_robot</a></td>
+                      <td><a href="/r/care_o_bot/github-ipa320-care-o-bot">github-ipa320-care-o-bot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/care_o_bot_robot/github-ipa320-care-o-bot#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1899,12 +1518,12 @@ administrator, robot</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1913,9 +1532,9 @@ administrator, robot</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1924,9 +1543,9 @@ administrator, robot</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1935,28 +1554,35 @@ administrator, robot</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/cob_calibration_data/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/hydro_dev/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_calibration_data?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_calibration_data&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1966,6 +1592,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/cob_calibration_data">cob_calibration_data</a> <small>package from <a style="text-decoration:none" href="/r/cob_calibration_data/github-ipa320-cob_calibration_data">cob_calibration_data</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> cob_calibration_data
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/cob_calibration_data"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_calibration_data
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_calibration_data" role="menuitem" tabindex="-1" href="/p/cob_calibration_data/github-ipa320-cob_calibration_data" data="github-ipa320-cob_calibration_data">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_calibration_data
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/cob_calibration_data/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/groovy/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/cob_calibration_data?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_calibration_data&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1978,32 +1691,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     This repository holds the current calibration data for Care-O-bot.
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2042,7 +1753,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2072,7 +1783,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2089,8 +1803,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     This repository holds the current calibration data for Care-O-bot.
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/cob_calibration_data">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2105,17 +1838,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/cob_calibration_data">Website</a></li>
                 
               </ul>
             
@@ -2135,7 +1857,7 @@ $(function() {
 
 <p>This repository holds the current calibration data for Care-O-bot.</p>
 
-<h1 id="!!!-warning:-normally-you-should-not-have-an-overlay-of-this-stack-!!!">!!! WARNING: Normally you should <strong>NOT</strong> have an overlay of this stack !!!</h1>
+<h1 id="warning-normally-you-should-not-have-an-overlay-of-this-stack">!!! WARNING: Normally you should <strong>NOT</strong> have an overlay of this stack !!!</h1>
 </div></body></html>
 
             
@@ -2163,7 +1885,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/cob_calibration_data/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/cob_calibration_data/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2175,25 +1898,79 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_hardware_config/github-ipa320-cob_robots#groovy">cob_hardware_config</a></td>
+                      <td><a href="/r/cob_robots/github-ipa320-cob_robots">github-ipa320-cob_robots</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_hardware_config/github-ipa320-cob_robots#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_robot_calibration/github-ipa320-cob_calibration#groovy">cob_robot_calibration</a></td>
+                      <td><a href="/r/cob_calibration/github-ipa320-cob_calibration">github-ipa320-cob_calibration</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_robot_calibration/github-ipa320-cob_calibration#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2201,12 +1978,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2215,9 +1992,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2226,9 +2003,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2237,28 +2014,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/cob_calibration_data/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_calibration_data/tree/groovy/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:cob_calibration_data/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/cob_calibration_data?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=cob_calibration_data&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2310,7 +2094,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

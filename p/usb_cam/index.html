@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,7 +146,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -134,11 +176,11 @@
           <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
         </li>
       
-        <li data="fuerte" id="fuerte-option" class=" older-distro-option"  href="#fuerte">
+        <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
           <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
         </li>
       
-        <li data="electric" id="electric-option" class=" older-distro-option"  href="#electric">
+        <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
           <a href="#electric" data="electric" id="electric-button">electric</a>
         </li>
       
@@ -154,665 +196,146 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> usb_cam</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/usb_cam/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-bosch-ros-pkg-usb_cam
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-bosch-ros-pkg-usb_cam
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> usb_cam</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/usb_cam/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-bosch-ros-pkg-usb_cam
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-bosch-ros-pkg-usb_cam
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> usb_cam</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/usb_cam/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-bosch-ros-pkg-usb_cam
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-bosch-ros-pkg-usb_cam
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/bosch_drivers/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bosch_drivers</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/adc_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">adc_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/adc_sub20/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">adc_sub20</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/amtec/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">amtec</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/arduino_interface/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">arduino_interface</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bma180/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bma180</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bma180_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bma180_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bmc050_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bmc050_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bmg160_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bmg160_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bmp085/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bmp085</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bmp085_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bmp085_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bosch_drivers_basic_nodes/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bosch_drivers_basic_nodes</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bosch_drivers_common/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bosch_drivers_common</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bosch_drivers_example_nodes/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">bosch_drivers_example_nodes</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/encoder_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">encoder_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gpio_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">gpio_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gumstix_memread_bma180/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">gumstix_memread_bma180</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gumstix_memwrite_bma180/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">gumstix_memwrite_bma180</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/photo/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">photo</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pwm_driver/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">pwm_driver</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/smi540/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">smi540</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sub20/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">sub20</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sub20_interface/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">sub20_interface</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/uniserial/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">uniserial</a>
-        
-      
-        
-          <span class="label label-default"> usb_cam</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/usb_cam/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="http://svn.code.sf.net/p/bosch-ros-pkg/code/trunk/stacks/bosch_drivers/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-bosch-ros-pkg-usb_cam
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/bosch_drivers/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">bosch_drivers</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/adc_sub20/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">adc_sub20</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/amtec/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">amtec</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bma180/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">bma180</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bmp085/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">bmp085</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gumstix_memread_bma180/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">gumstix_memread_bma180</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gumstix_memwrite_bma180/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">gumstix_memwrite_bma180</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/photo/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">photo</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/smi540/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">smi540</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/sub20/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">sub20</a>
-        
-      
-        
-          <span class="label label-default"> usb_cam</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/usb_cam/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="http://svn.code.sf.net/p/bosch-ros-pkg/code/branches/electric/stacks/bosch_drivers/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/usb_cam" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-branches-electric-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" role="menuitem" tabindex="-1" href="/p/usb_cam/svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers" data="svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-bosch-ros-pkg-code-trunk-stacks-bosch_drivers
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-bosch-ros-pkg-usb_cam
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
       
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> usb_cam
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-bosch-ros-pkg-usb_cam
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-bosch-ros-pkg-usb_cam
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/usb_cam?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="jade-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            A ROS Driver for V4L USB Cameras
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -825,7 +348,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.3.0</td>
+                <td>0.3.4</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -851,7 +374,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -873,7 +396,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-26
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-04
         </span>
       </td>
     </tr>
@@ -901,8 +424,27 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            A ROS Driver for V4L USB Cameras
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -925,21 +467,6 @@
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
-                
-                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -951,7 +478,7 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="usb_cam-">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
+<h1 id="usb_cam">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
 </h1>
 
 <h4 id="a-ros-driver-for-v4l-usb-cameras">A ROS Driver for V4L USB Cameras</h4>
@@ -986,7 +513,43 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-usb_cam">Changelog for package usb_cam</h1>
 
-<h2 id="0.3.0-(2015-01-26)">0.3.0 (2015-01-26)</h2>
+<h2 id="0-3-4-2015-08-18">0.3.4 (2015-08-18)</h2>
+
+<ul>
+<li>  Installs launch files</li>
+<li>  Merge pull request #37 from tzutalin/develop Add a launch file for
+easy test</li>
+<li>  Add a launch file for easy test</li>
+<li>  Contributors: Russell Toris, tzu.ta.lin</li>
+</ul>
+
+<h2 id="0-3-3-2015-05-14">0.3.3 (2015-05-14)</h2>
+
+<ul>
+<li>  Merge pull request #36 from jsarrett/develop add gain parameter</li>
+<li>  add gain parameter</li>
+<li>  Contributors: James Sarrett, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-2-2015-03-24">0.3.2 (2015-03-24)</h2>
+
+<ul>
+<li>  Merge pull request #34 from eliasm/develop fixed check whether
+calibration file exists</li>
+<li>  fixed check whether calibration file exists</li>
+<li>  Contributors: Elias Mueggler, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-1-2015-02-20">0.3.1 (2015-02-20)</h2>
+
+<ul>
+<li>  Merge pull request #32 from kmhallen/mono8 Publish YUVMONO10 images
+as mono8 instead of rgb8</li>
+<li>  Publish YUVMONO10 images as mono8 instead of rgb8</li>
+<li>  Contributors: Kevin Hallenbeck, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-0-2015-01-26">0.3.0 (2015-01-26)</h2>
 
 <ul>
 <li>  Merge pull request #30 from mitchellwills/develop Removed global
@@ -1009,7 +572,8 @@ of header files</li>
 <li>  Fix installation of header files</li>
 <li>  Contributors: Mitchell Wills, Russell Toris</li>
 </ul>
-<h2 id="0.2.0-(2015-01-16)">0.2.0 (2015-01-16)</h2>
+
+<h2 id="0-2-0-2015-01-16">0.2.0 (2015-01-16)</h2>
 
 <ul>
 <li>  Bug fix in camera info settings.</li>
@@ -1019,7 +583,8 @@ sets default camera info</li>
 <li>  sets default camera info</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.13-(2014-12-02)">0.1.13 (2014-12-02)</h2>
+
+<h2 id="0-1-13-2014-12-02">0.1.13 (2014-12-02)</h2>
 
 <ul>
 <li>  Merge pull request #25 from blutack/patch-1 Warn rather than error
@@ -1034,15 +599,16 @@ rjw57/do-not-touch-parameters-unless-asked do not modify parameters
 unless explicitly set</li>
 <li>  do not modify parameters unless explicitly set The contrast,
 saturation, brightness, sharpness and focus parameters were recently
-added to usb_cam. This caused a regression
-(sigproc/robotic_surgery#17) whereby the default settings for a
-webcam are overridden in all cases by the hard-coded defaults in
-usb_cam. In the absence of a know good set of "default" values,
-leave the parameters unset unless the user has explicitly set them
-in the launch file.</li>
+added to usb_cam. This caused a
+regression (sigproc/robotic_surgery#17) whereby the default
+settings for a webcam are overridden in all cases by the hard-coded
+defaults in usb_cam. In the absence of a know good set of "default"
+values, leave the parameters unset unless the user has explicitly
+set them in the launch file.</li>
 <li>  Contributors: Rich Wareham, Russell Toris, blutack</li>
 </ul>
-<h2 id="0.1.12-(2014-11-05)">0.1.12 (2014-11-05)</h2>
+
+<h2 id="0-1-12-2014-11-05">0.1.12 (2014-11-05)</h2>
 
 <ul>
 <li>  Merge pull request #22 from dekent/develop White balance parameters</li>
@@ -1052,7 +618,8 @@ in the launch file.</li>
 <li>  uses version header to check for AV_CODEC_ID_MJPEG</li>
 <li>  Contributors: David Kent, Russell Toris</li>
 </ul>
-<h2 id="0.1.11-(2014-10-30)">0.1.11 (2014-10-30)</h2>
+
+<h2 id="0-1-11-2014-10-30">0.1.11 (2014-10-30)</h2>
 
 <ul>
 <li>  Merge pull request #20 from dekent/develop More Parameters</li>
@@ -1063,7 +630,8 @@ in the launch file.</li>
 saturation, and sharpness</li>
 <li>  Contributors: David Kent, Russell Toris</li>
 </ul>
-<h2 id="0.1.10-(2014-10-24)">0.1.10 (2014-10-24)</h2>
+
+<h2 id="0-1-10-2014-10-24">0.1.10 (2014-10-24)</h2>
 
 <ul>
 <li>  Merge pull request #19 from bosch-ros-pkg/av_codec_id Removed
@@ -1073,7 +641,8 @@ deprecated CODEC_ID</li>
 compilation for libav 10</li>
 <li>  Contributors: Andrzej Pronobis, Russell Toris</li>
 </ul>
-<h2 id="0.1.9-(2014-08-26)">0.1.9 (2014-08-26)</h2>
+
+<h2 id="0-1-9-2014-08-26">0.1.9 (2014-08-26)</h2>
 
 <ul>
 <li>  Uses ros::Rate to enforce software framerate instead of custom time
@@ -1086,7 +655,8 @@ addition to at the driver level. This is necessary since the drivers
 for my webcam did not obey the requested framerate.</li>
 <li>  Contributors: Russell Toris, liang</li>
 </ul>
-<h2 id="0.1.8-(2014-08-21)">0.1.8 (2014-08-21)</h2>
+
+<h2 id="0-1-8-2014-08-21">0.1.8 (2014-08-21)</h2>
 
 <ul>
 <li>  autoexposure and exposure settings now exposed via ROS parameters</li>
@@ -1097,14 +667,16 @@ pixel format</li>
 <li>  Added RGB24 as pixel format</li>
 <li>  Contributors: Michael Stoll, Russell Toris</li>
 </ul>
-<h2 id="0.1.7-(2014-08-20)">0.1.7 (2014-08-20)</h2>
+
+<h2 id="0-1-7-2014-08-20">0.1.7 (2014-08-20)</h2>
 
 <ul>
 <li>  changelog fixed</li>
 <li>  minor cleanup and ability to change camera name and info</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.6-(2014-08-15)">0.1.6 (2014-08-15)</h2>
+
+<h2 id="0-1-6-2014-08-15">0.1.6 (2014-08-15)</h2>
 
 <ul>
 <li>  Merge pull request #14 from KaijenHsiao/master added support for
@@ -1123,7 +695,8 @@ Also, this fixes
 </li>
 <li>  Contributors: Kaijen Hsiao, Russell Toris, Vincent Rabaud, sosentos</li>
 </ul>
-<h2 id="0.1.5-(2014-07-28)">0.1.5 (2014-07-28)</h2>
+
+<h2 id="0-1-5-2014-07-28">0.1.5 (2014-07-28)</h2>
 
 <ul>
 <li>  auto format</li>
@@ -1148,7 +721,8 @@ libavcodec functions</li>
 <li>  Contributors: Andrzej Pronobis, Jon Binney, Russell Toris, Scott K
 Logan, William</li>
 </ul>
-<h2 id="0.1.3-(2013-07-11)">0.1.3 (2013-07-11)</h2>
+
+<h2 id="0-1-3-2013-07-11">0.1.3 (2013-07-11)</h2>
 
 <ul>
 <li>  Merge pull request #1 from jonbinney/rosify Bag of improvements</li>
@@ -1157,20 +731,23 @@ Logan, William</li>
 <li>  use camera_info_manager</li>
 <li>  Contributors: Jon Binney, Russell Toris</li>
 </ul>
-<h2 id="0.1.2-(2013-05-06)">0.1.2 (2013-05-06)</h2>
+
+<h2 id="0-1-2-2013-05-06">0.1.2 (2013-05-06)</h2>
 
 <ul>
 <li>  installs usb_cam_node</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.1-(2013-05-02)">0.1.1 (2013-05-02)</h2>
+
+<h2 id="0-1-1-2013-05-02">0.1.1 (2013-05-02)</h2>
 
 <ul>
 <li>  cmake fixed</li>
 <li>  ffmpeg added</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.0-(2013-05-01)">0.1.0 (2013-05-01)</h2>
+
+<h2 id="0-1-0-2013-05-01">0.1.0 (2013-05-01)</h2>
 
 <ul>
 <li>  Update package.xml</li>
@@ -1224,8 +801,8 @@ git-subtree-dir: src/sofie_ros git-subtree-split:
 <li>  Going to catinize it.</li>
 <li>  (catkin)Going to catinize it.</li>
 <li>  Modified to new version of sofie_ros.</li>
-<li>  Renamed import_csv_data.py to fileUtils.py, because it does more
-now.</li>
+<li>  Renamed import_csv_data.py to fileUtils.py, because it does
+more now.</li>
 <li>  (catkin)Renamed import_csv_data.py to fileUtils.py, because it
 does more now.</li>
 <li>  Updating to use a csv file specified by the user. Separating
@@ -1250,11 +827,11 @@ PyTables path manipulation into SOFIEHDFFORMAT.</li>
 <li>  Updating to Groovy.</li>
 <li>  (catkin)Updating to Groovy.</li>
 <li>  Added another potential launch file for exporting video from rosbag.</li>
-<li>  (catkin)Added another potential launch file for exporting video from
-rosbag.</li>
+<li>  (catkin)Added another potential launch file for exporting video
+from rosbag.</li>
 <li>  Added a launcher to ros bag the usb_cam, for later playback.</li>
-<li>  (catkin)Added a launcher to ros bag the usb_cam, for later
-playback.</li>
+<li>  (catkin)Added a launcher to ros bag the usb_cam, for
+later playback.</li>
 <li>  Added some files that were possibly not correct</li>
 <li>  (catkin)Added some files that were possibly not correct</li>
 <li>  Fixed bugs with the importing.</li>
@@ -1265,8 +842,8 @@ sofiehdfformat funciton.</li>
 importdata sofiehdfformat funciton.</li>
 <li>  Refractoring to make it possible to log to CSV. There were problems
 handling concurrent writing to pytables files. The package now logs
-to CSV and then provides a function to post import the data into
-SOFIEHDFFORMAT.</li>
+to CSV and then provides a function to post import the data
+into SOFIEHDFFORMAT.</li>
 <li>  (catkin)Refractoring to make it possible to log to CSV. There were
 problems handling concurrent writing to pytables files. The package
 now logs to CSV and then provides a function to post import the data
@@ -1276,8 +853,8 @@ into SOFIEHDFFORMAT.</li>
 <li>  Added a close on terminate signal handler.</li>
 <li>  (catkin)Added a close on terminate signal handler.</li>
 <li>  Made the marker size be set via a parameter to the launch file.</li>
-<li>  (catkin)Made the marker size be set via a parameter to the launch
-file.</li>
+<li>  (catkin)Made the marker size be set via a parameter to the
+launch file.</li>
 <li>  Changed the Callibration data.</li>
 <li>  (catkin)Changed the Callibration data.</li>
 <li>  The ar_pose listener.</li>
@@ -1314,7 +891,1018 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
 <li>  Working on the listerner that will write to HDFFormat.</li>
 <li>  Creating a listerner that can write to sofiehdfformat files.</li>
 <li>  Initial commit</li>
-<li>  Contributors: Adrian Cooke, Russell Toris, ¨Adrian</li>
+<li>  Contributors: Adrian Cooke, Russell Toris, </li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#jade">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#jade">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#jade">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#jade">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#jade">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#jade">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/ffmpeg">ffmpeg</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/v4l-utils">v4l-utils</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rail_ceiling/github-GT-RAIL-rail_ceiling#jade">rail_ceiling</a></td>
+                      <td><a href="/r/rail_ceiling/github-GT-RAIL-rail_ceiling">github-GT-RAIL-rail_ceiling</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rail_ceiling/github-GT-RAIL-rail_ceiling#jade-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/./launch/usb_cam-test.launch" target="_blank">launch/usb_cam-test.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/usb_cam?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> usb_cam
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-bosch-ros-pkg-usb_cam
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-bosch-ros-pkg-usb_cam
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/usb_cam?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.3.4</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/bosch-ros-pkg/usb_cam.git">https://github.com/bosch-ros-pkg/usb_cam.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">develop</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-04
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            A ROS Driver for V4L USB Cameras
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Russell Toris</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Benjamin Pitzer</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="usb_cam">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
+</h1>
+
+<h4 id="a-ros-driver-for-v4l-usb-cameras">A ROS Driver for V4L USB Cameras</h4>
+
+<p>This package is based off of V4L devices specifically instead of just UVC.</p>
+
+<p>For full documentation, see <a href="http://ros.org/wiki/usb_cam">the ROS wiki</a>.</p>
+
+<p><a href="http://docs.ros.org/indigo/api/usb_cam/html/">Doxygen</a> files can be found on the ROS wiki.</p>
+
+<h3 id="license">License</h3>
+
+<p>usb_cam is released with a BSD license. For full terms and conditions, see the <a href="LICENSE">LICENSE</a> file.</p>
+
+<h3 id="authors">Authors</h3>
+
+<p>See the <a href="AUTHORS.md">AUTHORS</a> file for a full list of contributors.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-usb_cam">Changelog for package usb_cam</h1>
+
+<h2 id="0-3-4-2015-08-18">0.3.4 (2015-08-18)</h2>
+
+<ul>
+<li>  Installs launch files</li>
+<li>  Merge pull request #37 from tzutalin/develop Add a launch file for
+easy test</li>
+<li>  Add a launch file for easy test</li>
+<li>  Contributors: Russell Toris, tzu.ta.lin</li>
+</ul>
+
+<h2 id="0-3-3-2015-05-14">0.3.3 (2015-05-14)</h2>
+
+<ul>
+<li>  Merge pull request #36 from jsarrett/develop add gain parameter</li>
+<li>  add gain parameter</li>
+<li>  Contributors: James Sarrett, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-2-2015-03-24">0.3.2 (2015-03-24)</h2>
+
+<ul>
+<li>  Merge pull request #34 from eliasm/develop fixed check whether
+calibration file exists</li>
+<li>  fixed check whether calibration file exists</li>
+<li>  Contributors: Elias Mueggler, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-1-2015-02-20">0.3.1 (2015-02-20)</h2>
+
+<ul>
+<li>  Merge pull request #32 from kmhallen/mono8 Publish YUVMONO10 images
+as mono8 instead of rgb8</li>
+<li>  Publish YUVMONO10 images as mono8 instead of rgb8</li>
+<li>  Contributors: Kevin Hallenbeck, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-0-2015-01-26">0.3.0 (2015-01-26)</h2>
+
+<ul>
+<li>  Merge pull request #30 from mitchellwills/develop Removed global
+state from usb_cam by encapsulating it inside an object</li>
+<li>  Made device name a std::string instead of const char*</li>
+<li>  Added usb_cam namespace</li>
+<li>  Added underscore sufix to class fields</li>
+<li>  Removed camera_ prefix from methods</li>
+<li>  Moved methods to parse pixel_format and io_method from string to
+UsbCam</li>
+<li>  Moved camera_image_t struct to be private in UsbCam</li>
+<li>  Cleaned up parameter assignment</li>
+<li>  Made set_v4l_parameters a non-static function</li>
+<li>  Moved set_v4l_parameters to UsbCam object</li>
+<li>  Removed global state from usb_cam by encapsulating it inside an
+object function and structions in usb_cam.h became public and
+everything else is private</li>
+<li>  Merge pull request #28 from mitchellwills/develop Fix installation
+of header files</li>
+<li>  Fix installation of header files</li>
+<li>  Contributors: Mitchell Wills, Russell Toris</li>
+</ul>
+
+<h2 id="0-2-0-2015-01-16">0.2.0 (2015-01-16)</h2>
+
+<ul>
+<li>  Bug fix in camera info settings.</li>
+<li>  Update .travis.yml</li>
+<li>  Merge pull request #27 from bosch-ros-pkg/default_camera_info
+sets default camera info</li>
+<li>  sets default camera info</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-1-13-2014-12-02">0.1.13 (2014-12-02)</h2>
+
+<ul>
+<li>  Merge pull request #25 from blutack/patch-1 Warn rather than error
+if framerate can't be set</li>
+<li>  Warn rather than error if framerate can't be set The driver doesn't
+currently work with em28xx based devices as they don't allow the
+framerate to be set directly and the node exits with an error.
+Changing to a warning allows these devices to be used.</li>
+<li>  Update README.md</li>
+<li>  Merge pull request #24 from
+rjw57/do-not-touch-parameters-unless-asked do not modify parameters
+unless explicitly set</li>
+<li>  do not modify parameters unless explicitly set The contrast,
+saturation, brightness, sharpness and focus parameters were recently
+added to usb_cam. This caused a
+regression (sigproc/robotic_surgery#17) whereby the default
+settings for a webcam are overridden in all cases by the hard-coded
+defaults in usb_cam. In the absence of a know good set of "default"
+values, leave the parameters unset unless the user has explicitly
+set them in the launch file.</li>
+<li>  Contributors: Rich Wareham, Russell Toris, blutack</li>
+</ul>
+
+<h2 id="0-1-12-2014-11-05">0.1.12 (2014-11-05)</h2>
+
+<ul>
+<li>  Merge pull request #22 from dekent/develop White balance parameters</li>
+<li>  Parameter to enable/disable auto white balance</li>
+<li>  Added parameters for white balance</li>
+<li>  uses version major to check for av_codec</li>
+<li>  uses version header to check for AV_CODEC_ID_MJPEG</li>
+<li>  Contributors: David Kent, Russell Toris</li>
+</ul>
+
+<h2 id="0-1-11-2014-10-30">0.1.11 (2014-10-30)</h2>
+
+<ul>
+<li>  Merge pull request #20 from dekent/develop More Parameters</li>
+<li>  bug fix</li>
+<li>  Setting focus when autofocus is disabled</li>
+<li>  Parameter adjusting</li>
+<li>  Added parameter setting for absolute focus, brightness, contrast,
+saturation, and sharpness</li>
+<li>  Contributors: David Kent, Russell Toris</li>
+</ul>
+
+<h2 id="0-1-10-2014-10-24">0.1.10 (2014-10-24)</h2>
+
+<ul>
+<li>  Merge pull request #19 from bosch-ros-pkg/av_codec_id Removed
+deprecated CODEC_ID</li>
+<li>  added legacy macro constants for libav 10</li>
+<li>  Renamed deprecated CODEC_ID constants to AV_CODEC_ID to fix
+compilation for libav 10</li>
+<li>  Contributors: Andrzej Pronobis, Russell Toris</li>
+</ul>
+
+<h2 id="0-1-9-2014-08-26">0.1.9 (2014-08-26)</h2>
+
+<ul>
+<li>  Uses ros::Rate to enforce software framerate instead of custom time
+check</li>
+<li>  Merge pull request #16 from
+liangfok/feature/app_level_framerate_control Modified to enforce
+framerate control at the application level in additi...</li>
+<li>  Modified to enforce framerate control at the application level in
+addition to at the driver level. This is necessary since the drivers
+for my webcam did not obey the requested framerate.</li>
+<li>  Contributors: Russell Toris, liang</li>
+</ul>
+
+<h2 id="0-1-8-2014-08-21">0.1.8 (2014-08-21)</h2>
+
+<ul>
+<li>  autoexposure and exposure settings now exposed via ROS parameters</li>
+<li>  added ability to call v4l-utils as well as correctly set autofocus</li>
+<li>  cleanup of output</li>
+<li>  Merge pull request #15 from mistoll/develop added support for RGB24
+pixel format</li>
+<li>  Added RGB24 as pixel format</li>
+<li>  Contributors: Michael Stoll, Russell Toris</li>
+</ul>
+
+<h2 id="0-1-7-2014-08-20">0.1.7 (2014-08-20)</h2>
+
+<ul>
+<li>  changelog fixed</li>
+<li>  minor cleanup and ability to change camera name and info</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-1-6-2014-08-15">0.1.6 (2014-08-15)</h2>
+
+<ul>
+<li>  Merge pull request #14 from KaijenHsiao/master added support for
+10-bit mono cameras advertising as YUV</li>
+<li>  added support for 10-bit mono cameras advertising as YUV (such as
+Leopard Imaging's LI-USB30-V034)</li>
+<li>  Update CHANGELOG.rst</li>
+<li>  changelog updated</li>
+<li>  Merge pull request #13 from vrabaud/develop add a a ros::spinOnce
+to get set_camera_info working</li>
+<li>  add a a ros::spinOnce to get set_camera_info working This is
+explained in the docs of CameraInfoManager
+<a href="https://github.com/ros-perception/image_common/blob/hydro-devel/camera_info_manager/include/camera_info_manager/camera_info_manager.h#L71">https://github.com/ros-perception/image_common/blob/hydro-devel/camera_info_manager/include/camera_info_manager/camera_info_manager.h#L71</a>
+Also, this fixes
+<a href="https://github.com/ros-perception/image_pipeline/issues/78">https://github.com/ros-perception/image_pipeline/issues/78</a>
+</li>
+<li>  Contributors: Kaijen Hsiao, Russell Toris, Vincent Rabaud, sosentos</li>
+</ul>
+
+<h2 id="0-1-5-2014-07-28">0.1.5 (2014-07-28)</h2>
+
+<ul>
+<li>  auto format</li>
+<li>  cleanup of readme and such</li>
+<li>  Merge branch 'hydro-devel' of github.com:bosch-ros-pkg/usb_cam</li>
+<li>  Merge pull request #11 from pronobis/hydro-devel Fixed a bug with
+av_free missing by adding a proper include.</li>
+<li>  Fixed a bug with av_free missing by adding a proper include on
+Ubuntu 14.04.</li>
+<li>  Merge pull request #7 from cottsay/groovy-devel Use pkg-config to
+find avcodec and swscale</li>
+<li>  Merge pull request #5 from FriedCircuits/hydro-devel Remove
+requirments for self_test</li>
+<li>  Use pkg-config to find avcodec and swscale</li>
+<li>  Update package.xml</li>
+<li>  Remove selftest</li>
+<li>  Remove selftest</li>
+<li>  Update usb_cam_node.cpp</li>
+<li>  Merge pull request #2 from jonbinney/7_17 swap out deprecated
+libavcodec functions</li>
+<li>  swap out deprecated libavcodec functions</li>
+<li>  Contributors: Andrzej Pronobis, Jon Binney, Russell Toris, Scott K
+Logan, William</li>
+</ul>
+
+<h2 id="0-1-3-2013-07-11">0.1.3 (2013-07-11)</h2>
+
+<ul>
+<li>  Merge pull request #1 from jonbinney/rosify Bag of improvements</li>
+<li>  add framerate parameter</li>
+<li>  use ROS_* for output</li>
+<li>  use camera_info_manager</li>
+<li>  Contributors: Jon Binney, Russell Toris</li>
+</ul>
+
+<h2 id="0-1-2-2013-05-06">0.1.2 (2013-05-06)</h2>
+
+<ul>
+<li>  installs usb_cam_node</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-1-1-2013-05-02">0.1.1 (2013-05-02)</h2>
+
+<ul>
+<li>  cmake fixed</li>
+<li>  ffmpeg added</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-1-0-2013-05-01">0.1.0 (2013-05-01)</h2>
+
+<ul>
+<li>  Update package.xml</li>
+<li>  minor cleanup</li>
+<li>  inital merge</li>
+<li>  Update README.md</li>
+<li>  Update README.md</li>
+<li>  Update README.md</li>
+<li>  Update README.md</li>
+<li>  Update README.md</li>
+<li>  Update CLONE_SETUP.sh</li>
+<li>  Update README.md</li>
+<li>  Updated the README.md.</li>
+<li>  Updated the installation instructions.</li>
+<li>  Fixed syntax in the README.</li>
+<li>  Updated README for ARDUINO support.</li>
+<li>  Fixed update script.</li>
+<li>  Updated the readme and updating scripts.</li>
+<li>  Updating for installation on Robot.</li>
+<li>  Updated installs and README for ROS.</li>
+<li>  Make sure the User knows to source the devel/setup.sh.</li>
+<li>  Getting rid of subtrees and Catkinized USB CAM.</li>
+<li>  Updating home to use ROSWS.</li>
+<li>  Fixing the launch file for video1.</li>
+<li>  Merge commit '0bc3322966e4c0ed259320827dd1f5cc8460efce' Conflicts:
+src/sofie_ros/package.xml</li>
+<li>  Removed unnecessary file.</li>
+<li>  Compiles.</li>
+<li>  Adding the Catkin build scripts.</li>
+<li>  Merge commit 'b2c739cb476e1e01425947e46dc2431464f241b3' as
+'src/ar_track_alvar'</li>
+<li>  Squashed 'src/ar_track_alvar/' content from commit 9ecca95
+git-subtree-dir: src/ar_track_alvar git-subtree-split:
+9ecca9558edc7d3a9e692eacc93e082bf1e9a3e6</li>
+<li>  Merge commit '9feb470d0ebdaa51e426be4d58f419b45928a671' as
+'src/sofie_ros'</li>
+<li>  Squashed 'src/sofie_ros/' content from commit 3ca5edf
+git-subtree-dir: src/sofie_ros git-subtree-split:
+3ca5edfba496840b41bfe01dfdff883cacff1a97</li>
+<li>  Removing stackts.</li>
+<li>  Removing submodules.</li>
+<li>  Fixed submodules.</li>
+<li>  Removing old package.</li>
+<li>  Merge branch 'catkin' Conflicts: README.md cmake_install.cmake</li>
+<li>  Brancing package down to stack base.</li>
+<li>  Catkininizing.</li>
+<li>  (catkin)Catkininizing.</li>
+<li>  Modifying the setup of roshome.</li>
+<li>  Starting to Catkininize the project.</li>
+<li>  (catkin)Starting to Catkininize the project.</li>
+<li>  Going to catinize it.</li>
+<li>  (catkin)Going to catinize it.</li>
+<li>  Modified to new version of sofie_ros.</li>
+<li>  Renamed import_csv_data.py to fileUtils.py, because it does
+more now.</li>
+<li>  (catkin)Renamed import_csv_data.py to fileUtils.py, because it
+does more now.</li>
+<li>  Updating to use a csv file specified by the user. Separating
+PyTables path manipulation into SOFIEHDFFORMAT.</li>
+<li>  (catkin)Updating to use a csv file specified by the user. Separating
+PyTables path manipulation into SOFIEHDFFORMAT.</li>
+<li>  Merge branch 'release/0.0.2'</li>
+<li>  Created the install script.</li>
+<li>  Removed the Python Packages as submodules.</li>
+<li>  Merge branch 'release/0.0.1'</li>
+<li>  Update the Git submodules.</li>
+<li>  Modified the README and CLONE_SETUP.sh</li>
+<li>  Added SOFIEHDFFORMAT as a submodule.</li>
+<li>  Added the ExperimentControl Repo as a submodule.</li>
+<li>  Working the CLONE install.</li>
+<li>  Modifiying install script.</li>
+<li>  Added a script to update the gitmodules for read-only clones.</li>
+<li>  Merge branch 'master' of github.com:agcooke/roshome</li>
+<li>  Initial commit</li>
+<li>  Added the modules.</li>
+<li>  Added usb_cam,</li>
+<li>  Updating to Groovy.</li>
+<li>  (catkin)Updating to Groovy.</li>
+<li>  Added another potential launch file for exporting video from rosbag.</li>
+<li>  (catkin)Added another potential launch file for exporting video
+from rosbag.</li>
+<li>  Added a launcher to ros bag the usb_cam, for later playback.</li>
+<li>  (catkin)Added a launcher to ros bag the usb_cam, for
+later playback.</li>
+<li>  Added some files that were possibly not correct</li>
+<li>  (catkin)Added some files that were possibly not correct</li>
+<li>  Fixed bugs with the importing.</li>
+<li>  (catkin)Fixed bugs with the importing.</li>
+<li>  Added forgotten __init__.py file and changed to importdata
+sofiehdfformat funciton.</li>
+<li>  (catkin)Added forgotten __init__.py file and changed to
+importdata sofiehdfformat funciton.</li>
+<li>  Refractoring to make it possible to log to CSV. There were problems
+handling concurrent writing to pytables files. The package now logs
+to CSV and then provides a function to post import the data
+into SOFIEHDFFORMAT.</li>
+<li>  (catkin)Refractoring to make it possible to log to CSV. There were
+problems handling concurrent writing to pytables files. The package
+now logs to CSV and then provides a function to post import the data
+into SOFIEHDFFORMAT.</li>
+<li>  Exporting to a CSV. Does not work yet.</li>
+<li>  (catkin)Exporting to a CSV. Does not work yet.</li>
+<li>  Added a close on terminate signal handler.</li>
+<li>  (catkin)Added a close on terminate signal handler.</li>
+<li>  Made the marker size be set via a parameter to the launch file.</li>
+<li>  (catkin)Made the marker size be set via a parameter to the
+launch file.</li>
+<li>  Changed the Callibration data.</li>
+<li>  (catkin)Changed the Callibration data.</li>
+<li>  The ar_pose listener.</li>
+<li>  (catkin)The ar_pose listener.</li>
+<li>  Changed the sofie driver to directly safe the ar_pose data. We are
+going to perform experiments and this means that the extra data
+might be useful at a later stage.</li>
+<li>  (catkin)Changed the sofie driver to directly safe the ar_pose data.
+We are going to perform experiments and this means that the extra
+data might be useful at a later stage.</li>
+<li>  Changed the size of the marker.</li>
+<li>  Updated the usb_cam config to work for home camera.</li>
+<li>  Added callibration files and launch files.</li>
+<li>  Turned off history.</li>
+<li>  (catkin)Added some comments and renamed.</li>
+<li>  Added some comments and renamed.</li>
+<li>  (catkin)The Quaternions were mixed around. Fixed the launch file to
+log to file instead of screen.</li>
+<li>  The Quaternions were mixed around. Fixed the launch file to log to
+file instead of screen.</li>
+<li>  (catkin)Updating the README's.</li>
+<li>  Updating the README's.</li>
+<li>  Updated the launch file to launch ar_pose and rviz for debugging.</li>
+<li>  (catkin)Added arguments to the launch script.</li>
+<li>  Added arguments to the launch script.</li>
+<li>  Added the Stack formating files.</li>
+<li>  (catkin)Organising into a stack instead of separate packages.</li>
+<li>  Organising into a stack instead of separate packages.</li>
+<li>  Trying to figure out how to start and stop the node.</li>
+<li>  Adding simple parameters.</li>
+<li>  Added the ROS files.</li>
+<li>  Basic driver now works for listening on a channel that broadcasts
+geometry_msgs.msg.QuaternionStamped messages.</li>
+<li>  Working on the listerner that will write to HDFFormat.</li>
+<li>  Creating a listerner that can write to sofiehdfformat files.</li>
+<li>  Initial commit</li>
+<li>  Contributors: Adrian Cooke, Russell Toris, </li>
 </ul>
 </div></body></html>
 
@@ -1331,7 +1919,8 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1343,39 +1932,213 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#indigo">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#indigo">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#indigo">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/ffmpeg">ffmpeg</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/v4l-utils">v4l-utils</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#indigo">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#indigo">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#indigo">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ffmpeg#indigo">ffmpeg</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#indigo">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/v4l-utils#indigo">v4l-utils</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rail_ceiling/github-GT-RAIL-rail_ceiling#indigo">rail_ceiling</a></td>
+                      <td><a href="/r/rail_ceiling/github-GT-RAIL-rail_ceiling">github-GT-RAIL-rail_ceiling</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rail_ceiling/github-GT-RAIL-rail_ceiling#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1383,12 +2146,27 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/./launch/usb_cam-test.launch" target="_blank">launch/usb_cam-test.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1397,9 +2175,9 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1408,9 +2186,9 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1419,28 +2197,35 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/usb_cam?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1450,6 +2235,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> usb_cam
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-bosch-ros-pkg-usb_cam
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-bosch-ros-pkg-usb_cam
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/usb_cam?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1462,28 +2334,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            A ROS Driver for V4L USB Cameras
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1496,7 +2370,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.3.0</td>
+                <td>0.3.4</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -1522,7 +2396,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1544,7 +2418,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-26
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-04
         </span>
       </td>
     </tr>
@@ -1572,8 +2446,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            A ROS Driver for V4L USB Cameras
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1596,21 +2489,6 @@ $(function() {
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
-                
-                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -1622,7 +2500,7 @@ $(function() {
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="usb_cam-">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
+<h1 id="usb_cam">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
 </h1>
 
 <h4 id="a-ros-driver-for-v4l-usb-cameras">A ROS Driver for V4L USB Cameras</h4>
@@ -1657,7 +2535,43 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-usb_cam">Changelog for package usb_cam</h1>
 
-<h2 id="0.3.0-(2015-01-26)">0.3.0 (2015-01-26)</h2>
+<h2 id="0-3-4-2015-08-18">0.3.4 (2015-08-18)</h2>
+
+<ul>
+<li>  Installs launch files</li>
+<li>  Merge pull request #37 from tzutalin/develop Add a launch file for
+easy test</li>
+<li>  Add a launch file for easy test</li>
+<li>  Contributors: Russell Toris, tzu.ta.lin</li>
+</ul>
+
+<h2 id="0-3-3-2015-05-14">0.3.3 (2015-05-14)</h2>
+
+<ul>
+<li>  Merge pull request #36 from jsarrett/develop add gain parameter</li>
+<li>  add gain parameter</li>
+<li>  Contributors: James Sarrett, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-2-2015-03-24">0.3.2 (2015-03-24)</h2>
+
+<ul>
+<li>  Merge pull request #34 from eliasm/develop fixed check whether
+calibration file exists</li>
+<li>  fixed check whether calibration file exists</li>
+<li>  Contributors: Elias Mueggler, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-1-2015-02-20">0.3.1 (2015-02-20)</h2>
+
+<ul>
+<li>  Merge pull request #32 from kmhallen/mono8 Publish YUVMONO10 images
+as mono8 instead of rgb8</li>
+<li>  Publish YUVMONO10 images as mono8 instead of rgb8</li>
+<li>  Contributors: Kevin Hallenbeck, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-0-2015-01-26">0.3.0 (2015-01-26)</h2>
 
 <ul>
 <li>  Merge pull request #30 from mitchellwills/develop Removed global
@@ -1680,7 +2594,8 @@ of header files</li>
 <li>  Fix installation of header files</li>
 <li>  Contributors: Mitchell Wills, Russell Toris</li>
 </ul>
-<h2 id="0.2.0-(2015-01-16)">0.2.0 (2015-01-16)</h2>
+
+<h2 id="0-2-0-2015-01-16">0.2.0 (2015-01-16)</h2>
 
 <ul>
 <li>  Bug fix in camera info settings.</li>
@@ -1690,7 +2605,8 @@ sets default camera info</li>
 <li>  sets default camera info</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.13-(2014-12-02)">0.1.13 (2014-12-02)</h2>
+
+<h2 id="0-1-13-2014-12-02">0.1.13 (2014-12-02)</h2>
 
 <ul>
 <li>  Merge pull request #25 from blutack/patch-1 Warn rather than error
@@ -1705,15 +2621,16 @@ rjw57/do-not-touch-parameters-unless-asked do not modify parameters
 unless explicitly set</li>
 <li>  do not modify parameters unless explicitly set The contrast,
 saturation, brightness, sharpness and focus parameters were recently
-added to usb_cam. This caused a regression
-(sigproc/robotic_surgery#17) whereby the default settings for a
-webcam are overridden in all cases by the hard-coded defaults in
-usb_cam. In the absence of a know good set of "default" values,
-leave the parameters unset unless the user has explicitly set them
-in the launch file.</li>
+added to usb_cam. This caused a
+regression (sigproc/robotic_surgery#17) whereby the default
+settings for a webcam are overridden in all cases by the hard-coded
+defaults in usb_cam. In the absence of a know good set of "default"
+values, leave the parameters unset unless the user has explicitly
+set them in the launch file.</li>
 <li>  Contributors: Rich Wareham, Russell Toris, blutack</li>
 </ul>
-<h2 id="0.1.12-(2014-11-05)">0.1.12 (2014-11-05)</h2>
+
+<h2 id="0-1-12-2014-11-05">0.1.12 (2014-11-05)</h2>
 
 <ul>
 <li>  Merge pull request #22 from dekent/develop White balance parameters</li>
@@ -1723,7 +2640,8 @@ in the launch file.</li>
 <li>  uses version header to check for AV_CODEC_ID_MJPEG</li>
 <li>  Contributors: David Kent, Russell Toris</li>
 </ul>
-<h2 id="0.1.11-(2014-10-30)">0.1.11 (2014-10-30)</h2>
+
+<h2 id="0-1-11-2014-10-30">0.1.11 (2014-10-30)</h2>
 
 <ul>
 <li>  Merge pull request #20 from dekent/develop More Parameters</li>
@@ -1734,7 +2652,8 @@ in the launch file.</li>
 saturation, and sharpness</li>
 <li>  Contributors: David Kent, Russell Toris</li>
 </ul>
-<h2 id="0.1.10-(2014-10-24)">0.1.10 (2014-10-24)</h2>
+
+<h2 id="0-1-10-2014-10-24">0.1.10 (2014-10-24)</h2>
 
 <ul>
 <li>  Merge pull request #19 from bosch-ros-pkg/av_codec_id Removed
@@ -1744,7 +2663,8 @@ deprecated CODEC_ID</li>
 compilation for libav 10</li>
 <li>  Contributors: Andrzej Pronobis, Russell Toris</li>
 </ul>
-<h2 id="0.1.9-(2014-08-26)">0.1.9 (2014-08-26)</h2>
+
+<h2 id="0-1-9-2014-08-26">0.1.9 (2014-08-26)</h2>
 
 <ul>
 <li>  Uses ros::Rate to enforce software framerate instead of custom time
@@ -1757,7 +2677,8 @@ addition to at the driver level. This is necessary since the drivers
 for my webcam did not obey the requested framerate.</li>
 <li>  Contributors: Russell Toris, liang</li>
 </ul>
-<h2 id="0.1.8-(2014-08-21)">0.1.8 (2014-08-21)</h2>
+
+<h2 id="0-1-8-2014-08-21">0.1.8 (2014-08-21)</h2>
 
 <ul>
 <li>  autoexposure and exposure settings now exposed via ROS parameters</li>
@@ -1768,14 +2689,16 @@ pixel format</li>
 <li>  Added RGB24 as pixel format</li>
 <li>  Contributors: Michael Stoll, Russell Toris</li>
 </ul>
-<h2 id="0.1.7-(2014-08-20)">0.1.7 (2014-08-20)</h2>
+
+<h2 id="0-1-7-2014-08-20">0.1.7 (2014-08-20)</h2>
 
 <ul>
 <li>  changelog fixed</li>
 <li>  minor cleanup and ability to change camera name and info</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.6-(2014-08-15)">0.1.6 (2014-08-15)</h2>
+
+<h2 id="0-1-6-2014-08-15">0.1.6 (2014-08-15)</h2>
 
 <ul>
 <li>  Merge pull request #14 from KaijenHsiao/master added support for
@@ -1794,7 +2717,8 @@ Also, this fixes
 </li>
 <li>  Contributors: Kaijen Hsiao, Russell Toris, Vincent Rabaud, sosentos</li>
 </ul>
-<h2 id="0.1.5-(2014-07-28)">0.1.5 (2014-07-28)</h2>
+
+<h2 id="0-1-5-2014-07-28">0.1.5 (2014-07-28)</h2>
 
 <ul>
 <li>  auto format</li>
@@ -1819,7 +2743,8 @@ libavcodec functions</li>
 <li>  Contributors: Andrzej Pronobis, Jon Binney, Russell Toris, Scott K
 Logan, William</li>
 </ul>
-<h2 id="0.1.3-(2013-07-11)">0.1.3 (2013-07-11)</h2>
+
+<h2 id="0-1-3-2013-07-11">0.1.3 (2013-07-11)</h2>
 
 <ul>
 <li>  Merge pull request #1 from jonbinney/rosify Bag of improvements</li>
@@ -1828,20 +2753,23 @@ Logan, William</li>
 <li>  use camera_info_manager</li>
 <li>  Contributors: Jon Binney, Russell Toris</li>
 </ul>
-<h2 id="0.1.2-(2013-05-06)">0.1.2 (2013-05-06)</h2>
+
+<h2 id="0-1-2-2013-05-06">0.1.2 (2013-05-06)</h2>
 
 <ul>
 <li>  installs usb_cam_node</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.1-(2013-05-02)">0.1.1 (2013-05-02)</h2>
+
+<h2 id="0-1-1-2013-05-02">0.1.1 (2013-05-02)</h2>
 
 <ul>
 <li>  cmake fixed</li>
 <li>  ffmpeg added</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.0-(2013-05-01)">0.1.0 (2013-05-01)</h2>
+
+<h2 id="0-1-0-2013-05-01">0.1.0 (2013-05-01)</h2>
 
 <ul>
 <li>  Update package.xml</li>
@@ -1895,8 +2823,8 @@ git-subtree-dir: src/sofie_ros git-subtree-split:
 <li>  Going to catinize it.</li>
 <li>  (catkin)Going to catinize it.</li>
 <li>  Modified to new version of sofie_ros.</li>
-<li>  Renamed import_csv_data.py to fileUtils.py, because it does more
-now.</li>
+<li>  Renamed import_csv_data.py to fileUtils.py, because it does
+more now.</li>
 <li>  (catkin)Renamed import_csv_data.py to fileUtils.py, because it
 does more now.</li>
 <li>  Updating to use a csv file specified by the user. Separating
@@ -1921,11 +2849,11 @@ PyTables path manipulation into SOFIEHDFFORMAT.</li>
 <li>  Updating to Groovy.</li>
 <li>  (catkin)Updating to Groovy.</li>
 <li>  Added another potential launch file for exporting video from rosbag.</li>
-<li>  (catkin)Added another potential launch file for exporting video from
-rosbag.</li>
+<li>  (catkin)Added another potential launch file for exporting video
+from rosbag.</li>
 <li>  Added a launcher to ros bag the usb_cam, for later playback.</li>
-<li>  (catkin)Added a launcher to ros bag the usb_cam, for later
-playback.</li>
+<li>  (catkin)Added a launcher to ros bag the usb_cam, for
+later playback.</li>
 <li>  Added some files that were possibly not correct</li>
 <li>  (catkin)Added some files that were possibly not correct</li>
 <li>  Fixed bugs with the importing.</li>
@@ -1936,8 +2864,8 @@ sofiehdfformat funciton.</li>
 importdata sofiehdfformat funciton.</li>
 <li>  Refractoring to make it possible to log to CSV. There were problems
 handling concurrent writing to pytables files. The package now logs
-to CSV and then provides a function to post import the data into
-SOFIEHDFFORMAT.</li>
+to CSV and then provides a function to post import the data
+into SOFIEHDFFORMAT.</li>
 <li>  (catkin)Refractoring to make it possible to log to CSV. There were
 problems handling concurrent writing to pytables files. The package
 now logs to CSV and then provides a function to post import the data
@@ -1947,8 +2875,8 @@ into SOFIEHDFFORMAT.</li>
 <li>  Added a close on terminate signal handler.</li>
 <li>  (catkin)Added a close on terminate signal handler.</li>
 <li>  Made the marker size be set via a parameter to the launch file.</li>
-<li>  (catkin)Made the marker size be set via a parameter to the launch
-file.</li>
+<li>  (catkin)Made the marker size be set via a parameter to the
+launch file.</li>
 <li>  Changed the Callibration data.</li>
 <li>  (catkin)Changed the Callibration data.</li>
 <li>  The ar_pose listener.</li>
@@ -1985,7 +2913,7 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
 <li>  Working on the listerner that will write to HDFFormat.</li>
 <li>  Creating a listerner that can write to sofiehdfformat files.</li>
 <li>  Initial commit</li>
-<li>  Contributors: Adrian Cooke, Russell Toris, ¨Adrian</li>
+<li>  Contributors: Adrian Cooke, Russell Toris, </li>
 </ul>
 </div></body></html>
 
@@ -2002,7 +2930,8 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2014,39 +2943,190 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#hydro">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#hydro">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#hydro">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#hydro">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#hydro">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/ffmpeg">ffmpeg</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/v4l-utils">v4l-utils</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#hydro">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#hydro">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ffmpeg#hydro">ffmpeg</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#hydro">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/v4l-utils#hydro">v4l-utils</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2054,12 +3134,27 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/./launch/usb_cam-test.launch" target="_blank">launch/usb_cam-test.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2068,9 +3163,9 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2079,9 +3174,9 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2090,28 +3185,35 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/usb_cam?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2121,6 +3223,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/usb_cam">usb_cam</a> <small>package from <a style="text-decoration:none" href="/r/usb_cam/github-bosch-ros-pkg-usb_cam">usb_cam</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> usb_cam
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/usb_cam"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-bosch-ros-pkg-usb_cam
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-bosch-ros-pkg-usb_cam" role="menuitem" tabindex="-1" href="/p/usb_cam/github-bosch-ros-pkg-usb_cam" data="github-bosch-ros-pkg-usb_cam">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-bosch-ros-pkg-usb_cam
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/usb_cam?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2133,28 +3322,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+    
+    
+    
+    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">8</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            A ROS Driver for V4L USB Cameras
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2167,7 +3358,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.3.0</td>
+                <td>0.3.4</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -2193,7 +3384,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2215,7 +3406,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-26
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-04
         </span>
       </td>
     </tr>
@@ -2243,8 +3434,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            A ROS Driver for V4L USB Cameras
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2267,21 +3477,6 @@ $(function() {
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/usb_cam">Website</a></li>
-                
-                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/bosch-ros-pkg/usb_cam">Repository</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -2293,7 +3488,7 @@ $(function() {
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="usb_cam-">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
+<h1 id="usb_cam">usb_cam <a href="https://travis-ci.org/bosch-ros-pkg/usb_cam"><img src="https://api.travis-ci.org/bosch-ros-pkg/usb_cam.png" alt="Build Status"></a>
 </h1>
 
 <h4 id="a-ros-driver-for-v4l-usb-cameras">A ROS Driver for V4L USB Cameras</h4>
@@ -2328,7 +3523,43 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-usb_cam">Changelog for package usb_cam</h1>
 
-<h2 id="0.3.0-(2015-01-26)">0.3.0 (2015-01-26)</h2>
+<h2 id="0-3-4-2015-08-18">0.3.4 (2015-08-18)</h2>
+
+<ul>
+<li>  Installs launch files</li>
+<li>  Merge pull request #37 from tzutalin/develop Add a launch file for
+easy test</li>
+<li>  Add a launch file for easy test</li>
+<li>  Contributors: Russell Toris, tzu.ta.lin</li>
+</ul>
+
+<h2 id="0-3-3-2015-05-14">0.3.3 (2015-05-14)</h2>
+
+<ul>
+<li>  Merge pull request #36 from jsarrett/develop add gain parameter</li>
+<li>  add gain parameter</li>
+<li>  Contributors: James Sarrett, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-2-2015-03-24">0.3.2 (2015-03-24)</h2>
+
+<ul>
+<li>  Merge pull request #34 from eliasm/develop fixed check whether
+calibration file exists</li>
+<li>  fixed check whether calibration file exists</li>
+<li>  Contributors: Elias Mueggler, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-1-2015-02-20">0.3.1 (2015-02-20)</h2>
+
+<ul>
+<li>  Merge pull request #32 from kmhallen/mono8 Publish YUVMONO10 images
+as mono8 instead of rgb8</li>
+<li>  Publish YUVMONO10 images as mono8 instead of rgb8</li>
+<li>  Contributors: Kevin Hallenbeck, Russell Toris</li>
+</ul>
+
+<h2 id="0-3-0-2015-01-26">0.3.0 (2015-01-26)</h2>
 
 <ul>
 <li>  Merge pull request #30 from mitchellwills/develop Removed global
@@ -2351,7 +3582,8 @@ of header files</li>
 <li>  Fix installation of header files</li>
 <li>  Contributors: Mitchell Wills, Russell Toris</li>
 </ul>
-<h2 id="0.2.0-(2015-01-16)">0.2.0 (2015-01-16)</h2>
+
+<h2 id="0-2-0-2015-01-16">0.2.0 (2015-01-16)</h2>
 
 <ul>
 <li>  Bug fix in camera info settings.</li>
@@ -2361,7 +3593,8 @@ sets default camera info</li>
 <li>  sets default camera info</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.13-(2014-12-02)">0.1.13 (2014-12-02)</h2>
+
+<h2 id="0-1-13-2014-12-02">0.1.13 (2014-12-02)</h2>
 
 <ul>
 <li>  Merge pull request #25 from blutack/patch-1 Warn rather than error
@@ -2376,15 +3609,16 @@ rjw57/do-not-touch-parameters-unless-asked do not modify parameters
 unless explicitly set</li>
 <li>  do not modify parameters unless explicitly set The contrast,
 saturation, brightness, sharpness and focus parameters were recently
-added to usb_cam. This caused a regression
-(sigproc/robotic_surgery#17) whereby the default settings for a
-webcam are overridden in all cases by the hard-coded defaults in
-usb_cam. In the absence of a know good set of "default" values,
-leave the parameters unset unless the user has explicitly set them
-in the launch file.</li>
+added to usb_cam. This caused a
+regression (sigproc/robotic_surgery#17) whereby the default
+settings for a webcam are overridden in all cases by the hard-coded
+defaults in usb_cam. In the absence of a know good set of "default"
+values, leave the parameters unset unless the user has explicitly
+set them in the launch file.</li>
 <li>  Contributors: Rich Wareham, Russell Toris, blutack</li>
 </ul>
-<h2 id="0.1.12-(2014-11-05)">0.1.12 (2014-11-05)</h2>
+
+<h2 id="0-1-12-2014-11-05">0.1.12 (2014-11-05)</h2>
 
 <ul>
 <li>  Merge pull request #22 from dekent/develop White balance parameters</li>
@@ -2394,7 +3628,8 @@ in the launch file.</li>
 <li>  uses version header to check for AV_CODEC_ID_MJPEG</li>
 <li>  Contributors: David Kent, Russell Toris</li>
 </ul>
-<h2 id="0.1.11-(2014-10-30)">0.1.11 (2014-10-30)</h2>
+
+<h2 id="0-1-11-2014-10-30">0.1.11 (2014-10-30)</h2>
 
 <ul>
 <li>  Merge pull request #20 from dekent/develop More Parameters</li>
@@ -2405,7 +3640,8 @@ in the launch file.</li>
 saturation, and sharpness</li>
 <li>  Contributors: David Kent, Russell Toris</li>
 </ul>
-<h2 id="0.1.10-(2014-10-24)">0.1.10 (2014-10-24)</h2>
+
+<h2 id="0-1-10-2014-10-24">0.1.10 (2014-10-24)</h2>
 
 <ul>
 <li>  Merge pull request #19 from bosch-ros-pkg/av_codec_id Removed
@@ -2415,7 +3651,8 @@ deprecated CODEC_ID</li>
 compilation for libav 10</li>
 <li>  Contributors: Andrzej Pronobis, Russell Toris</li>
 </ul>
-<h2 id="0.1.9-(2014-08-26)">0.1.9 (2014-08-26)</h2>
+
+<h2 id="0-1-9-2014-08-26">0.1.9 (2014-08-26)</h2>
 
 <ul>
 <li>  Uses ros::Rate to enforce software framerate instead of custom time
@@ -2428,7 +3665,8 @@ addition to at the driver level. This is necessary since the drivers
 for my webcam did not obey the requested framerate.</li>
 <li>  Contributors: Russell Toris, liang</li>
 </ul>
-<h2 id="0.1.8-(2014-08-21)">0.1.8 (2014-08-21)</h2>
+
+<h2 id="0-1-8-2014-08-21">0.1.8 (2014-08-21)</h2>
 
 <ul>
 <li>  autoexposure and exposure settings now exposed via ROS parameters</li>
@@ -2439,14 +3677,16 @@ pixel format</li>
 <li>  Added RGB24 as pixel format</li>
 <li>  Contributors: Michael Stoll, Russell Toris</li>
 </ul>
-<h2 id="0.1.7-(2014-08-20)">0.1.7 (2014-08-20)</h2>
+
+<h2 id="0-1-7-2014-08-20">0.1.7 (2014-08-20)</h2>
 
 <ul>
 <li>  changelog fixed</li>
 <li>  minor cleanup and ability to change camera name and info</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.6-(2014-08-15)">0.1.6 (2014-08-15)</h2>
+
+<h2 id="0-1-6-2014-08-15">0.1.6 (2014-08-15)</h2>
 
 <ul>
 <li>  Merge pull request #14 from KaijenHsiao/master added support for
@@ -2465,7 +3705,8 @@ Also, this fixes
 </li>
 <li>  Contributors: Kaijen Hsiao, Russell Toris, Vincent Rabaud, sosentos</li>
 </ul>
-<h2 id="0.1.5-(2014-07-28)">0.1.5 (2014-07-28)</h2>
+
+<h2 id="0-1-5-2014-07-28">0.1.5 (2014-07-28)</h2>
 
 <ul>
 <li>  auto format</li>
@@ -2490,7 +3731,8 @@ libavcodec functions</li>
 <li>  Contributors: Andrzej Pronobis, Jon Binney, Russell Toris, Scott K
 Logan, William</li>
 </ul>
-<h2 id="0.1.3-(2013-07-11)">0.1.3 (2013-07-11)</h2>
+
+<h2 id="0-1-3-2013-07-11">0.1.3 (2013-07-11)</h2>
 
 <ul>
 <li>  Merge pull request #1 from jonbinney/rosify Bag of improvements</li>
@@ -2499,20 +3741,23 @@ Logan, William</li>
 <li>  use camera_info_manager</li>
 <li>  Contributors: Jon Binney, Russell Toris</li>
 </ul>
-<h2 id="0.1.2-(2013-05-06)">0.1.2 (2013-05-06)</h2>
+
+<h2 id="0-1-2-2013-05-06">0.1.2 (2013-05-06)</h2>
 
 <ul>
 <li>  installs usb_cam_node</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.1-(2013-05-02)">0.1.1 (2013-05-02)</h2>
+
+<h2 id="0-1-1-2013-05-02">0.1.1 (2013-05-02)</h2>
 
 <ul>
 <li>  cmake fixed</li>
 <li>  ffmpeg added</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.1.0-(2013-05-01)">0.1.0 (2013-05-01)</h2>
+
+<h2 id="0-1-0-2013-05-01">0.1.0 (2013-05-01)</h2>
 
 <ul>
 <li>  Update package.xml</li>
@@ -2566,8 +3811,8 @@ git-subtree-dir: src/sofie_ros git-subtree-split:
 <li>  Going to catinize it.</li>
 <li>  (catkin)Going to catinize it.</li>
 <li>  Modified to new version of sofie_ros.</li>
-<li>  Renamed import_csv_data.py to fileUtils.py, because it does more
-now.</li>
+<li>  Renamed import_csv_data.py to fileUtils.py, because it does
+more now.</li>
 <li>  (catkin)Renamed import_csv_data.py to fileUtils.py, because it
 does more now.</li>
 <li>  Updating to use a csv file specified by the user. Separating
@@ -2592,11 +3837,11 @@ PyTables path manipulation into SOFIEHDFFORMAT.</li>
 <li>  Updating to Groovy.</li>
 <li>  (catkin)Updating to Groovy.</li>
 <li>  Added another potential launch file for exporting video from rosbag.</li>
-<li>  (catkin)Added another potential launch file for exporting video from
-rosbag.</li>
+<li>  (catkin)Added another potential launch file for exporting video
+from rosbag.</li>
 <li>  Added a launcher to ros bag the usb_cam, for later playback.</li>
-<li>  (catkin)Added a launcher to ros bag the usb_cam, for later
-playback.</li>
+<li>  (catkin)Added a launcher to ros bag the usb_cam, for
+later playback.</li>
 <li>  Added some files that were possibly not correct</li>
 <li>  (catkin)Added some files that were possibly not correct</li>
 <li>  Fixed bugs with the importing.</li>
@@ -2607,8 +3852,8 @@ sofiehdfformat funciton.</li>
 importdata sofiehdfformat funciton.</li>
 <li>  Refractoring to make it possible to log to CSV. There were problems
 handling concurrent writing to pytables files. The package now logs
-to CSV and then provides a function to post import the data into
-SOFIEHDFFORMAT.</li>
+to CSV and then provides a function to post import the data
+into SOFIEHDFFORMAT.</li>
 <li>  (catkin)Refractoring to make it possible to log to CSV. There were
 problems handling concurrent writing to pytables files. The package
 now logs to CSV and then provides a function to post import the data
@@ -2618,8 +3863,8 @@ into SOFIEHDFFORMAT.</li>
 <li>  Added a close on terminate signal handler.</li>
 <li>  (catkin)Added a close on terminate signal handler.</li>
 <li>  Made the marker size be set via a parameter to the launch file.</li>
-<li>  (catkin)Made the marker size be set via a parameter to the launch
-file.</li>
+<li>  (catkin)Made the marker size be set via a parameter to the
+launch file.</li>
 <li>  Changed the Callibration data.</li>
 <li>  (catkin)Changed the Callibration data.</li>
 <li>  The ar_pose listener.</li>
@@ -2656,7 +3901,7 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
 <li>  Working on the listerner that will write to HDFFormat.</li>
 <li>  Creating a listerner that can write to sofiehdfformat files.</li>
 <li>  Initial commit</li>
-<li>  Contributors: Adrian Cooke, Russell Toris, ¨Adrian</li>
+<li>  Contributors: Adrian Cooke, Russell Toris, </li>
 </ul>
 </div></body></html>
 
@@ -2673,7 +3918,8 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2685,39 +3931,190 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#groovy">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#groovy">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#groovy">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#groovy">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#groovy">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#groovy">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/ffmpeg">ffmpeg</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/v4l-utils">v4l-utils</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#groovy">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#groovy">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#groovy">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#groovy">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ffmpeg#groovy">ffmpeg</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#groovy">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/v4l-utils#groovy">v4l-utils</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2725,12 +4122,27 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/./launch/usb_cam-test.launch" target="_blank">launch/usb_cam-test.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2739,9 +4151,9 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2750,9 +4162,9 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2761,28 +4173,35 @@ geometry_msgs.msg.QuaternionStamped messages.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/usb_cam/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//bosch-ros-pkg/usb_cam/tree/develop/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:usb_cam/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/usb_cam?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=usb_cam&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2790,298 +4209,7 @@ $(function() {
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
-        
-        
-
-
-
-<ul class="nav nav-tabs nav-justified" id="fuerte-tabs" style="margin-bottom:20px">
-  <li class="better-tabs active">
-    <a href="#fuerte-overview" data-toggle="tab">Overview</a>
-  </li>
-  <li class="better-tabs">
-    
-    
-    
-    
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
-  </li>
-  <li class="better-tabs">
-    
-    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
-  </li>
-  <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="fuerte-overview">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
-            <table class="table table-condensed">
-              <tr>
-                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
-                <td>
-                  
-                  
-                    <em>No category tags.</em>
-                  
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Version</strong></td>
-                <td>UNKNOWN</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>License</strong></td>
-                <td>BSD</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Buildtool</strong></td>
-                <td>
-                  
-                    <span class="label label-default">
-                  
-                    ROSBUILD</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Use</strong></td>
-                <td>
-                
-                  <span class="label label-success">RECOMMENDED</span>
-                
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
-            
-            
-            
-
-  <table class="table table-condensed">
-    <tr>
-      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="http://svn.code.sf.net/p/bosch-ros-pkg/code/trunk/stacks/bosch_drivers">http://svn.code.sf.net/p/bosch-ros-pkg/code/trunk/stacks/bosch_drivers</a></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
-      <td>
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-09-18
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Dev Status</b></td>
-      <td>
-        
-          <span class="label label-warning">UNMAINTAINED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Released</b></td>
-      <td>
-        
-          <span class="label label-default">UNRELEASED
-        </span>
-      </td>
-    </tr>
-  </table>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No known maintainers.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li>Benjamin Pitzer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No additional links.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
-          <div class="panel-body">
-            
-              <em>No README found.</em>
-              
-                <em>No README in repository either.</em>
-              
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
-          <div class="panel-body">
-            
-              <em>No CHANGELOG found.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="fuerte-tutorials">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Wiki Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Source Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
-      </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#fuerte">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#fuerte">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#fuerte">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#fuerte">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/self_test#fuerte">self_test</a></h4></li>
-          
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="fuerte-assets">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Messages</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Services</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Plugins</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
-
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
-
+          <div class="alert alert-warning">No version for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -3089,298 +4217,7 @@ $(function() {
   <div class="distro distro-electric">
     <div class="container-fluid">
       
-        
-        
-
-
-
-<ul class="nav nav-tabs nav-justified" id="electric-tabs" style="margin-bottom:20px">
-  <li class="better-tabs active">
-    <a href="#electric-overview" data-toggle="tab">Overview</a>
-  </li>
-  <li class="better-tabs">
-    
-    
-    
-    
-    <a href="#electric-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
-  </li>
-  <li class="better-tabs">
-    
-    <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
-  </li>
-  <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="electric-overview">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
-            <table class="table table-condensed">
-              <tr>
-                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
-                <td>
-                  
-                  
-                    <em>No category tags.</em>
-                  
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Version</strong></td>
-                <td>UNKNOWN</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>License</strong></td>
-                <td>BSD</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Buildtool</strong></td>
-                <td>
-                  
-                    <span class="label label-default">
-                  
-                    ROSBUILD</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Use</strong></td>
-                <td>
-                
-                  <span class="label label-success">RECOMMENDED</span>
-                
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
-            
-            
-            
-
-  <table class="table table-condensed">
-    <tr>
-      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="http://svn.code.sf.net/p/bosch-ros-pkg/code/branches/electric/stacks/bosch_drivers">http://svn.code.sf.net/p/bosch-ros-pkg/code/branches/electric/stacks/bosch_drivers</a></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
-      <td>
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2012-03-26
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Dev Status</b></td>
-      <td>
-        
-          <span class="label label-warning">UNMAINTAINED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Released</b></td>
-      <td>
-        
-          <span class="label label-default">UNRELEASED
-        </span>
-      </td>
-    </tr>
-  </table>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No known maintainers.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li>Benjamin Pitzer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No additional links.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
-          <div class="panel-body">
-            
-              <em>No README found.</em>
-              
-                <em>No README in repository either.</em>
-              
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
-          <div class="panel-body">
-            
-              <em>No CHANGELOG found.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="electric-tutorials">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Wiki Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/usb_cam/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Source Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
-      </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#electric">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#electric">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#electric">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#electric">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/self_test#electric">self_test</a></h4></li>
-          
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="electric-assets">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Messages</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Services</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Plugins</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
-
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
-
+          <div class="alert alert-warning">No version for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -3416,7 +4253,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

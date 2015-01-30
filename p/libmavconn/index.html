@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,7 +146,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -154,59 +196,78 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/libmavconn">libmavconn</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> libmavconn</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/mavros/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>mavros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/mavros_extras/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>mavros_extras</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/libmavconn/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/libmavconn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-indigo">
+
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libmavconn">libmavconn</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_extras/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_msgs/github-mavlink-mavros">
+
+mavros_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> test_mavros
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -242,173 +303,63 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/libmavconn">libmavconn</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> libmavconn</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/mavros/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>mavros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/mavros_extras/github-mavlink-mavros"><span class="glyphicon glyphicon-file"></span>mavros_extras</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/libmavconn/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//mavlink/mavros/tree/hydro-devel/libmavconn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/libmavconn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-hydro">
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
   
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/libmavconn"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-mavlink-mavros
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/libmavconn/github-mavlink-mavros" data="github-mavlink-mavros">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-mavlink-mavros
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
 </div>
 
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
-
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+            </div>
+            
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    MAVLink communication library.
-    This library provide unified connection handling classes
-    and URL to connection object mapper.
-
-    This library can be used in standalone programs.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -421,7 +372,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.10.0</td>
+                <td>0.18.2</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -447,7 +398,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -469,7 +420,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
         </span>
       </td>
     </tr>
@@ -478,9 +429,9 @@
       <td>
         
           
-            <span class="label label-primary">
+            <span class="label label-success">
           
-          MAINTAINED
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -497,8 +448,33 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    MAVLink communication library.
+    This library provide unified connection handling classes
+    and URL to connection object mapper.
+
+    This library can be used in standalone programs.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/mavros">Website</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -517,21 +493,6 @@
               <ul class="list-unstyled">
                 
                   <li>Vladimir Ermakov</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/mavros">Website</a></li>
-                
-                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
-                
-                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -565,13 +526,16 @@ Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get c
 </li>
 <li>Serial: <code>serial:///path/to/serial/device[:baudrate][?ids=sysid,compid]</code>
 </li>
-<li>UDP: <code>udp://[bind_host[:port]]@[remote_host[:port]][/?ids=sysid,compid]</code>
+<li>UDP: <code>udp://[bind_host][:port]@[remote_host][:port][/?ids=sysid,compid]</code>
+</li>
+<li>UDP broadcast: <code>udp-b://[bind_host][:port]@[:port][/?ids=sysid,compid]</code>
 </li>
 <li>TCP client: <code>tcp://[server_host][:port][/?ids=sysid,compid]</code>
 </li>
 <li>TCP server: <code>tcp-l://[bind_port][:port][/?ids=sysid,compid]</code>
 </li>
 </ul>
+
 <p>Note: ids from URL overrides ids given by system_id &amp; component_id parameters.</p>
 
 <h2 id="dependencies">Dependencies</h2>
@@ -584,10 +548,10 @@ Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get c
 <li>console-bridge library</li>
 <li>compiller with C++11 support</li>
 </ul>
+
 <h2 id="license">License</h2>
 
-<p>Licensed under terms of LGPLv3 or GPLv3
-(actually GPLv3 in headers, but it also LGPL).</p>
+<p>Licensed under terms of <a href="https://www.gnu.org/licenses/lgpl.html"><em>LGPLv3</em></a>, <a href="https://github.com/mavlink/mavros/blob/master/LICENSE-BSD.txt"><em>BSD</em></a>, or <a href="https://www.gnu.org/licenses/gpl.html"><em>GPLv3</em></a>.</p>
 </div></body></html>
 
             
@@ -605,7 +569,218 @@ Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get c
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-libmavconn">Changelog for package libmavconn</h1>
 
-<h2 id="0.10.0-(2015-01-24)">0.10.0 (2015-01-24)</h2>
+<h2 id="0-18-2-2016-06-30">0.18.2 (2016-06-30)</h2>
+
+<ul>
+<li>  Revert "libmavconn: Update console_bridge macroses." This reverts
+commit 73fd7f755ed919bc3c170574f514ba6525cd31a2. It breaks Travis
+builds for Indigo and Jade.</li>
+<li>  libmavconn: Update console_bridge macroses.
+<a href="https://github.com/ros/console_bridge/issues/18">https://github.com/ros/console_bridge/issues/18</a>
+</li>
+<li>  libmavconn: tcp: enable_shared_from_this</li>
+<li>  libmavconn: udp: enable_shared_from_this</li>
+<li>  libmavconn: serial: enable_shared_from_this</li>
+<li>  libmavconn: std::deque automatically free buffers</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/567">#567</a>: Fix tcp
+server stat calculation</li>
+<li>  libmavconn: Fix debug log conn_id</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-18-1-2016-06-24">0.18.1 (2016-06-24)</h2>
+
+<h2 id="0-18-0-2016-06-23">0.18.0 (2016-06-23)</h2>
+
+<ul>
+<li>  libmavconn: Fix _KiB literal</li>
+<li>  readme <a href="https://github.com/mavlink/mavros/issues/544">#544</a>: add
+udp-b://@ URL</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/544">#544</a>: New URL for
+UDP Broadcast (for GCS discovery) Broadcast v4 address used until
+GCS respond. udp-b://[bind_host][:bind_port]@[:remote_port]</li>
+<li>  libmavconn: fix context.py.in</li>
+<li>  libmavconn: Add protocol version selection helpers</li>
+<li>  libmavconn: Use monotonic id for logging. Looks better than
+this ptr.</li>
+<li>  node: Update plugin loading and message routing</li>
+<li>  node: Rename plugib base class - API incompatible to old class</li>
+<li>  labmavconn: remove set_thread_name(), add utils::format()</li>
+<li>  libmavconn: APM dialect should be second</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/522">#522</a>: place
+generated files in source tree.</li>
+<li>  libmavconn: Use EmPy to generate dialect-enabling files</li>
+<li>  libmavconn: update copyright year</li>
+<li>  libmavconn: update unit test</li>
+<li>  libmavconn: Replace sig-slot with simple std::function() callbacks</li>
+<li>  libmavconn: Limit send_message() queue maximum size.</li>
+<li>  libmavconn:udp: try to make STL container handle allocations</li>
+<li>  libmavconn: Use std::call_once() for init</li>
+<li>  libmavconn: Leak in send_message() when it called from self IO
+thread (such as message_received event)</li>
+<li>  libmavconn: update unit test</li>
+<li>  libmavconn: support C++ serialization. Warn: RX leaks somewhere.</li>
+<li>  libmavconn: Use MAVLink2 C++11</li>
+<li>  labmavconn: trying to merge all dialects</li>
+<li>  libmavconn: std::thread are invalidated before set_thread_name()
+called. Result is SIGSEGV</li>
+<li>  labmavconn: finding sigsegv</li>
+<li>  libmavconn: uncrustify</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost::signals2 (TCP)</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost::signals2 (UDP)</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost.signals2 (serial)</li>
+<li>  libmavconn: uncrustify all</li>
+<li>  mavconn: Import Simple Signal library (with some minor
+modifications). Source file can be found here:
+<a href="https://testbit.eu/cpp11-signal-system-performance/">https://testbit.eu/cpp11-signal-system-performance/</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-3-2016-05-20">0.17.3 (2016-05-20)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+support build with mavlink 2.0 capable mavgen</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-2-2016-04-29">0.17.2 (2016-04-29)</h2>
+
+<h2 id="0-17-1-2016-03-28">0.17.1 (2016-03-28)</h2>
+
+<ul>
+<li>  MAVConnSerial: Stop io_service before closing serial device (Fixes
+<a href="https://github.com/mavlink/mavros/issues/130">#130</a>) The serial
+device was closed before calling io_service.stop() so
+io_<a href="service::run">service::run</a>() never returned, leading to hang on join
+in MAVConnSerial::close()</li>
+</ul>
+<div class="highlight"><pre><code class="language-.sourceCode ." data-lang=".sourceCode .">    Backtrace:
+    #0  0x00007f80217e966b in pthread_join (threadid=140188059690752, thread_return=0x0) at pthread_join.c:92
+    #1  0x00007f80215602d7 in std::thread::join() ()
+    #2  0x00007f8020ccc674 in mavconn::MAVConnSerial::close() ()
+    #3  0x00007f8020ccc6f5 in mavconn::MAVConnSerial::~MAVConnSerial() ()
+    #4  0x00007f8020cc7b2e in boost::detail::sp_counted_impl_pd&lt;mavconn::MAVConnSerial*, boost::detail::sp_ms_deleter&lt;mavconn::MAVConnSerial&gt; &gt;::dispose() ()
+    #5  0x000000000040ee0a in boost::detail::sp_counted_base::release() [clone .part.27] [clone .constprop.472] ()
+    #6  0x000000000041eb22 in mavros::MavRos::~MavRos() ()
+    #7  0x000000000040eb38 in main ()
+
+</code></pre></div>
+<ul>
+<li>  Contributors: Kartik Mohta</li>
+</ul>
+
+<h2 id="0-17-0-2016-02-09">0.17.0 (2016-02-09)</h2>
+
+<ul>
+<li>  rebased with master</li>
+<li>  Contributors: francois</li>
+</ul>
+
+<h2 id="0-16-6-2016-02-04">0.16.6 (2016-02-04)</h2>
+
+<h2 id="0-16-5-2016-01-11">0.16.5 (2016-01-11)</h2>
+
+<h2 id="0-16-4-2015-12-14">0.16.4 (2015-12-14)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/452">#452</a>:
+remove pixhawk, add paparazzi dialects. Mavlink package provide
+information about known dialects, so we do not touch
+mavlink_dialect.h selection ifs.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-16-3-2015-11-19">0.16.3 (2015-11-19)</h2>
+
+<h2 id="0-16-2-2015-11-17">0.16.2 (2015-11-17)</h2>
+
+<h2 id="0-16-1-2015-11-13">0.16.1 (2015-11-13)</h2>
+
+<h2 id="0-16-0-2015-11-09">0.16.0 (2015-11-09)</h2>
+
+<h2 id="0-15-0-2015-09-17">0.15.0 (2015-09-17)</h2>
+
+<h2 id="0-14-2-2015-08-20">0.14.2 (2015-08-20)</h2>
+
+<h2 id="0-14-1-2015-08-19">0.14.1 (2015-08-19)</h2>
+
+<h2 id="0-14-0-2015-08-17">0.14.0 (2015-08-17)</h2>
+
+<h2 id="0-13-1-2015-08-05">0.13.1 (2015-08-05)</h2>
+
+<h2 id="0-13-0-2015-08-01">0.13.0 (2015-08-01)</h2>
+
+<ul>
+<li>  libmavconn: simpify exception code.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-12-0-2015-07-01">0.12.0 (2015-07-01)</h2>
+
+<ul>
+<li>  libmavconn: UDP: Do not exit on Network unreachable error. Requested
+by @mhkabir, idea given by @adamantivm in
+<a href="https://github.com/algron/mavros/commit/48fa19f58786387b4aee804e0687d6d39a127806">https://github.com/algron/mavros/commit/48fa19f58786387b4aee804e0687d6d39a127806</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-2-2015-04-26">0.11.2 (2015-04-26)</h2>
+
+<ul>
+<li>  libmavconn fix <a href="https://github.com/vooon/mavros/issues/269">#269</a>:
+override default channel getter helpers Default inlined mavlink
+getter helpers cause issue, when each plugin has it's own
+sequence number.</li>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/269">#269</a>: add
+seq number to debug</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-1-2015-04-06">0.11.1 (2015-04-06)</h2>
+
+<h2 id="0-11-0-2015-03-24">0.11.0 (2015-03-24)</h2>
+
+<ul>
+<li>  readme: fix links</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: add
+license files</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: update
+libmavconn headers</li>
+<li>  libmavconn: Fix logging (now all connections use same log name)
+Before i got several names: URL, serial0.. But severity only changes
+if i changed first registered tag (URL). Now all debug will be
+enabled by one tag: ros.rosconsole_bridge.mavconn And because its
+only used for debugging that was ok.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-2-2015-02-25">0.10.2 (2015-02-25)</h2>
+
+<ul>
+<li>  mavconn: fix readme link</li>
+<li>  mavconn: Licensed under BSD 3-clause too, update headers for LGPLv3.
+PX4 team asked me to support BSD license.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-1-2015-02-02">0.10.1 (2015-02-02)</h2>
+
+<ul>
+<li>  libmavconn: Workaround for gcc 4.6 &lt;chrono&gt;.</li>
+<li>  libmavconn: Use C++11 for lists for_each</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-0-2015-01-24">0.10.0 (2015-01-24)</h2>
 
 <ul>
 <li>  libmavconn <a href="https://github.com/vooon/mavros/issues/154">#154</a>: Stat
@@ -615,15 +790,17 @@ IO usage statistics. TODO: tcp-l.</li>
 <li>  libmavconn: Fix coverity CID 85784 (use of freed object)</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.9.4-(2015-01-06)">0.9.4 (2015-01-06)</h2>
 
-<h2 id="0.9.3-(2014-12-30)">0.9.3 (2014-12-30)</h2>
+<h2 id="0-9-4-2015-01-06">0.9.4 (2015-01-06)</h2>
+
+<h2 id="0-9-3-2014-12-30">0.9.3 (2014-12-30)</h2>
 
 <ul>
 <li>  mavconn: Add ASLUAV dialect selection.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.9.2-(2014-11-04)">0.9.2 (2014-11-04)</h2>
+
+<h2 id="0-9-2-2014-11-04">0.9.2 (2014-11-04)</h2>
 
 <ul>
 <li>  Fix libmavconn include destination. Before that change headers
@@ -633,23 +810,26 @@ without errors. Issue
 <a href="https://github.com/vooon/mavros/issues/162">#162</a>.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.9.1-(2014-11-03)">0.9.1 (2014-11-03)</h2>
+
+<h2 id="0-9-1-2014-11-03">0.9.1 (2014-11-03)</h2>
 
 <ul>
 <li>  Fix libmavconn deps. Releases 0.9 and 0.8.3 ar broken because i
 forgot to add mavlink dep.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.9.0-(2014-11-03)">0.9.0 (2014-11-03)</h2>
 
-<h2 id="0.8.2-(2014-11-03)">0.8.2 (2014-11-03)</h2>
+<h2 id="0-9-0-2014-11-03">0.9.0 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
 
 <ul>
 <li>  REP140: update package.xml format. Hydro don't accept this format
 correctly, but after split i can update.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.1-(2014-11-02)">0.8.1 (2014-11-02)</h2>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
 
 <ul>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: try to
@@ -662,8 +842,8 @@ headers used in mavros. Add readme.</li>
 mavros build.</li>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Move
 library to its own package Also rosconsole replaced by
-console_bridge, so now library can be used without ros
-infrastructure.</li>
+console_bridge, so now library can be used without
+ros infrastructure.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
 </div></body></html>
@@ -675,13 +855,14 @@ infrastructure.</li>
     </div>
   </div>
 
-  <div class="tab-pane" id="indigo-tutorials">
+  <div class="tab-pane" id="kinetic-tutorials">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/libmavconn/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/libmavconn/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -693,44 +874,126 @@ infrastructure.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
-  <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavlink#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavlink" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavlink#kinetic">mavlink</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/boost">boost</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libconsole-bridge-dev">libconsole-bridge-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/boost#indigo">boost</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mavlink#indigo">mavlink</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/libconsole-bridge-dev#indigo">libconsole-bridge-dev</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/mavros/github-mavlink-mavros#kinetic">mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/mavros/github-mavlink-mavros#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="tab-pane" id="indigo-assets">
+  <div class="tab-pane" id="kinetic-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -739,9 +1002,9 @@ infrastructure.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -750,9 +1013,9 @@ infrastructure.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -761,77 +1024,199 @@ infrastructure.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
 
-  <div class="distro distro-hydro">
+  <div class="distro distro-jade">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libmavconn">libmavconn</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_extras/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_msgs/github-mavlink-mavros">
+
+mavros_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> test_mavros
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libmavconn"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-mavlink-mavros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/libmavconn/github-mavlink-mavros" data="github-mavlink-mavros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-mavlink-mavros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="jade-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    MAVLink communication library.
-    This library provide unified connection handling classes
-    and URL to connection object mapper.
-
-    This library can be used in standalone programs.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -844,7 +1229,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.8.5</td>
+                <td>0.18.2</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -870,7 +1255,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -886,13 +1271,13 @@ $(function() {
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">hydro-devel</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-11-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
         </span>
       </td>
     </tr>
@@ -901,9 +1286,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-primary">
+            <span class="label label-success">
           
-          MAINTAINED
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -920,8 +1305,33 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    MAVLink communication library.
+    This library provide unified connection handling classes
+    and URL to connection object mapper.
+
+    This library can be used in standalone programs.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/mavros">Website</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -944,6 +1354,826 @@ $(function() {
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="mavconn-library">MAVCONN library</h1>
+
+<p>It is mavlink connection and communication library used in <a href="https://github.com/mavlink/mavros">MAVROS</a>.
+Since 2014-11-02 it adopted to use outside from ROS environment
+by splitting to individual package and removing dependencies to rosconsole.</p>
+
+<h2 id="connection-url">Connection URL</h2>
+
+<p>Connection defined by URL.
+Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get connection object.</p>
+
+<p>Supported schemas:</p>
+
+<ul>
+<li>Serial: <code>/path/to/serial/device[:baudrate]</code>
+</li>
+<li>Serial: <code>serial:///path/to/serial/device[:baudrate][?ids=sysid,compid]</code>
+</li>
+<li>UDP: <code>udp://[bind_host][:port]@[remote_host][:port][/?ids=sysid,compid]</code>
+</li>
+<li>UDP broadcast: <code>udp-b://[bind_host][:port]@[:port][/?ids=sysid,compid]</code>
+</li>
+<li>TCP client: <code>tcp://[server_host][:port][/?ids=sysid,compid]</code>
+</li>
+<li>TCP server: <code>tcp-l://[bind_port][:port][/?ids=sysid,compid]</code>
+</li>
+</ul>
+
+<p>Note: ids from URL overrides ids given by system_id &amp; component_id parameters.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Same as for mavros:</p>
+
+<ul>
+<li>Linux host</li>
+<li>Boost &gt;= 1.46 (used Boost.ASIO and Boost.Signals2)</li>
+<li>console-bridge library</li>
+<li>compiller with C++11 support</li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>Licensed under terms of <a href="https://www.gnu.org/licenses/lgpl.html"><em>LGPLv3</em></a>, <a href="https://github.com/mavlink/mavros/blob/master/LICENSE-BSD.txt"><em>BSD</em></a>, or <a href="https://www.gnu.org/licenses/gpl.html"><em>GPLv3</em></a>.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-libmavconn">Changelog for package libmavconn</h1>
+
+<h2 id="0-18-2-2016-06-30">0.18.2 (2016-06-30)</h2>
+
+<ul>
+<li>  Revert "libmavconn: Update console_bridge macroses." This reverts
+commit 73fd7f755ed919bc3c170574f514ba6525cd31a2. It breaks Travis
+builds for Indigo and Jade.</li>
+<li>  libmavconn: Update console_bridge macroses.
+<a href="https://github.com/ros/console_bridge/issues/18">https://github.com/ros/console_bridge/issues/18</a>
+</li>
+<li>  libmavconn: tcp: enable_shared_from_this</li>
+<li>  libmavconn: udp: enable_shared_from_this</li>
+<li>  libmavconn: serial: enable_shared_from_this</li>
+<li>  libmavconn: std::deque automatically free buffers</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/567">#567</a>: Fix tcp
+server stat calculation</li>
+<li>  libmavconn: Fix debug log conn_id</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-18-1-2016-06-24">0.18.1 (2016-06-24)</h2>
+
+<h2 id="0-18-0-2016-06-23">0.18.0 (2016-06-23)</h2>
+
+<ul>
+<li>  libmavconn: Fix _KiB literal</li>
+<li>  readme <a href="https://github.com/mavlink/mavros/issues/544">#544</a>: add
+udp-b://@ URL</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/544">#544</a>: New URL for
+UDP Broadcast (for GCS discovery) Broadcast v4 address used until
+GCS respond. udp-b://[bind_host][:bind_port]@[:remote_port]</li>
+<li>  libmavconn: fix context.py.in</li>
+<li>  libmavconn: Add protocol version selection helpers</li>
+<li>  libmavconn: Use monotonic id for logging. Looks better than
+this ptr.</li>
+<li>  node: Update plugin loading and message routing</li>
+<li>  node: Rename plugib base class - API incompatible to old class</li>
+<li>  labmavconn: remove set_thread_name(), add utils::format()</li>
+<li>  libmavconn: APM dialect should be second</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/522">#522</a>: place
+generated files in source tree.</li>
+<li>  libmavconn: Use EmPy to generate dialect-enabling files</li>
+<li>  libmavconn: update copyright year</li>
+<li>  libmavconn: update unit test</li>
+<li>  libmavconn: Replace sig-slot with simple std::function() callbacks</li>
+<li>  libmavconn: Limit send_message() queue maximum size.</li>
+<li>  libmavconn:udp: try to make STL container handle allocations</li>
+<li>  libmavconn: Use std::call_once() for init</li>
+<li>  libmavconn: Leak in send_message() when it called from self IO
+thread (such as message_received event)</li>
+<li>  libmavconn: update unit test</li>
+<li>  libmavconn: support C++ serialization. Warn: RX leaks somewhere.</li>
+<li>  libmavconn: Use MAVLink2 C++11</li>
+<li>  labmavconn: trying to merge all dialects</li>
+<li>  libmavconn: std::thread are invalidated before set_thread_name()
+called. Result is SIGSEGV</li>
+<li>  labmavconn: finding sigsegv</li>
+<li>  libmavconn: uncrustify</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost::signals2 (TCP)</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost::signals2 (UDP)</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost.signals2 (serial)</li>
+<li>  libmavconn: uncrustify all</li>
+<li>  mavconn: Import Simple Signal library (with some minor
+modifications). Source file can be found here:
+<a href="https://testbit.eu/cpp11-signal-system-performance/">https://testbit.eu/cpp11-signal-system-performance/</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-3-2016-05-20">0.17.3 (2016-05-20)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+support build with mavlink 2.0 capable mavgen</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-2-2016-04-29">0.17.2 (2016-04-29)</h2>
+
+<h2 id="0-17-1-2016-03-28">0.17.1 (2016-03-28)</h2>
+
+<ul>
+<li>  MAVConnSerial: Stop io_service before closing serial device (Fixes
+<a href="https://github.com/mavlink/mavros/issues/130">#130</a>) The serial
+device was closed before calling io_service.stop() so
+io_<a href="service::run">service::run</a>() never returned, leading to hang on join
+in MAVConnSerial::close()</li>
+</ul>
+<div class="highlight"><pre><code class="language-.sourceCode ." data-lang=".sourceCode .">    Backtrace:
+    #0  0x00007f80217e966b in pthread_join (threadid=140188059690752, thread_return=0x0) at pthread_join.c:92
+    #1  0x00007f80215602d7 in std::thread::join() ()
+    #2  0x00007f8020ccc674 in mavconn::MAVConnSerial::close() ()
+    #3  0x00007f8020ccc6f5 in mavconn::MAVConnSerial::~MAVConnSerial() ()
+    #4  0x00007f8020cc7b2e in boost::detail::sp_counted_impl_pd&lt;mavconn::MAVConnSerial*, boost::detail::sp_ms_deleter&lt;mavconn::MAVConnSerial&gt; &gt;::dispose() ()
+    #5  0x000000000040ee0a in boost::detail::sp_counted_base::release() [clone .part.27] [clone .constprop.472] ()
+    #6  0x000000000041eb22 in mavros::MavRos::~MavRos() ()
+    #7  0x000000000040eb38 in main ()
+
+</code></pre></div>
+<ul>
+<li>  Contributors: Kartik Mohta</li>
+</ul>
+
+<h2 id="0-17-0-2016-02-09">0.17.0 (2016-02-09)</h2>
+
+<ul>
+<li>  rebased with master</li>
+<li>  Contributors: francois</li>
+</ul>
+
+<h2 id="0-16-6-2016-02-04">0.16.6 (2016-02-04)</h2>
+
+<h2 id="0-16-5-2016-01-11">0.16.5 (2016-01-11)</h2>
+
+<h2 id="0-16-4-2015-12-14">0.16.4 (2015-12-14)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/452">#452</a>:
+remove pixhawk, add paparazzi dialects. Mavlink package provide
+information about known dialects, so we do not touch
+mavlink_dialect.h selection ifs.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-16-3-2015-11-19">0.16.3 (2015-11-19)</h2>
+
+<h2 id="0-16-2-2015-11-17">0.16.2 (2015-11-17)</h2>
+
+<h2 id="0-16-1-2015-11-13">0.16.1 (2015-11-13)</h2>
+
+<h2 id="0-16-0-2015-11-09">0.16.0 (2015-11-09)</h2>
+
+<h2 id="0-15-0-2015-09-17">0.15.0 (2015-09-17)</h2>
+
+<h2 id="0-14-2-2015-08-20">0.14.2 (2015-08-20)</h2>
+
+<h2 id="0-14-1-2015-08-19">0.14.1 (2015-08-19)</h2>
+
+<h2 id="0-14-0-2015-08-17">0.14.0 (2015-08-17)</h2>
+
+<h2 id="0-13-1-2015-08-05">0.13.1 (2015-08-05)</h2>
+
+<h2 id="0-13-0-2015-08-01">0.13.0 (2015-08-01)</h2>
+
+<ul>
+<li>  libmavconn: simpify exception code.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-12-0-2015-07-01">0.12.0 (2015-07-01)</h2>
+
+<ul>
+<li>  libmavconn: UDP: Do not exit on Network unreachable error. Requested
+by @mhkabir, idea given by @adamantivm in
+<a href="https://github.com/algron/mavros/commit/48fa19f58786387b4aee804e0687d6d39a127806">https://github.com/algron/mavros/commit/48fa19f58786387b4aee804e0687d6d39a127806</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-2-2015-04-26">0.11.2 (2015-04-26)</h2>
+
+<ul>
+<li>  libmavconn fix <a href="https://github.com/vooon/mavros/issues/269">#269</a>:
+override default channel getter helpers Default inlined mavlink
+getter helpers cause issue, when each plugin has it's own
+sequence number.</li>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/269">#269</a>: add
+seq number to debug</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-1-2015-04-06">0.11.1 (2015-04-06)</h2>
+
+<h2 id="0-11-0-2015-03-24">0.11.0 (2015-03-24)</h2>
+
+<ul>
+<li>  readme: fix links</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: add
+license files</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: update
+libmavconn headers</li>
+<li>  libmavconn: Fix logging (now all connections use same log name)
+Before i got several names: URL, serial0.. But severity only changes
+if i changed first registered tag (URL). Now all debug will be
+enabled by one tag: ros.rosconsole_bridge.mavconn And because its
+only used for debugging that was ok.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-2-2015-02-25">0.10.2 (2015-02-25)</h2>
+
+<ul>
+<li>  mavconn: fix readme link</li>
+<li>  mavconn: Licensed under BSD 3-clause too, update headers for LGPLv3.
+PX4 team asked me to support BSD license.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-1-2015-02-02">0.10.1 (2015-02-02)</h2>
+
+<ul>
+<li>  libmavconn: Workaround for gcc 4.6 &lt;chrono&gt;.</li>
+<li>  libmavconn: Use C++11 for lists for_each</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-0-2015-01-24">0.10.0 (2015-01-24)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/154">#154</a>: Stat
+sum for tcp server mode.</li>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/154">#154</a>: Add
+IO usage statistics. TODO: tcp-l.</li>
+<li>  libmavconn: Fix coverity CID 85784 (use of freed object)</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-4-2015-01-06">0.9.4 (2015-01-06)</h2>
+
+<h2 id="0-9-3-2014-12-30">0.9.3 (2014-12-30)</h2>
+
+<ul>
+<li>  mavconn: Add ASLUAV dialect selection.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-2-2014-11-04">0.9.2 (2014-11-04)</h2>
+
+<ul>
+<li>  Fix libmavconn include destination. Before that change headers
+installed in include/libmavconn (package name) and it broke release
+builds for 0.9.1 and 0.8.4. Strange that prerelease build runs
+without errors. Issue
+<a href="https://github.com/vooon/mavros/issues/162">#162</a>.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-1-2014-11-03">0.9.1 (2014-11-03)</h2>
+
+<ul>
+<li>  Fix libmavconn deps. Releases 0.9 and 0.8.3 ar broken because i
+forgot to add mavlink dep.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-0-2014-11-03">0.9.0 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
+
+<ul>
+<li>  REP140: update package.xml format. Hydro don't accept this format
+correctly, but after split i can update.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
+
+<ul>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: try to
+fix hydro build</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Move
+mavconn tests.</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
+headers used in mavros. Add readme.</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
+mavros build.</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Move
+library to its own package Also rosconsole replaced by
+console_bridge, so now library can be used without
+ros infrastructure.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/libmavconn/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavlink#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavlink" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavlink#jade">mavlink</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/boost">boost</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libconsole-bridge-dev">libconsole-bridge-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/mavros/github-mavlink-mavros#jade">mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/mavros/github-mavlink-mavros#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libmavconn">libmavconn</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_extras/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_msgs/github-mavlink-mavros">
+
+mavros_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> test_mavros
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libmavconn"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-mavlink-mavros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/libmavconn/github-mavlink-mavros" data="github-mavlink-mavros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-mavlink-mavros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <span class="label label-default">uav</span> <span class="label label-default">mav</span> <span class="label label-default">mavlink</span> <span class="label label-default">plugin</span> <span class="label label-default">apm</span> <span class="label label-default">px4</span> 
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.18.2</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>GPLv3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/mavlink/mavros.git">https://github.com/mavlink/mavros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    MAVLink communication library.
+    This library provide unified connection handling classes
+    and URL to connection object mapper.
+
+    This library can be used in standalone programs.
+  
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -955,6 +2185,869 @@ $(function() {
                   <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
                 
                   <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="mavconn-library">MAVCONN library</h1>
+
+<p>It is mavlink connection and communication library used in <a href="https://github.com/mavlink/mavros">MAVROS</a>.
+Since 2014-11-02 it adopted to use outside from ROS environment
+by splitting to individual package and removing dependencies to rosconsole.</p>
+
+<h2 id="connection-url">Connection URL</h2>
+
+<p>Connection defined by URL.
+Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get connection object.</p>
+
+<p>Supported schemas:</p>
+
+<ul>
+<li>Serial: <code>/path/to/serial/device[:baudrate]</code>
+</li>
+<li>Serial: <code>serial:///path/to/serial/device[:baudrate][?ids=sysid,compid]</code>
+</li>
+<li>UDP: <code>udp://[bind_host][:port]@[remote_host][:port][/?ids=sysid,compid]</code>
+</li>
+<li>UDP broadcast: <code>udp-b://[bind_host][:port]@[:port][/?ids=sysid,compid]</code>
+</li>
+<li>TCP client: <code>tcp://[server_host][:port][/?ids=sysid,compid]</code>
+</li>
+<li>TCP server: <code>tcp-l://[bind_port][:port][/?ids=sysid,compid]</code>
+</li>
+</ul>
+
+<p>Note: ids from URL overrides ids given by system_id &amp; component_id parameters.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Same as for mavros:</p>
+
+<ul>
+<li>Linux host</li>
+<li>Boost &gt;= 1.46 (used Boost.ASIO and Boost.Signals2)</li>
+<li>console-bridge library</li>
+<li>compiller with C++11 support</li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>Licensed under terms of <a href="https://www.gnu.org/licenses/lgpl.html"><em>LGPLv3</em></a>, <a href="https://github.com/mavlink/mavros/blob/master/LICENSE-BSD.txt"><em>BSD</em></a>, or <a href="https://www.gnu.org/licenses/gpl.html"><em>GPLv3</em></a>.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-libmavconn">Changelog for package libmavconn</h1>
+
+<h2 id="0-18-2-2016-06-30">0.18.2 (2016-06-30)</h2>
+
+<ul>
+<li>  Revert "libmavconn: Update console_bridge macroses." This reverts
+commit 73fd7f755ed919bc3c170574f514ba6525cd31a2. It breaks Travis
+builds for Indigo and Jade.</li>
+<li>  libmavconn: Update console_bridge macroses.
+<a href="https://github.com/ros/console_bridge/issues/18">https://github.com/ros/console_bridge/issues/18</a>
+</li>
+<li>  libmavconn: tcp: enable_shared_from_this</li>
+<li>  libmavconn: udp: enable_shared_from_this</li>
+<li>  libmavconn: serial: enable_shared_from_this</li>
+<li>  libmavconn: std::deque automatically free buffers</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/567">#567</a>: Fix tcp
+server stat calculation</li>
+<li>  libmavconn: Fix debug log conn_id</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-18-1-2016-06-24">0.18.1 (2016-06-24)</h2>
+
+<h2 id="0-18-0-2016-06-23">0.18.0 (2016-06-23)</h2>
+
+<ul>
+<li>  libmavconn: Fix _KiB literal</li>
+<li>  readme <a href="https://github.com/mavlink/mavros/issues/544">#544</a>: add
+udp-b://@ URL</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/544">#544</a>: New URL for
+UDP Broadcast (for GCS discovery) Broadcast v4 address used until
+GCS respond. udp-b://[bind_host][:bind_port]@[:remote_port]</li>
+<li>  libmavconn: fix context.py.in</li>
+<li>  libmavconn: Add protocol version selection helpers</li>
+<li>  libmavconn: Use monotonic id for logging. Looks better than
+this ptr.</li>
+<li>  node: Update plugin loading and message routing</li>
+<li>  node: Rename plugib base class - API incompatible to old class</li>
+<li>  labmavconn: remove set_thread_name(), add utils::format()</li>
+<li>  libmavconn: APM dialect should be second</li>
+<li>  libmavconn fix
+<a href="https://github.com/mavlink/mavros/issues/522">#522</a>: place
+generated files in source tree.</li>
+<li>  libmavconn: Use EmPy to generate dialect-enabling files</li>
+<li>  libmavconn: update copyright year</li>
+<li>  libmavconn: update unit test</li>
+<li>  libmavconn: Replace sig-slot with simple std::function() callbacks</li>
+<li>  libmavconn: Limit send_message() queue maximum size.</li>
+<li>  libmavconn:udp: try to make STL container handle allocations</li>
+<li>  libmavconn: Use std::call_once() for init</li>
+<li>  libmavconn: Leak in send_message() when it called from self IO
+thread (such as message_received event)</li>
+<li>  libmavconn: update unit test</li>
+<li>  libmavconn: support C++ serialization. Warn: RX leaks somewhere.</li>
+<li>  libmavconn: Use MAVLink2 C++11</li>
+<li>  labmavconn: trying to merge all dialects</li>
+<li>  libmavconn: std::thread are invalidated before set_thread_name()
+called. Result is SIGSEGV</li>
+<li>  labmavconn: finding sigsegv</li>
+<li>  libmavconn: uncrustify</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost::signals2 (TCP)</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost::signals2 (UDP)</li>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+remove boost.signals2 (serial)</li>
+<li>  libmavconn: uncrustify all</li>
+<li>  mavconn: Import Simple Signal library (with some minor
+modifications). Source file can be found here:
+<a href="https://testbit.eu/cpp11-signal-system-performance/">https://testbit.eu/cpp11-signal-system-performance/</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-3-2016-05-20">0.17.3 (2016-05-20)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/543">#543</a>:
+support build with mavlink 2.0 capable mavgen</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-17-2-2016-04-29">0.17.2 (2016-04-29)</h2>
+
+<h2 id="0-17-1-2016-03-28">0.17.1 (2016-03-28)</h2>
+
+<ul>
+<li>  MAVConnSerial: Stop io_service before closing serial device (Fixes
+<a href="https://github.com/mavlink/mavros/issues/130">#130</a>) The serial
+device was closed before calling io_service.stop() so
+io_<a href="service::run">service::run</a>() never returned, leading to hang on join
+in MAVConnSerial::close()</li>
+</ul>
+<div class="highlight"><pre><code class="language-.sourceCode ." data-lang=".sourceCode .">    Backtrace:
+    #0  0x00007f80217e966b in pthread_join (threadid=140188059690752, thread_return=0x0) at pthread_join.c:92
+    #1  0x00007f80215602d7 in std::thread::join() ()
+    #2  0x00007f8020ccc674 in mavconn::MAVConnSerial::close() ()
+    #3  0x00007f8020ccc6f5 in mavconn::MAVConnSerial::~MAVConnSerial() ()
+    #4  0x00007f8020cc7b2e in boost::detail::sp_counted_impl_pd&lt;mavconn::MAVConnSerial*, boost::detail::sp_ms_deleter&lt;mavconn::MAVConnSerial&gt; &gt;::dispose() ()
+    #5  0x000000000040ee0a in boost::detail::sp_counted_base::release() [clone .part.27] [clone .constprop.472] ()
+    #6  0x000000000041eb22 in mavros::MavRos::~MavRos() ()
+    #7  0x000000000040eb38 in main ()
+
+</code></pre></div>
+<ul>
+<li>  Contributors: Kartik Mohta</li>
+</ul>
+
+<h2 id="0-17-0-2016-02-09">0.17.0 (2016-02-09)</h2>
+
+<ul>
+<li>  rebased with master</li>
+<li>  Contributors: francois</li>
+</ul>
+
+<h2 id="0-16-6-2016-02-04">0.16.6 (2016-02-04)</h2>
+
+<h2 id="0-16-5-2016-01-11">0.16.5 (2016-01-11)</h2>
+
+<h2 id="0-16-4-2015-12-14">0.16.4 (2015-12-14)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/mavlink/mavros/issues/452">#452</a>:
+remove pixhawk, add paparazzi dialects. Mavlink package provide
+information about known dialects, so we do not touch
+mavlink_dialect.h selection ifs.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-16-3-2015-11-19">0.16.3 (2015-11-19)</h2>
+
+<h2 id="0-16-2-2015-11-17">0.16.2 (2015-11-17)</h2>
+
+<h2 id="0-16-1-2015-11-13">0.16.1 (2015-11-13)</h2>
+
+<h2 id="0-16-0-2015-11-09">0.16.0 (2015-11-09)</h2>
+
+<h2 id="0-15-0-2015-09-17">0.15.0 (2015-09-17)</h2>
+
+<h2 id="0-14-2-2015-08-20">0.14.2 (2015-08-20)</h2>
+
+<h2 id="0-14-1-2015-08-19">0.14.1 (2015-08-19)</h2>
+
+<h2 id="0-14-0-2015-08-17">0.14.0 (2015-08-17)</h2>
+
+<h2 id="0-13-1-2015-08-05">0.13.1 (2015-08-05)</h2>
+
+<h2 id="0-13-0-2015-08-01">0.13.0 (2015-08-01)</h2>
+
+<ul>
+<li>  libmavconn: simpify exception code.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-12-0-2015-07-01">0.12.0 (2015-07-01)</h2>
+
+<ul>
+<li>  libmavconn: UDP: Do not exit on Network unreachable error. Requested
+by @mhkabir, idea given by @adamantivm in
+<a href="https://github.com/algron/mavros/commit/48fa19f58786387b4aee804e0687d6d39a127806">https://github.com/algron/mavros/commit/48fa19f58786387b4aee804e0687d6d39a127806</a>
+</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-2-2015-04-26">0.11.2 (2015-04-26)</h2>
+
+<ul>
+<li>  libmavconn fix <a href="https://github.com/vooon/mavros/issues/269">#269</a>:
+override default channel getter helpers Default inlined mavlink
+getter helpers cause issue, when each plugin has it's own
+sequence number.</li>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/269">#269</a>: add
+seq number to debug</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-11-1-2015-04-06">0.11.1 (2015-04-06)</h2>
+
+<h2 id="0-11-0-2015-03-24">0.11.0 (2015-03-24)</h2>
+
+<ul>
+<li>  readme: fix links</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: add
+license files</li>
+<li>  license <a href="https://github.com/vooon/mavros/issues/242">#242</a>: update
+libmavconn headers</li>
+<li>  libmavconn: Fix logging (now all connections use same log name)
+Before i got several names: URL, serial0.. But severity only changes
+if i changed first registered tag (URL). Now all debug will be
+enabled by one tag: ros.rosconsole_bridge.mavconn And because its
+only used for debugging that was ok.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-2-2015-02-25">0.10.2 (2015-02-25)</h2>
+
+<ul>
+<li>  mavconn: fix readme link</li>
+<li>  mavconn: Licensed under BSD 3-clause too, update headers for LGPLv3.
+PX4 team asked me to support BSD license.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-1-2015-02-02">0.10.1 (2015-02-02)</h2>
+
+<ul>
+<li>  libmavconn: Workaround for gcc 4.6 &lt;chrono&gt;.</li>
+<li>  libmavconn: Use C++11 for lists for_each</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-10-0-2015-01-24">0.10.0 (2015-01-24)</h2>
+
+<ul>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/154">#154</a>: Stat
+sum for tcp server mode.</li>
+<li>  libmavconn <a href="https://github.com/vooon/mavros/issues/154">#154</a>: Add
+IO usage statistics. TODO: tcp-l.</li>
+<li>  libmavconn: Fix coverity CID 85784 (use of freed object)</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-4-2015-01-06">0.9.4 (2015-01-06)</h2>
+
+<h2 id="0-9-3-2014-12-30">0.9.3 (2014-12-30)</h2>
+
+<ul>
+<li>  mavconn: Add ASLUAV dialect selection.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-2-2014-11-04">0.9.2 (2014-11-04)</h2>
+
+<ul>
+<li>  Fix libmavconn include destination. Before that change headers
+installed in include/libmavconn (package name) and it broke release
+builds for 0.9.1 and 0.8.4. Strange that prerelease build runs
+without errors. Issue
+<a href="https://github.com/vooon/mavros/issues/162">#162</a>.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-1-2014-11-03">0.9.1 (2014-11-03)</h2>
+
+<ul>
+<li>  Fix libmavconn deps. Releases 0.9 and 0.8.3 ar broken because i
+forgot to add mavlink dep.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-9-0-2014-11-03">0.9.0 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
+
+<ul>
+<li>  REP140: update package.xml format. Hydro don't accept this format
+correctly, but after split i can update.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
+
+<ul>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: try to
+fix hydro build</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Move
+mavconn tests.</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
+headers used in mavros. Add readme.</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Fix
+mavros build.</li>
+<li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Move
+library to its own package Also rosconsole replaced by
+console_bridge, so now library can be used without
+ros infrastructure.</li>
+<li>  Contributors: Vladimir Ermakov</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/libmavconn/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavlink#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavlink" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavlink#indigo">mavlink</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/boost">boost</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libconsole-bridge-dev">libconsole-bridge-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/mavros/github-mavlink-mavros#indigo">mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/mavros/github-mavlink-mavros#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/master/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libmavconn">libmavconn</a> <small>package from <a style="text-decoration:none" href="/r/mavros/github-mavlink-mavros">mavros</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> libmavconn
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mavros_extras/github-mavlink-mavros">
+
+<span class="glyphicon glyphicon-file"></span> mavros_extras
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libmavconn"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-mavlink-mavros
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-mavlink-mavros" role="menuitem" tabindex="-1" href="/p/libmavconn/github-mavlink-mavros" data="github-mavlink-mavros">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-mavlink-mavros
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//mavlink/mavros/tree/hydro-devel/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <span class="label label-default">uav</span> <span class="label label-default">mav</span> <span class="label label-default">mavlink</span> <span class="label label-default">plugin</span> <span class="label label-default">apm</span> <span class="label label-default">px4</span> 
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.8.6</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>GPLv3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/mavlink/mavros.git">https://github.com/mavlink/mavros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">hydro-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-03-04
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    MAVLink communication library.
+    This library provide unified connection handling classes
+    and URL to connection object mapper.
+
+    This library can be used in standalone programs.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/mavros">Website</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros.git">Repository</a></li>
+                
+                  <li><a href="https://github.com/mavlink/mavros/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Vladimir Ermakov</li>
                 
               </ul>
             
@@ -995,6 +3088,7 @@ Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get c
 <li>TCP server: <code>tcp-l://[bind_port][:port][/?ids=sysid,compid]</code>
 </li>
 </ul>
+
 <p>Note: ids from URL overrides ids given by system_id &amp; component_id parameters.</p>
 
 <h2 id="dependencies">Dependencies</h2>
@@ -1007,6 +3101,7 @@ Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get c
 <li>console-bridge library</li>
 <li>compiller with C++11 support</li>
 </ul>
+
 <h2 id="license">License</h2>
 
 <p>Licensed under terms of LGPLv3 or GPLv3
@@ -1028,7 +3123,9 @@ Just pass one of that URL to <code>MAVConnInterface::open_url()</code> and get c
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-libmavconn">Changelog for package libmavconn</h1>
 
-<h2 id="0.8.5-(2014-11-04)">0.8.5 (2014-11-04)</h2>
+<h2 id="0-8-6-2015-03-04">0.8.6 (2015-03-04)</h2>
+
+<h2 id="0-8-5-2014-11-04">0.8.5 (2014-11-04)</h2>
 
 <ul>
 <li>  Fix libmavconn include destination. Before that change headers
@@ -1038,14 +3135,16 @@ without errors. Issue
 <a href="https://github.com/vooon/mavros/issues/162">#162</a>.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.4-(2014-11-03)">0.8.4 (2014-11-03)</h2>
+
+<h2 id="0-8-4-2014-11-03">0.8.4 (2014-11-03)</h2>
 
 <ul>
 <li>  Fix libmavconn deps. Releases 0.9 and 0.8.3 ar broken because i
 forgot to add mavlink dep.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.3-(2014-11-03)">0.8.3 (2014-11-03)</h2>
+
+<h2 id="0-8-3-2014-11-03">0.8.3 (2014-11-03)</h2>
 
 <ul>
 <li>  0.8.2</li>
@@ -1055,7 +3154,8 @@ console_bridge package name. In Hydro console bridge not released
 as system dependency.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.2-(2014-11-03)">0.8.2 (2014-11-03)</h2>
+
+<h2 id="0-8-2-2014-11-03">0.8.2 (2014-11-03)</h2>
 
 <ul>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/162">#162</a>: fix
@@ -1063,7 +3163,8 @@ console_bridge package name. In Hydro console bridge not released
 as system dependency.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
-<h2 id="0.8.1-(2014-11-02)">0.8.1 (2014-11-02)</h2>
+
+<h2 id="0-8-1-2014-11-02">0.8.1 (2014-11-02)</h2>
 
 <ul>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: try to
@@ -1076,8 +3177,8 @@ headers used in mavros. Add readme.</li>
 mavros build.</li>
 <li>  mavconn <a href="https://github.com/vooon/mavros/issues/161">#161</a>: Move
 library to its own package Also rosconsole replaced by
-console_bridge, so now library can be used without ros
-infrastructure.</li>
+console_bridge, so now library can be used without
+ros infrastructure.</li>
 <li>  Contributors: Vladimir Ermakov</li>
 </ul>
 </div></body></html>
@@ -1095,7 +3196,8 @@ infrastructure.</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/libmavconn/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/libmavconn/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1107,31 +3209,127 @@ infrastructure.</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mavlink#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mavlink" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mavlink#hydro">mavlink</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/console_bridge#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/console_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/console_bridge#hydro">console_bridge</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/boost">boost</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/boost#hydro">boost</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mavlink#hydro">mavlink</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/console_bridge#hydro">console_bridge</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/mavros/github-mavlink-mavros#hydro">mavros</a></td>
+                      <td><a href="/r/mavros/github-mavlink-mavros">github-mavlink-mavros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/mavros/github-mavlink-mavros#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1139,12 +3337,12 @@ infrastructure.</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1153,9 +3351,9 @@ infrastructure.</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1164,9 +3362,9 @@ infrastructure.</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1175,28 +3373,35 @@ infrastructure.</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/libmavconn/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//mavlink/mavros/tree/hydro-devel/libmavconn"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libmavconn/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/libmavconn?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libmavconn&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1256,7 +3461,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

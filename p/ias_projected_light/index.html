@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -130,7 +172,7 @@
     </label>
     <ul class="dropdown-menu" role="menu">
       
-        <li data="groovy" id="groovy-option" class="disabled older-distro-option"  href="#groovy">
+        <li data="groovy" id="groovy-option" class=" older-distro-option"  href="#groovy">
           <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
         </li>
       
@@ -154,319 +196,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ias_projected_light">ias_projected_light</a> <small>package from <a style="text-decoration:none" href="/r/mapping/code-tum-git-mapping">mapping</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/as11/code-tum-git-mapping">as11</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/handle_detection/code-tum-git-mapping">handle_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/handle_detection2D/code-tum-git-mapping"><span class="glyphicon glyphicon-file"></span>handle_detection2D</a>
-        
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> ias_projected_light</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ias_table_srvs/code-tum-git-mapping">ias_table_srvs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/kinect_cleanup/code-tum-git-mapping">kinect_cleanup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/mapping_ias_msgs/code-tum-git-mapping">mapping_ias_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/next_best_view/code-tum-git-mapping">next_best_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_cloud_algos/code-tum-git-mapping">pcl_cloud_algos</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_cloud_tools/code-tum-git-mapping">pcl_cloud_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_ias_sample_consensus/code-tum-git-mapping">pcl_ias_sample_consensus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_to_octree/code-tum-git-mapping">pcl_to_octree</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_vtk_tools/code-tum-git-mapping">pcl_vtk_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pointcloud_registration/code-tum-git-mapping">pointcloud_registration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_data_acquisition_tools/code-tum-git-mapping">pr2_data_acquisition_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/vosch/code-tum-git-mapping">vosch</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/ias_projected_light/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="http://code.in.tum.de/git/mapping.git/ias_projected_light" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ias_projected_light" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ias_projected_light"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  code-tum-git-mapping
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="code-tum-git-mapping" role="menuitem" tabindex="-1" href="/p/ias_projected_light/code-tum-git-mapping" data="code-tum-git-mapping">
-                    <span class="glyphicon glyphicon-none"></span>
-                    code-tum-git-mapping
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ias_projected_light">ias_projected_light</a> <small>package from <a style="text-decoration:none" href="/r/mapping/code-tum-git-mapping">mapping</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/as11/code-tum-git-mapping">as11</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/furniture_classification/code-tum-git-mapping">furniture_classification</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/furniture_features/code-tum-git-mapping">furniture_features</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/handle_detection/code-tum-git-mapping">handle_detection</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/handle_detection2D/code-tum-git-mapping"><span class="glyphicon glyphicon-file"></span>handle_detection2D</a>
-        
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> ias_projected_light</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ias_table_srvs/code-tum-git-mapping">ias_table_srvs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/kinect_cleanup/code-tum-git-mapping">kinect_cleanup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/mapping_ias_msgs/code-tum-git-mapping">mapping_ias_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/next_best_view/code-tum-git-mapping">next_best_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_cloud_algos/code-tum-git-mapping">pcl_cloud_algos</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_cloud_tools/code-tum-git-mapping">pcl_cloud_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_ias_sample_consensus/code-tum-git-mapping">pcl_ias_sample_consensus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_to_octree/code-tum-git-mapping">pcl_to_octree</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pcl_vtk_tools/code-tum-git-mapping">pcl_vtk_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pointcloud_registration/code-tum-git-mapping">pointcloud_registration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_data_acquisition_tools/code-tum-git-mapping">pr2_data_acquisition_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/vosch/code-tum-git-mapping">vosch</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/ias_projected_light/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="http://code.in.tum.de/git/mapping.git/ias_projected_light" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ias_projected_light" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ias_projected_light"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  code-tum-git-mapping
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="code-tum-git-mapping" role="menuitem" tabindex="-1" href="/p/ias_projected_light/code-tum-git-mapping" data="code-tum-git-mapping">
-                    <span class="glyphicon glyphicon-none"></span>
-                    code-tum-git-mapping
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -495,53 +235,283 @@
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
-          <div class="alert alert-warning">No version for distro <strong>groovy</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ias_projected_light">ias_projected_light</a> <small>package from <a style="text-decoration:none" href="/r/mapping/github-rosindex-attic-code-tum-git-mapping">mapping</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/as11/github-rosindex-attic-code-tum-git-mapping">
+
+as11
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/autonomous_mapping/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-file"></span> autonomous_mapping
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/furniture_classification/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-file"></span> furniture_classification
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/furniture_features/github-rosindex-attic-code-tum-git-mapping">
+
+furniture_features
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/handle_detection/github-rosindex-attic-code-tum-git-mapping">
+
+handle_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/handle_detection2D/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-file"></span> handle_detection2D
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> ias_projected_light
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ias_table_srvs/github-rosindex-attic-code-tum-git-mapping">
+
+ias_table_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/kinect_cleanup/github-rosindex-attic-code-tum-git-mapping">
+
+kinect_cleanup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mapping_ias_msgs/github-rosindex-attic-code-tum-git-mapping">
+
+mapping_ias_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/next_best_view/github-rosindex-attic-code-tum-git-mapping">
+
+next_best_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_cloud_algos/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_cloud_algos
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_cloud_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_cloud_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_ias_sample_consensus/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_ias_sample_consensus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_to_octree/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_to_octree
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_vtk_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_vtk_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pointcloud_registration/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-education"></span> pointcloud_registration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_data_acquisition_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pr2_data_acquisition_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rgbd_registration/github-rosindex-attic-code-tum-git-mapping">
+
+rgbd_registration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/vosch/github-rosindex-attic-code-tum-git-mapping">
+
+vosch
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ias_projected_light"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-rosindex-attic-code-tum-git-mapping
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-rosindex-attic-code-tum-git-mapping" role="menuitem" tabindex="-1" href="/p/ias_projected_light/github-rosindex-attic-code-tum-git-mapping" data="github-rosindex-attic-code-tum-git-mapping">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-rosindex-attic-code-tum-git-mapping
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-fuerte">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="fuerte-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/ias_projected_light/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/ias_projected_light?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ias_projected_light&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="groovy-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#fuerte-overview" data-toggle="tab">Overview</a>
+    <a href="#groovy-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
+    
+    
+    
+    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="fuerte-overview">
+  <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Out-of-the-box solution for projected stereo using
-    a Videre STOC camera and a regular wall projector.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -580,7 +550,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -588,7 +558,869 @@
   <table class="table table-condensed">
     <tr>
       <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="http://code.in.tum.de/git/mapping.git">http://code.in.tum.de/git/mapping.git</a></td>
+      <td><a class="label label-default" href="https://github.com/rosindex-attic/code-tum-git-mapping.git">https://github.com/rosindex-attic/code-tum-git-mapping.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2012-12-06
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          <span class="label label-warning">UNMAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Out-of-the-box solution for projected stereo using
+    a Videre STOC camera and a regular wall projector.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/ias_projected_light">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No known maintainers.</em>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Florian Zacherl, Dejan Pangercic</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">Required external libraries:
+
+http://ua-ros-pkg.googlecode.com/svn/
+https://cmu-ros-pkg.svn.sourceforge.net/svnroot/cmu-ros-pkg/
+
+ROS Nodes:
+
+- create_pattern:
+    Parameters:
+        - Initial block size (int &gt; 0)
+        - Folder for patterns saved as text files
+        - Bool that describes if the node should be started as a service (true) or not (false = default)
+
+    If this node is started as a service the current pattern can be changed by other nodes via service calls,
+    what is required for running the adjust_exposure or the blur_estimation node. The patterns can also be changed within
+    the terminal with "rosservice call change_pattern &lt;pattern_index&gt; &lt;block_size&gt;" (0 = black, 1 = white, 2 = block, 3 = stripe,
+    4 = random, &gt;4 = patterns from textfiles)
+
+    If the node is not started as a service, the pattern can be changed with the keyboard:
+        p = swith to next pattern
+        + = increase block size by 1
+        - = decrease block size by 1
+        q = quit
+
+    In most cases, it is more useful to use the launch file, which enables to project the
+    pattern on another screen device (see below)
+
+- adjust_exposure: 
+    Parameters: None
+
+    Adjust the exposure time so that the average brightness of the area illuminated 
+    by the projector is set to a fixed value (default 120) to avoid overexposing that
+    region
+
+    Default image input topic is "/stereo/left/image_mono", default Region of Interest input 
+    topic is "/stereo/left/roi" if other topics should be used they should be overwritten with 
+    "adjust_exposure input:=&lt;topic_new&gt;" or "adjust_exposure roi_input:=&lt;topic_new&gt;"
+
+    Default namespace for the camera parameters is "/stereo/stereodcam2701/" for the videre
+    camera. That can also be overwritten by calling "adjust_exposure prefix=&lt;prefix_new&gt;"
+    The new namespace must contain the three parameters for camera exposure (exposure,
+    exposure_min, exposure_max)
+
+    If auto-exposure is activated for the camera, that must be deactivated manually before 
+    running the node, for example with the reconfigure_gui 
+    (rosrun dynamic_reconfigure reconfigure_gui) 
+
+- blur_estimation:
+    Parameters: 
+        - Float value for the maximal blur value that should be treated as sharp (e.g. 1.0)
+        - Bool value that declares if a block or a stripe pattern is used (Zero is stripe pattern)
+        - Image input topic
+        - (Optional) Region of Interest input topic (default "/stereo/left/roi")
+
+    Subscribes to two topics (image and Region of Interest) and publishes the image extended with the illuminated
+    area (green) and all the sharp edges (blue and red for vertical and horizontal direction)
+
+
+- roi_diff_image:
+    Captures one image with no pattern and one image with a white pattern and computes the
+    illuminated area as the difference between both and publishes it
+    Input topic (default: "stereo/left/image_rect") and output topic (default "stereo/left/roi")
+    can be overwritten by calling "roi_diff_image (input || output)_topic:=&lt;new topic&gt;"
+
+    Parameters:
+        - (Optional) Percentage of the maximal difference (Differences below that value will be filtered out) (Default = 0.3)
+        - (Optional) Bool that determines if partitioning should be done to filter out strong reflections (Default false)
+        - (Optional) Bool that determines if the ROI should be recomputed all the time or just be computed (Default false)
+
+    Create_pattern has to be started as a service to enable switching patterns.
+
+- roi_bgfg_codebooks:
+    Uses background subtraction to compute the illuminated area
+    Input topic (default: "stereo/left/image_rect") and output topic (default "stereo/left/roi")
+    can be overwritten by calling "roi_bgfg_codebooks (input_image || output)_topic:=&lt;new topic&gt;"
+
+    Parameters:
+        - None
+
+    Create_pattern has to be started as a service to enable switching patterns.
+
+
+- compare_point_clouds:
+    Takes one model_point cloud and a folder with measured point clouds and compares each with
+    the model. For each subfolder the average and the standard deviation is computed for the
+    given compare mode.
+
+    Parameters:
+        - Path to model
+        - Point cloud folder
+        - Compare mode (0 = Just number of points in the cloud
+                        1 = Number of points that are equal in model and measured point cloud
+                        2 = ICP fitness score between model and measured cloud
+                        3 = All three values are returned
+
+
+LAUNCH FILES:
+
+videre_2701.launch: 
+    camera driver for the videre stereo camera, just modified not to show
+    the disparity view by default (Disparity view can be shown by calling "roslaunch videre_2701 disparity:=1"
+
+create_pattern.launch:
+    runs the create_pattern node and shows the pattern on the display, that was specified
+    Per default the node is started not as a service, this can be done by calling 
+    "roslaunch create_pattern service:=1"
+
+blur_estimation:
+    for blur_estimation node
+
+
+
+"TEXT-PATTERNS:"
+
+The folder txt_patterns contains several patterns that are created as proposed in "Projected texture stereo" by Kurt Konolige
+
+pat-opt-p6_12_2.0.txt: Optimized simulated annealing with array size 6 * 65
+pat-opt-p8_12_2.0.txt: Optimized simulated annealing with array size 8 * 86
+pat-p16.txt: Simulated annealing with array size 16 * 128
+pat-p7.txt: Simulated annealing with array size 7 * 128
+pat-p8.txt: Simulated annealing with array size 8 * 128
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre></div></div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <em>No CHANGELOG found.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="groovy-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/ias_projected_light/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="groovy-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/opencv2#groovy-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/opencv2" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/opencv2#groovy">opencv2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#groovy">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#groovy">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl#groovy">pcl</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#groovy">image_transport</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="groovy-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light/launch/videre_2701.launch" target="_blank">launch/videre_2701.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em>
+Note: To get following node to run you have to checkout following two repositories:
+http://ua-ros-pkg.googlecode.com/svn/trunk
+https://cmu-ros-pkg.svn.sourceforge.net/svnroot
+Then compile folowing pkg:
+videre_stereo_cam
+</em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>disparity</strong> <em>&#91;default: 0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light/" target="_blank"></a>
+                <ul class="list-unstyled">
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light/launch/create_pattern.launch" target="_blank">launch/create_pattern.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>service</strong> <em>&#91;default: 0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light/launch/table_cluster_detector_narrow_stereo.launch" target="_blank">launch/table_cluster_detector_narrow_stereo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light/launch/blur_estimation.launch" target="_blank">launch/blur_estimation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light/srv/cp.srv" target="_blank">srv/cp.srv</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/ias_projected_light/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/master/ias_projected_light"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/ias_projected_light?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ias_projected_light&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-fuerte">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ias_projected_light">ias_projected_light</a> <small>package from <a style="text-decoration:none" href="/r/mapping/github-rosindex-attic-code-tum-git-mapping">mapping</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/as11/github-rosindex-attic-code-tum-git-mapping">
+
+as11
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/handle_detection/github-rosindex-attic-code-tum-git-mapping">
+
+handle_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/handle_detection2D/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-file"></span> handle_detection2D
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> ias_projected_light
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ias_table_srvs/github-rosindex-attic-code-tum-git-mapping">
+
+ias_table_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/kinect_cleanup/github-rosindex-attic-code-tum-git-mapping">
+
+kinect_cleanup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mapping_ias_msgs/github-rosindex-attic-code-tum-git-mapping">
+
+mapping_ias_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/next_best_view/github-rosindex-attic-code-tum-git-mapping">
+
+next_best_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_cloud_algos/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_cloud_algos
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_cloud_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_cloud_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_ias_sample_consensus/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_ias_sample_consensus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_to_octree/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_to_octree
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_vtk_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_vtk_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pointcloud_registration/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-education"></span> pointcloud_registration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_data_acquisition_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pr2_data_acquisition_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/vosch/github-rosindex-attic-code-tum-git-mapping">
+
+vosch
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ias_projected_light"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-rosindex-attic-code-tum-git-mapping
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-rosindex-attic-code-tum-git-mapping" role="menuitem" tabindex="-1" href="/p/ias_projected_light/github-rosindex-attic-code-tum-git-mapping" data="github-rosindex-attic-code-tum-git-mapping">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-rosindex-attic-code-tum-git-mapping
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/ias_projected_light/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/ias_projected_light?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ias_projected_light&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="fuerte-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#fuerte-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="fuerte-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>UNKNOWN</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-default">
+                  
+                    ROSBUILD</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/rosindex-attic/code-tum-git-mapping.git">https://github.com/rosindex-attic/code-tum-git-mapping.git</a></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Type</b></td>
@@ -627,8 +1459,26 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Out-of-the-box solution for projected stereo using
+    a Videre STOC camera and a regular wall projector.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/ias_projected_light">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -647,17 +1497,6 @@
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/ias_projected_light">Website</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -668,7 +1507,7 @@
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-text" data-lang="text">Required external libraries:
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">Required external libraries:
 
 http://ua-ros-pkg.googlecode.com/svn/
 https://cmu-ros-pkg.svn.sourceforge.net/svnroot/cmu-ros-pkg/
@@ -789,6 +1628,18 @@ pat-opt-p8_12_2.0.txt: Optimized simulated annealing with array size 8 * 86
 pat-p16.txt: Simulated annealing with array size 16 * 128
 pat-p7.txt: Simulated annealing with array size 7 * 128
 pat-p8.txt: Simulated annealing with array size 8 * 128
+
+
+
+
+
+
+
+
+
+
+
+
 </code></pre></div></div></body></html>
 
             
@@ -816,7 +1667,8 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ias_projected_light/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ias_projected_light/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -828,35 +1680,151 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/opencv2#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/opencv2" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/opencv2#fuerte">opencv2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#fuerte">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#fuerte">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl#fuerte">pcl</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#fuerte">image_transport</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/opencv2#fuerte">opencv2</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#fuerte">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#fuerte">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pcl#fuerte">pcl</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#fuerte">image_transport</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -864,22 +1832,95 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/blur_estimation.launch" target="_blank">launch/blur_estimation.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/create_pattern.launch" target="_blank">launch/create_pattern.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/table_cluster_detector_narrow_stereo.launch" target="_blank">launch/table_cluster_detector_narrow_stereo.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/videre_2701.launch" target="_blank">launch/videre_2701.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/pointcloud_object.launch" target="_blank">launch/pointcloud_object.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light/launch/videre_2701.launch" target="_blank">launch/videre_2701.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em>
+Note: To get following node to run you have to checkout following two repositories:
+http://ua-ros-pkg.googlecode.com/svn/trunk
+https://cmu-ros-pkg.svn.sourceforge.net/svnroot
+Then compile folowing pkg:
+videre_stereo_cam
+</em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>disparity</strong> <em>&#91;default: 0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light/" target="_blank"></a>
+                <ul class="list-unstyled">
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light/launch/create_pattern.launch" target="_blank">launch/create_pattern.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>service</strong> <em>&#91;default: 0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light/launch/table_cluster_detector_narrow_stereo.launch" target="_blank">launch/table_cluster_detector_narrow_stereo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light/launch/blur_estimation.launch" target="_blank">launch/blur_estimation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -888,9 +1929,9 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -899,11 +1940,13 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/srv/cp.srv" target="_blank">srv/cp.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light/srv/cp.srv" target="_blank">srv/cp.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -912,28 +1955,35 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/ias_projected_light/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/fuerte/ias_projected_light"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/ias_projected_light?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ias_projected_light&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -943,6 +1993,229 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ias_projected_light">ias_projected_light</a> <small>package from <a style="text-decoration:none" href="/r/mapping/github-rosindex-attic-code-tum-git-mapping">mapping</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/as11/github-rosindex-attic-code-tum-git-mapping">
+
+as11
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/furniture_classification/github-rosindex-attic-code-tum-git-mapping">
+
+furniture_classification
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/furniture_features/github-rosindex-attic-code-tum-git-mapping">
+
+furniture_features
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/handle_detection/github-rosindex-attic-code-tum-git-mapping">
+
+handle_detection
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/handle_detection2D/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-file"></span> handle_detection2D
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> ias_projected_light
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ias_table_srvs/github-rosindex-attic-code-tum-git-mapping">
+
+ias_table_srvs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/kinect_cleanup/github-rosindex-attic-code-tum-git-mapping">
+
+kinect_cleanup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/mapping_ias_msgs/github-rosindex-attic-code-tum-git-mapping">
+
+mapping_ias_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/next_best_view/github-rosindex-attic-code-tum-git-mapping">
+
+next_best_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_cloud_algos/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_cloud_algos
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_cloud_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_cloud_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_ias_sample_consensus/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_ias_sample_consensus
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_to_octree/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_to_octree
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pcl_vtk_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pcl_vtk_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pointcloud_registration/github-rosindex-attic-code-tum-git-mapping">
+
+<span class="glyphicon glyphicon-education"></span> pointcloud_registration
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_data_acquisition_tools/github-rosindex-attic-code-tum-git-mapping">
+
+pr2_data_acquisition_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/vosch/github-rosindex-attic-code-tum-git-mapping">
+
+vosch
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-electric">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ias_projected_light"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-rosindex-attic-code-tum-git-mapping
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-rosindex-attic-code-tum-git-mapping" role="menuitem" tabindex="-1" href="/p/ias_projected_light/github-rosindex-attic-code-tum-git-mapping" data="github-rosindex-attic-code-tum-git-mapping">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-rosindex-attic-code-tum-git-mapping
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/electric/api/ias_projected_light/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/ias_projected_light?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ias_projected_light&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -955,31 +2228,30 @@ $(function() {
     
     
     
+    
     <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#electric-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="electric-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Out-of-the-box solution for projected stereo using
-    a Videre STOC camera and a regular wall projector.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1018,7 +2290,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1026,7 +2298,7 @@ $(function() {
   <table class="table table-condensed">
     <tr>
       <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="http://code.in.tum.de/git/mapping.git">http://code.in.tum.de/git/mapping.git</a></td>
+      <td><a class="label label-default" href="https://github.com/rosindex-attic/code-tum-git-mapping.git">https://github.com/rosindex-attic/code-tum-git-mapping.git</a></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Type</b></td>
@@ -1065,8 +2337,26 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Out-of-the-box solution for projected stereo using
+    a Videre STOC camera and a regular wall projector.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/ias_projected_light">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1085,17 +2375,6 @@ $(function() {
               </ul>
             
           </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/ias_projected_light">Website</a></li>
-                
-              </ul>
-            
-          </div>
         </div>
       </div>
     </div>
@@ -1106,7 +2385,7 @@ $(function() {
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-text" data-lang="text">Required external libraries:
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">Required external libraries:
 
 http://ua-ros-pkg.googlecode.com/svn/
 https://cmu-ros-pkg.svn.sourceforge.net/svnroot/cmu-ros-pkg/
@@ -1227,6 +2506,18 @@ pat-opt-p8_12_2.0.txt: Optimized simulated annealing with array size 8 * 86
 pat-p16.txt: Simulated annealing with array size 16 * 128
 pat-p7.txt: Simulated annealing with array size 7 * 128
 pat-p8.txt: Simulated annealing with array size 8 * 128
+
+
+
+
+
+
+
+
+
+
+
+
 </code></pre></div></div></body></html>
 
             
@@ -1254,7 +2545,8 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ias_projected_light/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ias_projected_light/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1266,35 +2558,151 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/opencv2#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/opencv2" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/opencv2#electric">opencv2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#electric">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#electric">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pcl#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pcl" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pcl#electric">pcl</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#electric">image_transport</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/opencv2#electric">opencv2</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/cv_bridge#electric">cv_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#electric">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pcl#electric">pcl</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#electric">image_transport</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1302,22 +2710,95 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
   <div class="tab-pane" id="electric-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/blur_estimation.launch" target="_blank">launch/blur_estimation.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/create_pattern.launch" target="_blank">launch/create_pattern.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/table_cluster_detector_narrow_stereo.launch" target="_blank">launch/table_cluster_detector_narrow_stereo.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/videre_2701.launch" target="_blank">launch/videre_2701.launch</a></li>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/launch/pointcloud_object.launch" target="_blank">launch/pointcloud_object.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light/launch/videre_2701.launch" target="_blank">launch/videre_2701.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em>
+Note: To get following node to run you have to checkout following two repositories:
+http://ua-ros-pkg.googlecode.com/svn/trunk
+https://cmu-ros-pkg.svn.sourceforge.net/svnroot
+Then compile folowing pkg:
+videre_stereo_cam
+</em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>disparity</strong> <em>&#91;default: 0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light/" target="_blank"></a>
+                <ul class="list-unstyled">
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light/launch/create_pattern.launch" target="_blank">launch/create_pattern.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>service</strong> <em>&#91;default: 0&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light/launch/table_cluster_detector_narrow_stereo.launch" target="_blank">launch/table_cluster_detector_narrow_stereo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light/launch/blur_estimation.launch" target="_blank">launch/blur_estimation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1326,9 +2807,9 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1337,11 +2818,13 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="http://code.in.tum.de/git/mapping.git/ias_projected_light/srv/cp.srv" target="_blank">srv/cp.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light/srv/cp.srv" target="_blank">srv/cp.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1350,28 +2833,35 @@ pat-p8.txt: Simulated annealing with array size 8 * 128
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/electric/api/ias_projected_light/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//rosindex-attic/code-tum-git-mapping/tree/electric/ias_projected_light"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ias_projected_light/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/ias_projected_light?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ias_projected_light&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1407,7 +2897,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

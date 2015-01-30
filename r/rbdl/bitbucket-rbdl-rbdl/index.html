@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,8 +281,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +305,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-26
         </span>
       </td>
     </tr>
@@ -299,95 +349,108 @@
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
 <p>RBDL - Rigid Body Dynamics Library
-Copyright (c) 2011-2014 Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a></p>
+Copyright (c) 2011-2016 Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a></p>
 
 <h1 id="introduction">Introduction</h1>
 
 <p>RBDL is a highly efficient C++ library that contains some essential rigid
 body dynamics algorithms such as the Articulated Body Algorithm (ABA) for
-forward dynamics, Newton-Euler Algorithm for inverse dynamics and the
-Composite Rigid Body Algorithm (CRBA) for the efficient computation of the
-joint space inertia matrix. It further contains code for forward and
-inverse kinematics and handling of external constraints such as contacts
-and collisions.</p>
+forward dynamics, Recursive Newton-Euler Algorithm (RNEA) for inverse
+dynamics and the Composite Rigid Body Algorithm (CRBA) for the efficient
+computation of the joint space inertia matrix. It further contains code for
+Jacobians, forward and inverse kinematics, and handling of external
+constraints such as contacts and collisions.</p>
 
-<p>The code was written by Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a>
-and tightly follows the notation used in Roy Featherstone''s book "Rigid
-Body Dynamics Algorithm".</p>
+<p>The code is developed by Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a>
+at the research group <a href="http://orb.iwr.uni-heidelberg.de">Optimization in Robotics and Biomechanics
+(ORB)</a> of the <a href="http://www.iwr.uni-heidelberg.de">Interdisciplinary Center
+for Scientific Computing (IWR)</a> at
+<a href="http://www.uni-heidelberg.de">Heidelberg University</a>. The code tightly
+follows the notation used in Roy Featherstone''s book "Rigid Body Dynamics
+Algorithm".</p>
 
 <h1 id="recent-changes">Recent Changes</h1>
 
 <ul>
-<li>21 October 2014: New version 2.3.3:
+<li>28 April 2016: Nev version 2.5.0:
 
 <ul>
-<li>critical: fixed ForwardDynamicsContacts with constraints on a body
-that is attached with a fixed joint. Previous versions simply crashed.
-Thanks to Yue Hu for reporting!</li>
-<li>rbdl_print_version() now properly prints whether URDFReader was enabled
-at build time</li>
-<li>build system: fixed roblems especially building of the URDFreader</li>
-<li>build system: all CMake variables for RBDL are now prefixed with RBDL_ </li>
-<li>FindRBDL.cmake now can use components to search for the LuaModel or
-URDFReader addon</li>
+<li>Added an experimental Cython based Python wrapper of RBDL. The API is
+very close to the C++ API. For a brief glimpse of the API see the file
+python/test_wrapper.py.</li>
+<li>Matthew Millard added CustomJoints which allow to create different joint
+types completely by user code. They are implemented as proxy joints for
+which their behaviour is specified using virtual functions.</li>
+<li>Added CalcMInvTimesTau() that evaluates multiplication of the inverse of
+the joint space inertia matrix with a vector in O(n) time.</li>
+<li>Added JointTypeFloatingBase which uses TX,TY,TZ and a spherical joint for
+the floating base joint.</li>
+<li>Loading of floating base URDF models must now be specified as a third
+parameter to URDFReadFromFile() and URDFReadFromString()</li>
+<li>Added the URDF code from Bullet3 which gets used when ROS is not found.
+Otherwise use the URDF libraries found via Catkin.</li>
+<li>Added CalcPointVelocity6D, CalcPointAcceleration6D, and CalcPointJacobian6D
+that compute both linear and angular quantities</li>
+<li>Removed Model::SetFloatingBase (body). Use a 6-DoF joint or
+JointTypeFloatingBase instead.</li>
+<li>Fixed building issues when building DLL with MSVC++.</li>
 </ul>
 </li>
-<li>29 August 2014: New version 2.3.2:
+<li>20 April 2016: New version 2.4.1:
 
 <ul>
-<li>critical: fixed ForwardDynamicsLagrangian which used uninitialized values for the joint space inertia matrix (thanks to Benjamin Michaud!)</li>
-<li>critical: fixed ForwardDynamicsContacts when using 3-dof joints</li>
-<li>critical: fixed CalcBodyWorldOrientation for fixed joints (thanks to Hilaro Tome!)</li>
-<li>critical: fixed CompositeRigidBodyDynamics when using 3-dof joints (thanks to Henning Koch!)
+<li>This is a bugfix release that maintains binary compatibility and only fixes
+erroneous behaviour.</li>
+<li>critical: fixed termination criterion for InverseKinematics. The termination
+criterion would be evaluated too early and thus report convergence too
+early. This was reported independently by Kevin Stein, Yun Fei, and Davide
+Corradi. Thanks for the reports!</li>
+<li>critical: fixed CompositeRigidBodyAlgorithm when using spherical joints
+(thanks to Sébastien Barthélémy for reporting!)</li>
+</ul>
+</li>
+<li>23 February 2015: New version 2.4.0:
 
 <ul>
-<li>13 July 2014: New version 2.3.1:</li>
+<li>Added sparse range-space method ForwardDynamicsContactsRangeSpaceSparse()
+and ComputeContactImpulsesRangeSpaceSparse() </li>
+<li>Added null-space method ForwardDynamicsContactsNullSpace()
+and ComputeContactImpulsesNullSpace() </li>
+<li>Renamed ForwardDynamicsContactsLagrangian() to
+ForwardDynamicsContactsDirect() and
+ComputeContactImpulsesLagrangian() to ComputeContactImpulsesDirect()</li>
+<li>Renamed ForwardDynamicsContacts() to ForwardDynamicsContactsKokkevis()</li>
+<li>Removed/Fixed CalcAngularMomentum(). The function produced wrong values. The
+functionality has been integrated into CalcCenterOfMass().</li>
+<li>CalcPointJacobian() does not clear the argument of the result anymore.
+Caller has to ensure that the matrix was set to zero before using this
+function.</li>
+<li>Added optional workspace parameters for ForwardDynamicsLagrangian() to
+optionally reduce memory allocations</li>
+<li>Added JointTypeTranslationXYZ, JointTypeEulerXYZ, and JointTypeEulerYXZ
+which are equivalent to the emulated multidof joints but faster.</li>
+<li>Added optional parameter to CalcCenterOfMass to compute angular momentum.</li>
+<li>Added CalcBodySpatialJacobian()</li>
+<li>Added CalcContactJacobian()</li>
+<li>Added NonlinearEffects()</li>
+<li>Added solving of linear systems using standard Householder QR</li>
+<li>LuaModel: Added LuaModelReadFromLuaState()</li>
+<li>URDFReader: Fixed various issues and using faster joints for floating
+base models</li>
+<li>Various performance improvements</li>
 </ul>
 </li>
-<li>critical: fixed angular momentum computation. Version 2.3.0 produced wrong
-results. (Thanks to Hilario Tome and Benjamin Michaud for reporting!)</li>
-<li>critical: fixed JointTypeEulerZYX. Previous versions produce wrong results!</li>
-<li>fixed library version number for the LuaModel addon.
+</ul>
 
-<ul>
-<li>14 March 2014: New version 2.3.0:</li>
-</ul>
-</li>
-<li>Joint Space Inertia Matrix does not get cleared anymore when calling CompositeRigidBodyAlgorithm</li>
-<li>using the default column-major ordering when using Eigen3</li>
-<li>added experimental joint type JointTypeEulerZYX</li>
-<li>added energy computations Utils::CalcCenterOfMass, Utils::CalcPotentialEnergy, Utils::CalcKineticEnergy, and Utils::CalcAngularMomentum.</li>
-<li>Updated URDF loader for ROS Groovy/Hydro (thanks to Benjamin Chrétien!)
+<p>For a complete history see doc/api_changes.txt.</p>
 
-<ul>
-<li>06 November 2013: New version 2.2.2: adjusted Body default constructor (inertia matrix now 3x3 identity instead of zero matrix)</li>
-<li>04 November 2013: New version 2.2.1: fixed exported library version</li>
-<li>28 October 2013: New version 2.2.0: added support for spherical joints that do not suffer from joint singularities</li>
-<li>29 September 2013: New version 2.1.0: adjusted build settings and symbol export to be debian compatible. Removed vendor code such as Lua 5.2 and UnitTest++. Must be pre-installed if tests or LuaModel Addon is enabled.</li>
-<li>05 September 2013: New version 2.0.1: fixed some errors on older compilers and CMake configuration of examples. No changes required when migrating from 2.0.0.</li>
-<li>18 July 2013: API version 2.0.0: removed Eigen3 sources, removed Model::Init(), inverted sign of contact forces/impulses</li>
-<li>20 February 2013: removed too specialized RigidBodyDynamics::Body constructor (API version 1.1.0)</li>
-<li>29 January 2013: added code for api_version_checking. Current API version is 1.0.0.</li>
-<li>11 January 2013: removed Eigen3 sources and relying on an already installed Eigen3 library. Optionally RBDL can be used with the included but slower SimpleMath library.</li>
-<li>18 June 2012: added support of luamodel_introduction</li>
-<li>01 June 2012: added support of joint_models_fixed</li>
-<li>14 May 2012: fixed Body constructor as reported by Maxime Reis</li>
-<li>04 April 2012: added benchmark tool for CRBA</li>
-<li>01 March 2012: added multi degree of freedom joint_models</li>
-<li>06 Februry 2012: restructured constraint handling using RigidBodyDynamics::ConstraintSet</li>
-<li>24 January 2012: implemented compact and fast representation of RigidBodyDynamics::Math::SpatialTransform </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <h1 id="documentation">Documentation</h1>
 
 <p>The documentation is contained in the code and can be extracted with the
 tool <a href="http://www.doxygen.org">doxygen</a>.</p>
 
 <p>To create the documentation simply run</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">doxygen Doxyfile
+<div class="highlight"><pre><code class="language-" data-lang="">doxygen Doxyfile
 </code></pre></div>
 <p>which will generate the documentation in the subdirectory ./doc/html. The
 main page will then be located in ./doc/html/index.html.</p>
@@ -398,10 +461,10 @@ main page will then be located in ./doc/html/index.html.</p>
 <h1 id="getting-rbdl">Getting RBDL</h1>
 
 <p>The latest stable code can be obtained from</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://bitbucket.org/rbdl/rbdl/get/default.zip
+<div class="highlight"><pre><code class="language-" data-lang="">https://bitbucket.org/rbdl/rbdl/get/default.zip
 </code></pre></div>
 <p>The official mercurial repository can be cloned from</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://bitbucket.org/rbdl/rbdl
+<div class="highlight"><pre><code class="language-" data-lang="">https://bitbucket.org/rbdl/rbdl
 </code></pre></div>
 <p>(See <a href="http://mercurial.selenic.com">http://mercurial.selenic.com/</a> for
 mercurial clients.)</p>
@@ -411,7 +474,7 @@ mercurial clients.)</p>
 <p>The RBDL is built using CMake
 (<a href="http://www.cmake.org">http://www.cmake.org</a>). To compile the library in
 a separate directory in Release mode use:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir build
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir build
 cd build/
 cmake -D CMAKE_BUILD_TYPE=Release ../ 
 make
@@ -421,7 +484,7 @@ linear algebra library from
 <a href="http://eigen.tuxfamily.org">http://eigen.tuxfamily.org</a>. RBDL also
 comes with a simple, albeit much slower math library (SimpleMath) that can
 be used by enabling <code>RBDL_USE_SIMPLE_MATH</code>, i.e.:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cmake -D RBDL_USE_SIMPLE_MATH=TRUE ../
+<div class="highlight"><pre><code class="language-" data-lang="">cmake -D RBDL_USE_SIMPLE_MATH=TRUE ../
 </code></pre></div>
 <h1 id="licensing">Licensing</h1>
 
@@ -429,8 +492,8 @@ be used by enabling <code>RBDL_USE_SIMPLE_MATH</code>, i.e.:</p>
 license which should allow you to use the software wherever you need. </p>
 
 <p>This is the full license text (zlib license):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">RBDL - Rigid Body Dynamics Library
-Copyright (c) 2011-2014 Martin Felis &lt;martin.felis@iwr.uni-heidelberg.de&gt;
+<div class="highlight"><pre><code class="language-" data-lang="">RBDL - Rigid Body Dynamics Library
+Copyright (c) 2011-2016 Martin Felis &lt;martin.felis@iwr.uni-heidelberg.de&gt;
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
@@ -451,11 +514,21 @@ freely, subject to the following restrictions:
    3. This notice may not be removed or altered from any source
    distribution.
 </code></pre></div>
+<h1 id="acknowledgements">Acknowledgements</h1>
+
+<p>Work on this library was funded by the <a href="http://hgs.iwr.uni-heidelberg.de/hgs.mathcomp/">Heidelberg Graduate School of
+Mathematical and Computational Methods for the Sciences
+(HGS)</a>, and the European
+FP7 projects <a href="http://echord.eu">ECHORD</a> (grant number 231143) and
+<a href="http://koroibot.eu">Koroibot</a> (grant number 611909).</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -463,8 +536,8 @@ freely, subject to the following restrictions:
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -487,7 +560,7 @@ freely, subject to the following restrictions:
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-26
         </span>
       </td>
     </tr>
@@ -531,95 +604,108 @@ freely, subject to the following restrictions:
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
 <p>RBDL - Rigid Body Dynamics Library
-Copyright (c) 2011-2014 Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a></p>
+Copyright (c) 2011-2016 Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a></p>
 
 <h1 id="introduction">Introduction</h1>
 
 <p>RBDL is a highly efficient C++ library that contains some essential rigid
 body dynamics algorithms such as the Articulated Body Algorithm (ABA) for
-forward dynamics, Newton-Euler Algorithm for inverse dynamics and the
-Composite Rigid Body Algorithm (CRBA) for the efficient computation of the
-joint space inertia matrix. It further contains code for forward and
-inverse kinematics and handling of external constraints such as contacts
-and collisions.</p>
+forward dynamics, Recursive Newton-Euler Algorithm (RNEA) for inverse
+dynamics and the Composite Rigid Body Algorithm (CRBA) for the efficient
+computation of the joint space inertia matrix. It further contains code for
+Jacobians, forward and inverse kinematics, and handling of external
+constraints such as contacts and collisions.</p>
 
-<p>The code was written by Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a>
-and tightly follows the notation used in Roy Featherstone''s book "Rigid
-Body Dynamics Algorithm".</p>
+<p>The code is developed by Martin Felis <a href="mailto:martin.felis@iwr.uni-heidelberg.de">martin.felis@iwr.uni-heidelberg.de</a>
+at the research group <a href="http://orb.iwr.uni-heidelberg.de">Optimization in Robotics and Biomechanics
+(ORB)</a> of the <a href="http://www.iwr.uni-heidelberg.de">Interdisciplinary Center
+for Scientific Computing (IWR)</a> at
+<a href="http://www.uni-heidelberg.de">Heidelberg University</a>. The code tightly
+follows the notation used in Roy Featherstone''s book "Rigid Body Dynamics
+Algorithm".</p>
 
 <h1 id="recent-changes">Recent Changes</h1>
 
 <ul>
-<li>21 October 2014: New version 2.3.3:
+<li>28 April 2016: Nev version 2.5.0:
 
 <ul>
-<li>critical: fixed ForwardDynamicsContacts with constraints on a body
-that is attached with a fixed joint. Previous versions simply crashed.
-Thanks to Yue Hu for reporting!</li>
-<li>rbdl_print_version() now properly prints whether URDFReader was enabled
-at build time</li>
-<li>build system: fixed roblems especially building of the URDFreader</li>
-<li>build system: all CMake variables for RBDL are now prefixed with RBDL_ </li>
-<li>FindRBDL.cmake now can use components to search for the LuaModel or
-URDFReader addon</li>
+<li>Added an experimental Cython based Python wrapper of RBDL. The API is
+very close to the C++ API. For a brief glimpse of the API see the file
+python/test_wrapper.py.</li>
+<li>Matthew Millard added CustomJoints which allow to create different joint
+types completely by user code. They are implemented as proxy joints for
+which their behaviour is specified using virtual functions.</li>
+<li>Added CalcMInvTimesTau() that evaluates multiplication of the inverse of
+the joint space inertia matrix with a vector in O(n) time.</li>
+<li>Added JointTypeFloatingBase which uses TX,TY,TZ and a spherical joint for
+the floating base joint.</li>
+<li>Loading of floating base URDF models must now be specified as a third
+parameter to URDFReadFromFile() and URDFReadFromString()</li>
+<li>Added the URDF code from Bullet3 which gets used when ROS is not found.
+Otherwise use the URDF libraries found via Catkin.</li>
+<li>Added CalcPointVelocity6D, CalcPointAcceleration6D, and CalcPointJacobian6D
+that compute both linear and angular quantities</li>
+<li>Removed Model::SetFloatingBase (body). Use a 6-DoF joint or
+JointTypeFloatingBase instead.</li>
+<li>Fixed building issues when building DLL with MSVC++.</li>
 </ul>
 </li>
-<li>29 August 2014: New version 2.3.2:
+<li>20 April 2016: New version 2.4.1:
 
 <ul>
-<li>critical: fixed ForwardDynamicsLagrangian which used uninitialized values for the joint space inertia matrix (thanks to Benjamin Michaud!)</li>
-<li>critical: fixed ForwardDynamicsContacts when using 3-dof joints</li>
-<li>critical: fixed CalcBodyWorldOrientation for fixed joints (thanks to Hilaro Tome!)</li>
-<li>critical: fixed CompositeRigidBodyDynamics when using 3-dof joints (thanks to Henning Koch!)
+<li>This is a bugfix release that maintains binary compatibility and only fixes
+erroneous behaviour.</li>
+<li>critical: fixed termination criterion for InverseKinematics. The termination
+criterion would be evaluated too early and thus report convergence too
+early. This was reported independently by Kevin Stein, Yun Fei, and Davide
+Corradi. Thanks for the reports!</li>
+<li>critical: fixed CompositeRigidBodyAlgorithm when using spherical joints
+(thanks to Sébastien Barthélémy for reporting!)</li>
+</ul>
+</li>
+<li>23 February 2015: New version 2.4.0:
 
 <ul>
-<li>13 July 2014: New version 2.3.1:</li>
+<li>Added sparse range-space method ForwardDynamicsContactsRangeSpaceSparse()
+and ComputeContactImpulsesRangeSpaceSparse() </li>
+<li>Added null-space method ForwardDynamicsContactsNullSpace()
+and ComputeContactImpulsesNullSpace() </li>
+<li>Renamed ForwardDynamicsContactsLagrangian() to
+ForwardDynamicsContactsDirect() and
+ComputeContactImpulsesLagrangian() to ComputeContactImpulsesDirect()</li>
+<li>Renamed ForwardDynamicsContacts() to ForwardDynamicsContactsKokkevis()</li>
+<li>Removed/Fixed CalcAngularMomentum(). The function produced wrong values. The
+functionality has been integrated into CalcCenterOfMass().</li>
+<li>CalcPointJacobian() does not clear the argument of the result anymore.
+Caller has to ensure that the matrix was set to zero before using this
+function.</li>
+<li>Added optional workspace parameters for ForwardDynamicsLagrangian() to
+optionally reduce memory allocations</li>
+<li>Added JointTypeTranslationXYZ, JointTypeEulerXYZ, and JointTypeEulerYXZ
+which are equivalent to the emulated multidof joints but faster.</li>
+<li>Added optional parameter to CalcCenterOfMass to compute angular momentum.</li>
+<li>Added CalcBodySpatialJacobian()</li>
+<li>Added CalcContactJacobian()</li>
+<li>Added NonlinearEffects()</li>
+<li>Added solving of linear systems using standard Householder QR</li>
+<li>LuaModel: Added LuaModelReadFromLuaState()</li>
+<li>URDFReader: Fixed various issues and using faster joints for floating
+base models</li>
+<li>Various performance improvements</li>
 </ul>
 </li>
-<li>critical: fixed angular momentum computation. Version 2.3.0 produced wrong
-results. (Thanks to Hilario Tome and Benjamin Michaud for reporting!)</li>
-<li>critical: fixed JointTypeEulerZYX. Previous versions produce wrong results!</li>
-<li>fixed library version number for the LuaModel addon.
+</ul>
 
-<ul>
-<li>14 March 2014: New version 2.3.0:</li>
-</ul>
-</li>
-<li>Joint Space Inertia Matrix does not get cleared anymore when calling CompositeRigidBodyAlgorithm</li>
-<li>using the default column-major ordering when using Eigen3</li>
-<li>added experimental joint type JointTypeEulerZYX</li>
-<li>added energy computations Utils::CalcCenterOfMass, Utils::CalcPotentialEnergy, Utils::CalcKineticEnergy, and Utils::CalcAngularMomentum.</li>
-<li>Updated URDF loader for ROS Groovy/Hydro (thanks to Benjamin Chrétien!)
+<p>For a complete history see doc/api_changes.txt.</p>
 
-<ul>
-<li>06 November 2013: New version 2.2.2: adjusted Body default constructor (inertia matrix now 3x3 identity instead of zero matrix)</li>
-<li>04 November 2013: New version 2.2.1: fixed exported library version</li>
-<li>28 October 2013: New version 2.2.0: added support for spherical joints that do not suffer from joint singularities</li>
-<li>29 September 2013: New version 2.1.0: adjusted build settings and symbol export to be debian compatible. Removed vendor code such as Lua 5.2 and UnitTest++. Must be pre-installed if tests or LuaModel Addon is enabled.</li>
-<li>05 September 2013: New version 2.0.1: fixed some errors on older compilers and CMake configuration of examples. No changes required when migrating from 2.0.0.</li>
-<li>18 July 2013: API version 2.0.0: removed Eigen3 sources, removed Model::Init(), inverted sign of contact forces/impulses</li>
-<li>20 February 2013: removed too specialized RigidBodyDynamics::Body constructor (API version 1.1.0)</li>
-<li>29 January 2013: added code for api_version_checking. Current API version is 1.0.0.</li>
-<li>11 January 2013: removed Eigen3 sources and relying on an already installed Eigen3 library. Optionally RBDL can be used with the included but slower SimpleMath library.</li>
-<li>18 June 2012: added support of luamodel_introduction</li>
-<li>01 June 2012: added support of joint_models_fixed</li>
-<li>14 May 2012: fixed Body constructor as reported by Maxime Reis</li>
-<li>04 April 2012: added benchmark tool for CRBA</li>
-<li>01 March 2012: added multi degree of freedom joint_models</li>
-<li>06 Februry 2012: restructured constraint handling using RigidBodyDynamics::ConstraintSet</li>
-<li>24 January 2012: implemented compact and fast representation of RigidBodyDynamics::Math::SpatialTransform </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 <h1 id="documentation">Documentation</h1>
 
 <p>The documentation is contained in the code and can be extracted with the
 tool <a href="http://www.doxygen.org">doxygen</a>.</p>
 
 <p>To create the documentation simply run</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">doxygen Doxyfile
+<div class="highlight"><pre><code class="language-" data-lang="">doxygen Doxyfile
 </code></pre></div>
 <p>which will generate the documentation in the subdirectory ./doc/html. The
 main page will then be located in ./doc/html/index.html.</p>
@@ -630,10 +716,10 @@ main page will then be located in ./doc/html/index.html.</p>
 <h1 id="getting-rbdl">Getting RBDL</h1>
 
 <p>The latest stable code can be obtained from</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://bitbucket.org/rbdl/rbdl/get/default.zip
+<div class="highlight"><pre><code class="language-" data-lang="">https://bitbucket.org/rbdl/rbdl/get/default.zip
 </code></pre></div>
 <p>The official mercurial repository can be cloned from</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">https://bitbucket.org/rbdl/rbdl
+<div class="highlight"><pre><code class="language-" data-lang="">https://bitbucket.org/rbdl/rbdl
 </code></pre></div>
 <p>(See <a href="http://mercurial.selenic.com">http://mercurial.selenic.com/</a> for
 mercurial clients.)</p>
@@ -643,7 +729,7 @@ mercurial clients.)</p>
 <p>The RBDL is built using CMake
 (<a href="http://www.cmake.org">http://www.cmake.org</a>). To compile the library in
 a separate directory in Release mode use:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir build
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir build
 cd build/
 cmake -D CMAKE_BUILD_TYPE=Release ../ 
 make
@@ -653,7 +739,7 @@ linear algebra library from
 <a href="http://eigen.tuxfamily.org">http://eigen.tuxfamily.org</a>. RBDL also
 comes with a simple, albeit much slower math library (SimpleMath) that can
 be used by enabling <code>RBDL_USE_SIMPLE_MATH</code>, i.e.:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cmake -D RBDL_USE_SIMPLE_MATH=TRUE ../
+<div class="highlight"><pre><code class="language-" data-lang="">cmake -D RBDL_USE_SIMPLE_MATH=TRUE ../
 </code></pre></div>
 <h1 id="licensing">Licensing</h1>
 
@@ -661,8 +747,8 @@ be used by enabling <code>RBDL_USE_SIMPLE_MATH</code>, i.e.:</p>
 license which should allow you to use the software wherever you need. </p>
 
 <p>This is the full license text (zlib license):</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">RBDL - Rigid Body Dynamics Library
-Copyright (c) 2011-2014 Martin Felis &lt;martin.felis@iwr.uni-heidelberg.de&gt;
+<div class="highlight"><pre><code class="language-" data-lang="">RBDL - Rigid Body Dynamics Library
+Copyright (c) 2011-2016 Martin Felis &lt;martin.felis@iwr.uni-heidelberg.de&gt;
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
@@ -683,11 +769,21 @@ freely, subject to the following restrictions:
    3. This notice may not be removed or altered from any source
    distribution.
 </code></pre></div>
+<h1 id="acknowledgements">Acknowledgements</h1>
+
+<p>Work on this library was funded by the <a href="http://hgs.iwr.uni-heidelberg.de/hgs.mathcomp/">Heidelberg Graduate School of
+Mathematical and Computational Methods for the Sciences
+(HGS)</a>, and the European
+FP7 projects <a href="http://echord.eu">ECHORD</a> (grant number 231143) and
+<a href="http://koroibot.eu">Koroibot</a> (grant number 611909).</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -746,7 +842,7 @@ freely, subject to the following restrictions:
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

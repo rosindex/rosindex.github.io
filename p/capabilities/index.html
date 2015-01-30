@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,317 +196,138 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> capabilities</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/capabilities/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//osrf/capabilities/tree/master/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/capabilities" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-osrf-capabilities
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-osrf-capabilities
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> capabilities</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/capabilities/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//osrf/capabilities/tree/master/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/capabilities" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-osrf-capabilities
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-osrf-capabilities
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> capabilities</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/capabilities/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//osrf/capabilities/tree/master/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/capabilities" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-osrf-capabilities
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-osrf-capabilities
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
 
-  <div class="distro distro-indigo">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> capabilities
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-osrf-capabilities
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-osrf-capabilities
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/capabilities?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -503,7 +366,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -525,7 +388,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-08
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-08-27
         </span>
       </td>
     </tr>
@@ -553,8 +416,29 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -573,21 +457,6 @@
               <ul class="list-unstyled">
                 
                   <li>William Woodall</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
-                
-                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
-                
-                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -612,14 +481,17 @@ development of the appable robot is part of the <a href="http://www.robotconcert
 
 <p>Continuous Integration:</p>
 
-<p><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image">
-Please see the documentation located here:</p>
+<p><a href="https://travis-ci.org/osrf/capabilities"><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"></a></p>
+
+<p><a href="https://coveralls.io/r/osrf/capabilities?branch=master"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image"></a></p>
+
+<p>Please see the documentation located here:</p>
 
 <p><a href="http://wiki.ros.org/capabilities">http://wiki.ros.org/capabilities</a></p>
 
 <p><a href="http://wiki.ros.org/capabilities/Tutorials">http://wiki.ros.org/capabilities/Tutorials</a></p>
 
-<p><a href="http://docs.ros.org/hydro/api/capabilities/html">http://docs.ros.org/hydro/api/capabilities/html</a>/</p>
+<p><a href="http://docs.ros.org/hydro/api/capabilities/html/">http://docs.ros.org/hydro/api/capabilities/html/</a></p>
 
 <p><a href="http://www.robotconcert.org/index.php/Appable_Robot">http://www.robotconcert.org/index.php/Appable_Robot</a></p>
 
@@ -641,7 +513,7 @@ Please see the documentation located here:</p>
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-capabilities">Changelog for package capabilities</h1>
 
-<h2 id="0.2.0-(2014-06-27)">0.2.0 (2014-06-27)</h2>
+<h2 id="0-2-0-2014-06-27">0.2.0 (2014-06-27)</h2>
 
 <ul>
 <li>  downgrade one of the exceptions to a warning</li>
@@ -657,7 +529,8 @@ have already stopped it</li>
 <li>  Contributors: Jon Binney, Marcus Liebhardt, Nikolaus Demmel, William
 Woodall, kentsommer</li>
 </ul>
-<h2 id="0.1.1-(2014-05-02)">0.1.1 (2014-05-02)</h2>
+
+<h2 id="0-1-1-2014-05-02">0.1.1 (2014-05-02)</h2>
 
 <ul>
 <li>  Add entry in setup.py to install package data</li>
@@ -665,7 +538,1011 @@ Woodall, kentsommer</li>
 <li>  Updates link to API doc</li>
 <li>  Contributors: Marcus Liebhardt, William Woodall</li>
 </ul>
-<h2 id="0.1.0-(2014-04-15)">0.1.0 (2014-04-15)</h2>
+
+<h2 id="0-1-0-2014-04-15">0.1.0 (2014-04-15)</h2>
+
+<ul>
+<li>  First release</li>
+<li>  Contributors: Esteve Fernandez, Marcus Liebhardt, Tully Foote,
+William Woodall</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/capabilities/Tutorials/CapabilityDemo" target="_blank">CapabilityDemo</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#kinetic">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#kinetic">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#kinetic">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rostest#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rostest" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rostest#kinetic">rostest</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#kinetic">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#kinetic">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/bondpy#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/bondpy" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/bondpy#kinetic">bondpy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#kinetic">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#kinetic">nodelet</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-yaml">python-yaml</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/turtlebot_capabilities/github-turtlebot-turtlebot#kinetic">turtlebot_capabilities</a></td>
+                      <td><a href="/r/turtlebot/github-turtlebot-turtlebot">github-turtlebot-turtlebot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/turtlebot_capabilities/github-turtlebot-turtlebot#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/kobuki_node/github-yujinrobot-kobuki#kinetic">kobuki_node</a></td>
+                      <td><a href="/r/kobuki/github-yujinrobot-kobuki">github-yujinrobot-kobuki</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/kobuki_node/github-yujinrobot-kobuki#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#kinetic">rocon_app_manager</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>test_case</strong> <em>&#91;default: minimal&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>capability_server_nodelet_manager_name</strong> <em>&#91;default: capability_server_nodelet_manager&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/capabilities?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> capabilities
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-osrf-capabilities
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-osrf-capabilities
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/capabilities?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.2.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/osrf/capabilities.git">https://github.com/osrf/capabilities.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-08-27
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>William Woodall</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>William Woodall</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="capabilities">Capabilities</h1>
+
+<p>Implements the concept of capabilities as part of the <a href="http://www.robotconcert.org/index.php/Appable_Robot">appable
+robot</a>. The
+development of the appable robot is part of the <a href="http://www.robotconcert.org">Robotics-in-Concert
+(ROCON)</a> project.</p>
+
+<p>Continuous Integration:</p>
+
+<p><a href="https://travis-ci.org/osrf/capabilities"><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"></a></p>
+
+<p><a href="https://coveralls.io/r/osrf/capabilities?branch=master"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image"></a></p>
+
+<p>Please see the documentation located here:</p>
+
+<p><a href="http://wiki.ros.org/capabilities">http://wiki.ros.org/capabilities</a></p>
+
+<p><a href="http://wiki.ros.org/capabilities/Tutorials">http://wiki.ros.org/capabilities/Tutorials</a></p>
+
+<p><a href="http://docs.ros.org/hydro/api/capabilities/html/">http://docs.ros.org/hydro/api/capabilities/html/</a></p>
+
+<p><a href="http://www.robotconcert.org/index.php/Appable_Robot">http://www.robotconcert.org/index.php/Appable_Robot</a></p>
+
+<p><img src="http://www.robotconcert.org/images/c/c3/A4_nomal_png_a_small.png" alt="Robotics in Concert"></p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-capabilities">Changelog for package capabilities</h1>
+
+<h2 id="0-2-0-2014-06-27">0.2.0 (2014-06-27)</h2>
+
+<ul>
+<li>  downgrade one of the exceptions to a warning</li>
+<li>  fixup tests to reflect changes to client API</li>
+<li>  Increase queue_size to 1000 for publishers</li>
+<li>  Add queue_size arg for all publishers</li>
+<li>  change exception behavior for use/free_capability in client API</li>
+<li>  A rosdistro agnostic documentation reference</li>
+<li>  conditionally try to stop reverse deps, since other reverse deps may
+have already stopped it</li>
+<li>  make stopping the launch manager more robust to errors</li>
+<li>  adds support of namespaces for capability nodelets</li>
+<li>  Contributors: Jon Binney, Marcus Liebhardt, Nikolaus Demmel, William
+Woodall, kentsommer</li>
+</ul>
+
+<h2 id="0-1-1-2014-05-02">0.1.1 (2014-05-02)</h2>
+
+<ul>
+<li>  Add entry in setup.py to install package data</li>
+<li>  Fixed up testing</li>
+<li>  Updates link to API doc</li>
+<li>  Contributors: Marcus Liebhardt, William Woodall</li>
+</ul>
+
+<h2 id="0-1-0-2014-04-15">0.1.0 (2014-04-15)</h2>
 
 <ul>
 <li>  First release</li>
@@ -687,7 +1564,15 @@ William Woodall</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/capabilities/Tutorials/CapabilityDemo" target="_blank">CapabilityDemo</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -699,45 +1584,295 @@ William Woodall</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#indigo">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#indigo">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rostest#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rostest" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rostest#indigo">rostest</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#indigo">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/bondpy#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/bondpy" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/bondpy#indigo">bondpy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#indigo">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#indigo">nodelet</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-yaml">python-yaml</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#indigo">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslaunch#indigo">roslaunch</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#indigo">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rostest#indigo">rostest</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#indigo">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_srvs#indigo">std_srvs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/bondpy#indigo">bondpy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#indigo">message_runtime</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#indigo">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/python-yaml#indigo">python-yaml</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/turtlebot_capabilities/github-turtlebot-turtlebot#indigo">turtlebot_capabilities</a></td>
+                      <td><a href="/r/turtlebot/github-turtlebot-turtlebot">github-turtlebot-turtlebot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/turtlebot_capabilities/github-turtlebot-turtlebot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/kobuki_node/github-yujinrobot-kobuki#indigo">kobuki_node</a></td>
+                      <td><a href="/r/kobuki/github-yujinrobot-kobuki">github-yujinrobot-kobuki</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/kobuki_node/github-yujinrobot-kobuki#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#indigo">rocon_app_manager</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -745,42 +1880,221 @@ William Woodall</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>test_case</strong> <em>&#91;default: minimal&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>capability_server_nodelet_manager_name</strong> <em>&#91;default: capability_server_nodelet_manager&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -789,19 +2103,21 @@ William Woodall</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -810,35 +2126,37 @@ William Woodall</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -847,28 +2165,35 @@ William Woodall</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/capabilities?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -878,6 +2203,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> capabilities
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-osrf-capabilities
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-osrf-capabilities
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/capabilities?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -890,30 +2302,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -952,7 +2364,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -974,7 +2386,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-08
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-08-27
         </span>
       </td>
     </tr>
@@ -1002,8 +2414,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1022,21 +2455,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>William Woodall</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
-                
-                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
-                
-                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1061,14 +2479,17 @@ development of the appable robot is part of the <a href="http://www.robotconcert
 
 <p>Continuous Integration:</p>
 
-<p><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image">
-Please see the documentation located here:</p>
+<p><a href="https://travis-ci.org/osrf/capabilities"><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"></a></p>
+
+<p><a href="https://coveralls.io/r/osrf/capabilities?branch=master"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image"></a></p>
+
+<p>Please see the documentation located here:</p>
 
 <p><a href="http://wiki.ros.org/capabilities">http://wiki.ros.org/capabilities</a></p>
 
 <p><a href="http://wiki.ros.org/capabilities/Tutorials">http://wiki.ros.org/capabilities/Tutorials</a></p>
 
-<p><a href="http://docs.ros.org/hydro/api/capabilities/html">http://docs.ros.org/hydro/api/capabilities/html</a>/</p>
+<p><a href="http://docs.ros.org/hydro/api/capabilities/html/">http://docs.ros.org/hydro/api/capabilities/html/</a></p>
 
 <p><a href="http://www.robotconcert.org/index.php/Appable_Robot">http://www.robotconcert.org/index.php/Appable_Robot</a></p>
 
@@ -1090,7 +2511,7 @@ Please see the documentation located here:</p>
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-capabilities">Changelog for package capabilities</h1>
 
-<h2 id="0.2.0-(2014-06-27)">0.2.0 (2014-06-27)</h2>
+<h2 id="0-2-0-2014-06-27">0.2.0 (2014-06-27)</h2>
 
 <ul>
 <li>  downgrade one of the exceptions to a warning</li>
@@ -1106,7 +2527,8 @@ have already stopped it</li>
 <li>  Contributors: Jon Binney, Marcus Liebhardt, Nikolaus Demmel, William
 Woodall, kentsommer</li>
 </ul>
-<h2 id="0.1.1-(2014-05-02)">0.1.1 (2014-05-02)</h2>
+
+<h2 id="0-1-1-2014-05-02">0.1.1 (2014-05-02)</h2>
 
 <ul>
 <li>  Add entry in setup.py to install package data</li>
@@ -1114,7 +2536,8 @@ Woodall, kentsommer</li>
 <li>  Updates link to API doc</li>
 <li>  Contributors: Marcus Liebhardt, William Woodall</li>
 </ul>
-<h2 id="0.1.0-(2014-04-15)">0.1.0 (2014-04-15)</h2>
+
+<h2 id="0-1-0-2014-04-15">0.1.0 (2014-04-15)</h2>
 
 <ul>
 <li>  First release</li>
@@ -1136,7 +2559,15 @@ William Woodall</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/capabilities/Tutorials/CapabilityDemo" target="_blank">CapabilityDemo</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1148,45 +2579,267 @@ William Woodall</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#hydro">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#hydro">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#hydro">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rostest#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rostest" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rostest#hydro">rostest</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#hydro">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#hydro">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/bondpy#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/bondpy" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/bondpy#hydro">bondpy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#hydro">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#hydro">nodelet</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-yaml">python-yaml</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#hydro">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslaunch#hydro">roslaunch</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#hydro">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rostest#hydro">rostest</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_srvs#hydro">std_srvs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/bondpy#hydro">bondpy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#hydro">message_runtime</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#hydro">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/python-yaml#hydro">python-yaml</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro">rosjava_messages</a></td>
+                      <td><a href="/r/rosjava_messages/github-rosjava-rosjava_messages">github-rosjava-rosjava_messages</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1194,42 +2847,221 @@ William Woodall</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>test_case</strong> <em>&#91;default: minimal&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>capability_server_nodelet_manager_name</strong> <em>&#91;default: capability_server_nodelet_manager&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1238,19 +3070,21 @@ William Woodall</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1259,35 +3093,37 @@ William Woodall</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1296,28 +3132,35 @@ William Woodall</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/capabilities?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1327,6 +3170,93 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/capabilities">capabilities</a> <small>package from <a style="text-decoration:none" href="/r/capabilities/github-osrf-capabilities">capabilities</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> <span class="glyphicon glyphicon-education"></span> capabilities
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/capabilities"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-osrf-capabilities
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-osrf-capabilities" role="menuitem" tabindex="-1" href="/p/capabilities/github-osrf-capabilities" data="github-osrf-capabilities">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-osrf-capabilities
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/capabilities?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1339,30 +3269,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-primary">1</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1401,7 +3331,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1423,7 +3353,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-08
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-08-27
         </span>
       </td>
     </tr>
@@ -1451,8 +3381,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Package which implements capabilities, including code to parse capability interface specs, to parse capability provider specs, and implement the capability server.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
+                
+                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1471,21 +3422,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>William Woodall</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://wiki.ros.org/capabilities">Website</a></li>
-                
-                  <li><a href="https://github.com/osrf/capabilities">Repository</a></li>
-                
-                  <li><a href="https://github.com/osrf/capabilities/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1510,14 +3446,17 @@ development of the appable robot is part of the <a href="http://www.robotconcert
 
 <p>Continuous Integration:</p>
 
-<p><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image">
-Please see the documentation located here:</p>
+<p><a href="https://travis-ci.org/osrf/capabilities"><img src="https://travis-ci.org/osrf/capabilities.svg?branch=master" alt="image"></a></p>
+
+<p><a href="https://coveralls.io/r/osrf/capabilities?branch=master"><img src="https://coveralls.io/repos/osrf/capabilities/badge.png?branch=master" alt="image"></a></p>
+
+<p>Please see the documentation located here:</p>
 
 <p><a href="http://wiki.ros.org/capabilities">http://wiki.ros.org/capabilities</a></p>
 
 <p><a href="http://wiki.ros.org/capabilities/Tutorials">http://wiki.ros.org/capabilities/Tutorials</a></p>
 
-<p><a href="http://docs.ros.org/hydro/api/capabilities/html">http://docs.ros.org/hydro/api/capabilities/html</a>/</p>
+<p><a href="http://docs.ros.org/hydro/api/capabilities/html/">http://docs.ros.org/hydro/api/capabilities/html/</a></p>
 
 <p><a href="http://www.robotconcert.org/index.php/Appable_Robot">http://www.robotconcert.org/index.php/Appable_Robot</a></p>
 
@@ -1539,7 +3478,7 @@ Please see the documentation located here:</p>
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-capabilities">Changelog for package capabilities</h1>
 
-<h2 id="0.2.0-(2014-06-27)">0.2.0 (2014-06-27)</h2>
+<h2 id="0-2-0-2014-06-27">0.2.0 (2014-06-27)</h2>
 
 <ul>
 <li>  downgrade one of the exceptions to a warning</li>
@@ -1555,7 +3494,8 @@ have already stopped it</li>
 <li>  Contributors: Jon Binney, Marcus Liebhardt, Nikolaus Demmel, William
 Woodall, kentsommer</li>
 </ul>
-<h2 id="0.1.1-(2014-05-02)">0.1.1 (2014-05-02)</h2>
+
+<h2 id="0-1-1-2014-05-02">0.1.1 (2014-05-02)</h2>
 
 <ul>
 <li>  Add entry in setup.py to install package data</li>
@@ -1563,7 +3503,8 @@ Woodall, kentsommer</li>
 <li>  Updates link to API doc</li>
 <li>  Contributors: Marcus Liebhardt, William Woodall</li>
 </ul>
-<h2 id="0.1.0-(2014-04-15)">0.1.0 (2014-04-15)</h2>
+
+<h2 id="0-1-0-2014-04-15">0.1.0 (2014-04-15)</h2>
 
 <ul>
 <li>  First release</li>
@@ -1585,7 +3526,15 @@ William Woodall</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+          <ul>
+            
+              <li><a href="http://wiki.ros.org/capabilities/Tutorials/CapabilityDemo" target="_blank">CapabilityDemo</a></li>
+            
+          </ul>
+          <br>
+        
+        <em>See <a href="http://wiki.ros.org/capabilities/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1597,45 +3546,244 @@ William Woodall</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#groovy">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslaunch#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslaunch" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslaunch#groovy">roslaunch</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#groovy">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rostest#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rostest" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rostest#groovy">rostest</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#groovy">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_srvs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_srvs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_srvs#groovy">std_srvs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/bondpy#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/bondpy" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/bondpy#groovy">bondpy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#groovy">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#groovy">nodelet</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-yaml">python-yaml</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#groovy">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslaunch#groovy">roslaunch</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#groovy">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rostest#groovy">rostest</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#groovy">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_srvs#groovy">std_srvs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/bondpy#groovy">bondpy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#groovy">message_runtime</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#groovy">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/python-yaml#groovy">python-yaml</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1643,42 +3791,221 @@ William Woodall</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./launch/demo.launch" target="_blank">launch/demo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>test_case</strong> <em>&#91;default: minimal&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>debug</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./src/capabilities/capability_server_nodelet_manager.launch" target="_blank">src/capabilities/capability_server_nodelet_manager.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>capability_server_nodelet_manager_name</strong> <em>&#91;default: capability_server_nodelet_manager&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/missing_interface/missing_interface_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch" target="_blank">test/unit/discovery_workspaces/remapping_examples/robot_base_pkg/providers/launch/robot_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/unit/discovery_workspaces/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/duplicate_names_semantic/pkg_with_duplicate_names/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/invalid_specs/pkg_with_invalid_specs/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch" target="_blank">test/unit/discovery_workspaces/minimal/minimal_pkg/providers/launch/slow_to_die.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch" target="_blank">test/rostest/test_server/no_default_provider/no_default_provider_pkg/providers/launch/minimal2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch" target="_blank">test/rostest/test_server/dependent_capabilities/navigation_capability/providers/launch/faux_navigation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch" target="_blank">test/rostest/test_server/dependent_capabilities/differential_mobile_base_capability/providers/launch/faux_differential_mobile_base.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1687,19 +4014,21 @@ William Woodall</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilityEvent.msg" target="_blank">msg/CapabilityEvent.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/CapabilitySpec.msg" target="_blank">msg/CapabilitySpec.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/RunningCapability.msg" target="_blank">msg/RunningCapability.msg</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./msg/Capability.msg" target="_blank">msg/Capability.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1708,35 +4037,37 @@ William Woodall</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
-          
-            <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StopCapability.srv" target="_blank">srv/StopCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpecs.srv" target="_blank">srv/GetCapabilitySpecs.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/StartCapability.srv" target="_blank">srv/StartCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRunningCapabilities.srv" target="_blank">srv/GetRunningCapabilities.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/FreeCapability.srv" target="_blank">srv/FreeCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetNodeletManagerName.srv" target="_blank">srv/GetNodeletManagerName.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetSemanticInterfaces.srv" target="_blank">srv/GetSemanticInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetProviders.srv" target="_blank">srv/GetProviders.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetInterfaces.srv" target="_blank">srv/GetInterfaces.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/EstablishBond.srv" target="_blank">srv/EstablishBond.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/UseCapability.srv" target="_blank">srv/UseCapability.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetRemappings.srv" target="_blank">srv/GetRemappings.srv</a></li>
+            
+              <li><a href="https://github.com//osrf/capabilities/tree/master/./srv/GetCapabilitySpec.srv" target="_blank">srv/GetCapabilitySpec.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1745,28 +4076,35 @@ William Woodall</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/capabilities/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//osrf/capabilities/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:capabilities/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/capabilities?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=capabilities&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1818,7 +4156,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

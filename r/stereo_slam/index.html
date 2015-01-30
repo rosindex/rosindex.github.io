@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,7 +147,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -117,14 +159,14 @@
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
-    <label id="hydro-option" class="distro-button btn btn-xs btn-primary" href="#hydro" data="hydro">
+    <label id="hydro-option" class="distro-button btn btn-xs btn-default" href="#hydro" data="hydro">
       <input type="radio" name="options" id="hydro-radio" autocomplete="off"> hydro
     </label>
   
 
   <!-- Older distros -->
   <div class="btn-group dropdown">
-    <label type="button" class="btn btn-xs dropdown-toggle btn-primary" data-toggle="dropdown" id="older-distro-button">
+    <label type="button" class="btn btn-xs dropdown-toggle btn-default" data-toggle="dropdown" id="older-distro-button">
         <input type="radio" name="options" autocomplete="off">
       <span id="older-label">Older</span>
       <span class="caret"></span>
@@ -135,7 +177,7 @@
           <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
         </li>
       
-        <li data="fuerte" id="fuerte-option" class=" older-distro-option"  href="#fuerte">
+        <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
           <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
         </li>
       
@@ -220,19 +262,19 @@
 </div>
 
 
-  <div class="distro distro-jade">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
 
-  <div class="distro distro-indigo">
+  <div class="distro distro-jade">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +297,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-23
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-21
         </span>
       </td>
     </tr>
@@ -312,25 +354,29 @@
 <html><body><div class="rendered-markdown">
 <h1 id="stereo-slam">Stereo SLAM</h1>
 
-<p>stereo_slam is a <a href="http://www.ros.org/">ROS</a> node to execute Simultaneous Localization And Mapping (SLAM) using only one stereo camera. The algorithm was designed and tested for underwater robotics. This node is based on the <a href="http://wiki.ros.org/g2o">G2O</a> library for graph optimization and uses the power of <a href="https://github.com/srv/libhaloc">libhaloc</a> to find loop closures between graph nodes. The workflow of the stereo_slam node is as follows:</p>
-
-<p><img src="https://raw.github.com/srv/stereo_slam/hydro/resources/flowchart.png" alt="alt tag"></p>
+<p>stereo_slam is a <a href="http://www.ros.org/">ROS</a> node to execute Simultaneous Localization And Mapping (SLAM) using only one stereo camera. The algorithm was designed and tested for underwater robotics. This node is based on the <a href="http://wiki.ros.org/g2o">G2O</a> library for graph optimization and uses the power of <a href="https://github.com/srv/libhaloc">libhaloc</a> to find loop closures between graph nodes. It uses a keyframe to multi-keyframe loop closing mechanism, based on keypoint clustering, to improve the SLAM corrections on feature-poor environments.</p>
 
 <p>You can see it in action here:</p>
 
 <p><a href="http://www.youtube.com/watch?v=h3FfXafuOvE"><img src="http://img.youtube.com/vi/h3FfXafuOvE/0.jpg" alt="Alt text for your video"></a></p>
 
-<p>More videos...
-<a href="http://www.youtube.com/watch?v=GXOhWmzSqUM">Stereo SLAM and 3D reconstruction </a> and
-<a href="http://www.youtube.com/watch?v=8NR6ono1SUI">Stereo SLAM at UIB outdoor pond</a></p>
+<p>Specially designed for underwater scenarios:</p>
 
-<h2 id="installation-(ubuntu-+-ros-indigo)">Installation (Ubuntu + ROS Indigo)</h2>
+<p><a href="https://www.youtube.com/watch?v=C4U8eaPzrLg">Video: ORB-SLAM vs Stereo SLAM (underwater)</a></p>
+
+<p>More videos...</p>
+
+<p><a href="http://www.youtube.com/watch?v=GXOhWmzSqUM">Video: Stereo SLAM and 3D reconstruction </a> and
+<a href="http://www.youtube.com/watch?v=8NR6ono1SUI">Video: Stereo SLAM at UIB outdoor pond</a></p>
+
+<h2 id="installation-ubuntu-ros-indigo">Installation (Ubuntu + ROS Indigo)</h2>
 
 <p>1) Install the dependencies</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install ros-&lt;your ros distro&gt;-libg2o
-</code></pre></div>
-<p>Install libhaloc as specified here: <a href="https://github.com/srv/libhaloc">libhaloc</a>.</p>
 
+sudo apt-get install libceres-dev
+
+</code></pre></div>
 <p>You also need to setup a stereo visual odometer (e.g. <a href="http://wiki.ros.org/viso2_ros">viso2</a> or <a href="http://wiki.ros.org/fovis_ros">fovis</a>).</p>
 
 <p>3) Download the code, save it to your ROS workspace enviroment and compile.</p>
@@ -338,84 +384,104 @@
 git clone https://github.com/srv/stereo_slam.git
 <span class="nb">cd </span>stereo_slam
 rosmake
+
 </code></pre></div>
 <h2 id="parameters">Parameters</h2>
-
-<h3 id="most-important">Most important</h3>
 
 <ul>
 <li>
 <code>odom_topic</code> - Visual odometry topic (type nav_msgs::Odometry).</li>
 <li>
-<code>left_topic</code> - Left image camera topic (type sensor_msgs::Image).</li>
-<li>
-<code>right_topic</code> - Right image camera topic (type sensor_msgs::Image).</li>
-<li>
-<code>left_info_topic</code> - Left info camera topic (type sensor_msgs::CameraInfo).</li>
-<li>
-<code>right_info_topic</code> - Right info camera topic (type sensor_msgs::CameraInfo).</li>
-<li>
-<code>min_displacement</code> - Min displacement between graph vertices (in meters).</li>
-<li>
-<code>min_matches</code> - Minimun number of descriptor matches to consider a matching as possible loop closure. If you don't have loop closings, try to decrease this parameter (minimum value = 8).</li>
-<li>
-<code>min_inliers</code> - Minimum number of inliers between loop closing candidates. If you don't have loop closings, try to decrease this parameter (minimum value = 7).</li>
+<code>camera_topic</code> - The namespace of your stereo camera.</li>
 </ul>
-<h3 id="other-parameters-(do-not-touch-by-default)">Other parameters (do not touch by default)</h3>
 
-<h4 id="g2o-library">G2O Library</h4>
+<p>Other (hard-coded) parameters</p>
 
 <ul>
 <li>
-<code>g2o_algorithm</code> - Set to 0 for LinearSlam Solver with gauss-newton. Set to 1 for LinearSlam Solver with Levenberg (Default 1).</li>
-<li>
-<code>g2o_opt_max_iter</code> - Maximum number of g2o alogirthm iterations (typically between 10-50)</li>
+<code>include/constants.h</code> - Contains the set of node parameters. Default parameters should work.</li>
 </ul>
-<h4 id="graph">Graph</h4>
 
-<ul>
-<li>
-<code>min_neighbor</code> - Minimum number of neighbors to considerate for loop closing.</li>
-</ul>
-<h4 id="stereo-vision">Stereo vision</h4>
-
-<ul>
-<li>
-<code>desc_type</code> - Can be SIFT or SURF (SIFT by default).</li>
-<li>
-<code>desc_thresh</code> - Descriptor threshold (for SIFT typically between 0.8-0.9).</li>
-</ul>
-<h4 id="topics">Topics</h4>
-
-<ul>
-<li>
-<code>pose_frame_id</code> - Frame name where pose will be published.</li>
-<li>
-<code>pose_child_frame_id</code> - Child frame name of the pose.</li>
-</ul>
 <h2 id="run-the-node">Run the node</h2>
 
-<p>You can run the node using the launch file located at launch/demo.launch:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">roslaunch stereo_slam demo.launch
+<p>You can run the node using the following launch file (please, for a better performance scale your images if more than 960px width).</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;launch&gt;
+  &lt;arg <span class="nv">name</span><span class="o">=</span><span class="s2">"camera"</span> <span class="nv">default</span><span class="o">=</span><span class="s2">"/stereo"</span>/&gt;
+
+  &lt;!-- Run the stereo image proc --&gt;
+  &lt;node <span class="nv">ns</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>arg camera<span class="k">)</span><span class="s2">"</span> <span class="nv">pkg</span><span class="o">=</span><span class="s2">"stereo_image_proc"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"stereo_image_proc"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stereo_image_proc"</span> /&gt;
+
+  &lt;node <span class="nv">pkg</span><span class="o">=</span><span class="s2">"viso2_ros"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"stereo_odometer"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stereo_odometer"</span>&gt;
+    &lt;remap <span class="nv">from</span><span class="o">=</span><span class="s2">"stereo"</span> <span class="nv">to</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>arg camera<span class="k">)</span><span class="s2">"</span>/&gt;
+    &lt;remap <span class="nv">from</span><span class="o">=</span><span class="s2">"image"</span> <span class="nv">to</span><span class="o">=</span><span class="s2">"image_rect"</span>/&gt;
+  &lt;/node&gt;
+
+  &lt;node <span class="nv">pkg</span><span class="o">=</span><span class="s2">"stereo_slam"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"localization"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stereo_slam"</span> <span class="nv">output</span><span class="o">=</span><span class="s2">"screen"</span>&gt;
+    &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">"odom_topic"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"/stereo_odometer/odometry"</span>/&gt;
+    &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">"camera_topic"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>arg camera<span class="k">)</span><span class="s2">"</span>/&gt;
+  &lt;/node&gt;
+&lt;/launch&gt;
+
 </code></pre></div>
+<h2 id="published-topics">Published Topics</h2>
+
+<ul>
+<li>
+<code>/stereo_slam/odometry</code> - The vehicle pose (type nav_msgs::Odometry).</li>
+<li>
+<code>/stereo_slam/graph_poses</code> - The updated graph poses (type stereo_slam::GraphPoses).</li>
+<li>
+<code>/stereo_slam/keyframes</code> - Number of inserted keyframes (type std_msgs::String).</li>
+<li>
+<code>/stereo_slam/keypoints_clustering</code> - Image containing the keypoint clusters (type sensor_msgs::Image).</li>
+<li>
+<code>/stereo_slam/loop_closing_matchings</code> - Image of the loop closing correspondences. Correspondences are keyframe-to-multi-keyframe (type sensor_msgs::Image).</li>
+<li>
+<code>/stereo_slam/loop_closing_queue</code> - Number of keyframes waiting on the loop closing queue. Please monitor this topic, to check the real-time performance: if this number grows indefinitely it means that your system is not able to process all the keyframes, then, scale your images. (type std_msgs::String).</li>
+<li>
+<code>/stereo_slam/loop_closings</code> - Number of loop closings found (type std_msgs::String).</li>
+<li>
+<code>/stereo_slam/pointcloud</code> - The pointcloud for every keyframe (type sensor_msgs::PointCloud2).</li>
+<li>
+<code>/stereo_slam/tracking_overlap</code> - Image containing a representation of the traking overlap. Used to decide when to insert a new keyframe into the graph (type sensor_msgs::Image).</li>
+<li>
+<code>/stereo_slam/camera_params</code> - The optimized (calibrated) camera parameters after every loop closure (type stereo_slam::CameraParams).</li>
+</ul>
+
+<h2 id="saved-data">Saved data</h2>
+
+<p>The node stores some data into the stereo_slam directory during the execution:
+* <code>haloc</code> - A folder containing all the files needed for the libhaloc library, which is responsible for loop closing detection. You do not need this folder at all.
+* <code>keyframes</code> - Stores the left stereo image for every keyframe (with the possibility of drawing the keypoint clustering over the image).
+* <code>loop_closures</code> - Stores all the images published in the topic <code>/stereo_slam/loop_closing_matchings</code>.
+* <code>pointclouds</code> - Stores all the pointclouds published in the topic <code>/stereo_slam/pointcloud</code>.</p>
+
 <h2 id="online-graph-viewer">Online graph viewer</h2>
 
 <p>The node provides a python script to visualize the results of the stereo_slam during the execution: scripts/graph_viewer.py:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage:  graph_viewer.py <span class="o">[</span>-h<span class="o">]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage:  graph_viewer.py <span class="o">[</span>-h]
     ground_truth_file visual_odometry_file
     graph_vertices_file graph_edges_file
+
+</code></pre></div>
+<p>or (automatically detect the graph files):</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">roscd stereo_slam
+./scripts/graph_viewer.py
+
 </code></pre></div>
 <p>The odometry file can be recorded directly from ros using:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rostopic <span class="nb">echo</span> -p /your_odometry_topic/odometry &gt; odometry.txt
+
 </code></pre></div>
 <p>The ground truth file must have the same format than the odometry.</p>
 
 <h2 id="post-processing">Post processing</h2>
 
 <p>The node provides a python script to evaluate the results of the stereo_slam once the execution finishes: scripts/slam_evaluation.py:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage: slam_evaluation.py <span class="o">[</span>-h<span class="o">]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage: slam_evaluation.py <span class="o">[</span>-h]
     ground_truth_file visual_odometry_file
     graph_vertices_file graph_edges_file
+
 </code></pre></div>
 <p>This script perform a set of operations in order to evaluate the performance of the stereo_slam algorithm:</p>
 
@@ -429,15 +495,18 @@ rosmake
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
 
-  <div class="distro distro-hydro">
+  <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -454,13 +523,13 @@ rosmake
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">hydro</span></td>
+      <td><span class="label label-default">indigo</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-08-28
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-21
         </span>
       </td>
     </tr>
@@ -517,25 +586,29 @@ rosmake
 <html><body><div class="rendered-markdown">
 <h1 id="stereo-slam">Stereo SLAM</h1>
 
-<p>stereo_slam is a <a href="http://www.ros.org/">ROS</a> node to execute Simultaneous Localization And Mapping (SLAM) using only one stereo camera. The algorithm was designed and tested for underwater robotics. This node is based on the <a href="http://wiki.ros.org/g2o">G2O</a> library for graph optimization and uses the power of <a href="https://github.com/srv/libhaloc">libhaloc</a> to find loop closures between graph nodes. The workflow of the stereo_slam node is as follows:</p>
-
-<p><img src="https://raw.github.com/srv/stereo_slam/hydro/resources/flowchart.png" alt="alt tag"></p>
+<p>stereo_slam is a <a href="http://www.ros.org/">ROS</a> node to execute Simultaneous Localization And Mapping (SLAM) using only one stereo camera. The algorithm was designed and tested for underwater robotics. This node is based on the <a href="http://wiki.ros.org/g2o">G2O</a> library for graph optimization and uses the power of <a href="https://github.com/srv/libhaloc">libhaloc</a> to find loop closures between graph nodes. It uses a keyframe to multi-keyframe loop closing mechanism, based on keypoint clustering, to improve the SLAM corrections on feature-poor environments.</p>
 
 <p>You can see it in action here:</p>
 
 <p><a href="http://www.youtube.com/watch?v=h3FfXafuOvE"><img src="http://img.youtube.com/vi/h3FfXafuOvE/0.jpg" alt="Alt text for your video"></a></p>
 
-<p>More videos...
-<a href="http://www.youtube.com/watch?v=GXOhWmzSqUM">Stereo SLAM and 3D reconstruction </a> and 
-<a href="http://www.youtube.com/watch?v=8NR6ono1SUI">Stereo SLAM at UIB outdoor pond</a></p>
+<p>Specially designed for underwater scenarios:</p>
 
-<h2 id="installation-(ubuntu-+-ros-fuerte/hydro)">Installation (Ubuntu + ROS fuerte/hydro)</h2>
+<p><a href="https://www.youtube.com/watch?v=C4U8eaPzrLg">Video: ORB-SLAM vs Stereo SLAM (underwater)</a></p>
+
+<p>More videos...</p>
+
+<p><a href="http://www.youtube.com/watch?v=GXOhWmzSqUM">Video: Stereo SLAM and 3D reconstruction </a> and
+<a href="http://www.youtube.com/watch?v=8NR6ono1SUI">Video: Stereo SLAM at UIB outdoor pond</a></p>
+
+<h2 id="installation-ubuntu-ros-indigo">Installation (Ubuntu + ROS Indigo)</h2>
 
 <p>1) Install the dependencies</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install ros-&lt;your ros distro&gt;-libg2o
-</code></pre></div>
-<p>Install libhaloc as specified here: <a href="https://github.com/srv/libhaloc">libhaloc</a>.</p>
 
+sudo apt-get install libceres-dev
+
+</code></pre></div>
 <p>You also need to setup a stereo visual odometer (e.g. <a href="http://wiki.ros.org/viso2_ros">viso2</a> or <a href="http://wiki.ros.org/fovis_ros">fovis</a>).</p>
 
 <p>3) Download the code, save it to your ROS workspace enviroment and compile.</p>
@@ -543,84 +616,104 @@ rosmake
 git clone https://github.com/srv/stereo_slam.git
 <span class="nb">cd </span>stereo_slam
 rosmake
+
 </code></pre></div>
 <h2 id="parameters">Parameters</h2>
-
-<h3 id="most-important">Most important</h3>
 
 <ul>
 <li>
 <code>odom_topic</code> - Visual odometry topic (type nav_msgs::Odometry).</li>
 <li>
-<code>left_topic</code> - Left image camera topic (type sensor_msgs::Image).</li>
-<li>
-<code>right_topic</code> - Right image camera topic (type sensor_msgs::Image).</li>
-<li>
-<code>left_info_topic</code> - Left info camera topic (type sensor_msgs::CameraInfo).</li>
-<li>
-<code>right_info_topic</code> - Right info camera topic (type sensor_msgs::CameraInfo).</li>
-<li>
-<code>min_displacement</code> - Min displacement between graph vertices (in meters).</li>
-<li>
-<code>min_matches</code> - Minimun number of descriptor matches to consider a matching as possible loop closure. If you don't have loop closings, try to decrese this parameter (minimum value = 8).</li>
-<li>
-<code>min_inliers</code> - Minimum number of inliers between loop closing candidates. If you don't have loop closings, try to decrese this parameter (minimum value = 7).</li>
+<code>camera_topic</code> - The namespace of your stereo camera.</li>
 </ul>
-<h3 id="other-parameters-(do-not-touch-by-default)">Other parameters (do not touch by default)</h3>
 
-<h4 id="g2o-library">G2O Library</h4>
+<p>Other (hard-coded) parameters</p>
 
 <ul>
 <li>
-<code>g2o_algorithm</code> - Set to 0 for LinearSlam Solver with gauss-newton. Set to 1 for LinearSlam Solver with Levenberg (Default 1).</li>
-<li>
-<code>g2o_opt_max_iter</code> - Maximum number of g2o alogirthm iterations (typically between 10-50)</li>
+<code>include/constants.h</code> - Contains the set of node parameters. Default parameters should work.</li>
 </ul>
-<h4 id="graph">Graph</h4>
 
-<ul>
-<li>
-<code>min_neighbour</code> - Minimum number of neighbours to considerate for loop closing.</li>
-</ul>
-<h4 id="stereo-vision">Stereo vision</h4>
-
-<ul>
-<li>
-<code>desc_type</code> - Can be SIFT or SURF (SIFT by default).</li>
-<li>
-<code>desc_thresh</code> - Descriptor threshold (for SIFT typically between 0.8-0.9).</li>
-</ul>
-<h4 id="topics">Topics</h4>
-
-<ul>
-<li>
-<code>pose_frame_id</code> - Frame name where pose will be published.</li>
-<li>
-<code>pose_child_frame_id</code> - Child frame name of the pose.</li>
-</ul>
 <h2 id="run-the-node">Run the node</h2>
 
-<p>You can run the node using the launch file located at launch/demo.launch:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">roslaunch stereo_slam demo.launch
+<p>You can run the node using the following launch file (please, for a better performance scale your images if more than 960px width).</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;launch&gt;
+  &lt;arg <span class="nv">name</span><span class="o">=</span><span class="s2">"camera"</span> <span class="nv">default</span><span class="o">=</span><span class="s2">"/stereo"</span>/&gt;
+
+  &lt;!-- Run the stereo image proc --&gt;
+  &lt;node <span class="nv">ns</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>arg camera<span class="k">)</span><span class="s2">"</span> <span class="nv">pkg</span><span class="o">=</span><span class="s2">"stereo_image_proc"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"stereo_image_proc"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stereo_image_proc"</span> /&gt;
+
+  &lt;node <span class="nv">pkg</span><span class="o">=</span><span class="s2">"viso2_ros"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"stereo_odometer"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stereo_odometer"</span>&gt;
+    &lt;remap <span class="nv">from</span><span class="o">=</span><span class="s2">"stereo"</span> <span class="nv">to</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>arg camera<span class="k">)</span><span class="s2">"</span>/&gt;
+    &lt;remap <span class="nv">from</span><span class="o">=</span><span class="s2">"image"</span> <span class="nv">to</span><span class="o">=</span><span class="s2">"image_rect"</span>/&gt;
+  &lt;/node&gt;
+
+  &lt;node <span class="nv">pkg</span><span class="o">=</span><span class="s2">"stereo_slam"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"localization"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stereo_slam"</span> <span class="nv">output</span><span class="o">=</span><span class="s2">"screen"</span>&gt;
+    &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">"odom_topic"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"/stereo_odometer/odometry"</span>/&gt;
+    &lt;param <span class="nv">name</span><span class="o">=</span><span class="s2">"camera_topic"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>arg camera<span class="k">)</span><span class="s2">"</span>/&gt;
+  &lt;/node&gt;
+&lt;/launch&gt;
+
 </code></pre></div>
+<h2 id="published-topics">Published Topics</h2>
+
+<ul>
+<li>
+<code>/stereo_slam/odometry</code> - The vehicle pose (type nav_msgs::Odometry).</li>
+<li>
+<code>/stereo_slam/graph_poses</code> - The updated graph poses (type stereo_slam::GraphPoses).</li>
+<li>
+<code>/stereo_slam/keyframes</code> - Number of inserted keyframes (type std_msgs::String).</li>
+<li>
+<code>/stereo_slam/keypoints_clustering</code> - Image containing the keypoint clusters (type sensor_msgs::Image).</li>
+<li>
+<code>/stereo_slam/loop_closing_matchings</code> - Image of the loop closing correspondences. Correspondences are keyframe-to-multi-keyframe (type sensor_msgs::Image).</li>
+<li>
+<code>/stereo_slam/loop_closing_queue</code> - Number of keyframes waiting on the loop closing queue. Please monitor this topic, to check the real-time performance: if this number grows indefinitely it means that your system is not able to process all the keyframes, then, scale your images. (type std_msgs::String).</li>
+<li>
+<code>/stereo_slam/loop_closings</code> - Number of loop closings found (type std_msgs::String).</li>
+<li>
+<code>/stereo_slam/pointcloud</code> - The pointcloud for every keyframe (type sensor_msgs::PointCloud2).</li>
+<li>
+<code>/stereo_slam/tracking_overlap</code> - Image containing a representation of the traking overlap. Used to decide when to insert a new keyframe into the graph (type sensor_msgs::Image).</li>
+<li>
+<code>/stereo_slam/camera_params</code> - The optimized (calibrated) camera parameters after every loop closure (type stereo_slam::CameraParams).</li>
+</ul>
+
+<h2 id="saved-data">Saved data</h2>
+
+<p>The node stores some data into the stereo_slam directory during the execution:
+* <code>haloc</code> - A folder containing all the files needed for the libhaloc library, which is responsible for loop closing detection. You do not need this folder at all.
+* <code>keyframes</code> - Stores the left stereo image for every keyframe (with the possibility of drawing the keypoint clustering over the image).
+* <code>loop_closures</code> - Stores all the images published in the topic <code>/stereo_slam/loop_closing_matchings</code>.
+* <code>pointclouds</code> - Stores all the pointclouds published in the topic <code>/stereo_slam/pointcloud</code>.</p>
+
 <h2 id="online-graph-viewer">Online graph viewer</h2>
 
 <p>The node provides a python script to visualize the results of the stereo_slam during the execution: scripts/graph_viewer.py:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage:  graph_viewer.py <span class="o">[</span>-h<span class="o">]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage:  graph_viewer.py <span class="o">[</span>-h]
     ground_truth_file visual_odometry_file
     graph_vertices_file graph_edges_file
+
+</code></pre></div>
+<p>or (automatically detect the graph files):</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">roscd stereo_slam
+./scripts/graph_viewer.py
+
 </code></pre></div>
 <p>The odometry file can be recorded directly from ros using:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rostopic <span class="nb">echo</span> -p /your_odometry_topic/odometry &gt; odometry.txt
+
 </code></pre></div>
 <p>The ground truth file must have the same format than the odometry.</p>
 
 <h2 id="post-processing">Post processing</h2>
 
 <p>The node provides a python script to evaluate the results of the stereo_slam once the execution finishes: scripts/slam_evaluation.py:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage: slam_evaluation.py <span class="o">[</span>-h<span class="o">]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage: slam_evaluation.py <span class="o">[</span>-h]
     ground_truth_file visual_odometry_file
     graph_vertices_file graph_edges_file
+
 </code></pre></div>
 <p>This script perform a set of operations in order to evaluate the performance of the stereo_slam algorithm:</p>
 
@@ -634,6 +727,17 @@ rosmake
             
           </div>
         </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>hydro</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -649,230 +753,7 @@ rosmake
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
-        <div class="panel panel-default">
-          
-          
-          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
-            
-
-  <table class="table table-condensed">
-    <tr>
-      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://github.com/srv/stereo_slam.git">https://github.com/srv/stereo_slam.git</a></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">git</span></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">fuerte</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
-      <td>
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-01-30
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Dev Status</b></td>
-      <td>
-        
-          <span class="label label-warning">UNMAINTAINED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Released</b></td>
-      <td>
-        
-          <span class="label label-default">UNRELEASED
-        </span>
-      </td>
-    </tr>
-  </table>
-
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
-          <div class="panel-body">
-            
-            
-              <table class="table table-condensed table-hover table-striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Version</th>
-                  </tr>
-                </thead>
-                <tbody>
-                
-                  <tr>
-                    <td><a href="/p/stereo_slam/github-srv-stereo_slam">stereo_slam</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                </tbody>
-              </table>
-            
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
-          <div class="panel-body">
-            
-              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown">
-<h1 id="stereo-slam">Stereo SLAM</h1>
-
-<p>stereo_slam is a <a href="http://www.ros.org/">ROS</a> node to execute Simultaneous Localization And Mapping (SLAM) using only one stereo camera. The algorithm was designed and tested for underwater robotics. This node is based on the <a href="http://wiki.ros.org/g2o">G2O</a> library for graph optimization and uses the power of PostgreSQL to store the image keypoints and descriptors. The workflow of the stereo_slam node is as follows:</p>
-
-<p><img src="https://raw.github.com/srv/stereo_slam/fuerte/resources/flowchart.png" alt="alt tag"></p>
-
-<p>You can see it in action here:
-<a href="http://www.youtube.com/watch?v=GXOhWmzSqUM">Stereo SLAM and 3D reconstruction </a>
-<a href="http://www.youtube.com/watch?v=8NR6ono1SUI">Stereo SLAM at UIB outdoor pond</a></p>
-
-<h2 id="installation-(ubuntu-+-ros-fuerte/hydro)">Installation (Ubuntu + ROS fuerte/hydro)</h2>
-
-<p>1) Install the dependencies</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install ros-&lt;your ros distro&gt;-libg2o
-sudo apt-get install ros-&lt;your ros distro&gt;-sql-database
-sudo apt-get install postgresql pgadmin3
-</code></pre></div>
-<p>You also need to setup a stereo visual odometer (e.g. <a href="http://wiki.ros.org/viso2_ros">viso2</a> or <a href="http://wiki.ros.org/fovis_ros">fovis</a>).</p>
-
-<p>2) Configure the PostgreSQL database. This creates the user postgres with password postgres. You can setup a different user and password but then you must specify these parameters to the stereo_slam ROS node.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -u postgres psql postgres
-<span class="se">\p</span>assword postgres
-</code></pre></div>
-<p>3) Download the code, save it to your ROS workspace enviroment and compile.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">roscd
-git clone https://github.com/srv/stereo_slam.git
-<span class="nb">cd </span>stereo_slam
-rosmake
-</code></pre></div>
-<h2 id="parameters">Parameters</h2>
-
-<h3 id="most-important">Most important</h3>
-
-<ul>
-<li>
-<code>odom_topic</code> - Visual odometry topic (type nav_msgs::Odometry).</li>
-<li>
-<code>left_topic</code> - Left image camera topic (type sensor_msgs::Image).</li>
-<li>
-<code>right_topic</code> - Right image camera topic (type sensor_msgs::Image).</li>
-<li>
-<code>left_info_topic</code> - Left info camera topic (type sensor_msgs::CameraInfo).</li>
-<li>
-<code>right_info_topic</code> - Right info camera topic (type sensor_msgs::CameraInfo).</li>
-<li>
-<code>min_displacement</code> - Min displacement between graph vertices (in meters).</li>
-<li>
-<code>max_candidate_threshold</code> - Loop closing candidate search radius (in meters).</li>
-<li>
-<code>update_rate</code> - G2O update rate (in seconds).</li>
-<li>
-<code>descriptor_threshold</code> - Descriptor threshold (for SIFT typically between 0.8-0.9).</li>
-<li>
-<code>matches_threshold</code> - Minimum number of matches between loop closing candidates. (Step 1 of the candidate search stage). If you don't have loop closings, try to decrese this parameter.</li>
-<li>
-<code>min_inliers</code> - Minimum number of inliers between loop closing candidates (Step 2 of the candidate search stage). If you don't have loop closings, try to decrese this parameter (minimum value = 7).</li>
-<li>
-<code>max_edge_err</code> - Maximum allowed error between loop closing candidates (Step 3 of the candidate search stage).</li>
-<li>
-<code>save_graph_to_file</code> - true to save the graph to an output file.</li>
-<li>
-<code>files_path</code> - Path where the graphvertices.txt and graphedges.txt files are saved.</li>
-<li>
-<code>go2_opt_max_iter</code> - Maximum number of g2o alogirthm iterations (typically between 10-50)</li>
-</ul>
-<h3 id="other-parameters-(do-not-touch-by-default)">Other parameters (do not touch by default)</h3>
-
-<h4 id="g2o-library">G2O Library</h4>
-
-<ul>
-<li>
-<code>g2o_algorithm</code> - Set to 0 for LinearSlam Solver with gauss-newton. Set to 1 for LinearSlam Solver with Levenberg (Default 1).</li>
-<li>
-<code>go2_verbose</code> - True to output the g2o iteration messages.</li>
-</ul>
-<h4 id="graph">Graph</h4>
-
-<ul>
-<li>
-<code>neighbor_offset</code> - Number of neighbor graph vertices discarted for loop-closing.</li>
-</ul>
-<h4 id="stereo-vision">Stereo vision</h4>
-
-<ul>
-<li>
-<code>desc_type</code> - Can be SIFT or SURF (SIFT by default).</li>
-<li>
-<code>epipolar_threshold</code> - Maximum epipolar distance for stereo matching.</li>
-<li>
-<code>allowed_reprojection_err</code> - Maximum reprojection error allowed in solvePnPRansac algorithm.</li>
-<li>
-<code>stereo_vision_verbose</code> - True to output the messages of stereo matching process.</li>
-<li>
-<code>bucket_width</code> - Bucket width.</li>
-<li>
-<code>bucket_height</code> - Bucket height.</li>
-<li>
-<code>max_bucket_features</code> - Maximum number of features per bucket.</li>
-</ul>
-<h4 id="topics">Topics</h4>
-
-<ul>
-<li>
-<code>queue_size</code> - Indicate the maximum number of messages encued (typically between 2-6).</li>
-<li>
-<code>map_frame_id</code> - The map frame id (map by default).</li>
-<li>
-<code>base_link_frame_id</code> - The robot base link frame id.</li>
-</ul>
-<h2 id="run-the-node">Run the node</h2>
-
-<p>You can run the node using the launch file located at launch/demo.launch:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">roslaunch stereo_slam demo.launch
-</code></pre></div>
-<h2 id="online-graph-viewer">Online graph viewer</h2>
-
-<p>The node provides a python script to visualize the results of the stereo_slam during the execution: scripts/graph_viewer.py:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage: graph_viewer.py <span class="o">[</span>-h<span class="o">]</span>
-    ground_truth_file visual_odometry_file
-    graph_vertices_file graph_edges_file
-</code></pre></div>
-<p>The odometry file can be recorded directly from ros using:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rostopic <span class="nb">echo</span> -p /your_odometry_topic/odometry &gt; odometry.txt
-</code></pre></div>
-<p>The ground truth file must have the same format than the odometry.</p>
-
-<h2 id="post-processing">Post processing</h2>
-
-<p>The node provides a python script to evaluate the results of the stereo_slam once the execution finishes: scripts/slam_evaluation.py:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">usage: slam_evaluation.py <span class="o">[</span>-h<span class="o">]</span>
-    ground_truth_file visual_odometry_file
-    graph_vertices_file graph_edges_file
-</code></pre></div>
-<p>This script perform a set of operations in order to evaluate the performance of the stereo_slam algorithm:</p>
-
-<p>1) Align all the curves (ground truth, visual_odometry and graph vertices) to the same origin.</p>
-
-<p>2) Compute the average translation error.</p>
-
-<p>3) Plot the error vs trajectory distance.</p>
-</div></body></html>
-
-            
-          </div>
-        </div>
+        <div class="alert alert-warning" role="alert">No version for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -915,7 +796,7 @@ rosmake
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

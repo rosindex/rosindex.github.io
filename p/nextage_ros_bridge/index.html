@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,11 +146,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -154,215 +196,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/nextage_ros_bridge">nextage_ros_bridge</a> <small>package from <a style="text-decoration:none" href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/nextage_description/github-tork-a-rtmros_nextage">nextage_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage">nextage_moveit_config</a>
-        
-      
-        
-          <span class="label label-default"> nextage_ros_bridge</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/nextage_ros_bridge/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/nextage_ros_bridge" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/nextage_ros_bridge"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tork-a-rtmros_nextage
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tork-a-rtmros_nextage" role="menuitem" tabindex="-1" href="/p/nextage_ros_bridge/github-tork-a-rtmros_nextage" data="github-tork-a-rtmros_nextage">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tork-a-rtmros_nextage
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/nextage_ros_bridge">nextage_ros_bridge</a> <small>package from <a style="text-decoration:none" href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/nextage_description/github-tork-a-rtmros_nextage">nextage_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage">nextage_moveit_config</a>
-        
-      
-        
-          <span class="label label-default"> nextage_ros_bridge</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/nextage_ros_bridge/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/nextage_ros_bridge" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/nextage_ros_bridge"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tork-a-rtmros_nextage
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tork-a-rtmros_nextage" role="menuitem" tabindex="-1" href="/p/nextage_ros_bridge/github-tork-a-rtmros_nextage" data="github-tork-a-rtmros_nextage">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tork-a-rtmros_nextage
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -375,50 +219,171 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
-          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/nextage_ros_bridge">nextage_ros_bridge</a> <small>package from <a style="text-decoration:none" href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_description/github-tork-a-rtmros_nextage">
+
+nextage_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_gazebo/github-tork-a-rtmros_nextage">
+
+nextage_gazebo
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_ik_plugin/github-tork-a-rtmros_nextage">
+
+nextage_ik_plugin
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage">
+
+nextage_moveit_config
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+nextage_ros_bridge
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rtmros_nextage/github-tork-a-rtmros_nextage">
+
+<span class="glyphicon glyphicon-education"></span> rtmros_nextage
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/nextage_ros_bridge"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tork-a-rtmros_nextage
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tork-a-rtmros_nextage" role="menuitem" tabindex="-1" href="/p/nextage_ros_bridge/github-tork-a-rtmros_nextage" data="github-tork-a-rtmros_nextage">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tork-a-rtmros_nextage
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/nextage_ros_bridge/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/nextage_ros_bridge?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=nextage_ros_bridge&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The nextage_ros_bridge package is a main ROS interface for developers and users of 
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -431,7 +396,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.5.3</td>
+                <td>0.7.8</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -457,7 +422,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -473,13 +438,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">hydro-devel</span></td>
+      <td><span class="label label-default">indigo-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-27
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-01
         </span>
       </td>
     </tr>
@@ -488,9 +453,9 @@
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -507,8 +472,27 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The nextage_ros_bridge package is a main ROS interface for developers and users of 
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/nextage_ros_bridge">Website</a></li>
+                
+                  <li><a href="https://github.com/tork-a/rtmros_nextage/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/tork-a/rtmros_nextage">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -531,21 +515,6 @@
                   <li>Isaac Isao Saito</li>
                 
                   <li>Akio Ochiai</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/nextage_ros_bridge">Website</a></li>
-                
-                  <li><a href="https://github.com/tork-a/rtmros_nextage/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/tork-a/rtmros_nextage">Repository</a></li>
                 
               </ul>
             
@@ -578,7 +547,89 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-nextage_ros_bridge">Changelog for package nextage_ros_bridge</h1>
 
-<h2 id="0.5.3-(2014-11-13)">0.5.3 (2014-11-13)</h2>
+<h2 id="0-7-8-2016-07-01">0.7.8 (2016-07-01)</h2>
+
+<h2 id="0-7-7-2016-05-16">0.7.7 (2016-05-16)</h2>
+
+<ul>
+<li>  [fix] Wrong collada file location for real.launch.</li>
+<li>  [fix] Use NXO file instead of Hironx as a collision
+detector input.</li>
+<li>  Contributors: Isaac I.Y. Saito</li>
+</ul>
+
+<h2 id="0-7-6-2016-02-09">0.7.6 (2016-02-09)</h2>
+
+<ul>
+<li>  [improve] better view for hrpsys-simulator</li>
+<li>  Contributors: Kei Okada</li>
+</ul>
+
+<h2 id="0-7-5-2016-01-27">0.7.5 (2016-01-27)</h2>
+
+<h2 id="0-7-4-2016-01-26">0.7.4 (2016-01-26)</h2>
+
+<h2 id="0-7-3-2015-12-31">0.7.3 (2015-12-31)</h2>
+
+<ul>
+<li>  [sys] clean up nxo.test</li>
+<li>  Contributors: Kei Okada, Isaac I.Y. Saito</li>
+</ul>
+
+<h2 id="0-7-2-2015-11-02">0.7.2 (2015-11-02)</h2>
+
+<h2 id="0-7-1-2015-10-26">0.7.1 (2015-10-26)</h2>
+
+<h2 id="0-6-6-2015-10-17">0.6.6 (2015-10-17)</h2>
+
+<h2 id="0-6-5-2015-10-16">0.6.5 (2015-10-16)</h2>
+
+<ul>
+<li>  [Fix] stop air blows out when tools get ejected (fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/158">#158</a>)</li>
+<li>  [Feat] Print reason why the command call errors.</li>
+<li>  [Fix] fix ar.launch</li>
+<li>  Contributors: Isaac IY Saito, Yutaka Kondo</li>
+</ul>
+
+<h2 id="0-6-4-2015-10-02">0.6.4 (2015-10-02)</h2>
+
+<ul>
+<li>  [feat.] Add launch file for AR alvar</li>
+<li>  Contributors: Ryu Yamamoto</li>
+</ul>
+
+<h2 id="0-6-3-2015-08-15">0.6.3 (2015-08-15)</h2>
+
+<h2 id="0-6-2-2015-05-12">0.6.2 (2015-05-12)</h2>
+
+<ul>
+<li>  (Feature) Add hands_ueye.launch for bringing up hand's ueye
+camera nodes.</li>
+<li>  (Fix) [test_handlight.py] fix to pass the test, handlight
+(writeDigitalOutput always returns True in simulation
+<a href="https://github.com/fkanehiro/hrpsys-base/blob/master/python/hrpsys_config.py#L1284">https://github.com/fkanehiro/hrpsys-base/blob/master/python/hrpsys_config.py#L1284</a>)</li>
+<li>  Contributors: Kei Okada, Ryosuke Tajima</li>
+</ul>
+
+<h2 id="0-6-1-2015-03-09">0.6.1 (2015-03-09)</h2>
+
+<ul>
+<li>  Start ROS clinent when the script begins</li>
+<li>  Contributors: Kei Okada</li>
+</ul>
+
+<h2 id="0-6-0-2015-02-03">0.6.0 (2015-02-03)</h2>
+
+<ul>
+<li>  [nextage_ros_bridge] Fix path for catkin build</li>
+<li>  VRML stored location inside qnx is now NEXTAGE specific.</li>
+<li>  (launch) Accept more as an argument. Remove a redundant
+collada file.</li>
+<li>  Contributors: Isaac IY Saito, Ryohei Ueda</li>
+</ul>
+
+<h2 id="0-5-3-2014-11-13">0.5.3 (2014-11-13)</h2>
 
 <ul>
 <li>  (DIO) Fix
@@ -588,17 +639,19 @@
 <li>  Move a python module to call DIO via rosservice.</li>
 <li>  Contributors: Isaac IY Saito, Akio Ochiai, Daiki Maekawa</li>
 </ul>
-<h2 id="0.5.2-(2014-11-03)">0.5.2 (2014-11-03)</h2>
+
+<h2 id="0-5-2-2014-11-03">0.5.2 (2014-11-03)</h2>
 
 <ul>
-<li>  Improvement on camera launch file (add binning arg in
-nextage_ueye_stereo.launch)</li>
+<li>  Improvement on camera launch file (add binning arg
+in nextage_ueye_stereo.launch)</li>
 <li>  DIO</li>
 </ul>
+
 <blockquote>
 <ul>
-<li>  Add DIO pin config for Aug 2014 version. Flexibly configurable DIO
-pin. Fix
+<li>  Add DIO pin config for Aug 2014 version. Flexibly configurable
+DIO pin. Fix
 <a href="https://github.com/tork-a/rtmros_nextage/issues/113">#113</a>
 </li>
 <li>  Fix wrong test assertion (fix
@@ -611,7 +664,8 @@ commands' results.</li>
 <ul>
 <li>  Contributors: Isaac IY Saito, Yutaka Kondo</li>
 </ul>
-<h2 id="0.5.1-(2014-10-17)">0.5.1 (2014-10-17)</h2>
+
+<h2 id="0-5-1-2014-10-17">0.5.1 (2014-10-17)</h2>
 
 <ul>
 <li>  Increment minor version to 0.5, due to DIO spec update.</li>
@@ -620,14 +674,16 @@ commands' results.</li>
 <li>  Flexibly configurable DIO pin assignment.</li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.4.2-(2014-10-01)">0.4.2 (2014-10-01)</h2>
+
+<h2 id="0-4-2-2014-10-01">0.4.2 (2014-10-01)</h2>
 
 <ul>
 <li>  Add a launch file for stereo camera (ueye).</li>
 <li>  (Airhand) Fix wrong dio pin set for left airhand.</li>
 <li>  Contributors: Kei Okada, Isaac IY Saito</li>
 </ul>
-<h2 id="0.4.1-(2014-09-03)">0.4.1 (2014-09-03)</h2>
+
+<h2 id="0-4-1-2014-09-03">0.4.1 (2014-09-03)</h2>
 
 <ul>
 <li>  Remove WAIST_Link to use only WAIST (Fix "Either Interactive Marker
@@ -640,20 +696,23 @@ or Natto-view appears, not together."
 <li>  Ignore tests for hand lighting when on simulation (Fix
 <a href="https://github.com/tork-a/rtmros_nextage/issues/94">#94</a>)</li>
 </ul>
+
 <p>* (DIO files) Minor improvement to api doc.</p>
 </li>
 <li><p>Contributors: Isaac IY Saito</p></li>
 </ul>
-<h2 id="0.2.18-(2014-08-01)">0.2.18 (2014-08-01)</h2>
 
-<h2 id="0.2.17-(2014-07-24)">0.2.17 (2014-07-24)</h2>
+<h2 id="0-2-18-2014-08-01">0.2.18 (2014-08-01)</h2>
+
+<h2 id="0-2-17-2014-07-24">0.2.17 (2014-07-24)</h2>
 
 <ul>
 <li>  (nextage_client) Adjusted to DIO spec change. Improve DIO methods.
 Add unit tests for DIO features.</li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.2.16-(2014-07-24)">0.2.16 (2014-07-24)</h2>
+
+<h2 id="0-2-16-2014-07-24">0.2.16 (2014-07-24)</h2>
 
 <ul>
 <li>  Specify min version of a dependency that are used in launch files.</li>
@@ -662,67 +721,73 @@ Add unit tests for DIO features.</li>
 launch files. Delegate functionality to hironx_ros_bridge.launch</li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.2.15-(2014-07-13)">0.2.15 (2014-07-13)</h2>
+
+<h2 id="0-2-15-2014-07-13">0.2.15 (2014-07-13)</h2>
 
 <ul>
 <li>  (nextage_ros_bridge_real.launch) Init commit. This must be run
-when working with a real robot, instead of
-nextage_ros_bridge.launch. Fix
+when working with a real robot, instead
+of nextage_ros_bridge.launch. Fix
 <a href="https://github.com/tork-a/rtmros_nextage/issues/79">#79</a>
 </li>
 <li>  Disable ServoController. NXO by default does not ship with
 servo-controlled hand.</li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.2.14-(2014-06-20)">0.2.14 (2014-06-20)</h2>
+
+<h2 id="0-2-14-2014-06-20">0.2.14 (2014-06-20)</h2>
 
 <ul>
 <li>  (nextage_client.py) adjust initial position to that of HIRONX,
 evens it up.</li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.2.13-(2014-05-28)">0.2.13 (2014-05-28)</h2>
 
-<h2 id="0.2.12-(2014-05-06)">0.2.12 (2014-05-06)</h2>
+<h2 id="0-2-13-2014-05-28">0.2.13 (2014-05-28)</h2>
+
+<h2 id="0-2-12-2014-05-06">0.2.12 (2014-05-06)</h2>
 
 <ul>
 <li>  Resolves <a href="https://github.com/tork-a/rtmros_nextage/issues/48">#48</a>
 </li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.2.11-(2014-03-05)">0.2.11 (2014-03-05)</h2>
+
+<h2 id="0-2-11-2014-03-05">0.2.11 (2014-03-05)</h2>
 
 <ul>
-<li>  fix to
-<a href="https://github.com/tork-a/rtmros_nextage/issues/53">https://github.com/tork-a/rtmros_nextage/issues/53</a>
+<li>  fix to <a href="https://github.com/tork-a/rtmros_nextage/issues/53">https://github.com/tork-a/rtmros_nextage/issues/53</a>
 </li>
 <li>  Add the source text files of tutorials on ROS wiki. These are just a
-backup and not intended to be updated per every change made on ROS
-wiki. The location of the source of ROS wiki doc needs to be figured
-out (discussed in
-<a href="https://github.com/tork-a/rtmros_nextage/issues/12">https://github.com/tork-a/rtmros_nextage/issues/12)</a>).</li>
+backup and not intended to be updated per every change made on
+ROS wiki. The location of the source of ROS wiki doc needs to be
+figured out (discussed in
+<a href="https://github.com/tork-a/rtmros_nextage/issues/12">https://github.com/tork-a/rtmros_nextage/issues/12</a>).</li>
 <li>  Contributors: Isaac Isao Saito</li>
 </ul>
-<h2 id="0.2.10-(2014-02-18)">0.2.10 (2014-02-18)</h2>
+
+<h2 id="0-2-10-2014-02-18">0.2.10 (2014-02-18)</h2>
 
 <ul>
 <li>  Use generic name for the robot instance. This enables users on the
 script commandline (eg. ipython) to run the same commands without
-asking them to specifically tell what robot they're using (eg. hiro,
-nxc). This is backward compatible so that users can still keep using
-`nxc`. See
+asking them to specifically tell what robot they're using (eg.
+hiro, nxc). This is backward compatible so that users can still keep
+using nxc. See
 <a href="http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926">http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926</a>
 for hironx.</li>
 <li>  Install unittests for the first time.</li>
 <li>  Contributors: Isaac Isao Saito</li>
 </ul>
-<h2 id="0.2.9-(2014-02-03)">0.2.9 (2014-02-03)</h2>
+
+<h2 id="0-2-9-2014-02-03">0.2.9 (2014-02-03)</h2>
 
 <ul>
 <li>  Fixed installation of missing py files</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.8-(2014-02-03)">0.2.8 (2014-02-03)</h2>
+
+<h2 id="0-2-8-2014-02-03">0.2.8 (2014-02-03)</h2>
 
 <ul>
 <li>  Generalize hands DIO variables, and add a method to reassign them in
@@ -745,7 +810,8 @@ on a real robot and on simulation it isn't possible to test as of
 the moment.</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.7-(2014-01-19)">0.2.7 (2014-01-19)</h2>
+
+<h2 id="0-2-7-2014-01-19">0.2.7 (2014-01-19)</h2>
 
 <ul>
 <li>  (nextage_client.py) Adjust initial poses to what the manufacturing
@@ -759,30 +825,34 @@ company defines as the standard.</li>
 </li>
 <li>  Contributors: Isaac Isao Saito, Hajime Saito, Kei Okada</li>
 </ul>
-<h2 id="0.2.6-(2014-01-13)">0.2.6 (2014-01-13)</h2>
+
+<h2 id="0-2-6-2014-01-13">0.2.6 (2014-01-13)</h2>
 
 <ul>
 <li>  (nextage_ros_bridge) Add missiong import</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.5-(2013-12-25)">0.2.5 (2013-12-25)</h2>
+
+<h2 id="0-2-5-2013-12-25">0.2.5 (2013-12-25)</h2>
 
 <ul>
 <li>  Adjust to the change on hironx</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.4-(2013-12-03)">0.2.4 (2013-12-03)</h2>
+
+<h2 id="0-2-4-2013-12-03">0.2.4 (2013-12-03)</h2>
 
 <ul>
 <li>  fix same reason that we have in
 <a href="https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039">https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039</a>,
 need to modify .xml/.conf file during install process</li>
-<li>  Change name of a launch file to adjust common practice in rtmros
-world.</li>
+<li>  Change name of a launch file to adjust common practice in
+rtmros world.</li>
 <li>  rename script (due to discussion in issue
 <a href="https://github.com/130s/rtmros_nextage/issues/7">#7</a>)</li>
 <li>  Contributors: Isaac Isao Saito, Kei Okada</li>
 </ul>
+
 <p>0.2.3 (2013-11-05) -----------</p>
 
 <p>0.2.2 (2013-11-04) -----------* add depends to nextage_description and
@@ -791,7 +861,1157 @@ nextage_ros_bridge) add appropriate comment for exception at hand *
 nextage_ros_bridge) add nextage_ros_bridge_viz.launch that runs all
 the things needed for running robots (ros_bridge, RViz).</p>
 
-<h2 id="0.2.1-(2013-10-31)">0.2.1 (2013-10-31)</h2>
+<h2 id="0-2-1-2013-10-31">0.2.1 (2013-10-31)</h2>
+
+<ul>
+<li>  Initial commit to the public repo (migrated from private repo)</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/nextage_ros_bridge/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hironx_ros_bridge#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hironx_ros_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hironx_ros_bridge#indigo">hironx_ros_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nextage_description#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nextage_description" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nextage_description#indigo">nextage_description</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslint#indigo-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslint" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslint#indigo">roslint</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ueye_cam#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ueye_cam" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ueye_cam#indigo">ueye_cam</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage#indigo">nextage_moveit_config</a></td>
+                      <td><a href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">github-tork-a-rtmros_nextage</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rtmros_nextage/github-tork-a-rtmros_nextage#indigo">rtmros_nextage</a></td>
+                      <td><a href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">github-tork-a-rtmros_nextage</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rtmros_nextage/github-tork-a-rtmros_nextage#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/ar.launch" target="_blank">launch/ar.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>marker_size</strong> <em>&#91;default: 5.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_new_marker_error</strong> <em>&#91;default: 0.08&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_track_error</strong> <em>&#91;default: 0.2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cam_ns</strong> <em>&#91;default: right_hand_ueye&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cam_image_topic</strong> <em>&#91;default: /$(arg cam_ns)/image_raw&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cam_info_topic</strong> <em>&#91;default: /$(arg cam_ns)/camera_info&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>output_frame</strong> <em>&#91;default: /camera&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/nextage_ros_bridge_real.launch" target="_blank">launch/nextage_ros_bridge_real.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CONF_FILE_COLLISIONDETECT</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/realrobot_fixedpath.conf&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>corbaport</strong> <em>&#91;default: 15005&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: /opt/jsk/etc/NEXTAGE/model/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>nameserver</strong> <em>&#91;default: nextage&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>USE_SERVOCONTROLLER</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/nextage_ueye_stereo.launch" target="_blank">launch/nextage_ueye_stereo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>binning</strong> <em>&#91;default: 2&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/nextage_startup.launch" target="_blank">launch/nextage_startup.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>corbaport</strong> <em>&#91;default: 2809&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>HRPSYS_PY_NAME</strong> <em>&#91;default: nextage.py&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>HRPSYS_PY_PKG</strong> <em>&#91;default: nextage_ros_bridge&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>LAUNCH_HRPSYSPY</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>REALTIME</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/nextage_ros_bridge_viz.launch" target="_blank">launch/nextage_ros_bridge_viz.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> for real robot </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>nameserver</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>SIMULATOR_NAME</strong> <em>&#91;default: RobotHardware0&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/hands_ueye.launch" target="_blank">launch/hands_ueye.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge/launch/nextage_ros_bridge_simulation.launch" target="_blank">launch/nextage_ros_bridge_simulation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CONF_FILE_COLLISIONDETECT</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/nextage.conf&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CORBAPORT</strong> <em>&#91;default: 15005&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>NAMESERVER</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>LAUNCH_HRPSYSPY</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/nextage_ros_bridge/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/indigo-devel/nextage_ros_bridge"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/nextage_ros_bridge?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=nextage_ros_bridge&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/nextage_ros_bridge">nextage_ros_bridge</a> <small>package from <a style="text-decoration:none" href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_description/github-tork-a-rtmros_nextage">
+
+nextage_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_ik_plugin/github-tork-a-rtmros_nextage">
+
+nextage_ik_plugin
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage">
+
+nextage_moveit_config
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+nextage_ros_bridge
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rtmros_nextage/github-tork-a-rtmros_nextage">
+
+<span class="glyphicon glyphicon-education"></span> rtmros_nextage
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/nextage_ros_bridge"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tork-a-rtmros_nextage
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tork-a-rtmros_nextage" role="menuitem" tabindex="-1" href="/p/nextage_ros_bridge/github-tork-a-rtmros_nextage" data="github-tork-a-rtmros_nextage">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tork-a-rtmros_nextage
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/nextage_ros_bridge/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/nextage_ros_bridge?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=nextage_ros_bridge&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.6.6</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/tork-a/rtmros_nextage.git">https://github.com/tork-a/rtmros_nextage.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">hydro-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-11-02
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The nextage_ros_bridge package is a main ROS interface for developers and users of 
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/nextage_ros_bridge">Website</a></li>
+                
+                  <li><a href="https://github.com/tork-a/rtmros_nextage/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/tork-a/rtmros_nextage">Repository</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Isaac Isao Saito</li>
+                
+                  <li>Kei Okada</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Isaac Isao Saito</li>
+                
+                  <li>Akio Ochiai</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-nextage_ros_bridge">Changelog for package nextage_ros_bridge</h1>
+
+<h2 id="0-6-6-2015-10-17">0.6.6 (2015-10-17)</h2>
+
+<h2 id="0-6-5-2015-10-16">0.6.5 (2015-10-16)</h2>
+
+<ul>
+<li>  [Fix] stop air blows out when tools get ejected (fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/158">#158</a>)</li>
+<li>  [Feat] Print reason why the command call errors.</li>
+<li>  [Fix] fix ar.launch</li>
+<li>  Contributors: Isaac IY Saito, Yutaka Kondo</li>
+</ul>
+
+<h2 id="0-6-4-2015-10-02">0.6.4 (2015-10-02)</h2>
+
+<ul>
+<li>  [feat.] Add launch file for AR alvar</li>
+<li>  Contributors: Ryu Yamamoto</li>
+</ul>
+
+<h2 id="0-6-3-2015-08-15">0.6.3 (2015-08-15)</h2>
+
+<h2 id="0-6-2-2015-05-12">0.6.2 (2015-05-12)</h2>
+
+<ul>
+<li>  (Feature) Add hands_ueye.launch for bringing up hand's ueye
+camera nodes.</li>
+<li>  (Fix) [test_handlight.py] fix to pass the test, handlight
+(writeDigitalOutput always returns True in simulation
+<a href="https://github.com/fkanehiro/hrpsys-base/blob/master/python/hrpsys_config.py#L1284">https://github.com/fkanehiro/hrpsys-base/blob/master/python/hrpsys_config.py#L1284</a>)</li>
+<li>  Contributors: Kei Okada, Ryosuke Tajima</li>
+</ul>
+
+<h2 id="0-6-1-2015-03-09">0.6.1 (2015-03-09)</h2>
+
+<ul>
+<li>  Start ROS clinent when the script begins</li>
+<li>  Contributors: Kei Okada</li>
+</ul>
+
+<h2 id="0-6-0-2015-02-03">0.6.0 (2015-02-03)</h2>
+
+<ul>
+<li>  [nextage_ros_bridge] Fix path for catkin build</li>
+<li>  VRML stored location inside qnx is now NEXTAGE specific.</li>
+<li>  (launch) Accept more as an argument. Remove a redundant
+collada file.</li>
+<li>  Contributors: Isaac IY Saito, Ryohei Ueda</li>
+</ul>
+
+<h2 id="0-5-3-2014-11-13">0.5.3 (2014-11-13)</h2>
+
+<ul>
+<li>  (DIO) Fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/129">#129</a>
+</li>
+<li>  (doc) Move tutorial wiki backup to hironx pkg.</li>
+<li>  Move a python module to call DIO via rosservice.</li>
+<li>  Contributors: Isaac IY Saito, Akio Ochiai, Daiki Maekawa</li>
+</ul>
+
+<h2 id="0-5-2-2014-11-03">0.5.2 (2014-11-03)</h2>
+
+<ul>
+<li>  Improvement on camera launch file (add binning arg
+in nextage_ueye_stereo.launch)</li>
+<li>  DIO</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>  Add DIO pin config for Aug 2014 version. Flexibly configurable
+DIO pin. Fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/113">#113</a>
+</li>
+<li>  Fix wrong test assertion (fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/116">#116</a>).</li>
+<li>  Add to test cases the check for old spec. Hand05 class returns DIO
+commands' results.</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>  Contributors: Isaac IY Saito, Yutaka Kondo</li>
+</ul>
+
+<h2 id="0-5-1-2014-10-17">0.5.1 (2014-10-17)</h2>
+
+<ul>
+<li>  Increment minor version to 0.5, due to DIO spec update.</li>
+<li>  Add DIO pin config for version 0.5 (Aug 2014. Fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/113">#113</a>)</li>
+<li>  Flexibly configurable DIO pin assignment.</li>
+<li>  Contributors: Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-4-2-2014-10-01">0.4.2 (2014-10-01)</h2>
+
+<ul>
+<li>  Add a launch file for stereo camera (ueye).</li>
+<li>  (Airhand) Fix wrong dio pin set for left airhand.</li>
+<li>  Contributors: Kei Okada, Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-4-1-2014-09-03">0.4.1 (2014-09-03)</h2>
+
+<ul>
+<li>  Remove WAIST_Link to use only WAIST (Fix "Either Interactive Marker
+or Natto-view appears, not together."
+<a href="https://github.com/tork-a/rtmros_nextage/issues/97">#97</a>).</li>
+<li>
+<p>DIO Accessor:</p>
+
+<ul>
+<li>  Ignore tests for hand lighting when on simulation (Fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/94">#94</a>)</li>
+</ul>
+
+<p>* (DIO files) Minor improvement to api doc.</p>
+</li>
+<li><p>Contributors: Isaac IY Saito</p></li>
+</ul>
+
+<h2 id="0-2-18-2014-08-01">0.2.18 (2014-08-01)</h2>
+
+<h2 id="0-2-17-2014-07-24">0.2.17 (2014-07-24)</h2>
+
+<ul>
+<li>  (nextage_client) Adjusted to DIO spec change. Improve DIO methods.
+Add unit tests for DIO features.</li>
+<li>  Contributors: Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-2-16-2014-07-24">0.2.16 (2014-07-24)</h2>
+
+<ul>
+<li>  Specify min version of a dependency that are used in launch files.</li>
+<li>  Add natto-view to simulation.</li>
+<li>  Remove nextage_ros_bridge.launch that was only internal to other
+launch files. Delegate functionality to hironx_ros_bridge.launch</li>
+<li>  Contributors: Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-2-15-2014-07-13">0.2.15 (2014-07-13)</h2>
+
+<ul>
+<li>  (nextage_ros_bridge_real.launch) Init commit. This must be run
+when working with a real robot, instead
+of nextage_ros_bridge.launch. Fix
+<a href="https://github.com/tork-a/rtmros_nextage/issues/79">#79</a>
+</li>
+<li>  Disable ServoController. NXO by default does not ship with
+servo-controlled hand.</li>
+<li>  Contributors: Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-2-14-2014-06-20">0.2.14 (2014-06-20)</h2>
+
+<ul>
+<li>  (nextage_client.py) adjust initial position to that of HIRONX,
+evens it up.</li>
+<li>  Contributors: Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-2-13-2014-05-28">0.2.13 (2014-05-28)</h2>
+
+<h2 id="0-2-12-2014-05-06">0.2.12 (2014-05-06)</h2>
+
+<ul>
+<li>  Resolves <a href="https://github.com/tork-a/rtmros_nextage/issues/48">#48</a>
+</li>
+<li>  Contributors: Isaac IY Saito</li>
+</ul>
+
+<h2 id="0-2-11-2014-03-05">0.2.11 (2014-03-05)</h2>
+
+<ul>
+<li>  fix to <a href="https://github.com/tork-a/rtmros_nextage/issues/53">https://github.com/tork-a/rtmros_nextage/issues/53</a>
+</li>
+<li>  Add the source text files of tutorials on ROS wiki. These are just a
+backup and not intended to be updated per every change made on
+ROS wiki. The location of the source of ROS wiki doc needs to be
+figured out (discussed in
+<a href="https://github.com/tork-a/rtmros_nextage/issues/12">https://github.com/tork-a/rtmros_nextage/issues/12</a>).</li>
+<li>  Contributors: Isaac Isao Saito</li>
+</ul>
+
+<h2 id="0-2-10-2014-02-18">0.2.10 (2014-02-18)</h2>
+
+<ul>
+<li>  Use generic name for the robot instance. This enables users on the
+script commandline (eg. ipython) to run the same commands without
+asking them to specifically tell what robot they're using (eg.
+hiro, nxc). This is backward compatible so that users can still keep
+using nxc. See
+<a href="http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926">http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926</a>
+for hironx.</li>
+<li>  Install unittests for the first time.</li>
+<li>  Contributors: Isaac Isao Saito</li>
+</ul>
+
+<h2 id="0-2-9-2014-02-03">0.2.9 (2014-02-03)</h2>
+
+<ul>
+<li>  Fixed installation of missing py files</li>
+<li>  Contributors: Isao Isaac Saito</li>
+</ul>
+
+<h2 id="0-2-8-2014-02-03">0.2.8 (2014-02-03)</h2>
+
+<ul>
+<li>  Generalize hands DIO variables, and add a method to reassign them in
+the derived classes.</li>
+<li>  Fix to issue
+<a href="https://github.com/tork-a/rtmros_nextage/issues/9">#9</a>
+(<a href="https://github.com/tork-a/rtmros_nextage/issues/9">https://github.com/tork-a/rtmros_nextage/issues/9</a>)</li>
+<li>  Adjust to the DIO assignment change.</li>
+<li>  (test_hironx_derivedmethods_rostest.py) Tentative fix to enable
+to connect to real robot. Needs improvement later to port out
+embedded robot's info.</li>
+<li>  Fixed handlight not function (wrong comparison of bool and str)</li>
+<li>  Add more unittesting. Separate tests for hand since the type of
+testing for hands I'll write this time will be not necessarily
+general enough.</li>
+<li>  Add tentative test file that checks cartesian</li>
+<li>  (nextage_ros_bridge) Refactoring to separate modules per hand
+type, to allow more flexible hand tool combination. Not tested yet
+on a real robot and on simulation it isn't possible to test as of
+the moment.</li>
+<li>  Contributors: Isao Isaac Saito</li>
+</ul>
+
+<h2 id="0-2-7-2014-01-19">0.2.7 (2014-01-19)</h2>
+
+<ul>
+<li>  (nextage_client.py) Adjust initial poses to what the manufacturing
+company defines as the standard.</li>
+<li>  (nextage_client.py) Override pose (to more safer one) and method
+(to allow this class to choose which RT component to load).</li>
+<li>  Improve nextage.py import order and source (based on
+<a href="https://github.com/tork-a/rtmros_nextage/issues/25#issuecomment-32332068">https://github.com/tork-a/rtmros_nextage/issues/25#issuecomment-32332068</a>)</li>
+<li>  (nextage.py) Fix to
+<a href="https://github.com/tork-a/rtmros_nextage/issues/24">https://github.com/tork-a/rtmros_nextage/issues/24</a>
+</li>
+<li>  Contributors: Isaac Isao Saito, Hajime Saito, Kei Okada</li>
+</ul>
+
+<h2 id="0-2-6-2014-01-13">0.2.6 (2014-01-13)</h2>
+
+<ul>
+<li>  (nextage_ros_bridge) Add missiong import</li>
+<li>  Contributors: Isao Isaac Saito</li>
+</ul>
+
+<h2 id="0-2-5-2013-12-25">0.2.5 (2013-12-25)</h2>
+
+<ul>
+<li>  Adjust to the change on hironx</li>
+<li>  Contributors: Isao Isaac Saito</li>
+</ul>
+
+<h2 id="0-2-4-2013-12-03">0.2.4 (2013-12-03)</h2>
+
+<ul>
+<li>  fix same reason that we have in
+<a href="https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039">https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039</a>,
+need to modify .xml/.conf file during install process</li>
+<li>  Change name of a launch file to adjust common practice in
+rtmros world.</li>
+<li>  rename script (due to discussion in issue
+<a href="https://github.com/130s/rtmros_nextage/issues/7">#7</a>)</li>
+<li>  Contributors: Isaac Isao Saito, Kei Okada</li>
+</ul>
+
+<p>0.2.3 (2013-11-05) -----------</p>
+
+<p>0.2.2 (2013-11-04) -----------* add depends to nextage_description and
+check if nextage_description_SOURCE_DIR exsits *
+nextage_ros_bridge) add appropriate comment for exception at hand *
+nextage_ros_bridge) add nextage_ros_bridge_viz.launch that runs all
+the things needed for running robots (ros_bridge, RViz).</p>
+
+<h2 id="0-2-1-2013-10-31">0.2.1 (2013-10-31)</h2>
 
 <ul>
 <li>  Initial commit to the public repo (migrated from private repo)</li>
@@ -811,7 +2031,8 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/nextage_ros_bridge/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/nextage_ros_bridge/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -823,31 +2044,154 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hironx_ros_bridge#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hironx_ros_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hironx_ros_bridge#hydro">hironx_ros_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nextage_description#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nextage_description" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nextage_description#hydro">nextage_description</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslint#hydro-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslint" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslint#hydro">roslint</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ueye_cam#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ueye_cam" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ueye_cam#hydro">ueye_cam</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/hironx_ros_bridge#hydro">hironx_ros_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nextage_description#hydro">nextage_description</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslint#hydro">roslint</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rtmros_nextage/github-tork-a-rtmros_nextage#hydro">rtmros_nextage</a></td>
+                      <td><a href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">github-tork-a-rtmros_nextage</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rtmros_nextage/github-tork-a-rtmros_nextage#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -855,22 +2199,251 @@ the things needed for running robots (ros_bridge, RViz).</p>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ros_bridge_real.launch" target="_blank">launch/nextage_ros_bridge_real.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ueye_stereo.launch" target="_blank">launch/nextage_ueye_stereo.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_startup.launch" target="_blank">launch/nextage_startup.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ros_bridge_simulation.launch" target="_blank">launch/nextage_ros_bridge_simulation.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ros_bridge_viz.launch" target="_blank">launch/nextage_ros_bridge_viz.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/ar.launch" target="_blank">launch/ar.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>marker_size</strong> <em>&#91;default: 5.5&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_new_marker_error</strong> <em>&#91;default: 0.08&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>max_track_error</strong> <em>&#91;default: 0.2&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cam_ns</strong> <em>&#91;default: right_hand_ueye&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cam_image_topic</strong> <em>&#91;default: /$(arg cam_ns)/image_raw&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>cam_info_topic</strong> <em>&#91;default: /$(arg cam_ns)/camera_info&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>output_frame</strong> <em>&#91;default: /camera&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ros_bridge_real.launch" target="_blank">launch/nextage_ros_bridge_real.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>CONF_FILE_COLLISIONDETECT</strong> <em>&#91;default: $(find hironx_ros_bridge)/conf/hironx_realrobot_fixedpath.conf&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>corbaport</strong> <em>&#91;default: 15005&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: /opt/jsk/etc/NEXTAGE/model/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>nameserver</strong> <em>&#91;default: nextage&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>USE_SERVOCONTROLLER</strong> <em>&#91;default: false&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ueye_stereo.launch" target="_blank">launch/nextage_ueye_stereo.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>binning</strong> <em>&#91;default: 2&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_startup.launch" target="_blank">launch/nextage_startup.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: $(arg GUI)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>PROJECT_FILE</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/nextage_nosim.xml&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CONF_FILE</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/nextage.conf&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ros_bridge_viz.launch" target="_blank">launch/nextage_ros_bridge_viz.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> for real robot </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>nameserver</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>SIMULATOR_NAME</strong> <em>&#91;default: RobotHardware0&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/hands_ueye.launch" target="_blank">launch/hands_ueye.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge/launch/nextage_ros_bridge_simulation.launch" target="_blank">launch/nextage_ros_bridge_simulation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CORBAPORT</strong> <em>&#91;default: 15005&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CONF_FILE_COLLISIONDETECT</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/nextage.conf&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>NAMESERVER</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: $(arg GUI)&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -879,9 +2452,9 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -890,9 +2463,9 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -901,28 +2474,35 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/nextage_ros_bridge/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/hydro-devel/nextage_ros_bridge"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/nextage_ros_bridge?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=nextage_ros_bridge&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -932,6 +2512,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/nextage_ros_bridge">nextage_ros_bridge</a> <small>package from <a style="text-decoration:none" href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">rtmros_nextage</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_description/github-tork-a-rtmros_nextage">
+
+nextage_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nextage_moveit_config/github-tork-a-rtmros_nextage">
+
+nextage_moveit_config
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+nextage_ros_bridge
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rtmros_nextage/github-tork-a-rtmros_nextage">
+
+<span class="glyphicon glyphicon-education"></span> rtmros_nextage
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/nextage_ros_bridge"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tork-a-rtmros_nextage
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tork-a-rtmros_nextage" role="menuitem" tabindex="-1" href="/p/nextage_ros_bridge/github-tork-a-rtmros_nextage" data="github-tork-a-rtmros_nextage">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tork-a-rtmros_nextage
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/nextage_ros_bridge/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/nextage_ros_bridge?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=nextage_ros_bridge&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -944,28 +2635,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The nextage_ros_bridge package is a main ROS interface for developers and users of 
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1004,7 +2697,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1035,9 +2728,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1054,8 +2747,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The nextage_ros_bridge package is a main ROS interface for developers and users of 
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/nextage_ros_bridge">Website</a></li>
+                
+                  <li><a href="https://github.com/tork-a/rtmros_nextage/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/tork-a/rtmros_nextage">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1076,21 +2788,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Isaac Isao Saito</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/nextage_ros_bridge">Website</a></li>
-                
-                  <li><a href="https://github.com/tork-a/rtmros_nextage/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/tork-a/rtmros_nextage">Repository</a></li>
                 
               </ul>
             
@@ -1123,48 +2820,51 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-nextage_ros_bridge">Changelog for package nextage_ros_bridge</h1>
 
-<h2 id="0.2.13-(2014-05-28)">0.2.13 (2014-05-28)</h2>
+<h2 id="0-2-13-2014-05-28">0.2.13 (2014-05-28)</h2>
 
-<h2 id="0.2.12-(2014-05-06)">0.2.12 (2014-05-06)</h2>
+<h2 id="0-2-12-2014-05-06">0.2.12 (2014-05-06)</h2>
 
 <ul>
 <li>  Resolves <a href="https://github.com/tork-a/rtmros_nextage/issues/48">#48</a>
 </li>
 <li>  Contributors: Isaac IY Saito</li>
 </ul>
-<h2 id="0.2.11-(2014-03-05)">0.2.11 (2014-03-05)</h2>
+
+<h2 id="0-2-11-2014-03-05">0.2.11 (2014-03-05)</h2>
 
 <ul>
-<li>  fix to
-<a href="https://github.com/tork-a/rtmros_nextage/issues/53">https://github.com/tork-a/rtmros_nextage/issues/53</a>
+<li>  fix to <a href="https://github.com/tork-a/rtmros_nextage/issues/53">https://github.com/tork-a/rtmros_nextage/issues/53</a>
 </li>
 <li>  Add the source text files of tutorials on ROS wiki. These are just a
-backup and not intended to be updated per every change made on ROS
-wiki. The location of the source of ROS wiki doc needs to be figured
-out (discussed in
-<a href="https://github.com/tork-a/rtmros_nextage/issues/12">https://github.com/tork-a/rtmros_nextage/issues/12)</a>).</li>
+backup and not intended to be updated per every change made on
+ROS wiki. The location of the source of ROS wiki doc needs to be
+figured out (discussed in
+<a href="https://github.com/tork-a/rtmros_nextage/issues/12">https://github.com/tork-a/rtmros_nextage/issues/12</a>).</li>
 <li>  Contributors: Isaac Isao Saito</li>
 </ul>
-<h2 id="0.2.10-(2014-02-18)">0.2.10 (2014-02-18)</h2>
+
+<h2 id="0-2-10-2014-02-18">0.2.10 (2014-02-18)</h2>
 
 <ul>
 <li>  Use generic name for the robot instance. This enables users on the
 script commandline (eg. ipython) to run the same commands without
-asking them to specifically tell what robot they're using (eg. hiro,
-nxc). This is backward compatible so that users can still keep using
-`nxc`. See
+asking them to specifically tell what robot they're using (eg.
+hiro, nxc). This is backward compatible so that users can still keep
+using nxc. See
 <a href="http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926">http://code.google.com/p/rtm-ros-robotics/source/detail?r=6926</a>
 for hironx.</li>
 <li>  Install unittests for the first time.</li>
 <li>  Contributors: Isaac Isao Saito</li>
 </ul>
-<h2 id="0.2.9-(2014-02-03)">0.2.9 (2014-02-03)</h2>
+
+<h2 id="0-2-9-2014-02-03">0.2.9 (2014-02-03)</h2>
 
 <ul>
 <li>  Fixed installation of missing py files</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.8-(2014-02-03)">0.2.8 (2014-02-03)</h2>
+
+<h2 id="0-2-8-2014-02-03">0.2.8 (2014-02-03)</h2>
 
 <ul>
 <li>  Generalize hands DIO variables, and add a method to reassign them in
@@ -1187,7 +2887,8 @@ on a real robot and on simulation it isn't possible to test as of
 the moment.</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.7-(2014-01-19)">0.2.7 (2014-01-19)</h2>
+
+<h2 id="0-2-7-2014-01-19">0.2.7 (2014-01-19)</h2>
 
 <ul>
 <li>  (nextage_client.py) Adjust initial poses to what the manufacturing
@@ -1201,30 +2902,34 @@ company defines as the standard.</li>
 </li>
 <li>  Contributors: Isaac Isao Saito, Hajime Saito, Kei Okada</li>
 </ul>
-<h2 id="0.2.6-(2014-01-13)">0.2.6 (2014-01-13)</h2>
+
+<h2 id="0-2-6-2014-01-13">0.2.6 (2014-01-13)</h2>
 
 <ul>
 <li>  (nextage_ros_bridge) Add missiong import</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.5-(2013-12-25)">0.2.5 (2013-12-25)</h2>
+
+<h2 id="0-2-5-2013-12-25">0.2.5 (2013-12-25)</h2>
 
 <ul>
 <li>  Adjust to the change on hironx</li>
 <li>  Contributors: Isao Isaac Saito</li>
 </ul>
-<h2 id="0.2.4-(2013-12-03)">0.2.4 (2013-12-03)</h2>
+
+<h2 id="0-2-4-2013-12-03">0.2.4 (2013-12-03)</h2>
 
 <ul>
 <li>  fix same reason that we have in
 <a href="https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039">https://code.google.com/p/rtm-ros-robotics/source/detail?r=6039</a>,
 need to modify .xml/.conf file during install process</li>
-<li>  Change name of a launch file to adjust common practice in rtmros
-world.</li>
+<li>  Change name of a launch file to adjust common practice in
+rtmros world.</li>
 <li>  rename script (due to discussion in issue
 <a href="https://github.com/130s/rtmros_nextage/issues/7">#7</a>)</li>
 <li>  Contributors: Isaac Isao Saito, Kei Okada</li>
 </ul>
+
 <p>0.2.3 (2013-11-05) -----------</p>
 
 <p>0.2.2 (2013-11-04) -----------* add depends to nextage_description and
@@ -1233,7 +2938,7 @@ nextage_ros_bridge) add appropriate comment for exception at hand *
 nextage_ros_bridge) add nextage_ros_bridge_viz.launch that runs all
 the things needed for running robots (ros_bridge, RViz).</p>
 
-<h2 id="0.2.1-(2013-10-31)">0.2.1 (2013-10-31)</h2>
+<h2 id="0-2-1-2013-10-31">0.2.1 (2013-10-31)</h2>
 
 <ul>
 <li>  Initial commit to the public repo (migrated from private repo)</li>
@@ -1253,7 +2958,8 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/nextage_ros_bridge/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/nextage_ros_bridge/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1265,29 +2971,114 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/hironx_ros_bridge#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/hironx_ros_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/hironx_ros_bridge#groovy">hironx_ros_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nextage_description#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nextage_description" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nextage_description#groovy">nextage_description</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/hironx_ros_bridge#groovy">hironx_ros_bridge</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nextage_description#groovy">nextage_description</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rtmros_nextage/github-tork-a-rtmros_nextage#groovy">rtmros_nextage</a></td>
+                      <td><a href="/r/rtmros_nextage/github-tork-a-rtmros_nextage">github-tork-a-rtmros_nextage</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rtmros_nextage/github-tork-a-rtmros_nextage#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1295,20 +3086,152 @@ the things needed for running robots (ros_bridge, RViz).</p>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_startup.launch" target="_blank">launch/nextage_startup.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_ros_bridge_simulation.launch" target="_blank">launch/nextage_ros_bridge_simulation.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_ros_bridge_viz.launch" target="_blank">launch/nextage_ros_bridge_viz.launch</a></li>
-          
-            <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_ros_bridge.launch" target="_blank">launch/nextage_ros_bridge.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_ros_bridge.launch" target="_blank">launch/nextage_ros_bridge.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> for real robot </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>nameserver</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_ros_bridge)/models/nextage.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>SIMULATOR_NAME</strong> <em>&#91;default: RobotHardware0&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_startup.launch" target="_blank">launch/nextage_startup.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: $(arg GUI)&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>PROJECT_FILE</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/nextage_nosim.xml&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>CONF_FILE</strong> <em>&#91;default: $(find nextage_ros_bridge)/conf/nextage.conf&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_ros_bridge_viz.launch" target="_blank">launch/nextage_ros_bridge_viz.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> for real robot </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>nameserver</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>COLLADA_FILE</strong> <em>&#91;default: $(find nextage_ros_bridge)/models/nextage.dae&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>SIMULATOR_NAME</strong> <em>&#91;default: RobotHardware0&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge/launch/nextage_ros_bridge_simulation.launch" target="_blank">launch/nextage_ros_bridge_simulation.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: true&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>MODEL_FILE</strong> <em>&#91;default: $(find nextage_description)/models/main.wrl&#93; </em></li>
+                        
+                      
+                        
+                          <li><strong>GUI</strong> <em>&#91;default: $(arg GUI)&#93; </em></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1317,9 +3240,9 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1328,9 +3251,9 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1339,28 +3262,35 @@ the things needed for running robots (ros_bridge, RViz).</p>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/nextage_ros_bridge/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tork-a/rtmros_nextage/tree/groovy-devel/nextage_ros_bridge"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:nextage_ros_bridge/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/nextage_ros_bridge?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=nextage_ros_bridge&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1412,7 +3342,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

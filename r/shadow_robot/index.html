@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,8 +281,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +305,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-21
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-29
         </span>
       </td>
     </tr>
@@ -263,7 +313,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -295,77 +348,7 @@
                 
                   <tr>
                     <td><a href="/p/shadow_robot/github-shadow-robot-sr-ros-interface">shadow_robot</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_description/github-shadow-robot-sr-ros-interface">sr_description</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_example/github-shadow-robot-sr-ros-interface">sr_example</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_gazebo_plugins/github-shadow-robot-sr-ros-interface">sr_gazebo_plugins</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_grasp/github-shadow-robot-sr-ros-interface">sr_grasp</a></td>
-                    <td>0.0.1</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_hand/github-shadow-robot-sr-ros-interface">sr_hand</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_hardware_interface/github-shadow-robot-sr-ros-interface">sr_hardware_interface</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_mechanism_controllers/github-shadow-robot-sr-ros-interface">sr_mechanism_controllers</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_mechanism_model/github-shadow-robot-sr-ros-interface">sr_mechanism_model</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_movements/github-shadow-robot-sr-ros-interface">sr_movements</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_robot_msgs/github-shadow-robot-sr-ros-interface">sr_robot_msgs</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_self_test/github-shadow-robot-sr-ros-interface">sr_self_test</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_standalone/github-shadow-robot-sr-ros-interface">sr_standalone</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_tactile_sensors/github-shadow-robot-sr-ros-interface">sr_tactile_sensors</a></td>
-                    <td>1.3.2</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sr_utilities/github-shadow-robot-sr-ros-interface">sr_utilities</a></td>
-                    <td>1.3.2</td>
+                    <td>1.4.0</td>
                   </tr>
                 
                 </tbody>
@@ -380,14 +363,48 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<p>A ROS interface for Shadow Robot's hand.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentation</td>
+<td><a href="http://shadow-robot.readthedocs.org/"><img src="https://readthedocs.org/projects/shadow-robot/badge" alt="Documentation Status"></a></td>
+</tr>
+<tr>
+<td>Code style checks</td>
+<td><a href="https://circleci.com/gh/shadow-robot/sr-ros-interface"><img src="https://circleci.com/gh/shadow-robot/sr-ros-interface.svg?style=shield" alt="Circle CI"></a></td>
+</tr>
+<tr>
+<td>Unit tests</td>
+<td><a href="https://travis-ci.org/shadow-robot/sr-ros-interface"><img src="https://travis-ci.org/shadow-robot/sr-ros-interface.svg?branch=indigo-devel" alt="Build Status"></a></td>
+</tr>
+<tr>
+<td>Install tests</td>
+<td><a href="https://semaphoreci.com/andriy/sr-ros-interface"><img src="https://semaphoreci.com/api/v1/projects/11755ff7-a716-4ac2-a7fb-5edb3c7a87b5/518634/shields_badge.svg" alt="Build Status"></a></td>
+</tr>
+<tr>
+<td>Code Coverage</td>
+<td><a href="http://codecov.io/github/shadow-robot/sr-ros-interface?branch=indigo-devel"><img src="https://img.shields.io/codecov/c/github/shadow-robot/sr-ros-interface/indigo-devel.svg" alt="codecov.io"></a></td>
+</tr>
+</tbody>
+</table>
 
-<p><a href="http://wiki.ros.org/shadow_robot">http://wiki.ros.org/shadow_robot</a></p>
+<h1 id="shadow-robot">Shadow Robot</h1>
+
+<p>You will find our documentation on <a href="shadow-robot.readthedocs.org">readthedocs</a>.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -395,8 +412,8 @@
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -427,7 +444,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -557,6 +577,9 @@
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -564,8 +587,8 @@
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -596,7 +619,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -702,7 +728,8 @@
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-text" data-lang="text">First of all, don't forget to edit your ROS_PACKAGE_PATH variable. To do this,
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">
+First of all, don't forget to edit your ROS_PACKAGE_PATH variable. To do this,
 edit your ~/.bashrc and AFTER the source /path/to/ros/setup.sh add: 
 
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/path/to/shadow_robot
@@ -717,11 +744,17 @@ $ ./generate_doc.sh
 
 Then fire up your favourite browser and open the generated rosdoc/index.html.
 You can start by reading the sr_hand documentation.
+
+
+
 </code></pre></div></div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -729,8 +762,8 @@ You can start by reading the sr_hand documentation.
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -761,7 +794,10 @@ You can start by reading the sr_hand documentation.
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -872,7 +908,8 @@ You can start by reading the sr_hand documentation.
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-text" data-lang="text">First of all, don't forget to edit your ROS_PACKAGE_PATH variable. To do this,
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">
+First of all, don't forget to edit your ROS_PACKAGE_PATH variable. To do this,
 edit your ~/.bashrc and AFTER the source /path/to/ros/setup.sh add: 
 
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/path/to/shadow_robot
@@ -887,11 +924,17 @@ $ ./generate_doc.sh
 
 Then fire up your favourite browser and open the generated rosdoc/index.html.
 You can start by reading the sr_hand documentation.
+
+
+
 </code></pre></div></div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -899,8 +942,8 @@ You can start by reading the sr_hand documentation.
   <div class="distro distro-electric">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -931,7 +974,10 @@ You can start by reading the sr_hand documentation.
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -1037,7 +1083,8 @@ You can start by reading the sr_hand documentation.
           <div class="panel-body">
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-text" data-lang="text">First of all, don't forget to edit your ROS_PACKAGE_PATH variable. To do this,
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">
+First of all, don't forget to edit your ROS_PACKAGE_PATH variable. To do this,
 edit your ~/.bashrc and AFTER the source /path/to/ros/setup.sh add: 
 
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/path/to/shadow_robot
@@ -1052,11 +1099,17 @@ $ ./generate_doc.sh
 
 Then fire up your favourite browser and open the generated rosdoc/index.html.
 You can start by reading the sr_hand documentation.
+
+
+
 </code></pre></div></div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1091,7 +1144,7 @@ You can start by reading the sr_hand documentation.
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

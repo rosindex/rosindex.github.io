@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -145,7 +187,7 @@
           <a href="#electric" data="electric" id="electric-button">electric</a>
         </li>
       
-        <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
+        <li data="diamondback" id="diamondback-option" class=" older-distro-option"  href="#diamondback">
           <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
         </li>
       
@@ -157,128 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/tinyxml">tinyxml</a> <small>package from <a style="text-decoration:none" href="/r/actionlib/github-ros-actionlib">actionlib</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/actionlib/github-ros-actionlib">actionlib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/bfl/github-ros-actionlib">bfl</a>
-        
-      
-        
-          <span class="label label-default"> tinyxml</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/yaml_cpp/github-ros-actionlib">yaml_cpp</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/tinyxml/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros/actionlib/tree/electric-devel/tinyxml" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:tinyxml/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/tinyxml" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/tinyxml"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-actionlib
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-actionlib" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-actionlib" data="github-ros-actionlib">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-actionlib
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -325,6 +256,131 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/tinyxml">tinyxml</a> <small>package from <a style="text-decoration:none" href="/r/actionlib/github-ros-actionlib">actionlib</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/actionlib/github-ros-actionlib">
+
+actionlib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/bfl/github-ros-actionlib">
+
+<span class="glyphicon glyphicon-education"></span> bfl
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+tinyxml
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yaml_cpp/github-ros-actionlib">
+
+yaml_cpp
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-electric">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/tinyxml"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-actionlib
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-actionlib" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-actionlib" data="github-ros-actionlib">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-actionlib
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ros-bond_core" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-bond_core" data="github-ros-bond_core">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-bond_core
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ros-nodelet_core" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-nodelet_core" data="github-ros-nodelet_core">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-nodelet_core
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/electric/api/tinyxml/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/actionlib/tree/electric-devel/tinyxml"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:tinyxml/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/tinyxml?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=tinyxml&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -337,30 +393,30 @@
     
     
     
+    
     <a href="#electric-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#electric-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
+    
+    
+    
+    <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">1</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#electric-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="electric-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-This package helps users transition over to the tinyxml system dependency. This package is deprecated.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -399,7 +455,7 @@ This package helps users transition over to the tinyxml system dependency. This 
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -421,7 +477,7 @@ This package helps users transition over to the tinyxml system dependency. This 
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-11-08
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-11-09
         </span>
       </td>
     </tr>
@@ -429,7 +485,10 @@ This package helps users transition over to the tinyxml system dependency. This 
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -446,8 +505,25 @@ This package helps users transition over to the tinyxml system dependency. This 
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+This package helps users transition over to the tinyxml system dependency. This package is deprecated.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/tinyxml">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -462,17 +538,6 @@ This package helps users transition over to the tinyxml system dependency. This 
               <ul class="list-unstyled">
                 
                   <li>Kevin Watts</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/tinyxml">Website</a></li>
                 
               </ul>
             
@@ -515,7 +580,8 @@ This package helps users transition over to the tinyxml system dependency. This 
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/tinyxml/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/tinyxml/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -527,25 +593,106 @@ This package helps users transition over to the tinyxml system dependency. This 
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/tinyxml">tinyxml</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/bumper_gazebo_plugin/github-pal-robotics-reem_plugins#electric">bumper_gazebo_plugin</a></td>
+                      <td><a href="/r/reem_plugins/github-pal-robotics-reem_plugins">github-pal-robotics-reem_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/bumper_gazebo_plugin/github-pal-robotics-reem_plugins#electric-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/range_gazebo_plugin/github-pal-robotics-reem_plugins#electric">range_gazebo_plugin</a></td>
+                      <td><a href="/r/reem_plugins/github-pal-robotics-reem_plugins">github-pal-robotics-reem_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/range_gazebo_plugin/github-pal-robotics-reem_plugins#electric-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/phspline_generator/bitbucket-pkganeshpk-phspline_planner#electric">phspline_generator</a></td>
+                      <td><a href="/r/pkganeshpk/bitbucket-pkganeshpk-phspline_planner">bitbucket-pkganeshpk-phspline_planner</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/phspline_generator/bitbucket-pkganeshpk-phspline_planner#electric-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -553,12 +700,12 @@ This package helps users transition over to the tinyxml system dependency. This 
   <div class="tab-pane" id="electric-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -567,9 +714,9 @@ This package helps users transition over to the tinyxml system dependency. This 
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -578,9 +725,9 @@ This package helps users transition over to the tinyxml system dependency. This 
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -589,28 +736,35 @@ This package helps users transition over to the tinyxml system dependency. This 
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/electric/api/tinyxml/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/actionlib/tree/electric-devel/tinyxml"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:tinyxml/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/tinyxml?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=tinyxml&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -618,7 +772,1230 @@ $(function() {
   <div class="distro distro-diamondback">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/tinyxml">tinyxml</a> <small>package from <a style="text-decoration:none" href="/r/actionlib/github-ros-actionlib">actionlib</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/actionlib/github-ros-actionlib">
+
+actionlib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/bfl/github-ros-actionlib">
+
+<span class="glyphicon glyphicon-education"></span> bfl
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/bond/github-ros-actionlib">
+
+bond
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/bondcpp/github-ros-actionlib">
+
+bondcpp
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/bondpy/github-ros-actionlib">
+
+bondpy
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/filters/github-ros-actionlib">
+
+<span class="glyphicon glyphicon-education"></span> filters
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nodelet/github-ros-actionlib">
+
+<span class="glyphicon glyphicon-education"></span> nodelet
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/nodelet_topic_tools/github-ros-actionlib">
+
+nodelet_topic_tools
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pluginlib/github-ros-actionlib">
+
+<span class="glyphicon glyphicon-education"></span> pluginlib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/smclib/github-ros-actionlib">
+
+smclib
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_bond/github-ros-actionlib">
+
+test_bond
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/test_nodelet/github-ros-actionlib">
+
+test_nodelet
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> tinyxml
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/xacro/github-ros-actionlib">
+
+xacro
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yaml_cpp/github-ros-actionlib">
+
+yaml_cpp
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-diamondback">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/tinyxml"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-actionlib
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-actionlib" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-actionlib" data="github-ros-actionlib">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-actionlib
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ros-bond_core" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-bond_core" data="github-ros-bond_core">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-bond_core
+                  </a>
+                </li>
+              
+                <li role="presentation">
+                  <a id="github-ros-nodelet_core" role="menuitem" tabindex="-1" href="/p/tinyxml/github-ros-nodelet_core" data="github-ros-nodelet_core">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-nodelet_core
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/diamondback/api/tinyxml/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros/actionlib/tree/diamondback/tinyxml"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:tinyxml/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/tinyxml?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=tinyxml&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="diamondback-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#diamondback-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#diamondback-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#diamondback-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#diamondback-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="diamondback-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>UNKNOWN</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>ZLib</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-default">
+                  
+                    ROSBUILD</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros/actionlib.git">https://github.com/ros/actionlib.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">diamondback</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-02-25
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+  TinyXML is a simple, small, C++ XML parser that can be easily integrating
+  into other programs. 
+
+  This is version 2.5.3. This has been stable for 2 years.  If a backwards comatable update comes out
+we will consider updating.  
+ 
+  This package sets the TIXML_USE_STL compile flag and exports it for other users. 
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.grinninglizard.com/tinyxml">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No known maintainers.</em>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Lee Thomason</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown"><div class="highlight"><pre><code class="language-" data-lang="">/** @mainpage
+
+&lt;h1&gt; TinyXML &lt;/h1&gt;
+
+TinyXML is a simple, small, C++ XML parser that can be easily 
+integrated into other programs.
+
+&lt;h2&gt; What it does. &lt;/h2&gt;
+
+In brief, TinyXML parses an XML document, and builds from that a 
+Document Object Model (DOM) that can be read, modified, and saved.
+
+XML stands for "eXtensible Markup Language." It allows you to create 
+your own document markups. Where HTML does a very good job of marking 
+documents for browsers, XML allows you to define any kind of document 
+markup, for example a document that describes a "to do" list for an 
+organizer application. XML is a very structured and convenient format.
+All those random file formats created to store application data can 
+all be replaced with XML. One parser for everything.
+
+The best place for the complete, correct, and quite frankly hard to
+read spec is at &lt;a href="http://www.w3.org/TR/2004/REC-xml-20040204/"&gt;
+http://www.w3.org/TR/2004/REC-xml-20040204/&lt;/a&gt;. An intro to XML
+(that I really like) can be found at 
+&lt;a href="http://skew.org/xml/tutorial/"&gt;http://skew.org/xml/tutorial&lt;/a&gt;.
+
+There are different ways to access and interact with XML data.
+TinyXML uses a Document Object Model (DOM), meaning the XML data is parsed
+into a C++ objects that can be browsed and manipulated, and then 
+written to disk or another output stream. You can also construct an XML document 
+from scratch with C++ objects and write this to disk or another output
+stream.
+
+TinyXML is designed to be easy and fast to learn. It is two headers 
+and four cpp files. Simply add these to your project and off you go. 
+There is an example file - xmltest.cpp - to get you started. 
+
+TinyXML is released under the ZLib license, 
+so you can use it in open source or commercial code. The details
+of the license are at the top of every source file.
+
+TinyXML attempts to be a flexible parser, but with truly correct and
+compliant XML output. TinyXML should compile on any reasonably C++
+compliant system. It does not rely on exceptions or RTTI. It can be 
+compiled with or without STL support. TinyXML fully supports
+the UTF-8 encoding, and the first 64k character entities.
+
+
+&lt;h2&gt; What it doesn't do. &lt;/h2&gt;
+
+TinyXML doesn't parse or use DTDs (Document Type Definitions) or XSLs
+(eXtensible Stylesheet Language.) There are other parsers out there 
+(check out www.sourceforge.org, search for XML) that are much more fully
+featured. But they are also much bigger, take longer to set up in
+your project, have a higher learning curve, and often have a more
+restrictive license. If you are working with browsers or have more
+complete XML needs, TinyXML is not the parser for you.
+
+The following DTD syntax will not parse at this time in TinyXML:
+
+@verbatim
+    &lt;!DOCTYPE Archiv [
+     &lt;!ELEMENT Comment (#PCDATA)&gt;
+    ]&gt;
+@endverbatim
+
+because TinyXML sees this as a !DOCTYPE node with an illegally 
+embedded !ELEMENT node. This may be addressed in the future.
+
+&lt;h2&gt; Tutorials. &lt;/h2&gt;
+
+For the impatient, here is a tutorial to get you going. A great way to get started, 
+but it is worth your time to read this (very short) manual completely.
+
+- @subpage tutorial0
+
+&lt;h2&gt; Code Status.  &lt;/h2&gt;
+
+TinyXML is mature, tested code. It is very stable. If you find
+bugs, please file a bug report on the sourceforge web site
+(www.sourceforge.net/projects/tinyxml). We'll get them straightened 
+out as soon as possible.
+
+There are some areas of improvement; please check sourceforge if you are
+interested in working on TinyXML.
+
+&lt;h2&gt; Related Projects &lt;/h2&gt;
+
+TinyXML projects you may find useful! (Descriptions provided by the projects.)
+
+&lt;ul&gt;
+&lt;li&gt; &lt;b&gt;TinyXPath&lt;/b&gt; (http://tinyxpath.sourceforge.net). TinyXPath is a small footprint 
+     XPath syntax decoder, written in C++.&lt;/li&gt;
+&lt;li&gt; &lt;b&gt;TinyXML++&lt;/b&gt; (http://code.google.com/p/ticpp/). TinyXML++ is a completely new 
+     interface to TinyXML that uses MANY of the C++ strengths. Templates, 
+     exceptions, and much better error handling.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt; Features &lt;/h2&gt;
+
+&lt;h3&gt; Using STL &lt;/h3&gt;
+
+TinyXML can be compiled to use or not use STL. When using STL, TinyXML
+uses the std::string class, and fully supports std::istream, std::ostream,
+operator&lt;&lt;, and operator&gt;&gt;. Many API methods have both 'const char*' and
+'const std::string&amp;' forms.
+
+When STL support is compiled out, no STL files are included whatsoever. All
+the string classes are implemented by TinyXML itself. API methods
+all use the 'const char*' form for input.
+
+Use the compile time #define:
+
+    TIXML_USE_STL
+
+to compile one version or the other. This can be passed by the compiler,
+or set as the first line of "tinyxml.h".
+
+Note: If compiling the test code in Linux, setting the environment
+variable TINYXML_USE_STL=YES/NO will control STL compilation. In the
+Windows project file, STL and non STL targets are provided. In your project,
+It's probably easiest to add the line "#define TIXML_USE_STL" as the first
+line of tinyxml.h.
+
+&lt;h3&gt; UTF-8 &lt;/h3&gt;
+
+TinyXML supports UTF-8 allowing to manipulate XML files in any language. TinyXML
+also supports "legacy mode" - the encoding used before UTF-8 support and
+probably best described as "extended ascii".
+
+Normally, TinyXML will try to detect the correct encoding and use it. However,
+by setting the value of TIXML_DEFAULT_ENCODING in the header file, TinyXML
+can be forced to always use one encoding.
+
+TinyXML will assume Legacy Mode until one of the following occurs:
+&lt;ol&gt;
+    &lt;li&gt; If the non-standard but common "UTF-8 lead bytes" (0xef 0xbb 0xbf)
+         begin the file or data stream, TinyXML will read it as UTF-8. &lt;/li&gt;
+    &lt;li&gt; If the declaration tag is read, and it has an encoding="UTF-8", then
+         TinyXML will read it as UTF-8. &lt;/li&gt;
+    &lt;li&gt; If the declaration tag is read, and it has no encoding specified, then TinyXML will 
+         read it as UTF-8. &lt;/li&gt;
+    &lt;li&gt; If the declaration tag is read, and it has an encoding="something else", then TinyXML 
+         will read it as Legacy Mode. In legacy mode, TinyXML will work as it did before. It's 
+         not clear what that mode does exactly, but old content should keep working.&lt;/li&gt;
+    &lt;li&gt; Until one of the above criteria is met, TinyXML runs in Legacy Mode.&lt;/li&gt;
+&lt;/ol&gt;
+
+What happens if the encoding is incorrectly set or detected? TinyXML will try
+to read and pass through text seen as improperly encoded. You may get some strange results or 
+mangled characters. You may want to force TinyXML to the correct mode.
+
+You may force TinyXML to Legacy Mode by using LoadFile( TIXML_ENCODING_LEGACY ) or
+LoadFile( filename, TIXML_ENCODING_LEGACY ). You may force it to use legacy mode all
+the time by setting TIXML_DEFAULT_ENCODING = TIXML_ENCODING_LEGACY. Likewise, you may 
+force it to TIXML_ENCODING_UTF8 with the same technique.
+
+For English users, using English XML, UTF-8 is the same as low-ASCII. You
+don't need to be aware of UTF-8 or change your code in any way. You can think
+of UTF-8 as a "superset" of ASCII.
+
+UTF-8 is not a double byte format - but it is a standard encoding of Unicode!
+TinyXML does not use or directly support wchar, TCHAR, or Microsoft's _UNICODE at this time. 
+It is common to see the term "Unicode" improperly refer to UTF-16, a wide byte encoding
+of unicode. This is a source of confusion.
+
+For "high-ascii" languages - everything not English, pretty much - TinyXML can
+handle all languages, at the same time, as long as the XML is encoded
+in UTF-8. That can be a little tricky, older programs and operating systems
+tend to use the "default" or "traditional" code page. Many apps (and almost all
+modern ones) can output UTF-8, but older or stubborn (or just broken) ones
+still output text in the default code page. 
+
+For example, Japanese systems traditionally use SHIFT-JIS encoding. 
+Text encoded as SHIFT-JIS can not be read by TinyXML. 
+A good text editor can import SHIFT-JIS and then save as UTF-8.
+
+The &lt;a href="http://skew.org/xml/tutorial/"&gt;Skew.org link&lt;/a&gt; does a great
+job covering the encoding issue.
+
+The test file "utf8test.xml" is an XML containing English, Spanish, Russian,
+and Simplified Chinese. (Hopefully they are translated correctly). The file
+"utf8test.gif" is a screen capture of the XML file, rendered in IE. Note that
+if you don't have the correct fonts (Simplified Chinese or Russian) on your
+system, you won't see output that matches the GIF file even if you can parse
+it correctly. Also note that (at least on my Windows machine) console output
+is in a Western code page, so that Print() or printf() cannot correctly display
+the file. This is not a bug in TinyXML - just an OS issue. No data is lost or 
+destroyed by TinyXML. The console just doesn't render UTF-8.
+
+
+&lt;h3&gt; Entities &lt;/h3&gt;
+TinyXML recognizes the pre-defined "character entities", meaning special
+characters. Namely:
+
+@verbatim
+    &amp;amp;   &amp;
+    &amp;lt;    &lt;
+    &amp;gt;    &gt;
+    &amp;quot;  "
+    &amp;apos;  '
+@endverbatim
+
+These are recognized when the XML document is read, and translated to there
+UTF-8 equivalents. For instance, text with the XML of:
+
+@verbatim
+    Far &amp;amp; Away
+@endverbatim
+
+will have the Value() of "Far &amp; Away" when queried from the TiXmlText object,
+and will be written back to the XML stream/file as an ampersand. Older versions
+of TinyXML "preserved" character entities, but the newer versions will translate
+them into characters.
+
+Additionally, any character can be specified by its Unicode code point:
+The syntax "&amp;#xA0;" or "&amp;#160;" are both to the non-breaking space characher.
+
+&lt;h3&gt; Printing &lt;/h3&gt;
+TinyXML can print output in several different ways that all have strengths and limitations.
+
+- Print( FILE* ). Output to a std-C stream, which includes all C files as well as stdout.
+    - "Pretty prints", but you don't have control over printing options.
+    - The output is streamed directly to the FILE object, so there is no memory overhead
+      in the TinyXML code.
+    - used by Print() and SaveFile()
+
+- operator&lt;&lt;. Output to a c++ stream.
+    - Integrates with standart C++ iostreams.
+    - Outputs in "network printing" mode without line breaks. Good for network transmission
+      and moving XML between C++ objects, but hard for a human to read.
+
+- TiXmlPrinter. Output to a std::string or memory buffer.
+    - API is less concise
+    - Future printing options will be put here.
+    - Printing may change slightly in future versions as it is refined and expanded.
+
+&lt;h3&gt; Streams &lt;/h3&gt;
+With TIXML_USE_STL on TinyXML supports C++ streams (operator &lt;&lt;,&gt;&gt;) streams as well
+as C (FILE*) streams. There are some differences that you may need to be aware of.
+
+C style output:
+    - based on FILE*
+    - the Print() and SaveFile() methods
+
+    Generates formatted output, with plenty of white space, intended to be as 
+    human-readable as possible. They are very fast, and tolerant of ill formed 
+    XML documents. For example, an XML document that contains 2 root elements 
+    and 2 declarations, will still print.
+
+C style input:
+    - based on FILE*
+    - the Parse() and LoadFile() methods
+
+    A fast, tolerant read. Use whenever you don't need the C++ streams.
+
+C++ style output:
+    - based on std::ostream
+    - operator&lt;&lt;
+
+    Generates condensed output, intended for network transmission rather than
+    readability. Depending on your system's implementation of the ostream class,
+    these may be somewhat slower. (Or may not.) Not tolerant of ill formed XML:
+    a document should contain the correct one root element. Additional root level
+    elements will not be streamed out.
+
+C++ style input:
+    - based on std::istream
+    - operator&gt;&gt;
+
+    Reads XML from a stream, making it useful for network transmission. The tricky
+    part is knowing when the XML document is complete, since there will almost
+    certainly be other data in the stream. TinyXML will assume the XML data is
+    complete after it reads the root element. Put another way, documents that
+    are ill-constructed with more than one root element will not read correctly.
+    Also note that operator&gt;&gt; is somewhat slower than Parse, due to both 
+    implementation of the STL and limitations of TinyXML.
+
+&lt;h3&gt; White space &lt;/h3&gt;
+The world simply does not agree on whether white space should be kept, or condensed.
+For example, pretend the '_' is a space, and look at "Hello____world". HTML, and 
+at least some XML parsers, will interpret this as "Hello_world". They condense white
+space. Some XML parsers do not, and will leave it as "Hello____world". (Remember
+to keep pretending the _ is a space.) Others suggest that __Hello___world__ should become
+Hello___world.
+
+It's an issue that hasn't been resolved to my satisfaction. TinyXML supports the
+first 2 approaches. Call TiXmlBase::SetCondenseWhiteSpace( bool ) to set the desired behavior.
+The default is to condense white space.
+
+If you change the default, you should call TiXmlBase::SetCondenseWhiteSpace( bool )
+before making any calls to Parse XML data, and I don't recommend changing it after
+it has been set.
+
+
+&lt;h3&gt; Handles &lt;/h3&gt;
+
+Where browsing an XML document in a robust way, it is important to check
+for null returns from method calls. An error safe implementation can
+generate a lot of code like:
+
+@verbatim
+TiXmlElement* root = document.FirstChildElement( "Document" );
+if ( root )
+{
+    TiXmlElement* element = root-&gt;FirstChildElement( "Element" );
+    if ( element )
+    {
+        TiXmlElement* child = element-&gt;FirstChildElement( "Child" );
+        if ( child )
+        {
+            TiXmlElement* child2 = child-&gt;NextSiblingElement( "Child" );
+            if ( child2 )
+            {
+                // Finally do something useful.
+@endverbatim
+
+Handles have been introduced to clean this up. Using the TiXmlHandle class,
+the previous code reduces to:
+
+@verbatim
+TiXmlHandle docHandle( &amp;document );
+TiXmlElement* child2 = docHandle.FirstChild( "Document" ).FirstChild( "Element" ).Child( "Child", 1 ).ToElement();
+if ( child2 )
+{
+    // do something useful
+@endverbatim
+
+Which is much easier to deal with. See TiXmlHandle for more information.
+
+
+&lt;h3&gt; Row and Column tracking &lt;/h3&gt;
+Being able to track nodes and attributes back to their origin location
+in source files can be very important for some applications. Additionally,
+knowing where parsing errors occured in the original source can be very
+time saving.
+
+TinyXML can tracks the row and column origin of all nodes and attributes
+in a text file. The TiXmlBase::Row() and TiXmlBase::Column() methods return
+the origin of the node in the source text. The correct tabs can be 
+configured in TiXmlDocument::SetTabSize().
+
+
+&lt;h2&gt; Using and Installing &lt;/h2&gt;
+
+To Compile and Run xmltest:
+
+A Linux Makefile and a Windows Visual C++ .dsw file is provided. 
+Simply compile and run. It will write the file demotest.xml to your 
+disk and generate output on the screen. It also tests walking the
+DOM by printing out the number of nodes found using different 
+techniques.
+
+The Linux makefile is very generic and runs on many systems - it 
+is currently tested on mingw and
+MacOSX. You do not need to run 'make depend'. The dependecies have been
+hard coded.
+
+&lt;h3&gt;Windows project file for VC6&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;tinyxml:        tinyxml library, non-STL &lt;/li&gt;
+&lt;li&gt;tinyxmlSTL:     tinyxml library, STL &lt;/li&gt;
+&lt;li&gt;tinyXmlTest:    test app, non-STL &lt;/li&gt;
+&lt;li&gt;tinyXmlTestSTL: test app, STL &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Makefile&lt;/h3&gt;
+At the top of the makefile you can set:
+
+PROFILE, DEBUG, and TINYXML_USE_STL. Details (such that they are) are in
+the makefile.
+
+In the tinyxml directory, type "make clean" then "make". The executable
+file 'xmltest' will be created.
+
+
+
+&lt;h3&gt;To Use in an Application:&lt;/h3&gt;
+
+Add tinyxml.cpp, tinyxml.h, tinyxmlerror.cpp, tinyxmlparser.cpp, tinystr.cpp, and tinystr.h to your
+project or make file. That's it! It should compile on any reasonably
+compliant C++ system. You do not need to enable exceptions or
+RTTI for TinyXML.
+
+
+&lt;h2&gt; How TinyXML works.  &lt;/h2&gt;
+
+An example is probably the best way to go. Take:
+@verbatim
+    &lt;?xml version="1.0" standalone=no&gt;
+    &lt;!-- Our to do list data --&gt;
+    &lt;ToDo&gt;
+        &lt;Item priority="1"&gt; Go to the &lt;bold&gt;Toy store!&lt;/bold&gt;&lt;/Item&gt;
+        &lt;Item priority="2"&gt; Do bills&lt;/Item&gt;
+    &lt;/ToDo&gt;
+@endverbatim
+
+Its not much of a To Do list, but it will do. To read this file 
+(say "demo.xml") you would create a document, and parse it in:
+@verbatim
+    TiXmlDocument doc( "demo.xml" );
+    doc.LoadFile();
+@endverbatim
+
+And its ready to go. Now lets look at some lines and how they 
+relate to the DOM.
+
+@verbatim
+&lt;?xml version="1.0" standalone=no&gt;
+@endverbatim
+
+    The first line is a declaration, and gets turned into the
+    TiXmlDeclaration class. It will be the first child of the
+    document node.
+
+    This is the only directive/special tag parsed by by TinyXML.
+    Generally directive tags are stored in TiXmlUnknown so the 
+    commands wont be lost when it is saved back to disk.
+
+@verbatim
+&lt;!-- Our to do list data --&gt;
+@endverbatim
+
+    A comment. Will become a TiXmlComment object.
+
+@verbatim
+&lt;ToDo&gt;
+@endverbatim
+
+    The "ToDo" tag defines a TiXmlElement object. This one does not have 
+    any attributes, but does contain 2 other elements.
+
+@verbatim
+&lt;Item priority="1"&gt; 
+@endverbatim
+
+    Creates another TiXmlElement which is a child of the "ToDo" element. 
+    This element has 1 attribute, with the name "priority" and the value 
+    "1".
+
+@verbatim
+Go to the
+@endverbatim 
+
+    A TiXmlText. This is a leaf node and cannot contain other nodes. 
+    It is a child of the "Item" TiXmlElement.
+
+@verbatim
+&lt;bold&gt;
+@endverbatim
+
+
+    Another TiXmlElement, this one a child of the "Item" element.
+
+Etc.
+
+Looking at the entire object tree, you end up with:
+@verbatim
+TiXmlDocument                   "demo.xml"
+    TiXmlDeclaration            "version='1.0'" "standalone=no"
+    TiXmlComment                " Our to do list data"
+    TiXmlElement                "ToDo"
+        TiXmlElement            "Item" Attribtutes: priority = 1
+            TiXmlText           "Go to the "
+            TiXmlElement        "bold"
+                TiXmlText       "Toy store!"
+        TiXmlElement            "Item" Attributes: priority=2
+            TiXmlText           "Do bills"
+@endverbatim
+
+&lt;h2&gt; Documentation &lt;/h2&gt;
+
+The documentation is build with Doxygen, using the 'dox' 
+configuration file.
+
+&lt;h2&gt; License &lt;/h2&gt;
+
+TinyXML is released under the zlib license:
+
+This software is provided 'as-is', without any express or implied 
+warranty. In no event will the authors be held liable for any 
+damages arising from the use of this software.
+
+Permission is granted to anyone to use this software for any 
+purpose, including commercial applications, and to alter it and 
+redistribute it freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must 
+not claim that you wrote the original software. If you use this 
+software in a product, an acknowledgment in the product documentation 
+would be appreciated but is not required.
+
+2. Altered source versions must be plainly marked as such, and 
+must not be misrepresented as being the original software.
+
+3. This notice may not be removed or altered from any source 
+distribution.
+
+&lt;h2&gt; References  &lt;/h2&gt;
+
+The World Wide Web Consortium is the definitive standard body for 
+XML, and there web pages contain huge amounts of information. 
+
+The definitive spec: &lt;a href="http://www.w3.org/TR/2004/REC-xml-20040204/"&gt;
+http://www.w3.org/TR/2004/REC-xml-20040204/&lt;/a&gt;
+
+I also recommend "XML Pocket Reference" by Robert Eckstein and published by 
+OReilly...the book that got the whole thing started.
+
+&lt;h2&gt; Contributors, Contacts, and a Brief History &lt;/h2&gt;
+
+Thanks very much to everyone who sends suggestions, bugs, ideas, and 
+encouragement. It all helps, and makes this project fun. A special thanks
+to the contributors on the web pages that keep it lively.
+
+So many people have sent in bugs and ideas, that rather than list here 
+we try to give credit due in the "changes.txt" file.
+
+TinyXML was originally written by Lee Thomason. (Often the "I" still
+in the documentation.) Lee reviews changes and releases new versions,
+with the help of Yves Berquin, Andrew Ellerton, and the tinyXml community.
+
+We appreciate your suggestions, and would love to know if you 
+use TinyXML. Hopefully you will enjoy it and find it useful. 
+Please post questions, comments, file bugs, or contact us at:
+
+www.sourceforge.net/projects/tinyxml
+
+Lee Thomason, Yves Berquin, Andrew Ellerton
+*/
+
+
+</code></pre></div></div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <em>No CHANGELOG found.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="diamondback-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/tinyxml/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="diamondback-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/gazebo/bitbucket-osrf-simulator_gazebo#diamondback">gazebo</a></td>
+                      <td><a href="/r/simulator_gazebo/bitbucket-osrf-simulator_gazebo">bitbucket-osrf-simulator_gazebo</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/gazebo/bitbucket-osrf-simulator_gazebo#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/gazebo_plugins/bitbucket-osrf-simulator_gazebo#diamondback">gazebo_plugins</a></td>
+                      <td><a href="/r/simulator_gazebo/bitbucket-osrf-simulator_gazebo">bitbucket-osrf-simulator_gazebo</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/gazebo_plugins/bitbucket-osrf-simulator_gazebo#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/gazebo_tools/bitbucket-osrf-simulator_gazebo#diamondback">gazebo_tools</a></td>
+                      <td><a href="/r/simulator_gazebo/bitbucket-osrf-simulator_gazebo">bitbucket-osrf-simulator_gazebo</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/gazebo_tools/bitbucket-osrf-simulator_gazebo#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_camera_sensors/github-ipa320-cob_driver#diamondback">cob_camera_sensors</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_camera_sensors/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pluginlib/github-ros-bond_core#diamondback">pluginlib</a></td>
+                      <td><a href="/r/bond_core/github-ros-bond_core">github-ros-bond_core</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pluginlib/github-ros-bond_core#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><a href="/p/pluginlib/github-ros-nodelet_core#diamondback">pluginlib</a></td>
+                      <td><a href="/r/nodelet_core/github-ros-nodelet_core">github-ros-nodelet_core</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pluginlib/github-ros-nodelet_core#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><a href="/p/pluginlib/github-ros-actionlib#diamondback">pluginlib</a></td>
+                      <td><a href="/r/actionlib/github-ros-actionlib">github-ros-actionlib</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pluginlib/github-ros-actionlib#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pr2_controller_manager/github-PR2-pr2_mechanism#diamondback">pr2_controller_manager</a></td>
+                      <td><a href="/r/pr2_mechanism/github-PR2-pr2_mechanism">github-PR2-pr2_mechanism</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_controller_manager/github-PR2-pr2_mechanism#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><a href="/p/pr2_controller_manager/github-pr2-pr2_mechanism#diamondback">pr2_controller_manager</a></td>
+                      <td><a href="/r/pr2_mechanism/github-pr2-pr2_mechanism">github-pr2-pr2_mechanism</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_controller_manager/github-pr2-pr2_mechanism#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pr2_mechanism_model/github-PR2-pr2_mechanism#diamondback">pr2_mechanism_model</a></td>
+                      <td><a href="/r/pr2_mechanism/github-PR2-pr2_mechanism">github-PR2-pr2_mechanism</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_mechanism_model/github-PR2-pr2_mechanism#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td><a href="/p/pr2_mechanism_model/github-pr2-pr2_mechanism#diamondback">pr2_mechanism_model</a></td>
+                      <td><a href="/r/pr2_mechanism/github-pr2-pr2_mechanism">github-pr2-pr2_mechanism</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_mechanism_model/github-pr2-pr2_mechanism#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="diamondback-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/diamondback/api/tinyxml/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros/actionlib/tree/diamondback/tinyxml"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:tinyxml/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/tinyxml?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=tinyxml&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -645,7 +2022,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

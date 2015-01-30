@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -154,79 +196,118 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/carl_interactive_manipulation">carl_interactive_manipulation</a> <small>package from <a style="text-decoration:none" href="/r/carl_bot/github-WPI-RAIL-carl_bot">carl_bot</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/carl_bot/github-WPI-RAIL-carl_bot">carl_bot</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/carl_bringup/github-WPI-RAIL-carl_bot">carl_bringup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/carl_description/github-WPI-RAIL-carl_bot">carl_description</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/carl_dynamixel/github-WPI-RAIL-carl_bot">carl_dynamixel</a>
-        
-      
-        
-          <span class="label label-default"> carl_interactive_manipulation</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/carl_phidgets/github-WPI-RAIL-carl_bot">carl_phidgets</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/carl_teleop/github-WPI-RAIL-carl_bot">carl_teleop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/carl_tools/github-WPI-RAIL-carl_bot">carl_tools</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/carl_interactive_manipulation/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//WPI-RAIL/carl_bot/tree/develop/carl_interactive_manipulation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:carl_interactive_manipulation/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/carl_interactive_manipulation" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-indigo">
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/carl_interactive_manipulation">carl_interactive_manipulation</a> <small>package from <a style="text-decoration:none" href="/r/carl_bot/github-GT-RAIL-carl_bot">carl_bot</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_bot/github-GT-RAIL-carl_bot">
+
+carl_bot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_bringup/github-GT-RAIL-carl_bot">
+
+carl_bringup
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_description/github-GT-RAIL-carl_bot">
+
+carl_description
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_dynamixel/github-GT-RAIL-carl_bot">
+
+carl_dynamixel
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+carl_interactive_manipulation
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_phidgets/github-GT-RAIL-carl_bot">
+
+carl_phidgets
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_teleop/github-GT-RAIL-carl_bot">
+
+carl_teleop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/carl_tools/github-GT-RAIL-carl_bot">
+
+carl_tools
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -242,15 +323,15 @@
               <span class="pull-left" style="width: 100%; text-align: left">
                 <span class="pull-right"><span class="caret"></span></span> 
               <span class="glyphicon glyphicon-none"></span>
-                  github-WPI-RAIL-carl_bot
+                  github-GT-RAIL-carl_bot
               </span>
             </button>
             <ul class="dropdown-menu" role="menu">
               
                 <li role="presentation">
-                  <a id="github-WPI-RAIL-carl_bot" role="menuitem" tabindex="-1" href="/p/carl_interactive_manipulation/github-WPI-RAIL-carl_bot" data="github-WPI-RAIL-carl_bot">
+                  <a id="github-GT-RAIL-carl_bot" role="menuitem" tabindex="-1" href="/p/carl_interactive_manipulation/github-GT-RAIL-carl_bot" data="github-GT-RAIL-carl_bot">
                     <span class="glyphicon glyphicon-none"></span>
-                    github-WPI-RAIL-carl_bot
+                    github-GT-RAIL-carl_bot
                   </a>
                 </li>
               
@@ -262,49 +343,27 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/carl_interactive_manipulation/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//GT-RAIL/carl_bot/tree/develop/carl_interactive_manipulation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:carl_interactive_manipulation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/carl_interactive_manipulation?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=carl_interactive_manipulation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -317,28 +376,30 @@
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            Interactive Manipulation for CARL
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -351,7 +412,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.0.13</td>
+                <td>0.0.34</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -377,7 +438,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -385,7 +446,7 @@
   <table class="table table-condensed">
     <tr>
       <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://github.com/WPI-RAIL/carl_bot.git">https://github.com/WPI-RAIL/carl_bot.git</a></td>
+      <td><a class="label label-default" href="https://github.com/GT-RAIL/carl_bot.git">https://github.com/GT-RAIL/carl_bot.git</a></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Type</b></td>
@@ -399,7 +460,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-21
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-03-03
         </span>
       </td>
     </tr>
@@ -427,8 +488,27 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Interactive Manipulation for CARL
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/carl_bot">Website</a></li>
+                
+                  <li><a href="https://github.com/GT-RAIL/carl_bot/issues">Bugtracker</a></li>
+                
+                  <li><a href="https://github.com/GT-RAIL/carl_bot">Repository</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -436,8 +516,6 @@
               <ul class="list-unstyled">
                 
                   <li>David Kent</li>
-                
-                  <li>Russell Toris</li>
                 
               </ul>
             
@@ -450,20 +528,7 @@
                 
                   <li>David Kent</li>
                 
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/carl_bot">Website</a></li>
-                
-                  <li><a href="https://github.com/WPI-RAIL/carl_bot/issues">Bugtracker</a></li>
-                
-                  <li><a href="https://github.com/WPI-RAIL/carl_bot">Repository</a></li>
+                  <li>Peter Mitrano</li>
                 
               </ul>
             
@@ -479,7 +544,7 @@
             
               <em>No README found.</em>
               
-                <em><a href="/r/carl_bot/github-WPI-RAIL-carl_bot/#indigo">See repository README.</a></em>
+                <em><a href="/r/carl_bot/github-GT-RAIL-carl_bot/#indigo">See repository README.</a></em>
               
             
           </div>
@@ -496,11 +561,158 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-carl_interactive_manipulation">Changelog for package carl_interactive_manipulation</h1>
 
-<h2 id="0.0.13-(2015-01-21)">0.0.13 (2015-01-21)</h2>
+<h2 id="0-0-34-2016-02-23">0.0.34 (2016-02-23)</h2>
 
-<h2 id="0.0.12-(2015-01-19)">0.0.12 (2015-01-19)</h2>
+<ul>
+<li>  Update package.xml</li>
+<li>  Updates for new rail_manipulation_msgs</li>
+<li>  Contributors: David Kent</li>
+</ul>
 
-<h2 id="0.0.11-(2014-12-18)">0.0.11 (2014-12-18)</h2>
+<h2 id="0-0-33-2015-08-10">0.0.33 (2015-08-10)</h2>
+
+<h2 id="0-0-32-2015-05-08">0.0.32 (2015-05-08)</h2>
+
+<ul>
+<li>  Merge branch 'develop' of github.com:WPI-RAIL/carl_bot into develop</li>
+<li>  Added a parameter for carl interactive manipulation to create object
+markers from segmented objects instead of recognized objects</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-31-2015-05-07">0.0.31 (2015-05-07)</h2>
+
+<h2 id="0-0-30-2015-05-04">0.0.30 (2015-05-04)</h2>
+
+<ul>
+<li>  Limited move while retracted feedback to publish at most every 5
+seconds</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-29-2015-04-29">0.0.29 (2015-04-29)</h2>
+
+<ul>
+<li>  Lowered error level on retracted arm movement feedback</li>
+<li>  Added feedback on attempted arm move while arm is retracted</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-28-2015-04-27">0.0.28 (2015-04-27)</h2>
+
+<ul>
+<li>  Switched remove functionality to remove objects from the recognized
+list instead of the segmented list</li>
+<li>  Updated feedback message</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-27-2015-04-22">0.0.27 (2015-04-22)</h2>
+
+<ul>
+<li>  Debug statement cleanup</li>
+<li>  Connected IM with grasping and scene object attach/detach</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-26-2015-04-17">0.0.26 (2015-04-17)</h2>
+
+<h2 id="0-0-25-2015-04-10">0.0.25 (2015-04-10)</h2>
+
+<h2 id="0-0-24-2015-04-06">0.0.24 (2015-04-06)</h2>
+
+<h2 id="0-0-23-2015-04-03">0.0.23 (2015-04-03)</h2>
+
+<ul>
+<li>  removed pickup from IM client</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-0-22-2015-04-03">0.0.22 (2015-04-03)</h2>
+
+<h2 id="0-0-21-2015-03-31">0.0.21 (2015-03-31)</h2>
+
+<ul>
+<li>  removed recognition</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-0-20-2015-03-31">0.0.20 (2015-03-31)</h2>
+
+<ul>
+<li>  renamed topic</li>
+<li>  Contributors: Russell Toris</li>
+</ul>
+
+<h2 id="0-0-19-2015-03-27">0.0.19 (2015-03-27)</h2>
+
+<h2 id="0-0-18-2015-03-27">0.0.18 (2015-03-27)</h2>
+
+<ul>
+<li>  Fixed a text placement bug on recognized markers</li>
+<li>  Switched recognition functionality in interactive manipulation to
+use the new shared recognition actions</li>
+<li>  Merge branch 'develop' of github.com:WPI-RAIL/carl_bot into develop</li>
+<li>  Switched to the new ready/retract action provided by
+carl_moveit_common_actions</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-17-2015-03-24">0.0.17 (2015-03-24)</h2>
+
+<ul>
+<li>  Added new recognition calls to carl_interactive_manipulation (note
+that pickup is still in progress and will not currently work)</li>
+<li>  updted message</li>
+<li>  Updated to reflect moving some messages from rail_segmentation to
+rail_manipulation_messages</li>
+<li>  Switched im to use new rail_manipulation_msgs</li>
+<li>  Contributors: David Kent, Russell Toris</li>
+</ul>
+
+<h2 id="0-0-16-2015-02-17">0.0.16 (2015-02-17)</h2>
+
+<ul>
+<li>  Update package.xml</li>
+<li>  Merge pull request #25 from PeterMitrano/develop moved
+carl_parking to carl_interactive markers</li>
+<li>  removed timeout and added intsallation</li>
+<li>  Adjusted finger current thresholds</li>
+<li>  Put a small threshold on executing an arm interactive marker
+recovery behavior to prevent it from activating on accidental clicks</li>
+<li>  Adjustments for finger safety threshold.</li>
+<li>  Lengthened distance of arm recovery behavior</li>
+<li>  Documentation</li>
+<li>  moved ros spin</li>
+<li>  conformed to conventions</li>
+<li>  Safety override for interactive marker control</li>
+<li>  mend</li>
+<li>  improved oop-ness</li>
+<li>  removed unnessecary dependancy</li>
+<li>  parking spots correctly appear</li>
+<li>  improved oop structure. no statics</li>
+<li>  oop works, but is really bad oop</li>
+<li>  working on initializing static member</li>
+<li>  made ParkingSpots class</li>
+<li>  moved carl_parking to carl_interactive markers</li>
+<li>  Contributors: David Kent, Peter, Russell Toris</li>
+</ul>
+
+<h2 id="0-0-15-2015-02-10">0.0.15 (2015-02-10)</h2>
+
+<h2 id="0-0-14-2015-02-06">0.0.14 (2015-02-06)</h2>
+
+<ul>
+<li>  Switched home/retract actions to use motion planning, added
+home/retract/segment calls from joystick teleop</li>
+<li>  Contributors: David Kent</li>
+</ul>
+
+<h2 id="0-0-13-2015-01-21">0.0.13 (2015-01-21)</h2>
+
+<h2 id="0-0-12-2015-01-19">0.0.12 (2015-01-19)</h2>
+
+<h2 id="0-0-11-2014-12-18">0.0.11 (2014-12-18)</h2>
 
 <ul>
 <li>  Fixed bug in IM where menu hover could cause pickup commands, added
@@ -510,9 +722,10 @@ controlled even when the arm is in/near singularities, and updated
 metapackage manifest</li>
 <li>  Contributors: David Kent</li>
 </ul>
-<h2 id="0.0.10-(2014-12-02)">0.0.10 (2014-12-02)</h2>
 
-<h2 id="0.0.9-(2014-10-22)">0.0.9 (2014-10-22)</h2>
+<h2 id="0-0-10-2014-12-02">0.0.10 (2014-12-02)</h2>
+
+<h2 id="0-0-9-2014-10-22">0.0.9 (2014-10-22)</h2>
 
 <ul>
 <li>  Updated visualized segmented/recognized objects to work with the web
@@ -523,34 +736,37 @@ rail_pick_and_place_msgs</li>
 recognized, and allow calls to pickup services</li>
 <li>  Contributors: David Kent</li>
 </ul>
-<h2 id="0.0.8-(2014-10-03)">0.0.8 (2014-10-03)</h2>
+
+<h2 id="0-0-8-2014-10-03">0.0.8 (2014-10-03)</h2>
 
 <ul>
 <li>  adjusted point cloud visualization for segmented objects to be in
 keeping with rail_segmentation update</li>
 <li>  adjusted retract position</li>
-<li>  Revert "adjusted retract position" This reverts commit
-01aa246c9bd241e9ad7b948c159059e407d7ceda.</li>
+<li>  Revert "adjusted retract position" This reverts
+commit 01aa246c9bd241e9ad7b948c159059e407d7ceda.</li>
 <li>  adjusted retract position</li>
 <li>  Contributors: Russell Toris, dekent</li>
 </ul>
-<h2 id="0.0.7-(2014-09-22)">0.0.7 (2014-09-22)</h2>
+
+<h2 id="0-0-7-2014-09-22">0.0.7 (2014-09-22)</h2>
 
 <ul>
 <li>  carl_interactive_manipulation added</li>
 <li>  Contributors: Russell Toris</li>
 </ul>
-<h2 id="0.0.6-(2014-09-19)">0.0.6 (2014-09-19)</h2>
 
-<h2 id="0.0.5-(2014-09-10)">0.0.5 (2014-09-10)</h2>
+<h2 id="0-0-6-2014-09-19">0.0.6 (2014-09-19)</h2>
 
-<h2 id="0.0.4-(2014-09-02)">0.0.4 (2014-09-02)</h2>
+<h2 id="0-0-5-2014-09-10">0.0.5 (2014-09-10)</h2>
 
-<h2 id="0.0.3-(2014-08-25)">0.0.3 (2014-08-25)</h2>
+<h2 id="0-0-4-2014-09-02">0.0.4 (2014-09-02)</h2>
 
-<h2 id="0.0.2-(2014-08-18)">0.0.2 (2014-08-18)</h2>
+<h2 id="0-0-3-2014-08-25">0.0.3 (2014-08-25)</h2>
 
-<h2 id="0.0.1-(2014-08-15)">0.0.1 (2014-08-15)</h2>
+<h2 id="0-0-2-2014-08-18">0.0.2 (2014-08-18)</h2>
+
+<h2 id="0-0-1-2014-08-15">0.0.1 (2014-08-15)</h2>
 </div></body></html>
 
             
@@ -566,7 +782,8 @@ keeping with rail_segmentation update</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/carl_interactive_manipulation/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/carl_interactive_manipulation/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -578,39 +795,348 @@ keeping with rail_segmentation update</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/actionlib#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/actionlib" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/actionlib#indigo">actionlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/carl_moveit#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/carl_moveit" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/carl_moveit#indigo">carl_moveit</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/carl_safety#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/carl_safety" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/carl_safety#indigo">carl_safety</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#indigo">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/interactive_markers#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/interactive_markers" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/interactive_markers#indigo">interactive_markers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/move_base_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/move_base_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/move_base_msgs#indigo">move_base_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rail_pick_and_place_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rail_pick_and_place_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rail_pick_and_place_msgs#indigo">rail_pick_and_place_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rail_segmentation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rail_segmentation" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rail_segmentation#indigo">rail_segmentation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/urdf#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/urdf" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/urdf#indigo">urdf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/visualization_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/visualization_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/visualization_msgs#indigo">visualization_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/wpi_jaco_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/wpi_jaco_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/wpi_jaco_msgs#indigo">wpi_jaco_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/actionlib#indigo">actionlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/interactive_markers#indigo">interactive_markers</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rail_pick_and_place_msgs#indigo">rail_pick_and_place_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rail_segmentation#indigo">rail_segmentation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#indigo">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/wpi_jaco_msgs#indigo">wpi_jaco_msgs</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/carl_bot/github-GT-RAIL-carl_bot#indigo">carl_bot</a></td>
+                      <td><a href="/r/carl_bot/github-GT-RAIL-carl_bot">github-GT-RAIL-carl_bot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/carl_bot/github-GT-RAIL-carl_bot#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/carl_bringup/github-GT-RAIL-carl_bot#indigo">carl_bringup</a></td>
+                      <td><a href="/r/carl_bot/github-GT-RAIL-carl_bot">github-GT-RAIL-carl_bot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/carl_bringup/github-GT-RAIL-carl_bot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -618,14 +1144,27 @@ keeping with rail_segmentation update</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//WPI-RAIL/carl_bot/tree/develop/carl_interactive_manipulation/launch/im_frontend.launch" target="_blank">launch/im_frontend.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//GT-RAIL/carl_bot/tree/develop/carl_interactive_manipulation/launch/im_frontend.launch" target="_blank">launch/im_frontend.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -634,9 +1173,9 @@ keeping with rail_segmentation update</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -645,9 +1184,9 @@ keeping with rail_segmentation update</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -656,28 +1195,35 @@ keeping with rail_segmentation update</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/carl_interactive_manipulation/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//GT-RAIL/carl_bot/tree/develop/carl_interactive_manipulation"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:carl_interactive_manipulation/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/carl_interactive_manipulation?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=carl_interactive_manipulation&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -745,7 +1291,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

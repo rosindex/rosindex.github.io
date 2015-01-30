@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,11 +262,11 @@
 </div>
 
 
-  <div class="distro distro-jade">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -247,7 +289,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-18
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-12
         </span>
       </td>
     </tr>
@@ -290,7 +332,7 @@
                 
                   <tr>
                     <td><a href="/p/ecto/github-plasmodic-ecto">ecto</a></td>
-                    <td>0.6.7</td>
+                    <td>0.6.12</td>
                   </tr>
                 
                 </tbody>
@@ -317,8 +359,7 @@ variety of clever ways. Python is uses as a the graph DSL.</p>
 <p>Ecto may be found useful in domains such as perception, audio, or
 robotics.</p>
 
-<p>To get started see the online docs at
-<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a></p>
+<p>To get started see the online docs at <a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a></p>
 
 <h1 id="get-and-build-ecto">Get and Build Ecto</h1>
 
@@ -329,37 +370,53 @@ as a standalone library.</p>
 
 <p>We use git for our source control. You can get a copy of our repo by
 doing the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git://github.com/plasmodic/ecto.git
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git://github.com/plasmodic/ecto.git
 </code></pre></div>
 <h2 id="dependencies">dependencies</h2>
 
 <p>Ecto requires</p>
 
 <ul>
-<li><p>CMake
-  ~ CMake is used for our build system, and you will need a version
-    &gt;= 2.8</p></li>
-<li><p>Boost
-  ~ Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p></li>
-<li><p>Python
-  ~ Ecto should work with 2.6 and up. You should have the
+<li>
+<p>CMake</p>
+
+<p>:   CMake is used for our build system, and you will need a
+    version &gt;= 2.8</p>
+</li>
+<li>
+<p>Boost</p>
+
+<p>:   Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p>
+</li>
+<li>
+<p>Python</p>
+
+<p>:   Ecto should work with 2.6 and up. You should have the
     development libraries. If you are bellow 2.7 you should install
-    the argparse library</p></li>
-<li><p><em>optional</em> Sphinx
-  ~ Docs are built with sphinx, &gt;= v1.0.7</p></li>
-<li><p><em>optional</em> gtest
-  ~ <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p></li>
+    the argparse library</p>
+</li>
+<li>
+<p><em>optional</em> Sphinx</p>
+
+<p>:   Docs are built with sphinx, &gt;= v1.0.7</p>
+</li>
+<li>
+<p><em>optional</em> gtest</p>
+
+<p>:   <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p>
+</li>
 </ul>
+
 <p>On ubuntu you can get most of these through apt:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
 </code></pre></div>
 <p>To build the docs, you should use a very recent version of Sphinx:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo easy_install -U sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install -U sphinx
 </code></pre></div>
 <h2 id="build">build</h2>
 
 <p>To build you should just follow a normal cmake recipe:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto
 mkdir -p build
 cd build
 cmake ..
@@ -368,41 +425,245 @@ make
 <h2 id="test">test</h2>
 
 <p>To validate ecto using our test suite, you may:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make
 ctest
 </code></pre></div>
 <p>This should report zero test errors. If it does report an error, please
-tell us about it here:
-<a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
+tell us about it here: <a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
 
 <h2 id="docs">docs</h2>
 
 <p>To create the latest documentation for Ecto:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pip install -U catkin_sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo pip install -U catkin_sphinx
 sphinx-build -b html ./doc/source/ ./doc/build
 </code></pre></div>
-<p>To build documentation for the kitchen:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sphinx-build -b html ./doc/kitchen/ ./doc/build/
+<p>To build documentation for the kitchen: :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sphinx-build -b html ./doc/kitchen/ ./doc/build/
 </code></pre></div>
 <p>Then you can open up <code>ecto/build/doc/html/index.html</code> locally.</p>
 
 <h2 id="install">install</h2>
 
 <p>To install Ecto on your machine:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make install
 </code></pre></div>
 <h2 id="use">use</h2>
 
-<p>See the documentation
-(<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a>) for
-detailed usage instructions.</p>
+<p>See the documentation (<a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a>) for detailed
+usage instructions.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/plasmodic/ecto.git">https://github.com/plasmodic/ecto.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-12
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/ecto/github-plasmodic-ecto">ecto</a></td>
+                    <td>0.6.12</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="ecto">Ecto</h1>
+
+<p>Ecto is a hybrid C++/Python development framework for constructing and
+maintaining pipelines. In Ecto, pipelines are constructed in terms of
+processing units, <code>Cells</code>, connected by data paths, <code>Tendrils</code>, that
+form <em>Directed Acyclic Graphs</em>, <code>Plasms</code>. Cells are typically written in
+C++, tendrils may be any type, and the plasm may be executed in a
+variety of clever ways. Python is uses as a the graph DSL.</p>
+
+<p>Ecto may be found useful in domains such as perception, audio, or
+robotics.</p>
+
+<p>To get started see the online docs at <a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a></p>
+
+<h1 id="get-and-build-ecto">Get and Build Ecto</h1>
+
+<p>These instructions are useful if you wish to work with Ecto from source,
+as a standalone library.</p>
+
+<h2 id="source">source</h2>
+
+<p>We use git for our source control. You can get a copy of our repo by
+doing the following:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git://github.com/plasmodic/ecto.git
+</code></pre></div>
+<h2 id="dependencies">dependencies</h2>
+
+<p>Ecto requires</p>
+
+<ul>
+<li>
+<p>CMake</p>
+
+<p>:   CMake is used for our build system, and you will need a
+    version &gt;= 2.8</p>
+</li>
+<li>
+<p>Boost</p>
+
+<p>:   Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p>
+</li>
+<li>
+<p>Python</p>
+
+<p>:   Ecto should work with 2.6 and up. You should have the
+    development libraries. If you are bellow 2.7 you should install
+    the argparse library</p>
+</li>
+<li>
+<p><em>optional</em> Sphinx</p>
+
+<p>:   Docs are built with sphinx, &gt;= v1.0.7</p>
+</li>
+<li>
+<p><em>optional</em> gtest</p>
+
+<p>:   <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p>
+</li>
+</ul>
+
+<p>On ubuntu you can get most of these through apt:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
+</code></pre></div>
+<p>To build the docs, you should use a very recent version of Sphinx:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install -U sphinx
+</code></pre></div>
+<h2 id="build">build</h2>
+
+<p>To build you should just follow a normal cmake recipe:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto
+mkdir -p build
+cd build
+cmake ..
+make
+</code></pre></div>
+<h2 id="test">test</h2>
+
+<p>To validate ecto using our test suite, you may:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
+make
+ctest
+</code></pre></div>
+<p>This should report zero test errors. If it does report an error, please
+tell us about it here: <a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
+
+<h2 id="docs">docs</h2>
+
+<p>To create the latest documentation for Ecto:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo pip install -U catkin_sphinx
+sphinx-build -b html ./doc/source/ ./doc/build
+</code></pre></div>
+<p>To build documentation for the kitchen: :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sphinx-build -b html ./doc/kitchen/ ./doc/build/
+</code></pre></div>
+<p>Then you can open up <code>ecto/build/doc/html/index.html</code> locally.</p>
+
+<h2 id="install">install</h2>
+
+<p>To install Ecto on your machine:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
+make install
+</code></pre></div>
+<h2 id="use">use</h2>
+
+<p>See the documentation (<a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a>) for detailed
+usage instructions.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -410,8 +671,8 @@ detailed usage instructions.</p>
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -434,7 +695,7 @@ detailed usage instructions.</p>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-18
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-12
         </span>
       </td>
     </tr>
@@ -477,7 +738,7 @@ detailed usage instructions.</p>
                 
                   <tr>
                     <td><a href="/p/ecto/github-plasmodic-ecto">ecto</a></td>
-                    <td>0.6.7</td>
+                    <td>0.6.12</td>
                   </tr>
                 
                 </tbody>
@@ -504,8 +765,7 @@ variety of clever ways. Python is uses as a the graph DSL.</p>
 <p>Ecto may be found useful in domains such as perception, audio, or
 robotics.</p>
 
-<p>To get started see the online docs at
-<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a></p>
+<p>To get started see the online docs at <a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a></p>
 
 <h1 id="get-and-build-ecto">Get and Build Ecto</h1>
 
@@ -516,37 +776,53 @@ as a standalone library.</p>
 
 <p>We use git for our source control. You can get a copy of our repo by
 doing the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git://github.com/plasmodic/ecto.git
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git://github.com/plasmodic/ecto.git
 </code></pre></div>
 <h2 id="dependencies">dependencies</h2>
 
 <p>Ecto requires</p>
 
 <ul>
-<li><p>CMake
-  ~ CMake is used for our build system, and you will need a version
-    &gt;= 2.8</p></li>
-<li><p>Boost
-  ~ Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p></li>
-<li><p>Python
-  ~ Ecto should work with 2.6 and up. You should have the
+<li>
+<p>CMake</p>
+
+<p>:   CMake is used for our build system, and you will need a
+    version &gt;= 2.8</p>
+</li>
+<li>
+<p>Boost</p>
+
+<p>:   Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p>
+</li>
+<li>
+<p>Python</p>
+
+<p>:   Ecto should work with 2.6 and up. You should have the
     development libraries. If you are bellow 2.7 you should install
-    the argparse library</p></li>
-<li><p><em>optional</em> Sphinx
-  ~ Docs are built with sphinx, &gt;= v1.0.7</p></li>
-<li><p><em>optional</em> gtest
-  ~ <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p></li>
+    the argparse library</p>
+</li>
+<li>
+<p><em>optional</em> Sphinx</p>
+
+<p>:   Docs are built with sphinx, &gt;= v1.0.7</p>
+</li>
+<li>
+<p><em>optional</em> gtest</p>
+
+<p>:   <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p>
+</li>
 </ul>
+
 <p>On ubuntu you can get most of these through apt:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
 </code></pre></div>
 <p>To build the docs, you should use a very recent version of Sphinx:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo easy_install -U sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install -U sphinx
 </code></pre></div>
 <h2 id="build">build</h2>
 
 <p>To build you should just follow a normal cmake recipe:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto
 mkdir -p build
 cd build
 cmake ..
@@ -555,41 +831,42 @@ make
 <h2 id="test">test</h2>
 
 <p>To validate ecto using our test suite, you may:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make
 ctest
 </code></pre></div>
 <p>This should report zero test errors. If it does report an error, please
-tell us about it here:
-<a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
+tell us about it here: <a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
 
 <h2 id="docs">docs</h2>
 
 <p>To create the latest documentation for Ecto:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pip install -U catkin_sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo pip install -U catkin_sphinx
 sphinx-build -b html ./doc/source/ ./doc/build
 </code></pre></div>
-<p>To build documentation for the kitchen:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sphinx-build -b html ./doc/kitchen/ ./doc/build/
+<p>To build documentation for the kitchen: :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sphinx-build -b html ./doc/kitchen/ ./doc/build/
 </code></pre></div>
 <p>Then you can open up <code>ecto/build/doc/html/index.html</code> locally.</p>
 
 <h2 id="install">install</h2>
 
 <p>To install Ecto on your machine:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make install
 </code></pre></div>
 <h2 id="use">use</h2>
 
-<p>See the documentation
-(<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a>) for
-detailed usage instructions.</p>
+<p>See the documentation (<a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a>) for detailed
+usage instructions.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -597,8 +874,8 @@ detailed usage instructions.</p>
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -621,7 +898,7 @@ detailed usage instructions.</p>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-18
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-12
         </span>
       </td>
     </tr>
@@ -664,7 +941,7 @@ detailed usage instructions.</p>
                 
                   <tr>
                     <td><a href="/p/ecto/github-plasmodic-ecto">ecto</a></td>
-                    <td>0.6.7</td>
+                    <td>0.6.12</td>
                   </tr>
                 
                 </tbody>
@@ -691,8 +968,7 @@ variety of clever ways. Python is uses as a the graph DSL.</p>
 <p>Ecto may be found useful in domains such as perception, audio, or
 robotics.</p>
 
-<p>To get started see the online docs at
-<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a></p>
+<p>To get started see the online docs at <a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a></p>
 
 <h1 id="get-and-build-ecto">Get and Build Ecto</h1>
 
@@ -703,37 +979,53 @@ as a standalone library.</p>
 
 <p>We use git for our source control. You can get a copy of our repo by
 doing the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git://github.com/plasmodic/ecto.git
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git://github.com/plasmodic/ecto.git
 </code></pre></div>
 <h2 id="dependencies">dependencies</h2>
 
 <p>Ecto requires</p>
 
 <ul>
-<li><p>CMake
-  ~ CMake is used for our build system, and you will need a version
-    &gt;= 2.8</p></li>
-<li><p>Boost
-  ~ Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p></li>
-<li><p>Python
-  ~ Ecto should work with 2.6 and up. You should have the
+<li>
+<p>CMake</p>
+
+<p>:   CMake is used for our build system, and you will need a
+    version &gt;= 2.8</p>
+</li>
+<li>
+<p>Boost</p>
+
+<p>:   Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p>
+</li>
+<li>
+<p>Python</p>
+
+<p>:   Ecto should work with 2.6 and up. You should have the
     development libraries. If you are bellow 2.7 you should install
-    the argparse library</p></li>
-<li><p><em>optional</em> Sphinx
-  ~ Docs are built with sphinx, &gt;= v1.0.7</p></li>
-<li><p><em>optional</em> gtest
-  ~ <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p></li>
+    the argparse library</p>
+</li>
+<li>
+<p><em>optional</em> Sphinx</p>
+
+<p>:   Docs are built with sphinx, &gt;= v1.0.7</p>
+</li>
+<li>
+<p><em>optional</em> gtest</p>
+
+<p>:   <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p>
+</li>
 </ul>
+
 <p>On ubuntu you can get most of these through apt:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
 </code></pre></div>
 <p>To build the docs, you should use a very recent version of Sphinx:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo easy_install -U sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install -U sphinx
 </code></pre></div>
 <h2 id="build">build</h2>
 
 <p>To build you should just follow a normal cmake recipe:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto
 mkdir -p build
 cd build
 cmake ..
@@ -742,41 +1034,42 @@ make
 <h2 id="test">test</h2>
 
 <p>To validate ecto using our test suite, you may:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make
 ctest
 </code></pre></div>
 <p>This should report zero test errors. If it does report an error, please
-tell us about it here:
-<a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
+tell us about it here: <a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
 
 <h2 id="docs">docs</h2>
 
 <p>To create the latest documentation for Ecto:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pip install -U catkin_sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo pip install -U catkin_sphinx
 sphinx-build -b html ./doc/source/ ./doc/build
 </code></pre></div>
-<p>To build documentation for the kitchen:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sphinx-build -b html ./doc/kitchen/ ./doc/build/
+<p>To build documentation for the kitchen: :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sphinx-build -b html ./doc/kitchen/ ./doc/build/
 </code></pre></div>
 <p>Then you can open up <code>ecto/build/doc/html/index.html</code> locally.</p>
 
 <h2 id="install">install</h2>
 
 <p>To install Ecto on your machine:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make install
 </code></pre></div>
 <h2 id="use">use</h2>
 
-<p>See the documentation
-(<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a>) for
-detailed usage instructions.</p>
+<p>See the documentation (<a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a>) for detailed
+usage instructions.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -784,8 +1077,8 @@ detailed usage instructions.</p>
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -808,7 +1101,7 @@ detailed usage instructions.</p>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-18
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-12
         </span>
       </td>
     </tr>
@@ -851,7 +1144,7 @@ detailed usage instructions.</p>
                 
                   <tr>
                     <td><a href="/p/ecto/github-plasmodic-ecto">ecto</a></td>
-                    <td>0.6.7</td>
+                    <td>0.6.12</td>
                   </tr>
                 
                 </tbody>
@@ -878,8 +1171,7 @@ variety of clever ways. Python is uses as a the graph DSL.</p>
 <p>Ecto may be found useful in domains such as perception, audio, or
 robotics.</p>
 
-<p>To get started see the online docs at
-<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a></p>
+<p>To get started see the online docs at <a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a></p>
 
 <h1 id="get-and-build-ecto">Get and Build Ecto</h1>
 
@@ -890,37 +1182,53 @@ as a standalone library.</p>
 
 <p>We use git for our source control. You can get a copy of our repo by
 doing the following:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git clone git://github.com/plasmodic/ecto.git
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git://github.com/plasmodic/ecto.git
 </code></pre></div>
 <h2 id="dependencies">dependencies</h2>
 
 <p>Ecto requires</p>
 
 <ul>
-<li><p>CMake
-  ~ CMake is used for our build system, and you will need a version
-    &gt;= 2.8</p></li>
-<li><p>Boost
-  ~ Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p></li>
-<li><p>Python
-  ~ Ecto should work with 2.6 and up. You should have the
+<li>
+<p>CMake</p>
+
+<p>:   CMake is used for our build system, and you will need a
+    version &gt;= 2.8</p>
+</li>
+<li>
+<p>Boost</p>
+
+<p>:   Anything over 1.40 <a href="http://www.boost.org">http://www.boost.org</a></p>
+</li>
+<li>
+<p>Python</p>
+
+<p>:   Ecto should work with 2.6 and up. You should have the
     development libraries. If you are bellow 2.7 you should install
-    the argparse library</p></li>
-<li><p><em>optional</em> Sphinx
-  ~ Docs are built with sphinx, &gt;= v1.0.7</p></li>
-<li><p><em>optional</em> gtest
-  ~ <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p></li>
+    the argparse library</p>
+</li>
+<li>
+<p><em>optional</em> Sphinx</p>
+
+<p>:   Docs are built with sphinx, &gt;= v1.0.7</p>
+</li>
+<li>
+<p><em>optional</em> gtest</p>
+
+<p>:   <a href="http://code.google.com/p/googletest">http://code.google.com/p/googletest</a></p>
+</li>
 </ul>
+
 <p>On ubuntu you can get most of these through apt:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install cmake libboost-all-dev python-dev python-argparse python-yaml libgtest-dev
 </code></pre></div>
 <p>To build the docs, you should use a very recent version of Sphinx:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo easy_install -U sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo easy_install -U sphinx
 </code></pre></div>
 <h2 id="build">build</h2>
 
 <p>To build you should just follow a normal cmake recipe:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto
 mkdir -p build
 cd build
 cmake ..
@@ -929,41 +1237,42 @@ make
 <h2 id="test">test</h2>
 
 <p>To validate ecto using our test suite, you may:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make
 ctest
 </code></pre></div>
 <p>This should report zero test errors. If it does report an error, please
-tell us about it here:
-<a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
+tell us about it here: <a href="https://github.com/plasmodic/ecto/issues/new">https://github.com/plasmodic/ecto/issues/new</a></p>
 
 <h2 id="docs">docs</h2>
 
 <p>To create the latest documentation for Ecto:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo pip install -U catkin_sphinx
+<div class="highlight"><pre><code class="language-" data-lang="">sudo pip install -U catkin_sphinx
 sphinx-build -b html ./doc/source/ ./doc/build
 </code></pre></div>
-<p>To build documentation for the kitchen:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sphinx-build -b html ./doc/kitchen/ ./doc/build/
+<p>To build documentation for the kitchen: :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sphinx-build -b html ./doc/kitchen/ ./doc/build/
 </code></pre></div>
 <p>Then you can open up <code>ecto/build/doc/html/index.html</code> locally.</p>
 
 <h2 id="install">install</h2>
 
 <p>To install Ecto on your machine:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd ecto/build
+<div class="highlight"><pre><code class="language-" data-lang="">cd ecto/build
 make install
 </code></pre></div>
 <h2 id="use">use</h2>
 
-<p>See the documentation
-(<a href="http://ecto.willowgarage.com">http://ecto.willowgarage.com</a>) for
-detailed usage instructions.</p>
+<p>See the documentation (<a href="http://plasmodic.github.io/ecto/">http://plasmodic.github.io/ecto/</a>) for detailed
+usage instructions.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1014,7 +1323,7 @@ detailed usage instructions.</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

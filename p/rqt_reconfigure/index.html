@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,7 +146,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -154,581 +196,306 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">rqt_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">rqt_bag</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">rqt_bag_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">rqt_console</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">rqt_dep</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">rqt_graph</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">rqt_image_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">rqt_launch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">rqt_logger_level</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_marble/github-ros-visualization-rqt_common_plugins">rqt_marble</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">rqt_msg</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">rqt_plot</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">rqt_publisher</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">rqt_py_common</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">rqt_py_console</a>
-        
-      
-        
-          <span class="label label-default"> rqt_reconfigure</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">rqt_service_caller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">rqt_shell</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">rqt_srv</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">rqt_top</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">rqt_topic</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">rqt_web</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/rqt_reconfigure/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/groovy-devel/rqt_reconfigure" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rqt_reconfigure" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-visualization-rqt_common_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-visualization-rqt_common_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">rqt_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">rqt_bag</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">rqt_bag_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">rqt_console</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">rqt_dep</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">rqt_graph</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">rqt_image_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">rqt_launch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">rqt_logger_level</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_marble/github-ros-visualization-rqt_common_plugins">rqt_marble</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">rqt_msg</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">rqt_plot</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">rqt_publisher</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">rqt_py_common</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">rqt_py_console</a>
-        
-      
-        
-          <span class="label label-default"> rqt_reconfigure</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">rqt_service_caller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">rqt_shell</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">rqt_srv</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">rqt_top</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">rqt_topic</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">rqt_web</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/rqt_reconfigure/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/groovy-devel/rqt_reconfigure" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rqt_reconfigure" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-visualization-rqt_common_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-visualization-rqt_common_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">rqt_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">rqt_bag</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">rqt_bag_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">rqt_console</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">rqt_dep</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">rqt_graph</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">rqt_image_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">rqt_launch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">rqt_logger_level</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_marble/github-ros-visualization-rqt_common_plugins">rqt_marble</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">rqt_msg</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">rqt_plot</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">rqt_publisher</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">rqt_py_common</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">rqt_py_console</a>
-        
-      
-        
-          <span class="label label-default"> rqt_reconfigure</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">rqt_service_caller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">rqt_shell</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">rqt_srv</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">rqt_top</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">rqt_topic</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">rqt_web</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/rqt_reconfigure/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/groovy-devel/rqt_reconfigure" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rqt_reconfigure" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ros-visualization-rqt_common_plugins
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ros-visualization-rqt_common_plugins
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
   </div>
 </div>
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
 
-  <div class="distro distro-indigo">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">
+
+rqt_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_common_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_console
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">
+
+rqt_dep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">
+
+rqt_graph
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">
+
+rqt_image_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">
+
+rqt_launch
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">
+
+rqt_logger_level
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">
+
+rqt_msg
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">
+
+rqt_plot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">
+
+rqt_publisher
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_console
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rqt_reconfigure
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">
+
+rqt_service_caller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">
+
+rqt_shell
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">
+
+rqt_srv
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">
+
+rqt_top
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">
+
+rqt_topic
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">
+
+rqt_web
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-visualization-rqt_common_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-visualization-rqt_common_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This rqt plugin succeeds former dynamic_reconfigure's GUI
-		(reconfigure_gui), and provides the way to view and edit the parameters
-		that are accessible via dynamic_reconfigure.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -741,7 +508,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.3.10</td>
+                <td>0.4.1</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -767,7 +534,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -783,13 +550,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">groovy-devel</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-16
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-27
         </span>
       </td>
     </tr>
@@ -798,9 +565,9 @@
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -817,8 +584,29 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This rqt plugin succeeds former dynamic_reconfigure's GUI
+		(reconfigure_gui), and provides the way to view and edit the parameters
+		that are accessible via dynamic_reconfigure.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -839,21 +627,6 @@
                   <li>Isaac Saito</li>
                 
                   <li>Ze'ev Klapow</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
-                
-                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
-                
-                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -886,17 +659,52 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rqt_reconfigure">Changelog for package rqt_reconfigure</h1>
 
-<h2 id="0.3.10-(2014-10-01)">0.3.10 (2014-10-01)</h2>
+<h2 id="0-4-1-2016-05-16">0.4.1 (2016-05-16)</h2>
+
+<ul>
+<li>  fix accessing attribute superseded in Qt5
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/370">#370</a>)</li>
+</ul>
+
+<h2 id="0-4-0-2016-04-27">0.4.0 (2016-04-27)</h2>
+
+<ul>
+<li>  Support Qt 5 (in Kinetic and higher) as well as Qt 4 (in Jade
+and earlier)
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/359">#359</a>)</li>
+</ul>
+
+<h2 id="0-3-13-2016-03-08">0.3.13 (2016-03-08)</h2>
+
+<h2 id="0-3-12-2015-07-24">0.3.12 (2015-07-24)</h2>
+
+<ul>
+<li>  Added refresh button to re-scan reconfigure server list</li>
+<li>  Now retains functioning nodes when refreshing</li>
+<li>  Contributors: Kei Okada, Scott K Logan</li>
+</ul>
+
+<h2 id="0-3-11-2015-04-30">0.3.11 (2015-04-30)</h2>
+
+<ul>
+<li>  restore support for parameter groups
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/162">#162</a>)</li>
+<li>  fix background colors for dark themes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/293">#293</a>)</li>
+</ul>
+
+<h2 id="0-3-10-2014-10-01">0.3.10 (2014-10-01)</h2>
 
 <ul>
 <li>  update plugin scripts to use full name to avoid future naming
 collisions</li>
 </ul>
-<h2 id="0.3.9-(2014-08-18)">0.3.9 (2014-08-18)</h2>
 
-<h2 id="0.3.8-(2014-07-15)">0.3.8 (2014-07-15)</h2>
+<h2 id="0-3-9-2014-08-18">0.3.9 (2014-08-18)</h2>
 
-<h2 id="0.3.7-(2014-07-11)">0.3.7 (2014-07-11)</h2>
+<h2 id="0-3-8-2014-07-15">0.3.8 (2014-07-15)</h2>
+
+<h2 id="0-3-7-2014-07-11">0.3.7 (2014-07-11)</h2>
 
 <ul>
 <li>  fix slider bar, add context menus for common operations
@@ -908,13 +716,15 @@ collisions</li>
 <li>  export architecture_independent flag in package.xml
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/254">#254</a>)</li>
 </ul>
-<h2 id="0.3.6-(2014-06-02)">0.3.6 (2014-06-02)</h2>
+
+<h2 id="0-3-6-2014-06-02">0.3.6 (2014-06-02)</h2>
 
 <ul>
 <li>  remove unnecessary margins to improve usability on small screens
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/228">#228</a>)</li>
 </ul>
-<h2 id="0.3.5-(2014-05-07)">0.3.5 (2014-05-07)</h2>
+
+<h2 id="0-3-5-2014-05-07">0.3.5 (2014-05-07)</h2>
 
 <ul>
 <li>  numerous improvements and bug fixes
@@ -923,9 +733,10 @@ collisions</li>
 <li>  add option to open list of names from command line
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/214">#214</a>)</li>
 </ul>
-<h2 id="0.3.4-(2014-01-28)">0.3.4 (2014-01-28)</h2>
 
-<h2 id="0.3.3-(2014-01-08)">0.3.3 (2014-01-08)</h2>
+<h2 id="0-3-4-2014-01-28">0.3.4 (2014-01-28)</h2>
+
+<h2 id="0-3-3-2014-01-08">0.3.3 (2014-01-08)</h2>
 
 <ul>
 <li>  add groups for rqt plugins, renamed some plugins
@@ -933,11 +744,12 @@ collisions</li>
 <li>  mark rqt_launch and rqt_reconfigure as experimental
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
 </ul>
-<h2 id="0.3.2-(2013-10-14)">0.3.2 (2013-10-14)</h2>
 
-<h2 id="0.3.1-(2013-10-09)">0.3.1 (2013-10-09)</h2>
+<h2 id="0-3-2-2013-10-14">0.3.2 (2013-10-14)</h2>
 
-<h2 id="0.3.0-(2013-08-28)">0.3.0 (2013-08-28)</h2>
+<h2 id="0-3-1-2013-10-09">0.3.1 (2013-10-09)</h2>
+
+<h2 id="0-3-0-2013-08-28">0.3.0 (2013-08-28)</h2>
 
 <ul>
 <li>  fix updating range limits
@@ -948,61 +760,1993 @@ collisions</li>
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/48">#48</a>)</li>
 <li>  fix handling of enum parameters with strings</li>
 </ul>
-<h2 id="0.2.17-(2013-07-04)">0.2.17 (2013-07-04)</h2>
+
+<h2 id="0-2-17-2013-07-04">0.2.17 (2013-07-04)</h2>
 
 <ul>
 <li>  Improvement; "GUI hangs for awhile or completely, when any one of
 nodes doesn't return any value"
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/81">#81</a>)</li>
 </ul>
-<h2 id="0.2.16-(2013-04-09-13:33)">0.2.16 (2013-04-09 13:33)</h2>
 
-<h2 id="0.2.15-(2013-04-09-00:02)">0.2.15 (2013-04-09 00:02)</h2>
+<h2 id="0-2-16-2013-04-09-13-33">0.2.16 (2013-04-09 13:33)</h2>
+
+<h2 id="0-2-15-2013-04-09-00-02">0.2.15 (2013-04-09 00:02)</h2>
 
 <ul>
 <li>  Fix; Segmentation fault using integer slider
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/63">#63</a>)</li>
 </ul>
-<h2 id="0.2.14-(2013-03-14)">0.2.14 (2013-03-14)</h2>
 
-<h2 id="0.2.13-(2013-03-11-22:14)">0.2.13 (2013-03-11 22:14)</h2>
+<h2 id="0-2-14-2013-03-14">0.2.14 (2013-03-14)</h2>
 
-<h2 id="0.2.12-(2013-03-11-13:56)">0.2.12 (2013-03-11 13:56)</h2>
+<h2 id="0-2-13-2013-03-11-22-14">0.2.13 (2013-03-11 22:14)</h2>
+
+<h2 id="0-2-12-2013-03-11-13-56">0.2.12 (2013-03-11 13:56)</h2>
 
 <ul>
 <li>  Improve performance significantly upon launch
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/45">#45</a>)</li>
 </ul>
-<h2 id="0.2.11-(2013-03-08)">0.2.11 (2013-03-08)</h2>
 
-<h2 id="0.2.10-(2013-01-22)">0.2.10 (2013-01-22)</h2>
+<h2 id="0-2-11-2013-03-08">0.2.11 (2013-03-08)</h2>
 
-<h2 id="0.2.9-(2013-01-17)">0.2.9 (2013-01-17)</h2>
+<h2 id="0-2-10-2013-01-22">0.2.10 (2013-01-22)</h2>
+
+<h2 id="0-2-9-2013-01-17">0.2.9 (2013-01-17)</h2>
 
 <ul>
 <li>  Add feature to delete of shown nodes feature</li>
 </ul>
-<h2 id="0.2.8-(2013-01-11)">0.2.8 (2013-01-11)</h2>
+
+<h2 id="0-2-8-2013-01-11">0.2.8 (2013-01-11)</h2>
 
 <ul>
 <li>  Fix; No Interaction with Boolean values
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/2">#2</a>)</li>
 </ul>
-<h2 id="0.2.7-(2012-12-24)">0.2.7 (2012-12-24)</h2>
 
-<h2 id="0.2.6-(2012-12-23)">0.2.6 (2012-12-23)</h2>
+<h2 id="0-2-7-2012-12-24">0.2.7 (2012-12-24)</h2>
 
-<h2 id="0.2.5-(2012-12-21-19:11)">0.2.5 (2012-12-21 19:11)</h2>
+<h2 id="0-2-6-2012-12-23">0.2.6 (2012-12-23)</h2>
 
-<h2 id="0.2.4-(2012-12-21-01:13)">0.2.4 (2012-12-21 01:13)</h2>
+<h2 id="0-2-5-2012-12-21-19-11">0.2.5 (2012-12-21 19:11)</h2>
 
-<h2 id="0.2.3-(2012-12-21-00:24)">0.2.3 (2012-12-21 00:24)</h2>
+<h2 id="0-2-4-2012-12-21-01-13">0.2.4 (2012-12-21 01:13)</h2>
 
-<h2 id="0.2.2-(2012-12-20-18:29)">0.2.2 (2012-12-20 18:29)</h2>
+<h2 id="0-2-3-2012-12-21-00-24">0.2.3 (2012-12-21 00:24)</h2>
 
-<h2 id="0.2.1-(2012-12-20-17:47)">0.2.1 (2012-12-20 17:47)</h2>
+<h2 id="0-2-2-2012-12-20-18-29">0.2.2 (2012-12-20 18:29)</h2>
 
-<h2 id="0.2.0-(2012-12-20-17:39)">0.2.0 (2012-12-20 17:39)</h2>
+<h2 id="0-2-1-2012-12-20-17-47">0.2.1 (2012-12-20 17:47)</h2>
+
+<h2 id="0-2-0-2012-12-20-17-39">0.2.0 (2012-12-20 17:39)</h2>
+
+<ul>
+<li>  renamed rqt_param to rqt_reconfigure (added missing file)</li>
+<li>  first release of this package into groovy</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#kinetic">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/python_qt_binding#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/python_qt_binding" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/python_qt_binding#kinetic">python_qt_binding</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#kinetic">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_console#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_console" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_console#kinetic">rqt_console</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#kinetic">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#kinetic">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_py_common#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_py_common" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_py_common#kinetic">rqt_py_common</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#kinetic">node_manager_fkie</a></td>
+                      <td><a href="/r/multimaster_fkie/github-fkie-multimaster_fkie">github-fkie-multimaster_fkie</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#kinetic">rqt_common_plugins</a></td>
+                      <td><a href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">github-ros-visualization-rqt_common_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">
+
+rqt_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_common_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_console
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">
+
+rqt_dep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">
+
+rqt_graph
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">
+
+rqt_image_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">
+
+rqt_launch
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">
+
+rqt_logger_level
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">
+
+rqt_msg
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">
+
+rqt_plot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">
+
+rqt_publisher
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_console
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rqt_reconfigure
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">
+
+rqt_service_caller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">
+
+rqt_shell
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">
+
+rqt_srv
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">
+
+rqt_top
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">
+
+rqt_topic
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">
+
+rqt_web
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-visualization-rqt_common_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-visualization-rqt_common_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="jade-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.4.1</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros-visualization/rqt_common_plugins.git">https://github.com/ros-visualization/rqt_common_plugins.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-27
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This rqt plugin succeeds former dynamic_reconfigure's GUI
+		(reconfigure_gui), and provides the way to view and edit the parameters
+		that are accessible via dynamic_reconfigure.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Scott K Logan</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Isaac Saito</li>
+                
+                  <li>Ze'ev Klapow</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-rqt_reconfigure">Changelog for package rqt_reconfigure</h1>
+
+<h2 id="0-4-1-2016-05-16">0.4.1 (2016-05-16)</h2>
+
+<ul>
+<li>  fix accessing attribute superseded in Qt5
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/370">#370</a>)</li>
+</ul>
+
+<h2 id="0-4-0-2016-04-27">0.4.0 (2016-04-27)</h2>
+
+<ul>
+<li>  Support Qt 5 (in Kinetic and higher) as well as Qt 4 (in Jade
+and earlier)
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/359">#359</a>)</li>
+</ul>
+
+<h2 id="0-3-13-2016-03-08">0.3.13 (2016-03-08)</h2>
+
+<h2 id="0-3-12-2015-07-24">0.3.12 (2015-07-24)</h2>
+
+<ul>
+<li>  Added refresh button to re-scan reconfigure server list</li>
+<li>  Now retains functioning nodes when refreshing</li>
+<li>  Contributors: Kei Okada, Scott K Logan</li>
+</ul>
+
+<h2 id="0-3-11-2015-04-30">0.3.11 (2015-04-30)</h2>
+
+<ul>
+<li>  restore support for parameter groups
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/162">#162</a>)</li>
+<li>  fix background colors for dark themes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/293">#293</a>)</li>
+</ul>
+
+<h2 id="0-3-10-2014-10-01">0.3.10 (2014-10-01)</h2>
+
+<ul>
+<li>  update plugin scripts to use full name to avoid future naming
+collisions</li>
+</ul>
+
+<h2 id="0-3-9-2014-08-18">0.3.9 (2014-08-18)</h2>
+
+<h2 id="0-3-8-2014-07-15">0.3.8 (2014-07-15)</h2>
+
+<h2 id="0-3-7-2014-07-11">0.3.7 (2014-07-11)</h2>
+
+<ul>
+<li>  fix slider bar, add context menus for common operations
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/251">#251</a>)</li>
+<li>  fix bug in float range calculations
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/241">#241</a>)</li>
+<li>  remove experimental suffix from rqt_reconfigure
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/256">#256</a>)</li>
+<li>  export architecture_independent flag in package.xml
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/254">#254</a>)</li>
+</ul>
+
+<h2 id="0-3-6-2014-06-02">0.3.6 (2014-06-02)</h2>
+
+<ul>
+<li>  remove unnecessary margins to improve usability on small screens
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/228">#228</a>)</li>
+</ul>
+
+<h2 id="0-3-5-2014-05-07">0.3.5 (2014-05-07)</h2>
+
+<ul>
+<li>  numerous improvements and bug fixes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/209">#209</a>,
+<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/210">#210</a>)</li>
+<li>  add option to open list of names from command line
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/214">#214</a>)</li>
+</ul>
+
+<h2 id="0-3-4-2014-01-28">0.3.4 (2014-01-28)</h2>
+
+<h2 id="0-3-3-2014-01-08">0.3.3 (2014-01-08)</h2>
+
+<ul>
+<li>  add groups for rqt plugins, renamed some plugins
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
+<li>  mark rqt_launch and rqt_reconfigure as experimental
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
+</ul>
+
+<h2 id="0-3-2-2013-10-14">0.3.2 (2013-10-14)</h2>
+
+<h2 id="0-3-1-2013-10-09">0.3.1 (2013-10-09)</h2>
+
+<h2 id="0-3-0-2013-08-28">0.3.0 (2013-08-28)</h2>
+
+<ul>
+<li>  fix updating range limits
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/108">#108</a>)</li>
+<li>  fix layout quirks
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/150">#150</a>)</li>
+<li>  fix icon for closing a node
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/48">#48</a>)</li>
+<li>  fix handling of enum parameters with strings</li>
+</ul>
+
+<h2 id="0-2-17-2013-07-04">0.2.17 (2013-07-04)</h2>
+
+<ul>
+<li>  Improvement; "GUI hangs for awhile or completely, when any one of
+nodes doesn't return any value"
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/81">#81</a>)</li>
+</ul>
+
+<h2 id="0-2-16-2013-04-09-13-33">0.2.16 (2013-04-09 13:33)</h2>
+
+<h2 id="0-2-15-2013-04-09-00-02">0.2.15 (2013-04-09 00:02)</h2>
+
+<ul>
+<li>  Fix; Segmentation fault using integer slider
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/63">#63</a>)</li>
+</ul>
+
+<h2 id="0-2-14-2013-03-14">0.2.14 (2013-03-14)</h2>
+
+<h2 id="0-2-13-2013-03-11-22-14">0.2.13 (2013-03-11 22:14)</h2>
+
+<h2 id="0-2-12-2013-03-11-13-56">0.2.12 (2013-03-11 13:56)</h2>
+
+<ul>
+<li>  Improve performance significantly upon launch
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/45">#45</a>)</li>
+</ul>
+
+<h2 id="0-2-11-2013-03-08">0.2.11 (2013-03-08)</h2>
+
+<h2 id="0-2-10-2013-01-22">0.2.10 (2013-01-22)</h2>
+
+<h2 id="0-2-9-2013-01-17">0.2.9 (2013-01-17)</h2>
+
+<ul>
+<li>  Add feature to delete of shown nodes feature</li>
+</ul>
+
+<h2 id="0-2-8-2013-01-11">0.2.8 (2013-01-11)</h2>
+
+<ul>
+<li>  Fix; No Interaction with Boolean values
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/2">#2</a>)</li>
+</ul>
+
+<h2 id="0-2-7-2012-12-24">0.2.7 (2012-12-24)</h2>
+
+<h2 id="0-2-6-2012-12-23">0.2.6 (2012-12-23)</h2>
+
+<h2 id="0-2-5-2012-12-21-19-11">0.2.5 (2012-12-21 19:11)</h2>
+
+<h2 id="0-2-4-2012-12-21-01-13">0.2.4 (2012-12-21 01:13)</h2>
+
+<h2 id="0-2-3-2012-12-21-00-24">0.2.3 (2012-12-21 00:24)</h2>
+
+<h2 id="0-2-2-2012-12-20-18-29">0.2.2 (2012-12-20 18:29)</h2>
+
+<h2 id="0-2-1-2012-12-20-17-47">0.2.1 (2012-12-20 17:47)</h2>
+
+<h2 id="0-2-0-2012-12-20-17-39">0.2.0 (2012-12-20 17:39)</h2>
+
+<ul>
+<li>  renamed rqt_param to rqt_reconfigure (added missing file)</li>
+<li>  first release of this package into groovy</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#jade">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/python_qt_binding#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/python_qt_binding" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/python_qt_binding#jade">python_qt_binding</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#jade">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_console#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_console" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_console#jade">rqt_console</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#jade">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#jade">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_py_common#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_py_common" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_py_common#jade">rqt_py_common</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#jade">node_manager_fkie</a></td>
+                      <td><a href="/r/multimaster_fkie/github-fkie-multimaster_fkie">github-fkie-multimaster_fkie</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#jade">jsk_tools</a></td>
+                      <td><a href="/r/jsk_common/github-jsk-ros-pkg-jsk_common">github-jsk-ros-pkg-jsk_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#jade">rqt_common_plugins</a></td>
+                      <td><a href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">github-ros-visualization-rqt_common_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">
+
+rqt_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_common_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_console
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">
+
+rqt_dep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">
+
+rqt_graph
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">
+
+rqt_image_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">
+
+rqt_launch
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">
+
+rqt_logger_level
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">
+
+rqt_msg
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">
+
+rqt_plot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">
+
+rqt_publisher
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_console
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rqt_reconfigure
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">
+
+rqt_service_caller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">
+
+rqt_shell
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">
+
+rqt_srv
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">
+
+rqt_top
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">
+
+rqt_topic
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">
+
+rqt_web
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-visualization-rqt_common_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-visualization-rqt_common_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.4.1</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/ros-visualization/rqt_common_plugins.git">https://github.com/ros-visualization/rqt_common_plugins.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-27
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This rqt plugin succeeds former dynamic_reconfigure's GUI
+		(reconfigure_gui), and provides the way to view and edit the parameters
+		that are accessible via dynamic_reconfigure.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Scott K Logan</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Isaac Saito</li>
+                
+                  <li>Ze'ev Klapow</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-rqt_reconfigure">Changelog for package rqt_reconfigure</h1>
+
+<h2 id="0-4-1-2016-05-16">0.4.1 (2016-05-16)</h2>
+
+<ul>
+<li>  fix accessing attribute superseded in Qt5
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/370">#370</a>)</li>
+</ul>
+
+<h2 id="0-4-0-2016-04-27">0.4.0 (2016-04-27)</h2>
+
+<ul>
+<li>  Support Qt 5 (in Kinetic and higher) as well as Qt 4 (in Jade
+and earlier)
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/359">#359</a>)</li>
+</ul>
+
+<h2 id="0-3-13-2016-03-08">0.3.13 (2016-03-08)</h2>
+
+<h2 id="0-3-12-2015-07-24">0.3.12 (2015-07-24)</h2>
+
+<ul>
+<li>  Added refresh button to re-scan reconfigure server list</li>
+<li>  Now retains functioning nodes when refreshing</li>
+<li>  Contributors: Kei Okada, Scott K Logan</li>
+</ul>
+
+<h2 id="0-3-11-2015-04-30">0.3.11 (2015-04-30)</h2>
+
+<ul>
+<li>  restore support for parameter groups
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/162">#162</a>)</li>
+<li>  fix background colors for dark themes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/293">#293</a>)</li>
+</ul>
+
+<h2 id="0-3-10-2014-10-01">0.3.10 (2014-10-01)</h2>
+
+<ul>
+<li>  update plugin scripts to use full name to avoid future naming
+collisions</li>
+</ul>
+
+<h2 id="0-3-9-2014-08-18">0.3.9 (2014-08-18)</h2>
+
+<h2 id="0-3-8-2014-07-15">0.3.8 (2014-07-15)</h2>
+
+<h2 id="0-3-7-2014-07-11">0.3.7 (2014-07-11)</h2>
+
+<ul>
+<li>  fix slider bar, add context menus for common operations
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/251">#251</a>)</li>
+<li>  fix bug in float range calculations
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/241">#241</a>)</li>
+<li>  remove experimental suffix from rqt_reconfigure
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/256">#256</a>)</li>
+<li>  export architecture_independent flag in package.xml
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/254">#254</a>)</li>
+</ul>
+
+<h2 id="0-3-6-2014-06-02">0.3.6 (2014-06-02)</h2>
+
+<ul>
+<li>  remove unnecessary margins to improve usability on small screens
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/228">#228</a>)</li>
+</ul>
+
+<h2 id="0-3-5-2014-05-07">0.3.5 (2014-05-07)</h2>
+
+<ul>
+<li>  numerous improvements and bug fixes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/209">#209</a>,
+<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/210">#210</a>)</li>
+<li>  add option to open list of names from command line
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/214">#214</a>)</li>
+</ul>
+
+<h2 id="0-3-4-2014-01-28">0.3.4 (2014-01-28)</h2>
+
+<h2 id="0-3-3-2014-01-08">0.3.3 (2014-01-08)</h2>
+
+<ul>
+<li>  add groups for rqt plugins, renamed some plugins
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
+<li>  mark rqt_launch and rqt_reconfigure as experimental
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
+</ul>
+
+<h2 id="0-3-2-2013-10-14">0.3.2 (2013-10-14)</h2>
+
+<h2 id="0-3-1-2013-10-09">0.3.1 (2013-10-09)</h2>
+
+<h2 id="0-3-0-2013-08-28">0.3.0 (2013-08-28)</h2>
+
+<ul>
+<li>  fix updating range limits
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/108">#108</a>)</li>
+<li>  fix layout quirks
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/150">#150</a>)</li>
+<li>  fix icon for closing a node
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/48">#48</a>)</li>
+<li>  fix handling of enum parameters with strings</li>
+</ul>
+
+<h2 id="0-2-17-2013-07-04">0.2.17 (2013-07-04)</h2>
+
+<ul>
+<li>  Improvement; "GUI hangs for awhile or completely, when any one of
+nodes doesn't return any value"
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/81">#81</a>)</li>
+</ul>
+
+<h2 id="0-2-16-2013-04-09-13-33">0.2.16 (2013-04-09 13:33)</h2>
+
+<h2 id="0-2-15-2013-04-09-00-02">0.2.15 (2013-04-09 00:02)</h2>
+
+<ul>
+<li>  Fix; Segmentation fault using integer slider
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/63">#63</a>)</li>
+</ul>
+
+<h2 id="0-2-14-2013-03-14">0.2.14 (2013-03-14)</h2>
+
+<h2 id="0-2-13-2013-03-11-22-14">0.2.13 (2013-03-11 22:14)</h2>
+
+<h2 id="0-2-12-2013-03-11-13-56">0.2.12 (2013-03-11 13:56)</h2>
+
+<ul>
+<li>  Improve performance significantly upon launch
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/45">#45</a>)</li>
+</ul>
+
+<h2 id="0-2-11-2013-03-08">0.2.11 (2013-03-08)</h2>
+
+<h2 id="0-2-10-2013-01-22">0.2.10 (2013-01-22)</h2>
+
+<h2 id="0-2-9-2013-01-17">0.2.9 (2013-01-17)</h2>
+
+<ul>
+<li>  Add feature to delete of shown nodes feature</li>
+</ul>
+
+<h2 id="0-2-8-2013-01-11">0.2.8 (2013-01-11)</h2>
+
+<ul>
+<li>  Fix; No Interaction with Boolean values
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/2">#2</a>)</li>
+</ul>
+
+<h2 id="0-2-7-2012-12-24">0.2.7 (2012-12-24)</h2>
+
+<h2 id="0-2-6-2012-12-23">0.2.6 (2012-12-23)</h2>
+
+<h2 id="0-2-5-2012-12-21-19-11">0.2.5 (2012-12-21 19:11)</h2>
+
+<h2 id="0-2-4-2012-12-21-01-13">0.2.4 (2012-12-21 01:13)</h2>
+
+<h2 id="0-2-3-2012-12-21-00-24">0.2.3 (2012-12-21 00:24)</h2>
+
+<h2 id="0-2-2-2012-12-20-18-29">0.2.2 (2012-12-20 18:29)</h2>
+
+<h2 id="0-2-1-2012-12-20-17-47">0.2.1 (2012-12-20 17:47)</h2>
+
+<h2 id="0-2-0-2012-12-20-17-39">0.2.0 (2012-12-20 17:39)</h2>
 
 <ul>
 <li>  renamed rqt_param to rqt_reconfigure (added missing file)</li>
@@ -1023,7 +2767,8 @@ nodes doesn't return any value"
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1035,37 +2780,242 @@ nodes doesn't return any value"
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#indigo">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/python_qt_binding#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/python_qt_binding" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/python_qt_binding#indigo">python_qt_binding</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#indigo">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_console#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_console" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_console#indigo">rqt_console</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#indigo">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#indigo">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_py_common#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_py_common" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_py_common#indigo">rqt_py_common</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#indigo">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#indigo">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_console#indigo">rqt_console</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui#indigo">rqt_gui</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui_py#indigo">rqt_gui_py</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_py_common#indigo">rqt_py_common</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#indigo">node_manager_fkie</a></td>
+                      <td><a href="/r/multimaster_fkie/github-fkie-multimaster_fkie">github-fkie-multimaster_fkie</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#indigo">jsk_tools</a></td>
+                      <td><a href="/r/jsk_common/github-jsk-ros-pkg-jsk_common">github-jsk-ros-pkg-jsk_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#indigo">rqt_common_plugins</a></td>
+                      <td><a href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">github-ros-visualization-rqt_common_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1073,12 +3023,12 @@ nodes doesn't return any value"
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1087,9 +3037,9 @@ nodes doesn't return any value"
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1098,9 +3048,9 @@ nodes doesn't return any value"
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1109,28 +3059,39 @@ nodes doesn't return any value"
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1140,6 +3101,261 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">
+
+rqt_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_common_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_console
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">
+
+rqt_dep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">
+
+rqt_graph
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">
+
+rqt_image_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">
+
+rqt_launch
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">
+
+rqt_logger_level
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">
+
+rqt_msg
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">
+
+rqt_plot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">
+
+rqt_publisher
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_console
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rqt_reconfigure
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">
+
+rqt_service_caller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">
+
+rqt_shell
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">
+
+rqt_srv
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">
+
+rqt_top
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">
+
+rqt_topic
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">
+
+rqt_web
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-visualization-rqt_common_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-visualization-rqt_common_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1152,30 +3368,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">7</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This rqt plugin succeeds former dynamic_reconfigure's GUI
-		(reconfigure_gui), and provides the way to view and edit the parameters
-		that are accessible via dynamic_reconfigure.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1188,7 +3404,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.3.10</td>
+                <td>0.4.1</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -1214,7 +3430,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1230,13 +3446,13 @@ $(function() {
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">groovy-devel</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-16
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-27
         </span>
       </td>
     </tr>
@@ -1245,9 +3461,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1264,8 +3480,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This rqt plugin succeeds former dynamic_reconfigure's GUI
+		(reconfigure_gui), and provides the way to view and edit the parameters
+		that are accessible via dynamic_reconfigure.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1286,21 +3523,6 @@ $(function() {
                   <li>Isaac Saito</li>
                 
                   <li>Ze'ev Klapow</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
-                
-                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
-                
-                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1333,17 +3555,52 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rqt_reconfigure">Changelog for package rqt_reconfigure</h1>
 
-<h2 id="0.3.10-(2014-10-01)">0.3.10 (2014-10-01)</h2>
+<h2 id="0-4-1-2016-05-16">0.4.1 (2016-05-16)</h2>
+
+<ul>
+<li>  fix accessing attribute superseded in Qt5
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/370">#370</a>)</li>
+</ul>
+
+<h2 id="0-4-0-2016-04-27">0.4.0 (2016-04-27)</h2>
+
+<ul>
+<li>  Support Qt 5 (in Kinetic and higher) as well as Qt 4 (in Jade
+and earlier)
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/359">#359</a>)</li>
+</ul>
+
+<h2 id="0-3-13-2016-03-08">0.3.13 (2016-03-08)</h2>
+
+<h2 id="0-3-12-2015-07-24">0.3.12 (2015-07-24)</h2>
+
+<ul>
+<li>  Added refresh button to re-scan reconfigure server list</li>
+<li>  Now retains functioning nodes when refreshing</li>
+<li>  Contributors: Kei Okada, Scott K Logan</li>
+</ul>
+
+<h2 id="0-3-11-2015-04-30">0.3.11 (2015-04-30)</h2>
+
+<ul>
+<li>  restore support for parameter groups
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/162">#162</a>)</li>
+<li>  fix background colors for dark themes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/293">#293</a>)</li>
+</ul>
+
+<h2 id="0-3-10-2014-10-01">0.3.10 (2014-10-01)</h2>
 
 <ul>
 <li>  update plugin scripts to use full name to avoid future naming
 collisions</li>
 </ul>
-<h2 id="0.3.9-(2014-08-18)">0.3.9 (2014-08-18)</h2>
 
-<h2 id="0.3.8-(2014-07-15)">0.3.8 (2014-07-15)</h2>
+<h2 id="0-3-9-2014-08-18">0.3.9 (2014-08-18)</h2>
 
-<h2 id="0.3.7-(2014-07-11)">0.3.7 (2014-07-11)</h2>
+<h2 id="0-3-8-2014-07-15">0.3.8 (2014-07-15)</h2>
+
+<h2 id="0-3-7-2014-07-11">0.3.7 (2014-07-11)</h2>
 
 <ul>
 <li>  fix slider bar, add context menus for common operations
@@ -1355,13 +3612,15 @@ collisions</li>
 <li>  export architecture_independent flag in package.xml
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/254">#254</a>)</li>
 </ul>
-<h2 id="0.3.6-(2014-06-02)">0.3.6 (2014-06-02)</h2>
+
+<h2 id="0-3-6-2014-06-02">0.3.6 (2014-06-02)</h2>
 
 <ul>
 <li>  remove unnecessary margins to improve usability on small screens
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/228">#228</a>)</li>
 </ul>
-<h2 id="0.3.5-(2014-05-07)">0.3.5 (2014-05-07)</h2>
+
+<h2 id="0-3-5-2014-05-07">0.3.5 (2014-05-07)</h2>
 
 <ul>
 <li>  numerous improvements and bug fixes
@@ -1370,9 +3629,10 @@ collisions</li>
 <li>  add option to open list of names from command line
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/214">#214</a>)</li>
 </ul>
-<h2 id="0.3.4-(2014-01-28)">0.3.4 (2014-01-28)</h2>
 
-<h2 id="0.3.3-(2014-01-08)">0.3.3 (2014-01-08)</h2>
+<h2 id="0-3-4-2014-01-28">0.3.4 (2014-01-28)</h2>
+
+<h2 id="0-3-3-2014-01-08">0.3.3 (2014-01-08)</h2>
 
 <ul>
 <li>  add groups for rqt plugins, renamed some plugins
@@ -1380,11 +3640,12 @@ collisions</li>
 <li>  mark rqt_launch and rqt_reconfigure as experimental
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
 </ul>
-<h2 id="0.3.2-(2013-10-14)">0.3.2 (2013-10-14)</h2>
 
-<h2 id="0.3.1-(2013-10-09)">0.3.1 (2013-10-09)</h2>
+<h2 id="0-3-2-2013-10-14">0.3.2 (2013-10-14)</h2>
 
-<h2 id="0.3.0-(2013-08-28)">0.3.0 (2013-08-28)</h2>
+<h2 id="0-3-1-2013-10-09">0.3.1 (2013-10-09)</h2>
+
+<h2 id="0-3-0-2013-08-28">0.3.0 (2013-08-28)</h2>
 
 <ul>
 <li>  fix updating range limits
@@ -1395,61 +3656,67 @@ collisions</li>
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/48">#48</a>)</li>
 <li>  fix handling of enum parameters with strings</li>
 </ul>
-<h2 id="0.2.17-(2013-07-04)">0.2.17 (2013-07-04)</h2>
+
+<h2 id="0-2-17-2013-07-04">0.2.17 (2013-07-04)</h2>
 
 <ul>
 <li>  Improvement; "GUI hangs for awhile or completely, when any one of
 nodes doesn't return any value"
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/81">#81</a>)</li>
 </ul>
-<h2 id="0.2.16-(2013-04-09-13:33)">0.2.16 (2013-04-09 13:33)</h2>
 
-<h2 id="0.2.15-(2013-04-09-00:02)">0.2.15 (2013-04-09 00:02)</h2>
+<h2 id="0-2-16-2013-04-09-13-33">0.2.16 (2013-04-09 13:33)</h2>
+
+<h2 id="0-2-15-2013-04-09-00-02">0.2.15 (2013-04-09 00:02)</h2>
 
 <ul>
 <li>  Fix; Segmentation fault using integer slider
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/63">#63</a>)</li>
 </ul>
-<h2 id="0.2.14-(2013-03-14)">0.2.14 (2013-03-14)</h2>
 
-<h2 id="0.2.13-(2013-03-11-22:14)">0.2.13 (2013-03-11 22:14)</h2>
+<h2 id="0-2-14-2013-03-14">0.2.14 (2013-03-14)</h2>
 
-<h2 id="0.2.12-(2013-03-11-13:56)">0.2.12 (2013-03-11 13:56)</h2>
+<h2 id="0-2-13-2013-03-11-22-14">0.2.13 (2013-03-11 22:14)</h2>
+
+<h2 id="0-2-12-2013-03-11-13-56">0.2.12 (2013-03-11 13:56)</h2>
 
 <ul>
 <li>  Improve performance significantly upon launch
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/45">#45</a>)</li>
 </ul>
-<h2 id="0.2.11-(2013-03-08)">0.2.11 (2013-03-08)</h2>
 
-<h2 id="0.2.10-(2013-01-22)">0.2.10 (2013-01-22)</h2>
+<h2 id="0-2-11-2013-03-08">0.2.11 (2013-03-08)</h2>
 
-<h2 id="0.2.9-(2013-01-17)">0.2.9 (2013-01-17)</h2>
+<h2 id="0-2-10-2013-01-22">0.2.10 (2013-01-22)</h2>
+
+<h2 id="0-2-9-2013-01-17">0.2.9 (2013-01-17)</h2>
 
 <ul>
 <li>  Add feature to delete of shown nodes feature</li>
 </ul>
-<h2 id="0.2.8-(2013-01-11)">0.2.8 (2013-01-11)</h2>
+
+<h2 id="0-2-8-2013-01-11">0.2.8 (2013-01-11)</h2>
 
 <ul>
 <li>  Fix; No Interaction with Boolean values
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/2">#2</a>)</li>
 </ul>
-<h2 id="0.2.7-(2012-12-24)">0.2.7 (2012-12-24)</h2>
 
-<h2 id="0.2.6-(2012-12-23)">0.2.6 (2012-12-23)</h2>
+<h2 id="0-2-7-2012-12-24">0.2.7 (2012-12-24)</h2>
 
-<h2 id="0.2.5-(2012-12-21-19:11)">0.2.5 (2012-12-21 19:11)</h2>
+<h2 id="0-2-6-2012-12-23">0.2.6 (2012-12-23)</h2>
 
-<h2 id="0.2.4-(2012-12-21-01:13)">0.2.4 (2012-12-21 01:13)</h2>
+<h2 id="0-2-5-2012-12-21-19-11">0.2.5 (2012-12-21 19:11)</h2>
 
-<h2 id="0.2.3-(2012-12-21-00:24)">0.2.3 (2012-12-21 00:24)</h2>
+<h2 id="0-2-4-2012-12-21-01-13">0.2.4 (2012-12-21 01:13)</h2>
 
-<h2 id="0.2.2-(2012-12-20-18:29)">0.2.2 (2012-12-20 18:29)</h2>
+<h2 id="0-2-3-2012-12-21-00-24">0.2.3 (2012-12-21 00:24)</h2>
 
-<h2 id="0.2.1-(2012-12-20-17:47)">0.2.1 (2012-12-20 17:47)</h2>
+<h2 id="0-2-2-2012-12-20-18-29">0.2.2 (2012-12-20 18:29)</h2>
 
-<h2 id="0.2.0-(2012-12-20-17:39)">0.2.0 (2012-12-20 17:39)</h2>
+<h2 id="0-2-1-2012-12-20-17-47">0.2.1 (2012-12-20 17:47)</h2>
+
+<h2 id="0-2-0-2012-12-20-17-39">0.2.0 (2012-12-20 17:39)</h2>
 
 <ul>
 <li>  renamed rqt_param to rqt_reconfigure (added missing file)</li>
@@ -1470,7 +3737,8 @@ nodes doesn't return any value"
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1482,37 +3750,242 @@ nodes doesn't return any value"
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/python_qt_binding#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/python_qt_binding" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/python_qt_binding#hydro">python_qt_binding</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#hydro">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_console#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_console" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_console#hydro">rqt_console</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#hydro">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#hydro">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_py_common#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_py_common" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_py_common#hydro">rqt_py_common</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#hydro">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#hydro">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_console#hydro">rqt_console</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui#hydro">rqt_gui</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui_py#hydro">rqt_gui_py</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_py_common#hydro">rqt_py_common</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#hydro">node_manager_fkie</a></td>
+                      <td><a href="/r/multimaster_fkie/github-fkie-multimaster_fkie">github-fkie-multimaster_fkie</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#hydro">jsk_tools</a></td>
+                      <td><a href="/r/jsk_common/github-jsk-ros-pkg-jsk_common">github-jsk-ros-pkg-jsk_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#hydro">rqt_common_plugins</a></td>
+                      <td><a href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">github-ros-visualization-rqt_common_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1520,12 +3993,12 @@ nodes doesn't return any value"
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1534,9 +4007,9 @@ nodes doesn't return any value"
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1545,9 +4018,9 @@ nodes doesn't return any value"
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1556,28 +4029,39 @@ nodes doesn't return any value"
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/master/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1587,6 +4071,261 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rqt_reconfigure">rqt_reconfigure</a> <small>package from <a style="text-decoration:none" href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">rqt_common_plugins</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_action/github-ros-visualization-rqt_common_plugins">
+
+rqt_action
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_bag_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_bag_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">
+
+rqt_common_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_console
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_dep/github-ros-visualization-rqt_common_plugins">
+
+rqt_dep
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_graph/github-ros-visualization-rqt_common_plugins">
+
+rqt_graph
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_image_view/github-ros-visualization-rqt_common_plugins">
+
+rqt_image_view
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_launch/github-ros-visualization-rqt_common_plugins">
+
+rqt_launch
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_logger_level/github-ros-visualization-rqt_common_plugins">
+
+rqt_logger_level
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_msg/github-ros-visualization-rqt_common_plugins">
+
+rqt_msg
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_plot/github-ros-visualization-rqt_common_plugins">
+
+rqt_plot
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_publisher/github-ros-visualization-rqt_common_plugins">
+
+rqt_publisher
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_common/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_py_console/github-ros-visualization-rqt_common_plugins">
+
+rqt_py_console
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rqt_reconfigure
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_service_caller/github-ros-visualization-rqt_common_plugins">
+
+rqt_service_caller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_shell/github-ros-visualization-rqt_common_plugins">
+
+rqt_shell
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_srv/github-ros-visualization-rqt_common_plugins">
+
+rqt_srv
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_top/github-ros-visualization-rqt_common_plugins">
+
+rqt_top
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_topic/github-ros-visualization-rqt_common_plugins">
+
+rqt_topic
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rqt_web/github-ros-visualization-rqt_common_plugins">
+
+rqt_web
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rqt_reconfigure"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ros-visualization-rqt_common_plugins
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ros-visualization-rqt_common_plugins" role="menuitem" tabindex="-1" href="/p/rqt_reconfigure/github-ros-visualization-rqt_common_plugins" data="github-ros-visualization-rqt_common_plugins">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ros-visualization-rqt_common_plugins
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/groovy-devel/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1599,30 +4338,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">1</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This rqt plugin succeeds former dynamic_reconfigure's GUI
-		(reconfigure_gui), and provides the way to view and edit the parameters
-		that are accessible via dynamic_reconfigure.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1635,7 +4374,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.3.10</td>
+                <td>0.3.11</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -1661,7 +4400,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1683,7 +4422,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-16
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-07-23
         </span>
       </td>
     </tr>
@@ -1692,9 +4431,9 @@ $(function() {
       <td>
         
           
-            <span class="label label-success">
+            <span class="label label-primary">
           
-          DEVELOPED
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1711,8 +4450,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This rqt plugin succeeds former dynamic_reconfigure's GUI
+		(reconfigure_gui), and provides the way to view and edit the parameters
+		that are accessible via dynamic_reconfigure.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
+                
+                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1733,21 +4493,6 @@ $(function() {
                   <li>Isaac Saito</li>
                 
                   <li>Ze'ev Klapow</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/rqt_reconfigure">Website</a></li>
-                
-                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/rqt_reconfigure">Repository</a></li>
-                
-                  <li><a href="https://github.com/ros-visualization/rqt_common_plugins/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1780,17 +4525,27 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rqt_reconfigure">Changelog for package rqt_reconfigure</h1>
 
-<h2 id="0.3.10-(2014-10-01)">0.3.10 (2014-10-01)</h2>
+<h2 id="0-3-11-2015-04-30">0.3.11 (2015-04-30)</h2>
+
+<ul>
+<li>  restore support for parameter groups
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/162">#162</a>)</li>
+<li>  fix background colors for dark themes
+(<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/293">#293</a>)</li>
+</ul>
+
+<h2 id="0-3-10-2014-10-01">0.3.10 (2014-10-01)</h2>
 
 <ul>
 <li>  update plugin scripts to use full name to avoid future naming
 collisions</li>
 </ul>
-<h2 id="0.3.9-(2014-08-18)">0.3.9 (2014-08-18)</h2>
 
-<h2 id="0.3.8-(2014-07-15)">0.3.8 (2014-07-15)</h2>
+<h2 id="0-3-9-2014-08-18">0.3.9 (2014-08-18)</h2>
 
-<h2 id="0.3.7-(2014-07-11)">0.3.7 (2014-07-11)</h2>
+<h2 id="0-3-8-2014-07-15">0.3.8 (2014-07-15)</h2>
+
+<h2 id="0-3-7-2014-07-11">0.3.7 (2014-07-11)</h2>
 
 <ul>
 <li>  fix slider bar, add context menus for common operations
@@ -1802,13 +4557,15 @@ collisions</li>
 <li>  export architecture_independent flag in package.xml
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/254">#254</a>)</li>
 </ul>
-<h2 id="0.3.6-(2014-06-02)">0.3.6 (2014-06-02)</h2>
+
+<h2 id="0-3-6-2014-06-02">0.3.6 (2014-06-02)</h2>
 
 <ul>
 <li>  remove unnecessary margins to improve usability on small screens
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/228">#228</a>)</li>
 </ul>
-<h2 id="0.3.5-(2014-05-07)">0.3.5 (2014-05-07)</h2>
+
+<h2 id="0-3-5-2014-05-07">0.3.5 (2014-05-07)</h2>
 
 <ul>
 <li>  numerous improvements and bug fixes
@@ -1817,9 +4574,10 @@ collisions</li>
 <li>  add option to open list of names from command line
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/pull/214">#214</a>)</li>
 </ul>
-<h2 id="0.3.4-(2014-01-28)">0.3.4 (2014-01-28)</h2>
 
-<h2 id="0.3.3-(2014-01-08)">0.3.3 (2014-01-08)</h2>
+<h2 id="0-3-4-2014-01-28">0.3.4 (2014-01-28)</h2>
+
+<h2 id="0-3-3-2014-01-08">0.3.3 (2014-01-08)</h2>
 
 <ul>
 <li>  add groups for rqt plugins, renamed some plugins
@@ -1827,11 +4585,12 @@ collisions</li>
 <li>  mark rqt_launch and rqt_reconfigure as experimental
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/167">#167</a>)</li>
 </ul>
-<h2 id="0.3.2-(2013-10-14)">0.3.2 (2013-10-14)</h2>
 
-<h2 id="0.3.1-(2013-10-09)">0.3.1 (2013-10-09)</h2>
+<h2 id="0-3-2-2013-10-14">0.3.2 (2013-10-14)</h2>
 
-<h2 id="0.3.0-(2013-08-28)">0.3.0 (2013-08-28)</h2>
+<h2 id="0-3-1-2013-10-09">0.3.1 (2013-10-09)</h2>
+
+<h2 id="0-3-0-2013-08-28">0.3.0 (2013-08-28)</h2>
 
 <ul>
 <li>  fix updating range limits
@@ -1842,61 +4601,67 @@ collisions</li>
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/48">#48</a>)</li>
 <li>  fix handling of enum parameters with strings</li>
 </ul>
-<h2 id="0.2.17-(2013-07-04)">0.2.17 (2013-07-04)</h2>
+
+<h2 id="0-2-17-2013-07-04">0.2.17 (2013-07-04)</h2>
 
 <ul>
 <li>  Improvement; "GUI hangs for awhile or completely, when any one of
 nodes doesn't return any value"
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/81">#81</a>)</li>
 </ul>
-<h2 id="0.2.16-(2013-04-09-13:33)">0.2.16 (2013-04-09 13:33)</h2>
 
-<h2 id="0.2.15-(2013-04-09-00:02)">0.2.15 (2013-04-09 00:02)</h2>
+<h2 id="0-2-16-2013-04-09-13-33">0.2.16 (2013-04-09 13:33)</h2>
+
+<h2 id="0-2-15-2013-04-09-00-02">0.2.15 (2013-04-09 00:02)</h2>
 
 <ul>
 <li>  Fix; Segmentation fault using integer slider
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/63">#63</a>)</li>
 </ul>
-<h2 id="0.2.14-(2013-03-14)">0.2.14 (2013-03-14)</h2>
 
-<h2 id="0.2.13-(2013-03-11-22:14)">0.2.13 (2013-03-11 22:14)</h2>
+<h2 id="0-2-14-2013-03-14">0.2.14 (2013-03-14)</h2>
 
-<h2 id="0.2.12-(2013-03-11-13:56)">0.2.12 (2013-03-11 13:56)</h2>
+<h2 id="0-2-13-2013-03-11-22-14">0.2.13 (2013-03-11 22:14)</h2>
+
+<h2 id="0-2-12-2013-03-11-13-56">0.2.12 (2013-03-11 13:56)</h2>
 
 <ul>
 <li>  Improve performance significantly upon launch
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/45">#45</a>)</li>
 </ul>
-<h2 id="0.2.11-(2013-03-08)">0.2.11 (2013-03-08)</h2>
 
-<h2 id="0.2.10-(2013-01-22)">0.2.10 (2013-01-22)</h2>
+<h2 id="0-2-11-2013-03-08">0.2.11 (2013-03-08)</h2>
 
-<h2 id="0.2.9-(2013-01-17)">0.2.9 (2013-01-17)</h2>
+<h2 id="0-2-10-2013-01-22">0.2.10 (2013-01-22)</h2>
+
+<h2 id="0-2-9-2013-01-17">0.2.9 (2013-01-17)</h2>
 
 <ul>
 <li>  Add feature to delete of shown nodes feature</li>
 </ul>
-<h2 id="0.2.8-(2013-01-11)">0.2.8 (2013-01-11)</h2>
+
+<h2 id="0-2-8-2013-01-11">0.2.8 (2013-01-11)</h2>
 
 <ul>
 <li>  Fix; No Interaction with Boolean values
 (<a href="https://github.com/ros-visualization/rqt_common_plugins/issues/2">#2</a>)</li>
 </ul>
-<h2 id="0.2.7-(2012-12-24)">0.2.7 (2012-12-24)</h2>
 
-<h2 id="0.2.6-(2012-12-23)">0.2.6 (2012-12-23)</h2>
+<h2 id="0-2-7-2012-12-24">0.2.7 (2012-12-24)</h2>
 
-<h2 id="0.2.5-(2012-12-21-19:11)">0.2.5 (2012-12-21 19:11)</h2>
+<h2 id="0-2-6-2012-12-23">0.2.6 (2012-12-23)</h2>
 
-<h2 id="0.2.4-(2012-12-21-01:13)">0.2.4 (2012-12-21 01:13)</h2>
+<h2 id="0-2-5-2012-12-21-19-11">0.2.5 (2012-12-21 19:11)</h2>
 
-<h2 id="0.2.3-(2012-12-21-00:24)">0.2.3 (2012-12-21 00:24)</h2>
+<h2 id="0-2-4-2012-12-21-01-13">0.2.4 (2012-12-21 01:13)</h2>
 
-<h2 id="0.2.2-(2012-12-20-18:29)">0.2.2 (2012-12-20 18:29)</h2>
+<h2 id="0-2-3-2012-12-21-00-24">0.2.3 (2012-12-21 00:24)</h2>
 
-<h2 id="0.2.1-(2012-12-20-17:47)">0.2.1 (2012-12-20 17:47)</h2>
+<h2 id="0-2-2-2012-12-20-18-29">0.2.2 (2012-12-20 18:29)</h2>
 
-<h2 id="0.2.0-(2012-12-20-17:39)">0.2.0 (2012-12-20 17:39)</h2>
+<h2 id="0-2-1-2012-12-20-17-47">0.2.1 (2012-12-20 17:47)</h2>
+
+<h2 id="0-2-0-2012-12-20-17-39">0.2.0 (2012-12-20 17:39)</h2>
 
 <ul>
 <li>  renamed rqt_param to rqt_reconfigure (added missing file)</li>
@@ -1917,7 +4682,8 @@ nodes doesn't return any value"
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rqt_reconfigure/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1929,37 +4695,222 @@ nodes doesn't return any value"
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#groovy">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#groovy">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_console#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_console" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_console#groovy">rqt_console</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#groovy">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#groovy">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_py_common#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_py_common" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_py_common#groovy">rqt_py_common</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#groovy">dynamic_reconfigure</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#groovy">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_console#groovy">rqt_console</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui#groovy">rqt_gui</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui_py#groovy">rqt_gui_py</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_py_common#groovy">rqt_py_common</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#groovy">node_manager_fkie</a></td>
+                      <td><a href="/r/multimaster_fkie/github-fkie-multimaster_fkie">github-fkie-multimaster_fkie</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/node_manager_fkie/github-fkie-multimaster_fkie#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#groovy">jsk_tools</a></td>
+                      <td><a href="/r/jsk_common/github-jsk-ros-pkg-jsk_common">github-jsk-ros-pkg-jsk_common</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#groovy">rqt_common_plugins</a></td>
+                      <td><a href="/r/rqt_common_plugins/github-ros-visualization-rqt_common_plugins">github-ros-visualization-rqt_common_plugins</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rqt_common_plugins/github-ros-visualization-rqt_common_plugins#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1967,12 +4918,12 @@ nodes doesn't return any value"
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1981,9 +4932,9 @@ nodes doesn't return any value"
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1992,9 +4943,9 @@ nodes doesn't return any value"
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2003,28 +4954,39 @@ nodes doesn't return any value"
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ros-visualization/rqt_common_plugins/tree/groovy-devel/rqt_reconfigure//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/rqt_reconfigure/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ros-visualization/rqt_common_plugins/tree/groovy-devel/rqt_reconfigure"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rqt_reconfigure/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rqt_reconfigure?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rqt_reconfigure&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2076,7 +5038,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,7 +149,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -157,528 +199,170 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">ublox_gps</a>
-        
-      
-        
-          <span class="label label-default"> ublox_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">ublox_serialization</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/ublox_msgs/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-ublox
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-ublox
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">ublox_gps</a>
-        
-      
-        
-          <span class="label label-default"> ublox_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">ublox_serialization</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/ublox_msgs/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-ublox
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-ublox
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">ublox_gps</a>
-        
-      
-        
-          <span class="label label-default"> ublox_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">ublox_serialization</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/ublox_msgs/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-ublox
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-ublox
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">ublox_gps</a>
-        
-      
-        
-          <span class="label label-default"> ublox_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">ublox_serialization</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/ublox_msgs/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-ublox
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-ublox
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">ublox_gps</a>
-        
-      
-        
-          <span class="label label-default"> ublox_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">ublox_serialization</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/ublox_msgs/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/ublox_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-tu-darmstadt-ros-pkg-ublox
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-tu-darmstadt-ros-pkg-ublox
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_gps
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+ublox_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_serialization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-jade">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-ublox
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-ublox
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/jade/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="jade-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#jade-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
+    
+    <a href="#jade-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+    
+    
+    
+    <a href="#jade-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#jade-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="jade-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -717,7 +401,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -764,8 +448,25 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
+                
+                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -788,6 +489,586 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <em>No CHANGELOG found.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#jade">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ublox_serialization#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ublox_serialization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ublox_serialization#jade">ublox_serialization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#jade-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#jade">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#jade">ublox</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#jade-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#jade">ublox_gps</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#jade-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="jade-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/jade/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=jade"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_gps
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+ublox_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_serialization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-ublox
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-ublox
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.1.0</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/tu-darmstadt-ros-pkg/ublox.git">https://github.com/tu-darmstadt-ros-pkg/ublox.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">catkin</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-06-20
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          <span class="label label-warning">UNMAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -797,6 +1078,28 @@
                   <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
                 
                   <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Johannes Meyer</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Johannes Meyer</li>
                 
               </ul>
             
@@ -839,7 +1142,8 @@
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -851,31 +1155,148 @@
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ublox_serialization#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ublox_serialization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ublox_serialization#indigo">ublox_serialization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#indigo">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#indigo">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ublox_serialization#indigo">ublox_serialization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#indigo">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#indigo">ublox</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#indigo">ublox_gps</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -883,12 +1304,12 @@
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -897,75 +1318,77 @@
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -974,9 +1397,9 @@
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -985,28 +1408,35 @@
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1016,6 +1446,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_gps
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+ublox_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_serialization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-ublox
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-ublox
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1028,28 +1569,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1088,7 +1631,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1135,8 +1678,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
+                
+                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1155,19 +1715,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Johannes Meyer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
-                
-                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1210,7 +1757,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1222,31 +1770,148 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#hydro">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ublox_serialization#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ublox_serialization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ublox_serialization#hydro">ublox_serialization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#hydro">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#hydro">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ublox_serialization#hydro">ublox_serialization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#hydro">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#hydro">ublox</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#hydro">ublox_gps</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1254,12 +1919,12 @@ $(function() {
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1268,75 +1933,77 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1345,9 +2012,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1356,28 +2023,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1387,6 +2061,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_gps
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+ublox_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_serialization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-ublox
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-ublox
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1399,28 +2184,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1459,7 +2246,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1506,8 +2293,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
+                
+                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1526,19 +2330,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Johannes Meyer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
-                
-                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1581,7 +2372,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1593,31 +2385,148 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#groovy">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ublox_serialization#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ublox_serialization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ublox_serialization#groovy">ublox_serialization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#groovy">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#groovy">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ublox_serialization#groovy">ublox_serialization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#groovy">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#groovy">ublox</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#groovy">ublox_gps</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1625,12 +2534,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1639,75 +2548,77 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1716,9 +2627,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1727,28 +2638,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1758,6 +2676,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_gps
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+ublox_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_serialization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-ublox
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-ublox
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1770,28 +2799,30 @@ $(function() {
     
     
     
+    
     <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1830,7 +2861,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1877,8 +2908,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
+                
+                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1897,19 +2945,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Johannes Meyer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
-                
-                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1952,7 +2987,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1964,31 +3000,148 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#fuerte">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ublox_serialization#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ublox_serialization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ublox_serialization#fuerte">ublox_serialization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#fuerte">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#fuerte">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ublox_serialization#fuerte">ublox_serialization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#fuerte">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#fuerte">ublox</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#fuerte-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#fuerte">ublox_gps</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#fuerte-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1996,12 +3149,12 @@ $(function() {
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2010,75 +3163,77 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2087,9 +3242,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2098,28 +3253,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2129,6 +3291,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/ublox_msgs">ublox_msgs</a> <small>package from <a style="text-decoration:none" href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">ublox</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_gps
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+ublox_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/ublox_serialization/github-tu-darmstadt-ros-pkg-ublox">
+
+ublox_serialization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-electric">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/ublox_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-tu-darmstadt-ros-pkg-ublox
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-tu-darmstadt-ros-pkg-ublox" role="menuitem" tabindex="-1" href="/p/ublox_msgs/github-tu-darmstadt-ros-pkg-ublox" data="github-tu-darmstadt-ros-pkg-ublox">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-tu-darmstadt-ros-pkg-ublox
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/electric/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2141,28 +3414,30 @@ $(function() {
     
     
     
+    
     <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">33</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#electric-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="electric-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2201,7 +3476,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2248,8 +3523,25 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            ublox_msgs contains raw messages used by GNSS receiver modules of the company u-blox AG.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
+                
+                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2268,19 +3560,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Johannes Meyer</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/ublox_msgs">Website</a></li>
-                
-                  <li><a href="http://github.com/tu-darmstadt-ros-pkg/ublox/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -2323,7 +3602,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/ublox_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2335,31 +3615,148 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#electric">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ublox_serialization#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ublox_serialization" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ublox_serialization#electric">ublox_serialization</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#electric">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#electric">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ublox_serialization#electric">ublox_serialization</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#electric">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#electric">ublox</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox/github-tu-darmstadt-ros-pkg-ublox#electric-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#electric">ublox_gps</a></td>
+                      <td><a href="/r/ublox/github-tu-darmstadt-ros-pkg-ublox">github-tu-darmstadt-ros-pkg-ublox</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ublox_gps/github-tu-darmstadt-ros-pkg-ublox#electric-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2367,12 +3764,12 @@ $(function() {
   <div class="tab-pane" id="electric-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -2381,75 +3778,77 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
-          
-            <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI_SV.msg" target="_blank">msg/RxmSVSI_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSOL.msg" target="_blank">msg/NavSOL.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSFRB.msg" target="_blank">msg/RxmSFRB.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS_SV.msg" target="_blank">msg/NavDGPS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEUTC.msg" target="_blank">msg/NavTIMEUTC.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELNED.msg" target="_blank">msg/NavVELNED.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgANT.msg" target="_blank">msg/CfgANT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgRATE.msg" target="_blank">msg/CfgRATE.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavCLOCK.msg" target="_blank">msg/NavCLOCK.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmSVSI.msg" target="_blank">msg/RxmSVSI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmALM.msg" target="_blank">msg/RxmALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmEPH.msg" target="_blank">msg/RxmEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgNAV5.msg" target="_blank">msg/CfgNAV5.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgSBAS.msg" target="_blank">msg/CfgSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidALM.msg" target="_blank">msg/AidALM.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDOP.msg" target="_blank">msg/NavDOP.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgCFG.msg" target="_blank">msg/CfgCFG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSLLH.msg" target="_blank">msg/NavPOSLLH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavVELECEF.msg" target="_blank">msg/NavVELECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO_SV.msg" target="_blank">msg/NavSVINFO_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidHUI.msg" target="_blank">msg/AidHUI.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgMSG.msg" target="_blank">msg/CfgMSG.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS.msg" target="_blank">msg/NavSBAS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/AidEPH.msg" target="_blank">msg/AidEPH.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/CfgPRT.msg" target="_blank">msg/CfgPRT.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW_SV.msg" target="_blank">msg/RxmRAW_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSBAS_SV.msg" target="_blank">msg/NavSBAS_SV.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavDGPS.msg" target="_blank">msg/NavDGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavTIMEGPS.msg" target="_blank">msg/NavTIMEGPS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavPOSECEF.msg" target="_blank">msg/NavPOSECEF.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSVINFO.msg" target="_blank">msg/NavSVINFO.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/NavSTATUS.msg" target="_blank">msg/NavSTATUS.msg</a></li>
+            
+              <li><a href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs/msg/RxmRAW.msg" target="_blank">msg/RxmRAW.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2458,9 +3857,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2469,28 +3868,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/electric/api/ublox_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//tu-darmstadt-ros-pkg/ublox/tree/catkin/ublox_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:ublox_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/ublox_msgs?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=ublox_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2525,7 +3931,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

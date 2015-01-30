@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,586 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/camera_umd/github-ktossell-camera_umd">camera_umd</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jpeg_streamer/github-ktossell-camera_umd">jpeg_streamer</a>
-        
-      
-        
-          <span class="label label-default"> uvc_camera</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/uvc_camera/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ktossell-camera_umd
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ktossell-camera_umd
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" role="menuitem" tabindex="-1" href="/p/uvc_camera/svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" data="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/camera_umd/github-ktossell-camera_umd">camera_umd</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jpeg_streamer/github-ktossell-camera_umd">jpeg_streamer</a>
-        
-      
-        
-          <span class="label label-default"> uvc_camera</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/uvc_camera/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ktossell-camera_umd
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ktossell-camera_umd
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" role="menuitem" tabindex="-1" href="/p/uvc_camera/svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" data="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/camera_umd/github-ktossell-camera_umd">camera_umd</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jpeg_streamer/github-ktossell-camera_umd">jpeg_streamer</a>
-        
-      
-        
-          <span class="label label-default"> uvc_camera</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/uvc_camera/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ktossell-camera_umd
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ktossell-camera_umd
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" role="menuitem" tabindex="-1" href="/p/uvc_camera/svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" data="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/camera_umd/github-ktossell-camera_umd">camera_umd</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jpeg_streamer/github-ktossell-camera_umd">jpeg_streamer</a>
-        
-      
-        
-          <span class="label label-default"> uvc_camera</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/uvc_camera/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ktossell-camera_umd
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ktossell-camera_umd
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" role="menuitem" tabindex="-1" href="/p/uvc_camera/svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" data="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/camera_umd/github-ktossell-camera_umd">camera_umd</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jpeg_streamer/github-ktossell-camera_umd">jpeg_streamer</a>
-        
-      
-        
-          <span class="label label-default"> uvc_camera</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/uvc_camera/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ktossell-camera_umd
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ktossell-camera_umd
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" role="menuitem" tabindex="-1" href="/p/uvc_camera/svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" data="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/jpeg_streamer/github-ktossell-camera_umd">jpeg_streamer</a>
-        
-      
-        
-          <span class="label label-default"> uvc_camera</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/uvc_stereo/github-ktossell-camera_umd">uvc_stereo</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/diamondback/api/uvc_camera/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/uvc_camera" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-diamondback">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ktossell-camera_umd
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ktossell-camera_umd
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" role="menuitem" tabindex="-1" href="/p/uvc_camera/svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg" data="svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-veltrop-ros-pkg-code-trunk-veltrop-ros-pkg
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -751,6 +224,109 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/camera_umd/github-ktossell-camera_umd">
+
+camera_umd
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jpeg_streamer/github-ktossell-camera_umd">
+
+jpeg_streamer
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+uvc_camera
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ktossell-camera_umd
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ktossell-camera_umd
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -763,35 +339,30 @@
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     A collection of node(let)s that stream images from USB cameras (UVC)
-     and provide CameraInfo messages to consumers. Includes a
-     two-camera node that provides rough synchronization
-     for stereo vision.
-
-     Currently uses the base driver from Morgan Quigley's uvc_cam package.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -830,7 +401,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -860,7 +431,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -877,8 +451,30 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     A collection of node(let)s that stream images from USB cameras (UVC)
+     and provide CameraInfo messages to consumers. Includes a
+     two-camera node that provides rough synchronization
+     for stereo vision.
+
+     Currently uses the base driver from Morgan Quigley's uvc_cam package.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -897,17 +493,6 @@
               <ul class="list-unstyled">
                 
                   <li>Ken Tossell</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
                 
               </ul>
             
@@ -940,7 +525,7 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-uvc_camera">Changelog for package uvc_camera</h1>
 
-<h2 id="0.2.4-(2014-06-29)">0.2.4 (2014-06-29)</h2>
+<h2 id="0-2-4-2014-06-29">0.2.4 (2014-06-29)</h2>
 
 <ul>
 <li>  Added new parameters: auto_focus (bool), focus_absolute (int),
@@ -948,29 +533,33 @@ auto_exposure (bool), exposure_absolute (int),
 power_line_frequency (int: 0/50/60)</li>
 <li>  Contributors: Andreas Bihlmaier</li>
 </ul>
-<h2 id="0.2.3-(2014-06-26)">0.2.3 (2014-06-26)</h2>
+
+<h2 id="0-2-3-2014-06-26">0.2.3 (2014-06-26)</h2>
 
 <ul>
 <li>  Disabled hardcoded default parameters.</li>
 <li>  Contributors: Ken Tossell</li>
 </ul>
-<h2 id="0.2.2-(2014-06-24)">0.2.2 (2014-06-24)</h2>
+
+<h2 id="0-2-2-2014-06-24">0.2.2 (2014-06-24)</h2>
 
 <ul>
-<li>  Print warnings instead of crashing when camera features are
-unavailable.</li>
-<li>  Support V4L drivers that need user-writable mmap regions (e.g.,
-bttv).</li>
+<li>  Print warnings instead of crashing when camera features
+are unavailable.</li>
+<li>  Support V4L drivers that need user-writable mmap regions
+(e.g., bttv).</li>
 <li>  Fixed nodelet names in the launch files.</li>
 <li>  Added camera_name parameter, sent to camera_info_manager.</li>
 <li>  Contributors: James Sarrett, Ken Tossell</li>
 </ul>
-<h2 id="0.2.1-(2014-01-12)">0.2.1 (2014-01-12)</h2>
+
+<h2 id="0-2-1-2014-01-12">0.2.1 (2014-01-12)</h2>
 
 <ul>
 <li>  Added install rule for nodelet_uvc_camera.xml</li>
 </ul>
-<h2 id="0.2.0-(2013-08-02)">0.2.0 (2013-08-02)</h2>
+
+<h2 id="0-2-0-2013-08-02">0.2.0 (2013-08-02)</h2>
 
 <ul>
 <li>  Converted uvc_camera to catkin</li>
@@ -990,7 +579,8 @@ bttv).</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1002,37 +592,201 @@ bttv).</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#indigo">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#indigo">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#indigo">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libv4l-dev">libv4l-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#indigo">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#indigo">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#indigo">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#indigo">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/libv4l-dev#indigo">libv4l-dev</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/camera_umd/github-ktossell-camera_umd#indigo">camera_umd</a></td>
+                      <td><a href="/r/camera_umd/github-ktossell-camera_umd">github-ktossell-camera_umd</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/camera_umd/github-ktossell-camera_umd#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#indigo">roseus_tutorials</a></td>
+                      <td><a href="/r/jsk_roseus/github-jsk-ros-pkg-jsk_roseus">github-jsk-ros-pkg-jsk_roseus</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1040,22 +794,83 @@ bttv).</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>device</strong> <em>&#91;default: /dev/video1&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1064,9 +879,9 @@ bttv).</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1075,9 +890,9 @@ bttv).</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1086,28 +901,39 @@ bttv).</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera//nodelet_uvc_camera.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1117,6 +943,109 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/camera_umd/github-ktossell-camera_umd">
+
+camera_umd
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jpeg_streamer/github-ktossell-camera_umd">
+
+jpeg_streamer
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+uvc_camera
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ktossell-camera_umd
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ktossell-camera_umd
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1129,35 +1058,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     A collection of node(let)s that stream images from USB cameras (UVC)
-     and provide CameraInfo messages to consumers. Includes a
-     two-camera node that provides rough synchronization
-     for stereo vision.
-
-     Currently uses the base driver from Morgan Quigley's uvc_cam package.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1196,7 +1120,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1226,7 +1150,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1243,8 +1170,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     A collection of node(let)s that stream images from USB cameras (UVC)
+     and provide CameraInfo messages to consumers. Includes a
+     two-camera node that provides rough synchronization
+     for stereo vision.
+
+     Currently uses the base driver from Morgan Quigley's uvc_cam package.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1263,17 +1212,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Ken Tossell</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
                 
               </ul>
             
@@ -1306,7 +1244,7 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-uvc_camera">Changelog for package uvc_camera</h1>
 
-<h2 id="0.2.4-(2014-06-29)">0.2.4 (2014-06-29)</h2>
+<h2 id="0-2-4-2014-06-29">0.2.4 (2014-06-29)</h2>
 
 <ul>
 <li>  Added new parameters: auto_focus (bool), focus_absolute (int),
@@ -1314,29 +1252,33 @@ auto_exposure (bool), exposure_absolute (int),
 power_line_frequency (int: 0/50/60)</li>
 <li>  Contributors: Andreas Bihlmaier</li>
 </ul>
-<h2 id="0.2.3-(2014-06-26)">0.2.3 (2014-06-26)</h2>
+
+<h2 id="0-2-3-2014-06-26">0.2.3 (2014-06-26)</h2>
 
 <ul>
 <li>  Disabled hardcoded default parameters.</li>
 <li>  Contributors: Ken Tossell</li>
 </ul>
-<h2 id="0.2.2-(2014-06-24)">0.2.2 (2014-06-24)</h2>
+
+<h2 id="0-2-2-2014-06-24">0.2.2 (2014-06-24)</h2>
 
 <ul>
-<li>  Print warnings instead of crashing when camera features are
-unavailable.</li>
-<li>  Support V4L drivers that need user-writable mmap regions (e.g.,
-bttv).</li>
+<li>  Print warnings instead of crashing when camera features
+are unavailable.</li>
+<li>  Support V4L drivers that need user-writable mmap regions
+(e.g., bttv).</li>
 <li>  Fixed nodelet names in the launch files.</li>
 <li>  Added camera_name parameter, sent to camera_info_manager.</li>
 <li>  Contributors: James Sarrett, Ken Tossell</li>
 </ul>
-<h2 id="0.2.1-(2014-01-12)">0.2.1 (2014-01-12)</h2>
+
+<h2 id="0-2-1-2014-01-12">0.2.1 (2014-01-12)</h2>
 
 <ul>
 <li>  Added install rule for nodelet_uvc_camera.xml</li>
 </ul>
-<h2 id="0.2.0-(2013-08-02)">0.2.0 (2013-08-02)</h2>
+
+<h2 id="0-2-0-2013-08-02">0.2.0 (2013-08-02)</h2>
 
 <ul>
 <li>  Converted uvc_camera to catkin</li>
@@ -1356,7 +1298,8 @@ bttv).</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1368,37 +1311,201 @@ bttv).</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#hydro">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#hydro">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#hydro">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#hydro">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libv4l-dev">libv4l-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#hydro">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#hydro">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#hydro">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#hydro">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/libv4l-dev#hydro">libv4l-dev</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/camera_umd/github-ktossell-camera_umd#hydro">camera_umd</a></td>
+                      <td><a href="/r/camera_umd/github-ktossell-camera_umd">github-ktossell-camera_umd</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/camera_umd/github-ktossell-camera_umd#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#hydro">roseus_tutorials</a></td>
+                      <td><a href="/r/jsk_roseus/github-jsk-ros-pkg-jsk_roseus">github-jsk-ros-pkg-jsk_roseus</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1406,22 +1513,83 @@ bttv).</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>device</strong> <em>&#91;default: /dev/video1&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1430,9 +1598,9 @@ bttv).</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1441,9 +1609,9 @@ bttv).</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1452,28 +1620,39 @@ bttv).</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera//nodelet_uvc_camera.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1483,6 +1662,109 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/camera_umd/github-ktossell-camera_umd">
+
+camera_umd
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jpeg_streamer/github-ktossell-camera_umd">
+
+jpeg_streamer
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+uvc_camera
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ktossell-camera_umd
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ktossell-camera_umd
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1495,35 +1777,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     A collection of node(let)s that stream images from USB cameras (UVC)
-     and provide CameraInfo messages to consumers. Includes a
-     two-camera node that provides rough synchronization
-     for stereo vision.
-
-     Currently uses the base driver from Morgan Quigley's uvc_cam package.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1562,7 +1839,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1592,7 +1869,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1609,8 +1889,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     A collection of node(let)s that stream images from USB cameras (UVC)
+     and provide CameraInfo messages to consumers. Includes a
+     two-camera node that provides rough synchronization
+     for stereo vision.
+
+     Currently uses the base driver from Morgan Quigley's uvc_cam package.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1629,17 +1931,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Ken Tossell</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
                 
               </ul>
             
@@ -1672,7 +1963,7 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-uvc_camera">Changelog for package uvc_camera</h1>
 
-<h2 id="0.2.4-(2014-06-29)">0.2.4 (2014-06-29)</h2>
+<h2 id="0-2-4-2014-06-29">0.2.4 (2014-06-29)</h2>
 
 <ul>
 <li>  Added new parameters: auto_focus (bool), focus_absolute (int),
@@ -1680,29 +1971,33 @@ auto_exposure (bool), exposure_absolute (int),
 power_line_frequency (int: 0/50/60)</li>
 <li>  Contributors: Andreas Bihlmaier</li>
 </ul>
-<h2 id="0.2.3-(2014-06-26)">0.2.3 (2014-06-26)</h2>
+
+<h2 id="0-2-3-2014-06-26">0.2.3 (2014-06-26)</h2>
 
 <ul>
 <li>  Disabled hardcoded default parameters.</li>
 <li>  Contributors: Ken Tossell</li>
 </ul>
-<h2 id="0.2.2-(2014-06-24)">0.2.2 (2014-06-24)</h2>
+
+<h2 id="0-2-2-2014-06-24">0.2.2 (2014-06-24)</h2>
 
 <ul>
-<li>  Print warnings instead of crashing when camera features are
-unavailable.</li>
-<li>  Support V4L drivers that need user-writable mmap regions (e.g.,
-bttv).</li>
+<li>  Print warnings instead of crashing when camera features
+are unavailable.</li>
+<li>  Support V4L drivers that need user-writable mmap regions
+(e.g., bttv).</li>
 <li>  Fixed nodelet names in the launch files.</li>
 <li>  Added camera_name parameter, sent to camera_info_manager.</li>
 <li>  Contributors: James Sarrett, Ken Tossell</li>
 </ul>
-<h2 id="0.2.1-(2014-01-12)">0.2.1 (2014-01-12)</h2>
+
+<h2 id="0-2-1-2014-01-12">0.2.1 (2014-01-12)</h2>
 
 <ul>
 <li>  Added install rule for nodelet_uvc_camera.xml</li>
 </ul>
-<h2 id="0.2.0-(2013-08-02)">0.2.0 (2013-08-02)</h2>
+
+<h2 id="0-2-0-2013-08-02">0.2.0 (2013-08-02)</h2>
 
 <ul>
 <li>  Converted uvc_camera to catkin</li>
@@ -1722,7 +2017,8 @@ bttv).</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1734,37 +2030,201 @@ bttv).</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#groovy">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#groovy">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#groovy">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#groovy">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#groovy">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libv4l-dev">libv4l-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#groovy">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#groovy">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#groovy">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#groovy">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#groovy">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/libv4l-dev#groovy">libv4l-dev</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/camera_umd/github-ktossell-camera_umd#groovy">camera_umd</a></td>
+                      <td><a href="/r/camera_umd/github-ktossell-camera_umd">github-ktossell-camera_umd</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/camera_umd/github-ktossell-camera_umd#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#groovy">roseus_tutorials</a></td>
+                      <td><a href="/r/jsk_roseus/github-jsk-ros-pkg-jsk_roseus">github-jsk-ros-pkg-jsk_roseus</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1772,22 +2232,83 @@ bttv).</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>device</strong> <em>&#91;default: /dev/video1&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1796,9 +2317,9 @@ bttv).</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1807,9 +2328,9 @@ bttv).</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1818,28 +2339,39 @@ bttv).</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera//nodelet_uvc_camera.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1849,6 +2381,109 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/camera_umd/github-ktossell-camera_umd">
+
+camera_umd
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jpeg_streamer/github-ktossell-camera_umd">
+
+jpeg_streamer
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+uvc_camera
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ktossell-camera_umd
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ktossell-camera_umd
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1861,35 +2496,30 @@ $(function() {
     
     
     
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     A collection of node(let)s that stream images from USB cameras (UVC)
-     and provide CameraInfo messages to consumers. Includes a
-     two-camera node that provides rough synchronization
-     for stereo vision.
-
-     Currently uses the base driver from Morgan Quigley's uvc_cam package.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1928,7 +2558,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1958,7 +2588,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1975,8 +2608,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     A collection of node(let)s that stream images from USB cameras (UVC)
+     and provide CameraInfo messages to consumers. Includes a
+     two-camera node that provides rough synchronization
+     for stereo vision.
+
+     Currently uses the base driver from Morgan Quigley's uvc_cam package.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1995,17 +2650,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Ken Tossell</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
                 
               </ul>
             
@@ -2038,7 +2682,7 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-uvc_camera">Changelog for package uvc_camera</h1>
 
-<h2 id="0.2.4-(2014-06-29)">0.2.4 (2014-06-29)</h2>
+<h2 id="0-2-4-2014-06-29">0.2.4 (2014-06-29)</h2>
 
 <ul>
 <li>  Added new parameters: auto_focus (bool), focus_absolute (int),
@@ -2046,29 +2690,33 @@ auto_exposure (bool), exposure_absolute (int),
 power_line_frequency (int: 0/50/60)</li>
 <li>  Contributors: Andreas Bihlmaier</li>
 </ul>
-<h2 id="0.2.3-(2014-06-26)">0.2.3 (2014-06-26)</h2>
+
+<h2 id="0-2-3-2014-06-26">0.2.3 (2014-06-26)</h2>
 
 <ul>
 <li>  Disabled hardcoded default parameters.</li>
 <li>  Contributors: Ken Tossell</li>
 </ul>
-<h2 id="0.2.2-(2014-06-24)">0.2.2 (2014-06-24)</h2>
+
+<h2 id="0-2-2-2014-06-24">0.2.2 (2014-06-24)</h2>
 
 <ul>
-<li>  Print warnings instead of crashing when camera features are
-unavailable.</li>
-<li>  Support V4L drivers that need user-writable mmap regions (e.g.,
-bttv).</li>
+<li>  Print warnings instead of crashing when camera features
+are unavailable.</li>
+<li>  Support V4L drivers that need user-writable mmap regions
+(e.g., bttv).</li>
 <li>  Fixed nodelet names in the launch files.</li>
 <li>  Added camera_name parameter, sent to camera_info_manager.</li>
 <li>  Contributors: James Sarrett, Ken Tossell</li>
 </ul>
-<h2 id="0.2.1-(2014-01-12)">0.2.1 (2014-01-12)</h2>
+
+<h2 id="0-2-1-2014-01-12">0.2.1 (2014-01-12)</h2>
 
 <ul>
 <li>  Added install rule for nodelet_uvc_camera.xml</li>
 </ul>
-<h2 id="0.2.0-(2013-08-02)">0.2.0 (2013-08-02)</h2>
+
+<h2 id="0-2-0-2013-08-02">0.2.0 (2013-08-02)</h2>
 
 <ul>
 <li>  Converted uvc_camera to catkin</li>
@@ -2088,7 +2736,8 @@ bttv).</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2100,37 +2749,187 @@ bttv).</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#fuerte">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#fuerte">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#fuerte">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#fuerte">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#fuerte">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libv4l-dev">libv4l-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#fuerte">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#fuerte">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#fuerte">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#fuerte">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#fuerte">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/libv4l-dev#fuerte">libv4l-dev</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/camera_umd/github-ktossell-camera_umd#fuerte">camera_umd</a></td>
+                      <td><a href="/r/camera_umd/github-ktossell-camera_umd">github-ktossell-camera_umd</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/camera_umd/github-ktossell-camera_umd#fuerte-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2138,22 +2937,83 @@ bttv).</li>
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>device</strong> <em>&#91;default: /dev/video1&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2162,9 +3022,9 @@ bttv).</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2173,9 +3033,9 @@ bttv).</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2184,28 +3044,39 @@ bttv).</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera//nodelet_uvc_camera.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2215,6 +3086,109 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/camera_umd/github-ktossell-camera_umd">
+
+camera_umd
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jpeg_streamer/github-ktossell-camera_umd">
+
+jpeg_streamer
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+uvc_camera
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-electric">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ktossell-camera_umd
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ktossell-camera_umd
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/electric/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2227,35 +3201,30 @@ $(function() {
     
     
     
-    <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+    
+    <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">6</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#electric-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="electric-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-     A collection of node(let)s that stream images from USB cameras (UVC)
-     and provide CameraInfo messages to consumers. Includes a
-     two-camera node that provides rough synchronization
-     for stereo vision.
-
-     Currently uses the base driver from Morgan Quigley's uvc_cam package.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2294,7 +3263,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2324,7 +3293,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2341,8 +3313,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     A collection of node(let)s that stream images from USB cameras (UVC)
+     and provide CameraInfo messages to consumers. Includes a
+     two-camera node that provides rough synchronization
+     for stereo vision.
+
+     Currently uses the base driver from Morgan Quigley's uvc_cam package.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2361,17 +3355,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Ken Tossell</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
                 
               </ul>
             
@@ -2404,7 +3387,7 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-uvc_camera">Changelog for package uvc_camera</h1>
 
-<h2 id="0.2.4-(2014-06-29)">0.2.4 (2014-06-29)</h2>
+<h2 id="0-2-4-2014-06-29">0.2.4 (2014-06-29)</h2>
 
 <ul>
 <li>  Added new parameters: auto_focus (bool), focus_absolute (int),
@@ -2412,29 +3395,33 @@ auto_exposure (bool), exposure_absolute (int),
 power_line_frequency (int: 0/50/60)</li>
 <li>  Contributors: Andreas Bihlmaier</li>
 </ul>
-<h2 id="0.2.3-(2014-06-26)">0.2.3 (2014-06-26)</h2>
+
+<h2 id="0-2-3-2014-06-26">0.2.3 (2014-06-26)</h2>
 
 <ul>
 <li>  Disabled hardcoded default parameters.</li>
 <li>  Contributors: Ken Tossell</li>
 </ul>
-<h2 id="0.2.2-(2014-06-24)">0.2.2 (2014-06-24)</h2>
+
+<h2 id="0-2-2-2014-06-24">0.2.2 (2014-06-24)</h2>
 
 <ul>
-<li>  Print warnings instead of crashing when camera features are
-unavailable.</li>
-<li>  Support V4L drivers that need user-writable mmap regions (e.g.,
-bttv).</li>
+<li>  Print warnings instead of crashing when camera features
+are unavailable.</li>
+<li>  Support V4L drivers that need user-writable mmap regions
+(e.g., bttv).</li>
 <li>  Fixed nodelet names in the launch files.</li>
 <li>  Added camera_name parameter, sent to camera_info_manager.</li>
 <li>  Contributors: James Sarrett, Ken Tossell</li>
 </ul>
-<h2 id="0.2.1-(2014-01-12)">0.2.1 (2014-01-12)</h2>
+
+<h2 id="0-2-1-2014-01-12">0.2.1 (2014-01-12)</h2>
 
 <ul>
 <li>  Added install rule for nodelet_uvc_camera.xml</li>
 </ul>
-<h2 id="0.2.0-(2013-08-02)">0.2.0 (2013-08-02)</h2>
+
+<h2 id="0-2-0-2013-08-02">0.2.0 (2013-08-02)</h2>
 
 <ul>
 <li>  Converted uvc_camera to catkin</li>
@@ -2454,7 +3441,8 @@ bttv).</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2466,37 +3454,201 @@ bttv).</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#electric">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#electric">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#electric">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#electric">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#electric-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#electric">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libv4l-dev">libv4l-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#electric">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#electric">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#electric">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#electric">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#electric">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/libv4l-dev#electric">libv4l-dev</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/camera_umd/github-ktossell-camera_umd#electric">camera_umd</a></td>
+                      <td><a href="/r/camera_umd/github-ktossell-camera_umd">github-ktossell-camera_umd</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/camera_umd/github-ktossell-camera_umd#electric-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#electric">roseus_tutorials</a></td>
+                      <td><a href="/r/jsk_roseus/github-jsk-ros-pkg-jsk_roseus">github-jsk-ros-pkg-jsk_roseus</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#electric-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2504,22 +3656,83 @@ bttv).</li>
   <div class="tab-pane" id="electric-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera/launch/example.launch" target="_blank">launch/example.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>device</strong> <em>&#91;default: /dev/video1&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2528,9 +3741,9 @@ bttv).</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2539,9 +3752,9 @@ bttv).</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2550,28 +3763,39 @@ bttv).</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera//nodelet_uvc_camera.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/electric/api/uvc_camera/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ktossell/camera_umd/tree/master/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2581,6 +3805,109 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/uvc_camera">uvc_camera</a> <small>package from <a style="text-decoration:none" href="/r/camera_umd/github-ktossell-camera_umd">camera_umd</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jpeg_streamer/github-ktossell-camera_umd">
+
+jpeg_streamer
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+uvc_camera
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/uvc_stereo/github-ktossell-camera_umd">
+
+uvc_stereo
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-diamondback">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/uvc_camera"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ktossell-camera_umd
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ktossell-camera_umd" role="menuitem" tabindex="-1" href="/p/uvc_camera/github-ktossell-camera_umd" data="github-ktossell-camera_umd">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ktossell-camera_umd
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/diamondback/api/uvc_camera/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -2593,37 +3920,30 @@ $(function() {
     
     
     
-    <a href="#diamondback-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
+    
+    <a href="#diamondback-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#diamondback-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#diamondback-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#diamondback-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="diamondback-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     A collection of node(let)s that stream images from USB cameras (UVC)
-     and provide CameraInfo messages to consumers. Includes a
-     two-camera node that provides rough synchronization
-     for stereo vision.
-
-     Currently uses the base driver from Morgan Quigley's uvc_cam package.
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -2662,7 +3982,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -2684,7 +4004,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-04-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-05-01
         </span>
       </td>
     </tr>
@@ -2692,7 +4012,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -2709,8 +4032,32 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     A collection of node(let)s that stream images from USB cameras (UVC)
+     and provide CameraInfo messages to consumers. Includes a
+     two-camera node that provides rough synchronization
+     for stereo vision.
+
+     Currently uses the base driver from Morgan Quigley's uvc_cam package.
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -2725,17 +4072,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Ken Tossell/ktossell <AT> umd.edu</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/uvc_camera">Website</a></li>
                 
               </ul>
             
@@ -2778,7 +4114,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/uvc_camera/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -2790,35 +4127,174 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="diamondback-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#diamondback">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_info_manager#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_info_manager" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_info_manager#diamondback">camera_info_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_transport#diamondback-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_transport" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_transport#diamondback">image_transport</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#diamondback">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/dynamic_reconfigure#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/dynamic_reconfigure" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/dynamic_reconfigure#diamondback">dynamic_reconfigure</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#diamondback">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_info_manager#diamondback">camera_info_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_transport#diamondback">image_transport</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#diamondback">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/dynamic_reconfigure#diamondback">dynamic_reconfigure</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#diamondback">roseus_tutorials</a></td>
+                      <td><a href="/r/jsk_roseus/github-jsk-ros-pkg-jsk_roseus">github-jsk-ros-pkg-jsk_roseus</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/roseus_tutorials/github-jsk-ros-pkg-jsk_roseus#diamondback-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2826,20 +4302,66 @@ $(function() {
   <div class="tab-pane" id="diamondback-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a></li>
-          
-            <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/stereo_node.launch" target="_blank">launch/stereo_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/camera_nodelet.launch" target="_blank">launch/camera_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/camera_node.launch" target="_blank">launch/camera_node.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera/launch/stereo_nodelet.launch" target="_blank">launch/stereo_nodelet.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -2848,9 +4370,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -2859,9 +4381,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -2870,28 +4392,39 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera//nodelet_uvc_camera.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/diamondback/api/uvc_camera/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ktossell/camera_umd/tree/diamondback_released/uvc_camera"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:uvc_camera/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/uvc_camera?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=uvc_camera&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -2918,7 +4451,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

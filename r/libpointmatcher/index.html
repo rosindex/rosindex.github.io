@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -231,8 +281,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +305,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-22
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-26
         </span>
       </td>
     </tr>
@@ -298,7 +348,7 @@
                 
                   <tr>
                     <td><a href="/p/libpointmatcher/github-ethz-asl-libpointmatcher">libpointmatcher</a></td>
-                    <td>1.2.2</td>
+                    <td>1.2.3</td>
                   </tr>
                 
                 </tbody>
@@ -313,84 +363,82 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
+<p><img src="https://raw.githubusercontent.com//ethz-asl/libpointmatcher/master//doc/images/banner_light.jpeg" alt="alt tag"></p>
+
+<hr>
+
 <h1 id="documentation-and-tutorials">Documentation and Tutorials</h1>
 
-<p>libpointmatcher is a modular ICP library, useful for robotics and computer vision.</p>
+<p>libpointmatcher is a modular library implementing the Iterative Closest Point (ICP) algorithm for aligning point clouds. It has applications in robotics and computer vision.</p>
 
-<p><strong>Quick link for the tutorial pages: <a href="doc/Tutorials.md">Tutorials</a>.</strong></p>
+<p><strong>Quick link for the tutorial pages: <a href="doc/index.md">Tutorials</a> (also available on <a href="http://libpointmatcher.readthedocs.org/">readthedocs.org</a>).</strong></p>
 
 <p>Those tutorials are written using Markdown syntax and stored in the project's <code>/doc</code> folder.  Their scope ranges from introductory material on performing point cloud registration to instructions for the more experienced developer on how to extend the library's codebase. </p>
 
-<p>Libpointmatcher's source code is fully documented based on doxygen to provide an easy API to developers. An example of this API can be found <a href="http://docs.ros.org/groovy/api/libpointmatcher/html/">here</a>, but it is suggested to use the one build for your version in <code>doc/html</code>.  </p>
-
-<p>libpointmatcher depends on:</p>
-
-<ul>
-<li>
-<a href="http://eigen.tuxfamily.org">Eigen</a> version 3, a modern C++ matrix and linear-algebra library,</li>
-<li>
-<a href="http://github.com/ethz-asl/libnabo">libnabo</a> version 1.0.1, a fast K Nearest Neighbour library for low-dimensional spaces.</li>
-<li>
-<a href="http://www.stack.nl/%7Edimitri/doxygen/">Doxygen</a>, a documentation-generation tool</li>
-<li>
-<a href="http://code.google.com/p/yaml-cpp/">yaml-cpp</a>, a YAML 1.2 parser and emitter (optional)</li>
-</ul>
-<p>and was compiled on:
-  * <a href="/doc/Compilation.md">Ubuntu</a>
-  * <a href="/doc/CompilationWindows.md">Windows</a>
-  * <a href="/doc/CompilationMac.md">Mac OS X</a></p>
+<p>Libpointmatcher's source code is fully documented based on doxygen to provide an easy API to developers. An example of this API can be found <a href="http://docs.ros.org/groovy/api/libpointmatcher/html/">here</a>, but it is suggested to use the one build for your version in <code>doc/html</code>. </p>
 
 <p>libpointmatcher is being developed by <a href="mailto:f.pomerleau@gmail.com">François Pomerleau</a> and <a href="http://stephane.magnenat.net">Stéphane Magnenat</a> as part of our work at <a href="http://www.asl.ethz.ch">ASL-ETH</a>.</p>
 
 <p>You can read the latest changes in the <a href="doc/ReleaseNotes.md">release notes</a>.</p>
 
-<h1 id="pre-built-binaries">Pre-built binaries</h1>
+<h1 id="quick-start">Quick Start</h1>
 
-<h2 id="ubuntu">Ubuntu</h2>
+<p>Although we suggest to use the <a href="doc/Tutorials.md">tutorials</a>, here is a quick version of it:</p>
 
-<p>Binaries for Ubuntu Linux are available on our PPA:</p>
+<p>The library has a light dependency list:</p>
 
 <ul>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/lucid">Lucid</a></li>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/precise">Precise</a></li>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/quantal">Quantal</a></li>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/raring">Raring</a></li>
+<li>
+<a href="http://eigen.tuxfamily.org">Eigen</a> version 3, a modern C++ matrix and linear-algebra library,</li>
+<li>
+<a href="http://www.boost.org/">boost</a> version 1.48 and up, portable C++ source libraries,</li>
+<li>
+<a href="http://github.com/ethz-asl/libnabo">libnabo</a> version 1.0.6, a fast K Nearest Neighbour library for low-dimensional spaces,</li>
 </ul>
-<p>Once you have added the PPA to your system, you can install libpointmatcher using</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install libpointmatcher-dev
-</code></pre></div>
-<h2 id="other">Other</h2>
 
-<p>If you have built binaries for other systems, please tell us.</p>
+<p>and was compiled on:
+  * Ubuntu (<a href="/doc/Compilation.md">see how</a>)
+  * Mac OS X (<a href="/doc/CompilationMac.md">see how</a>)
+  * Windows (<a href="/doc/CompilationWindows.md">see how</a> - partially supported)</p>
 
-<h2 id="prerequisites">Prerequisites</h2>
-
-<p>If your operating system does not provide it, you must get <a href="http://eigen.tuxfamily.org">Eigen</a>.
-It only needs to be downloaded and extracted.
-<a href="http://github.com/ethz-asl/libnabo">libnabo</a> must be downloaded and installed, please follow the <a href="http://github.com/ethz-asl/libnabo">libnabo</a>'s documentation to do so.</p>
-
-<h1 id="compilation-&amp;-installation-">Compilation &amp; Installation </h1>
+<h3 id="compilation-amp-installation">Compilation &amp; Installation</h3>
 
 <p>For beginner users who are not familiar with compiling and installing a library in Linux, go <a href="doc/Compilation.md">here</a> for detailed instructions on how to compile libpointmatcher from the source code.  If you are comfortable with Linux and CMake and have already installed the prerequisites above, the following commands should install libpointmatcher on your system.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir build &amp;&amp; cd build
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir build &amp;&amp; cd build
 cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make
 sudo make install
+
 </code></pre></div>
-<h1 id="testing">Testing</h1>
+<h3 id="testing">Testing</h3>
 
 <p>Libpointmatcher ships with a version of the Google testing framework <a href="https://code.google.com/p/googletest/">GTest</a>.  Unit tests are located in utest/ and are compiled with libpointmatcher.  To run the tests and make sure that your compiled version is working correctly, run the test executable in your build directory:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd build
+<div class="highlight"><pre><code class="language-" data-lang="">cd build
 utest/utest --path ../examples/data/
-</code></pre></div>
-<h1 id="bug-reporting">Bug reporting</h1>
 
-<p>Please use <a href="http://github.com/ethz-asl/libpointmatcher/issues">github's issue tracker</a> to report bugs.</p>
+</code></pre></div>
+<h3 id="linking-to-external-projects">Linking to external projects.</h3>
+
+<p>We mainly develop for <strong>cmake projects</strong> and we provide example files under <a href="https://github.com/ethz-asl/libpointmatcher/tree/master/examples/demo_cmake"><code>examples/demo_cmake/</code></a> to help you in your own project. We also provide a <strong>QT Creator</strong> example in <a href="https://github.com/ethz-asl/libpointmatcher/tree/master/examples/demo_Qt"><code>examples/demo_QT/</code></a>, which manually list all the dependencies in the file <a href="https://github.com/ethz-asl/libpointmatcher/blob/master/examples/demo_Qt/demo.pro"><code>demo.pro</code></a>. You would need to ajust those paths to point at the appropriate locations on your system.</p>
+
+<h3 id="bug-reporting">Bug reporting</h3>
+
+<p>Please use our <a href="http://github.com/ethz-asl/libpointmatcher/issues">github's issue tracker</a> to report bugs. If you are running the library on Ubuntu, copy-paste the output of the script <a href="https://github.com/ethz-asl/libpointmatcher/blob/master/utest/listVersionsUbuntu.sh">listVersionsUbuntu.sh</a> to simplify the search of an answer.</p>
+
+<h2 id="file-formats">File formats</h2>
+
+<p>The library support different file formats for importing or exporting data:
+  * csv (Comma Separated Values)
+  * vtk (Visualization Toolkit Files)
+  * ply (Polygon File Format)
+  * pcd (Point Cloud Library Format)</p>
+
+<p>Those functionnalities are available without increasing the list of dependencies at the expense of a limited functionality support. For more details, see the tutorial <a href="doc/ImportExport.md">Importing and Exporting Point Clouds</a>. Example executables using those file formats from the command line can be found in <code>./example/</code> and are described <a href="doc/ICPIntro.md">here</a> in more details </p>
 
 <h1 id="citing">Citing</h1>
 
 <p>If you use libpointmatcher in an academic context, please cite the following publication:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">@article{Pomerleau12comp,
+<div class="highlight"><pre><code class="language-" data-lang="">@article{Pomerleau12comp,
     author = {Pomerleau, Fran{\c c}ois and Colas, Francis and Siegwart, Roland and Magnenat, St{\'e}phane},
     title = {{Comparing ICP Variants on Real-World Data Sets}},
     journal = {Autonomous Robots},
@@ -402,7 +450,7 @@ utest/utest --path ../examples/data/
 }
 </code></pre></div>
 <p>and/or</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">@INPROCEEDINGS{pomerleau11tracking,
+<div class="highlight"><pre><code class="language-" data-lang="">@INPROCEEDINGS{pomerleau11tracking,
     author = {Fran{\c c}ois Pomerleau and St{\'e}phane Magnenat and Francis Colas and Ming Liu and Roland Siegwart},
     title = {Tracking a Depth Camera: Parameter Exploration for Fast ICP},
     booktitle = {Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
@@ -411,6 +459,24 @@ utest/utest --path ../examples/data/
     year = {2011}
 }
 </code></pre></div>
+<h1 id="extra-reading">Extra Reading</h1>
+
+<p>If you are interested in learning more about different registration algorithms, we recently put together a literature review surveying multiple solutions. The review is organized in the same way as the library and many examples are provided based on real deployments.</p>
+
+<p>F. Pomerleau, F. Colas and R. Siegwart (2015), "<em>A Review of Point Cloud Registration Algorithms for Mobile Robotics</em>", <strong>Foundations and Trends® in Robotics</strong>: Vol. 4: No. 1, pp 1-104.  <a href="http://dx.doi.org/10.1561/2300000035">http://dx.doi.org/10.1561/2300000035</a> </p>
+
+<p>If you don't have access to the journal, you can download it from <a href="https://www.researchgate.net/publication/277558596_A_Review_of_Point_Cloud_Registration_Algorithms_for_Mobile_Robotics">here</a>.</p>
+
+<h1 id="more-point-clouds">More Point Clouds</h1>
+
+<p>We also produced those freely available data sets to test different registration solutions:</p>
+
+<p><a href="http://projects.asl.ethz.ch/datasets/doku.php?id=laserregistration:laserregistration"><em>Challenging data sets for point cloud registration algorithms</em></a></p>
+
+<p><img src="http://projects.asl.ethz.ch/datasets/lib/exe/fetch.php?cache=&amp;media=laserregistration:asldataset_weblarge.jpg" alt="alt tag"></p>
+
+<p>You can download the files in CSV or VTK formats, which are directly supported by the library I/O module. </p>
+
 <h1 id="projects-and-partners">Projects and Partners</h1>
 
 <p>If you are using libpointmatcher in your project and you would like to have it listed here, please contact <a href="mailto:f.pomerleau@gmail.com">François Pomerleau</a> or <a href="http://stephane.magnenat.net">Stéphane Magnenat</a>.</p>
@@ -421,16 +487,24 @@ utest/utest --path ../examples/data/
 <li>Armasuisse S+T UGV research program <a href="http://www.artor.ethz.ch/">ARTOR</a>: Development of techniques for reliable autonomous navigation of a wheeled robot in rough, outdoor terrain. Results: <a href="http://www.youtube.com/watch?v=UCCAUf64tD0">video of urban and dynamic 3D reconstruction</a> and <a href="http://www.youtube.com/watch?v=M5Y99o7um88">video of open space 3D reconstruction</a> with real-time computation.</li>
 <li>Swiss National Science Foundation - <a href="http://www.limnobotics.ch/">Limnobotics</a>: Robotic solution for toxic algae monitoring in lacs. Result: <a href="http://www.youtube.com/watch?v=g8l-Xq4qYeE">video of 3D shore reconstruction</a> with real-time computation.</li>
 </ul>
+
 <p>For a larger list of work realized with libpointmatcher, please see the page <a href="/doc/ApplicationsAndPub.md">Applications And Publications</a>.</p>
 
 <h1 id="license">License</h1>
 
-<p>libpointmatcher is released under a permissive BSD license.</p>
+<p>libpointmatcher is released under a permissive BSD license. Enjoy!</p>
+
+<hr>
+
+<p><img src="https://raw.githubusercontent.com//ethz-asl/libpointmatcher/master//doc/images/banner_dark.jpeg" alt="alt tag"></p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -438,8 +512,8 @@ utest/utest --path ../examples/data/
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -462,7 +536,7 @@ utest/utest --path ../examples/data/
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-22
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-26
         </span>
       </td>
     </tr>
@@ -505,7 +579,7 @@ utest/utest --path ../examples/data/
                 
                   <tr>
                     <td><a href="/p/libpointmatcher/github-ethz-asl-libpointmatcher">libpointmatcher</a></td>
-                    <td>1.2.2</td>
+                    <td>1.2.3</td>
                   </tr>
                 
                 </tbody>
@@ -520,84 +594,82 @@ utest/utest --path ../examples/data/
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
+<p><img src="https://raw.githubusercontent.com//ethz-asl/libpointmatcher/master//doc/images/banner_light.jpeg" alt="alt tag"></p>
+
+<hr>
+
 <h1 id="documentation-and-tutorials">Documentation and Tutorials</h1>
 
-<p>libpointmatcher is a modular ICP library, useful for robotics and computer vision.</p>
+<p>libpointmatcher is a modular library implementing the Iterative Closest Point (ICP) algorithm for aligning point clouds. It has applications in robotics and computer vision.</p>
 
-<p><strong>Quick link for the tutorial pages: <a href="doc/Tutorials.md">Tutorials</a>.</strong></p>
+<p><strong>Quick link for the tutorial pages: <a href="doc/index.md">Tutorials</a> (also available on <a href="http://libpointmatcher.readthedocs.org/">readthedocs.org</a>).</strong></p>
 
 <p>Those tutorials are written using Markdown syntax and stored in the project's <code>/doc</code> folder.  Their scope ranges from introductory material on performing point cloud registration to instructions for the more experienced developer on how to extend the library's codebase. </p>
 
-<p>Libpointmatcher's source code is fully documented based on doxygen to provide an easy API to developers. An example of this API can be found <a href="http://docs.ros.org/groovy/api/libpointmatcher/html/">here</a>, but it is suggested to use the one build for your version in <code>doc/html</code>.  </p>
-
-<p>libpointmatcher depends on:</p>
-
-<ul>
-<li>
-<a href="http://eigen.tuxfamily.org">Eigen</a> version 3, a modern C++ matrix and linear-algebra library,</li>
-<li>
-<a href="http://github.com/ethz-asl/libnabo">libnabo</a> version 1.0.1, a fast K Nearest Neighbour library for low-dimensional spaces.</li>
-<li>
-<a href="http://www.stack.nl/%7Edimitri/doxygen/">Doxygen</a>, a documentation-generation tool</li>
-<li>
-<a href="http://code.google.com/p/yaml-cpp/">yaml-cpp</a>, a YAML 1.2 parser and emitter (optional)</li>
-</ul>
-<p>and was compiled on:
-  * <a href="/doc/Compilation.md">Ubuntu</a>
-  * <a href="/doc/CompilationWindows.md">Windows</a>
-  * <a href="/doc/CompilationMac.md">Mac OS X</a></p>
+<p>Libpointmatcher's source code is fully documented based on doxygen to provide an easy API to developers. An example of this API can be found <a href="http://docs.ros.org/groovy/api/libpointmatcher/html/">here</a>, but it is suggested to use the one build for your version in <code>doc/html</code>. </p>
 
 <p>libpointmatcher is being developed by <a href="mailto:f.pomerleau@gmail.com">François Pomerleau</a> and <a href="http://stephane.magnenat.net">Stéphane Magnenat</a> as part of our work at <a href="http://www.asl.ethz.ch">ASL-ETH</a>.</p>
 
 <p>You can read the latest changes in the <a href="doc/ReleaseNotes.md">release notes</a>.</p>
 
-<h1 id="pre-built-binaries">Pre-built binaries</h1>
+<h1 id="quick-start">Quick Start</h1>
 
-<h2 id="ubuntu">Ubuntu</h2>
+<p>Although we suggest to use the <a href="doc/Tutorials.md">tutorials</a>, here is a quick version of it:</p>
 
-<p>Binaries for Ubuntu Linux are available on our PPA:</p>
+<p>The library has a light dependency list:</p>
 
 <ul>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/lucid">Lucid</a></li>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/precise">Precise</a></li>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/quantal">Quantal</a></li>
-<li><a href="https://launchpad.net/%7Estephane.magnenat/+archive/raring">Raring</a></li>
+<li>
+<a href="http://eigen.tuxfamily.org">Eigen</a> version 3, a modern C++ matrix and linear-algebra library,</li>
+<li>
+<a href="http://www.boost.org/">boost</a> version 1.48 and up, portable C++ source libraries,</li>
+<li>
+<a href="http://github.com/ethz-asl/libnabo">libnabo</a> version 1.0.6, a fast K Nearest Neighbour library for low-dimensional spaces,</li>
 </ul>
-<p>Once you have added the PPA to your system, you can install libpointmatcher using</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install libpointmatcher-dev
-</code></pre></div>
-<h2 id="other">Other</h2>
 
-<p>If you have built binaries for other systems, please tell us.</p>
+<p>and was compiled on:
+  * Ubuntu (<a href="/doc/Compilation.md">see how</a>)
+  * Mac OS X (<a href="/doc/CompilationMac.md">see how</a>)
+  * Windows (<a href="/doc/CompilationWindows.md">see how</a> - partially supported)</p>
 
-<h2 id="prerequisites">Prerequisites</h2>
-
-<p>If your operating system does not provide it, you must get <a href="http://eigen.tuxfamily.org">Eigen</a>.
-It only needs to be downloaded and extracted.
-<a href="http://github.com/ethz-asl/libnabo">libnabo</a> must be downloaded and installed, please follow the <a href="http://github.com/ethz-asl/libnabo">libnabo</a>'s documentation to do so.</p>
-
-<h1 id="compilation-&amp;-installation-">Compilation &amp; Installation </h1>
+<h3 id="compilation-amp-installation">Compilation &amp; Installation</h3>
 
 <p>For beginner users who are not familiar with compiling and installing a library in Linux, go <a href="doc/Compilation.md">here</a> for detailed instructions on how to compile libpointmatcher from the source code.  If you are comfortable with Linux and CMake and have already installed the prerequisites above, the following commands should install libpointmatcher on your system.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir build &amp;&amp; cd build
+<div class="highlight"><pre><code class="language-" data-lang="">mkdir build &amp;&amp; cd build
 cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make
 sudo make install
+
 </code></pre></div>
-<h1 id="testing">Testing</h1>
+<h3 id="testing">Testing</h3>
 
 <p>Libpointmatcher ships with a version of the Google testing framework <a href="https://code.google.com/p/googletest/">GTest</a>.  Unit tests are located in utest/ and are compiled with libpointmatcher.  To run the tests and make sure that your compiled version is working correctly, run the test executable in your build directory:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">cd build
+<div class="highlight"><pre><code class="language-" data-lang="">cd build
 utest/utest --path ../examples/data/
-</code></pre></div>
-<h1 id="bug-reporting">Bug reporting</h1>
 
-<p>Please use <a href="http://github.com/ethz-asl/libpointmatcher/issues">github's issue tracker</a> to report bugs.</p>
+</code></pre></div>
+<h3 id="linking-to-external-projects">Linking to external projects.</h3>
+
+<p>We mainly develop for <strong>cmake projects</strong> and we provide example files under <a href="https://github.com/ethz-asl/libpointmatcher/tree/master/examples/demo_cmake"><code>examples/demo_cmake/</code></a> to help you in your own project. We also provide a <strong>QT Creator</strong> example in <a href="https://github.com/ethz-asl/libpointmatcher/tree/master/examples/demo_Qt"><code>examples/demo_QT/</code></a>, which manually list all the dependencies in the file <a href="https://github.com/ethz-asl/libpointmatcher/blob/master/examples/demo_Qt/demo.pro"><code>demo.pro</code></a>. You would need to ajust those paths to point at the appropriate locations on your system.</p>
+
+<h3 id="bug-reporting">Bug reporting</h3>
+
+<p>Please use our <a href="http://github.com/ethz-asl/libpointmatcher/issues">github's issue tracker</a> to report bugs. If you are running the library on Ubuntu, copy-paste the output of the script <a href="https://github.com/ethz-asl/libpointmatcher/blob/master/utest/listVersionsUbuntu.sh">listVersionsUbuntu.sh</a> to simplify the search of an answer.</p>
+
+<h2 id="file-formats">File formats</h2>
+
+<p>The library support different file formats for importing or exporting data:
+  * csv (Comma Separated Values)
+  * vtk (Visualization Toolkit Files)
+  * ply (Polygon File Format)
+  * pcd (Point Cloud Library Format)</p>
+
+<p>Those functionnalities are available without increasing the list of dependencies at the expense of a limited functionality support. For more details, see the tutorial <a href="doc/ImportExport.md">Importing and Exporting Point Clouds</a>. Example executables using those file formats from the command line can be found in <code>./example/</code> and are described <a href="doc/ICPIntro.md">here</a> in more details </p>
 
 <h1 id="citing">Citing</h1>
 
 <p>If you use libpointmatcher in an academic context, please cite the following publication:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">@article{Pomerleau12comp,
+<div class="highlight"><pre><code class="language-" data-lang="">@article{Pomerleau12comp,
     author = {Pomerleau, Fran{\c c}ois and Colas, Francis and Siegwart, Roland and Magnenat, St{\'e}phane},
     title = {{Comparing ICP Variants on Real-World Data Sets}},
     journal = {Autonomous Robots},
@@ -609,7 +681,7 @@ utest/utest --path ../examples/data/
 }
 </code></pre></div>
 <p>and/or</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">@INPROCEEDINGS{pomerleau11tracking,
+<div class="highlight"><pre><code class="language-" data-lang="">@INPROCEEDINGS{pomerleau11tracking,
     author = {Fran{\c c}ois Pomerleau and St{\'e}phane Magnenat and Francis Colas and Ming Liu and Roland Siegwart},
     title = {Tracking a Depth Camera: Parameter Exploration for Fast ICP},
     booktitle = {Proc. of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
@@ -618,6 +690,24 @@ utest/utest --path ../examples/data/
     year = {2011}
 }
 </code></pre></div>
+<h1 id="extra-reading">Extra Reading</h1>
+
+<p>If you are interested in learning more about different registration algorithms, we recently put together a literature review surveying multiple solutions. The review is organized in the same way as the library and many examples are provided based on real deployments.</p>
+
+<p>F. Pomerleau, F. Colas and R. Siegwart (2015), "<em>A Review of Point Cloud Registration Algorithms for Mobile Robotics</em>", <strong>Foundations and Trends® in Robotics</strong>: Vol. 4: No. 1, pp 1-104.  <a href="http://dx.doi.org/10.1561/2300000035">http://dx.doi.org/10.1561/2300000035</a> </p>
+
+<p>If you don't have access to the journal, you can download it from <a href="https://www.researchgate.net/publication/277558596_A_Review_of_Point_Cloud_Registration_Algorithms_for_Mobile_Robotics">here</a>.</p>
+
+<h1 id="more-point-clouds">More Point Clouds</h1>
+
+<p>We also produced those freely available data sets to test different registration solutions:</p>
+
+<p><a href="http://projects.asl.ethz.ch/datasets/doku.php?id=laserregistration:laserregistration"><em>Challenging data sets for point cloud registration algorithms</em></a></p>
+
+<p><img src="http://projects.asl.ethz.ch/datasets/lib/exe/fetch.php?cache=&amp;media=laserregistration:asldataset_weblarge.jpg" alt="alt tag"></p>
+
+<p>You can download the files in CSV or VTK formats, which are directly supported by the library I/O module. </p>
+
 <h1 id="projects-and-partners">Projects and Partners</h1>
 
 <p>If you are using libpointmatcher in your project and you would like to have it listed here, please contact <a href="mailto:f.pomerleau@gmail.com">François Pomerleau</a> or <a href="http://stephane.magnenat.net">Stéphane Magnenat</a>.</p>
@@ -628,16 +718,24 @@ utest/utest --path ../examples/data/
 <li>Armasuisse S+T UGV research program <a href="http://www.artor.ethz.ch/">ARTOR</a>: Development of techniques for reliable autonomous navigation of a wheeled robot in rough, outdoor terrain. Results: <a href="http://www.youtube.com/watch?v=UCCAUf64tD0">video of urban and dynamic 3D reconstruction</a> and <a href="http://www.youtube.com/watch?v=M5Y99o7um88">video of open space 3D reconstruction</a> with real-time computation.</li>
 <li>Swiss National Science Foundation - <a href="http://www.limnobotics.ch/">Limnobotics</a>: Robotic solution for toxic algae monitoring in lacs. Result: <a href="http://www.youtube.com/watch?v=g8l-Xq4qYeE">video of 3D shore reconstruction</a> with real-time computation.</li>
 </ul>
+
 <p>For a larger list of work realized with libpointmatcher, please see the page <a href="/doc/ApplicationsAndPub.md">Applications And Publications</a>.</p>
 
 <h1 id="license">License</h1>
 
-<p>libpointmatcher is released under a permissive BSD license.</p>
+<p>libpointmatcher is released under a permissive BSD license. Enjoy!</p>
+
+<hr>
+
+<p><img src="https://raw.githubusercontent.com//ethz-asl/libpointmatcher/master//doc/images/banner_dark.jpeg" alt="alt tag"></p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -696,7 +794,7 @@ utest/utest --path ../examples/data/
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

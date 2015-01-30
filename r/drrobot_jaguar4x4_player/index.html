@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -255,8 +305,8 @@
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -279,7 +329,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-07-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-03-18
         </span>
       </td>
     </tr>
@@ -319,7 +369,7 @@
                 
                   <tr>
                     <td><a href="/p/drrobot_jaguar4x4_player/github-gitdrrobot-drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</a></td>
-                    <td>UNKNOWN</td>
+                    <td>1.2.1</td>
                   </tr>
                 
                 </tbody>
@@ -334,75 +384,17 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<p>There are 2 folders:DrRobotMotionSensorDriver and drrobot_jaguar4x4_player.</p>
+<h1 id="drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</h1>
 
-<p>You could copy all 2 folders to your ROS working folder.</p>
-
-<p>For git user, you need clone these 2 folders from repository.</p>
-
-<p>Use "make clean" in each folder to clean all the cache/build files.
-Then use "rosmake" to build again.</p>
-
-<p>You need make sure you already installed all the depend packages. You could find them in manifest file in drrobot_jaguar4x4_player folder.</p>
-
-<p>The demo program will public all the sensor information and received command from joystick to control the robot.
-After run roscore
-you could use command " roslaunch drrobot_jaguar4x4_player drrobot_play1.launch" to lauch all the program.
-It will auto load the parameter file "drrobotplayer_jaguar4x4.yaml" to ros parameter server.
-If you modified IP, you could edit this file.</p>
-
-<p>IMU: now the sample code will publish the IMU raw data. You need referee the datasheet to transfer the value to real sensor reading.
-    Accelerometer Sensor: ADXL345
-    Gyro Sensor: ITG3200
-    Magnetometer Sensor: HMC5883L</p>
-
-<p>GPS: You could find ROS package at <a href="http://www.ros.org/wiki/gpsd_client/Tutorials/Getting%20Started%20with%20gpsd_client">http://www.ros.org/wiki/gpsd_client/Tutorials/Getting%20Started%20with%20gpsd_client</a>
-    After you install GPSD server and GPDS client. 
-    1 .You could access the GPS on the robot by command:
-        gpsd tcp://192.168.0.61:10002
-    2. You could check the gpsd running by command:
-        gpspipe -r
-       It should ouput NEMA sentences.
-    3. Then you could run gpsd_client (with roscore)
-        rosrun gpsd_client gpsd_client _host:=localhost _port:=2947 _use_gps_time:=false _check_fix_by_variance:=false
-    4. THen you could use rostopic to check the publish "fix" message
-        rostopic echo /fix</p>
-
-<p>Axis camera:    <a href="http://ros.org/wiki/axis_camera">http://ros.org/wiki/axis_camera</a>
-    Please note: the default setting for camera on the robot is:
-        IP:192.168.0.65
-        Port:8081
-        ID: root
-        PWD: drrobot</p>
-
-<p>Laser(Hokuyo) : You could find more information from ROS
-            <a href="http://www.ros.org/wiki/hokuyo_node">http://www.ros.org/wiki/hokuyo_node</a>
-            <a href="http://www.ros.org/wiki/hokuyo_node/Tutorials/UsingTheHokuyoNode">http://www.ros.org/wiki/hokuyo_node/Tutorials/UsingTheHokuyoNode</a>
-        On the robot, by default, the laser scanner is connected as network device, IP:192.168.0.60, port:10002
-        So you need redirect the TCP socket to serial port as hokuyo_node used.
-        You could find and install some virtual serial port redirect  software to do it.
-        One is "socat". Use "sudo apt-get install socat" to install it.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    After that:
-    1. sudo mknod -m 666 /dev/ttyS51 c 4 115
-    2. sudo socat PTY,link=/dev/ttyS51, TCP4:192.168.0.60:10002
-    3. open another terminal, to check the /dev/ttyS51 read/write permision.
-        If it is linked to /dev/pts/*, check it too.
-        Maybe you need use "sudo chmod a=r+w /dev/pts/*"
-    4. after run roscore, open another terminal,
-        "rosrun hokuyo_node getID /dev/ttyS51"  -- will return the device ID
-        "rosrun hokuyo_node getFirmwareVersion /dev/ttyS51"  -- will return the device firmware version
-    5. set port number for hokuyo_node
-        rosparam set hokuyo_node/port /dev/ttyS51
-    6. Run hokuyo_node
-        rosrun hokuyo_node hokuyo_node
-    7.you could use "rostopic echo /scan" to view the scan data.
-        or use rviz to view.
-</code></pre></div>
+<p>The project is for Jaguar 4x4 robot before 2014. This project need DrRobotMotionSensorDriver project. Please fork or copy these 2 project to your catkin working space under ROS.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -445,7 +437,7 @@ If you modified IP, you could edit this file.</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

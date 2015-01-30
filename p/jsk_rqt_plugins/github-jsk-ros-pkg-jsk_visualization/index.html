@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,11 +149,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -157,224 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/jsk_rqt_plugins">jsk_rqt_plugins</a> <small>package from <a style="text-decoration:none" href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">jsk_visualization</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive/github-jsk-ros-pkg-jsk_visualization">jsk_interactive</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_marker/github-jsk-ros-pkg-jsk_visualization"><span class="glyphicon glyphicon-file"></span>jsk_interactive_marker</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_test/github-jsk-ros-pkg-jsk_visualization">jsk_interactive_test</a>
-        
-      
-        
-          <span class="label label-default"> jsk_rqt_plugins</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_rviz_plugins/github-jsk-ros-pkg-jsk_visualization"><span class="glyphicon glyphicon-file"></span>jsk_rviz_plugins</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/jsk_rqt_plugins/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/jsk_rqt_plugins"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-jsk-ros-pkg-jsk_visualization
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-jsk-ros-pkg-jsk_visualization" role="menuitem" tabindex="-1" href="/p/jsk_rqt_plugins/github-jsk-ros-pkg-jsk_visualization" data="github-jsk-ros-pkg-jsk_visualization">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-jsk-ros-pkg-jsk_visualization
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/jsk_rqt_plugins">jsk_rqt_plugins</a> <small>package from <a style="text-decoration:none" href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">jsk_visualization</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive/github-jsk-ros-pkg-jsk_visualization">jsk_interactive</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_marker/github-jsk-ros-pkg-jsk_visualization"><span class="glyphicon glyphicon-file"></span>jsk_interactive_marker</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_test/github-jsk-ros-pkg-jsk_visualization">jsk_interactive_test</a>
-        
-      
-        
-          <span class="label label-default"> jsk_rqt_plugins</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_rviz_plugins/github-jsk-ros-pkg-jsk_visualization"><span class="glyphicon glyphicon-file"></span>jsk_rviz_plugins</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/jsk_rqt_plugins/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/jsk_rqt_plugins"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-jsk-ros-pkg-jsk_visualization
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-jsk-ros-pkg-jsk_visualization" role="menuitem" tabindex="-1" href="/p/jsk_rqt_plugins/github-jsk-ros-pkg-jsk_visualization" data="github-jsk-ros-pkg-jsk_visualization">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-jsk-ros-pkg-jsk_visualization
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -387,50 +222,171 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_rqt_plugins">jsk_rqt_plugins</a> <small>package from <a style="text-decoration:none" href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">jsk_visualization</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_interactive
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive_marker/github-jsk-ros-pkg-jsk_visualization">
+
+<span class="glyphicon glyphicon-file"></span> jsk_interactive_marker
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive_test/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_interactive_test
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+jsk_rqt_plugins
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_rviz_plugins/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_rviz_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_visualization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_rqt_plugins"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_visualization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_visualization" role="menuitem" tabindex="-1" href="/p/jsk_rqt_plugins/github-jsk-ros-pkg-jsk_visualization" data="github-jsk-ros-pkg-jsk_visualization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_visualization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
   </div>
+</div>
 
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-        
-        
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/jsk_rqt_plugins/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_rqt_plugins&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The jsk_rqt_plugins package
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -443,7 +399,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.0.18</td>
+                <td>1.0.31</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -469,7 +425,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -491,7 +447,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-17
         </span>
       </td>
     </tr>
@@ -519,8 +475,19 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The jsk_rqt_plugins package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional links.</em>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -539,11 +506,1076 @@
               <em>No additional authors.</em>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization/#indigo">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-jsk_rqt_plugins">Changelog for package jsk_rqt_plugins</h1>
+
+<h2 id="1-0-31-2016-05-19">1.0.31 (2016-05-19)</h2>
+
+<ul>
+<li>  Warn about unsupported topic type</li>
+<li>  Check class type of data instead of subscribed topic type in
+rqt_histgram_plot to support HistgramWithRangeArray</li>
+<li>  Contributors: Kentaro Wada, Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-30-2016-03-25">1.0.30 (2016-03-25)</h2>
+
+<h2 id="1-0-29-2016-03-20">1.0.29 (2016-03-20)</h2>
+
+<h2 id="1-0-28-2016-02-03">1.0.28 (2016-02-03)</h2>
+
+<ul>
+<li>
+<p>Except NavigationToolbar ImportError from matplotlib this is caused
+with upgraded matplotlib. reported at:
+<a href="https://github.com/semiautomaticgit/SemiAutomaticClassificationPlugin/issues/2">https://github.com/semiautomaticgit/SemiAutomaticClassificationPlugin/issues/2</a>
+Modified:</p>
+
+<ul>
+<li>  jsk_rqt_plugins/src/jsk_rqt_plugins/hist.py</li>
+<li>  jsk_rqt_plugins/src/jsk_rqt_plugins/plot.py</li>
+<li>jsk_rqt_plugins/src/jsk_rqt_plugins/plot_2d.py</li>
+</ul>
+</li>
+<li><p>[jsk_rqt_plugins] Support min-max fields of PlotDataArray in
+rqt_2d_plot</p></li>
+<li><p>[jsk_rqt_plugins/plot_2d] Update to support new
+jsk_recognition_msgs/PlotData fields</p></li>
+<li><p>Contributors: Kentaro Wada, Ryohei Ueda</p></li>
+</ul>
+
+<h2 id="1-0-27-2015-12-08">1.0.27 (2015-12-08)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Avoid already advertised error for
+rqt_yn_btn</li>
+<li>  Contributors: Kentaro Wada</li>
+</ul>
+
+<h2 id="1-0-26-2015-12-03">1.0.26 (2015-12-03)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Advertise service after initialized</li>
+<li>  Contributors: Kentaro Wada</li>
+</ul>
+
+<h2 id="1-0-25-2015-10-10">1.0.25 (2015-10-10)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Fit line to date by ransac</li>
+<li>  [jsk_rqt_plugins] Move README to sphinx + readthedocs</li>
+<li>  Contributors: Kentaro Wada, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-24-2015-09-08">1.0.24 (2015-09-08)</h2>
+
+<ul>
+<li>  Fix get_slot_type_field_names for None msg</li>
+<li>  [jsk_rqt_plugins] Add more plot options for rqt_2d_plot</li>
+<li>  [jsk_rqt_plugins/rqt_2d_plot] Add sample</li>
+<li>  [jsk_rqt_plugins/plot_2d] Show grid</li>
+<li>  [jsk_rqt_plugins] Add script to plot data as scatter</li>
+<li>  [jsk_rqt_plugins] Add util to get slot field</li>
+<li>  [jsk_rqt_plugins] Depends on rqt_image_view</li>
+<li>  [jsk_rqt_plugins/rqt_histogram_plot] Publish rendered image
+from rqt_histogram_plot. In order to overlay the image on rviz</li>
+<li>  [jsk_rqt_plugins] Update README about rqt_histogram_plot</li>
+<li>  [jsk_rqt_plugins/rqt_histogram_plot] Support legend</li>
+<li>  [jsk_rqt_plugins/histogram_plot] Support
+jsk_recognition_msgs/HistogramWithRange message to specify x-axis
+values</li>
+<li>  [jsk_rqt_plugins] Remove unused comments</li>
+<li>  [jsk_rqt_plugins][rqt_string_label] Display more candidates
+which has string field</li>
+<li>  [jsk_rqt_plugins] Catch error for unexpected message type</li>
+<li>  [jsk_rqt_plugins] rqt_string_label supports nested string as
+well as std_msgs/String</li>
+<li>  [jsk_rqt_plugins][button_general.py] Make combo_box shared</li>
+<li>  Contributors: Kentaro Wada, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-23-2015-07-15">1.0.23 (2015-07-15)</h2>
+
+<h2 id="1-0-22-2015-06-24">1.0.22 (2015-06-24)</h2>
+
+<h2 id="1-0-21-2015-06-11">1.0.21 (2015-06-11)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Add sign for configuration button in the
+README image of rqt_service_button</li>
+<li>  [jsk_rqt_plugins] catch import error and use roslib in
+rqt_yn_btn</li>
+<li>  [jsk_rqt_plugins] Add README for rqt_service_button</li>
+<li>  [jsk_rqt_plugins] Add rqt_yn_btn</li>
+<li>  [jsk_rqt_plugins] generate button groups</li>
+<li>  Contributors: Kentaro Wada, Masaki Murooka</li>
+</ul>
+
+<h2 id="1-0-20-2015-05-04">1.0.20 (2015-05-04)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins/iamge_view2_wrapper] Use thread to update
+image topic list isntead of QTimer not to hung up rqt_gui</li>
+<li>  use button general class for push button and radio button. enable to
+set parameter name to set layout</li>
+<li>  add radio button plugin</li>
+<li>  display label and icon in button</li>
+<li>  [jsk_rqt_plugins] Add python-urlgrabber dependency</li>
+<li>  Contributors: Masaki Murooka, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-19-2015-04-09">1.0.19 (2015-04-09)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Use parens to import a lot of symbols from
+modules</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics and
+redraw in StatusLightWidget</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics in
+DRCEnvironmentViewerWidget</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics in
+StringLabelWidget</li>
+<li>
+<p>[jsk_rqt_plugins] Optimize image_view2_wrapper:</p>
+
+<ol>
+<li> Use signal to tell redraw event from subscription callback</li>
+</ol>
+
+<p>2. Fix periodic duration to call updateTopics</p>
+</li>
+<li><p>[jsk_rqt_plugins] Add image_view2 to build depend</p></li>
+<li><p>[jsk_rqt_plugins] Support move event without clicking mouse in
+image_view2 rqt wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Fix for handling right click in
+rqt_image_view2 wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Lower frequency to update StatusLight</p></li>
+<li><p>[jsk_rqt_plugins] Do not redraw image if no needed in
+image_view2 wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Change message type to uint8 from int32 in
+Status plugin</p></li>
+<li><p>[jsk_rqt_plugins] Fix typo</p></li>
+<li><p>[jsk_rqt_plugins] Add simple widget to visualize status</p></li>
+<li><p>[jsk_rqt_plugins] Add settings button and remove combo box from
+top view</p></li>
+<li><p>[jsk_rqt_plugins] Do not convert invalid ROS images to OpenCV
+images in rqt_image_view2</p></li>
+<li>
+<p>[jsk_rqt_plugins] Update label setting of StringLabel plugin.</p>
+
+<ul>
+<li>  Use larger font. font size is 14</li>
+<li>  Align text to left</li>
+</ul>
+
+<p>* Enable word wraping</p>
+</li>
+<li><p>[jsk_rqt_plugins] Use topic stored in perspective file in
+StringLabel plugin</p></li>
+<li><p>[jsk_rqt_plugins] Simple widget to display std_msgs/String</p></li>
+<li><p>[jsk_rqt_plugins] Add ComboBox and store setting in
+rqt_image_view2</p></li>
+<li><p>[jsk_rqt_plugins] Fix drawing of rqt_image_view2 when size is
+not usual</p></li>
+<li><p>[jsk_rqt_plugins] Read configuration of buttons from private
+parameter space</p></li>
+<li><p>[jsk_rqt_plugins] Add perspective to combine rqt_image_view2
+and rqt_service_button</p></li>
+<li><p>[jsk_rqt_plugins] image_view2 rqt wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Support image for button icons in
+rqt_service_button</p></li>
+<li><p>[jsk_rqt_plugins] Add simple rqt plugin to list buttons to call
+empty services and configurable by yaml file</p></li>
+<li><p>Remove rosbuild files</p></li>
+<li><p>Contributors: Ryohei Ueda</p></li>
+</ul>
+
+<h2 id="1-0-18-2015-01-30">1.0.18 (2015-01-30)</h2>
+
+<h2 id="1-0-17-2015-01-29">1.0.17 (2015-01-29)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Add simple viewer to visualize mini
+maxwell status.</li>
+<li>  Contributors: Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-16-2015-01-04">1.0.16 (2015-01-04)</h2>
+
+<h2 id="1-0-15-2014-12-13">1.0.15 (2014-12-13)</h2>
+
+<h2 id="1-0-14-2014-12-09">1.0.14 (2014-12-09)</h2>
+
+<h2 id="1-0-13-2014-10-10">1.0.13 (2014-10-10)</h2>
+
+<h2 id="1-0-12-2014-09-23">1.0.12 (2014-09-23)</h2>
+
+<h2 id="1-0-11-2014-09-22">1.0.11 (2014-09-22)</h2>
+
+<h2 id="1-0-10-2014-09-13">1.0.10 (2014-09-13)</h2>
+
+<h2 id="1-0-9-2014-09-07">1.0.9 (2014-09-07)</h2>
+
+<h2 id="1-0-8-2014-09-04">1.0.8 (2014-09-04)</h2>
+
+<h2 id="1-0-7-2014-08-06">1.0.7 (2014-08-06)</h2>
+
+<h2 id="1-0-6-2014-07-14">1.0.6 (2014-07-14)</h2>
+
+<h2 id="1-0-5-2014-06-29">1.0.5 (2014-06-29)</h2>
+
+<ul>
+<li>  fix jsk_rqt_plugins for groovy users</li>
+<li>  only one topic should be taken into account. the argument of the
+topics cannot be an array</li>
+<li>  add rqt plugin to visualize histogram</li>
+<li>  Contributors: Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-4-2014-05-31">1.0.4 (2014-05-31)</h2>
+
+<ul>
+<li>  jsk_rqt_plugins: add mk/rosbuild to build_depend</li>
+<li>  jsk_rqt_plugins) install missing .ui file</li>
+<li>  Contributors: Kei Okada, Isaac IY Saito</li>
+</ul>
+
+<h2 id="1-0-3-2014-05-22">1.0.3 (2014-05-22)</h2>
+
+<h2 id="1-0-2-2014-05-21">1.0.2 (2014-05-21)</h2>
+
+<h2 id="1-0-1-2014-05-20">1.0.1 (2014-05-20)</h2>
+
+<h2 id="1-0-0-2014-05-17">1.0.0 (2014-05-17)</h2>
+
+<h2 id="0-0-3-2014-05-15">0.0.3 (2014-05-15)</h2>
+
+<h2 id="0-0-2-2014-05-15">0.0.2 (2014-05-15)</h2>
+
+<ul>
+<li>  add --no-legend option to disable legend</li>
+<li>  support polygon mode. if you want to plot in line mode, please add
+-L option</li>
+<li>  implement 3d plotter</li>
+<li>  add jsk_rqt_plugins directory</li>
+<li>  Contributors: Ryohei Ueda</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/jsk_rqt_plugins/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mk#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mk" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mk#indigo">mk</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rosbuild#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rosbuild" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rosbuild#indigo">rosbuild</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_view2#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_view2" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/image_view2#indigo">image_view2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#indigo">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#indigo">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_plot#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_plot" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_plot#indigo">rqt_plot</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_image_view#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_image_view" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_image_view#indigo">rqt_image_view</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/qt_gui_py_common#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/qt_gui_py_common" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/qt_gui_py_common#indigo">qt_gui_py_common</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/resource_retriever#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/resource_retriever" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/resource_retriever#indigo">resource_retriever</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#indigo">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#indigo">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-urlgrabber">python-urlgrabber</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization#indigo">jsk_visualization</a></td>
+                      <td><a href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">github-jsk-ros-pkg-jsk_visualization</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_2015_05_baxter_apc/github-start-jsk-jsk_apc#indigo">jsk_2015_05_baxter_apc</a></td>
+                      <td><a href="/r/jsk_apc/github-start-jsk-jsk_apc">github-start-jsk-jsk_apc</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_2015_05_baxter_apc/github-start-jsk-jsk_apc#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/drc_task_common/github-jsk-ros-pkg-jsk_demos#indigo">drc_task_common</a></td>
+                      <td><a href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">github-jsk-ros-pkg-jsk_demos</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/drc_task_common/github-jsk-ros-pkg-jsk_demos#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/sample/sample_histogram.launch" target="_blank">sample/sample_histogram.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/sample/sample_2dplot.launch" target="_blank">sample/sample_2dplot.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/launch/rqt_image_view2.launch" target="_blank">launch/rqt_image_view2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>image</strong>  </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/srv/YesNo.srv" target="_blank">srv/YesNo.srv</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/jsk_rqt_plugins/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_rqt_plugins&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_rqt_plugins">jsk_rqt_plugins</a> <small>package from <a style="text-decoration:none" href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">jsk_visualization</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_interactive
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive_marker/github-jsk-ros-pkg-jsk_visualization">
+
+<span class="glyphicon glyphicon-file"></span> jsk_interactive_marker
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive_test/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_interactive_test
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+jsk_rqt_plugins
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_rviz_plugins/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_rviz_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_visualization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_rqt_plugins"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_visualization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_visualization" role="menuitem" tabindex="-1" href="/p/jsk_rqt_plugins/github-jsk-ros-pkg-jsk_visualization" data="github-jsk-ros-pkg-jsk_visualization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_visualization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/jsk_rqt_plugins/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_rqt_plugins&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.0.31</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_visualization.git">https://github.com/jsk-ros-pkg/jsk_visualization.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-17
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The jsk_rqt_plugins package
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
             
               <em>No additional links.</em>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Ryohei Ueda</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional authors.</em>
             
           </div>
         </div>
@@ -574,38 +1606,220 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-jsk_rqt_plugins">Changelog for package jsk_rqt_plugins</h1>
 
-<h2 id="1.0.18-(2015-01-30)">1.0.18 (2015-01-30)</h2>
-
-<h2 id="1.0.17-(2015-01-29)">1.0.17 (2015-01-29)</h2>
+<h2 id="1-0-31-2016-05-19">1.0.31 (2016-05-19)</h2>
 
 <ul>
-<li>  [jsk_rqt_plugins] Add simple viewer to visualize mini maxwell
-status.</li>
+<li>  Warn about unsupported topic type</li>
+<li>  Check class type of data instead of subscribed topic type in
+rqt_histgram_plot to support HistgramWithRangeArray</li>
+<li>  Contributors: Kentaro Wada, Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-30-2016-03-25">1.0.30 (2016-03-25)</h2>
+
+<h2 id="1-0-29-2016-03-20">1.0.29 (2016-03-20)</h2>
+
+<h2 id="1-0-28-2016-02-03">1.0.28 (2016-02-03)</h2>
+
+<ul>
+<li>
+<p>Except NavigationToolbar ImportError from matplotlib this is caused
+with upgraded matplotlib. reported at:
+<a href="https://github.com/semiautomaticgit/SemiAutomaticClassificationPlugin/issues/2">https://github.com/semiautomaticgit/SemiAutomaticClassificationPlugin/issues/2</a>
+Modified:</p>
+
+<ul>
+<li>  jsk_rqt_plugins/src/jsk_rqt_plugins/hist.py</li>
+<li>  jsk_rqt_plugins/src/jsk_rqt_plugins/plot.py</li>
+<li>jsk_rqt_plugins/src/jsk_rqt_plugins/plot_2d.py</li>
+</ul>
+</li>
+<li><p>[jsk_rqt_plugins] Support min-max fields of PlotDataArray in
+rqt_2d_plot</p></li>
+<li><p>[jsk_rqt_plugins/plot_2d] Update to support new
+jsk_recognition_msgs/PlotData fields</p></li>
+<li><p>Contributors: Kentaro Wada, Ryohei Ueda</p></li>
+</ul>
+
+<h2 id="1-0-27-2015-12-08">1.0.27 (2015-12-08)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Avoid already advertised error for
+rqt_yn_btn</li>
+<li>  Contributors: Kentaro Wada</li>
+</ul>
+
+<h2 id="1-0-26-2015-12-03">1.0.26 (2015-12-03)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Advertise service after initialized</li>
+<li>  Contributors: Kentaro Wada</li>
+</ul>
+
+<h2 id="1-0-25-2015-10-10">1.0.25 (2015-10-10)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Fit line to date by ransac</li>
+<li>  [jsk_rqt_plugins] Move README to sphinx + readthedocs</li>
+<li>  Contributors: Kentaro Wada, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-24-2015-09-08">1.0.24 (2015-09-08)</h2>
+
+<ul>
+<li>  Fix get_slot_type_field_names for None msg</li>
+<li>  [jsk_rqt_plugins] Add more plot options for rqt_2d_plot</li>
+<li>  [jsk_rqt_plugins/rqt_2d_plot] Add sample</li>
+<li>  [jsk_rqt_plugins/plot_2d] Show grid</li>
+<li>  [jsk_rqt_plugins] Add script to plot data as scatter</li>
+<li>  [jsk_rqt_plugins] Add util to get slot field</li>
+<li>  [jsk_rqt_plugins] Depends on rqt_image_view</li>
+<li>  [jsk_rqt_plugins/rqt_histogram_plot] Publish rendered image
+from rqt_histogram_plot. In order to overlay the image on rviz</li>
+<li>  [jsk_rqt_plugins] Update README about rqt_histogram_plot</li>
+<li>  [jsk_rqt_plugins/rqt_histogram_plot] Support legend</li>
+<li>  [jsk_rqt_plugins/histogram_plot] Support
+jsk_recognition_msgs/HistogramWithRange message to specify x-axis
+values</li>
+<li>  [jsk_rqt_plugins] Remove unused comments</li>
+<li>  [jsk_rqt_plugins][rqt_string_label] Display more candidates
+which has string field</li>
+<li>  [jsk_rqt_plugins] Catch error for unexpected message type</li>
+<li>  [jsk_rqt_plugins] rqt_string_label supports nested string as
+well as std_msgs/String</li>
+<li>  [jsk_rqt_plugins][button_general.py] Make combo_box shared</li>
+<li>  Contributors: Kentaro Wada, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-23-2015-07-15">1.0.23 (2015-07-15)</h2>
+
+<h2 id="1-0-22-2015-06-24">1.0.22 (2015-06-24)</h2>
+
+<h2 id="1-0-21-2015-06-11">1.0.21 (2015-06-11)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Add sign for configuration button in the
+README image of rqt_service_button</li>
+<li>  [jsk_rqt_plugins] catch import error and use roslib in
+rqt_yn_btn</li>
+<li>  [jsk_rqt_plugins] Add README for rqt_service_button</li>
+<li>  [jsk_rqt_plugins] Add rqt_yn_btn</li>
+<li>  [jsk_rqt_plugins] generate button groups</li>
+<li>  Contributors: Kentaro Wada, Masaki Murooka</li>
+</ul>
+
+<h2 id="1-0-20-2015-05-04">1.0.20 (2015-05-04)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins/iamge_view2_wrapper] Use thread to update
+image topic list isntead of QTimer not to hung up rqt_gui</li>
+<li>  use button general class for push button and radio button. enable to
+set parameter name to set layout</li>
+<li>  add radio button plugin</li>
+<li>  display label and icon in button</li>
+<li>  [jsk_rqt_plugins] Add python-urlgrabber dependency</li>
+<li>  Contributors: Masaki Murooka, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-19-2015-04-09">1.0.19 (2015-04-09)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Use parens to import a lot of symbols from
+modules</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics and
+redraw in StatusLightWidget</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics in
+DRCEnvironmentViewerWidget</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics in
+StringLabelWidget</li>
+<li>
+<p>[jsk_rqt_plugins] Optimize image_view2_wrapper:</p>
+
+<ol>
+<li> Use signal to tell redraw event from subscription callback</li>
+</ol>
+
+<p>2. Fix periodic duration to call updateTopics</p>
+</li>
+<li><p>[jsk_rqt_plugins] Add image_view2 to build depend</p></li>
+<li><p>[jsk_rqt_plugins] Support move event without clicking mouse in
+image_view2 rqt wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Fix for handling right click in
+rqt_image_view2 wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Lower frequency to update StatusLight</p></li>
+<li><p>[jsk_rqt_plugins] Do not redraw image if no needed in
+image_view2 wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Change message type to uint8 from int32 in
+Status plugin</p></li>
+<li><p>[jsk_rqt_plugins] Fix typo</p></li>
+<li><p>[jsk_rqt_plugins] Add simple widget to visualize status</p></li>
+<li><p>[jsk_rqt_plugins] Add settings button and remove combo box from
+top view</p></li>
+<li><p>[jsk_rqt_plugins] Do not convert invalid ROS images to OpenCV
+images in rqt_image_view2</p></li>
+<li>
+<p>[jsk_rqt_plugins] Update label setting of StringLabel plugin.</p>
+
+<ul>
+<li>  Use larger font. font size is 14</li>
+<li>  Align text to left</li>
+</ul>
+
+<p>* Enable word wraping</p>
+</li>
+<li><p>[jsk_rqt_plugins] Use topic stored in perspective file in
+StringLabel plugin</p></li>
+<li><p>[jsk_rqt_plugins] Simple widget to display std_msgs/String</p></li>
+<li><p>[jsk_rqt_plugins] Add ComboBox and store setting in
+rqt_image_view2</p></li>
+<li><p>[jsk_rqt_plugins] Fix drawing of rqt_image_view2 when size is
+not usual</p></li>
+<li><p>[jsk_rqt_plugins] Read configuration of buttons from private
+parameter space</p></li>
+<li><p>[jsk_rqt_plugins] Add perspective to combine rqt_image_view2
+and rqt_service_button</p></li>
+<li><p>[jsk_rqt_plugins] image_view2 rqt wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Support image for button icons in
+rqt_service_button</p></li>
+<li><p>[jsk_rqt_plugins] Add simple rqt plugin to list buttons to call
+empty services and configurable by yaml file</p></li>
+<li><p>Remove rosbuild files</p></li>
+<li><p>Contributors: Ryohei Ueda</p></li>
+</ul>
+
+<h2 id="1-0-18-2015-01-30">1.0.18 (2015-01-30)</h2>
+
+<h2 id="1-0-17-2015-01-29">1.0.17 (2015-01-29)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Add simple viewer to visualize mini
+maxwell status.</li>
 <li>  Contributors: Ryohei Ueda</li>
 </ul>
-<h2 id="1.0.16-(2015-01-04)">1.0.16 (2015-01-04)</h2>
 
-<h2 id="1.0.15-(2014-12-13)">1.0.15 (2014-12-13)</h2>
+<h2 id="1-0-16-2015-01-04">1.0.16 (2015-01-04)</h2>
 
-<h2 id="1.0.14-(2014-12-09)">1.0.14 (2014-12-09)</h2>
+<h2 id="1-0-15-2014-12-13">1.0.15 (2014-12-13)</h2>
 
-<h2 id="1.0.13-(2014-10-10)">1.0.13 (2014-10-10)</h2>
+<h2 id="1-0-14-2014-12-09">1.0.14 (2014-12-09)</h2>
 
-<h2 id="1.0.12-(2014-09-23)">1.0.12 (2014-09-23)</h2>
+<h2 id="1-0-13-2014-10-10">1.0.13 (2014-10-10)</h2>
 
-<h2 id="1.0.11-(2014-09-22)">1.0.11 (2014-09-22)</h2>
+<h2 id="1-0-12-2014-09-23">1.0.12 (2014-09-23)</h2>
 
-<h2 id="1.0.10-(2014-09-13)">1.0.10 (2014-09-13)</h2>
+<h2 id="1-0-11-2014-09-22">1.0.11 (2014-09-22)</h2>
 
-<h2 id="1.0.9-(2014-09-07)">1.0.9 (2014-09-07)</h2>
+<h2 id="1-0-10-2014-09-13">1.0.10 (2014-09-13)</h2>
 
-<h2 id="1.0.8-(2014-09-04)">1.0.8 (2014-09-04)</h2>
+<h2 id="1-0-9-2014-09-07">1.0.9 (2014-09-07)</h2>
 
-<h2 id="1.0.7-(2014-08-06)">1.0.7 (2014-08-06)</h2>
+<h2 id="1-0-8-2014-09-04">1.0.8 (2014-09-04)</h2>
 
-<h2 id="1.0.6-(2014-07-14)">1.0.6 (2014-07-14)</h2>
+<h2 id="1-0-7-2014-08-06">1.0.7 (2014-08-06)</h2>
 
-<h2 id="1.0.5-(2014-06-29)">1.0.5 (2014-06-29)</h2>
+<h2 id="1-0-6-2014-07-14">1.0.6 (2014-07-14)</h2>
+
+<h2 id="1-0-5-2014-06-29">1.0.5 (2014-06-29)</h2>
 
 <ul>
 <li>  fix jsk_rqt_plugins for groovy users</li>
@@ -614,24 +1828,26 @@ topics cannot be an array</li>
 <li>  add rqt plugin to visualize histogram</li>
 <li>  Contributors: Ryohei Ueda</li>
 </ul>
-<h2 id="1.0.4-(2014-05-31)">1.0.4 (2014-05-31)</h2>
+
+<h2 id="1-0-4-2014-05-31">1.0.4 (2014-05-31)</h2>
 
 <ul>
 <li>  jsk_rqt_plugins: add mk/rosbuild to build_depend</li>
 <li>  jsk_rqt_plugins) install missing .ui file</li>
 <li>  Contributors: Kei Okada, Isaac IY Saito</li>
 </ul>
-<h2 id="1.0.3-(2014-05-22)">1.0.3 (2014-05-22)</h2>
 
-<h2 id="1.0.2-(2014-05-21)">1.0.2 (2014-05-21)</h2>
+<h2 id="1-0-3-2014-05-22">1.0.3 (2014-05-22)</h2>
 
-<h2 id="1.0.1-(2014-05-20)">1.0.1 (2014-05-20)</h2>
+<h2 id="1-0-2-2014-05-21">1.0.2 (2014-05-21)</h2>
 
-<h2 id="1.0.0-(2014-05-17)">1.0.0 (2014-05-17)</h2>
+<h2 id="1-0-1-2014-05-20">1.0.1 (2014-05-20)</h2>
 
-<h2 id="0.0.3-(2014-05-15)">0.0.3 (2014-05-15)</h2>
+<h2 id="1-0-0-2014-05-17">1.0.0 (2014-05-17)</h2>
 
-<h2 id="0.0.2-(2014-05-15)">0.0.2 (2014-05-15)</h2>
+<h2 id="0-0-3-2014-05-15">0.0.3 (2014-05-15)</h2>
+
+<h2 id="0-0-2-2014-05-15">0.0.2 (2014-05-15)</h2>
 
 <ul>
 <li>  add --no-legend option to disable legend</li>
@@ -656,7 +1872,8 @@ topics cannot be an array</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/jsk_rqt_plugins/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/jsk_rqt_plugins/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -668,37 +1885,327 @@ topics cannot be an array</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mk#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mk" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mk#hydro">mk</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rosbuild#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rosbuild" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rosbuild#hydro">rosbuild</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_view2#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_view2" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/image_view2#hydro">image_view2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#hydro">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#hydro">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#hydro">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_plot#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_plot" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_plot#hydro">rqt_plot</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_image_view#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_image_view" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_image_view#hydro">rqt_image_view</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/qt_gui_py_common#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/qt_gui_py_common" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/qt_gui_py_common#hydro">qt_gui_py_common</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/resource_retriever#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/resource_retriever" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/resource_retriever#hydro">resource_retriever</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#hydro">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#hydro">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-urlgrabber">python-urlgrabber</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/mk#hydro">mk</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rosbuild#hydro">rosbuild</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui#hydro">rqt_gui</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui_py#hydro">rqt_gui_py</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_plot#hydro">rqt_plot</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/qt_gui_py_common#hydro">qt_gui_py_common</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization#hydro">jsk_visualization</a></td>
+                      <td><a href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">github-jsk-ros-pkg-jsk_visualization</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -706,12 +2213,57 @@ topics cannot be an array</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/sample/sample_histogram.launch" target="_blank">sample/sample_histogram.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/sample/sample_2dplot.launch" target="_blank">sample/sample_2dplot.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/launch/rqt_image_view2.launch" target="_blank">launch/rqt_image_view2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>image</strong>  </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -720,9 +2272,9 @@ topics cannot be an array</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -731,9 +2283,13 @@ topics cannot be an array</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/srv/YesNo.srv" target="_blank">srv/YesNo.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -742,28 +2298,39 @@ topics cannot be an array</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/jsk_rqt_plugins/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_rqt_plugins&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -773,6 +2340,133 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_rqt_plugins">jsk_rqt_plugins</a> <small>package from <a style="text-decoration:none" href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">jsk_visualization</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_interactive
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive_marker/github-jsk-ros-pkg-jsk_visualization">
+
+<span class="glyphicon glyphicon-file"></span> jsk_interactive_marker
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_interactive_test/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_interactive_test
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+jsk_rqt_plugins
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_rviz_plugins/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_rviz_plugins
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">
+
+jsk_visualization
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_rqt_plugins"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_visualization
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_visualization" role="menuitem" tabindex="-1" href="/p/jsk_rqt_plugins/github-jsk-ros-pkg-jsk_visualization" data="github-jsk-ros-pkg-jsk_visualization">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_visualization
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/jsk_rqt_plugins/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_rqt_plugins&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -785,28 +2479,30 @@ $(function() {
     
     
     
-    <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
+    
+    <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">5</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            The jsk_rqt_plugins package
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -819,7 +2515,7 @@ $(function() {
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.0.18</td>
+                <td>1.0.31</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -845,7 +2541,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -867,7 +2563,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-17
         </span>
       </td>
     </tr>
@@ -895,8 +2591,19 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The jsk_rqt_plugins package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional links.</em>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -913,13 +2620,6 @@ $(function() {
             
             
               <em>No additional authors.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No additional links.</em>
             
           </div>
         </div>
@@ -950,38 +2650,220 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-jsk_rqt_plugins">Changelog for package jsk_rqt_plugins</h1>
 
-<h2 id="1.0.18-(2015-01-30)">1.0.18 (2015-01-30)</h2>
-
-<h2 id="1.0.17-(2015-01-29)">1.0.17 (2015-01-29)</h2>
+<h2 id="1-0-31-2016-05-19">1.0.31 (2016-05-19)</h2>
 
 <ul>
-<li>  [jsk_rqt_plugins] Add simple viewer to visualize mini maxwell
-status.</li>
+<li>  Warn about unsupported topic type</li>
+<li>  Check class type of data instead of subscribed topic type in
+rqt_histgram_plot to support HistgramWithRangeArray</li>
+<li>  Contributors: Kentaro Wada, Iori Kumagai</li>
+</ul>
+
+<h2 id="1-0-30-2016-03-25">1.0.30 (2016-03-25)</h2>
+
+<h2 id="1-0-29-2016-03-20">1.0.29 (2016-03-20)</h2>
+
+<h2 id="1-0-28-2016-02-03">1.0.28 (2016-02-03)</h2>
+
+<ul>
+<li>
+<p>Except NavigationToolbar ImportError from matplotlib this is caused
+with upgraded matplotlib. reported at:
+<a href="https://github.com/semiautomaticgit/SemiAutomaticClassificationPlugin/issues/2">https://github.com/semiautomaticgit/SemiAutomaticClassificationPlugin/issues/2</a>
+Modified:</p>
+
+<ul>
+<li>  jsk_rqt_plugins/src/jsk_rqt_plugins/hist.py</li>
+<li>  jsk_rqt_plugins/src/jsk_rqt_plugins/plot.py</li>
+<li>jsk_rqt_plugins/src/jsk_rqt_plugins/plot_2d.py</li>
+</ul>
+</li>
+<li><p>[jsk_rqt_plugins] Support min-max fields of PlotDataArray in
+rqt_2d_plot</p></li>
+<li><p>[jsk_rqt_plugins/plot_2d] Update to support new
+jsk_recognition_msgs/PlotData fields</p></li>
+<li><p>Contributors: Kentaro Wada, Ryohei Ueda</p></li>
+</ul>
+
+<h2 id="1-0-27-2015-12-08">1.0.27 (2015-12-08)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Avoid already advertised error for
+rqt_yn_btn</li>
+<li>  Contributors: Kentaro Wada</li>
+</ul>
+
+<h2 id="1-0-26-2015-12-03">1.0.26 (2015-12-03)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Advertise service after initialized</li>
+<li>  Contributors: Kentaro Wada</li>
+</ul>
+
+<h2 id="1-0-25-2015-10-10">1.0.25 (2015-10-10)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Fit line to date by ransac</li>
+<li>  [jsk_rqt_plugins] Move README to sphinx + readthedocs</li>
+<li>  Contributors: Kentaro Wada, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-24-2015-09-08">1.0.24 (2015-09-08)</h2>
+
+<ul>
+<li>  Fix get_slot_type_field_names for None msg</li>
+<li>  [jsk_rqt_plugins] Add more plot options for rqt_2d_plot</li>
+<li>  [jsk_rqt_plugins/rqt_2d_plot] Add sample</li>
+<li>  [jsk_rqt_plugins/plot_2d] Show grid</li>
+<li>  [jsk_rqt_plugins] Add script to plot data as scatter</li>
+<li>  [jsk_rqt_plugins] Add util to get slot field</li>
+<li>  [jsk_rqt_plugins] Depends on rqt_image_view</li>
+<li>  [jsk_rqt_plugins/rqt_histogram_plot] Publish rendered image
+from rqt_histogram_plot. In order to overlay the image on rviz</li>
+<li>  [jsk_rqt_plugins] Update README about rqt_histogram_plot</li>
+<li>  [jsk_rqt_plugins/rqt_histogram_plot] Support legend</li>
+<li>  [jsk_rqt_plugins/histogram_plot] Support
+jsk_recognition_msgs/HistogramWithRange message to specify x-axis
+values</li>
+<li>  [jsk_rqt_plugins] Remove unused comments</li>
+<li>  [jsk_rqt_plugins][rqt_string_label] Display more candidates
+which has string field</li>
+<li>  [jsk_rqt_plugins] Catch error for unexpected message type</li>
+<li>  [jsk_rqt_plugins] rqt_string_label supports nested string as
+well as std_msgs/String</li>
+<li>  [jsk_rqt_plugins][button_general.py] Make combo_box shared</li>
+<li>  Contributors: Kentaro Wada, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-23-2015-07-15">1.0.23 (2015-07-15)</h2>
+
+<h2 id="1-0-22-2015-06-24">1.0.22 (2015-06-24)</h2>
+
+<h2 id="1-0-21-2015-06-11">1.0.21 (2015-06-11)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Add sign for configuration button in the
+README image of rqt_service_button</li>
+<li>  [jsk_rqt_plugins] catch import error and use roslib in
+rqt_yn_btn</li>
+<li>  [jsk_rqt_plugins] Add README for rqt_service_button</li>
+<li>  [jsk_rqt_plugins] Add rqt_yn_btn</li>
+<li>  [jsk_rqt_plugins] generate button groups</li>
+<li>  Contributors: Kentaro Wada, Masaki Murooka</li>
+</ul>
+
+<h2 id="1-0-20-2015-05-04">1.0.20 (2015-05-04)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins/iamge_view2_wrapper] Use thread to update
+image topic list isntead of QTimer not to hung up rqt_gui</li>
+<li>  use button general class for push button and radio button. enable to
+set parameter name to set layout</li>
+<li>  add radio button plugin</li>
+<li>  display label and icon in button</li>
+<li>  [jsk_rqt_plugins] Add python-urlgrabber dependency</li>
+<li>  Contributors: Masaki Murooka, Ryohei Ueda</li>
+</ul>
+
+<h2 id="1-0-19-2015-04-09">1.0.19 (2015-04-09)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Use parens to import a lot of symbols from
+modules</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics and
+redraw in StatusLightWidget</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics in
+DRCEnvironmentViewerWidget</li>
+<li>  [jsk_rqt_plugins] Fix periodic duration to call updateTopics in
+StringLabelWidget</li>
+<li>
+<p>[jsk_rqt_plugins] Optimize image_view2_wrapper:</p>
+
+<ol>
+<li> Use signal to tell redraw event from subscription callback</li>
+</ol>
+
+<p>2. Fix periodic duration to call updateTopics</p>
+</li>
+<li><p>[jsk_rqt_plugins] Add image_view2 to build depend</p></li>
+<li><p>[jsk_rqt_plugins] Support move event without clicking mouse in
+image_view2 rqt wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Fix for handling right click in
+rqt_image_view2 wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Lower frequency to update StatusLight</p></li>
+<li><p>[jsk_rqt_plugins] Do not redraw image if no needed in
+image_view2 wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Change message type to uint8 from int32 in
+Status plugin</p></li>
+<li><p>[jsk_rqt_plugins] Fix typo</p></li>
+<li><p>[jsk_rqt_plugins] Add simple widget to visualize status</p></li>
+<li><p>[jsk_rqt_plugins] Add settings button and remove combo box from
+top view</p></li>
+<li><p>[jsk_rqt_plugins] Do not convert invalid ROS images to OpenCV
+images in rqt_image_view2</p></li>
+<li>
+<p>[jsk_rqt_plugins] Update label setting of StringLabel plugin.</p>
+
+<ul>
+<li>  Use larger font. font size is 14</li>
+<li>  Align text to left</li>
+</ul>
+
+<p>* Enable word wraping</p>
+</li>
+<li><p>[jsk_rqt_plugins] Use topic stored in perspective file in
+StringLabel plugin</p></li>
+<li><p>[jsk_rqt_plugins] Simple widget to display std_msgs/String</p></li>
+<li><p>[jsk_rqt_plugins] Add ComboBox and store setting in
+rqt_image_view2</p></li>
+<li><p>[jsk_rqt_plugins] Fix drawing of rqt_image_view2 when size is
+not usual</p></li>
+<li><p>[jsk_rqt_plugins] Read configuration of buttons from private
+parameter space</p></li>
+<li><p>[jsk_rqt_plugins] Add perspective to combine rqt_image_view2
+and rqt_service_button</p></li>
+<li><p>[jsk_rqt_plugins] image_view2 rqt wrapper</p></li>
+<li><p>[jsk_rqt_plugins] Support image for button icons in
+rqt_service_button</p></li>
+<li><p>[jsk_rqt_plugins] Add simple rqt plugin to list buttons to call
+empty services and configurable by yaml file</p></li>
+<li><p>Remove rosbuild files</p></li>
+<li><p>Contributors: Ryohei Ueda</p></li>
+</ul>
+
+<h2 id="1-0-18-2015-01-30">1.0.18 (2015-01-30)</h2>
+
+<h2 id="1-0-17-2015-01-29">1.0.17 (2015-01-29)</h2>
+
+<ul>
+<li>  [jsk_rqt_plugins] Add simple viewer to visualize mini
+maxwell status.</li>
 <li>  Contributors: Ryohei Ueda</li>
 </ul>
-<h2 id="1.0.16-(2015-01-04)">1.0.16 (2015-01-04)</h2>
 
-<h2 id="1.0.15-(2014-12-13)">1.0.15 (2014-12-13)</h2>
+<h2 id="1-0-16-2015-01-04">1.0.16 (2015-01-04)</h2>
 
-<h2 id="1.0.14-(2014-12-09)">1.0.14 (2014-12-09)</h2>
+<h2 id="1-0-15-2014-12-13">1.0.15 (2014-12-13)</h2>
 
-<h2 id="1.0.13-(2014-10-10)">1.0.13 (2014-10-10)</h2>
+<h2 id="1-0-14-2014-12-09">1.0.14 (2014-12-09)</h2>
 
-<h2 id="1.0.12-(2014-09-23)">1.0.12 (2014-09-23)</h2>
+<h2 id="1-0-13-2014-10-10">1.0.13 (2014-10-10)</h2>
 
-<h2 id="1.0.11-(2014-09-22)">1.0.11 (2014-09-22)</h2>
+<h2 id="1-0-12-2014-09-23">1.0.12 (2014-09-23)</h2>
 
-<h2 id="1.0.10-(2014-09-13)">1.0.10 (2014-09-13)</h2>
+<h2 id="1-0-11-2014-09-22">1.0.11 (2014-09-22)</h2>
 
-<h2 id="1.0.9-(2014-09-07)">1.0.9 (2014-09-07)</h2>
+<h2 id="1-0-10-2014-09-13">1.0.10 (2014-09-13)</h2>
 
-<h2 id="1.0.8-(2014-09-04)">1.0.8 (2014-09-04)</h2>
+<h2 id="1-0-9-2014-09-07">1.0.9 (2014-09-07)</h2>
 
-<h2 id="1.0.7-(2014-08-06)">1.0.7 (2014-08-06)</h2>
+<h2 id="1-0-8-2014-09-04">1.0.8 (2014-09-04)</h2>
 
-<h2 id="1.0.6-(2014-07-14)">1.0.6 (2014-07-14)</h2>
+<h2 id="1-0-7-2014-08-06">1.0.7 (2014-08-06)</h2>
 
-<h2 id="1.0.5-(2014-06-29)">1.0.5 (2014-06-29)</h2>
+<h2 id="1-0-6-2014-07-14">1.0.6 (2014-07-14)</h2>
+
+<h2 id="1-0-5-2014-06-29">1.0.5 (2014-06-29)</h2>
 
 <ul>
 <li>  fix jsk_rqt_plugins for groovy users</li>
@@ -990,24 +2872,26 @@ topics cannot be an array</li>
 <li>  add rqt plugin to visualize histogram</li>
 <li>  Contributors: Ryohei Ueda</li>
 </ul>
-<h2 id="1.0.4-(2014-05-31)">1.0.4 (2014-05-31)</h2>
+
+<h2 id="1-0-4-2014-05-31">1.0.4 (2014-05-31)</h2>
 
 <ul>
 <li>  jsk_rqt_plugins: add mk/rosbuild to build_depend</li>
 <li>  jsk_rqt_plugins) install missing .ui file</li>
 <li>  Contributors: Kei Okada, Isaac IY Saito</li>
 </ul>
-<h2 id="1.0.3-(2014-05-22)">1.0.3 (2014-05-22)</h2>
 
-<h2 id="1.0.2-(2014-05-21)">1.0.2 (2014-05-21)</h2>
+<h2 id="1-0-3-2014-05-22">1.0.3 (2014-05-22)</h2>
 
-<h2 id="1.0.1-(2014-05-20)">1.0.1 (2014-05-20)</h2>
+<h2 id="1-0-2-2014-05-21">1.0.2 (2014-05-21)</h2>
 
-<h2 id="1.0.0-(2014-05-17)">1.0.0 (2014-05-17)</h2>
+<h2 id="1-0-1-2014-05-20">1.0.1 (2014-05-20)</h2>
 
-<h2 id="0.0.3-(2014-05-15)">0.0.3 (2014-05-15)</h2>
+<h2 id="1-0-0-2014-05-17">1.0.0 (2014-05-17)</h2>
 
-<h2 id="0.0.2-(2014-05-15)">0.0.2 (2014-05-15)</h2>
+<h2 id="0-0-3-2014-05-15">0.0.3 (2014-05-15)</h2>
+
+<h2 id="0-0-2-2014-05-15">0.0.2 (2014-05-15)</h2>
 
 <ul>
 <li>  add --no-legend option to disable legend</li>
@@ -1032,7 +2916,8 @@ topics cannot be an array</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/jsk_rqt_plugins/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/jsk_rqt_plugins/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1044,37 +2929,327 @@ topics cannot be an array</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mk#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mk" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mk#groovy">mk</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rosbuild#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rosbuild" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rosbuild#groovy">rosbuild</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_view2#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_view2" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/image_view2#groovy">image_view2</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#groovy">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui#groovy">rqt_gui</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_gui_py#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_gui_py" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_gui_py#groovy">rqt_gui_py</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_plot#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_plot" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_plot#groovy">rqt_plot</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rqt_image_view#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rqt_image_view" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rqt_image_view#groovy">rqt_image_view</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/qt_gui_py_common#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/qt_gui_py_common" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/qt_gui_py_common#groovy">qt_gui_py_common</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/resource_retriever#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/resource_retriever" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/resource_retriever#groovy">resource_retriever</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/cv_bridge#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/cv_bridge" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/cv_bridge#groovy">cv_bridge</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#groovy">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/python-urlgrabber">python-urlgrabber</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/mk#groovy">mk</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rosbuild#groovy">rosbuild</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui#groovy">rqt_gui</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_gui_py#groovy">rqt_gui_py</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rqt_plot#groovy">rqt_plot</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/qt_gui_py_common#groovy">qt_gui_py_common</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization#groovy">jsk_visualization</a></td>
+                      <td><a href="/r/jsk_visualization/github-jsk-ros-pkg-jsk_visualization">github-jsk-ros-pkg-jsk_visualization</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_visualization/github-jsk-ros-pkg-jsk_visualization#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1082,12 +3257,57 @@ topics cannot be an array</li>
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/sample/sample_histogram.launch" target="_blank">sample/sample_histogram.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/sample/sample_2dplot.launch" target="_blank">sample/sample_2dplot.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/launch/rqt_image_view2.launch" target="_blank">launch/rqt_image_view2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>image</strong>  </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1096,9 +3316,9 @@ topics cannot be an array</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1107,9 +3327,13 @@ topics cannot be an array</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins/srv/YesNo.srv" target="_blank">srv/YesNo.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1118,28 +3342,39 @@ topics cannot be an array</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins//plugin.xml" target="_blank">rqt_gui</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/jsk_rqt_plugins/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_visualization/tree/master/jsk_rqt_plugins"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_rqt_plugins/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/jsk_rqt_plugins?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_rqt_plugins&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1190,7 +3425,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

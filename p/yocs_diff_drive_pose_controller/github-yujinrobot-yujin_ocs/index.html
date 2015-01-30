@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,119 +199,190 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/yocs_diff_drive_pose_controller">yocs_diff_drive_pose_controller</a> <small>package from <a style="text-decoration:none" href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/yocs_ar_marker_tracking/github-yujinrobot-yujin_ocs"><span class="glyphicon glyphicon-file"></span>yocs_ar_marker_tracking</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_ar_pair_approach/github-yujinrobot-yujin_ocs"><span class="glyphicon glyphicon-file"></span>yocs_ar_pair_approach</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_ar_pair_tracking/github-yujinrobot-yujin_ocs"><span class="glyphicon glyphicon-file"></span>yocs_ar_pair_tracking</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_cmd_vel_mux/github-yujinrobot-yujin_ocs">yocs_cmd_vel_mux</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_controllers/github-yujinrobot-yujin_ocs">yocs_controllers</a>
-        
-      
-        
-          <span class="label label-default"> yocs_diff_drive_pose_controller</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_joyop/github-yujinrobot-yujin_ocs">yocs_joyop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_keyop/github-yujinrobot-yujin_ocs">yocs_keyop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_localization_manager/github-yujinrobot-yujin_ocs"><span class="glyphicon glyphicon-file"></span>yocs_localization_manager</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_math_toolkit/github-yujinrobot-yujin_ocs">yocs_math_toolkit</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_navigator/github-yujinrobot-yujin_ocs">yocs_navigator</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_rapps/github-yujinrobot-yujin_ocs">yocs_rapps</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_safety_controller/github-yujinrobot-yujin_ocs">yocs_safety_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_velocity_smoother/github-yujinrobot-yujin_ocs">yocs_velocity_smoother</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_virtual_sensor/github-yujinrobot-yujin_ocs">yocs_virtual_sensor</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_waypoint_provider/github-yujinrobot-yujin_ocs">yocs_waypoint_provider</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_waypoints_navi/github-yujinrobot-yujin_ocs">yocs_waypoints_navi</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/yocs_diff_drive_pose_controller/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-indigo">
+
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/yocs_diff_drive_pose_controller">yocs_diff_drive_pose_controller</a> <small>package from <a style="text-decoration:none" href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_ar_marker_tracking/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_ar_marker_tracking
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_ar_pair_approach/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_ar_pair_approach
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_ar_pair_tracking/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_ar_pair_tracking
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_cmd_vel_mux/github-yujinrobot-yujin_ocs">
+
+yocs_cmd_vel_mux
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_controllers/github-yujinrobot-yujin_ocs">
+
+yocs_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+yocs_diff_drive_pose_controller
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_joyop/github-yujinrobot-yujin_ocs">
+
+yocs_joyop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_keyop/github-yujinrobot-yujin_ocs">
+
+yocs_keyop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_localization_manager/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_localization_manager
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_math_toolkit/github-yujinrobot-yujin_ocs">
+
+yocs_math_toolkit
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_navi_toolkit/github-yujinrobot-yujin_ocs">
+
+yocs_navi_toolkit
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_navigator/github-yujinrobot-yujin_ocs">
+
+yocs_navigator
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_rapps/github-yujinrobot-yujin_ocs">
+
+yocs_rapps
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_safety_controller/github-yujinrobot-yujin_ocs">
+
+yocs_safety_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_velocity_smoother/github-yujinrobot-yujin_ocs">
+
+yocs_velocity_smoother
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_virtual_sensor/github-yujinrobot-yujin_ocs">
+
+yocs_virtual_sensor
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_waypoint_provider/github-yujinrobot-yujin_ocs">
+
+yocs_waypoint_provider
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_waypoints_navi/github-yujinrobot-yujin_ocs">
+
+yocs_waypoints_navi
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yujin_ocs/github-yujinrobot-yujin_ocs">
+
+yujin_ocs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -305,191 +418,63 @@
   </tr>
 </table>
 
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/yocs_diff_drive_pose_controller">yocs_diff_drive_pose_controller</a> <small>package from <a style="text-decoration:none" href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/yocs_cmd_vel_mux/github-yujinrobot-yujin_ocs">yocs_cmd_vel_mux</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_controllers/github-yujinrobot-yujin_ocs">yocs_controllers</a>
-        
-      
-        
-          <span class="label label-default"> yocs_diff_drive_pose_controller</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_math_toolkit/github-yujinrobot-yujin_ocs">yocs_math_toolkit</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_velocity_smoother/github-yujinrobot-yujin_ocs">yocs_velocity_smoother</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_virtual_sensor/github-yujinrobot-yujin_ocs">yocs_virtual_sensor</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yocs_waypoints_navi/github-yujinrobot-yujin_ocs">yocs_waypoints_navi</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/yocs_diff_drive_pose_controller/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-hydro">
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/yocs_diff_drive_pose_controller/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/kinetic/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=yocs_diff_drive_pose_controller&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
   
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-yujinrobot-yujin_ocs
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-yujinrobot-yujin_ocs" role="menuitem" tabindex="-1" href="/p/yocs_diff_drive_pose_controller/github-yujinrobot-yujin_ocs" data="github-yujinrobot-yujin_ocs">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-yujinrobot-yujin_ocs
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
 </div>
 
             </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-        
-        
+            
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">9</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    A controller for driving a differential drive base to a pose goal or along a path specified by multiple poses.
-    A pose consists of a 2D position (x,y) and a 1D orientation (theta).
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -502,7 +487,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.3</td>
+                <td>0.8.1</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -528,7 +513,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -544,13 +529,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">indigo</span></td>
+      <td><span class="label label-default">kinetic</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-05
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-16
         </span>
       </td>
     </tr>
@@ -578,8 +563,30 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    A controller for driving a differential drive base to a pose goal or along a path specified by multiple poses.
+    A pose consists of a 2D position (x,y) and a 1D orientation (theta).
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/yocs_diff_drive_pose_controller">Website</a></li>
+                
+                  <li><a href="https://github.com/yujinrobot/yujin_ocs">Repository</a></li>
+                
+                  <li><a href="https://github.com/yujinrobot/yujin_ocs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -602,6 +609,871 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/yujin_ocs/github-yujinrobot-yujin_ocs/#kinetic">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-yocs_diff_drive_pose_controller">Changelog for package yocs_diff_drive_pose_controller</h1>
+
+<h2 id="0-8-0-2016-05-06">0.8.0 (2016-05-06)</h2>
+
+<ul>
+<li>  verbose option</li>
+<li>  bugfix for wrapping angles properly</li>
+</ul>
+
+<h2 id="0-6-4-2015-10-10">0.6.4 (2015-10-10)</h2>
+
+<ul>
+<li>  many minor improvements</li>
+</ul>
+
+<h2 id="0-6-0-2014-07-08">0.6.0 (2014-07-08)</h2>
+
+<ul>
+<li>  updating package informations. remove email for authors. updating
+maintainer</li>
+<li>  pose_controller: removes result feedback when tracking new pose</li>
+<li>  pose_controller: improves pose approach</li>
+<li>  pose_controller: adds limits for linear vel</li>
+<li>  pose_controller: add goal reached logic and control</li>
+<li>  remove unused parameters.</li>
+<li>  Contributors: Daniel Stonier, Jihoon Lee, Marcus Liebhardt</li>
+</ul>
+
+<h2 id="0-5-3-2014-03-24">0.5.3 (2014-03-24)</h2>
+
+<h2 id="0-5-2-2013-11-05">0.5.2 (2013-11-05)</h2>
+
+<h2 id="0-5-1-2013-10-14">0.5.1 (2013-10-14)</h2>
+
+<h2 id="0-5-0-2013-10-11">0.5.0 (2013-10-11)</h2>
+
+<h2 id="0-4-1-2013-10-08">0.4.1 (2013-10-08)</h2>
+
+<h2 id="0-4-0-2013-08-29">0.4.0 (2013-08-29)</h2>
+
+<ul>
+<li>  Add bugtracker and repo info URLs.</li>
+<li>  Changelogs at package level.</li>
+</ul>
+
+<h2 id="0-3-0-2013-07-02">0.3.0 (2013-07-02)</h2>
+
+<ul>
+<li>  Initial version.</li>
+</ul>
+
+<h2 id="0-2-3-2013-04-15">0.2.3 (2013-04-15)</h2>
+
+<h2 id="0-2-2-2013-02-10">0.2.2 (2013-02-10)</h2>
+
+<h2 id="0-2-1-2013-02-08">0.2.1 (2013-02-08)</h2>
+
+<h2 id="0-2-0-2013-02-07">0.2.0 (2013-02-07)</h2>
+
+<h2 id="0-1-3-2013-01-08">0.1.3 (2013-01-08)</h2>
+
+<h2 id="0-1-2-2013-01-02">0.1.2 (2013-01-02)</h2>
+
+<h2 id="0-1-1-2012-12-21">0.1.1 (2012-12-21)</h2>
+
+<h2 id="0-1-0-2012-12-05">0.1.0 (2012-12-05)</h2>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/yocs_diff_drive_pose_controller/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ecl_threads#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ecl_threads" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ecl_threads#kinetic">ecl_threads</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#kinetic">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#kinetic">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pluginlib#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pluginlib" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/pluginlib#kinetic">pluginlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#kinetic">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#kinetic">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#kinetic">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#kinetic">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/yocs_controllers#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/yocs_controllers" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/yocs_controllers#kinetic">yocs_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/yocs_math_toolkit#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/yocs_math_toolkit" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/yocs_math_toolkit#kinetic">yocs_math_toolkit</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/yujin_ocs/github-yujinrobot-yujin_ocs#kinetic">yujin_ocs</a></td>
+                      <td><a href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">github-yujinrobot-yujin_ocs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/yujin_ocs/github-yujinrobot-yujin_ocs#kinetic-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/kinetic/yocs_diff_drive_pose_controller/launch/kobuki_pose_control.launch" target="_blank">launch/kobuki_pose_control.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launcher for pose controlling Kobuki </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/kinetic/yocs_diff_drive_pose_controller/launch/standalone.launch" target="_blank">launch/standalone.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Example/stand-alone launcher for the diff-drive pose controller </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/kinetic/yocs_diff_drive_pose_controller//plugins/nodelets.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/yocs_diff_drive_pose_controller/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/kinetic/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=yocs_diff_drive_pose_controller&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/yocs_diff_drive_pose_controller">yocs_diff_drive_pose_controller</a> <small>package from <a style="text-decoration:none" href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_ar_marker_tracking/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_ar_marker_tracking
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_ar_pair_approach/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_ar_pair_approach
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_ar_pair_tracking/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_ar_pair_tracking
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_cmd_vel_mux/github-yujinrobot-yujin_ocs">
+
+yocs_cmd_vel_mux
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_controllers/github-yujinrobot-yujin_ocs">
+
+yocs_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+yocs_diff_drive_pose_controller
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_joyop/github-yujinrobot-yujin_ocs">
+
+yocs_joyop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_keyop/github-yujinrobot-yujin_ocs">
+
+yocs_keyop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_localization_manager/github-yujinrobot-yujin_ocs">
+
+<span class="glyphicon glyphicon-file"></span> yocs_localization_manager
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_math_toolkit/github-yujinrobot-yujin_ocs">
+
+yocs_math_toolkit
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_navigator/github-yujinrobot-yujin_ocs">
+
+yocs_navigator
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_rapps/github-yujinrobot-yujin_ocs">
+
+yocs_rapps
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_safety_controller/github-yujinrobot-yujin_ocs">
+
+yocs_safety_controller
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_velocity_smoother/github-yujinrobot-yujin_ocs">
+
+yocs_velocity_smoother
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_virtual_sensor/github-yujinrobot-yujin_ocs">
+
+yocs_virtual_sensor
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_waypoint_provider/github-yujinrobot-yujin_ocs">
+
+yocs_waypoint_provider
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_waypoints_navi/github-yujinrobot-yujin_ocs">
+
+yocs_waypoints_navi
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yujin_ocs/github-yujinrobot-yujin_ocs">
+
+yujin_ocs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-yujinrobot-yujin_ocs
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-yujinrobot-yujin_ocs" role="menuitem" tabindex="-1" href="/p/yocs_diff_drive_pose_controller/github-yujinrobot-yujin_ocs" data="github-yujinrobot-yujin_ocs">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-yujinrobot-yujin_ocs
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/yocs_diff_drive_pose_controller/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=yocs_diff_drive_pose_controller&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">10</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.6.4</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/yujinrobot/yujin_ocs.git">https://github.com/yujinrobot/yujin_ocs.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-04-23
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    A controller for driving a differential drive base to a pose goal or along a path specified by multiple poses.
+    A pose consists of a 2D position (x,y) and a 1D orientation (theta).
+  
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -613,6 +1485,28 @@
                   <li><a href="https://github.com/yujinrobot/yujin_ocs">Repository</a></li>
                 
                   <li><a href="https://github.com/yujinrobot/yujin_ocs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Marcus Liebhardt</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Marcus Liebhardt</li>
                 
               </ul>
             
@@ -645,11 +1539,27 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-yocs_diff_drive_pose_controller">Changelog for package yocs_diff_drive_pose_controller</h1>
 
-<h2 id="0.6.3-(2014-12-05)">0.6.3 (2014-12-05)</h2>
+<h2 id="0-6-4-2015-02-09">0.6.4 (2015-02-09)</h2>
 
-<h2 id="0.6.2-(2014-11-30)">0.6.2 (2014-11-30)</h2>
+<ul>
+<li>  clean up debug messages
+<a href="https://github.com/yujinrobot/yujin_ocs/issues/72">#72</a>
+</li>
+<li>  Merge remote-tracking branch 'origin/indigo' into
+update_ar_pair_approach</li>
+<li>  comment out debug messages</li>
+<li>  wrap heading. bounding rotational speed. replace atan to atan2</li>
+<li>  updates</li>
+<li>  base tf publisher</li>
+<li>  now diff drive pose controller receives target frame as topic</li>
+<li>  Contributors: Jihoon Lee</li>
+</ul>
 
-<h2 id="0.6.0-(2014-07-08)">0.6.0 (2014-07-08)</h2>
+<h2 id="0-6-3-2014-12-05">0.6.3 (2014-12-05)</h2>
+
+<h2 id="0-6-2-2014-11-30">0.6.2 (2014-11-30)</h2>
+
+<h2 id="0-6-0-2014-07-08">0.6.0 (2014-07-08)</h2>
 
 <ul>
 <li>  updating package informations. remove email for authors. updating
@@ -661,42 +1571,45 @@ maintainer</li>
 <li>  remove unused parameters.</li>
 <li>  Contributors: Daniel Stonier, Jihoon Lee, Marcus Liebhardt</li>
 </ul>
-<h2 id="0.5.3-(2014-03-24)">0.5.3 (2014-03-24)</h2>
 
-<h2 id="0.5.2-(2013-11-05)">0.5.2 (2013-11-05)</h2>
+<h2 id="0-5-3-2014-03-24">0.5.3 (2014-03-24)</h2>
 
-<h2 id="0.5.1-(2013-10-14)">0.5.1 (2013-10-14)</h2>
+<h2 id="0-5-2-2013-11-05">0.5.2 (2013-11-05)</h2>
 
-<h2 id="0.5.0-(2013-10-11)">0.5.0 (2013-10-11)</h2>
+<h2 id="0-5-1-2013-10-14">0.5.1 (2013-10-14)</h2>
 
-<h2 id="0.4.1-(2013-10-08)">0.4.1 (2013-10-08)</h2>
+<h2 id="0-5-0-2013-10-11">0.5.0 (2013-10-11)</h2>
 
-<h2 id="0.4.0-(2013-08-29)">0.4.0 (2013-08-29)</h2>
+<h2 id="0-4-1-2013-10-08">0.4.1 (2013-10-08)</h2>
+
+<h2 id="0-4-0-2013-08-29">0.4.0 (2013-08-29)</h2>
 
 <ul>
 <li>  Add bugtracker and repo info URLs.</li>
 <li>  Changelogs at package level.</li>
 </ul>
-<h2 id="0.3.0-(2013-07-02)">0.3.0 (2013-07-02)</h2>
+
+<h2 id="0-3-0-2013-07-02">0.3.0 (2013-07-02)</h2>
 
 <ul>
 <li>  Initial version.</li>
 </ul>
-<h2 id="0.2.3-(2013-04-15)">0.2.3 (2013-04-15)</h2>
 
-<h2 id="0.2.2-(2013-02-10)">0.2.2 (2013-02-10)</h2>
+<h2 id="0-2-3-2013-04-15">0.2.3 (2013-04-15)</h2>
 
-<h2 id="0.2.1-(2013-02-08)">0.2.1 (2013-02-08)</h2>
+<h2 id="0-2-2-2013-02-10">0.2.2 (2013-02-10)</h2>
 
-<h2 id="0.2.0-(2013-02-07)">0.2.0 (2013-02-07)</h2>
+<h2 id="0-2-1-2013-02-08">0.2.1 (2013-02-08)</h2>
 
-<h2 id="0.1.3-(2013-01-08)">0.1.3 (2013-01-08)</h2>
+<h2 id="0-2-0-2013-02-07">0.2.0 (2013-02-07)</h2>
 
-<h2 id="0.1.2-(2013-01-02)">0.1.2 (2013-01-02)</h2>
+<h2 id="0-1-3-2013-01-08">0.1.3 (2013-01-08)</h2>
 
-<h2 id="0.1.1-(2012-12-21)">0.1.1 (2012-12-21)</h2>
+<h2 id="0-1-2-2013-01-02">0.1.2 (2013-01-02)</h2>
 
-<h2 id="0.1.0-(2012-12-05)">0.1.0 (2012-12-05)</h2>
+<h2 id="0-1-1-2012-12-21">0.1.1 (2012-12-21)</h2>
+
+<h2 id="0-1-0-2012-12-05">0.1.0 (2012-12-05)</h2>
 </div></body></html>
 
             
@@ -712,7 +1625,8 @@ maintainer</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/yocs_diff_drive_pose_controller/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/yocs_diff_drive_pose_controller/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -724,43 +1638,274 @@ maintainer</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ecl_threads#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ecl_threads" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ecl_threads#indigo">ecl_threads</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#indigo">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#indigo">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pluginlib#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pluginlib" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/pluginlib#indigo">pluginlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#indigo">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#indigo">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#indigo">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#indigo">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/yocs_controllers#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/yocs_controllers" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/yocs_controllers#indigo">yocs_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/yocs_math_toolkit#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/yocs_math_toolkit" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/yocs_math_toolkit#indigo">yocs_math_toolkit</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/ecl_threads#indigo">ecl_threads</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#indigo">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#indigo">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pluginlib#indigo">pluginlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#indigo">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#indigo">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#indigo">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#indigo">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/yocs_controllers#indigo">yocs_controllers</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/yujin_ocs/github-yujinrobot-yujin_ocs#indigo">yujin_ocs</a></td>
+                      <td><a href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">github-yujinrobot-yujin_ocs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/yujin_ocs/github-yujinrobot-yujin_ocs#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -768,16 +1913,40 @@ maintainer</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller/launch/standalone.launch" target="_blank">launch/standalone.launch</a></li>
-          
-            <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller/launch/kobuki_pose_control.launch" target="_blank">launch/kobuki_pose_control.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller/launch/kobuki_pose_control.launch" target="_blank">launch/kobuki_pose_control.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launcher for pose controlling Kobuki </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller/launch/standalone.launch" target="_blank">launch/standalone.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Example/stand-alone launcher for the diff-drive pose controller </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -786,9 +1955,9 @@ maintainer</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -797,9 +1966,9 @@ maintainer</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -808,28 +1977,39 @@ maintainer</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller//plugins/nodelets.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/yocs_diff_drive_pose_controller/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/indigo/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=yocs_diff_drive_pose_controller&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -839,6 +2019,149 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/yocs_diff_drive_pose_controller">yocs_diff_drive_pose_controller</a> <small>package from <a style="text-decoration:none" href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">yujin_ocs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_cmd_vel_mux/github-yujinrobot-yujin_ocs">
+
+yocs_cmd_vel_mux
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_controllers/github-yujinrobot-yujin_ocs">
+
+yocs_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+yocs_diff_drive_pose_controller
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_math_toolkit/github-yujinrobot-yujin_ocs">
+
+yocs_math_toolkit
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_velocity_smoother/github-yujinrobot-yujin_ocs">
+
+yocs_velocity_smoother
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_virtual_sensor/github-yujinrobot-yujin_ocs">
+
+yocs_virtual_sensor
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yocs_waypoints_navi/github-yujinrobot-yujin_ocs">
+
+yocs_waypoints_navi
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/yujin_ocs/github-yujinrobot-yujin_ocs">
+
+yujin_ocs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-yujinrobot-yujin_ocs
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-yujinrobot-yujin_ocs" role="menuitem" tabindex="-1" href="/p/yocs_diff_drive_pose_controller/github-yujinrobot-yujin_ocs" data="github-yujinrobot-yujin_ocs">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-yujinrobot-yujin_ocs
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/yocs_diff_drive_pose_controller/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=yocs_diff_drive_pose_controller&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -851,31 +2174,30 @@ $(function() {
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
   </li>
   <li class="better-tabs">
+    
+    
+    
     
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">9</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    A controller for driving a differential drive base to a pose goal or along a path specified by multiple poses.
-    A pose consists of a 2D position (x,y) and a 1D orientation (theta).
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -914,7 +2236,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -936,7 +2258,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-03-23
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-03-24
         </span>
       </td>
     </tr>
@@ -964,8 +2286,30 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    A controller for driving a differential drive base to a pose goal or along a path specified by multiple poses.
+    A pose consists of a 2D position (x,y) and a 1D orientation (theta).
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/yocs_diff_drive_pose_controller">Website</a></li>
+                
+                  <li><a href="https://github.com/yujinrobot/yujin_ocs">Repository</a></li>
+                
+                  <li><a href="https://github.com/yujinrobot/yujin_ocs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -984,21 +2328,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Marcus Liebhardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/yocs_diff_drive_pose_controller">Website</a></li>
-                
-                  <li><a href="https://github.com/yujinrobot/yujin_ocs">Repository</a></li>
-                
-                  <li><a href="https://github.com/yujinrobot/yujin_ocs/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1031,42 +2360,44 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-yocs_diff_drive_pose_controller">Changelog for package yocs_diff_drive_pose_controller</h1>
 
-<h2 id="0.5.3-(2014-03-24)">0.5.3 (2014-03-24)</h2>
+<h2 id="0-5-3-2014-03-24">0.5.3 (2014-03-24)</h2>
 
-<h2 id="0.5.2-(2013-11-05)">0.5.2 (2013-11-05)</h2>
+<h2 id="0-5-2-2013-11-05">0.5.2 (2013-11-05)</h2>
 
-<h2 id="0.5.1-(2013-10-14)">0.5.1 (2013-10-14)</h2>
+<h2 id="0-5-1-2013-10-14">0.5.1 (2013-10-14)</h2>
 
-<h2 id="0.5.0-(2013-10-11)">0.5.0 (2013-10-11)</h2>
+<h2 id="0-5-0-2013-10-11">0.5.0 (2013-10-11)</h2>
 
-<h2 id="0.4.1-(2013-10-08)">0.4.1 (2013-10-08)</h2>
+<h2 id="0-4-1-2013-10-08">0.4.1 (2013-10-08)</h2>
 
-<h2 id="0.4.0-(2013-08-29)">0.4.0 (2013-08-29)</h2>
+<h2 id="0-4-0-2013-08-29">0.4.0 (2013-08-29)</h2>
 
 <ul>
 <li>  Add bugtracker and repo info URLs.</li>
 <li>  Changelogs at package level.</li>
 </ul>
-<h2 id="0.3.0-(2013-07-02)">0.3.0 (2013-07-02)</h2>
+
+<h2 id="0-3-0-2013-07-02">0.3.0 (2013-07-02)</h2>
 
 <ul>
 <li>  Initial version.</li>
 </ul>
-<h2 id="0.2.3-(2013-04-15)">0.2.3 (2013-04-15)</h2>
 
-<h2 id="0.2.2-(2013-02-10)">0.2.2 (2013-02-10)</h2>
+<h2 id="0-2-3-2013-04-15">0.2.3 (2013-04-15)</h2>
 
-<h2 id="0.2.1-(2013-02-08)">0.2.1 (2013-02-08)</h2>
+<h2 id="0-2-2-2013-02-10">0.2.2 (2013-02-10)</h2>
 
-<h2 id="0.2.0-(2013-02-07)">0.2.0 (2013-02-07)</h2>
+<h2 id="0-2-1-2013-02-08">0.2.1 (2013-02-08)</h2>
 
-<h2 id="0.1.3-(2013-01-08)">0.1.3 (2013-01-08)</h2>
+<h2 id="0-2-0-2013-02-07">0.2.0 (2013-02-07)</h2>
 
-<h2 id="0.1.2-(2013-01-02)">0.1.2 (2013-01-02)</h2>
+<h2 id="0-1-3-2013-01-08">0.1.3 (2013-01-08)</h2>
 
-<h2 id="0.1.1-(2012-12-21)">0.1.1 (2012-12-21)</h2>
+<h2 id="0-1-2-2013-01-02">0.1.2 (2013-01-02)</h2>
 
-<h2 id="0.1.0-(2012-12-05)">0.1.0 (2012-12-05)</h2>
+<h2 id="0-1-1-2012-12-21">0.1.1 (2012-12-21)</h2>
+
+<h2 id="0-1-0-2012-12-05">0.1.0 (2012-12-05)</h2>
 </div></body></html>
 
             
@@ -1082,7 +2413,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/yocs_diff_drive_pose_controller/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/yocs_diff_drive_pose_controller/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1094,43 +2426,254 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ecl_threads#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ecl_threads" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/ecl_threads#hydro">ecl_threads</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#hydro">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nodelet#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nodelet" class="label label-primary">
+                            3
+                          </a>
+                        </td>
+                        <td><a href="/p/nodelet#hydro">nodelet</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pluginlib#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pluginlib" class="label label-primary">
+                            4
+                          </a>
+                        </td>
+                        <td><a href="/p/pluginlib#hydro">pluginlib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#hydro">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#hydro">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#hydro">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#hydro">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/yocs_controllers#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/yocs_controllers" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/yocs_controllers#hydro">yocs_controllers</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/ecl_threads#hydro">ecl_threads</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#hydro">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nodelet#hydro">nodelet</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pluginlib#hydro">pluginlib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#hydro">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#hydro">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#hydro">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#hydro">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/yocs_controllers#hydro">yocs_controllers</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/yujin_ocs/github-yujinrobot-yujin_ocs#hydro">yujin_ocs</a></td>
+                      <td><a href="/r/yujin_ocs/github-yujinrobot-yujin_ocs">github-yujinrobot-yujin_ocs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/yujin_ocs/github-yujinrobot-yujin_ocs#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1138,16 +2681,40 @@ $(function() {
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller/launch/standalone.launch" target="_blank">launch/standalone.launch</a></li>
-          
-            <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller/launch/kobuki_pose_control.launch" target="_blank">launch/kobuki_pose_control.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller/launch/kobuki_pose_control.launch" target="_blank">launch/kobuki_pose_control.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Launcher for pose controlling Kobuki </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller/launch/standalone.launch" target="_blank">launch/standalone.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em> Example/stand-alone launcher for the diff-drive pose controller </em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1156,9 +2723,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1167,9 +2734,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1178,28 +2745,39 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <ul>
+            
+              <li><a href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller//plugins/nodelets.xml" target="_blank">nodelet</a></li>
+            
+          </ul>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/yocs_diff_drive_pose_controller/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//yujinrobot/yujin_ocs/tree/hydro/yocs_diff_drive_pose_controller"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:yocs_diff_drive_pose_controller/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/yocs_diff_drive_pose_controller?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=yocs_diff_drive_pose_controller&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1258,7 +2836,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

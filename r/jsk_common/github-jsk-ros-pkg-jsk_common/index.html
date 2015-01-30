@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,7 +147,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -139,11 +181,11 @@
           <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
         </li>
       
-        <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
+        <li data="electric" id="electric-option" class=" older-distro-option"  href="#electric">
           <a href="#electric" data="electric" id="electric-button">electric</a>
         </li>
       
-        <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
+        <li data="diamondback" id="diamondback-option" class=" older-distro-option"  href="#diamondback">
           <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
         </li>
       
@@ -220,10 +262,263 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_common.git">https://github.com/jsk-ros-pkg/jsk_common.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-26
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/jsk_common/github-jsk-ros-pkg-jsk_common">jsk_common</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/dynamic_tf_publisher/github-jsk-ros-pkg-jsk_common">dynamic_tf_publisher</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_data/github-jsk-ros-pkg-jsk_common">jsk_data</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_network_tools/github-jsk-ros-pkg-jsk_common">jsk_network_tools</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/image_view2/github-jsk-ros-pkg-jsk_common">image_view2</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/multi_map_server/github-jsk-ros-pkg-jsk_common">multi_map_server</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_tilt_laser/github-jsk-ros-pkg-jsk_common">jsk_tilt_laser</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common">jsk_tools</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_topic_tools/github-jsk-ros-pkg-jsk_common">jsk_topic_tools</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/virtual_force_publisher/github-jsk-ros-pkg-jsk_common">virtual_force_publisher</a></td>
+                    <td>2.0.16</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="jsk_common">jsk_common</h1>
+
+<p><a href="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common"><img src="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common.svg" alt="GitHub version"></a>
+<a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.svg?branch=master" alt="Build Status"></a>
+<a href="http://jsk-docs.readthedocs.org/en/latest/jsk_common/doc/index.html"><img src="https://readthedocs.org/projects/jsk-docs/badge/?version=latest" alt="Read the Docs"></a>
+<a href="http://jsk-robotics.slack.com"><img src="https://img.shields.io/badge/slack-jsk--robotics-e100e1.svg" alt="Slack"></a>
+<a href="https://gitter.im/jsk-ros-pkg/jsk_common?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/jsk-ros-pkg/jsk_common"></a></p>
+
+<h2 id="document">Document</h2>
+
+<p>See <a href="http://jsk-common.readthedocs.org/en/latest/">readthedocs</a> for document.</p>
+
+<h2 id="deb-build-status">Deb Build Status</h2>
+
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Indigo (Saucy)</th>
+<th>Indigo (Trusty)</th>
+<th>Jade (Trusty)</th>
+<th>Jade (Vivid)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsk_common (32-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/"><img src="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/"><img src="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+<tr>
+<td>jsk_common (64-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="install">Install</h2>
+
+<p>You can use <code>jsk.rosbuild</code> to setup your environment.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild hydro
+
+</code></pre></div>
+<p>For hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source hydro
+
+</code></pre></div>
+<p>For hrpsys user</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --rtm hydro
+
+</code></pre></div>
+<p>For hrpsys hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source --rtm hydro
+
+</code></pre></div>
+<p><code>jsk.rosbuild</code> generates filesystem as follows:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">~ --- ros
+       + --- hydro_parent: Only availabe if --from-source option is enabled
+              + --- src:   maintained by wstool
+              + --- build: generated by catkin_tools
+              + --- devel: generated by catkin_tools
+       +--- hydro
+             + --- src:    maintained by wstool
+             + --- build:  generated by catkin_tools
+             + --- devel:  generated by catkin_tools
+
+</code></pre></div>
+<h1 id="watch-all-the-jsk-github-repositories">Watch all the jsk github repositories.</h1>
+
+<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+
+<h1 id="slack-for-jsk-lab-members">Slack for JSK Lab members <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" height="40px">
+</h1>
+
+<p>You can login to <a href="https://slack.com/">slack</a> from <a href="https://jsk-robotics.slack.com">here</a>.
+You can create account using imi address.</p>
+
+<p><a href="https://github.com/raelgc/scudcloud">scudcloud</a> is a desktop client for slack and you can install it
+by following <a href="https://github.com/raelgc/scudcloud#ubuntukubuntu-mint-and-debian">instruction</a>.</p>
+
+<p>You can restart travis and jenkins from slack's <code>#travis</code> channel.</p>
+
+<h2 id="restart-travis-from-slack">Restart travis from slack</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_travis.png" alt=""></p>
+
+<p>Type <code>restart travis &lt;job-id&gt;</code> from slack#travis channel.</p>
+
+<p><strong>N.B.: <code>&lt;job-id&gt;</code> is not the number of Pull-request.</strong></p>
+
+<p>you can get <code>&lt;job-id&gt;</code> from Travis page.</p>
+
+<ul>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/PR_page.png" alt=""></li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/Travis_page.png" width="70%"></li>
+</ul>
+
+<h2 id="restart-docker-from-slack">Restart docker from slack</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_docker.png" alt=""></p>
+
+<p>Type <code>restart docker</code> from slack#travis channel.</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -231,8 +526,8 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +550,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-26
         </span>
       </td>
     </tr>
@@ -297,193 +592,53 @@
                 <tbody>
                 
                   <tr>
-                    <td><a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_common">assimp_devel</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/crlibm/github-jsk-ros-pkg-jsk_common">crlibm</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/downward/github-jsk-ros-pkg-jsk_common">downward</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ff/github-jsk-ros-pkg-jsk_common">ff</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ffha/github-jsk-ros-pkg-jsk_common">ffha</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jtalk/github-jsk-ros-pkg-jsk_common">jtalk</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/julius/github-jsk-ros-pkg-jsk_common">julius</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_common">libsiftfast</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/mini_maxwell/github-jsk-ros-pkg-jsk_common">mini_maxwell</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/nlopt/github-jsk-ros-pkg-jsk_common">nlopt</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/python_twitter/github-jsk-ros-pkg-jsk_common">python_twitter</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/python_twoauth/github-jsk-ros-pkg-jsk_common">python_twoauth</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sklearn/github-jsk-ros-pkg-jsk_common">sklearn</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/voice_text/github-jsk-ros-pkg-jsk_common">voice_text</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/bayesian_belief_networks/github-jsk-ros-pkg-jsk_common">bayesian_belief_networks</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
                     <td><a href="/p/jsk_common/github-jsk-ros-pkg-jsk_common">jsk_common</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/dynamic_tf_publisher/github-jsk-ros-pkg-jsk_common">dynamic_tf_publisher</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_data/github-jsk-ros-pkg-jsk_common">jsk_data</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_footstep_msgs/github-jsk-ros-pkg-jsk_common">jsk_footstep_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_gui_msgs/github-jsk-ros-pkg-jsk_common">jsk_gui_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_hark_msgs/github-jsk-ros-pkg-jsk_common">jsk_hark_msgs</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_network_tools/github-jsk-ros-pkg-jsk_common">jsk_network_tools</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/collada_urdf_jsk_patch/github-jsk-ros-pkg-jsk_common">collada_urdf_jsk_patch</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ee_cart_imped_jsk_patch/github-jsk-ros-pkg-jsk_common">ee_cart_imped_jsk_patch</a></td>
-                    <td>UNKNOWN</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/image_view2/github-jsk-ros-pkg-jsk_common">image_view2</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/laser_filters_jsk_patch/github-jsk-ros-pkg-jsk_common">laser_filters_jsk_patch</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/multi_map_server/github-jsk-ros-pkg-jsk_common">multi_map_server</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_tilt_laser/github-jsk-ros-pkg-jsk_common">jsk_tilt_laser</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common">jsk_tools</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_topic_tools/github-jsk-ros-pkg-jsk_common">jsk_topic_tools</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/opt_camera/github-jsk-ros-pkg-jsk_common">opt_camera</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/parallel_util/github-jsk-ros-pkg-jsk_common">parallel_util</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/posedetection_msgs/github-jsk-ros-pkg-jsk_common">posedetection_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rospatlite/github-jsk-ros-pkg-jsk_common">rospatlite</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rosping/github-jsk-ros-pkg-jsk_common">rosping</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rostwitter/github-jsk-ros-pkg-jsk_common">rostwitter</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/speech_recognition_msgs/github-jsk-ros-pkg-jsk_common">speech_recognition_msgs</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/virtual_force_publisher/github-jsk-ros-pkg-jsk_common">virtual_force_publisher</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                 </tbody>
@@ -498,79 +653,125 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="jsk_common-">jsk_common <a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.png?branch=master" alt="Build Status"></a>
-</h1>
+<h1 id="jsk_common">jsk_common</h1>
 
-<h2 id="install">Install</h2>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild hydro
-</code></pre></div>
-<h1 id="watch-all-the-jsk-github-repositories.">Watch all the jsk github repositories.</h1>
+<p><a href="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common"><img src="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common.svg" alt="GitHub version"></a>
+<a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.svg?branch=master" alt="Build Status"></a>
+<a href="http://jsk-docs.readthedocs.org/en/latest/jsk_common/doc/index.html"><img src="https://readthedocs.org/projects/jsk-docs/badge/?version=latest" alt="Read the Docs"></a>
+<a href="http://jsk-robotics.slack.com"><img src="https://img.shields.io/badge/slack-jsk--robotics-e100e1.svg" alt="Slack"></a>
+<a href="https://gitter.im/jsk-ros-pkg/jsk_common?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/jsk-ros-pkg/jsk_common"></a></p>
 
-<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+<h2 id="document">Document</h2>
+
+<p>See <a href="http://jsk-common.readthedocs.org/en/latest/">readthedocs</a> for document.</p>
 
 <h2 id="deb-build-status">Deb Build Status</h2>
 
-<p>hydro</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Indigo (Saucy)</th>
+<th>Indigo (Trusty)</th>
+<th>Jade (Trusty)</th>
+<th>Jade (Vivid)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsk_common (32-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/"><img src="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/"><img src="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+<tr>
+<td>jsk_common (64-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="install">Install</h2>
+
+<p>You can use <code>jsk.rosbuild</code> to setup your environment.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild hydro
+
+</code></pre></div>
+<p>For hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source hydro
+
+</code></pre></div>
+<p>For hrpsys user</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --rtm hydro
+
+</code></pre></div>
+<p>For hrpsys hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source --rtm hydro
+
+</code></pre></div>
+<p><code>jsk.rosbuild</code> generates filesystem as follows:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">~ --- ros
+       + --- hydro_parent: Only availabe if --from-source option is enabled
+              + --- src:   maintained by wstool
+              + --- build: generated by catkin_tools
+              + --- devel: generated by catkin_tools
+       +--- hydro
+             + --- src:    maintained by wstool
+             + --- build:  generated by catkin_tools
+             + --- devel:  generated by catkin_tools
+
+</code></pre></div>
+<h1 id="watch-all-the-jsk-github-repositories">Watch all the jsk github repositories.</h1>
+
+<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+
+<h1 id="slack-for-jsk-lab-members">Slack for JSK Lab members <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" height="40px">
+</h1>
+
+<p>You can login to <a href="https://slack.com/">slack</a> from <a href="https://jsk-robotics.slack.com">here</a>.
+You can create account using imi address.</p>
+
+<p><a href="https://github.com/raelgc/scudcloud">scudcloud</a> is a desktop client for slack and you can install it
+by following <a href="https://github.com/raelgc/scudcloud#ubuntukubuntu-mint-and-debian">instruction</a>.</p>
+
+<p>You can restart travis and jenkins from slack's <code>#travis</code> channel.</p>
+
+<h2 id="restart-travis-from-slack">Restart travis from slack</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_travis.png" alt=""></p>
+
+<p>Type <code>restart travis &lt;job-id&gt;</code> from slack#travis channel.</p>
+
+<p><strong>N.B.: <code>&lt;job-id&gt;</code> is not the number of Pull-request.</strong></p>
+
+<p>you can get <code>&lt;job-id&gt;</code> from Travis page.</p>
 
 <ul>
-<li>sourcedeb <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_sourcedeb/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_sourcedeb" alt="Build Status"></a>
-</li>
-<li>binarydeb precise amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb precise i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb raring amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb raring i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_i386" alt="Build Status"></a>
-</li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/PR_page.png" alt=""></li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/Travis_page.png" width="70%"></li>
 </ul>
-<p>groovy</p>
 
-<ul>
-<li>sourcedeb <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_sourcedeb/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_sourcedeb" alt="Build Status"></a>
-</li>
-<li>binarydeb oneiric amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb oneiric i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb precise amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb precise i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_i386" alt="Build Status"></a>
-</li>
-</ul>
-<h2 id="devel-test-status">Devel Test Status</h2>
+<h2 id="restart-docker-from-slack">Restart docker from slack</h2>
 
-<p><a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/">Hydro</a> <a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-jsk_common" alt="Build Status"></a></p>
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_docker.png" alt=""></p>
 
-<p><a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/"><img src="http://jenkins.ros.org/job/devel-hydro-jsk_common/test/trend?job" alt="Hydro Test Satus"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/devel-groovy-jsk_common">Groovy</a> <a href="http://jenkins.ros.org/job/devel-groovy-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-groovy-jsk_common" alt="Build Status"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/devel-groovy-jsk_common/"><img src="http://jenkins.ros.org/job/devel-groovy-jsk_common/test/trend?job" alt="Groovy Test Satus"></a></p>
-
-<h2 id="prerelease-test-status">Prerelease Test Status</h2>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/">Hydro</a> <a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=prerelease-hydro-jsk_common" alt="Build Status"></a> <a href="http://prerelease.ros.org/create_job/hydro">Start Testing</a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/"><img src="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/test/trend?job" alt="Hydro Test Satus"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common">Groovy</a> <a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=prerelease-groovy-jsk_common" alt="Build Status"></a>  <a href="http://prerelease.ros.org/create_job/groovy">Start Testing</a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/"><img src="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/test/trend?job" alt="Groovy Test Satus"></a></p>
+<p>Type <code>restart docker</code> from slack#travis channel.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -578,8 +779,8 @@ bash /tmp/jsk.rosbuild hydro
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -602,7 +803,7 @@ bash /tmp/jsk.rosbuild hydro
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-26
         </span>
       </td>
     </tr>
@@ -644,193 +845,53 @@ bash /tmp/jsk.rosbuild hydro
                 <tbody>
                 
                   <tr>
-                    <td><a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_common">assimp_devel</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/crlibm/github-jsk-ros-pkg-jsk_common">crlibm</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/downward/github-jsk-ros-pkg-jsk_common">downward</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ff/github-jsk-ros-pkg-jsk_common">ff</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ffha/github-jsk-ros-pkg-jsk_common">ffha</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jtalk/github-jsk-ros-pkg-jsk_common">jtalk</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/julius/github-jsk-ros-pkg-jsk_common">julius</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_common">libsiftfast</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/mini_maxwell/github-jsk-ros-pkg-jsk_common">mini_maxwell</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/nlopt/github-jsk-ros-pkg-jsk_common">nlopt</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/python_twitter/github-jsk-ros-pkg-jsk_common">python_twitter</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/python_twoauth/github-jsk-ros-pkg-jsk_common">python_twoauth</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sklearn/github-jsk-ros-pkg-jsk_common">sklearn</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/voice_text/github-jsk-ros-pkg-jsk_common">voice_text</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/bayesian_belief_networks/github-jsk-ros-pkg-jsk_common">bayesian_belief_networks</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
                     <td><a href="/p/jsk_common/github-jsk-ros-pkg-jsk_common">jsk_common</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/dynamic_tf_publisher/github-jsk-ros-pkg-jsk_common">dynamic_tf_publisher</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_data/github-jsk-ros-pkg-jsk_common">jsk_data</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_footstep_msgs/github-jsk-ros-pkg-jsk_common">jsk_footstep_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_gui_msgs/github-jsk-ros-pkg-jsk_common">jsk_gui_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_hark_msgs/github-jsk-ros-pkg-jsk_common">jsk_hark_msgs</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_network_tools/github-jsk-ros-pkg-jsk_common">jsk_network_tools</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/collada_urdf_jsk_patch/github-jsk-ros-pkg-jsk_common">collada_urdf_jsk_patch</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ee_cart_imped_jsk_patch/github-jsk-ros-pkg-jsk_common">ee_cart_imped_jsk_patch</a></td>
-                    <td>UNKNOWN</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/image_view2/github-jsk-ros-pkg-jsk_common">image_view2</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/laser_filters_jsk_patch/github-jsk-ros-pkg-jsk_common">laser_filters_jsk_patch</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/multi_map_server/github-jsk-ros-pkg-jsk_common">multi_map_server</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_tilt_laser/github-jsk-ros-pkg-jsk_common">jsk_tilt_laser</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common">jsk_tools</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_topic_tools/github-jsk-ros-pkg-jsk_common">jsk_topic_tools</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/opt_camera/github-jsk-ros-pkg-jsk_common">opt_camera</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/parallel_util/github-jsk-ros-pkg-jsk_common">parallel_util</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/posedetection_msgs/github-jsk-ros-pkg-jsk_common">posedetection_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rospatlite/github-jsk-ros-pkg-jsk_common">rospatlite</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rosping/github-jsk-ros-pkg-jsk_common">rosping</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rostwitter/github-jsk-ros-pkg-jsk_common">rostwitter</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/speech_recognition_msgs/github-jsk-ros-pkg-jsk_common">speech_recognition_msgs</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/virtual_force_publisher/github-jsk-ros-pkg-jsk_common">virtual_force_publisher</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                 </tbody>
@@ -845,79 +906,125 @@ bash /tmp/jsk.rosbuild hydro
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="jsk_common-">jsk_common <a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.png?branch=master" alt="Build Status"></a>
-</h1>
+<h1 id="jsk_common">jsk_common</h1>
 
-<h2 id="install">Install</h2>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild hydro
-</code></pre></div>
-<h1 id="watch-all-the-jsk-github-repositories.">Watch all the jsk github repositories.</h1>
+<p><a href="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common"><img src="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common.svg" alt="GitHub version"></a>
+<a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.svg?branch=master" alt="Build Status"></a>
+<a href="http://jsk-docs.readthedocs.org/en/latest/jsk_common/doc/index.html"><img src="https://readthedocs.org/projects/jsk-docs/badge/?version=latest" alt="Read the Docs"></a>
+<a href="http://jsk-robotics.slack.com"><img src="https://img.shields.io/badge/slack-jsk--robotics-e100e1.svg" alt="Slack"></a>
+<a href="https://gitter.im/jsk-ros-pkg/jsk_common?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/jsk-ros-pkg/jsk_common"></a></p>
 
-<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+<h2 id="document">Document</h2>
+
+<p>See <a href="http://jsk-common.readthedocs.org/en/latest/">readthedocs</a> for document.</p>
 
 <h2 id="deb-build-status">Deb Build Status</h2>
 
-<p>hydro</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Indigo (Saucy)</th>
+<th>Indigo (Trusty)</th>
+<th>Jade (Trusty)</th>
+<th>Jade (Vivid)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsk_common (32-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/"><img src="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/"><img src="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+<tr>
+<td>jsk_common (64-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="install">Install</h2>
+
+<p>You can use <code>jsk.rosbuild</code> to setup your environment.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild hydro
+
+</code></pre></div>
+<p>For hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source hydro
+
+</code></pre></div>
+<p>For hrpsys user</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --rtm hydro
+
+</code></pre></div>
+<p>For hrpsys hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source --rtm hydro
+
+</code></pre></div>
+<p><code>jsk.rosbuild</code> generates filesystem as follows:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">~ --- ros
+       + --- hydro_parent: Only availabe if --from-source option is enabled
+              + --- src:   maintained by wstool
+              + --- build: generated by catkin_tools
+              + --- devel: generated by catkin_tools
+       +--- hydro
+             + --- src:    maintained by wstool
+             + --- build:  generated by catkin_tools
+             + --- devel:  generated by catkin_tools
+
+</code></pre></div>
+<h1 id="watch-all-the-jsk-github-repositories">Watch all the jsk github repositories.</h1>
+
+<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+
+<h1 id="slack-for-jsk-lab-members">Slack for JSK Lab members <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" height="40px">
+</h1>
+
+<p>You can login to <a href="https://slack.com/">slack</a> from <a href="https://jsk-robotics.slack.com">here</a>.
+You can create account using imi address.</p>
+
+<p><a href="https://github.com/raelgc/scudcloud">scudcloud</a> is a desktop client for slack and you can install it
+by following <a href="https://github.com/raelgc/scudcloud#ubuntukubuntu-mint-and-debian">instruction</a>.</p>
+
+<p>You can restart travis and jenkins from slack's <code>#travis</code> channel.</p>
+
+<h2 id="restart-travis-from-slack">Restart travis from slack</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_travis.png" alt=""></p>
+
+<p>Type <code>restart travis &lt;job-id&gt;</code> from slack#travis channel.</p>
+
+<p><strong>N.B.: <code>&lt;job-id&gt;</code> is not the number of Pull-request.</strong></p>
+
+<p>you can get <code>&lt;job-id&gt;</code> from Travis page.</p>
 
 <ul>
-<li>sourcedeb <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_sourcedeb/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_sourcedeb" alt="Build Status"></a>
-</li>
-<li>binarydeb precise amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb precise i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb raring amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb raring i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_i386" alt="Build Status"></a>
-</li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/PR_page.png" alt=""></li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/Travis_page.png" width="70%"></li>
 </ul>
-<p>groovy</p>
 
-<ul>
-<li>sourcedeb <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_sourcedeb/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_sourcedeb" alt="Build Status"></a>
-</li>
-<li>binarydeb oneiric amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb oneiric i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb precise amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb precise i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_i386" alt="Build Status"></a>
-</li>
-</ul>
-<h2 id="devel-test-status">Devel Test Status</h2>
+<h2 id="restart-docker-from-slack">Restart docker from slack</h2>
 
-<p><a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/">Hydro</a> <a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-jsk_common" alt="Build Status"></a></p>
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_docker.png" alt=""></p>
 
-<p><a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/"><img src="http://jenkins.ros.org/job/devel-hydro-jsk_common/test/trend?job" alt="Hydro Test Satus"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/devel-groovy-jsk_common">Groovy</a> <a href="http://jenkins.ros.org/job/devel-groovy-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-groovy-jsk_common" alt="Build Status"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/devel-groovy-jsk_common/"><img src="http://jenkins.ros.org/job/devel-groovy-jsk_common/test/trend?job" alt="Groovy Test Satus"></a></p>
-
-<h2 id="prerelease-test-status">Prerelease Test Status</h2>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/">Hydro</a> <a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=prerelease-hydro-jsk_common" alt="Build Status"></a> <a href="http://prerelease.ros.org/create_job/hydro">Start Testing</a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/"><img src="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/test/trend?job" alt="Hydro Test Satus"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common">Groovy</a> <a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=prerelease-groovy-jsk_common" alt="Build Status"></a>  <a href="http://prerelease.ros.org/create_job/groovy">Start Testing</a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/"><img src="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/test/trend?job" alt="Groovy Test Satus"></a></p>
+<p>Type <code>restart docker</code> from slack#travis channel.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -925,8 +1032,8 @@ bash /tmp/jsk.rosbuild hydro
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -949,7 +1056,7 @@ bash /tmp/jsk.rosbuild hydro
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-26
         </span>
       </td>
     </tr>
@@ -991,193 +1098,53 @@ bash /tmp/jsk.rosbuild hydro
                 <tbody>
                 
                   <tr>
-                    <td><a href="/p/assimp_devel/github-jsk-ros-pkg-jsk_common">assimp_devel</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/crlibm/github-jsk-ros-pkg-jsk_common">crlibm</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/downward/github-jsk-ros-pkg-jsk_common">downward</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ff/github-jsk-ros-pkg-jsk_common">ff</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ffha/github-jsk-ros-pkg-jsk_common">ffha</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jtalk/github-jsk-ros-pkg-jsk_common">jtalk</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/julius/github-jsk-ros-pkg-jsk_common">julius</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_common">libsiftfast</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/mini_maxwell/github-jsk-ros-pkg-jsk_common">mini_maxwell</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/nlopt/github-jsk-ros-pkg-jsk_common">nlopt</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/python_twitter/github-jsk-ros-pkg-jsk_common">python_twitter</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/python_twoauth/github-jsk-ros-pkg-jsk_common">python_twoauth</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/sklearn/github-jsk-ros-pkg-jsk_common">sklearn</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/voice_text/github-jsk-ros-pkg-jsk_common">voice_text</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/bayesian_belief_networks/github-jsk-ros-pkg-jsk_common">bayesian_belief_networks</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
                     <td><a href="/p/jsk_common/github-jsk-ros-pkg-jsk_common">jsk_common</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/dynamic_tf_publisher/github-jsk-ros-pkg-jsk_common">dynamic_tf_publisher</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_data/github-jsk-ros-pkg-jsk_common">jsk_data</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_footstep_msgs/github-jsk-ros-pkg-jsk_common">jsk_footstep_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_gui_msgs/github-jsk-ros-pkg-jsk_common">jsk_gui_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/jsk_hark_msgs/github-jsk-ros-pkg-jsk_common">jsk_hark_msgs</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_network_tools/github-jsk-ros-pkg-jsk_common">jsk_network_tools</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/collada_urdf_jsk_patch/github-jsk-ros-pkg-jsk_common">collada_urdf_jsk_patch</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/ee_cart_imped_jsk_patch/github-jsk-ros-pkg-jsk_common">ee_cart_imped_jsk_patch</a></td>
-                    <td>UNKNOWN</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/image_view2/github-jsk-ros-pkg-jsk_common">image_view2</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/laser_filters_jsk_patch/github-jsk-ros-pkg-jsk_common">laser_filters_jsk_patch</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/multi_map_server/github-jsk-ros-pkg-jsk_common">multi_map_server</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_tilt_laser/github-jsk-ros-pkg-jsk_common">jsk_tilt_laser</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common">jsk_tools</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/jsk_topic_tools/github-jsk-ros-pkg-jsk_common">jsk_topic_tools</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/opt_camera/github-jsk-ros-pkg-jsk_common">opt_camera</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/parallel_util/github-jsk-ros-pkg-jsk_common">parallel_util</a></td>
-                    <td>UNKNOWN</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/posedetection_msgs/github-jsk-ros-pkg-jsk_common">posedetection_msgs</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rospatlite/github-jsk-ros-pkg-jsk_common">rospatlite</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rosping/github-jsk-ros-pkg-jsk_common">rosping</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/rostwitter/github-jsk-ros-pkg-jsk_common">rostwitter</a></td>
-                    <td>1.0.58</td>
-                  </tr>
-                
-                  <tr>
-                    <td><a href="/p/speech_recognition_msgs/github-jsk-ros-pkg-jsk_common">speech_recognition_msgs</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/virtual_force_publisher/github-jsk-ros-pkg-jsk_common">virtual_force_publisher</a></td>
-                    <td>1.0.58</td>
+                    <td>2.0.16</td>
                   </tr>
                 
                 </tbody>
@@ -1192,79 +1159,125 @@ bash /tmp/jsk.rosbuild hydro
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<h1 id="jsk_common-">jsk_common <a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.png?branch=master" alt="Build Status"></a>
-</h1>
+<h1 id="jsk_common">jsk_common</h1>
 
-<h2 id="install">Install</h2>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
-bash /tmp/jsk.rosbuild hydro
-</code></pre></div>
-<h1 id="watch-all-the-jsk-github-repositories.">Watch all the jsk github repositories.</h1>
+<p><a href="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common"><img src="https://badge.fury.io/gh/jsk-ros-pkg%2Fjsk_common.svg" alt="GitHub version"></a>
+<a href="https://travis-ci.org/jsk-ros-pkg/jsk_common"><img src="https://travis-ci.org/jsk-ros-pkg/jsk_common.svg?branch=master" alt="Build Status"></a>
+<a href="http://jsk-docs.readthedocs.org/en/latest/jsk_common/doc/index.html"><img src="https://readthedocs.org/projects/jsk-docs/badge/?version=latest" alt="Read the Docs"></a>
+<a href="http://jsk-robotics.slack.com"><img src="https://img.shields.io/badge/slack-jsk--robotics-e100e1.svg" alt="Slack"></a>
+<a href="https://gitter.im/jsk-ros-pkg/jsk_common?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/jsk-ros-pkg/jsk_common"></a></p>
 
-<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+<h2 id="document">Document</h2>
+
+<p>See <a href="http://jsk-common.readthedocs.org/en/latest/">readthedocs</a> for document.</p>
 
 <h2 id="deb-build-status">Deb Build Status</h2>
 
-<p>hydro</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Indigo (Saucy)</th>
+<th>Indigo (Trusty)</th>
+<th>Jade (Trusty)</th>
+<th>Jade (Vivid)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsk_common (32-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/"><img src="http://build.ros.org/job/Ibin_uS32__jsk_common__ubuntu_saucy_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Ibin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/"><img src="http://build.ros.org/job/Jbin_uT32__jsk_common__ubuntu_trusty_i386__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/"><img src="http://build.ros.org/job/Jbin_uV32__jsk_common__ubuntu_vivid_i386__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+<tr>
+<td>jsk_common (64-bit)</td>
+<td><a href="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uS64__jsk_common__ubuntu_saucy_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Ibin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uT64__jsk_common__ubuntu_trusty_amd64__binary/badge/icon" alt="Build Status"></a></td>
+<td><a href="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/"><img src="http://build.ros.org/job/Jbin_uV64__jsk_common__ubuntu_vivid_amd64__binary/badge/icon" alt="Build Status"></a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="install">Install</h2>
+
+<p>You can use <code>jsk.rosbuild</code> to setup your environment.</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild hydro
+
+</code></pre></div>
+<p>For hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source hydro
+
+</code></pre></div>
+<p>For hrpsys user</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --rtm hydro
+
+</code></pre></div>
+<p>For hrpsys hacker</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">wget -q -O /tmp/jsk.rosbuild https://raw.github.com/jsk-ros-pkg/jsk_common/master/jsk.rosbuild
+bash /tmp/jsk.rosbuild --from-source --rtm hydro
+
+</code></pre></div>
+<p><code>jsk.rosbuild</code> generates filesystem as follows:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">~ --- ros
+       + --- hydro_parent: Only availabe if --from-source option is enabled
+              + --- src:   maintained by wstool
+              + --- build: generated by catkin_tools
+              + --- devel: generated by catkin_tools
+       +--- hydro
+             + --- src:    maintained by wstool
+             + --- build:  generated by catkin_tools
+             + --- devel:  generated by catkin_tools
+
+</code></pre></div>
+<h1 id="watch-all-the-jsk-github-repositories">Watch all the jsk github repositories.</h1>
+
+<p>Please use <a href="http://jsk-github-watcher.herokuapp.com/">this</a></p>
+
+<h1 id="slack-for-jsk-lab-members">Slack for JSK Lab members <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Slack_Icon.png" height="40px">
+</h1>
+
+<p>You can login to <a href="https://slack.com/">slack</a> from <a href="https://jsk-robotics.slack.com">here</a>.
+You can create account using imi address.</p>
+
+<p><a href="https://github.com/raelgc/scudcloud">scudcloud</a> is a desktop client for slack and you can install it
+by following <a href="https://github.com/raelgc/scudcloud#ubuntukubuntu-mint-and-debian">instruction</a>.</p>
+
+<p>You can restart travis and jenkins from slack's <code>#travis</code> channel.</p>
+
+<h2 id="restart-travis-from-slack">Restart travis from slack</h2>
+
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_travis.png" alt=""></p>
+
+<p>Type <code>restart travis &lt;job-id&gt;</code> from slack#travis channel.</p>
+
+<p><strong>N.B.: <code>&lt;job-id&gt;</code> is not the number of Pull-request.</strong></p>
+
+<p>you can get <code>&lt;job-id&gt;</code> from Travis page.</p>
 
 <ul>
-<li>sourcedeb <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_sourcedeb/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_sourcedeb" alt="Build Status"></a>
-</li>
-<li>binarydeb precise amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb precise i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_precise_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_precise_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_quantal_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_quantal_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb raring amd64 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb raring i386 <a href="http://jenkins.ros.org/job/ros-hydro-jsk-common_binarydeb_raring_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-hydro-jsk-common_binarydeb_raring_i386" alt="Build Status"></a>
-</li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/PR_page.png" alt=""></li>
+<li><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/Travis_page.png" width="70%"></li>
 </ul>
-<p>groovy</p>
 
-<ul>
-<li>sourcedeb <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_sourcedeb/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_sourcedeb" alt="Build Status"></a>
-</li>
-<li>binarydeb oneiric amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb oneiric i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_oneiric_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_oneiric_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb precise amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb precise i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_precise_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_precise_i386" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal amd64 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_amd64" alt="Build Status"></a>
-</li>
-<li>binarydeb quantal i386 <a href="http://jenkins.ros.org/job/ros-groovy-jsk-common_binarydeb_quantal_i386/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-groovy-jsk-common_binarydeb_quantal_i386" alt="Build Status"></a>
-</li>
-</ul>
-<h2 id="devel-test-status">Devel Test Status</h2>
+<h2 id="restart-docker-from-slack">Restart docker from slack</h2>
 
-<p><a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/">Hydro</a> <a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-jsk_common" alt="Build Status"></a></p>
+<p><img src="https://raw.githubusercontent.com//jsk-ros-pkg/jsk_common/master//images/restart_docker.png" alt=""></p>
 
-<p><a href="http://jenkins.ros.org/job/devel-hydro-jsk_common/"><img src="http://jenkins.ros.org/job/devel-hydro-jsk_common/test/trend?job" alt="Hydro Test Satus"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/devel-groovy-jsk_common">Groovy</a> <a href="http://jenkins.ros.org/job/devel-groovy-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-groovy-jsk_common" alt="Build Status"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/devel-groovy-jsk_common/"><img src="http://jenkins.ros.org/job/devel-groovy-jsk_common/test/trend?job" alt="Groovy Test Satus"></a></p>
-
-<h2 id="prerelease-test-status">Prerelease Test Status</h2>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/">Hydro</a> <a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=prerelease-hydro-jsk_common" alt="Build Status"></a> <a href="http://prerelease.ros.org/create_job/hydro">Start Testing</a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/"><img src="http://jenkins.ros.org/job/prerelease-hydro-jsk_common/test/trend?job" alt="Hydro Test Satus"></a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common">Groovy</a> <a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/"><img src="http://jenkins.ros.org/buildStatus/icon?job=prerelease-groovy-jsk_common" alt="Build Status"></a>  <a href="http://prerelease.ros.org/create_job/groovy">Start Testing</a></p>
-
-<p><a href="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/"><img src="http://jenkins.ros.org/job/prerelease-groovy-jsk_common/test/trend?job" alt="Groovy Test Satus"></a></p>
+<p>Type <code>restart docker</code> from slack#travis channel.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -1280,7 +1293,168 @@ bash /tmp/jsk.rosbuild hydro
   <div class="distro distro-electric">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_common.git">https://github.com/jsk-ros-pkg/jsk_common.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">electric</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2012-05-24
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/aques_talk/github-jsk-ros-pkg-jsk_common">aques_talk</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/crlibm/github-jsk-ros-pkg-jsk_common">crlibm</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/ff/github-jsk-ros-pkg-jsk_common">ff</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/ffha/github-jsk-ros-pkg-jsk_common">ffha</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jtalk/github-jsk-ros-pkg-jsk_common">jtalk</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_common">libsiftfast</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/dynamic_tf_publisher/github-jsk-ros-pkg-jsk_common">dynamic_tf_publisher</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/collada_urdf_jsk_patch/github-jsk-ros-pkg-jsk_common">collada_urdf_jsk_patch</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/image_view2/github-jsk-ros-pkg-jsk_common">image_view2</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/multi_map_server/github-jsk-ros-pkg-jsk_common">multi_map_server</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/pr2_teleop_general_jsk_patch/github-jsk-ros-pkg-jsk_common">pr2_teleop_general_jsk_patch</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common">jsk_tools</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/opt_camera/github-jsk-ros-pkg-jsk_common">opt_camera</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/parallel_util/github-jsk-ros-pkg-jsk_common">parallel_util</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/posedetection_msgs/github-jsk-ros-pkg-jsk_common">posedetection_msgs</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/stereo_synchronizer/github-jsk-ros-pkg-jsk_common">stereo_synchronizer</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -1288,7 +1462,163 @@ bash /tmp/jsk.rosbuild hydro
   <div class="distro distro-diamondback">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_common.git">https://github.com/jsk-ros-pkg/jsk_common.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">diamondback</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-10-16
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/aques_talk/github-jsk-ros-pkg-jsk_common">aques_talk</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/crlibm/github-jsk-ros-pkg-jsk_common">crlibm</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/ff/github-jsk-ros-pkg-jsk_common">ff</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/ffha/github-jsk-ros-pkg-jsk_common">ffha</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jtalk/github-jsk-ros-pkg-jsk_common">jtalk</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/libsiftfast/github-jsk-ros-pkg-jsk_common">libsiftfast</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/dynamic_tf_publisher/github-jsk-ros-pkg-jsk_common">dynamic_tf_publisher</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/collada_urdf_jsk_patch/github-jsk-ros-pkg-jsk_common">collada_urdf_jsk_patch</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/image_view2/github-jsk-ros-pkg-jsk_common">image_view2</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/pr2_teleop_general_jsk_patch/github-jsk-ros-pkg-jsk_common">pr2_teleop_general_jsk_patch</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/jsk_tools/github-jsk-ros-pkg-jsk_common">jsk_tools</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/opt_camera/github-jsk-ros-pkg-jsk_common">opt_camera</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/parallel_util/github-jsk-ros-pkg-jsk_common">parallel_util</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/posedetection_msgs/github-jsk-ros-pkg-jsk_common">posedetection_msgs</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/stereo_synchronizer/github-jsk-ros-pkg-jsk_common">stereo_synchronizer</a></td>
+                    <td>UNKNOWN</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -1315,7 +1645,7 @@ bash /tmp/jsk.rosbuild hydro
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

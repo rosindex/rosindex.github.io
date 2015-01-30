@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,11 +262,11 @@
 </div>
 
 
-  <div class="distro distro-jade">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -247,7 +289,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-24
         </span>
       </td>
     </tr>
@@ -290,7 +332,7 @@
                 
                   <tr>
                     <td><a href="/p/ecto_opencv/github-plasmodic-ecto_opencv">ecto_opencv</a></td>
-                    <td>0.5.4</td>
+                    <td>0.7.0</td>
                   </tr>
                 
                 </tbody>
@@ -310,7 +352,7 @@
 <p>ecto_opencv is a collection of ecto modules and tools that make ones
 life much more rosey when developing perception based ecto graphs.</p>
 
-<h2 id="ecto_opencv.cv_bp">ecto_opencv.cv_bp</h2>
+<h2 id="ecto_opencv-cv_bp">ecto_opencv.cv_bp</h2>
 
 <p>Some boost::python bindings for opencv, so that some values may be
 inspected from python. This will also contain some conversions to and
@@ -324,8 +366,7 @@ from opencv's c_types based python wrappers.</p>
 <li>  boost</li>
 <li>  git</li>
 <li>  python</li>
-<li>  ecto
-<a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
+<li>  ecto <a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
 </li>
 <li>  opencv2.3 deb from packages.ros.org, or source install from
 <a href="https://code.ros.org/svn/opencv/branches/2.3/opencv">https://code.ros.org/svn/opencv/branches/2.3/opencv</a>
@@ -346,6 +387,141 @@ from opencv's c_types based python wrappers.</p>
             
           </div>
         </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/plasmodic/ecto_opencv.git">https://github.com/plasmodic/ecto_opencv.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-24
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/ecto_opencv/github-plasmodic-ecto_opencv">ecto_opencv</a></td>
+                    <td>0.6.2</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="ecto_opencv">ecto_opencv</h1>
+
+<p>ecto_opencv is a collection of ecto modules and tools that make ones
+life much more rosey when developing perception based ecto graphs.</p>
+
+<h2 id="ecto_opencv-cv_bp">ecto_opencv.cv_bp</h2>
+
+<p>Some boost::python bindings for opencv, so that some values may be
+inspected from python. This will also contain some conversions to and
+from opencv's c_types based python wrappers.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<blockquote>
+<ul>
+<li>  cmake</li>
+<li>  boost</li>
+<li>  git</li>
+<li>  python</li>
+<li>  ecto <a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
+</li>
+<li>  opencv2.3 deb from packages.ros.org, or source install from
+<a href="https://code.ros.org/svn/opencv/branches/2.3/opencv">https://code.ros.org/svn/opencv/branches/2.3/opencv</a>
+</li>
+<li>  python numpy dev libraries</li>
+</ul>
+</blockquote>
+
+<h2 id="style">Style</h2>
+
+<p>If you are using eclipse, you may use the style file available here:</p>
+
+<blockquote>
+<p><a href="https://github.com/plasmodic/ecto/raw/master/misc/ecto.style.xml">https://github.com/plasmodic/ecto/raw/master/misc/ecto.style.xml</a></p>
+</blockquote>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -353,8 +529,8 @@ from opencv's c_types based python wrappers.</p>
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -371,13 +547,13 @@ from opencv's c_types based python wrappers.</p>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
+      <td><span class="label label-default">indigo</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-24
         </span>
       </td>
     </tr>
@@ -420,7 +596,7 @@ from opencv's c_types based python wrappers.</p>
                 
                   <tr>
                     <td><a href="/p/ecto_opencv/github-plasmodic-ecto_opencv">ecto_opencv</a></td>
-                    <td>0.5.4</td>
+                    <td>0.6.2</td>
                   </tr>
                 
                 </tbody>
@@ -440,7 +616,7 @@ from opencv's c_types based python wrappers.</p>
 <p>ecto_opencv is a collection of ecto modules and tools that make ones
 life much more rosey when developing perception based ecto graphs.</p>
 
-<h2 id="ecto_opencv.cv_bp">ecto_opencv.cv_bp</h2>
+<h2 id="ecto_opencv-cv_bp">ecto_opencv.cv_bp</h2>
 
 <p>Some boost::python bindings for opencv, so that some values may be
 inspected from python. This will also contain some conversions to and
@@ -454,8 +630,7 @@ from opencv's c_types based python wrappers.</p>
 <li>  boost</li>
 <li>  git</li>
 <li>  python</li>
-<li>  ecto
-<a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
+<li>  ecto <a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
 </li>
 <li>  opencv2.3 deb from packages.ros.org, or source install from
 <a href="https://code.ros.org/svn/opencv/branches/2.3/opencv">https://code.ros.org/svn/opencv/branches/2.3/opencv</a>
@@ -476,6 +651,9 @@ from opencv's c_types based python wrappers.</p>
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -483,8 +661,8 @@ from opencv's c_types based python wrappers.</p>
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -507,7 +685,7 @@ from opencv's c_types based python wrappers.</p>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-24
         </span>
       </td>
     </tr>
@@ -550,7 +728,7 @@ from opencv's c_types based python wrappers.</p>
                 
                   <tr>
                     <td><a href="/p/ecto_opencv/github-plasmodic-ecto_opencv">ecto_opencv</a></td>
-                    <td>0.5.4</td>
+                    <td>0.7.0</td>
                   </tr>
                 
                 </tbody>
@@ -570,7 +748,7 @@ from opencv's c_types based python wrappers.</p>
 <p>ecto_opencv is a collection of ecto modules and tools that make ones
 life much more rosey when developing perception based ecto graphs.</p>
 
-<h2 id="ecto_opencv.cv_bp">ecto_opencv.cv_bp</h2>
+<h2 id="ecto_opencv-cv_bp">ecto_opencv.cv_bp</h2>
 
 <p>Some boost::python bindings for opencv, so that some values may be
 inspected from python. This will also contain some conversions to and
@@ -584,8 +762,7 @@ from opencv's c_types based python wrappers.</p>
 <li>  boost</li>
 <li>  git</li>
 <li>  python</li>
-<li>  ecto
-<a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
+<li>  ecto <a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
 </li>
 <li>  opencv2.3 deb from packages.ros.org, or source install from
 <a href="https://code.ros.org/svn/opencv/branches/2.3/opencv">https://code.ros.org/svn/opencv/branches/2.3/opencv</a>
@@ -606,6 +783,9 @@ from opencv's c_types based python wrappers.</p>
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -613,8 +793,8 @@ from opencv's c_types based python wrappers.</p>
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -637,7 +817,7 @@ from opencv's c_types based python wrappers.</p>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-04-24
         </span>
       </td>
     </tr>
@@ -680,7 +860,7 @@ from opencv's c_types based python wrappers.</p>
                 
                   <tr>
                     <td><a href="/p/ecto_opencv/github-plasmodic-ecto_opencv">ecto_opencv</a></td>
-                    <td>0.5.4</td>
+                    <td>0.7.0</td>
                   </tr>
                 
                 </tbody>
@@ -700,7 +880,7 @@ from opencv's c_types based python wrappers.</p>
 <p>ecto_opencv is a collection of ecto modules and tools that make ones
 life much more rosey when developing perception based ecto graphs.</p>
 
-<h2 id="ecto_opencv.cv_bp">ecto_opencv.cv_bp</h2>
+<h2 id="ecto_opencv-cv_bp">ecto_opencv.cv_bp</h2>
 
 <p>Some boost::python bindings for opencv, so that some values may be
 inspected from python. This will also contain some conversions to and
@@ -714,8 +894,7 @@ from opencv's c_types based python wrappers.</p>
 <li>  boost</li>
 <li>  git</li>
 <li>  python</li>
-<li>  ecto
-<a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
+<li>  ecto <a href="https://github.com/plasmodic/ecto">https://github.com/plasmodic/ecto</a>
 </li>
 <li>  opencv2.3 deb from packages.ros.org, or source install from
 <a href="https://code.ros.org/svn/opencv/branches/2.3/opencv">https://code.ros.org/svn/opencv/branches/2.3/opencv</a>
@@ -736,6 +915,9 @@ from opencv's c_types based python wrappers.</p>
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -786,7 +968,7 @@ from opencv's c_types based python wrappers.</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

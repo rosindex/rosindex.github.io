@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,116 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</a> <small>package from <a style="text-decoration:none" href="/r/drrobot_jaguar4x4_player/github-gitdrrobot-drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</a> repo</small>
-      </h3>
-      
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-file"></span> drrobot_jaguar4x4_player</span>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/drrobot_jaguar4x4_player/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/." type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:drrobot_jaguar4x4_player/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/drrobot_jaguar4x4_player" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/drrobot_jaguar4x4_player"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-gitdrrobot-drrobot_jaguar4x4_player
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-gitdrrobot-drrobot_jaguar4x4_player" role="menuitem" tabindex="-1" href="/p/drrobot_jaguar4x4_player/github-gitdrrobot-drrobot_jaguar4x4_player" data="github-gitdrrobot-drrobot_jaguar4x4_player">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-gitdrrobot-drrobot_jaguar4x4_player
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -305,6 +248,93 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</a> <small>package from <a style="text-decoration:none" href="/r/drrobot_jaguar4x4_player/github-gitdrrobot-drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</a> repo</small>
+        </h3>
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+<span class="glyphicon glyphicon-file"></span> drrobot_jaguar4x4_player
+</span>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-fuerte">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/drrobot_jaguar4x4_player"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-gitdrrobot-drrobot_jaguar4x4_player
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-gitdrrobot-drrobot_jaguar4x4_player" role="menuitem" tabindex="-1" href="/p/drrobot_jaguar4x4_player/github-gitdrrobot-drrobot_jaguar4x4_player" data="github-gitdrrobot-drrobot_jaguar4x4_player">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-gitdrrobot-drrobot_jaguar4x4_player
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/fuerte/api/drrobot_jaguar4x4_player/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:drrobot_jaguar4x4_player/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/drrobot_jaguar4x4_player?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=drrobot_jaguar4x4_player&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -317,32 +347,30 @@
     
     
     
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">10</span> Assets</a>
+    
+    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">8</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">11</span> Dependencies</a>
+    
+    
+    
+    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">13</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#fuerte-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="fuerte-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     This player package will drive Jaguar4x4 robot and publish all the sensor data from robot
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -355,19 +383,19 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>UNKNOWN</td>
+                <td>1.2.1</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
-                <td>BSD</td>
+                <td>TODO</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>Buildtool</strong></td>
                 <td>
                   
-                    <span class="label label-default">
+                    <span class="label label-info">
                   
-                    ROSBUILD</span>
+                    CATKIN</span>
                 </td>
               </tr>
               <tr>
@@ -381,7 +409,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -403,7 +431,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-07-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-03-18
         </span>
       </td>
     </tr>
@@ -428,35 +456,35 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            The drrobot_jaguar4x4_player package
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional links.</em>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
             
-              <em>No known maintainers.</em>
+              <ul class="list-unstyled">
+                
+                  <li>drrobot</li>
+                
+              </ul>
             
           </div>
           <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
           <div class="panel-body">
             
             
-              <ul class="list-unstyled">
-                
-                  <li>Dr Robot</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/drrobot_jaguar_ros_pkg">Website</a></li>
-                
-              </ul>
+              <em>No additional authors.</em>
             
           </div>
         </div>
@@ -470,70 +498,9 @@
             
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><div class="rendered-markdown">
-<p>There are 2 folders:DrRobotMotionSensorDriver and drrobot_jaguar4x4_player.</p>
+<h1 id="drrobot_jaguar4x4_player">drrobot_jaguar4x4_player</h1>
 
-<p>You could copy all 2 folders to your ROS working folder.</p>
-
-<p>For git user, you need clone these 2 folders from repository.</p>
-
-<p>Use "make clean" in each folder to clean all the cache/build files.
-Then use "rosmake" to build again.</p>
-
-<p>You need make sure you already installed all the depend packages. You could find them in manifest file in drrobot_jaguar4x4_player folder.</p>
-
-<p>The demo program will public all the sensor information and received command from joystick to control the robot.
-After run roscore
-you could use command " roslaunch drrobot_jaguar4x4_player drrobot_play1.launch" to lauch all the program.
-It will auto load the parameter file "drrobotplayer_jaguar4x4.yaml" to ros parameter server.
-If you modified IP, you could edit this file.</p>
-
-<p>IMU: now the sample code will publish the IMU raw data. You need referee the datasheet to transfer the value to real sensor reading.
-    Accelerometer Sensor: ADXL345
-    Gyro Sensor: ITG3200
-    Magnetometer Sensor: HMC5883L</p>
-
-<p>GPS: You could find ROS package at <a href="http://www.ros.org/wiki/gpsd_client/Tutorials/Getting%20Started%20with%20gpsd_client">http://www.ros.org/wiki/gpsd_client/Tutorials/Getting%20Started%20with%20gpsd_client</a>
-    After you install GPSD server and GPDS client. 
-    1 .You could access the GPS on the robot by command:
-        gpsd tcp://192.168.0.61:10002
-    2. You could check the gpsd running by command:
-        gpspipe -r
-       It should ouput NEMA sentences.
-    3. Then you could run gpsd_client (with roscore)
-        rosrun gpsd_client gpsd_client _host:=localhost _port:=2947 _use_gps_time:=false _check_fix_by_variance:=false
-    4. THen you could use rostopic to check the publish "fix" message
-        rostopic echo /fix</p>
-
-<p>Axis camera:    <a href="http://ros.org/wiki/axis_camera">http://ros.org/wiki/axis_camera</a>
-    Please note: the default setting for camera on the robot is:
-        IP:192.168.0.65
-        Port:8081
-        ID: root
-        PWD: drrobot</p>
-
-<p>Laser(Hokuyo) : You could find more information from ROS
-            <a href="http://www.ros.org/wiki/hokuyo_node">http://www.ros.org/wiki/hokuyo_node</a>
-            <a href="http://www.ros.org/wiki/hokuyo_node/Tutorials/UsingTheHokuyoNode">http://www.ros.org/wiki/hokuyo_node/Tutorials/UsingTheHokuyoNode</a>
-        On the robot, by default, the laser scanner is connected as network device, IP:192.168.0.60, port:10002
-        So you need redirect the TCP socket to serial port as hokuyo_node used.
-        You could find and install some virtual serial port redirect  software to do it.
-        One is "socat". Use "sudo apt-get install socat" to install it.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    After that:
-    1. sudo mknod -m 666 /dev/ttyS51 c 4 115
-    2. sudo socat PTY,link=/dev/ttyS51, TCP4:192.168.0.60:10002
-    3. open another terminal, to check the /dev/ttyS51 read/write permision.
-        If it is linked to /dev/pts/*, check it too.
-        Maybe you need use "sudo chmod a=r+w /dev/pts/*"
-    4. after run roscore, open another terminal,
-        "rosrun hokuyo_node getID /dev/ttyS51"  -- will return the device ID
-        "rosrun hokuyo_node getFirmwareVersion /dev/ttyS51"  -- will return the device firmware version
-    5. set port number for hokuyo_node
-        rosparam set hokuyo_node/port /dev/ttyS51
-    6. Run hokuyo_node
-        rosrun hokuyo_node hokuyo_node
-    7.you could use "rostopic echo /scan" to view the scan data.
-        or use rviz to view.
-</code></pre></div>
+<p>The project is for Jaguar 4x4 robot before 2014. This project need DrRobotMotionSensorDriver project. Please fork or copy these 2 project to your catkin working space under ROS.</p>
 </div></body></html>
 
             
@@ -561,7 +528,8 @@ If you modified IP, you could edit this file.</p>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/drrobot_jaguar4x4_player/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/drrobot_jaguar4x4_player/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -573,47 +541,302 @@ If you modified IP, you could edit this file.</p>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#fuerte">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/DrRobotMotionSensorDriver#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/DrRobotMotionSensorDriver" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/DrRobotMotionSensorDriver#fuerte">DrRobotMotionSensorDriver</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                          <span class="label label-danger">0</span>
+                        </td>
+                        <td>geometery_msgs</td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/joy#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/joy" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/joy#fuerte">joy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/nav_msgs#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/nav_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/nav_msgs#fuerte">nav_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/player#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/player" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/player#fuerte">player</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roscpp#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roscpp" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roscpp#fuerte">roscpp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslib#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslib" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslib#fuerte">roslib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospy#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospy" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rospy#fuerte">rospy</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/sensor_msgs#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/sensor_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/sensor_msgs#fuerte">sensor_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/std_msgs#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/std_msgs" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/std_msgs#fuerte">std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/tf#fuerte-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/tf" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/tf#fuerte">tf</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#fuerte-deps" class="inactive">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#fuerte">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roscpp#fuerte">roscpp</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospy#fuerte">rospy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/tf#fuerte">tf</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/geometry_msgs#fuerte">geometry_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslib#fuerte">roslib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/nav_msgs#fuerte">nav_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/std_msgs#fuerte">std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/sensor_msgs#fuerte">sensor_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/player#fuerte">player</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/joy#fuerte">joy</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/DrRobotMotionSensorDriver#fuerte">DrRobotMotionSensorDriver</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -621,16 +844,12 @@ If you modified IP, you could edit this file.</p>
   <div class="tab-pane" id="fuerte-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./launch/drrobot_play1.launch" target="_blank">launch/drrobot_play1.launch</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./launch/drrobot_play2.launch" target="_blank">launch/drrobot_play2.launch</a></li>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -639,25 +858,27 @@ If you modified IP, you could edit this file.</p>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/PowerInfo.msg" target="_blank">msg/PowerInfo.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/MotorInfoArray.msg" target="_blank">msg/MotorInfoArray.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/CustomSensor.msg" target="_blank">msg/CustomSensor.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/StandardSensor.msg" target="_blank">msg/StandardSensor.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/Range.msg" target="_blank">msg/Range.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/RangeArray.msg" target="_blank">msg/RangeArray.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/IMUInfo.msg" target="_blank">msg/IMUInfo.msg</a></li>
-          
-            <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/MotorInfo.msg" target="_blank">msg/MotorInfo.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/PowerInfo.msg" target="_blank">msg/PowerInfo.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/RangeArray.msg" target="_blank">msg/RangeArray.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/Range.msg" target="_blank">msg/Range.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/MotorInfoArray.msg" target="_blank">msg/MotorInfoArray.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/StandardSensor.msg" target="_blank">msg/StandardSensor.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/MotorInfo.msg" target="_blank">msg/MotorInfo.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/CustomSensor.msg" target="_blank">msg/CustomSensor.msg</a></li>
+            
+              <li><a href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/./msg/IMUInfo.msg" target="_blank">msg/IMUInfo.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -666,9 +887,9 @@ If you modified IP, you could edit this file.</p>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -677,28 +898,35 @@ If you modified IP, you could edit this file.</p>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/fuerte/api/drrobot_jaguar4x4_player/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//gitdrrobot/drrobot_jaguar4x4_player/tree/master/."><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:drrobot_jaguar4x4_player/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/drrobot_jaguar4x4_player?distro=fuerte"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=drrobot_jaguar4x4_player&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -741,7 +969,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

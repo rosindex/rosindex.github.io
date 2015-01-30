@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,11 +146,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -134,7 +176,7 @@
           <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
         </li>
       
-        <li data="fuerte" id="fuerte-option" class=" older-distro-option"  href="#fuerte">
+        <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
           <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
         </li>
       
@@ -142,7 +184,7 @@
           <a href="#electric" data="electric" id="electric-button">electric</a>
         </li>
       
-        <li data="diamondback" id="diamondback-option" class="disabled older-distro-option"  href="#diamondback">
+        <li data="diamondback" id="diamondback-option" class=" older-distro-option"  href="#diamondback">
           <a href="#diamondback" data="diamondback" id="diamondback-button">diamondback</a>
         </li>
       
@@ -154,1159 +196,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/jsk_maps">jsk_maps</a> <small>package from <a style="text-decoration:none" href="/r/jsk-ros-pkg/svn-code-p-jsk-ros-pkg-code-trunk">jsk-ros-pkg</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/aques_talk/svn-code-p-jsk-ros-pkg-code-trunk">aques_talk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/crlibm/svn-code-p-jsk-ros-pkg-code-trunk">crlibm</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/downward/svn-code-p-jsk-ros-pkg-code-trunk">downward</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ff/svn-code-p-jsk-ros-pkg-code-trunk">ff</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ffha/svn-code-p-jsk-ros-pkg-code-trunk">ffha</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jtalk/svn-code-p-jsk-ros-pkg-code-trunk">jtalk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/julius/svn-code-p-jsk-ros-pkg-code-trunk">julius</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libsiftfast/svn-code-p-jsk-ros-pkg-code-trunk">libsiftfast</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nlopt/svn-code-p-jsk-ros-pkg-code-trunk">nlopt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/python_twitter/svn-code-p-jsk-ros-pkg-code-trunk">python_twitter</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/python_twoauth/svn-code-p-jsk-ros-pkg-code-trunk">python_twoauth</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/voice_text/svn-code-p-jsk-ros-pkg-code-trunk">voice_text</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/dynamic_tf_publisher/svn-code-p-jsk-ros-pkg-code-trunk">dynamic_tf_publisher</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_data/svn-code-p-jsk-ros-pkg-code-trunk">jsk_data</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_hark_msgs/svn-code-p-jsk-ros-pkg-code-trunk">jsk_hark_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_joy/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>jsk_joy</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_openni_kinect/svn-code-p-jsk-ros-pkg-code-trunk">jsk_openni_kinect</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/kinect_near_mode_calibration/svn-code-p-jsk-ros-pkg-code-trunk">kinect_near_mode_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_pointer/svn-code-p-jsk-ros-pkg-code-trunk">openni_pointer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_scene/svn-code-p-jsk-ros-pkg-code-trunk">openni_scene</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_swipe/svn-code-p-jsk-ros-pkg-code-trunk">openni_swipe</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/collada_urdf_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">collada_urdf_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/depth_image_proc_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">depth_image_proc_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ee_cart_imped_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">ee_cart_imped_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_view2/svn-code-p-jsk-ros-pkg-code-trunk">image_view2</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_view_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">image_view_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/laser_filters_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">laser_filters_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/move_arm_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">move_arm_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/multi_map_server/svn-code-p-jsk-ros-pkg-code-trunk">multi_map_server</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_tracker_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">openni_tracker_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_groovy_patches/svn-code-p-jsk-ros-pkg-code-trunk">pr2_groovy_patches</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_teleop_general_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">pr2_teleop_general_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_tools/svn-code-p-jsk-ros-pkg-code-trunk">jsk_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_topic_tools/svn-code-p-jsk-ros-pkg-code-trunk">jsk_topic_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/opt_camera/svn-code-p-jsk-ros-pkg-code-trunk">opt_camera</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/parallel_util/svn-code-p-jsk-ros-pkg-code-trunk">parallel_util</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/posedetection_msgs/svn-code-p-jsk-ros-pkg-code-trunk">posedetection_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosping/svn-code-p-jsk-ros-pkg-code-trunk">rosping</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/stereo_synchronizer/svn-code-p-jsk-ros-pkg-code-trunk">stereo_synchronizer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eus_nlopt/svn-code-p-jsk-ros-pkg-code-trunk">eus_nlopt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eus_qp/svn-code-p-jsk-ros-pkg-code-trunk">eus_qp</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_footstep_controller/svn-code-p-jsk-ros-pkg-code-trunk">jsk_footstep_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_footstep_msgs/svn-code-p-jsk-ros-pkg-code-trunk">jsk_footstep_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_footstep_planner/svn-code-p-jsk-ros-pkg-code-trunk">jsk_footstep_planner</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_ik_server/svn-code-p-jsk-ros-pkg-code-trunk">jsk_ik_server</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/2010_05_pr2_workshop/svn-code-p-jsk-ros-pkg-code-trunk">2010_05_pr2_workshop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/detect_cans_in_fridge_201202/svn-code-p-jsk-ros-pkg-code-trunk">detect_cans_in_fridge_201202</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/detect_chair_2013_06_pr2/svn-code-p-jsk-ros-pkg-code-trunk">detect_chair_2013_06_pr2</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/elevator_move_base_pr2/svn-code-p-jsk-ros-pkg-code-trunk">elevator_move_base_pr2</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_2011_07_pr2_semantic/svn-code-p-jsk-ros-pkg-code-trunk">jsk_2011_07_pr2_semantic</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_2013_04_pr2_610/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>jsk_2013_04_pr2_610</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_2013_05_pr2_tatu/svn-code-p-jsk-ros-pkg-code-trunk">jsk_2013_05_pr2_tatu</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_demo_common/svn-code-p-jsk-ros-pkg-code-trunk">jsk_demo_common</a>
-        
-      
-        
-          <span class="label label-default"> jsk_maps</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_semantic_maps/svn-code-p-jsk-ros-pkg-code-trunk">jsk_semantic_maps</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/assimp_devel/svn-code-p-jsk-ros-pkg-code-trunk">assimp_devel</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/collada_tools/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>collada_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eus_assimp/svn-code-p-jsk-ros-pkg-code-trunk">eus_assimp</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/euscollada/svn-code-p-jsk-ros-pkg-code-trunk">euscollada</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/euslisp_model_conversion_tester/svn-code-p-jsk-ros-pkg-code-trunk">euslisp_model_conversion_tester</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eusurdf/svn-code-p-jsk-ros-pkg-code-trunk">eusurdf</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pddl_msgs/svn-code-p-jsk-ros-pkg-code-trunk">pddl_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pddl_planner/svn-code-p-jsk-ros-pkg-code-trunk">pddl_planner</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pddl_planner_viewer/svn-code-p-jsk-ros-pkg-code-trunk">pddl_planner_viewer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/task_compiler/svn-code-p-jsk-ros-pkg-code-trunk">task_compiler</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_armnavigation/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_armnavigation</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_impedance/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_impedance</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_moveit/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_moveit</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_openrave/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_openrave</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/checkerboard_detector/svn-code-p-jsk-ros-pkg-code-trunk">checkerboard_detector</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cr_calibration/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>cr_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cr_capture/svn-code-p-jsk-ros-pkg-code-trunk">cr_capture</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/imagesift/svn-code-p-jsk-ros-pkg-code-trunk">imagesift</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pcl_ros/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pcl_ros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_perception/svn-code-p-jsk-ros-pkg-code-trunk">jsk_perception</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/orbit_pantilt/svn-code-p-jsk-ros-pkg-code-trunk">orbit_pantilt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/posedetectiondb/svn-code-p-jsk-ros-pkg-code-trunk">posedetectiondb</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/resized_image_transport/svn-code-p-jsk-ros-pkg-code-trunk">resized_image_transport</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/baxtereus/svn-code-p-jsk-ros-pkg-code-trunk">baxtereus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nao_jsk_teleop/svn-code-p-jsk-ros-pkg-code-trunk">nao_jsk_teleop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/naoeus/svn-code-p-jsk-ros-pkg-code-trunk">naoeus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_accessories/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_accessories</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_desktop/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_desktop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_startup/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_startup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_base_trajectory_action/svn-code-p-jsk-ros-pkg-code-trunk">pr2_base_trajectory_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/euslisp/svn-code-p-jsk-ros-pkg-code-trunk">euslisp</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roseus/svn-code-p-jsk-ros-pkg-code-trunk">roseus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roseus_smach/svn-code-p-jsk-ros-pkg-code-trunk">roseus_smach</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roseus_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">roseus_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_camera_viewer/svn-code-p-jsk-ros-pkg-code-trunk">android_camera_viewer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_image_view/svn-code-p-jsk-ros-pkg-code-trunk">android_image_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_sensor_message/svn-code-p-jsk-ros-pkg-code-trunk">android_sensor_message</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_voice_message/svn-code-p-jsk-ros-pkg-code-trunk">android_voice_message</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hrp4_pan_tilt/svn-code-p-jsk-ros-pkg-code-trunk">hrp4_pan_tilt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_android_gui/svn-code-p-jsk-ros-pkg-code-trunk">jsk_android_gui</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_android_gui_api9/svn-code-p-jsk-ros-pkg-code-trunk">jsk_android_gui_api9</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_android_setup/svn-code-p-jsk-ros-pkg-code-trunk">jsk_android_setup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_gui_msgs/svn-code-p-jsk-ros-pkg-code-trunk">jsk_gui_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_core_apps/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_core_apps</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_rosjava_messages/svn-code-p-jsk-ros-pkg-code-trunk">jsk_rosjava_messages</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_smart_gui/svn-code-p-jsk-ros-pkg-code-trunk">jsk_smart_gui</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/my_android_package/svn-code-p-jsk-ros-pkg-code-trunk">my_android_package</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive/svn-code-p-jsk-ros-pkg-code-trunk">jsk_interactive</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_marker/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>jsk_interactive_marker</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_test/svn-code-p-jsk-ros-pkg-code-trunk">jsk_interactive_test</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_rviz_plugins/svn-code-p-jsk-ros-pkg-code-trunk">jsk_rviz_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/collada_robots/svn-code-p-jsk-ros-pkg-code-trunk">collada_robots</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave/svn-code-p-jsk-ros-pkg-code-trunk">openrave</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_actionlib/svn-code-p-jsk-ros-pkg-code-trunk">openrave_actionlib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_calibration/svn-code-p-jsk-ros-pkg-code-trunk">openrave_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_database/svn-code-p-jsk-ros-pkg-code-trunk">openrave_database</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_msgs/svn-code-p-jsk-ros-pkg-code-trunk">openrave_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_robot_control/svn-code-p-jsk-ros-pkg-code-trunk">openrave_robot_control</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_robot_filter/svn-code-p-jsk-ros-pkg-code-trunk">openrave_robot_filter</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_sensors/svn-code-p-jsk-ros-pkg-code-trunk">openrave_sensors</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openraveros/svn-code-p-jsk-ros-pkg-code-trunk">openraveros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openraveros_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">openraveros_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/orrosplanning/svn-code-p-jsk-ros-pkg-code-trunk">orrosplanning</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscpp_sessions/svn-code-p-jsk-ros-pkg-code-trunk">roscpp_sessions</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/session_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">session_tutorials</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/jsk_maps/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/jsk_maps" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/jsk_maps"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  svn-code-p-jsk-ros-pkg-code-trunk
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-jsk-ros-pkg-code-trunk" role="menuitem" tabindex="-1" href="/p/jsk_maps/svn-code-p-jsk-ros-pkg-code-trunk" data="svn-code-p-jsk-ros-pkg-code-trunk">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-jsk-ros-pkg-code-trunk
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/jsk_maps">jsk_maps</a> <small>package from <a style="text-decoration:none" href="/r/jsk-ros-pkg/svn-code-p-jsk-ros-pkg-code-trunk">jsk-ros-pkg</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/aques_talk/svn-code-p-jsk-ros-pkg-code-trunk">aques_talk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/crlibm/svn-code-p-jsk-ros-pkg-code-trunk">crlibm</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/downward/svn-code-p-jsk-ros-pkg-code-trunk">downward</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ff/svn-code-p-jsk-ros-pkg-code-trunk">ff</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ffha/svn-code-p-jsk-ros-pkg-code-trunk">ffha</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jtalk/svn-code-p-jsk-ros-pkg-code-trunk">jtalk</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/julius/svn-code-p-jsk-ros-pkg-code-trunk">julius</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libsiftfast/svn-code-p-jsk-ros-pkg-code-trunk">libsiftfast</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nlopt/svn-code-p-jsk-ros-pkg-code-trunk">nlopt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/python_twitter/svn-code-p-jsk-ros-pkg-code-trunk">python_twitter</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/python_twoauth/svn-code-p-jsk-ros-pkg-code-trunk">python_twoauth</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/voice_text/svn-code-p-jsk-ros-pkg-code-trunk">voice_text</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/dynamic_tf_publisher/svn-code-p-jsk-ros-pkg-code-trunk">dynamic_tf_publisher</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_data/svn-code-p-jsk-ros-pkg-code-trunk">jsk_data</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_hark_msgs/svn-code-p-jsk-ros-pkg-code-trunk">jsk_hark_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_joy/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>jsk_joy</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_openni_kinect/svn-code-p-jsk-ros-pkg-code-trunk">jsk_openni_kinect</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/kinect_near_mode_calibration/svn-code-p-jsk-ros-pkg-code-trunk">kinect_near_mode_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_pointer/svn-code-p-jsk-ros-pkg-code-trunk">openni_pointer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_scene/svn-code-p-jsk-ros-pkg-code-trunk">openni_scene</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_swipe/svn-code-p-jsk-ros-pkg-code-trunk">openni_swipe</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/collada_urdf_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">collada_urdf_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/depth_image_proc_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">depth_image_proc_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/ee_cart_imped_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">ee_cart_imped_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_view2/svn-code-p-jsk-ros-pkg-code-trunk">image_view2</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/image_view_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">image_view_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/laser_filters_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">laser_filters_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/move_arm_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">move_arm_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/multi_map_server/svn-code-p-jsk-ros-pkg-code-trunk">multi_map_server</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openni_tracker_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">openni_tracker_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_groovy_patches/svn-code-p-jsk-ros-pkg-code-trunk">pr2_groovy_patches</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_teleop_general_jsk_patch/svn-code-p-jsk-ros-pkg-code-trunk">pr2_teleop_general_jsk_patch</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_tools/svn-code-p-jsk-ros-pkg-code-trunk">jsk_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_topic_tools/svn-code-p-jsk-ros-pkg-code-trunk">jsk_topic_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/opt_camera/svn-code-p-jsk-ros-pkg-code-trunk">opt_camera</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/parallel_util/svn-code-p-jsk-ros-pkg-code-trunk">parallel_util</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/posedetection_msgs/svn-code-p-jsk-ros-pkg-code-trunk">posedetection_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rosping/svn-code-p-jsk-ros-pkg-code-trunk">rosping</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/stereo_synchronizer/svn-code-p-jsk-ros-pkg-code-trunk">stereo_synchronizer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eus_nlopt/svn-code-p-jsk-ros-pkg-code-trunk">eus_nlopt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eus_qp/svn-code-p-jsk-ros-pkg-code-trunk">eus_qp</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_footstep_controller/svn-code-p-jsk-ros-pkg-code-trunk">jsk_footstep_controller</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_footstep_msgs/svn-code-p-jsk-ros-pkg-code-trunk">jsk_footstep_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_footstep_planner/svn-code-p-jsk-ros-pkg-code-trunk">jsk_footstep_planner</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_ik_server/svn-code-p-jsk-ros-pkg-code-trunk">jsk_ik_server</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/2010_05_pr2_workshop/svn-code-p-jsk-ros-pkg-code-trunk">2010_05_pr2_workshop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/detect_cans_in_fridge_201202/svn-code-p-jsk-ros-pkg-code-trunk">detect_cans_in_fridge_201202</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/detect_chair_2013_06_pr2/svn-code-p-jsk-ros-pkg-code-trunk">detect_chair_2013_06_pr2</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/elevator_move_base_pr2/svn-code-p-jsk-ros-pkg-code-trunk">elevator_move_base_pr2</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_2011_07_pr2_semantic/svn-code-p-jsk-ros-pkg-code-trunk">jsk_2011_07_pr2_semantic</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_2013_04_pr2_610/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>jsk_2013_04_pr2_610</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_2013_05_pr2_tatu/svn-code-p-jsk-ros-pkg-code-trunk">jsk_2013_05_pr2_tatu</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_demo_common/svn-code-p-jsk-ros-pkg-code-trunk">jsk_demo_common</a>
-        
-      
-        
-          <span class="label label-default"> jsk_maps</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_semantic_maps/svn-code-p-jsk-ros-pkg-code-trunk">jsk_semantic_maps</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/assimp_devel/svn-code-p-jsk-ros-pkg-code-trunk">assimp_devel</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/collada_tools/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>collada_tools</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eus_assimp/svn-code-p-jsk-ros-pkg-code-trunk">eus_assimp</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/euscollada/svn-code-p-jsk-ros-pkg-code-trunk">euscollada</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/euslisp_model_conversion_tester/svn-code-p-jsk-ros-pkg-code-trunk">euslisp_model_conversion_tester</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/eusurdf/svn-code-p-jsk-ros-pkg-code-trunk">eusurdf</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pddl_msgs/svn-code-p-jsk-ros-pkg-code-trunk">pddl_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pddl_planner/svn-code-p-jsk-ros-pkg-code-trunk">pddl_planner</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pddl_planner_viewer/svn-code-p-jsk-ros-pkg-code-trunk">pddl_planner_viewer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/task_compiler/svn-code-p-jsk-ros-pkg-code-trunk">task_compiler</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_armnavigation/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_armnavigation</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_impedance/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_impedance</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_moveit/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_moveit</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_openrave/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_openrave</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2eus_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">pr2eus_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/checkerboard_detector/svn-code-p-jsk-ros-pkg-code-trunk">checkerboard_detector</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cr_calibration/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>cr_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/cr_capture/svn-code-p-jsk-ros-pkg-code-trunk">cr_capture</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/imagesift/svn-code-p-jsk-ros-pkg-code-trunk">imagesift</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pcl_ros/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pcl_ros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_perception/svn-code-p-jsk-ros-pkg-code-trunk">jsk_perception</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/orbit_pantilt/svn-code-p-jsk-ros-pkg-code-trunk">orbit_pantilt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/posedetectiondb/svn-code-p-jsk-ros-pkg-code-trunk">posedetectiondb</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/resized_image_transport/svn-code-p-jsk-ros-pkg-code-trunk">resized_image_transport</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/baxtereus/svn-code-p-jsk-ros-pkg-code-trunk">baxtereus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/nao_jsk_teleop/svn-code-p-jsk-ros-pkg-code-trunk">nao_jsk_teleop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/naoeus/svn-code-p-jsk-ros-pkg-code-trunk">naoeus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_accessories/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_accessories</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_desktop/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_desktop</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_startup/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_startup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_base_trajectory_action/svn-code-p-jsk-ros-pkg-code-trunk">pr2_base_trajectory_action</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/euslisp/svn-code-p-jsk-ros-pkg-code-trunk">euslisp</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roseus/svn-code-p-jsk-ros-pkg-code-trunk">roseus</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roseus_smach/svn-code-p-jsk-ros-pkg-code-trunk">roseus_smach</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roseus_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">roseus_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_camera_viewer/svn-code-p-jsk-ros-pkg-code-trunk">android_camera_viewer</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_image_view/svn-code-p-jsk-ros-pkg-code-trunk">android_image_view</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_sensor_message/svn-code-p-jsk-ros-pkg-code-trunk">android_sensor_message</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/android_voice_message/svn-code-p-jsk-ros-pkg-code-trunk">android_voice_message</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/hrp4_pan_tilt/svn-code-p-jsk-ros-pkg-code-trunk">hrp4_pan_tilt</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_android_gui/svn-code-p-jsk-ros-pkg-code-trunk">jsk_android_gui</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_android_gui_api9/svn-code-p-jsk-ros-pkg-code-trunk">jsk_android_gui_api9</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_android_setup/svn-code-p-jsk-ros-pkg-code-trunk">jsk_android_setup</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_gui_msgs/svn-code-p-jsk-ros-pkg-code-trunk">jsk_gui_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_pr2_core_apps/svn-code-p-jsk-ros-pkg-code-trunk">jsk_pr2_core_apps</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_rosjava_messages/svn-code-p-jsk-ros-pkg-code-trunk">jsk_rosjava_messages</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_smart_gui/svn-code-p-jsk-ros-pkg-code-trunk">jsk_smart_gui</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/my_android_package/svn-code-p-jsk-ros-pkg-code-trunk">my_android_package</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive/svn-code-p-jsk-ros-pkg-code-trunk">jsk_interactive</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_marker/svn-code-p-jsk-ros-pkg-code-trunk"><span class="glyphicon glyphicon-file"></span>jsk_interactive_marker</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_interactive_test/svn-code-p-jsk-ros-pkg-code-trunk">jsk_interactive_test</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/jsk_rviz_plugins/svn-code-p-jsk-ros-pkg-code-trunk">jsk_rviz_plugins</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/collada_robots/svn-code-p-jsk-ros-pkg-code-trunk">collada_robots</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave/svn-code-p-jsk-ros-pkg-code-trunk">openrave</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_actionlib/svn-code-p-jsk-ros-pkg-code-trunk">openrave_actionlib</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_calibration/svn-code-p-jsk-ros-pkg-code-trunk">openrave_calibration</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_database/svn-code-p-jsk-ros-pkg-code-trunk">openrave_database</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_msgs/svn-code-p-jsk-ros-pkg-code-trunk">openrave_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_robot_control/svn-code-p-jsk-ros-pkg-code-trunk">openrave_robot_control</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_robot_filter/svn-code-p-jsk-ros-pkg-code-trunk">openrave_robot_filter</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openrave_sensors/svn-code-p-jsk-ros-pkg-code-trunk">openrave_sensors</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openraveros/svn-code-p-jsk-ros-pkg-code-trunk">openraveros</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/openraveros_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">openraveros_tutorials</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/orrosplanning/svn-code-p-jsk-ros-pkg-code-trunk">orrosplanning</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/roscpp_sessions/svn-code-p-jsk-ros-pkg-code-trunk">roscpp_sessions</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/session_tutorials/svn-code-p-jsk-ros-pkg-code-trunk">session_tutorials</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/jsk_maps/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/jsk_maps" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/jsk_maps"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  svn-code-p-jsk-ros-pkg-code-trunk
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="svn-code-p-jsk-ros-pkg-code-trunk" role="menuitem" tabindex="-1" href="/p/jsk_maps/svn-code-p-jsk-ros-pkg-code-trunk" data="svn-code-p-jsk-ros-pkg-code-trunk">
-                    <span class="glyphicon glyphicon-none"></span>
-                    svn-code-p-jsk-ros-pkg-code-trunk
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -1319,7 +219,1118 @@
   <div class="distro distro-indigo">
     <div class="container-fluid">
       
-          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_maps">jsk_maps</a> <small>package from <a style="text-decoration:none" href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">jsk_demos</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/detect_cans_in_fridge_201202/github-jsk-ros-pkg-jsk_demos">
+
+<span class="glyphicon glyphicon-file"></span> detect_cans_in_fridge_201202
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos">
+
+elevator_move_base_pr2
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/interactive_behavior_201409/github-jsk-ros-pkg-jsk_demos">
+
+interactive_behavior_201409
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_2011_07_pr2_semantic/github-jsk-ros-pkg-jsk_demos">
+
+jsk_2011_07_pr2_semantic
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_2013_04_pr2_610/github-jsk-ros-pkg-jsk_demos">
+
+<span class="glyphicon glyphicon-file"></span> jsk_2013_04_pr2_610
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_2013_05_pr2_tatu/github-jsk-ros-pkg-jsk_demos">
+
+jsk_2013_05_pr2_tatu
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_2014_06_pr2_drcbox/github-jsk-ros-pkg-jsk_demos">
+
+jsk_2014_06_pr2_drcbox
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/drc_com_common/github-jsk-ros-pkg-jsk_demos">
+
+drc_com_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/drc_task_common/github-jsk-ros-pkg-jsk_demos">
+
+<span class="glyphicon glyphicon-file"></span> drc_task_common
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/drc_valve_task/github-jsk-ros-pkg-jsk_demos">
+
+drc_valve_task
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gazebo_drive_simulator/github-jsk-ros-pkg-jsk_demos">
+
+<span class="glyphicon glyphicon-file"></span> gazebo_drive_simulator
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_demo_common/github-jsk-ros-pkg-jsk_demos">
+
+<span class="glyphicon glyphicon-file"></span> jsk_demo_common
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+jsk_maps
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_semantic_maps/github-jsk-ros-pkg-jsk_demos">
+
+jsk_semantic_maps
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_maps"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_demos
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_demos" role="menuitem" tabindex="-1" href="/p/jsk_maps/github-jsk-ros-pkg-jsk_demos" data="github-jsk-ros-pkg-jsk_demos">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_demos
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/jsk_maps/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_demos/tree/0.0.3/jsk_maps"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/jsk_maps?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_maps&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">4</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.0.3</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_demos.git">https://github.com/jsk-ros-pkg/jsk_demos.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">0.0.3</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-11
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+     jsk_maps
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/jsk_maps">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Manabu Saito, Haseru Chen and Ryohei Ueda</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No additional authors.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos/#indigo">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-jsk_maps">Changelog for package jsk_maps</h1>
+
+<h2 id="0-0-3-2016-02-11">0.0.3 (2016-02-11)</h2>
+
+<ul>
+<li>  add keepout maps</li>
+<li>  use queue_size=1</li>
+<li>  add depends to jsk_rviz_plugins</li>
+<li>  [jsk_maps/src/eng2-scene.l] add /eng2/8f/room83b1-front spot</li>
+<li>  Contributors: Yuki Furuta, Kei Okada</li>
+</ul>
+
+<h2 id="0-0-2-2015-11-26">0.0.2 (2015-11-26)</h2>
+
+<ul>
+<li>  Ignore auto generated files</li>
+<li>  [jsk_maps] update jsk eng2 7f 73b2 map data</li>
+<li>  Contributors: Yuki Furuta, Kentaro Wada</li>
+</ul>
+
+<h2 id="0-0-1-2015-06-11">0.0.1 (2015-06-11)</h2>
+
+<ul>
+<li>  [jsk_maps] add multi_map_server deps for jsk_maps</li>
+<li>  [jsk_demos] remove rosmake files</li>
+<li>  Merge pull request #154 from garaemon/fc-ocs-ui-integration-go-pos
+[drc_com_common, drc_task_common] Add image_view2 based
+user interface.</li>
+<li>  [jsk_maps] Use find_package to lookup euslisp directory</li>
+<li>  [jsk_maps] Use find_package to lookup euslisp directory</li>
+<li>  [jsk_maps] Disable X by unsetting DISPLAY variable during
+compilation to avoid init-x error on catkin build</li>
+<li>  [jsk_maps] Disable X by unsetting DISPLAY variable during
+compilation to avoid init-x error on catkin build</li>
+<li>  [jsk_maps] use euslisp to generate map files rather than roseus</li>
+<li>  Publish spot as pictogram rather than marker</li>
+<li>  hook ros function on catkin_make in roseus</li>
+<li>  Revert "add geometry_msgs to dependencies" This reverts
+commit a78e42e9d41a8485cf1dd001bf95b7a2a1734f62.</li>
+<li>  add geneus msg to dependencies</li>
+<li>  add geometry_msgs to dependencies</li>
+<li>  fix typo at CMakeLists.txt</li>
+<li>  add launch files to script output dependencies</li>
+<li>  fix roseus bin directory</li>
+<li>  not use rosrun in CMakeLists.txt</li>
+<li>  add empty_map launch, pgm and yaml</li>
+<li>  add post proess to generate launchs automatically</li>
+<li>  avoid multiple spot decleration</li>
+<li>  remove autogenerated yaml under git</li>
+<li>  changed eng2-scene.l</li>
+<li>  changed 73b2 map</li>
+<li>  changed open-fridge-door function in pr2-action.l</li>
+<li>  Fix package name, topic names for hydro</li>
+<li>  add package.xml to jsk_maps</li>
+<li>  modified open-fridge-door function in pr2-action.l</li>
+<li>  Rename exeucutable name of the package multi_map_server from
+map_server to multi_map_server</li>
+<li>  update error message</li>
+<li>  add error message line and prevent many warning message if the
+target-tf is empty</li>
+<li>  add eng2-1f maps and elevator-outside spot</li>
+<li>  add 1f outside</li>
+<li>  h-kamada changed eng2-scene.l for eng2/1f</li>
+<li>  update eng2-7f-0.05.pgm</li>
+<li>  remove 73b2 doot to go to the elevator!!</li>
+<li>  support MACHINE argument on start_map_eng2.launch and
+start_map_eng8.launch</li>
+<li>  update spot /eng2/7f/room73B2-counter-side</li>
+<li>  updated eng2/7f/73b2</li>
+<li>  update spots at room73b2</li>
+<li>  update spot at /eng2/7f/73b2</li>
+<li>  change some map data</li>
+<li>  updated eng2/7f/73b2</li>
+<li>  update room73B2 map</li>
+<li>  cleanup codes and publish tf at 100 hz, see [#208]</li>
+<li>  change name of laundry spot</li>
+<li>  fix typo estq -&gt; setq</li>
+<li>  add laundry to eng8-scene.l</li>
+<li>  add room602, ro10</li>
+<li>  support scene parameter in tool/publish_spot</li>
+<li>  commit fix dump-map-info, this differs eng2-3f-0.05.yaml from
+[-13.0, -48.5, 0] to [-8.0, -53.5, 0]</li>
+<li>  remove autogenerated files when make clean</li>
+<li>  hvs2rgv is suport in jskeus r845</li>
+<li>  fix room610 position</li>
+<li>  set /eng8/6f/610 tf frame [#78]</li>
+<li>  update eng8-6f-0.05.pgm</li>
+<li>  set eng8 default floor</li>
+<li>  add auto generation eng #8 map</li>
+<li>  add 610 map</li>
+<li>  fixed fridge-front spot</li>
+<li>  update room73B2 map</li>
+<li>  updated 73B2 map</li>
+<li>  fix: all nodes should be identical</li>
+<li>  update 73B2 scene</li>
+<li>  update 73B2 map</li>
+<li>  updated pose of refridge</li>
+<li>  updated 73a3 floor</li>
+<li>  fix radius from 60-&gt;61 to avoid face-to-face alignment warning
+message</li>
+<li>  fix publish_spot</li>
+<li>  set output screen : publish_spot.l</li>
+<li>  add to l aunch publish_spot.l</li>
+<li>  fix : update spot publisher, read /map_tf_mux/selected to get
+current map and publish only that floor</li>
+<li>  update spot publisher, read /map_tf_mux/selected to get current
+map and publish only that floor</li>
+<li>  update map of 73B2 on 20120731</li>
+<li>  fixed coords of fridge-front</li>
+<li>  new spots</li>
+<li>  new map for 7f</li>
+<li>  changed fridge-front spot</li>
+<li>  new map for 73a3</li>
+<li>  update eng2-7f-map</li>
+<li>  udpate room73b2 map</li>
+<li>  uddate fridge position</li>
+<li>  jsk_maps requires roseus</li>
+<li>  add dependency for multi_map_server</li>
+<li>  new maps for 73b1</li>
+<li>  moved the spots for picking cups</li>
+<li>  moved mini kitchen spot</li>
+<li>  remove noize in map eng6-*f</li>
+<li>  added seminar B and C</li>
+<li>  remove noize in map eng6-3f</li>
+<li>  add eng6 scene</li>
+<li>  fixed the rotation on the eng6 maps, the center is elevator now</li>
+<li>  changed check condition of spot to convert owl</li>
+<li>  added eng6 all floor</li>
+<li>  added a map of eng6-3f</li>
+<li>  fixed eus -&gt; owl script, remove vert type map (it is default now)</li>
+<li>  fixed building-model and eng8 model</li>
+<li>  incf x on coe-shelf</li>
+<li>  comma is needed in the code</li>
+<li>  add spot for opening fridge</li>
+<li>  added coe-spot and kitchen spot</li>
+<li>  move unassocd spots in rooms, same as room</li>
+<li>  added ipad demo spot for new map</li>
+<li>  add eng2 5f map, not edited version</li>
+<li>  changed map manager, map_server2 -&gt; multi_map_manager in
+jsk_maps</li>
+<li>  use rosrun roseus rosues instead of roseus</li>
+<li>  last argument of static_transform_publisher is not hz, but msec</li>
+<li>  remove internal package name from manifest</li>
+<li>  make default-floor in dump script</li>
+<li>  changed to use vertical building model in jsk_maps</li>
+<li>  update vertical map launch</li>
+<li>  changed room wall position</li>
+<li>  moved conatenated-map utilities to old directory</li>
+<li>  fixed m -&gt; mm to dumped yaml file</li>
+<li>  fixed typos in jsk_maps</li>
+<li>  removed a file to be generated, add pose initialize node</li>
+<li>  jsk_maps become a set of 2D maps</li>
+<li>  remove jsk_maps/raw_maps/*.yaml, these files will be generated</li>
+<li>  updated map of /eng2/floor7</li>
+<li>  added test version of vertical building map, added initialpose3d
+script (2.5D?)</li>
+<li>  removed code for copy spots from sub-scene</li>
+<li>  update 73B2 room map in jsk_maps</li>
+<li>  add yaml file for each piece of map</li>
+<li>  add TF for room73B2 origin</li>
+<li>  convert spost from converted scene model (73B2)</li>
+<li>  added new spot kitchen-front</li>
+<li>  add vertical building model, only for visualizing</li>
+<li>  update map information of subway</li>
+<li>  update spot for taking elevator</li>
+<li>  update spots in eng2 scene</li>
+<li>  chmage the make file for copygenerated owl</li>
+<li>  copy mini-kitchen of 7th floor to 8th floor</li>
+<li>  change spots position in elevator</li>
+<li>  update jsk_map,semantic</li>
+<li>  fix gimp modification error, remove stairs to avoid falling down</li>
+<li>  update : force publish spot 3time in the beginning</li>
+<li>  set scale, change rate 0.1-&gt;0.01</li>
+<li>  add publish_spot.l</li>
+<li>  fix mini-kitchen, use ~f instaed of ~a to avoid round-off error</li>
+<li>  fix typo LaboratryRoom -&gt; LaboratoryRoom</li>
+<li>  update room73b2-front-kitchen-table</li>
+<li>  update room73b2</li>
+<li>  update eng2-cups with better annotaiton labels</li>
+<li>  update convert to eng2-cups</li>
+<li>  add and update spots in eng2 map</li>
+<li>  added sample picture of cup-map</li>
+<li>  add Makeifle for temporary</li>
+<li>  code to write cup-annotated map eng2-cup.jpg</li>
+<li>  add UtilityRoom to knowrob-type to 7a-mini-kitchen</li>
+<li>  fix name of cups in scene1</li>
+<li>  add cup2, cup4, cup6f to room</li>
+<li>  fixed the place of cupf4</li>
+<li>  add name to all cups, add images to cup5,6</li>
+<li>  add room73b2-front-kitchen-table and update mini-kitchen-A-inside</li>
+<li>  modify cup pose in mini-kitchen, update demo script</li>
+<li>  update cup pose in mini-kitchen</li>
+<li>  remove 2 cups, and add mini kitchen in 7f-A</li>
+<li>  clearfied the map</li>
+<li>  update size of mini kitchen</li>
+<li>  add mini kitchen room in eng2/7f</li>
+<li>  add kitchen type for 83B1 room</li>
+<li>  add types for rooms in eng2</li>
+<li>  minor</li>
+<li>  add multiple types for a object in owl(yaml) convert script</li>
+<li>  remove the chen's chair from Rm.73A3</li>
+<li>  modify the cup position in 73a3</li>
+<li>  renamed files from png to jpg</li>
+<li>  updated linktoimagefile tag for new cup images</li>
+<li>  add mit-mug to jsk_map:scene1</li>
+<li>  added parsing for data properties, fixed rotation matrix</li>
+<li>  update converter to add {data,object}-properties</li>
+<li>  table in the center of 73b2 is x-leg-desk</li>
+<li>  add 5cups in 73b1,73b2,83b1 for scene1</li>
+<li>  not to use flatten for avoiding stack overflow</li>
+<li>  add room83b1, change to switchable the output of semantic_map
+converter</li>
+<li>  add scene1 for using another environment</li>
+<li>  rotate the tables in subway</li>
+<li>  fix the translation.z of rooms and floors</li>
+<li>  fix :rot -&gt; :worldrot in obj dump method</li>
+<li>  adjusted coords for vertical map, removed print</li>
+<li>  fix the cashier position in subway shop</li>
+<li>  change the objects coordinates in subway model and reduce the z-axis
+gap for visualization</li>
+<li>  add some rooms in 2f and subway simple models</li>
+<li>  added simple script that first converts the jsk map from euslisp to
+yaml, and second, converts the yaml file to owl</li>
+<li>  add 73a3 to eng2-scene</li>
+<li>  fixed naming of instances</li>
+<li>  fix the rotation of spots near subway-shop</li>
+<li>  add frame_id also for spots</li>
+<li>  fix the problem of wrong translation of rooms in 8th floor</li>
+<li>  fix the pose of elevator panels, spot above the ground to not
+convert</li>
+<li>  fix the bug of spot position in global, add type of floors
+,elevators and rooms</li>
+<li>  added support for places</li>
+<li>  add spot relationship</li>
+<li>  add spot properties for knowrob</li>
+<li>  refactored conversion script</li>
+<li>  i forget the update vertices in object</li>
+<li>  fixed small errors</li>
+<li>  add floors and rooms to conversion</li>
+<li>  add room type, and fix type</li>
+<li>  add visualization of converting objects</li>
+<li>  add rooms in 8f and elevator object</li>
+<li>  fixed parent link</li>
+<li>  added options for vertical floor stacking and scaling</li>
+<li>  added options for vertical floor stacking and scaling</li>
+<li>  updated jsk_maps eng2-7f-0.05.pgm</li>
+<li>  modify eng2-7f (add new 73a3 map)</li>
+<li>  add room73B2 table position</li>
+<li>  accounted for objects in the yaml map</li>
+<li>  fix the bbox calcuration code, we have to print :bodies to move
+assoced data</li>
+<li>  bbox for semantic map is not needed to move-to</li>
+<li>  output bounding box size in object pose coordination</li>
+<li>  output global pose to yaml, fix the object pose</li>
+<li>  added jsk-to-ias-mappings to conversion rule function</li>
+<li>  do not recursive, ???</li>
+<li>  fix the bounding box pose</li>
+<li>  add unique name to eng2 corridors</li>
+<li>  add convert function</li>
+<li>  define floor as a body, plane-building-scene have rooms slot</li>
+<li>  add 73b2 room to eng2 map</li>
+<li>  add room object in eng2</li>
+<li>  move eng2/7f/73B1 to correct position</li>
+<li>  add Rm.606,610 in eng8 building</li>
+<li>  float-vector in eng2-map, #f -&gt; dynamic alloc</li>
+<li>  add color to visualize floor region</li>
+<li>  fix the transform option, :world</li>
+<li>  fix eng8 definition in jsk_maps</li>
+<li>
+<ul>
+<li>  added frame information to exported map</li>
+</ul>
+
+<ul>
+<li>fixed bugs in matrix generation</li>
+</ul>
+</li>
+<li><p>fix eng8 map data</p></li>
+<li><p>added script for converting a YAML map of a building, floors, and
+rooms into an OWL representation</p></li>
+<li><p>move-to option is parent coords, before assoc to parent</p></li>
+<li><p>add room coords to converted eusmodel</p></li>
+<li><p>add room definition in eng2-map.yaml</p></li>
+<li><p>added a package for storing jsk's semantic maps.</p></li>
+<li><p>add scale command from mm to m</p></li>
+<li><p>add a line to run by rosrun command</p></li>
+<li><p>add convert script from jsk_map to ias_semantic_map</p></li>
+<li><p>added spots for 31A again</p></li>
+<li><p>added spots for 31A</p></li>
+<li><p>change 31A-front spot</p></li>
+<li><p>fixed y posiiont ofo room31A</p></li>
+<li><p>add position for manipurate printer</p></li>
+<li><p>define spots in eng2 as relative to floor origin</p></li>
+<li><p>changed spot in eng2.3f</p></li>
+<li><p>added spots for eng8/2f</p></li>
+<li><p>add spot in eng2.3f</p></li>
+<li><p>add eng2-3f map by mikita</p></li>
+<li><p>add eng2 spot around subway-shop</p></li>
+<li><p>update eng2/2f map, draw wall line</p></li>
+<li><p>draw line in order not to fall the robot</p></li>
+<li><p>move spot coordinates around the elevator</p></li>
+<li><p>add nakanishi and kurotobi desk position</p></li>
+<li><p>added eng2-tf-73B2</p></li>
+<li><p>add two spots in eng2-scene</p></li>
+<li><p>add four spots on /eng2/7f</p></li>
+<li><p>correct floor regions of eng2</p></li>
+<li><p>add eng2-scene to jsk_maps</p></li>
+<li><p>generate pgm from raw_map, add rosdep.yaml to install convert
+command</p></li>
+<li><p>update map of Eng2.7F</p></li>
+<li><p>update elevator panel model method</p></li>
+<li><p>remove noiz from table in eng8/room602</p></li>
+<li><p>set coorect map yaml</p></li>
+<li><p>add eng2 map, but yaml is not correct</p></li>
+<li><p>add eng2 map, now only 8F is correct</p></li>
+<li><p>change dynamic -&gt; static map tf</p></li>
+<li><p>add student-afairs position</p></li>
+<li><p>add room 606 in eng8.pgm</p></li>
+<li><p>change pr2eus camera name, tune B1F elevator position, modify floor
+check function</p></li>
+<li><p>add spot infomationf on eng8.bld B1F</p></li>
+<li><p>small fix, launch node name</p></li>
+<li><p>add eng8.B1F map to eng8 map</p></li>
+<li><p>add map raw data of B1,1,6F of eng8.bld and 8F of eng2.build</p></li>
+<li><p>spot should be coded in euslisp</p></li>
+<li><p>change make command to irteusgl -&gt; rosrun euslisp irteusgl</p></li>
+<li><p>generate euslisp map object from yaml</p></li>
+<li><p>add jsk_maps for eng8 building at hongo campus</p></li>
+<li><p>Contributors: Yuki Furuta, JSK applications, Kamada Hitoshi, Kei
+Okada, Ryohei Ueda, Satoshi Iwaishi, Yuto Inagaki, Haseru Chen,
+Yusuke Furuta, Kazuto Murase, Eisoku Kuroiwa, Kuze Lars, Manabu
+Saito, Hiroyuki Mikita, Shunichi Nozawa, Youhei Kakiuchi</p></li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/jsk_maps/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/euslisp#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/euslisp" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/euslisp#indigo">euslisp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/jskeus#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/jskeus" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/jskeus#indigo">jskeus</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/geometry_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/geometry_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/geometry_msgs#indigo">geometry_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/multi_map_server#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/multi_map_server" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/multi_map_server#indigo">multi_map_server</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/jsk_rviz_plugins#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/jsk_rviz_plugins" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/jsk_rviz_plugins#indigo">jsk_rviz_plugins</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/imagemagick">imagemagick</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot#indigo">jsk_fetch_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_fetch_startup/github-jsk-ros-pkg-jsk_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#indigo">jsk_pr2_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos#indigo">elevator_move_base_pr2</a></td>
+                      <td><a href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">github-jsk-ros-pkg-jsk_demos</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_demo_common/github-jsk-ros-pkg-jsk_demos#indigo">jsk_demo_common</a></td>
+                      <td><a href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">github-jsk-ros-pkg-jsk_demos</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_demo_common/github-jsk-ros-pkg-jsk_demos#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_smart_gui/github-jsk-ros-pkg-jsk_smart_apps#indigo">jsk_smart_gui</a></td>
+                      <td><a href="/r/jsk_smart_apps/github-jsk-ros-pkg-jsk_smart_apps">github-jsk-ros-pkg-jsk_smart_apps</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_smart_gui/github-jsk-ros-pkg-jsk_smart_apps#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/0.0.3/jsk_maps/launch/start_map_eng8.launch" target="_blank">launch/start_map_eng8.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>MACHINE</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/0.0.3/jsk_maps/launch/start_map_eng2.launch" target="_blank">launch/start_map_eng2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                        
+                          <li><strong>MACHINE</strong> <em>&#91;default: localhost&#93; </em></li>
+                        
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/0.0.3/jsk_maps/launch/start_empty_map.launch" target="_blank">launch/start_empty_map.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/0.0.3/jsk_maps/launch/start_map_eng8.org.launch" target="_blank">launch/start_map_eng8.org.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/jsk_maps/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_demos/tree/0.0.3/jsk_maps"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/jsk_maps?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_maps&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1343,306 +1354,7 @@
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
-        
-        
-
-
-
-<ul class="nav nav-tabs nav-justified" id="fuerte-tabs" style="margin-bottom:20px">
-  <li class="better-tabs active">
-    <a href="#fuerte-overview" data-toggle="tab">Overview</a>
-  </li>
-  <li class="better-tabs">
-    
-    
-    
-    
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
-  </li>
-  <li class="better-tabs">
-    
-    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
-  </li>
-  <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="fuerte-overview">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     jsk_maps
-
-  
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
-            <table class="table table-condensed">
-              <tr>
-                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
-                <td>
-                  
-                  
-                    <em>No category tags.</em>
-                  
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Version</strong></td>
-                <td>UNKNOWN</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>License</strong></td>
-                <td>BSD</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Buildtool</strong></td>
-                <td>
-                  
-                    <span class="label label-default">
-                  
-                    ROSBUILD</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Use</strong></td>
-                <td>
-                
-                  <span class="label label-success">RECOMMENDED</span>
-                
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
-            
-            
-            
-
-  <table class="table table-condensed">
-    <tr>
-      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk">https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk</a></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
-      <td>
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-03-03
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Dev Status</b></td>
-      <td>
-        
-          <span class="label label-warning">UNMAINTAINED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Released</b></td>
-      <td>
-        
-          <span class="label label-default">UNRELEASED
-        </span>
-      </td>
-    </tr>
-  </table>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No known maintainers.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li>Manabu Saito, Haseru Chen</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/jsk_maps">Website</a></li>
-                
-              </ul>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
-          <div class="panel-body">
-            
-              <em>No README found.</em>
-              
-                <em>No README in repository either.</em>
-              
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
-          <div class="panel-body">
-            
-              <em>No CHANGELOG found.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="fuerte-tutorials">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Wiki Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/jsk_maps/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Source Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
-      </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roseus#fuerte">roseus</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/multi_map_server#fuerte">multi_map_server</a></h4></li>
-          
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="fuerte-assets">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps/launch/start_map_eng8.org.launch" target="_blank">launch/start_map_eng8.org.launch</a></li>
-          
-            <li><a href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps/launch/start_map_eng2.launch" target="_blank">launch/start_map_eng2.launch</a></li>
-          
-            <li><a href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps/launch/start_map_eng8.launch" target="_blank">launch/start_map_eng8.launch</a></li>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Messages</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Services</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Plugins</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
-
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
-
+          <div class="alert alert-warning">No version for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -1652,6 +1364,133 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_maps">jsk_maps</a> <small>package from <a style="text-decoration:none" href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">jsk_demos</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/2010_05_pr2_workshop/github-jsk-ros-pkg-jsk_demos">
+
+2010_05_pr2_workshop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/detect_cans_in_fridge_201202/github-jsk-ros-pkg-jsk_demos">
+
+detect_cans_in_fridge_201202
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos">
+
+elevator_move_base_pr2
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_2011_07_pr2_semantic/github-jsk-ros-pkg-jsk_demos">
+
+jsk_2011_07_pr2_semantic
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+jsk_maps
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_semantic_maps/github-jsk-ros-pkg-jsk_demos">
+
+jsk_semantic_maps
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-electric">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_maps"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_demos
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_demos" role="menuitem" tabindex="-1" href="/p/jsk_maps/github-jsk-ros-pkg-jsk_demos" data="github-jsk-ros-pkg-jsk_demos">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_demos
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/electric/api/jsk_maps/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_demos/tree/electric/jsk_maps"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/jsk_maps?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_maps&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1664,32 +1503,30 @@ $(function() {
     
     
     
-    <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">3</span> Assets</a>
+    
+    <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
+    
+    
+    
+    <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#electric-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="electric-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     jsk_maps
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1728,7 +1565,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1736,21 +1573,21 @@ $(function() {
   <table class="table table-condensed">
     <tr>
       <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk">https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk</a></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_demos.git">https://github.com/jsk-ros-pkg/jsk_demos.git</a></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
+      <td><span class="label label-default">git</span></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
+      <td><span class="label label-default">electric</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-03-03
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2012-05-14
         </span>
       </td>
     </tr>
@@ -1758,7 +1595,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-success">
+          
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -1775,8 +1615,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     jsk_maps
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/jsk_maps">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1791,17 +1650,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Manabu Saito, Haseru Chen</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/jsk_maps">Website</a></li>
                 
               </ul>
             
@@ -1844,7 +1692,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/jsk_maps/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/jsk_maps/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1856,29 +1705,141 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roseus#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roseus" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roseus#electric">roseus</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/multi_map_server#electric-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/multi_map_server" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/multi_map_server#electric">multi_map_server</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/imagemagick">imagemagick</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/roseus#electric">roseus</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/multi_map_server#electric">multi_map_server</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#electric">jsk_pr2_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#electric-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos#electric">elevator_move_base_pr2</a></td>
+                      <td><a href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">github-jsk-ros-pkg-jsk_demos</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos#electric-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1886,18 +1847,40 @@ $(function() {
   <div class="tab-pane" id="electric-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps/launch/start_map_eng8.org.launch" target="_blank">launch/start_map_eng8.org.launch</a></li>
-          
-            <li><a href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps/launch/start_map_eng2.launch" target="_blank">launch/start_map_eng2.launch</a></li>
-          
-            <li><a href="https://svn.code.sf.net/p/jsk-ros-pkg/code/trunk/jsk_demos/jsk_maps/launch/start_map_eng8.launch" target="_blank">launch/start_map_eng8.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/electric/jsk_maps/launch/start_map_eng8.launch" target="_blank">launch/start_map_eng8.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/electric/jsk_maps/launch/start_map_eng2.launch" target="_blank">launch/start_map_eng2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1906,9 +1889,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1917,9 +1900,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1928,28 +1911,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/electric/api/jsk_maps/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_demos/tree/electric/jsk_maps"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/jsk_maps?distro=electric"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_maps&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1957,7 +1947,567 @@ $(function() {
   <div class="distro distro-diamondback">
     <div class="container-fluid">
       
-          <div class="alert alert-warning">No version for distro <strong>diamondback</strong>. Known supported distros are highlighted in the buttons above.</div>
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/jsk_maps">jsk_maps</a> <small>package from <a style="text-decoration:none" href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">jsk_demos</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/2010_05_pr2_workshop/github-jsk-ros-pkg-jsk_demos">
+
+2010_05_pr2_workshop
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos">
+
+elevator_move_base_pr2
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_2011_07_pr2_semantic/github-jsk-ros-pkg-jsk_demos">
+
+jsk_2011_07_pr2_semantic
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+jsk_maps
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/jsk_semantic_maps/github-jsk-ros-pkg-jsk_demos">
+
+jsk_semantic_maps
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-diamondback">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/jsk_maps"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-jsk-ros-pkg-jsk_demos
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-jsk-ros-pkg-jsk_demos" role="menuitem" tabindex="-1" href="/p/jsk_maps/github-jsk-ros-pkg-jsk_demos" data="github-jsk-ros-pkg-jsk_demos">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-jsk-ros-pkg-jsk_demos
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/diamondback/api/jsk_maps/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_demos/tree/diamondback/jsk_maps"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://wiki.ros.org/jsk_maps?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_maps&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="diamondback-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#diamondback-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#diamondback-assets" data-toggle="tab"><span class="label label-primary">2</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#diamondback-deps" data-toggle="tab"><span class="label label-primary">3</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#diamondback-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="diamondback-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>UNKNOWN</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-default">
+                  
+                    ROSBUILD</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/jsk-ros-pkg/jsk_demos.git">https://github.com/jsk-ros-pkg/jsk_demos.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">diamondback</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2011-10-18
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     jsk_maps
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/jsk_maps">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <em>No known maintainers.</em>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Manabu Saito, Haseru Chen</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <em>No CHANGELOG found.</em>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="diamondback-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/jsk_maps/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="diamondback-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/euslisp#diamondback-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/euslisp" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/euslisp#diamondback">euslisp</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                          <span class="label label-danger">0</span>
+                        </td>
+                        <td>map_server2</td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/imagemagick">imagemagick</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#diamondback">jsk_pr2_startup</a></td>
+                      <td><a href="/r/jsk_robot/github-jsk-ros-pkg-jsk_robot">github-jsk-ros-pkg-jsk_robot</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/jsk_pr2_startup/github-jsk-ros-pkg-jsk_robot#diamondback-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos#diamondback">elevator_move_base_pr2</a></td>
+                      <td><a href="/r/jsk_demos/github-jsk-ros-pkg-jsk_demos">github-jsk-ros-pkg-jsk_demos</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/elevator_move_base_pr2/github-jsk-ros-pkg-jsk_demos#diamondback-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="diamondback-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/diamondback/jsk_maps/launch/start_map_eng8.launch" target="_blank">launch/start_map_eng8.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//jsk-ros-pkg/jsk_demos/tree/diamondback/jsk_maps/launch/start_map_eng2.launch" target="_blank">launch/start_map_eng2.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/diamondback/api/jsk_maps/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//jsk-ros-pkg/jsk_demos/tree/diamondback/jsk_maps"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:jsk_maps/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item inactive" target="_blank" href="http://wiki.ros.org/jsk_maps?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item inactive" target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=jsk_maps&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1985,7 +2535,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

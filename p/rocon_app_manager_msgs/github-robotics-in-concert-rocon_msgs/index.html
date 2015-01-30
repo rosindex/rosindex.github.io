@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,398 +199,226 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">concert_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/concert_service_msgs/github-robotics-in-concert-rocon_msgs">concert_service_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">gateway_msgs</a>
-        
-      
-        
-          <span class="label label-default"> rocon_app_manager_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_device_msgs/github-robotics-in-concert-rocon_msgs">rocon_device_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_interaction_msgs/github-robotics-in-concert-rocon_msgs">rocon_interaction_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_service_pair_msgs/github-robotics-in-concert-rocon_msgs">rocon_service_pair_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_std_msgs/github-robotics-in-concert-rocon_msgs">rocon_std_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_tutorial_msgs/github-robotics-in-concert-rocon_msgs">rocon_tutorial_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/scheduler_msgs/github-robotics-in-concert-rocon_msgs">scheduler_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/rocon_app_manager_msgs/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-robotics-in-concert-rocon_msgs
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-robotics-in-concert-rocon_msgs
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">concert_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">gateway_msgs</a>
-        
-      
-        
-          <span class="label label-default"> rocon_app_manager_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_interaction_msgs/github-robotics-in-concert-rocon_msgs">rocon_interaction_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_service_pair_msgs/github-robotics-in-concert-rocon_msgs">rocon_service_pair_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_std_msgs/github-robotics-in-concert-rocon_msgs">rocon_std_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/scheduler_msgs/github-robotics-in-concert-rocon_msgs">scheduler_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/rocon_app_manager_msgs/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-robotics-in-concert-rocon_msgs
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-robotics-in-concert-rocon_msgs
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">concert_msgs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">gateway_msgs</a>
-        
-      
-        
-          <span class="label label-default"> rocon_app_manager_msgs</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/rocon_app_manager_msgs/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-robotics-in-concert-rocon_msgs
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-robotics-in-concert-rocon_msgs
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
 
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_service_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_service_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_workflow_engine_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_workflow_engine_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">
+
+gateway_msgs
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rocon_app_manager_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_device_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_device_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_interaction_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_interaction_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_service_pair_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_service_pair_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_std_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_std_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_tutorial_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_tutorial_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/scheduler_msgs/github-robotics-in-concert-rocon_msgs">
+
+scheduler_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-kinetic">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-robotics-in-concert-rocon_msgs
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-robotics-in-concert-rocon_msgs
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
 
 
 
-<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/kinetic/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="kinetic-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+    <a href="#kinetic-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">11</span> Assets</a>
+    
+    <a href="#kinetic-assets" data-toggle="tab"><span class="label label-primary">13</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
+    
+    
+    
+    <a href="#kinetic-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#kinetic-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="indigo-overview">
+  <div class="tab-pane active" id="kinetic-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Messages used by the platform app manager.    
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -561,7 +431,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.7.8</td>
+                <td>0.9.0</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -587,7 +457,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -603,13 +473,13 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">indigo</span></td>
+      <td><span class="label label-default">kinetic</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-19
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-05-06
         </span>
       </td>
     </tr>
@@ -637,8 +507,29 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Messages used by the platform app manager.    
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/rocon_app_manager_msgs">Website</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs">Repository</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -663,6 +554,855 @@
               </ul>
             
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs/#kinetic">See repository README.</a></em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog">Changelog</h1>
+
+<h2 id="0-7-12-2015-07-09">0.7.12 (2015-07-09)</h2>
+
+<h2 id="0-7-11-2015-05-27">0.7.11 (2015-05-27)</h2>
+
+<ul>
+<li>  [rocon_app_manager_msgs] published interface types.</li>
+<li>  Contributors: Daniel Stonier</li>
+</ul>
+
+<h2 id="0-7-10-2015-04-06">0.7.10 (2015-04-06)</h2>
+
+<h2 id="0-7-9-2015-02-09">0.7.9 (2015-02-09)</h2>
+
+<h2 id="0-7-8-2014-11-21">0.7.8 (2014-11-21)</h2>
+
+<ul>
+<li>  new error code for stopping a rapp that is not listed.</li>
+<li>  Contributors: Daniel Stonier</li>
+</ul>
+
+<h2 id="0-7-6-2014-08-25">0.7.6 (2014-08-25)</h2>
+
+<ul>
+<li>  Merge pull request
+<a href="https://github.com/robotics-in-concert/rocon_msgs/issues/97">#97</a>
+from robotics-in-concert/multiple_impl add selected fieled to
+indicate which rapp virtual uses</li>
+<li>  rename as preferred</li>
+<li>  Merge pull request
+<a href="https://github.com/robotics-in-concert/rocon_msgs/issues/96">#96</a>
+from robotics-in-concert/multiple_impl</li>
+<li>  remove required_capabilities and add implementations in rapp.msg</li>
+<li>  explanation for the rapp message.</li>
+<li>  Export architecture_independent flag in package.xml</li>
+<li>  add parameters in list rapp and start rapp</li>
+<li>  rocon_app_manager_msgs: error: unconfigured build_depend on
+'rocon_service_pair_msg</li>
+<li>  Contributors: Daniel Stonier, Jihoon Lee, Scott K Logan</li>
+</ul>
+
+<h2 id="0-7-4-2014-05-05">0.7.4 (2014-05-05)</h2>
+
+<ul>
+<li>  GetStatus removed in favour of a newly created Status
+latched publisher.</li>
+<li>  App -&gt; Rapp refactoring.</li>
+<li>  Contributors: Daniel Stonier</li>
+</ul>
+
+<h2 id="0-7-0-2014-03-29">0.7.0 (2014-03-29)</h2>
+
+<ul>
+<li>  major redesign focusing on the orchestration platform prototype.</li>
+</ul>
+
+<h2 id="0-6-3-2013-10-30">0.6.3 (2013-10-30)</h2>
+
+<ul>
+<li>  rocon_std_msgs centralises some app manager messages for sharing.</li>
+</ul>
+
+<h2 id="0-6-2-2013-09-11">0.6.2 (2013-09-11)</h2>
+
+<ul>
+<li>  report details of currently running app</li>
+</ul>
+
+<h2 id="0-6-1-2013-08-30">0.6.1 (2013-08-30)</h2>
+
+<ul>
+<li>  simple invite service for relaying invitations by intelligent
+lurkers (e.g. pairing master).</li>
+</ul>
+
+<h2 id="0-6-0-2013-08-07-18-58">0.6.0 (2013-08-07 18:58)</h2>
+
+<ul>
+<li>  0.5.2</li>
+<li>  Merge pull request
+<a href="https://github.com/robotics-in-concert/rocon_msgs/issues/20">#20</a>
+from robotics-in-concert/pairing Pairing</li>
+<li>  PairingApp-&gt;PairingClient, more accurate terminology.</li>
+<li>  0.5.1</li>
+<li>  added an icon to the platform info message.</li>
+<li>  0.5.0</li>
+<li>  fix typo in constant assignation.</li>
+<li>  multi-rapp error message.</li>
+<li>  updated messages for pairing mode.</li>
+<li>  for latched app list publisher</li>
+<li>  backwards compatible app list and appdescription -&gt; app changes.</li>
+</ul>
+
+<h2 id="0-5-3-2013-08-07-19-04">0.5.3 (2013-08-07 19:04)</h2>
+
+<h2 id="0-5-2-2013-07-17">0.5.2 (2013-07-17)</h2>
+
+<ul>
+<li>  Merge pull request
+<a href="https://github.com/robotics-in-concert/rocon_msgs/issues/20">#20</a>
+from robotics-in-concert/pairing Pairing</li>
+<li>  PairingApp-&gt;PairingClient, more accurate terminology.</li>
+<li>  added an icon to the platform info message.</li>
+<li>  fix typo in constant assignation.</li>
+<li>  multi-rapp error message.</li>
+<li>  updated messages for pairing mode.</li>
+<li>  for latched app list publisher</li>
+<li>  backwards compatible app list and appdescription -&gt; app changes.</li>
+</ul>
+
+<h2 id="0-5-1-2013-06-10-16-28-55-0900">0.5.1 (2013-06-10 16:28:55 +0900)</h2>
+
+<ul>
+<li>  0.5.0</li>
+<li>  Merge pull request
+<a href="https://github.com/robotics-in-concert/rocon_msgs/issues/18">#18</a>
+from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
+<li>  proper dependency exporting for rocon msgs.</li>
+</ul>
+
+<h2 id="0-5-0-2013-05-27">0.5.0 (2013-05-27)</h2>
+
+<ul>
+<li>  local_client_name-&gt;application_namespace</li>
+<li>  Invite with client local name</li>
+<li>  Invite with client local name</li>
+<li>  updates for rapp manager's stop app functionality.</li>
+<li>  more clear on what the namespace is here.</li>
+<li>  0.4.0</li>
+</ul>
+
+<h2 id="0-3-0-2013-02-05">0.3.0 (2013-02-05)</h2>
+
+<ul>
+<li>  fix broken cmake for reshuffled messages.</li>
+<li>  update jihoon email</li>
+<li>  concert status -&gt; app manager status, part of first redesign.</li>
+<li>  status message brought back into app manager.</li>
+<li>  remote_control -&gt; invite, start on general app design</li>
+<li>  rocon_app_manager messages now fully realised
+in rocon_app_manager_msgs.</li>
+<li>  platform info constants -&gt; platform info msg.</li>
+</ul>
+
+<h2 id="0-2-1-2013-01-31">0.2.1 (2013-01-31)</h2>
+
+<ul>
+<li>  PlatformInfo msg GetPlatformInfo srv moved from concert to
+app manager. RemoteGatewayInfo srv typo</li>
+<li>  platform info to rocon_app_manager_msgs</li>
+<li>  refactoring app-&gt;rapp.</li>
+</ul>
+
+<h2 id="0-2-0-2012-12-23-14-15-44">0.2.0 (2012-12-23 14:15:44)</h2>
+
+<h2 id="0-1-4-2012-12-23-14-15-23">0.1.4 (2012-12-23 14:15:23)</h2>
+
+<h2 id="0-1-3-2012-12-07">0.1.3 (2012-12-07)</h2>
+
+<h2 id="0-1-2-2012-11-22">0.1.2 (2012-11-22)</h2>
+
+<h2 id="0-1-1-2012-11-21">0.1.1 (2012-11-21)</h2>
+
+<h2 id="0-1-0-2012-03-29">0.1.0 (2012-03-29)</h2>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#kinetic">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_std_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_std_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_std_msgs#kinetic">rocon_std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_service_pair_msgs#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_service_pair_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_service_pair_msgs#kinetic">rocon_service_pair_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#kinetic-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#kinetic">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#kinetic">rocon_app_manager</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#kinetic">rocon_apps</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#kinetic">concert_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#kinetic">rocon_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#kinetic-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_interactions/github-robotics-in-concert-rocon_tools#kinetic">rocon_interactions</a></td>
+                      <td><a href="/r/rocon_tools/github-robotics-in-concert-rocon_tools">github-robotics-in-concert-rocon_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_interactions/github-robotics-in-concert-rocon_tools#kinetic-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="kinetic-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No launch files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/IncompatibleRappList.msg" target="_blank">msg/IncompatibleRappList.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/Status.msg" target="_blank">msg/Status.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/PublishedInterface.msg" target="_blank">msg/PublishedInterface.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/Rapp.msg" target="_blank">msg/Rapp.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/RappList.msg" target="_blank">msg/RappList.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/msg/PublicInterface.msg" target="_blank">msg/PublicInterface.msg</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/srv/GetRappList.srv" target="_blank">srv/GetRappList.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/srv/StopRapp.srv" target="_blank">srv/StopRapp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/srv/StartRapp.srv" target="_blank">srv/StartRapp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/kinetic/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/kinetic/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=kinetic"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_service_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_service_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_workflow_engine_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_workflow_engine_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">
+
+gateway_msgs
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rocon_app_manager_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_device_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_device_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_interaction_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_interaction_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_service_pair_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_service_pair_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_std_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_std_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_tutorial_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_tutorial_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/scheduler_msgs/github-robotics-in-concert-rocon_msgs">
+
+scheduler_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-robotics-in-concert-rocon_msgs
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-robotics-in-concert-rocon_msgs
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">13</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">4</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="indigo-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>0.7.12</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/robotics-in-concert/rocon_msgs.git">https://github.com/robotics-in-concert/rocon_msgs.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-07-09
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Messages used by the platform app manager.    
+  
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
           <div class="panel-body">
             
@@ -674,6 +1414,30 @@
                   <li><a href="https://github.com/robotics-in-concert/rocon_msgs">Repository</a></li>
                 
                   <li><a href="https://github.com/robotics-in-concert/rocon_msgs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Daniel Stonier</li>
+                
+                  <li>Jihoon Lee</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Daniel Stonier</li>
                 
               </ul>
             
@@ -706,13 +1470,27 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog">Changelog</h1>
 
-<h2 id="0.7.8-(2014-11-21)">0.7.8 (2014-11-21)</h2>
+<h2 id="0-7-12-2015-07-09">0.7.12 (2015-07-09)</h2>
+
+<h2 id="0-7-11-2015-05-27">0.7.11 (2015-05-27)</h2>
+
+<ul>
+<li>  [rocon_app_manager_msgs] published interface types.</li>
+<li>  Contributors: Daniel Stonier</li>
+</ul>
+
+<h2 id="0-7-10-2015-04-06">0.7.10 (2015-04-06)</h2>
+
+<h2 id="0-7-9-2015-02-09">0.7.9 (2015-02-09)</h2>
+
+<h2 id="0-7-8-2014-11-21">0.7.8 (2014-11-21)</h2>
 
 <ul>
 <li>  new error code for stopping a rapp that is not listed.</li>
 <li>  Contributors: Daniel Stonier</li>
 </ul>
-<h2 id="0.7.6-(2014-08-25)">0.7.6 (2014-08-25)</h2>
+
+<h2 id="0-7-6-2014-08-25">0.7.6 (2014-08-25)</h2>
 
 <ul>
 <li>  Merge pull request
@@ -731,36 +1509,42 @@ from robotics-in-concert/multiple_impl</li>
 'rocon_service_pair_msg</li>
 <li>  Contributors: Daniel Stonier, Jihoon Lee, Scott K Logan</li>
 </ul>
-<h2 id="0.7.4-(2014-05-05)">0.7.4 (2014-05-05)</h2>
+
+<h2 id="0-7-4-2014-05-05">0.7.4 (2014-05-05)</h2>
 
 <ul>
-<li>  GetStatus removed in favour of a newly created Status latched
-publisher.</li>
+<li>  GetStatus removed in favour of a newly created Status
+latched publisher.</li>
 <li>  App -&gt; Rapp refactoring.</li>
 <li>  Contributors: Daniel Stonier</li>
 </ul>
-<h2 id="0.7.0-(2014-03-29)">0.7.0 (2014-03-29)</h2>
+
+<h2 id="0-7-0-2014-03-29">0.7.0 (2014-03-29)</h2>
 
 <ul>
 <li>  major redesign focusing on the orchestration platform prototype.</li>
 </ul>
-<h2 id="0.6.3-(2013-10-30)">0.6.3 (2013-10-30)</h2>
+
+<h2 id="0-6-3-2013-10-30">0.6.3 (2013-10-30)</h2>
 
 <ul>
 <li>  rocon_std_msgs centralises some app manager messages for sharing.</li>
 </ul>
-<h2 id="0.6.2-(2013-09-11)">0.6.2 (2013-09-11)</h2>
+
+<h2 id="0-6-2-2013-09-11">0.6.2 (2013-09-11)</h2>
 
 <ul>
 <li>  report details of currently running app</li>
 </ul>
-<h2 id="0.6.1-(2013-08-30)">0.6.1 (2013-08-30)</h2>
+
+<h2 id="0-6-1-2013-08-30">0.6.1 (2013-08-30)</h2>
 
 <ul>
 <li>  simple invite service for relaying invitations by intelligent
 lurkers (e.g. pairing master).</li>
 </ul>
-<h2 id="0.6.0-(2013-08-07-18:58)">0.6.0 (2013-08-07 18:58)</h2>
+
+<h2 id="0-6-0-2013-08-07-18-58">0.6.0 (2013-08-07 18:58)</h2>
 
 <ul>
 <li>  0.5.2</li>
@@ -777,9 +1561,10 @@ from robotics-in-concert/pairing Pairing</li>
 <li>  for latched app list publisher</li>
 <li>  backwards compatible app list and appdescription -&gt; app changes.</li>
 </ul>
-<h2 id="0.5.3-(2013-08-07-19:04)">0.5.3 (2013-08-07 19:04)</h2>
 
-<h2 id="0.5.2-(2013-07-17)">0.5.2 (2013-07-17)</h2>
+<h2 id="0-5-3-2013-08-07-19-04">0.5.3 (2013-08-07 19:04)</h2>
+
+<h2 id="0-5-2-2013-07-17">0.5.2 (2013-07-17)</h2>
 
 <ul>
 <li>  Merge pull request
@@ -793,7 +1578,8 @@ from robotics-in-concert/pairing Pairing</li>
 <li>  for latched app list publisher</li>
 <li>  backwards compatible app list and appdescription -&gt; app changes.</li>
 </ul>
-<h2 id="0.5.1-(2013-06-10-16:28:55-+0900)">0.5.1 (2013-06-10 16:28:55 +0900)</h2>
+
+<h2 id="0-5-1-2013-06-10-16-28-55-0900">0.5.1 (2013-06-10 16:28:55 +0900)</h2>
 
 <ul>
 <li>  0.5.0</li>
@@ -802,7 +1588,8 @@ from robotics-in-concert/pairing Pairing</li>
 from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
 <li>  proper dependency exporting for rocon msgs.</li>
 </ul>
-<h2 id="0.5.0-(2013-05-27)">0.5.0 (2013-05-27)</h2>
+
+<h2 id="0-5-0-2013-05-27">0.5.0 (2013-05-27)</h2>
 
 <ul>
 <li>  local_client_name-&gt;application_namespace</li>
@@ -812,7 +1599,8 @@ from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
 <li>  more clear on what the namespace is here.</li>
 <li>  0.4.0</li>
 </ul>
-<h2 id="0.3.0-(2013-02-05)">0.3.0 (2013-02-05)</h2>
+
+<h2 id="0-3-0-2013-02-05">0.3.0 (2013-02-05)</h2>
 
 <ul>
 <li>  fix broken cmake for reshuffled messages.</li>
@@ -820,29 +1608,31 @@ from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
 <li>  concert status -&gt; app manager status, part of first redesign.</li>
 <li>  status message brought back into app manager.</li>
 <li>  remote_control -&gt; invite, start on general app design</li>
-<li>  rocon_app_manager messages now fully realised in
-rocon_app_manager_msgs.</li>
+<li>  rocon_app_manager messages now fully realised
+in rocon_app_manager_msgs.</li>
 <li>  platform info constants -&gt; platform info msg.</li>
 </ul>
-<h2 id="0.2.1-(2013-01-31)">0.2.1 (2013-01-31)</h2>
+
+<h2 id="0-2-1-2013-01-31">0.2.1 (2013-01-31)</h2>
 
 <ul>
-<li>  PlatformInfo msg GetPlatformInfo srv moved from concert to app
-manager. RemoteGatewayInfo srv typo</li>
+<li>  PlatformInfo msg GetPlatformInfo srv moved from concert to
+app manager. RemoteGatewayInfo srv typo</li>
 <li>  platform info to rocon_app_manager_msgs</li>
 <li>  refactoring app-&gt;rapp.</li>
 </ul>
-<h2 id="0.2.0-(2012-12-23-14:15:44)">0.2.0 (2012-12-23 14:15:44)</h2>
 
-<h2 id="0.1.4-(2012-12-23-14:15:23)">0.1.4 (2012-12-23 14:15:23)</h2>
+<h2 id="0-2-0-2012-12-23-14-15-44">0.2.0 (2012-12-23 14:15:44)</h2>
 
-<h2 id="0.1.3-(2012-12-07)">0.1.3 (2012-12-07)</h2>
+<h2 id="0-1-4-2012-12-23-14-15-23">0.1.4 (2012-12-23 14:15:23)</h2>
 
-<h2 id="0.1.2-(2012-11-22)">0.1.2 (2012-11-22)</h2>
+<h2 id="0-1-3-2012-12-07">0.1.3 (2012-12-07)</h2>
 
-<h2 id="0.1.1-(2012-11-21)">0.1.1 (2012-11-21)</h2>
+<h2 id="0-1-2-2012-11-22">0.1.2 (2012-11-22)</h2>
 
-<h2 id="0.1.0-(2012-03-29)">0.1.0 (2012-03-29)</h2>
+<h2 id="0-1-1-2012-11-21">0.1.1 (2012-11-21)</h2>
+
+<h2 id="0-1-0-2012-03-29">0.1.0 (2012-03-29)</h2>
 </div></body></html>
 
             
@@ -858,7 +1648,8 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -870,33 +1661,322 @@ manager. RemoteGatewayInfo srv typo</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#indigo">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_std_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_std_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_std_msgs#indigo">rocon_std_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rocon_service_pair_msgs#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rocon_service_pair_msgs" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rocon_service_pair_msgs#indigo">rocon_service_pair_msgs</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#indigo">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#indigo">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_std_msgs#indigo">rocon_std_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rocon_service_pair_msgs#indigo">rocon_service_pair_msgs</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#indigo">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#indigo">rocon_app_manager</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#indigo">rocon_apps</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_conductor/github-robotics-in-concert-rocon_concert#indigo">concert_conductor</a></td>
+                      <td><a href="/r/rocon_concert/github-robotics-in-concert-rocon_concert">github-robotics-in-concert-rocon_concert</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_conductor/github-robotics-in-concert-rocon_concert#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_schedulers/github-robotics-in-concert-rocon_concert#indigo">concert_schedulers</a></td>
+                      <td><a href="/r/rocon_concert/github-robotics-in-concert-rocon_concert">github-robotics-in-concert-rocon_concert</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_schedulers/github-robotics-in-concert-rocon_concert#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#indigo">concert_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#indigo">rocon_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_resource_pool/github-utexas-bwi-concert_scheduling#indigo">concert_resource_pool</a></td>
+                      <td><a href="/r/concert_scheduling/github-utexas-bwi-concert_scheduling">github-utexas-bwi-concert_scheduling</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_resource_pool/github-utexas-bwi-concert_scheduling#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_simple_scheduler/github-utexas-bwi-concert_scheduling#indigo">concert_simple_scheduler</a></td>
+                      <td><a href="/r/concert_scheduling/github-utexas-bwi-concert_scheduling">github-utexas-bwi-concert_scheduling</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_simple_scheduler/github-utexas-bwi-concert_scheduling#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosjava_messages/github-rosjava-rosjava_messages#indigo">rosjava_messages</a></td>
+                      <td><a href="/r/rosjava_messages/github-rosjava-rosjava_messages">github-rosjava-rosjava_messages</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosjava_messages/github-rosjava-rosjava_messages#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_service_turtlesim/github-robotics-in-concert-concert_services#indigo">concert_service_turtlesim</a></td>
+                      <td><a href="/r/concert_services/github-robotics-in-concert-concert_services">github-robotics-in-concert-concert_services</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_service_turtlesim/github-robotics-in-concert-concert_services#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_qt_app_manager/github-robotics-in-concert-rocon_qt_gui#indigo">rocon_qt_app_manager</a></td>
+                      <td><a href="/r/rocon_qt_gui/github-robotics-in-concert-rocon_qt_gui">github-robotics-in-concert-rocon_qt_gui</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_qt_app_manager/github-robotics-in-concert-rocon_qt_gui#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_remocon/github-robotics-in-concert-rocon_qt_gui#indigo">rocon_remocon</a></td>
+                      <td><a href="/r/rocon_qt_gui/github-robotics-in-concert-rocon_qt_gui">github-robotics-in-concert-rocon_qt_gui</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_remocon/github-robotics-in-concert-rocon_qt_gui#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_interactions/github-robotics-in-concert-rocon_tools#indigo">rocon_interactions</a></td>
+                      <td><a href="/r/rocon_tools/github-robotics-in-concert-rocon_tools">github-robotics-in-concert-rocon_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_interactions/github-robotics-in-concert-rocon_tools#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -904,12 +1984,12 @@ manager. RemoteGatewayInfo srv typo</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -918,21 +1998,27 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/Status.msg" target="_blank">msg/Status.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/IncompatibleRappList.msg" target="_blank">msg/IncompatibleRappList.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/Rapp.msg" target="_blank">msg/Rapp.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/RappList.msg" target="_blank">msg/RappList.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/IncompatibleRappList.msg" target="_blank">msg/IncompatibleRappList.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/Status.msg" target="_blank">msg/Status.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/PublishedInterface.msg" target="_blank">msg/PublishedInterface.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/Rapp.msg" target="_blank">msg/Rapp.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/RappList.msg" target="_blank">msg/RappList.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/msg/PublicInterface.msg" target="_blank">msg/PublicInterface.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -941,19 +2027,21 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/StartRapp.srv" target="_blank">srv/StartRapp.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/StopRapp.srv" target="_blank">srv/StopRapp.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/GetRappList.srv" target="_blank">srv/GetRappList.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/GetRappList.srv" target="_blank">srv/GetRappList.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/StopRapp.srv" target="_blank">srv/StopRapp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/StartRapp.srv" target="_blank">srv/StartRapp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -962,28 +2050,35 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/indigo/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -993,6 +2088,149 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">
+
+gateway_msgs
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rocon_app_manager_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_interaction_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_interaction_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_service_pair_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_service_pair_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_std_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_std_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/scheduler_msgs/github-robotics-in-concert-rocon_msgs">
+
+scheduler_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-robotics-in-concert-rocon_msgs
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-robotics-in-concert-rocon_msgs
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1005,30 +2243,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">17</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Messages used by the platform app manager.    
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1067,7 +2305,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1089,7 +2327,7 @@ $(function() {
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-03-20
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-03-21
         </span>
       </td>
     </tr>
@@ -1117,8 +2355,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Messages used by the platform app manager.    
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/rocon_app_manager_msgs">Website</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs">Repository</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1139,21 +2398,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Daniel Stonier</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/rocon_app_manager_msgs">Website</a></li>
-                
-                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs">Repository</a></li>
-                
-                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1186,18 +2430,20 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-rocon_app_manager_msgs">Changelog for package rocon_app_manager_msgs</h1>
 
-<h2 id="0.6.2-(2013-09-11)">0.6.2 (2013-09-11)</h2>
+<h2 id="0-6-2-2013-09-11">0.6.2 (2013-09-11)</h2>
 
 <ul>
 <li>  report details of currently running app</li>
 </ul>
-<h2 id="0.6.1-(2013-08-30)">0.6.1 (2013-08-30)</h2>
+
+<h2 id="0-6-1-2013-08-30">0.6.1 (2013-08-30)</h2>
 
 <ul>
 <li>  simple invite service for relaying invitations by intelligent
 lurkers (e.g. pairing master).</li>
 </ul>
-<h2 id="0.6.0-(2013-08-07-18:58)">0.6.0 (2013-08-07 18:58)</h2>
+
+<h2 id="0-6-0-2013-08-07-18-58">0.6.0 (2013-08-07 18:58)</h2>
 
 <ul>
 <li>  0.5.2</li>
@@ -1214,9 +2460,10 @@ from robotics-in-concert/pairing Pairing</li>
 <li>  for latched app list publisher</li>
 <li>  backwards compatible app list and appdescription -&gt; app changes.</li>
 </ul>
-<h2 id="0.5.3-(2013-08-07-19:04)">0.5.3 (2013-08-07 19:04)</h2>
 
-<h2 id="0.5.2-(2013-07-17)">0.5.2 (2013-07-17)</h2>
+<h2 id="0-5-3-2013-08-07-19-04">0.5.3 (2013-08-07 19:04)</h2>
+
+<h2 id="0-5-2-2013-07-17">0.5.2 (2013-07-17)</h2>
 
 <ul>
 <li>  Merge pull request
@@ -1230,7 +2477,8 @@ from robotics-in-concert/pairing Pairing</li>
 <li>  for latched app list publisher</li>
 <li>  backwards compatible app list and appdescription -&gt; app changes.</li>
 </ul>
-<h2 id="0.5.1-(2013-06-10-16:28:55-+0900)">0.5.1 (2013-06-10 16:28:55 +0900)</h2>
+
+<h2 id="0-5-1-2013-06-10-16-28-55-0900">0.5.1 (2013-06-10 16:28:55 +0900)</h2>
 
 <ul>
 <li>  0.5.0</li>
@@ -1239,7 +2487,8 @@ from robotics-in-concert/pairing Pairing</li>
 from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
 <li>  proper dependency exporting for rocon msgs.</li>
 </ul>
-<h2 id="0.5.0-(2013-05-27)">0.5.0 (2013-05-27)</h2>
+
+<h2 id="0-5-0-2013-05-27">0.5.0 (2013-05-27)</h2>
 
 <ul>
 <li>  local_client_name-&gt;application_namespace</li>
@@ -1249,7 +2498,8 @@ from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
 <li>  more clear on what the namespace is here.</li>
 <li>  0.4.0</li>
 </ul>
-<h2 id="0.3.0-(2013-02-05)">0.3.0 (2013-02-05)</h2>
+
+<h2 id="0-3-0-2013-02-05">0.3.0 (2013-02-05)</h2>
 
 <ul>
 <li>  fix broken cmake for reshuffled messages.</li>
@@ -1257,29 +2507,31 @@ from robotics-in-concert/hydro-devel back port from hydro to groovy</li>
 <li>  concert status -&gt; app manager status, part of first redesign.</li>
 <li>  status message brought back into app manager.</li>
 <li>  remote_control -&gt; invite, start on general app design</li>
-<li>  rocon_app_manager messages now fully realised in
-rocon_app_manager_msgs.</li>
+<li>  rocon_app_manager messages now fully realised
+in rocon_app_manager_msgs.</li>
 <li>  platform info constants -&gt; platform info msg.</li>
 </ul>
-<h2 id="0.2.1-(2013-01-31)">0.2.1 (2013-01-31)</h2>
+
+<h2 id="0-2-1-2013-01-31">0.2.1 (2013-01-31)</h2>
 
 <ul>
-<li>  PlatformInfo msg GetPlatformInfo srv moved from concert to app
-manager. RemoteGatewayInfo srv typo</li>
+<li>  PlatformInfo msg GetPlatformInfo srv moved from concert to
+app manager. RemoteGatewayInfo srv typo</li>
 <li>  platform info to rocon_app_manager_msgs</li>
 <li>  refactoring app-&gt;rapp.</li>
 </ul>
-<h2 id="0.2.0-(2012-12-23-14:15:44)">0.2.0 (2012-12-23 14:15:44)</h2>
 
-<h2 id="0.1.4-(2012-12-23-14:15:23)">0.1.4 (2012-12-23 14:15:23)</h2>
+<h2 id="0-2-0-2012-12-23-14-15-44">0.2.0 (2012-12-23 14:15:44)</h2>
 
-<h2 id="0.1.3-(2012-12-07)">0.1.3 (2012-12-07)</h2>
+<h2 id="0-1-4-2012-12-23-14-15-23">0.1.4 (2012-12-23 14:15:23)</h2>
 
-<h2 id="0.1.2-(2012-11-22)">0.1.2 (2012-11-22)</h2>
+<h2 id="0-1-3-2012-12-07">0.1.3 (2012-12-07)</h2>
 
-<h2 id="0.1.1-(2012-11-21)">0.1.1 (2012-11-21)</h2>
+<h2 id="0-1-2-2012-11-22">0.1.2 (2012-11-22)</h2>
 
-<h2 id="0.1.0-(2012-03-29)">0.1.0 (2012-03-29)</h2>
+<h2 id="0-1-1-2012-11-21">0.1.1 (2012-11-21)</h2>
+
+<h2 id="0-1-0-2012-03-29">0.1.0 (2012-03-29)</h2>
 </div></body></html>
 
             
@@ -1295,7 +2547,8 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1307,29 +2560,254 @@ manager. RemoteGatewayInfo srv typo</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#hydro">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#hydro">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#hydro">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#hydro">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#hydro">rocon_app_manager</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#hydro">rocon_apps</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_conductor/github-robotics-in-concert-rocon_concert#hydro">concert_conductor</a></td>
+                      <td><a href="/r/rocon_concert/github-robotics-in-concert-rocon_concert">github-robotics-in-concert-rocon_concert</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_conductor/github-robotics-in-concert-rocon_concert#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#hydro">concert_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#hydro">rocon_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_resource_pool/github-utexas-bwi-concert_scheduling#hydro">concert_resource_pool</a></td>
+                      <td><a href="/r/concert_scheduling/github-utexas-bwi-concert_scheduling">github-utexas-bwi-concert_scheduling</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_resource_pool/github-utexas-bwi-concert_scheduling#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_simple_scheduler/github-utexas-bwi-concert_scheduling#hydro">concert_simple_scheduler</a></td>
+                      <td><a href="/r/concert_scheduling/github-utexas-bwi-concert_scheduling">github-utexas-bwi-concert_scheduling</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_simple_scheduler/github-utexas-bwi-concert_scheduling#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro">rosjava_messages</a></td>
+                      <td><a href="/r/rosjava_messages/github-rosjava-rosjava_messages">github-rosjava-rosjava_messages</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosjava_messages/github-rosjava-rosjava_messages#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rosruby_messages/github-OTL-rosruby_messages#hydro">rosruby_messages</a></td>
+                      <td><a href="/r/rosruby_messages/github-OTL-rosruby_messages">github-OTL-rosruby_messages</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rosruby_messages/github-OTL-rosruby_messages#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_service_turtlesim/github-robotics-in-concert-concert_services#hydro">concert_service_turtlesim</a></td>
+                      <td><a href="/r/concert_services/github-robotics-in-concert-concert_services">github-robotics-in-concert-concert_services</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_service_turtlesim/github-robotics-in-concert-concert_services#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_interactions/github-robotics-in-concert-rocon_tools#hydro">rocon_interactions</a></td>
+                      <td><a href="/r/rocon_tools/github-robotics-in-concert-rocon_tools">github-robotics-in-concert-rocon_tools</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_interactions/github-robotics-in-concert-rocon_tools#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1337,12 +2815,12 @@ manager. RemoteGatewayInfo srv typo</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1351,27 +2829,29 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/AppList.msg" target="_blank">msg/AppList.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/PlatformInfo.msg" target="_blank">msg/PlatformInfo.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/PairingClient.msg" target="_blank">msg/PairingClient.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/KeyValue.msg" target="_blank">msg/KeyValue.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/App.msg" target="_blank">msg/App.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/Icon.msg" target="_blank">msg/Icon.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/AppList.msg" target="_blank">msg/AppList.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/PlatformInfo.msg" target="_blank">msg/PlatformInfo.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/Icon.msg" target="_blank">msg/Icon.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/PairingClient.msg" target="_blank">msg/PairingClient.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/KeyValue.msg" target="_blank">msg/KeyValue.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/msg/App.msg" target="_blank">msg/App.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1380,25 +2860,27 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/StopApp.srv" target="_blank">srv/StopApp.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/StartApp.srv" target="_blank">srv/StartApp.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/GetAppList.srv" target="_blank">srv/GetAppList.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/Status.srv" target="_blank">srv/Status.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/GetPlatformInfo.srv" target="_blank">srv/GetPlatformInfo.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/SimpleInvite.srv" target="_blank">srv/SimpleInvite.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/SimpleInvite.srv" target="_blank">srv/SimpleInvite.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/GetPlatformInfo.srv" target="_blank">srv/GetPlatformInfo.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/StartApp.srv" target="_blank">srv/StartApp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/Status.srv" target="_blank">srv/Status.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/GetAppList.srv" target="_blank">srv/GetAppList.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/StopApp.srv" target="_blank">srv/StopApp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1407,28 +2889,35 @@ manager. RemoteGatewayInfo srv typo</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/hydro/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1438,6 +2927,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/rocon_app_manager_msgs">rocon_app_manager_msgs</a> <small>package from <a style="text-decoration:none" href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">rocon_msgs</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs">
+
+concert_msgs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/gateway_msgs/github-robotics-in-concert-rocon_msgs">
+
+gateway_msgs
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+rocon_app_manager_msgs
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs">
+
+rocon_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/rocon_app_manager_msgs"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-robotics-in-concert-rocon_msgs
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-robotics-in-concert-rocon_msgs" role="menuitem" tabindex="-1" href="/p/rocon_app_manager_msgs/github-robotics-in-concert-rocon_msgs" data="github-robotics-in-concert-rocon_msgs">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-robotics-in-concert-rocon_msgs
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1450,30 +3050,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">12</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-    Messages used by the platform app manager.    
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1512,7 +3112,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1562,8 +3162,29 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+    Messages used by the platform app manager.    
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://www.ros.org/wiki/rocon_app_manager_msgs">Website</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs">Repository</a></li>
+                
+                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs/issues">Bugtracker</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1584,21 +3205,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Daniel Stonier</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://www.ros.org/wiki/rocon_app_manager_msgs">Website</a></li>
-                
-                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs">Repository</a></li>
-                
-                  <li><a href="https://github.com/robotics-in-concert/rocon_msgs/issues">Bugtracker</a></li>
                 
               </ul>
             
@@ -1641,7 +3247,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/rocon_app_manager_msgs/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1653,29 +3260,170 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_generation#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_generation" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_generation#groovy">message_generation</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/message_runtime#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/message_runtime" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/message_runtime#groovy">message_runtime</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/message_generation#groovy">message_generation</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/message_runtime#groovy">message_runtime</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#groovy">rocon_app_manager</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_app_manager/github-robotics-in-concert-rocon_app_platform#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#groovy">rocon_apps</a></td>
+                      <td><a href="/r/rocon_app_platform/github-robotics-in-concert-rocon_app_platform">github-robotics-in-concert-rocon_app_platform</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_apps/github-robotics-in-concert-rocon_app_platform#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_conductor/github-robotics-in-concert-rocon_concert#groovy">concert_conductor</a></td>
+                      <td><a href="/r/rocon_concert/github-robotics-in-concert-rocon_concert">github-robotics-in-concert-rocon_concert</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_conductor/github-robotics-in-concert-rocon_concert#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#groovy">concert_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/concert_msgs/github-robotics-in-concert-rocon_msgs#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#groovy">rocon_msgs</a></td>
+                      <td><a href="/r/rocon_msgs/github-robotics-in-concert-rocon_msgs">github-robotics-in-concert-rocon_msgs</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/rocon_msgs/github-robotics-in-concert-rocon_msgs#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1683,12 +3431,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1697,19 +3445,21 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/PlatformInfo.msg" target="_blank">msg/PlatformInfo.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/AppDescription.msg" target="_blank">msg/AppDescription.msg</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/Remapping.msg" target="_blank">msg/Remapping.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/PlatformInfo.msg" target="_blank">msg/PlatformInfo.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/AppDescription.msg" target="_blank">msg/AppDescription.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/Constants.msg" target="_blank">msg/Constants.msg</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/msg/ErrorCodes.msg" target="_blank">msg/ErrorCodes.msg</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1718,23 +3468,25 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/StopApp.srv" target="_blank">srv/StopApp.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/StartApp.srv" target="_blank">srv/StartApp.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/GetAppList.srv" target="_blank">srv/GetAppList.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/Status.srv" target="_blank">srv/Status.srv</a></li>
-          
-            <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/GetPlatformInfo.srv" target="_blank">srv/GetPlatformInfo.srv</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/GetPlatformInfo.srv" target="_blank">srv/GetPlatformInfo.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/StartApp.srv" target="_blank">srv/StartApp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/Status.srv" target="_blank">srv/Status.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/GetAppList.srv" target="_blank">srv/GetAppList.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/Init.srv" target="_blank">srv/Init.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/StopApp.srv" target="_blank">srv/StopApp.srv</a></li>
+            
+              <li><a href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs/srv/Invite.srv" target="_blank">srv/Invite.srv</a></li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1743,28 +3495,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/rocon_app_manager_msgs/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//robotics-in-concert/rocon_msgs/tree/groovy-devel/rocon_app_manager_msgs"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:rocon_app_manager_msgs/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/rocon_app_manager_msgs?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=rocon_app_manager_msgs&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1815,7 +3574,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

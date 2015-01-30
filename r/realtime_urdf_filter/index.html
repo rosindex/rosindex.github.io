@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,6 +146,10 @@
       
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
+  
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
   
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
@@ -220,6 +262,14 @@
 </div>
 
 
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
   <div class="distro distro-jade">
     <div class="container-fluid">
       
@@ -247,8 +297,8 @@
   <div class="distro distro-groovy">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -271,7 +321,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-02-14
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-01-05
         </span>
       </td>
     </tr>
@@ -311,7 +361,7 @@
                 
                   <tr>
                     <td><a href="/p/realtime_urdf_filter/github-blodow-realtime_urdf_filter">realtime_urdf_filter</a></td>
-                    <td>UNKNOWN</td>
+                    <td>0.0.0</td>
                   </tr>
                 
                 </tbody>
@@ -328,65 +378,72 @@
 <html><body><div class="rendered-markdown">
 <h1 id="realtime_urdf_filter">realtime_urdf_filter</h1>
 
-<p>This package provides OpenGL-accelerated, shader-based filtering for depth
-images. Scene geometry is defined in URDF models, along with parameters
-defining the camera's location and filtering parameters.  Both static
-environment models and articulated robot models are working beautifully, as
-long as TF latency is not too high.</p>
+<p>This package provides OpenGL-accelerated, shader-based filtering for
+depth images. Scene geometry is defined in URDF models, along with
+parameters defining the camera's location and filtering parameters. Both
+static environment models and articulated robot models are working
+beautifully, as long as TF latency is not too high.</p>
 
-<p>Incoming Kinect frames are transferred to the GPU as textures, and the scene is
-rendered from the same point of view. As a result, we can access the measured
-as well as the virtual depth map in the shader, where we can define efficient
-comparision operations.</p>
+<p>Incoming Kinect frames are transferred to the GPU as textures, and the
+scene is rendered from the same point of view. As a result, we can
+access the measured as well as the virtual depth map in the shader,
+where we can define efficient comparision operations.</p>
 
-<p>Example of robot self filtering to proprocess for human skeleton tracking:</p>
+<p>Example of robot self filtering to proprocess for human skeleton
+tracking:</p>
 
-<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/tracker.png" alt="Tracker Preprocessing" style="width: 320px;"></p>
+<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/tracker.png" alt="image">{width="320px"}</p>
 
 <p>Robot self filtering for object manipulation:</p>
 
-<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/grasping.png" alt="Robot Self Filtering" style="width: 320px;"></p>
+<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/grasping.png" alt="image">{width="320px"}</p>
 
-<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/rviz.png" alt="Robot Self Filtering" style="max-width: 50 %;"></p>
+<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/rviz.png" alt="image">{width="320px"}</p>
 
 <h2 id="dependencies">Dependencies</h2>
 
 <p>This has been verified to run on Ubuntu 12.04 with ROS Fuerte.</p>
 
-<p>This package requires the following: 3rd party libraries
- - GLSL (GL Shader Language) version 1.40 support or greater
- - GLEW (GL Extension Wrangler) version 1.6</p>
+<p>This package requires the following: 3rd party libraries</p>
 
-<p>NOTE: Trying to use thie package with GLEW 1.5 wil result in a segmentation fault.</p>
+<p>:   -   GLSL (GL Shader Language) version 1.40 support or greater
+    -   GLEW (GL Extension Wrangler) version 1.6</p>
+
+<p>NOTE: Trying to use thie package with GLEW 1.5 wil result in a
+segmentation fault.</p>
 
 <h2 id="ros-interface">ROS Interface</h2>
 
 <p>There are two ROS nodes that can be used out of the box:</p>
 
 <ul>
-<li>realtime_urdf_filter</li>
+<li>
+<p>realtime_urdf_filter</p>
+
+<p>This is a node that subscribes to a depth map topic, and outputs the
+filtered depth map on <code>/output</code>.</p>
+</li>
+<li>
+<p>urdf_filtered_tracker</p>
+
+<p>This node is basically the openni tracker with additional
+functionality to pre-filter the depth image before it's sent to the
+skeleton tracker.</p>
+
+<p><code>urdf_filtered_tracker</code> accesses the Kinect directly through OpenNI,
+and hooks itself in between the depth image generator node and the
+skeleton tracker node, so any "known" geometry that could
+potentially confuse the skeleton tracker (e.g. robot arms, people in
+background, static furniture) can be deleted.</p>
+
+<p>This has been used at Automatica 2012, where an operator was tracked
+to allow control of the robot arms using gesture recognition. Two
+robot arms needed to be filtered to allow stable skeleton tracking
+also for hand over tasks. Additionally, the camera was pointed
+towards a busy walkway intersection, so two virtual walls were added
+that filtered passing visitors from the depth data.</p>
+</li>
 </ul>
-<p>This is a node that subscribes to a depth map topic, and outputs the filtered
-  depth map on <code>/output</code>.</p>
-
-<ul>
-<li>urdf_filtered_tracker</li>
-</ul>
-<p>This node is basically the openni tracker with additional functionality to
-  pre-filter the depth image before it's sent to the skeleton tracker.</p>
-
-<p><code>urdf_filtered_tracker</code> accesses the Kinect directly through OpenNI, and
-  hooks itself in between the depth image generator node and the skeleton tracker
-  node, so any "known" geometry that could potentially confuse the skeleton
-  tracker (e.g. robot arms, people in background, static furniture) can be
-  deleted.</p>
-
-<p>This has been used at Automatica 2012, where an operator was tracked to allow
-  control of the robot arms using gesture recognition. Two robot arms needed to
-  be filtered to allow stable skeleton tracking also for hand over tasks.
-  Additionally, the camera was pointed towards a busy walkway intersection, so
-  two virtual walls were added that filtered passing visitors from the depth
-  data.</p>
 
 <h2 id="adapting-it-to-different-scenarios">Adapting it to different scenarios</h2>
 
@@ -396,79 +453,87 @@ parametrization and are a good starting point.</p>
 <p>The following <code>rosparam</code> parameters are supported:</p>
 
 <ul>
-<li>
-<code>fixed_frame</code> is used to specify the "fixed" TF link (e.g. <code>/map</code>,
-<code>/world</code>, etc.). This is useful to decouple tf lookups with different
-publising frequencies, e.g. robot and static publishers.</li>
-<li>
-<code>camera_frame</code> specifies the camera TF frame (e.g.
+<li>  <code>fixed_frame</code> is used to specify the "fixed" TF link (e.g. <code>/map</code>,
+<code>/world</code>, etc.). This is useful to decouple tf lookups with
+different publising frequencies, e.g. robot and static publishers.</li>
+<li>  <code>camera_frame</code> specifies the camera TF frame (e.g.
 <code>/camera_rgb_optical_frame</code>)</li>
-<li>
-<code>camera_offset</code> lets you specify additional offsets to the camera link. It
-has two components: <code>translation</code> (e.g. <code>[0.0, 0.0, 0.0]</code>) and
-<code>rotation</code> (e.g. <code>[0.0, 0.0, 0.0, 1.0]</code>).</li>
-<li>
-<code>models</code> contains a list of URDF models that are supposed to be filtered.
-For each, <code>model</code> defines the rosparam key that contains the URDF model,
-and <code>tf_prefix</code> contains, well, the tf prefix.</li>
-<li>
-<code>depth_distance_threshold</code> pixels with a depth difference of less than this
-value get filtered.</li>
-<li>
-<code>filter_replace_value</code> (for <code>urdf_filtered_tracker</code>) defines the new
-value that will be written to the filtered pixel depth values. Interestingly,
-setting <code>0</code> creates beautiful silhouettes, but the OpenNI tracker needs
-"background" (more distant) pixels around people. Weird. That's why we set
-this value to 5 meters.</li>
-<li>
-<code>show_gui</code> specifies whether a visualization window should pop up.</li>
+<li>  <code>camera_offset</code> lets you specify additional offsets to the
+camera link. It has two components: <code>translation</code> (e.g.
+<code>[0.0, 0.0, 0.0]</code>) and <code>rotation</code> (e.g. <code>[0.0, 0.0, 0.0, 1.0]</code>).</li>
+<li>  <code>models</code> contains a list of URDF models that are supposed to be
+filtered. For each, <code>model</code> defines the rosparam key that contains
+the URDF model, and <code>tf_prefix</code> contains, well, the tf prefix.</li>
+<li>  <code>depth_distance_threshold</code> pixels with a depth difference of less
+than this value get filtered.</li>
+<li>  <code>filter_replace_value</code> (for <code>urdf_filtered_tracker</code>) defines the new
+value that will be written to the filtered pixel depth values.
+Interestingly, setting <code>0</code> creates beautiful silhouettes, but the
+OpenNI tracker needs "background" (more distant) pixels
+around people. Weird. That's why we set this value to 5 meters.</li>
+<li>  <code>show_gui</code> specifies whether a visualization window should pop up.</li>
 </ul>
-<p>Also, the shaders in <code>include/shaders/</code> can easily be adapted. The vertex
-shader is basically just a pass through, so the fragment shader is more
-interesting for adding features. The shader as of now has access to 4 color
-attachments, and the red channel of gl_FragData[1] is used to return the
-filtered image. The other attachments can be used for visualization (see
-<code>show_gui</code>).</p>
 
-<h2 id="note:-starting-remotely">Note: starting remotely</h2>
+<p>Also, the shaders in <code>include/shaders/</code> can easily be adapted. The
+vertex shader is basically just a pass through, so the fragment shader
+is more interesting for adding features. The shader as of now has access
+to 4 color attachments, and the red channel of gl_FragData[1] is used
+to return the filtered image. The other attachments can be used for
+visualization (see <code>show_gui</code>).</p>
 
-<p>While this package uses offscreen rendering, it does need to connect to a X11
-server to get a valid OpenGL context (even with <code>show_gui</code> set to <code>false</code>).
-When launching one of the nodes in this package remotely via roslaunch or
-similar mechanisms, it will be necessary to set a DISPLAY variable and possible
-turn off access control for the X server. In this case, a bash script like the
-following can be launched from remote::</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    #!/bin/bash
-    DISPLAY=:0
-    xhost +
-    roslaunch realtime_urdf_filter tracker.launch
+<h2 id="note-starting-remotely">Note: starting remotely</h2>
+
+<p>While this package uses offscreen rendering, it does need to connect to
+a X11 server to get a valid OpenGL context (even with <code>show_gui</code> set to
+<code>false</code>). When launching one of the nodes in this package remotely via
+roslaunch or similar mechanisms, it will be necessary to set a DISPLAY
+variable and possible turn off access control for the X server. In this
+case, a bash script like the following can be launched from remote:</p>
+<div class="highlight"><pre><code class="language-" data-lang=""><span class="c">#!/bin/bash</span>
+<span class="nv">DISPLAY</span><span class="o">=</span>:0
+xhost +
+roslaunch realtime_urdf_filter tracker.launch
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting</h2>
 
-<p>Every once in a while, assimp fails when importing STL files. If the first 5
-bytes are "solid", it treats it as ASCII, however there are several binary STL
-files around that start with "solid". You'll get an error message along the
-lines of:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    [ERROR] [1360339850.748534073]: Could not load resource [package://pr2_description/meshes/sensors/kinect_prosilica_v0/115x100_swept_back--coarse.STL]: STL: ASCII file is empty or invalid; no data loaded
-</code></pre></div>
+<p>Every once in a while, assimp fails when importing STL files. If the
+first 5 bytes are "solid", it treats it as ASCII, however there are
+several binary STL files around that start with "solid". You'll get an
+error message along the lines of:</p>
+
+<blockquote>
+<p>[ERROR] [1360339850.748534073]: Could not load resource
+[package://pr2_description/meshes/sensors/kinect_prosilica_v0/115x100_swept_back--coarse.STL]:
+STL: ASCII file is empty or invalid; no data loaded</p>
+</blockquote>
+
 <p>You can double check with e.g.:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    hexdump -C bad_stl_file.STL | head
-</code></pre></div>
-<p>In that case, a simple work around (read: "hack") is to replace the "solid"
-with "rolid", and assimp loads it as a binary file.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    printf 'r' | dd of=bad_stl_file.STL bs=1 seek=0 count=1 conv=notrunc 
-</code></pre></div>
+
+<blockquote>
+<p>hexdump -C bad_stl_file.STL | head</p>
+</blockquote>
+
+<p>In that case, a simple work around (read: "hack") is to replace the
+"solid" with "rolid", and assimp loads it as a binary file.</p>
+
+<blockquote>
+<p>printf 'r' | dd of=bad_stl_file.STL bs=1 seek=0 count=1 conv=notrunc</p>
+</blockquote>
+
 <p>I'm not exactly sure why RViz does not seem to have this problem.</p>
 
 <h2 id="license">License</h2>
 
-<p>The code is licensed under the BSD License, see the LICENSE file in the project
-root dir.</p>
+<p>The code is licensed under the BSD License, see the LICENSE file in the
+project root dir.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -484,8 +549,8 @@ root dir.</p>
   <div class="distro distro-electric">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -508,7 +573,7 @@ root dir.</p>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-02-14
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-01-05
         </span>
       </td>
     </tr>
@@ -548,7 +613,7 @@ root dir.</p>
                 
                   <tr>
                     <td><a href="/p/realtime_urdf_filter/github-blodow-realtime_urdf_filter">realtime_urdf_filter</a></td>
-                    <td>UNKNOWN</td>
+                    <td>0.0.0</td>
                   </tr>
                 
                 </tbody>
@@ -565,65 +630,72 @@ root dir.</p>
 <html><body><div class="rendered-markdown">
 <h1 id="realtime_urdf_filter">realtime_urdf_filter</h1>
 
-<p>This package provides OpenGL-accelerated, shader-based filtering for depth
-images. Scene geometry is defined in URDF models, along with parameters
-defining the camera's location and filtering parameters.  Both static
-environment models and articulated robot models are working beautifully, as
-long as TF latency is not too high.</p>
+<p>This package provides OpenGL-accelerated, shader-based filtering for
+depth images. Scene geometry is defined in URDF models, along with
+parameters defining the camera's location and filtering parameters. Both
+static environment models and articulated robot models are working
+beautifully, as long as TF latency is not too high.</p>
 
-<p>Incoming Kinect frames are transferred to the GPU as textures, and the scene is
-rendered from the same point of view. As a result, we can access the measured
-as well as the virtual depth map in the shader, where we can define efficient
-comparision operations.</p>
+<p>Incoming Kinect frames are transferred to the GPU as textures, and the
+scene is rendered from the same point of view. As a result, we can
+access the measured as well as the virtual depth map in the shader,
+where we can define efficient comparision operations.</p>
 
-<p>Example of robot self filtering to proprocess for human skeleton tracking:</p>
+<p>Example of robot self filtering to proprocess for human skeleton
+tracking:</p>
 
-<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/tracker.png" alt="Tracker Preprocessing" style="width: 320px;"></p>
+<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/tracker.png" alt="image">{width="320px"}</p>
 
 <p>Robot self filtering for object manipulation:</p>
 
-<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/grasping.png" alt="Robot Self Filtering" style="width: 320px;"></p>
+<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/grasping.png" alt="image">{width="320px"}</p>
 
-<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/rviz.png" alt="Robot Self Filtering" style="max-width: 50 %;"></p>
+<p><img src="https://raw.githubusercontent.com//blodow/realtime_urdf_filter/master//images/rviz.png" alt="image">{width="320px"}</p>
 
 <h2 id="dependencies">Dependencies</h2>
 
 <p>This has been verified to run on Ubuntu 12.04 with ROS Fuerte.</p>
 
-<p>This package requires the following: 3rd party libraries
- - GLSL (GL Shader Language) version 1.40 support or greater
- - GLEW (GL Extension Wrangler) version 1.6</p>
+<p>This package requires the following: 3rd party libraries</p>
 
-<p>NOTE: Trying to use thie package with GLEW 1.5 wil result in a segmentation fault.</p>
+<p>:   -   GLSL (GL Shader Language) version 1.40 support or greater
+    -   GLEW (GL Extension Wrangler) version 1.6</p>
+
+<p>NOTE: Trying to use thie package with GLEW 1.5 wil result in a
+segmentation fault.</p>
 
 <h2 id="ros-interface">ROS Interface</h2>
 
 <p>There are two ROS nodes that can be used out of the box:</p>
 
 <ul>
-<li>realtime_urdf_filter</li>
+<li>
+<p>realtime_urdf_filter</p>
+
+<p>This is a node that subscribes to a depth map topic, and outputs the
+filtered depth map on <code>/output</code>.</p>
+</li>
+<li>
+<p>urdf_filtered_tracker</p>
+
+<p>This node is basically the openni tracker with additional
+functionality to pre-filter the depth image before it's sent to the
+skeleton tracker.</p>
+
+<p><code>urdf_filtered_tracker</code> accesses the Kinect directly through OpenNI,
+and hooks itself in between the depth image generator node and the
+skeleton tracker node, so any "known" geometry that could
+potentially confuse the skeleton tracker (e.g. robot arms, people in
+background, static furniture) can be deleted.</p>
+
+<p>This has been used at Automatica 2012, where an operator was tracked
+to allow control of the robot arms using gesture recognition. Two
+robot arms needed to be filtered to allow stable skeleton tracking
+also for hand over tasks. Additionally, the camera was pointed
+towards a busy walkway intersection, so two virtual walls were added
+that filtered passing visitors from the depth data.</p>
+</li>
 </ul>
-<p>This is a node that subscribes to a depth map topic, and outputs the filtered
-  depth map on <code>/output</code>.</p>
-
-<ul>
-<li>urdf_filtered_tracker</li>
-</ul>
-<p>This node is basically the openni tracker with additional functionality to
-  pre-filter the depth image before it's sent to the skeleton tracker.</p>
-
-<p><code>urdf_filtered_tracker</code> accesses the Kinect directly through OpenNI, and
-  hooks itself in between the depth image generator node and the skeleton tracker
-  node, so any "known" geometry that could potentially confuse the skeleton
-  tracker (e.g. robot arms, people in background, static furniture) can be
-  deleted.</p>
-
-<p>This has been used at Automatica 2012, where an operator was tracked to allow
-  control of the robot arms using gesture recognition. Two robot arms needed to
-  be filtered to allow stable skeleton tracking also for hand over tasks.
-  Additionally, the camera was pointed towards a busy walkway intersection, so
-  two virtual walls were added that filtered passing visitors from the depth
-  data.</p>
 
 <h2 id="adapting-it-to-different-scenarios">Adapting it to different scenarios</h2>
 
@@ -633,79 +705,87 @@ parametrization and are a good starting point.</p>
 <p>The following <code>rosparam</code> parameters are supported:</p>
 
 <ul>
-<li>
-<code>fixed_frame</code> is used to specify the "fixed" TF link (e.g. <code>/map</code>,
-<code>/world</code>, etc.). This is useful to decouple tf lookups with different
-publising frequencies, e.g. robot and static publishers.</li>
-<li>
-<code>camera_frame</code> specifies the camera TF frame (e.g.
+<li>  <code>fixed_frame</code> is used to specify the "fixed" TF link (e.g. <code>/map</code>,
+<code>/world</code>, etc.). This is useful to decouple tf lookups with
+different publising frequencies, e.g. robot and static publishers.</li>
+<li>  <code>camera_frame</code> specifies the camera TF frame (e.g.
 <code>/camera_rgb_optical_frame</code>)</li>
-<li>
-<code>camera_offset</code> lets you specify additional offsets to the camera link. It
-has two components: <code>translation</code> (e.g. <code>[0.0, 0.0, 0.0]</code>) and
-<code>rotation</code> (e.g. <code>[0.0, 0.0, 0.0, 1.0]</code>).</li>
-<li>
-<code>models</code> contains a list of URDF models that are supposed to be filtered.
-For each, <code>model</code> defines the rosparam key that contains the URDF model,
-and <code>tf_prefix</code> contains, well, the tf prefix.</li>
-<li>
-<code>depth_distance_threshold</code> pixels with a depth difference of less than this
-value get filtered.</li>
-<li>
-<code>filter_replace_value</code> (for <code>urdf_filtered_tracker</code>) defines the new
-value that will be written to the filtered pixel depth values. Interestingly,
-setting <code>0</code> creates beautiful silhouettes, but the OpenNI tracker needs
-"background" (more distant) pixels around people. Weird. That's why we set
-this value to 5 meters.</li>
-<li>
-<code>show_gui</code> specifies whether a visualization window should pop up.</li>
+<li>  <code>camera_offset</code> lets you specify additional offsets to the
+camera link. It has two components: <code>translation</code> (e.g.
+<code>[0.0, 0.0, 0.0]</code>) and <code>rotation</code> (e.g. <code>[0.0, 0.0, 0.0, 1.0]</code>).</li>
+<li>  <code>models</code> contains a list of URDF models that are supposed to be
+filtered. For each, <code>model</code> defines the rosparam key that contains
+the URDF model, and <code>tf_prefix</code> contains, well, the tf prefix.</li>
+<li>  <code>depth_distance_threshold</code> pixels with a depth difference of less
+than this value get filtered.</li>
+<li>  <code>filter_replace_value</code> (for <code>urdf_filtered_tracker</code>) defines the new
+value that will be written to the filtered pixel depth values.
+Interestingly, setting <code>0</code> creates beautiful silhouettes, but the
+OpenNI tracker needs "background" (more distant) pixels
+around people. Weird. That's why we set this value to 5 meters.</li>
+<li>  <code>show_gui</code> specifies whether a visualization window should pop up.</li>
 </ul>
-<p>Also, the shaders in <code>include/shaders/</code> can easily be adapted. The vertex
-shader is basically just a pass through, so the fragment shader is more
-interesting for adding features. The shader as of now has access to 4 color
-attachments, and the red channel of gl_FragData[1] is used to return the
-filtered image. The other attachments can be used for visualization (see
-<code>show_gui</code>).</p>
 
-<h2 id="note:-starting-remotely">Note: starting remotely</h2>
+<p>Also, the shaders in <code>include/shaders/</code> can easily be adapted. The
+vertex shader is basically just a pass through, so the fragment shader
+is more interesting for adding features. The shader as of now has access
+to 4 color attachments, and the red channel of gl_FragData[1] is used
+to return the filtered image. The other attachments can be used for
+visualization (see <code>show_gui</code>).</p>
 
-<p>While this package uses offscreen rendering, it does need to connect to a X11
-server to get a valid OpenGL context (even with <code>show_gui</code> set to <code>false</code>).
-When launching one of the nodes in this package remotely via roslaunch or
-similar mechanisms, it will be necessary to set a DISPLAY variable and possible
-turn off access control for the X server. In this case, a bash script like the
-following can be launched from remote::</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    #!/bin/bash
-    DISPLAY=:0
-    xhost +
-    roslaunch realtime_urdf_filter tracker.launch
+<h2 id="note-starting-remotely">Note: starting remotely</h2>
+
+<p>While this package uses offscreen rendering, it does need to connect to
+a X11 server to get a valid OpenGL context (even with <code>show_gui</code> set to
+<code>false</code>). When launching one of the nodes in this package remotely via
+roslaunch or similar mechanisms, it will be necessary to set a DISPLAY
+variable and possible turn off access control for the X server. In this
+case, a bash script like the following can be launched from remote:</p>
+<div class="highlight"><pre><code class="language-" data-lang=""><span class="c">#!/bin/bash</span>
+<span class="nv">DISPLAY</span><span class="o">=</span>:0
+xhost +
+roslaunch realtime_urdf_filter tracker.launch
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting</h2>
 
-<p>Every once in a while, assimp fails when importing STL files. If the first 5
-bytes are "solid", it treats it as ASCII, however there are several binary STL
-files around that start with "solid". You'll get an error message along the
-lines of:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    [ERROR] [1360339850.748534073]: Could not load resource [package://pr2_description/meshes/sensors/kinect_prosilica_v0/115x100_swept_back--coarse.STL]: STL: ASCII file is empty or invalid; no data loaded
-</code></pre></div>
+<p>Every once in a while, assimp fails when importing STL files. If the
+first 5 bytes are "solid", it treats it as ASCII, however there are
+several binary STL files around that start with "solid". You'll get an
+error message along the lines of:</p>
+
+<blockquote>
+<p>[ERROR] [1360339850.748534073]: Could not load resource
+[package://pr2_description/meshes/sensors/kinect_prosilica_v0/115x100_swept_back--coarse.STL]:
+STL: ASCII file is empty or invalid; no data loaded</p>
+</blockquote>
+
 <p>You can double check with e.g.:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    hexdump -C bad_stl_file.STL | head
-</code></pre></div>
-<p>In that case, a simple work around (read: "hack") is to replace the "solid"
-with "rolid", and assimp loads it as a binary file.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    printf 'r' | dd of=bad_stl_file.STL bs=1 seek=0 count=1 conv=notrunc 
-</code></pre></div>
+
+<blockquote>
+<p>hexdump -C bad_stl_file.STL | head</p>
+</blockquote>
+
+<p>In that case, a simple work around (read: "hack") is to replace the
+"solid" with "rolid", and assimp loads it as a binary file.</p>
+
+<blockquote>
+<p>printf 'r' | dd of=bad_stl_file.STL bs=1 seek=0 count=1 conv=notrunc</p>
+</blockquote>
+
 <p>I'm not exactly sure why RViz does not seem to have this problem.</p>
 
 <h2 id="license">License</h2>
 
-<p>The code is licensed under the BSD License, see the LICENSE file in the project
-root dir.</p>
+<p>The code is licensed under the BSD License, see the LICENSE file in the
+project root dir.</p>
 </div></body></html>
 
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -740,7 +820,7 @@ root dir.</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

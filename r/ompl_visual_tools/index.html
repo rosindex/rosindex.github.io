@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,7 +147,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -220,19 +262,11 @@
 </div>
 
 
-  <div class="distro distro-jade">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -249,13 +283,272 @@
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">indigo-devel</span></td>
+      <td><span class="label label-default">kinetic-devel</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-08
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-28
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-default">UNRELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/ompl_visual_tools/github-davetcoleman-ompl_visual_tools">ompl_visual_tools</a></td>
+                    <td>2.3.2</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="ompl-visual-tools">OMPL Visual Tools</h1>
+
+<p>The OMPL Visual Tools is a library for visualizing and debugging <a href="http://ompl.kavrakilab.org/">Open Motion Planning Library</a> algorithms in Rviz.</p>
+
+<p>Formally named ompl_rviz_viewer until August 2014, this project spun out of an internship at Willow Garage. <a href="https://www.youtube.com/watch?v=RcGvi4Svd4k">Video</a></p>
+
+<p>The ompl_visual_tools was originally develped for testing cost-based algorithms in a two dimensional space with a third dimension displayed as cost.
+The space is specified as a grey scale cost map image that can be passed in to the program.
+The lighter (closer to white) each pixel of the image is, the "higher the cost" is considered to be. Black is considered no cost.
+Additionally, absolute obstacles can be specified by defining a max limit to the cost, such that any value above that threshold is considered an obstacle.</p>
+
+<p>This little program is similar to the OMPL.app that is distributed with OMPL, but instead uses RViz for visualization and is more
+streamlined for considering costs and experience-based planning.</p>
+
+<p>Developed by <a href="http://dav.ee/">Dave Coleman</a> at the University of Colorado Boulder and Willow Garage</p>
+
+<p>Status:</p>
+
+<ul>
+<li>
+<a href="https://travis-ci.org/davetcoleman/ompl_visual_tools"><img src="https://travis-ci.org/davetcoleman/ompl_visual_tools.svg" alt="Build Status"></a> Travis CI</li>
+<li>
+<a href="http://jenkins.ros.org/job/devel-indigo-ompl_visual_tools"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-indigo-ompl_visual_tools" alt="Devel Job Status"></a> Devel Job Status</li>
+<li>
+<a href="http://jenkins.ros.org/job/ros-indigo-ompl-visual-tools_binarydeb_trusty_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-ompl-visual-tools_binarydeb_trusty_amd64" alt="Build Status"></a> AMD64 Debian Job Status</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com//davetcoleman/ompl_visual_tools/kinetic-devel//screenshots/ompl_visual_tools.png" alt=""></p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="ubuntu-debian">Ubuntu Debian</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install ros-indigo-ompl-visual-tools
+</code></pre></div>
+<h3 id="build-from-source">Build from Source</h3>
+
+<p>To build this package, <code>git clone</code> this repo into a <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">catkin workspace</a> and be sure to install necessary dependencies by running the following command in the root of your catkin workspace:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">rosdep install -y --from-paths src --ignore-src --rosdistro indigo
+</code></pre></div>
+<h2 id="code-api">Code API</h2>
+
+<p>See <a href="http://docs.ros.org/indigo/api/my_package/html/">Class Reference</a></p>
+
+<h2 id="usage">Usage</h2>
+
+<p>This library can be integrated into your project to easily view a 2D, 3D or robot planning environment in Rviz.</p>
+
+<p>First, load the visualizer:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    // The visual tools for interfacing with Rviz
+    ompl_visual_tools::OmplVisualToolsPtr visual_tools_;
+
+    // Load the tool for displaying in Rviz
+    visual_tools_.reset(new ompl_visual_tools::OmplVisualTools(BASE_FRAME));
+    visual_tools_-&gt;setSpaceInformation(si_);
+    visual_tools_-&gt;setGlobalScale(100);
+
+    // Clear current rviz makers
+    visual_tools_-&gt;deleteAllMarkers();
+
+</code></pre></div>
+<h3 id="two-dimensions-with-optional-cost-map">Two Dimensions with optional cost map</h3>
+
+<p>To test with a 2D environment with a cost map:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    // Cost in 2D
+    ompl::base::CostMap2DOptimizationObjectivePtr cost_map_;
+    cost_map_-&gt;max_cost_threshold_percent_ = max_cost_threshold_percent;
+    cost_map_-&gt;loadImage(image_path);
+
+    // Pass cost to visualizer
+    visual_tools_-&gt;setCostMap(cost_map_-&gt;cost_);
+
+</code></pre></div>
+<p>To view the cost map in Rviz:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishCostMap(cost_map_-&gt;image_);
+
+</code></pre></div>
+<p>To view the start and goal location:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishState(start, rviz_visual_tools::GREEN,  rviz_visual_tools::XLARGE, "plan_start_goal");
+    visual_tools_-&gt;publishState(goal,  rviz_visual_tools::ORANGE, rviz_visual_tools::XLARGE, "plan_start_goal");
+
+</code></pre></div>
+<p>To view the solution path:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">      // Interpolate solution
+      simple_setup_-&gt;getSolutionPath().interpolate();
+
+      // Show path
+      visual_tools_-&gt;publishPath( simple_setup_-&gt;getSolutionPath(), rviz_visual_tools::GREEN, 1.0, "final_solution");
+
+</code></pre></div>
+<p>And to see more of what the planner was doing:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">      // Visualize the explored space
+      visual_tools_-&gt;publishGraph(planner_data, rviz_visual_tools::ORANGE, 0.2, "tree");
+
+      // Visualize the sample locations
+      visual_tools_-&gt;publishSamples(planner_data);
+
+</code></pre></div>
+<h3 id="moveit-robot-planning">MoveIt! Robot Planning</h3>
+
+<p>See moveit_visual_tools for more information about tools this class can use with MoveIt!. For OMPL-specific features:</p>
+
+<p>First, set the state space that MoveIt! has chosen for your robot in OMPL:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    // Create a state space describing our robot's planning group
+    ompl_interface::ModelBasedStateSpaceSpecification model_ss_spec(moveit_robot_model, joint_model_group);
+    const ompl_interface::JointModelStateSpaceFactory factory;
+    ompl_interface::ModelBasedStateSpacePtr model_state_space = factory.getNewStateSpace(model_ss_spec);
+
+    // Setup the state space
+    model_state_space-&gt;setup();
+
+    visual_tools_-&gt;setStateSpace(model_state_space);
+
+</code></pre></div>
+<p>Then you can publish the paths of various tips on a robot, as planned in OMPL:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    std::vector&lt;ompl::base::PlannerDataPtr&gt; paths;
+    simple_setup.getAllPlannerDatas(paths);
+
+    // Get tip links for this setup
+    std::vector&lt;const robot_model::LinkModel*&gt; tips;
+    joint_model_group_-&gt;getEndEffectorTips(tips);
+
+    bool show_trajectory_animated = true;
+    visual_tools_-&gt;publishRobotPath(paths[0], joint_model_group, tips, show_trajectory_animated);
+
+</code></pre></div>
+<h2 id="view-in-rviz">View in Rviz</h2>
+
+<p>Start Rviz using the included launch file:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">roslaunch ompl_visual_tools ompl_rviz.launch
+
+</code></pre></div>
+<h3 id="demo-planner-with-standard-rrt">Demo planner with standard RRT:</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo
+
+</code></pre></div>
+<p>To see optional parameters, pass in <code>--help</code> argument. There are many options.</p>
+
+<p><strong>Note:</strong> <em>To change the algorithm being used, manually edit the code</em></p>
+
+<h2 id="cost-map-usage">Cost Map Usage</h2>
+
+<p>A default cost map image will be used, located in the resources/ folder, for running the algorithm.
+Optionally one can pass in their own cost map image through a command line argument, as shown in the following example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo cost_map.ppm
+
+</code></pre></div>
+<p>The image must be in the PPM "Netpbm color image" format. To convert a jpg, png or any other image into this format on Linux simply use the "convert" command, as shown in the following example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install imagemagick
+convert cost_map.png cost_map.ppm
+
+</code></pre></div>
+<p>In general, a 100x100 pixel image is a decent space size, and larger dimensions will require much more computational resources or may hang your computer. GIMP is a good editor for scaling images down.</p>
+
+<h2 id="todo">TODO</h2>
+
+<ul>
+<li>Remove PPM library and instead depend on OMPL's version</li>
+</ul>
+
+<h2 id="develop">Develop</h2>
+
+<p>You are encouraged to fork this package on GitHub and test your own cost-based planning algorithms using this visualizer!</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/davetcoleman/ompl_visual_tools.git">https://github.com/davetcoleman/ompl_visual_tools.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">jade-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-02-05
         </span>
       </td>
     </tr>
@@ -298,7 +591,7 @@
                 
                   <tr>
                     <td><a href="/p/ompl_visual_tools/github-davetcoleman-ompl_visual_tools">ompl_visual_tools</a></td>
-                    <td>2.2.1</td>
+                    <td>2.3.2</td>
                   </tr>
                 
                 </tbody>
@@ -315,40 +608,53 @@
 <html><body><div class="rendered-markdown">
 <h1 id="ompl-visual-tools">OMPL Visual Tools</h1>
 
-<p>The OMPL Visual Tools is a library for visualizing and debugging <a href="http://ompl.kavrakilab.org/">Open Motion Planning Library</a> algorithms in Rviz. </p>
+<p>The OMPL Visual Tools is a library for visualizing and debugging <a href="http://ompl.kavrakilab.org/">Open Motion Planning Library</a> algorithms in Rviz.</p>
 
 <p>Formally named ompl_rviz_viewer until August 2014, this project spun out of an internship at Willow Garage. <a href="https://www.youtube.com/watch?v=RcGvi4Svd4k">Video</a></p>
 
-<p>The ompl_visual_tools was originally develped for testing cost-based algorithms in a two dimensional space with a third dimension displayed as cost. 
-The space is specified as a grey scale cost map image that can be passed in to the program. 
-The lighter (closer to white) each pixel of the image is, the "higher the cost" is considered to be. Black is considered no cost. 
+<p>The ompl_visual_tools was originally develped for testing cost-based algorithms in a two dimensional space with a third dimension displayed as cost.
+The space is specified as a grey scale cost map image that can be passed in to the program.
+The lighter (closer to white) each pixel of the image is, the "higher the cost" is considered to be. Black is considered no cost.
 Additionally, absolute obstacles can be specified by defining a max limit to the cost, such that any value above that threshold is considered an obstacle.</p>
 
-<p>This little program is similar to the OMPL.app that is distributed with OMPL, but instead uses RViz for visualization and is more 
+<p>This little program is similar to the OMPL.app that is distributed with OMPL, but instead uses RViz for visualization and is more
 streamlined for considering costs and experience-based planning.</p>
 
-<p><img align="right" src="https://raw.githubusercontent.com/davetcoleman/ompl_visual_tools/hydro-devel/screenshots/ompl_visual_tools.png">
-.</p>
+<p>Developed by <a href="http://dav.ee/">Dave Coleman</a> at the University of Colorado Boulder and Willow Garage</p>
 
-<h2 id="how-to-build">How to Build</h2>
+<p>Status:</p>
 
-<p><strong>Indigo</strong></p>
+<ul>
+<li>
+<a href="https://travis-ci.org/davetcoleman/ompl_visual_tools"><img src="https://travis-ci.org/davetcoleman/ompl_visual_tools.svg" alt="Build Status"></a> Travis CI</li>
+<li>
+<a href="http://jenkins.ros.org/job/devel-indigo-ompl_visual_tools"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-indigo-ompl_visual_tools" alt="Devel Job Status"></a> Devel Job Status</li>
+<li>
+<a href="http://jenkins.ros.org/job/ros-indigo-ompl-visual-tools_binarydeb_trusty_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-ompl-visual-tools_binarydeb_trusty_amd64" alt="Build Status"></a> AMD64 Debian Job Status</li>
+</ul>
 
-<p>Coming soon</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install ros-indigo-ompl-visual-tools
+<p><img src="https://raw.githubusercontent.com//davetcoleman/ompl_visual_tools/jade-devel//screenshots/ompl_visual_tools.png" alt=""></p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="ubuntu-debian">Ubuntu Debian</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install ros-indigo-ompl-visual-tools
 </code></pre></div>
-<p><strong>Hydro</strong></p>
+<h3 id="build-from-source">Build from Source</h3>
 
-<p>Clone into your <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">catkin workspace</a> and rebuild.</p>
+<p>To build this package, <code>git clone</code> this repo into a <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">catkin workspace</a> and be sure to install necessary dependencies by running the following command in the root of your catkin workspace:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">rosdep install -y --from-paths src --ignore-src --rosdistro indigo
+</code></pre></div>
+<h2 id="code-api">Code API</h2>
 
-<p>Note: this repo currently requires <code>OMPL 0.14.0</code> or newer, which is not available in debian for ROS Hydro. Please install OMPL from source.</p>
+<p>See <a href="http://docs.ros.org/indigo/api/my_package/html/">Class Reference</a></p>
 
 <h2 id="usage">Usage</h2>
 
 <p>This library can be integrated into your project to easily view a 2D, 3D or robot planning environment in Rviz.</p>
 
 <p>First, load the visualizer:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    // The visual tools for interfacing with Rviz
+<div class="highlight"><pre><code class="language-" data-lang="">    // The visual tools for interfacing with Rviz
     ompl_visual_tools::OmplVisualToolsPtr visual_tools_;
 
     // Load the tool for displaying in Rviz
@@ -358,45 +664,51 @@ streamlined for considering costs and experience-based planning.</p>
 
     // Clear current rviz makers
     visual_tools_-&gt;deleteAllMarkers();
+
 </code></pre></div>
 <h3 id="two-dimensions-with-optional-cost-map">Two Dimensions with optional cost map</h3>
 
 <p>To test with a 2D environment with a cost map:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    // Cost in 2D
+<div class="highlight"><pre><code class="language-" data-lang="">    // Cost in 2D
     ompl::base::CostMap2DOptimizationObjectivePtr cost_map_;
     cost_map_-&gt;max_cost_threshold_percent_ = max_cost_threshold_percent;
     cost_map_-&gt;loadImage(image_path);
 
     // Pass cost to visualizer
     visual_tools_-&gt;setCostMap(cost_map_-&gt;cost_);
+
 </code></pre></div>
 <p>To view the cost map in Rviz:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    visual_tools_-&gt;publishCostMap(cost_map_-&gt;image_);
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishCostMap(cost_map_-&gt;image_);
+
 </code></pre></div>
 <p>To view the start and goal location:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    visual_tools_-&gt;publishState(start, rviz_visual_tools::GREEN,  rviz_visual_tools::XLARGE, "plan_start_goal");
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishState(start, rviz_visual_tools::GREEN,  rviz_visual_tools::XLARGE, "plan_start_goal");
     visual_tools_-&gt;publishState(goal,  rviz_visual_tools::ORANGE, rviz_visual_tools::XLARGE, "plan_start_goal");
+
 </code></pre></div>
 <p>To view the solution path:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">      // Interpolate solution
+<div class="highlight"><pre><code class="language-" data-lang="">      // Interpolate solution
       simple_setup_-&gt;getSolutionPath().interpolate();
 
       // Show path
       visual_tools_-&gt;publishPath( simple_setup_-&gt;getSolutionPath(), rviz_visual_tools::GREEN, 1.0, "final_solution");
+
 </code></pre></div>
 <p>And to see more of what the planner was doing:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">      // Visualize the explored space
+<div class="highlight"><pre><code class="language-" data-lang="">      // Visualize the explored space
       visual_tools_-&gt;publishGraph(planner_data, rviz_visual_tools::ORANGE, 0.2, "tree");
 
       // Visualize the sample locations
       visual_tools_-&gt;publishSamples(planner_data);
+
 </code></pre></div>
-<h3 id="moveit!-robot-planning">MoveIt! Robot Planning</h3>
+<h3 id="moveit-robot-planning">MoveIt! Robot Planning</h3>
 
 <p>See moveit_visual_tools for more information about tools this class can use with MoveIt!. For OMPL-specific features:</p>
 
 <p>First, set the state space that MoveIt! has chosen for your robot in OMPL:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    // Create a state space describing our robot's planning group
+<div class="highlight"><pre><code class="language-" data-lang="">    // Create a state space describing our robot's planning group
     ompl_interface::ModelBasedStateSpaceSpecification model_ss_spec(moveit_robot_model, joint_model_group);
     const ompl_interface::JointModelStateSpaceFactory factory;
     ompl_interface::ModelBasedStateSpacePtr model_state_space = factory.getNewStateSpace(model_ss_spec);
@@ -405,9 +717,10 @@ streamlined for considering costs and experience-based planning.</p>
     model_state_space-&gt;setup();
 
     visual_tools_-&gt;setStateSpace(model_state_space);
+
 </code></pre></div>
 <p>Then you can publish the paths of various tips on a robot, as planned in OMPL:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    std::vector&lt;ompl::base::PlannerDataPtr&gt; paths;
+<div class="highlight"><pre><code class="language-" data-lang="">    std::vector&lt;ompl::base::PlannerDataPtr&gt; paths;
     simple_setup.getAllPlannerDatas(paths);
 
     // Get tip links for this setup
@@ -416,14 +729,17 @@ streamlined for considering costs and experience-based planning.</p>
 
     bool show_trajectory_animated = true;
     visual_tools_-&gt;publishRobotPath(paths[0], joint_model_group, tips, show_trajectory_animated);
+
 </code></pre></div>
 <h2 id="view-in-rviz">View in Rviz</h2>
 
 <p>Start Rviz using the included launch file:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">roslaunch ompl_visual_tools ompl_rviz.launch
+<div class="highlight"><pre><code class="language-" data-lang="">roslaunch ompl_visual_tools ompl_rviz.launch
+
 </code></pre></div>
-<h3 id="demo-planner-with-standard-rrt:">Demo planner with standard RRT:</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">rosrun ompl_visual_tools rrt_demo
+<h3 id="demo-planner-with-standard-rrt">Demo planner with standard RRT:</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo
+
 </code></pre></div>
 <p>To see optional parameters, pass in <code>--help</code> argument. There are many options.</p>
 
@@ -431,13 +747,15 @@ streamlined for considering costs and experience-based planning.</p>
 
 <h2 id="cost-map-usage">Cost Map Usage</h2>
 
-<p>A default cost map image will be used, located in the resources/ folder, for running the algorithm. 
+<p>A default cost map image will be used, located in the resources/ folder, for running the algorithm.
 Optionally one can pass in their own cost map image through a command line argument, as shown in the following example:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">rosrun ompl_visual_tools rrt_demo cost_map.ppm
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo cost_map.ppm
+
 </code></pre></div>
 <p>The image must be in the PPM "Netpbm color image" format. To convert a jpg, png or any other image into this format on Linux simply use the "convert" command, as shown in the following example:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install convert
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install convert
 convert cost_map.png cost_map.ppm
+
 </code></pre></div>
 <p>In general, a 100x100 pixel image is a decent space size, and larger dimensions will require much more computational resources or may hang your computer. GIMP is a good editor for scaling images down.</p>
 
@@ -446,6 +764,7 @@ convert cost_map.png cost_map.ppm
 <ul>
 <li>Remove PPM library and instead depend on OMPL's version</li>
 </ul>
+
 <h2 id="develop">Develop</h2>
 
 <p>You are encouraged to fork this package on GitHub and test your own cost-based planning algorithms using this visualizer!</p>
@@ -454,6 +773,258 @@ convert cost_map.png cost_map.ppm
             
           </div>
         </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/davetcoleman/ompl_visual_tools.git">https://github.com/davetcoleman/ompl_visual_tools.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">indigo-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-01-13
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/ompl_visual_tools/github-davetcoleman-ompl_visual_tools">ompl_visual_tools</a></td>
+                    <td>2.3.2</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="ompl-visual-tools">OMPL Visual Tools</h1>
+
+<p>The OMPL Visual Tools is a library for visualizing and debugging <a href="http://ompl.kavrakilab.org/">Open Motion Planning Library</a> algorithms in Rviz.</p>
+
+<p>Formally named ompl_rviz_viewer until August 2014, this project spun out of an internship at Willow Garage. <a href="https://www.youtube.com/watch?v=RcGvi4Svd4k">Video</a></p>
+
+<p>The ompl_visual_tools was originally develped for testing cost-based algorithms in a two dimensional space with a third dimension displayed as cost.
+The space is specified as a grey scale cost map image that can be passed in to the program.
+The lighter (closer to white) each pixel of the image is, the "higher the cost" is considered to be. Black is considered no cost.
+Additionally, absolute obstacles can be specified by defining a max limit to the cost, such that any value above that threshold is considered an obstacle.</p>
+
+<p>This little program is similar to the OMPL.app that is distributed with OMPL, but instead uses RViz for visualization and is more
+streamlined for considering costs and experience-based planning.</p>
+
+<p>Developed by <a href="http://dav.ee/">Dave Coleman</a> at the University of Colorado Boulder and Willow Garage</p>
+
+<p>Status:</p>
+
+<ul>
+<li>
+<a href="https://travis-ci.org/davetcoleman/ompl_visual_tools"><img src="https://travis-ci.org/davetcoleman/ompl_visual_tools.svg" alt="Build Status"></a> Travis CI</li>
+<li>
+<a href="http://jenkins.ros.org/job/devel-indigo-ompl_visual_tools"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-indigo-ompl_visual_tools" alt="Devel Job Status"></a> Devel Job Status</li>
+<li>
+<a href="http://jenkins.ros.org/job/ros-indigo-ompl-visual-tools_binarydeb_trusty_amd64/"><img src="http://jenkins.ros.org/buildStatus/icon?job=ros-indigo-ompl-visual-tools_binarydeb_trusty_amd64" alt="Build Status"></a> AMD64 Debian Job Status</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com//davetcoleman/ompl_visual_tools/indigo-devel//screenshots/ompl_visual_tools.png" alt=""></p>
+
+<h2 id="how-to-build">How to Build</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install ros-indigo-ompl-visual-tools
+
+</code></pre></div>
+<h2 id="usage">Usage</h2>
+
+<p>This library can be integrated into your project to easily view a 2D, 3D or robot planning environment in Rviz.</p>
+
+<p>First, load the visualizer:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    // The visual tools for interfacing with Rviz
+    ompl_visual_tools::OmplVisualToolsPtr visual_tools_;
+
+    // Load the tool for displaying in Rviz
+    visual_tools_.reset(new ompl_visual_tools::OmplVisualTools(BASE_FRAME));
+    visual_tools_-&gt;setSpaceInformation(si_);
+    visual_tools_-&gt;setGlobalScale(100);
+
+    // Clear current rviz makers
+    visual_tools_-&gt;deleteAllMarkers();
+
+</code></pre></div>
+<h3 id="two-dimensions-with-optional-cost-map">Two Dimensions with optional cost map</h3>
+
+<p>To test with a 2D environment with a cost map:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    // Cost in 2D
+    ompl::base::CostMap2DOptimizationObjectivePtr cost_map_;
+    cost_map_-&gt;max_cost_threshold_percent_ = max_cost_threshold_percent;
+    cost_map_-&gt;loadImage(image_path);
+
+    // Pass cost to visualizer
+    visual_tools_-&gt;setCostMap(cost_map_-&gt;cost_);
+
+</code></pre></div>
+<p>To view the cost map in Rviz:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishCostMap(cost_map_-&gt;image_);
+
+</code></pre></div>
+<p>To view the start and goal location:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishState(start, rviz_visual_tools::GREEN,  rviz_visual_tools::XLARGE, "plan_start_goal");
+    visual_tools_-&gt;publishState(goal,  rviz_visual_tools::ORANGE, rviz_visual_tools::XLARGE, "plan_start_goal");
+
+</code></pre></div>
+<p>To view the solution path:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">      // Interpolate solution
+      simple_setup_-&gt;getSolutionPath().interpolate();
+
+      // Show path
+      visual_tools_-&gt;publishPath( simple_setup_-&gt;getSolutionPath(), rviz_visual_tools::GREEN, 1.0, "final_solution");
+
+</code></pre></div>
+<p>And to see more of what the planner was doing:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">      // Visualize the explored space
+      visual_tools_-&gt;publishGraph(planner_data, rviz_visual_tools::ORANGE, 0.2, "tree");
+
+      // Visualize the sample locations
+      visual_tools_-&gt;publishSamples(planner_data);
+
+</code></pre></div>
+<h3 id="moveit-robot-planning">MoveIt! Robot Planning</h3>
+
+<p>See moveit_visual_tools for more information about tools this class can use with MoveIt!. For OMPL-specific features:</p>
+
+<p>First, set the state space that MoveIt! has chosen for your robot in OMPL:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    // Create a state space describing our robot's planning group
+    ompl_interface::ModelBasedStateSpaceSpecification model_ss_spec(moveit_robot_model, joint_model_group);
+    const ompl_interface::JointModelStateSpaceFactory factory;
+    ompl_interface::ModelBasedStateSpacePtr model_state_space = factory.getNewStateSpace(model_ss_spec);
+
+    // Setup the state space
+    model_state_space-&gt;setup();
+
+    visual_tools_-&gt;setStateSpace(model_state_space);
+
+</code></pre></div>
+<p>Then you can publish the paths of various tips on a robot, as planned in OMPL:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    std::vector&lt;ompl::base::PlannerDataPtr&gt; paths;
+    simple_setup.getAllPlannerDatas(paths);
+
+    // Get tip links for this setup
+    std::vector&lt;const robot_model::LinkModel*&gt; tips;
+    joint_model_group_-&gt;getEndEffectorTips(tips);
+
+    bool show_trajectory_animated = true;
+    visual_tools_-&gt;publishRobotPath(paths[0], joint_model_group, tips, show_trajectory_animated);
+
+</code></pre></div>
+<h2 id="view-in-rviz">View in Rviz</h2>
+
+<p>Start Rviz using the included launch file:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">roslaunch ompl_visual_tools ompl_rviz.launch
+
+</code></pre></div>
+<h3 id="demo-planner-with-standard-rrt">Demo planner with standard RRT:</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo
+
+</code></pre></div>
+<p>To see optional parameters, pass in <code>--help</code> argument. There are many options.</p>
+
+<p><strong>Note:</strong> <em>To change the algorithm being used, manually edit the code</em></p>
+
+<h2 id="cost-map-usage">Cost Map Usage</h2>
+
+<p>A default cost map image will be used, located in the resources/ folder, for running the algorithm.
+Optionally one can pass in their own cost map image through a command line argument, as shown in the following example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo cost_map.ppm
+
+</code></pre></div>
+<p>The image must be in the PPM "Netpbm color image" format. To convert a jpg, png or any other image into this format on Linux simply use the "convert" command, as shown in the following example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install convert
+convert cost_map.png cost_map.ppm
+
+</code></pre></div>
+<p>In general, a 100x100 pixel image is a decent space size, and larger dimensions will require much more computational resources or may hang your computer. GIMP is a good editor for scaling images down.</p>
+
+<h2 id="todo">TODO</h2>
+
+<ul>
+<li>Remove PPM library and instead depend on OMPL's version</li>
+</ul>
+
+<h2 id="develop">Develop</h2>
+
+<p>You are encouraged to fork this package on GitHub and test your own cost-based planning algorithms using this visualizer!</p>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
       
     </div>
   </div>
@@ -461,8 +1032,8 @@ convert cost_map.png cost_map.ppm
   <div class="distro distro-hydro">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -566,7 +1137,8 @@ streamlined for considering costs and experience-based planning.</p>
 <p><strong>Indigo</strong></p>
 
 <p>Coming soon</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install ros-indigo-ompl-visual-tools
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install ros-indigo-ompl-visual-tools
+
 </code></pre></div>
 <p><strong>Hydro</strong></p>
 
@@ -579,7 +1151,7 @@ streamlined for considering costs and experience-based planning.</p>
 <p>This library can be integrated into your project to easily view a 2D, 3D or robot planning environment in Rviz.</p>
 
 <p>First, load the visualizer:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    // The visual tools for interfacing with Rviz
+<div class="highlight"><pre><code class="language-" data-lang="">    // The visual tools for interfacing with Rviz
     ompl_visual_tools::OmplVisualToolsPtr visual_tools_;
 
     // Load the tool for displaying in Rviz
@@ -589,45 +1161,51 @@ streamlined for considering costs and experience-based planning.</p>
 
     // Clear current rviz makers
     visual_tools_-&gt;deleteAllMarkers();
+
 </code></pre></div>
 <h3 id="two-dimensions-with-optional-cost-map">Two Dimensions with optional cost map</h3>
 
 <p>To test with a 2D environment with a cost map:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    // Cost in 2D
+<div class="highlight"><pre><code class="language-" data-lang="">    // Cost in 2D
     ompl::base::CostMap2DOptimizationObjectivePtr cost_map_;
     cost_map_-&gt;max_cost_threshold_percent_ = max_cost_threshold_percent;
     cost_map_-&gt;loadImage(image_path);
 
     // Pass cost to visualizer
     visual_tools_-&gt;setCostMap(cost_map_-&gt;cost_);
+
 </code></pre></div>
 <p>To view the cost map in Rviz:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    visual_tools_-&gt;publishCostMap(cost_map_-&gt;image_);
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishCostMap(cost_map_-&gt;image_);
+
 </code></pre></div>
 <p>To view the start and goal location:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    visual_tools_-&gt;publishState(start, moveit_visual_tools::GREEN,  moveit_visual_tools::XLARGE, "plan_start_goal");
+<div class="highlight"><pre><code class="language-" data-lang="">    visual_tools_-&gt;publishState(start, moveit_visual_tools::GREEN,  moveit_visual_tools::XLARGE, "plan_start_goal");
     visual_tools_-&gt;publishState(goal,  moveit_visual_tools::ORANGE, moveit_visual_tools::XLARGE, "plan_start_goal");
+
 </code></pre></div>
 <p>To view the solution path:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">      // Interpolate solution
+<div class="highlight"><pre><code class="language-" data-lang="">      // Interpolate solution
       simple_setup_-&gt;getSolutionPath().interpolate();
 
       // Show path
       visual_tools_-&gt;publishPath( simple_setup_-&gt;getSolutionPath(), moveit_visual_tools::GREEN, 1.0, "final_solution");
+
 </code></pre></div>
 <p>And to see more of what the planner was doing:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">      // Visualize the explored space
+<div class="highlight"><pre><code class="language-" data-lang="">      // Visualize the explored space
       visual_tools_-&gt;publishGraph(planner_data, moveit_visual_tools::ORANGE, 0.2, "tree");
 
       // Visualize the sample locations
       visual_tools_-&gt;publishSamples(planner_data);
+
 </code></pre></div>
-<h3 id="moveit!-robot-planning">MoveIt! Robot Planning</h3>
+<h3 id="moveit-robot-planning">MoveIt! Robot Planning</h3>
 
 <p>See moveit_visual_tools for more information about tools this class can use with MoveIt!. For OMPL-specific features:</p>
 
 <p>First, set the state space that MoveIt! has chosen for your robot in OMPL:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    // Create a state space describing our robot's planning group
+<div class="highlight"><pre><code class="language-" data-lang="">    // Create a state space describing our robot's planning group
     ompl_interface::ModelBasedStateSpaceSpecification model_ss_spec(moveit_robot_model, joint_model_group);
     const ompl_interface::JointModelStateSpaceFactory factory;
     ompl_interface::ModelBasedStateSpacePtr model_state_space = factory.getNewStateSpace(model_ss_spec);
@@ -636,9 +1214,10 @@ streamlined for considering costs and experience-based planning.</p>
     model_state_space-&gt;setup();
 
     visual_tools_-&gt;setStateSpace(model_state_space);
+
 </code></pre></div>
 <p>Then you can publish the paths of various tips on a robot, as planned in OMPL:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    std::vector&lt;ompl::base::PlannerDataPtr&gt; paths;
+<div class="highlight"><pre><code class="language-" data-lang="">    std::vector&lt;ompl::base::PlannerDataPtr&gt; paths;
     simple_setup.getAllPaths(paths);
 
     // Get tip links for this setup
@@ -647,14 +1226,17 @@ streamlined for considering costs and experience-based planning.</p>
 
     bool show_trajectory_animated = true;
     visual_tools_-&gt;publishRobotPath(paths[0], joint_model_group, tips, show_trajectory_animated);
+
 </code></pre></div>
 <h2 id="view-in-rviz">View in Rviz</h2>
 
 <p>Start Rviz using the included launch file:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">roslaunch ompl_visual_tools ompl_rviz.launch
+<div class="highlight"><pre><code class="language-" data-lang="">roslaunch ompl_visual_tools ompl_rviz.launch
+
 </code></pre></div>
-<h3 id="demo-planner-with-standard-rrt:">Demo planner with standard RRT:</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">rosrun ompl_visual_tools rrt_demo
+<h3 id="demo-planner-with-standard-rrt">Demo planner with standard RRT:</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo
+
 </code></pre></div>
 <p>To see optional parameters, pass in <code>--help</code> argument. There are many options.</p>
 
@@ -664,11 +1246,13 @@ streamlined for considering costs and experience-based planning.</p>
 
 <p>A default cost map image will be used, located in the resources/ folder, for running the algorithm. 
 Optionally one can pass in their own cost map image through a command line argument, as shown in the following example:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">rosrun ompl_visual_tools rrt_demo cost_map.ppm
+<div class="highlight"><pre><code class="language-" data-lang="">rosrun ompl_visual_tools rrt_demo cost_map.ppm
+
 </code></pre></div>
 <p>The image must be in the PPM "Netpbm color image" format. To convert a jpg, png or any other image into this format on Linux simply use the "convert" command, as shown in the following example:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install convert
+<div class="highlight"><pre><code class="language-" data-lang="">sudo apt-get install convert
 convert cost_map.png cost_map.ppm
+
 </code></pre></div>
 <p>In general, a 100x100 pixel image is a decent space size, and larger dimensions will require much more computational resources or may hang your computer. GIMP is a good editor for scaling images down.</p>
 
@@ -677,6 +1261,7 @@ convert cost_map.png cost_map.ppm
 <ul>
 <li>Remove PPM library and instead depend on OMPL's version</li>
 </ul>
+
 <h2 id="develop">Develop</h2>
 
 <p>You are encouraged to fork this package on GitHub and test your own cost-based planning algorithms using this visualizer!</p>
@@ -685,6 +1270,9 @@ convert cost_map.png cost_map.ppm
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -743,7 +1331,7 @@ convert cost_map.png cost_map.ppm
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

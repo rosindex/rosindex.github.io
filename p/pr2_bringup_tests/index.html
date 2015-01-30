@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -108,11 +146,15 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
-    <label id="indigo-option" class="distro-button btn btn-xs btn-default" href="#indigo" data="indigo">
+    <label id="indigo-option" class="distro-button btn btn-xs btn-primary" href="#indigo" data="indigo">
       <input type="radio" name="options" id="indigo-radio" autocomplete="off"> indigo
     </label>
   
@@ -134,11 +176,11 @@
           <a href="#groovy" data="groovy" id="groovy-button">groovy</a>
         </li>
       
-        <li data="fuerte" id="fuerte-option" class=" older-distro-option"  href="#fuerte">
+        <li data="fuerte" id="fuerte-option" class="disabled older-distro-option"  href="#fuerte">
           <a href="#fuerte" data="fuerte" id="fuerte-button">fuerte</a>
         </li>
       
-        <li data="electric" id="electric-option" class=" older-distro-option"  href="#electric">
+        <li data="electric" id="electric-option" class="disabled older-distro-option"  href="#electric">
           <a href="#electric" data="electric" id="electric-button">electric</a>
         </li>
       
@@ -154,75 +196,102 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-        
-      </div>
-    
-        <div class="distro distro-indigo">
-        
-      </div>
-    
-        <div class="distro distro-hydro">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
+  </div>
+</div>
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/github-PR2-pr2_self_test">pr2_self_test</a> repo</small>
-      </h3>
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
       
-        
-          <a class="label label-primary" href="/p/joint_qualification_controllers/github-PR2-pr2_self_test">joint_qualification_controllers</a>
-        
-      
-        
-          <span class="label label-default"> pr2_bringup_tests</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_counterbalance_check/github-PR2-pr2_self_test">pr2_counterbalance_check</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_motor_diagnostic_tool/github-PR2-pr2_self_test">pr2_motor_diagnostic_tool</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_self_test/github-PR2-pr2_self_test">pr2_self_test</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_self_test_msgs/github-PR2-pr2_self_test">pr2_self_test_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/pr2_bringup_tests/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+          <div class="alert alert-warning">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
-</div>
-<div class="top-buffer distro distro-hydro">
+
+  <div class="distro distro-jade">
+    <div class="container-fluid">
+      
+          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
   
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/github-PR2-pr2_self_test">pr2_self_test</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_qualification_controllers/github-PR2-pr2_self_test">
+
+joint_qualification_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+pr2_bringup_tests
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_counterbalance_check/github-PR2-pr2_self_test">
+
+pr2_counterbalance_check
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_motor_diagnostic_tool/github-PR2-pr2_self_test">
+
+pr2_motor_diagnostic_tool
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_self_test/github-PR2-pr2_self_test">
+
+<span class="glyphicon glyphicon-education"></span> pr2_self_test
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_self_test_msgs/github-PR2-pr2_self_test">
+
+pr2_self_test_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
 <table class="table table-condensed instance-switch">
   <tr>
     <td>
@@ -250,13 +319,6 @@
                   </a>
                 </li>
               
-                <li role="presentation">
-                  <a id="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" data="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">
-                    <span class="glyphicon glyphicon-none"></span>
-                    code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-                  </a>
-                </li>
-              
             </ul>
           </div>
         </div>
@@ -265,372 +327,63 @@
   </tr>
 </table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-groovy">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_self_test</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/joint_qualification_controllers/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">joint_qualification_controllers</a>
-        
-      
-        
-          <span class="label label-default"> pr2_bringup_tests</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_counterbalance_check/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_counterbalance_check</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_self_test_msgs/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_self_test_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/pr2_bringup_tests/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
   </div>
 </div>
-<div class="top-buffer distro distro-groovy">
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/pr2_bringup_tests/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/pr2_bringup_tests?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=pr2_bringup_tests&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
   
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/pr2_bringup_tests"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-PR2-pr2_self_test" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/github-PR2-pr2_self_test" data="github-PR2-pr2_self_test">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-PR2-pr2_self_test
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" data="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">
-                    <span class="glyphicon glyphicon-none"></span>
-                    code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
 </div>
 
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-fuerte">
-        
-          <div class="well well-sm">
-            
-            
-            
+            </div>
             
 
 
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_self_test</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/joint_qualification_controllers/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">joint_qualification_controllers</a>
-        
-      
-        
-          <span class="label label-default"> pr2_bringup_tests</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_counterbalance_check/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_counterbalance_check</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_self_test_msgs/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_self_test_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/fuerte/api/pr2_bringup_tests/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-fuerte">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/pr2_bringup_tests"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-PR2-pr2_self_test" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/github-PR2-pr2_self_test" data="github-PR2-pr2_self_test">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-PR2-pr2_self_test
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" data="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">
-                    <span class="glyphicon glyphicon-none"></span>
-                    code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
 
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-electric">
-        
-          <div class="well well-sm">
-            
-            
-            
-            
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_self_test</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/joint_qualification_controllers/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">joint_qualification_controllers</a>
-        
-      
-        
-          <span class="label label-default"> pr2_bringup_tests</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_counterbalance_check/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_counterbalance_check</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/pr2_self_test_msgs/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">pr2_self_test_msgs</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/electric/api/pr2_bringup_tests/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/pr2_bringup_tests" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-electric">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/pr2_bringup_tests"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-PR2-pr2_self_test" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/github-PR2-pr2_self_test" data="github-PR2-pr2_self_test">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-PR2-pr2_self_test
-                  </a>
-                </li>
-              
-                <li role="presentation">
-                  <a id="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk" data="code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk">
-                    <span class="glyphicon glyphicon-none"></span>
-                    code-ros-svn-wg-ros-pkg-stacks-pr2_self_test-trunk
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-          </div>
-        
-      </div>
-    
-        <div class="distro distro-diamondback">
-        
-      </div>
-    
-    </div>
-  </div>
-</div>
-
-  <div class="distro distro-jade">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
-          <div class="alert alert-warning">No version for distro <strong>indigo</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-hydro">
-    <div class="container-fluid">
-      
-        
-        
-
-
-
-<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+<ul class="nav nav-tabs nav-justified" id="indigo-tabs" style="margin-bottom:20px">
   <li class="better-tabs active">
-    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+    <a href="#indigo-overview" data-toggle="tab">Overview</a>
   </li>
   <li class="better-tabs">
     
     
     
     
-    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
+    
+    <a href="#indigo-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="hydro-overview">
+  <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -643,7 +396,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>1.0.7</td>
+                <td>1.0.12</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -669,7 +422,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -691,7 +444,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-02
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-09-23
         </span>
       </td>
     </tr>
@@ -719,8 +472,23 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -739,17 +507,6 @@
               <ul class="list-unstyled">
                 
                   <li>Kevin Watts</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
                 
               </ul>
             
@@ -782,7 +539,7 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-pr2_bringup_tests">Changelog for package pr2_bringup_tests</h1>
 
-<h2 id="1.0.1-(2014-09-16)">1.0.1 (2014-09-16)</h2>
+<h2 id="1-0-1-2014-09-16">1.0.1 (2014-09-16)</h2>
 
 <ul>
 <li>  Added install targets to pr2_bringup_tests</li>
@@ -794,8 +551,781 @@ pr2_apps/pr2_mannequin_mode</li>
 <li>  Move wg_hardware_test to github.</li>
 <li>  Update version of wg_hardware_test to use.</li>
 <li>  Update life_test rosinstall for electric install.</li>
-<li>  Lock wg_hardware_test to current version before changing
-dependencies.</li>
+<li>  Lock wg_hardware_test to current version before
+changing dependencies.</li>
+<li>  PR2 life test rosinstall file uses special version of
+camera_calibration</li>
+<li>  Calibration check for PR2 production calibration,
+<a href="https://github.com/PR2/pr2_self_test/issues/4956">#4956</a>
+</li>
+<li>  Removing stale calibration items from pr2_bringup_tests. OK by
+Vijay</li>
+<li>  Only using the wge100 camera package for camera FW installation</li>
+<li>  Camera drivers trunk to pr2_bringup_tests rosinstall file</li>
+<li>  Removing vestigial dependency on compressed_image_transport</li>
+<li>  Correcting size of checkerboard used for prosilica calibration</li>
+<li>  Adding camera_calibration package to pr2_bringup_tests</li>
+<li>  Removing user paths from rosinstall file</li>
+<li>  Controllers in pr2_bringup_tests load using pkg/Name syntax.
+<a href="https://github.com/PR2/pr2_self_test/issues/4534">#4534</a>
+</li>
+<li>  Bumping qual pr2_calibration stack to cturtle. Fixing url for
+relased stacks too</li>
+<li>  Life test rosinstall file now works as cturtle overlay</li>
+<li>  rosinstall file for pr2_bringup_tests</li>
+<li>  Cleanup of pr2_self_test stack before 0.1 release</li>
+<li>  Added platform tags for Ubuntu 9.04, 9.10, and 10.04.</li>
+<li>  New life_test.rosinstall file with proper locking</li>
+<li>  Fixing typos. Adding scatterplots for preburn</li>
+<li>  Putting together calibration scripts for pre/post burn-in checks</li>
+<li>  No only grabbing pr2_bringup_tests from pr2_self_test for
+calibration bringup</li>
+<li>  Renaming calibration stack local name</li>
+<li>  Adding stub for calibration bringup</li>
+<li>  Prosilica settings launch files</li>
+<li>  Added dash to version tag for pr2_arm_navigation revision</li>
+<li>  Adding calibrate_prosilica launch file to pr2_bringup_tests.
+<a href="https://github.com/PR2/pr2_self_test/issues/4249">#4249</a>
+</li>
+<li>  Removing prosilica from pr2_bringup_tests</li>
+<li>  Added launch file to calibrate prosilica camera</li>
+<li>  Adding rev number for pr2_arm_navigation_tests in life_test
+rosinstall file. Blocked by release of
+<a href="https://github.com/PR2/pr2_self_test/issues/4028">#4028</a>
+</li>
+<li>  Changing topic of IMU chart</li>
+<li>  Forearm cameras will trigger off etherCAT chain</li>
+<li>  pr2_bringup_tests depends on image view</li>
+<li>  Adding script to check IMU data</li>
+<li>  Script to check gripper accelerometers with rxplot</li>
+<li>  Using mannequin mode for pr2_bringup_tests</li>
+<li>  Gripper LED launch file name change</li>
+<li>  ROS install for PR2 during burn in tests</li>
+<li>  Moving pr2_bringup_tests package to pr2_self_test</li>
+<li>  Contributors: TheDash, ahendrix, gerkey, vpradeep, watts</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-tutorials">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Wiki Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        
+        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Tutorials</h3>
+      </div>
+      <div class="panel-body">
+        <em>Not currently indexed.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-deps">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_bringup#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_bringup" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_bringup#indigo">pr2_bringup</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_controller_manager#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_controller_manager" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_controller_manager#indigo">pr2_controller_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ethercat_trigger_controllers#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ethercat_trigger_controllers" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/ethercat_trigger_controllers#indigo">ethercat_trigger_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_mannequin_mode#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_mannequin_mode" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_mannequin_mode#indigo">pr2_mannequin_mode</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_view#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_view" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_view#indigo">image_view</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_calibration#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_calibration" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_calibration#indigo">camera_calibration</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pr2_self_test/github-PR2-pr2_self_test#indigo">pr2_self_test</a></td>
+                      <td><a href="/r/pr2_self_test/github-PR2-pr2_self_test">github-PR2-pr2_self_test</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_self_test/github-PR2-pr2_self_test#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="indigo-assets">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Launch files</h3>
+      </div>
+      <div class="panel-body">
+        
+          <ul>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No message files found.</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Services</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No service files found</em>
+        
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Plugins</h3>
+      </div>
+      <div class="panel-body">
+        
+          <em>No plugins found.</em>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/package_body_tabs.js"></script>
+
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
+
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/pr2_bringup_tests/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/pr2_bringup_tests?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=pr2_bringup_tests&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/github-PR2-pr2_self_test">pr2_self_test</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_qualification_controllers/github-PR2-pr2_self_test">
+
+joint_qualification_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+pr2_bringup_tests
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_counterbalance_check/github-PR2-pr2_self_test">
+
+pr2_counterbalance_check
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_motor_diagnostic_tool/github-PR2-pr2_self_test">
+
+pr2_motor_diagnostic_tool
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_self_test/github-PR2-pr2_self_test">
+
+<span class="glyphicon glyphicon-education"></span> pr2_self_test
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_self_test_msgs/github-PR2-pr2_self_test">
+
+pr2_self_test_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/pr2_bringup_tests"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-PR2-pr2_self_test
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-PR2-pr2_self_test" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/github-PR2-pr2_self_test" data="github-PR2-pr2_self_test">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-PR2-pr2_self_test
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/pr2_bringup_tests/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/pr2_bringup_tests?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=pr2_bringup_tests&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
+
+
+
+<ul class="nav nav-tabs nav-justified" id="hydro-tabs" style="margin-bottom:20px">
+  <li class="better-tabs active">
+    <a href="#hydro-overview" data-toggle="tab">Overview</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    
+    <a href="#hydro-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
+  </li>
+  <li class="better-tabs">
+    
+    
+    
+    
+    <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+  </li>
+  <li class="better-tabs">
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="hydro-overview">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
+          <div class="panel-body">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
+                <td>
+                  
+                  
+                    <em>No category tags.</em>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Version</strong></td>
+                <td>1.0.12</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>License</strong></td>
+                <td>BSD</td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Buildtool</strong></td>
+                <td>
+                  
+                    <span class="label label-info">
+                  
+                    CATKIN</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right"><strong>Use</strong></td>
+                <td>
+                
+                  <span class="label label-success">RECOMMENDED</span>
+                
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body">
+            
+            
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/PR2/pr2_self_test.git">https://github.com/PR2/pr2_self_test.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">hydro-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-09-23
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Devon Ash</li>
+                
+              </ul>
+            
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li>Kevin Watts</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
+          <div class="panel-body">
+            
+              <em>No README found.</em>
+              
+                <em>No README in repository either.</em>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="changelog-for-package-pr2_bringup_tests">Changelog for package pr2_bringup_tests</h1>
+
+<h2 id="1-0-1-2014-09-16">1.0.1 (2014-09-16)</h2>
+
+<ul>
+<li>  Added install targets to pr2_bringup_tests</li>
+<li>  Removed unneceesary packagexml and cmake</li>
+<li>  Catkinizes and compiles in hydro if you have the hydro-devel of
+pr2_apps/pr2_mannequin_mode</li>
+<li>  Removed manifest.xml</li>
+<li>  Update calibration verify to Groovy.</li>
+<li>  Move wg_hardware_test to github.</li>
+<li>  Update version of wg_hardware_test to use.</li>
+<li>  Update life_test rosinstall for electric install.</li>
+<li>  Lock wg_hardware_test to current version before
+changing dependencies.</li>
 <li>  PR2 life test rosinstall file uses special version of
 camera_calibration</li>
 <li>  Calibration check for PR2 production calibration,
@@ -862,7 +1392,8 @@ rosinstall file. Blocked by release of
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -874,37 +1405,194 @@ rosinstall file. Blocked by release of
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_bringup#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_bringup" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_bringup#hydro">pr2_bringup</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_controller_manager#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_controller_manager" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_controller_manager#hydro">pr2_controller_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ethercat_trigger_controllers#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ethercat_trigger_controllers" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/ethercat_trigger_controllers#hydro">ethercat_trigger_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_mannequin_mode#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_mannequin_mode" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_mannequin_mode#hydro">pr2_mannequin_mode</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_view#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_view" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_view#hydro">image_view</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_calibration#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_calibration" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_calibration#hydro">camera_calibration</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_bringup#hydro">pr2_bringup</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_controller_manager#hydro">pr2_controller_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ethercat_trigger_controllers#hydro">ethercat_trigger_controllers</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_mannequin_mode#hydro">pr2_mannequin_mode</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_view#hydro">image_view</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_calibration#hydro">camera_calibration</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pr2_self_test/github-PR2-pr2_self_test#hydro">pr2_self_test</a></td>
+                      <td><a href="/r/pr2_self_test/github-PR2-pr2_self_test">github-PR2-pr2_self_test</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pr2_self_test/github-PR2-pr2_self_test#hydro-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -912,26 +1600,105 @@ rosinstall file. Blocked by release of
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a></li>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a></li>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a></li>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a></li>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a></li>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a></li>
-          
-            <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -940,9 +1707,9 @@ rosinstall file. Blocked by release of
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -951,9 +1718,9 @@ rosinstall file. Blocked by release of
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -962,28 +1729,35 @@ rosinstall file. Blocked by release of
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/pr2_bringup_tests/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//PR2/pr2_self_test/tree/hydro-devel/pr2_bringup_tests"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/pr2_bringup_tests?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=pr2_bringup_tests&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -993,6 +1767,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/pr2_bringup_tests">pr2_bringup_tests</a> <small>package from <a style="text-decoration:none" href="/r/pr2_self_test/github-PR2-pr2_self_test">pr2_self_test</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/joint_qualification_controllers/github-PR2-pr2_self_test">
+
+joint_qualification_controllers
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+pr2_bringup_tests
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_counterbalance_check/github-PR2-pr2_self_test">
+
+pr2_counterbalance_check
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/pr2_self_test_msgs/github-PR2-pr2_self_test">
+
+pr2_self_test_msgs
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/pr2_bringup_tests"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-PR2-pr2_self_test
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-PR2-pr2_self_test" role="menuitem" tabindex="-1" href="/p/pr2_bringup_tests/github-PR2-pr2_self_test" data="github-PR2-pr2_self_test">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-PR2-pr2_self_test
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/pr2_bringup_tests/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/pr2_bringup_tests?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=pr2_bringup_tests&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1005,30 +1890,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1067,7 +1952,7 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1075,21 +1960,21 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
   <table class="table table-condensed">
     <tr>
       <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk">https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk</a></td>
+      <td><a class="label label-default" href="https://github.com/PR2/pr2_self_test.git">https://github.com/PR2/pr2_self_test.git</a></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
+      <td><span class="label label-default">git</span></td>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
+      <td><span class="label label-default">groovy</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-03-25
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-10-02
         </span>
       </td>
     </tr>
@@ -1097,7 +1982,10 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1114,8 +2002,25 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1130,17 +2035,6 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
               <ul class="list-unstyled">
                 
                   <li>Kevin Watts</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
                 
               </ul>
             
@@ -1183,7 +2077,8 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1195,37 +2090,171 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_bringup#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_bringup" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_bringup#groovy">pr2_bringup</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_controller_manager#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_controller_manager" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_controller_manager#groovy">pr2_controller_manager</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/ethercat_trigger_controllers#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/ethercat_trigger_controllers" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/ethercat_trigger_controllers#groovy">ethercat_trigger_controllers</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/pr2_mannequin_mode#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/pr2_mannequin_mode" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/pr2_mannequin_mode#groovy">pr2_mannequin_mode</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/image_view#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/image_view" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/image_view#groovy">image_view</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/camera_calibration#groovy-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/camera_calibration" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/camera_calibration#groovy">camera_calibration</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No direct system dependencies.</em>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_bringup#groovy">pr2_bringup</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_controller_manager#groovy">pr2_controller_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ethercat_trigger_controllers#groovy">ethercat_trigger_controllers</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_mannequin_mode#groovy">pr2_mannequin_mode</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_view#groovy">image_view</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_calibration#groovy">camera_calibration</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No known dependants.</em>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1233,26 +2262,105 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a></li>
-          
-        </ul>
+        
+          <ul>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+              <li><a href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a>
+                <ul class="list-unstyled">
+                  
+                    <li><em></em></li>
+                  
+                  <li>
+                    <ul>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            
+          </ul>
+        
       </div>
     </div>
 
@@ -1261,9 +2369,9 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1272,9 +2380,9 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1283,28 +2391,35 @@ Complete functionality tests for PR2. Contains utilities designed to test and ve
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/pr2_bringup_tests/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//PR2/pr2_self_test/tree/groovy/pr2_bringup_tests"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:pr2_bringup_tests/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/pr2_bringup_tests?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=pr2_bringup_tests&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1312,320 +2427,7 @@ $(function() {
   <div class="distro distro-fuerte">
     <div class="container-fluid">
       
-        
-        
-
-
-
-<ul class="nav nav-tabs nav-justified" id="fuerte-tabs" style="margin-bottom:20px">
-  <li class="better-tabs active">
-    <a href="#fuerte-overview" data-toggle="tab">Overview</a>
-  </li>
-  <li class="better-tabs">
-    
-    
-    
-    
-    <a href="#fuerte-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
-  </li>
-  <li class="better-tabs">
-    
-    <a href="#fuerte-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
-  </li>
-  <li class="better-tabs">
-  <a href="#fuerte-tutorials" data-toggle="tab">Tutorials</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="fuerte-overview">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
-  
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
-            <table class="table table-condensed">
-              <tr>
-                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
-                <td>
-                  
-                  
-                    <em>No category tags.</em>
-                  
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Version</strong></td>
-                <td>UNKNOWN</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>License</strong></td>
-                <td>BSD</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Buildtool</strong></td>
-                <td>
-                  
-                    <span class="label label-default">
-                  
-                    ROSBUILD</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Use</strong></td>
-                <td>
-                
-                  <span class="label label-success">RECOMMENDED</span>
-                
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
-            
-            
-            
-
-  <table class="table table-condensed">
-    <tr>
-      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk">https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk</a></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
-      <td>
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-03-25
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Dev Status</b></td>
-      <td>
-        
-          <span class="label label-warning">UNMAINTAINED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Released</b></td>
-      <td>
-        
-          <span class="label label-default">UNRELEASED
-        </span>
-      </td>
-    </tr>
-  </table>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No known maintainers.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li>Kevin Watts</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
-                
-              </ul>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
-          <div class="panel-body">
-            
-              <em>No README found.</em>
-              
-                <em>No README in repository either.</em>
-              
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
-          <div class="panel-body">
-            
-              <em>No CHANGELOG found.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="fuerte-tutorials">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Wiki Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Source Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="tab-pane" id="fuerte-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
-      </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_bringup#fuerte">pr2_bringup</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_controller_manager#fuerte">pr2_controller_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ethercat_trigger_controllers#fuerte">ethercat_trigger_controllers</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_mannequin_mode#fuerte">pr2_mannequin_mode</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_view#fuerte">image_view</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_calibration#fuerte">camera_calibration</a></h4></li>
-          
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="fuerte-assets">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a></li>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Messages</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Services</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Plugins</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
-
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
-
+          <div class="alert alert-warning">No version for distro <strong>fuerte</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -1633,320 +2435,7 @@ $(function() {
   <div class="distro distro-electric">
     <div class="container-fluid">
       
-        
-        
-
-
-
-<ul class="nav nav-tabs nav-justified" id="electric-tabs" style="margin-bottom:20px">
-  <li class="better-tabs active">
-    <a href="#electric-overview" data-toggle="tab">Overview</a>
-  </li>
-  <li class="better-tabs">
-    
-    
-    
-    
-    <a href="#electric-assets" data-toggle="tab"><span class="label label-primary">7</span> Assets</a>
-  </li>
-  <li class="better-tabs">
-    
-    <a href="#electric-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
-  </li>
-  <li class="better-tabs">
-  <a href="#electric-tutorials" data-toggle="tab">Tutorials</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="electric-overview">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-Complete functionality tests for PR2. Contains utilities designed to test and verify devices, mechanicals and sensors.
-  
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
-            <table class="table table-condensed">
-              <tr>
-                <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
-                <td>
-                  
-                  
-                    <em>No category tags.</em>
-                  
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Version</strong></td>
-                <td>UNKNOWN</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>License</strong></td>
-                <td>BSD</td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Buildtool</strong></td>
-                <td>
-                  
-                    <span class="label label-default">
-                  
-                    ROSBUILD</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-right"><strong>Use</strong></td>
-                <td>
-                
-                  <span class="label label-success">RECOMMENDED</span>
-                
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
-            
-            
-            
-
-  <table class="table table-condensed">
-    <tr>
-      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
-      <td><a class="label label-default" href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk">https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk</a></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Type</b></td>
-      <td><span class="label label-default">svn</span></td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">master</span></td>
-    </tr>
-    <tr>
-      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
-      <td>
-        
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2013-03-25
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Dev Status</b></td>
-      <td>
-        
-          <span class="label label-warning">UNMAINTAINED
-        </span>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-right"><b>Released</b></td>
-      <td>
-        
-          <span class="label label-default">UNRELEASED
-        </span>
-      </td>
-    </tr>
-  </table>
-
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
-          <div class="panel-body">
-            
-            
-              <em>No known maintainers.</em>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Authors</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li>Kevin Watts</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://ros.org/wiki/pr2_bringup_tests">Website</a></li>
-                
-              </ul>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-file"></span> README</div>
-          <div class="panel-body">
-            
-              <em>No README found.</em>
-              
-                <em>No README in repository either.</em>
-              
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"><span class="glyphicon glyphicon-list"></span> CHANGELOG</div>
-          <div class="panel-body">
-            
-              <em>No CHANGELOG found.</em>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="electric-tutorials">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Wiki Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/pr2_bringup_tests/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Source Tutorials</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="tab-pane" id="electric-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
-      </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_bringup#electric">pr2_bringup</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_controller_manager#electric">pr2_controller_manager</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/ethercat_trigger_controllers#electric">ethercat_trigger_controllers</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/pr2_mannequin_mode#electric">pr2_mannequin_mode</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/image_view#electric">image_view</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/camera_calibration#electric">camera_calibration</a></h4></li>
-          
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="electric-assets">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/prosilica_stream.launch" target="_blank">launch/prosilica_stream.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/reset_prosilica.launch" target="_blank">launch/reset_prosilica.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/gripper_led_on.launch" target="_blank">launch/gripper_led_on.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/prosilica_poll.launch" target="_blank">launch/prosilica_poll.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/calibrate_prosilica.launch" target="_blank">launch/calibrate_prosilica.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/launch/forearm_cam_trig.launch" target="_blank">launch/forearm_cam_trig.launch</a></li>
-          
-            <li><a href="https://code.ros.org/svn/wg-ros-pkg/stacks/pr2_self_test/trunk/pr2_bringup_tests/calibration_bringup/pr2_calibration_verify.launch" target="_blank">calibration_bringup/pr2_calibration_verify.launch</a></li>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Messages</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Services</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Plugins</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently indexed.</em>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
-
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
-
+          <div class="alert alert-warning">No version for distro <strong>electric</strong>. Known supported distros are highlighted in the buttons above.</div>
       
     </div>
   </div>
@@ -1982,7 +2471,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

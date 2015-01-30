@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -111,6 +149,10 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-default" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
     <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
@@ -157,412 +199,17 @@
     <div class="row">
       &nbsp;
     </div>
-    <div class="row">
-      
-        <div class="distro distro-jade">
-          
-        </div>
-      
-        <div class="distro distro-indigo">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/cob_extern/github-ipa320-cob_extern">cob_extern</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libntcan/github-ipa320-cob_extern">libntcan</a>
-        
-      
-        
-          <span class="label label-default"> libpcan</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/libphidgets/github-ipa320-cob_extern">libphidgets</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/indigo/api/libpcan/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_extern/tree/indigo_dev/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-indigo">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_extern
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_extern
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-hydro">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/cob_extern/github-ipa320-cob_extern">cob_extern</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libntcan/github-ipa320-cob_extern">libntcan</a>
-        
-      
-        
-          <span class="label label-default"> libpcan</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/libphidgets/github-ipa320-cob_extern">libphidgets</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/hydro/api/libpcan/html/" type="button" class="btn btn-default "><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_extern/tree/hydro_dev/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-hydro">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_extern
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_extern
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-groovy">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/libmesasr/github-ipa320-cob_extern">libmesasr</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libntcan/github-ipa320-cob_extern">libntcan</a>
-        
-      
-        
-          <span class="label label-default"> libpcan</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/libphidgets/github-ipa320-cob_extern">libphidgets</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/groovy/api/libpcan/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_extern/tree/groovy/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-groovy">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_extern
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_extern
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-        <div class="distro distro-fuerte">
-          
-        </div>
-      
-        <div class="distro distro-electric">
-          
-        </div>
-      
-        <div class="distro distro-diamondback">
-          
-            <div class="well well-sm">
-              
-              
-              
-              
-
-
-<table class="table">
-  <tr>
-    <td width="100px" class="text-center">
-      <img style="width: 80px" src="/assets/package.png">
-    </td>
-    <td>
-      <h3 style="margin-top: 5px">
-        <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
-      </h3>
-      
-        
-          <a class="label label-primary" href="/p/brics_oodl_scanner_libs/github-ipa320-cob_extern">brics_oodl_scanner_libs</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libcvd/github-ipa320-cob_extern">libcvd</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libhokuyo_urg/github-ipa320-cob_extern">libhokuyo_urg</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libm5api/github-ipa320-cob_extern">libm5api</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libmesasr/github-ipa320-cob_extern">libmesasr</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libntcan/github-ipa320-cob_extern">libntcan</a>
-        
-      
-        
-          <span class="label label-default"> libpcan</span>
-        
-      
-        
-          <a class="label label-primary" href="/p/libphidgets/github-ipa320-cob_extern">libphidgets</a>
-        
-      
-        
-          <a class="label label-primary" href="/p/libtoon/github-ipa320-cob_extern">libtoon</a>
-        
-      
-    </td>
-  </tr>
-</table>
-<div class="top-buffer">
-  <div class="text-left">
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <a target="_blank" href="http://docs.ros.org/diamondback/api/libpcan/html/" type="button" class="btn btn-default inactive"><span class="glyphicon glyphicon-file"></span> API</a>
-      <a target="_blank" href="https://github.com//ipa320/cob_extern/tree/diamondback/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-leaf"></span> SRC</a>
-      <a target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/" type="button" class="btn btn-default"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
-      <a target="_blank" href="http://wiki.ros.org/libpcan" type="button" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> Wiki</a>
-      
-    </div>
-  </div>
-</div>
-<div class="top-buffer distro distro-diamondback">
-  
-<table class="table table-condensed instance-switch">
-  <tr>
-    <td>
-      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" style="width: 50px">
-          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
-            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
-        </div>
-        <div class="btn-group" style="width: 90%" role="group">
-          <div class="dropdown">
-            <!-- TODO: add disabled when only 1 version is known? -->
-            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              <span class="pull-left" style="width: 100%; text-align: left">
-                <span class="pull-right"><span class="caret"></span></span> 
-              <span class="glyphicon glyphicon-none"></span>
-                  github-ipa320-cob_extern
-              </span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              
-                <li role="presentation">
-                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
-                    <span class="glyphicon glyphicon-none"></span>
-                    github-ipa320-cob_extern
-                  </a>
-                </li>
-              
-            </ul>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-            </div>
-          
-        </div>
-      
-    </div>
   </div>
 </div>
 
+
+  <div class="distro distro-kinetic">
+    <div class="container-fluid">
+      
+        <div class="alert alert-warning" role="alert">No version for distro <strong>kinetic</strong>. Known supported distros are highlighted in the buttons above.</div>
+      
+    </div>
+  </div>
 
   <div class="distro distro-jade">
     <div class="container-fluid">
@@ -577,6 +224,117 @@
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_extern/github-ipa320-cob_extern">
+
+cob_extern
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libntcan/github-ipa320-cob_extern">
+
+libntcan
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+libpcan
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libphidgets/github-ipa320-cob_extern">
+
+libphidgets
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-indigo">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_extern
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_extern
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/indigo/api/libpcan/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_extern/tree/indigo_dev/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/libpcan?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -589,28 +347,30 @@
     
     
     
+    
     <a href="#indigo-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
+    
+    
+    
+    <a href="#indigo-deps" data-toggle="tab"><span class="label label-primary">5</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#indigo-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#indigo-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="indigo-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This package wraps the libpcan to use it as a ros dependency
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -623,7 +383,7 @@
               </tr>
               <tr>
                 <td class="text-right"><strong>Version</strong></td>
-                <td>0.6.0</td>
+                <td>0.6.4</td>
               </tr>
               <tr>
                 <td class="text-right"><strong>License</strong></td>
@@ -649,7 +409,7 @@
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -671,7 +431,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-12-15
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-06-02
         </span>
       </td>
     </tr>
@@ -679,7 +439,10 @@
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -696,8 +459,23 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This package wraps the libpcan to use it as a ros dependency
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -716,17 +494,6 @@
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
                 
               </ul>
             
@@ -759,9 +526,30 @@
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-libpcan">Changelog for package libpcan</h1>
 
-<h2 id="0.6.0-(2014-09-16)">0.6.0 (2014-09-16)</h2>
+<h2 id="0-6-4-2016-04-01">0.6.4 (2016-04-01)</h2>
 
-<h2 id="0.5.3-(2014-08-25)">0.5.3 (2014-08-25)</h2>
+<h2 id="0-6-3-2015-08-31">0.6.3 (2015-08-31)</h2>
+
+<h2 id="0-6-2-2015-08-25">0.6.2 (2015-08-25)</h2>
+
+<ul>
+<li>  catkin_linting and make all build_depends depends only</li>
+<li>  revert trailing whitespace in autogenerated headers</li>
+<li>  fix dependencies and find_package calls</li>
+<li>  remove mainpage.dox</li>
+<li>  fix trailing whitespace</li>
+<li>  libpcan: don't use CATKIN_GLOBAL_* in CMakeLists and fix includes
+such that headers can be installed only once</li>
+<li>  Install Tag and catkin_package adaptations</li>
+<li>  migrate to package format v2</li>
+<li>  Contributors: ipa-mig</li>
+</ul>
+
+<h2 id="0-6-1-2015-05-28">0.6.1 (2015-05-28)</h2>
+
+<h2 id="0-6-0-2014-09-16">0.6.0 (2014-09-16)</h2>
+
+<h2 id="0-5-3-2014-08-25">0.5.3 (2014-08-25)</h2>
 
 <ul>
 <li>  merge</li>
@@ -769,14 +557,16 @@
 <li>  using version 7.9 of libpcan</li>
 <li>  Contributors: ipa-fmw, ipa-nhg</li>
 </ul>
-<h2 id="0.5.2-(2014-03-20)">0.5.2 (2014-03-20)</h2>
+
+<h2 id="0-5-2-2014-03-20">0.5.2 (2014-03-20)</h2>
 
 <ul>
 <li>  Add missing rospack depends</li>
 <li>  Add missing find_package calls</li>
 <li>  Contributors: Scott K Logan</li>
 </ul>
-<h2 id="0.5.1-(2014-03-19)">0.5.1 (2014-03-19)</h2>
+
+<h2 id="0-5-1-2014-03-19">0.5.1 (2014-03-19)</h2>
 
 <ul>
 <li>  add changelogs</li>
@@ -816,12 +606,10 @@ newer boards.</li>
 <li>  additional include export</li>
 <li>  IniFiles are passed via arguments in base_drive_chain</li>
 <li>  restructure from cob3 to cob</li>
-<li>  Merge branch 'master' of
-<a href="mailto:git@github.com">git@github.com</a>:ipa320/care-o-bot into
+<li>  Merge branch 'master' of <a href="mailto:git@github.com">git@github.com</a>:ipa320/care-o-bot into
 review</li>
 <li>  renamed to general cob packages</li>
-<li>  Contributors: Alexander Bubeck, Denis Štogl, Tobias Fromm, abubeck,
-cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
+<li>  Contributors: Alexander Bubeck, Denis </li>
 </ul>
 </div></body></html>
 
@@ -838,7 +626,8 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -850,37 +639,209 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="indigo-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mk#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mk" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mk#indigo">mk</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslib#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslib" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslib#indigo">roslib</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospack#indigo-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospack" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rospack#indigo">rospack</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libpopt-dev">libpopt-dev</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/linux-headers-generic">linux-headers-generic</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/libpopt-dev#indigo">libpopt-dev</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mk#indigo">mk</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rosbuild#indigo">rosbuild</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospack#indigo">rospack</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslib#indigo">roslib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/linux-headers-generic#indigo">linux-headers-generic</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_generic_can/github-ipa320-cob_driver#indigo">cob_generic_can</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_generic_can/github-ipa320-cob_driver#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_libm5api/github-ipa320-schunk_modular_robotics#indigo">schunk_libm5api</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_libm5api/github-ipa320-schunk_modular_robotics#indigo-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_powercube_chain/github-ipa320-schunk_modular_robotics#indigo">schunk_powercube_chain</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_powercube_chain/github-ipa320-schunk_modular_robotics#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_sdh/github-ipa320-schunk_modular_robotics#indigo">schunk_sdh</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_sdh/github-ipa320-schunk_modular_robotics#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/pcan_topics/github-najkirdneh-pcan_topics#indigo">pcan_topics</a></td>
+                      <td><a href="/r/pcan_topics/github-najkirdneh-pcan_topics">github-najkirdneh-pcan_topics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/pcan_topics/github-najkirdneh-pcan_topics#indigo-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -888,12 +849,12 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
   <div class="tab-pane" id="indigo-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -902,9 +863,9 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -913,9 +874,9 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -924,28 +885,35 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/indigo/api/libpcan/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_extern/tree/indigo_dev/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/libpcan?distro=indigo"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -955,6 +923,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/cob_extern/github-ipa320-cob_extern">
+
+cob_extern
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libntcan/github-ipa320-cob_extern">
+
+libntcan
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+libpcan
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libphidgets/github-ipa320-cob_extern">
+
+libphidgets
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-hydro">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_extern
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_extern
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/hydro/api/libpcan/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_extern/tree/hydro_dev/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/libpcan?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -967,28 +1046,30 @@ $(function() {
     
     
     
+    
     <a href="#hydro-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
+    
+    
+    
     <a href="#hydro-deps" data-toggle="tab"><span class="label label-primary">6</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#hydro-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#hydro-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="hydro-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            This package wraps the libpcan to use it as a ros dependency
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1027,7 +1108,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1057,7 +1138,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1074,8 +1158,23 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            This package wraps the libpcan to use it as a ros dependency
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1094,17 +1193,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
                 
               </ul>
             
@@ -1137,14 +1225,15 @@ $(function() {
 <html><body><div class="rendered-markdown">
 <h1 id="changelog-for-package-libpcan">Changelog for package libpcan</h1>
 
-<h2 id="0.5.2-(2014-03-20)">0.5.2 (2014-03-20)</h2>
+<h2 id="0-5-2-2014-03-20">0.5.2 (2014-03-20)</h2>
 
 <ul>
 <li>  Add missing rospack depends</li>
 <li>  Add missing find_package calls</li>
 <li>  Contributors: Scott K Logan</li>
 </ul>
-<h2 id="0.5.1-(2014-03-19)">0.5.1 (2014-03-19)</h2>
+
+<h2 id="0-5-1-2014-03-19">0.5.1 (2014-03-19)</h2>
 
 <ul>
 <li>  add changelogs</li>
@@ -1184,12 +1273,10 @@ newer boards.</li>
 <li>  additional include export</li>
 <li>  IniFiles are passed via arguments in base_drive_chain</li>
 <li>  restructure from cob3 to cob</li>
-<li>  Merge branch 'master' of
-<a href="mailto:git@github.com">git@github.com</a>:ipa320/care-o-bot into
+<li>  Merge branch 'master' of <a href="mailto:git@github.com">git@github.com</a>:ipa320/care-o-bot into
 review</li>
 <li>  renamed to general cob packages</li>
-<li>  Contributors: Alexander Bubeck, Denis Štogl, Tobias Fromm, abubeck,
-cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
+<li>  Contributors: Alexander Bubeck, Denis </li>
 </ul>
 </div></body></html>
 
@@ -1206,7 +1293,8 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1218,37 +1306,271 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="hydro-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th class="text-center">Deps</th>
+                  <th class="text-center"><span class="glyphicon glyphicon-th"></span></th>
+                  <th style="width: 100%">Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/mk#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/mk" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/mk#hydro">mk</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rosbuild#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rosbuild" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/rosbuild#hydro">rosbuild</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/rospack#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/rospack" class="label label-primary">
+                            2
+                          </a>
+                        </td>
+                        <td><a href="/p/rospack#hydro">rospack</a></td>
+                      </tr>
+                    
+                  
+                    
+                    
+                      <tr>
+                        <td class="text-center">
+                          
+                          
+                          
+                          <a href="/p/roslib#hydro-deps" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <a href="/packages/roslib" class="label label-default">
+                            1
+                          </a>
+                        </td>
+                        <td><a href="/p/roslib#hydro">roslib</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libpopt-dev">libpopt-dev</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/linux-headers-generic">linux-headers-generic</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-            <li><h4><a class="label label-primary" href="/p/libpopt-dev#hydro">libpopt-dev</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/mk#hydro">mk</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rosbuild#hydro">rosbuild</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/rospack#hydro">rospack</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/roslib#hydro">roslib</a></h4></li>
-          
-            <li><h4><a class="label label-primary" href="/p/linux-headers-generic#hydro">linux-headers-generic</a></h4></li>
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_base_drive_chain/github-ipa320-cob_driver#hydro">cob_base_drive_chain</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_base_drive_chain/github-ipa320-cob_driver#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_generic_can/github-ipa320-cob_driver#hydro">cob_generic_can</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_generic_can/github-ipa320-cob_driver#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ipa_canopen_core/github-ipa320-ipa_canopen#hydro">ipa_canopen_core</a></td>
+                      <td><a href="/r/ipa_canopen/github-ipa320-ipa_canopen">github-ipa320-ipa_canopen</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ipa_canopen_core/github-ipa320-ipa_canopen#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ipa_canopen_ros/github-ipa320-ipa_canopen#hydro">ipa_canopen_ros</a></td>
+                      <td><a href="/r/ipa_canopen/github-ipa320-ipa_canopen">github-ipa320-ipa_canopen</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ipa_canopen_ros/github-ipa320-ipa_canopen#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_extern/github-ipa320-cob_extern#hydro">cob_extern</a></td>
+                      <td><a href="/r/cob_extern/github-ipa320-cob_extern">github-ipa320-cob_extern</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_extern/github-ipa320-cob_extern#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_libm5api/github-ipa320-schunk_modular_robotics#hydro">schunk_libm5api</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_libm5api/github-ipa320-schunk_modular_robotics#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_powercube_chain/github-ipa320-schunk_modular_robotics#hydro">schunk_powercube_chain</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_powercube_chain/github-ipa320-schunk_modular_robotics#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_sdh/github-ipa320-schunk_modular_robotics#hydro">schunk_sdh</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_sdh/github-ipa320-schunk_modular_robotics#hydro-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1256,12 +1578,12 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
   <div class="tab-pane" id="hydro-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1270,9 +1592,9 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1281,9 +1603,9 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1292,28 +1614,35 @@ cob, ipa, ipa-fmw, ipa-nhg, ipa320-cob3-6</li>
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/hydro/api/libpcan/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_extern/tree/hydro_dev/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/libpcan?distro=hydro"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1323,6 +1652,117 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libmesasr/github-ipa320-cob_extern">
+
+libmesasr
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libntcan/github-ipa320-cob_extern">
+
+libntcan
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+libpcan
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libphidgets/github-ipa320-cob_extern">
+
+libphidgets
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-groovy">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_extern
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_extern
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/groovy/api/libpcan/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_extern/tree/groovy/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/libpcan?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1335,32 +1775,30 @@ $(function() {
     
     
     
+    
     <a href="#groovy-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#groovy-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
+    
+    
+    
+    <a href="#groovy-deps" data-toggle="tab"><span class="label label-primary">2</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#groovy-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#groovy-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="groovy-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     This package wraps the libpcan to use it as a ros dependency
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1399,7 +1837,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1429,7 +1867,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1446,8 +1887,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     This package wraps the libpcan to use it as a ros dependency
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1462,17 +1922,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
                 
               </ul>
             
@@ -1515,7 +1964,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1527,25 +1977,210 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="groovy-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr>
+                        <td><a href="/d/linux-headers-generic">linux-headers-generic</a></td>
+                      </tr>
+                    
+                  
+                    
+                      <tr>
+                        <td><a href="/d/libpopt-dev">libpopt-dev</a></td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_base_drive_chain/github-ipa320-cob_driver#groovy">cob_base_drive_chain</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_base_drive_chain/github-ipa320-cob_driver#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_generic_can/github-ipa320-cob_driver#groovy">cob_generic_can</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_generic_can/github-ipa320-cob_driver#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ipa_canopen_core/github-ipa320-ipa_canopen#groovy">ipa_canopen_core</a></td>
+                      <td><a href="/r/ipa_canopen/github-ipa320-ipa_canopen">github-ipa320-ipa_canopen</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ipa_canopen_core/github-ipa320-ipa_canopen#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/ipa_canopen_ros/github-ipa320-ipa_canopen#groovy">ipa_canopen_ros</a></td>
+                      <td><a href="/r/ipa_canopen/github-ipa320-ipa_canopen">github-ipa320-ipa_canopen</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/ipa_canopen_ros/github-ipa320-ipa_canopen#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_libm5api/github-ipa320-schunk_modular_robotics#groovy">schunk_libm5api</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_libm5api/github-ipa320-schunk_modular_robotics#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_powercube_chain/github-ipa320-schunk_modular_robotics#groovy">schunk_powercube_chain</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_powercube_chain/github-ipa320-schunk_modular_robotics#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/schunk_sdh/github-ipa320-schunk_modular_robotics#groovy">schunk_sdh</a></td>
+                      <td><a href="/r/schunk_modular_robotics/github-ipa320-schunk_modular_robotics">github-ipa320-schunk_modular_robotics</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/schunk_sdh/github-ipa320-schunk_modular_robotics#groovy-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/allegro_hand_core_grasp/github-simlabrobotics-allegro_hand_ros#groovy">allegro_hand_core_grasp</a></td>
+                      <td><a href="/r/allegro_hand_ros/github-simlabrobotics-allegro_hand_ros">github-simlabrobotics-allegro_hand_ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/allegro_hand_core_grasp/github-simlabrobotics-allegro_hand_ros#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/allegro_hand_core_pd/github-simlabrobotics-allegro_hand_ros#groovy">allegro_hand_core_pd</a></td>
+                      <td><a href="/r/allegro_hand_ros/github-simlabrobotics-allegro_hand_ros">github-simlabrobotics-allegro_hand_ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/allegro_hand_core_pd/github-simlabrobotics-allegro_hand_ros#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/allegro_hand_core_velSat/github-simlabrobotics-allegro_hand_ros#groovy">allegro_hand_core_velSat</a></td>
+                      <td><a href="/r/allegro_hand_ros/github-simlabrobotics-allegro_hand_ros">github-simlabrobotics-allegro_hand_ros</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/allegro_hand_core_velSat/github-simlabrobotics-allegro_hand_ros#groovy-deps" class="inactive">
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1553,12 +2188,12 @@ $(function() {
   <div class="tab-pane" id="groovy-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1567,9 +2202,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1578,9 +2213,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1589,28 +2224,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/groovy/api/libpcan/html/" ><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_extern/tree/groovy/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/libpcan?distro=groovy"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" ><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1636,6 +2278,157 @@ $(function() {
       
         
         
+        
+
+        <div class="row">
+          <div class="col-md-10">
+            
+
+<div class="well well-sm">
+  
+  <table class="table">
+    <tr>
+      <td width="100px" class="text-center">
+        <img style="width: 80px" src="/assets/package.png">
+      </td>
+      <td>
+        <h3 style="margin-top: 5px">
+          <a style="text-decoration:none" href="/p/libpcan">libpcan</a> <small>package from <a style="text-decoration:none" href="/r/cob_extern/github-ipa320-cob_extern">cob_extern</a> repo</small>
+        </h3>
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/brics_oodl_scanner_libs/github-ipa320-cob_extern">
+
+brics_oodl_scanner_libs
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libcvd/github-ipa320-cob_extern">
+
+libcvd
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libhokuyo_urg/github-ipa320-cob_extern">
+
+libhokuyo_urg
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libm5api/github-ipa320-cob_extern">
+
+libm5api
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libmesasr/github-ipa320-cob_extern">
+
+libmesasr
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libntcan/github-ipa320-cob_extern">
+
+libntcan
+</a>
+            
+          
+            
+            
+              <span class="label label-default pkg-label">
+
+libpcan
+</span>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libphidgets/github-ipa320-cob_extern">
+
+libphidgets
+</a>
+            
+          
+            
+            
+              <a class="label label-primary pkg-label" href="/p/libtoon/github-ipa320-cob_extern">
+
+libtoon
+</a>
+            
+          
+      </td>
+    </tr>
+  </table>
+  <div class="top-buffer distro distro-diamondback">
+    
+<table class="table table-condensed instance-switch">
+  <tr>
+    <td>
+      <div id="repo-switch" class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" style="width: 50px">
+          <a type="button" class="btn btn-xs btn-default" data-toggle="tooltip" data-placement="left" title="View Instances" 
+            href="/packages/libpcan"><span class="glyphicon glyphicon-th"></span></a>
+        </div>
+        <div class="btn-group" style="width: 90%" role="group">
+          <div class="dropdown">
+            <!-- TODO: add disabled when only 1 version is known? -->
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              <span class="pull-left" style="width: 100%; text-align: left">
+                <span class="pull-right"><span class="caret"></span></span> 
+              <span class="glyphicon glyphicon-none"></span>
+                  github-ipa320-cob_extern
+              </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              
+                <li role="presentation">
+                  <a id="github-ipa320-cob_extern" role="menuitem" tabindex="-1" href="/p/libpcan/github-ipa320-cob_extern" data="github-ipa320-cob_extern">
+                    <span class="glyphicon glyphicon-none"></span>
+                    github-ipa320-cob_extern
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+  </div>
+</div>
+
+            <div class="visible-xs visible-sm">
+              
+              
+              
+
+
+
+<div class="list-group list-group-sm list-group-horizontal list-group-justified">
+  <a class="list-group-item text-center" target="_blank" href="http://docs.ros.org/diamondback/api/libpcan/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span><br> API Docs</a>
+  <a class="list-group-item text-center" target="_blank" href="https://github.com//ipa320/cob_extern/tree/diamondback/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span><br> Browse Code</a>
+  <a class="list-group-item text-center" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span><br> Get Help</a>
+  <a class="list-group-item text-center " target="_blank" href="http://wiki.ros.org/libpcan?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span><br> Wiki</a>
+  <a class="list-group-item text-center " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span><br> Eco</a>
+  
+</div>
+
+            </div>
+            
 
 
 
@@ -1648,32 +2441,30 @@ $(function() {
     
     
     
+    
     <a href="#diamondback-assets" data-toggle="tab"><span class="label label-default">0</span> Assets</a>
   </li>
   <li class="better-tabs">
     
-    <a href="#diamondback-deps" data-toggle="tab"><span class="label label-default">0</span> Dependencies</a>
+    
+    
+    
+    <a href="#diamondback-deps" data-toggle="tab"><span class="label label-primary">1</span> Dependencies</a>
   </li>
   <li class="better-tabs">
-  <a href="#diamondback-tutorials" data-toggle="tab">Tutorials</a>
+    
+    <a href="#diamondback-tutorials" data-toggle="tab"><span class="label label-default">0</span> Tutorials</a>
   </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="diamondback-overview">
+    
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
-          <div class="panel-body">
-            
-
-     This package wraps the libpcan to use it as a ros dependency
-
-  
-          </div>
           <div class="panel-heading"><h4 class="panel-title">Package Summary</h4></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             <table class="table table-condensed">
               <tr>
                 <td style="width:100px;" class="text-right"><strong>Tags</strong></td>
@@ -1712,7 +2503,7 @@ $(function() {
             </table>
           </div>
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
-          <div class="panel-body" style="overflow-x: auto">
+          <div class="panel-body">
             
             
             
@@ -1742,7 +2533,10 @@ $(function() {
       <td class="text-right"><b>Dev Status</b></td>
       <td>
         
-          <span class="label label-warning">UNMAINTAINED
+          
+            <span class="label label-primary">
+          
+          MAINTAINED
         </span>
       </td>
     </tr>
@@ -1759,8 +2553,27 @@ $(function() {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Package Description</h3></div>
+          <div class="panel-body">
+            
+
+     This package wraps the libpcan to use it as a ros dependency
+
+  
+          </div>
+          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
+          <div class="panel-body">
+            
+            
+              <ul class="list-unstyled">
+                
+                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
+                
+              </ul>
+            
+          </div>
           <div class="panel-heading"><h4 class="panel-title">Maintainers</h4></div>
           <div class="panel-body">
             
@@ -1775,17 +2588,6 @@ $(function() {
               <ul class="list-unstyled">
                 
                   <li>Florian Weisshardt</li>
-                
-              </ul>
-            
-          </div>
-          <div class="panel-heading"><h4 class="panel-title">Additional Links</h4></div>
-          <div class="panel-body">
-            
-            
-              <ul class="list-unstyled">
-                
-                  <li><a href="http://p103112.typo3server.info/fileadmin/media/linux/index.htm">Website</a></li>
                 
               </ul>
             
@@ -1828,7 +2630,8 @@ $(function() {
         <h3 class="panel-title">Wiki Tutorials</h3>
       </div>
       <div class="panel-body">
-        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a></em>
+        
+        <em>See <a href="http://wiki.ros.org/libpcan/Tutorials" target="_blank">ROS Wiki Tutorials</a> for more details.</em>
       </div>
     </div>
 
@@ -1840,25 +2643,120 @@ $(function() {
         <em>Not currently indexed.</em>
       </div>
     </div>
-
   </div>
 
   <div class="tab-pane" id="diamondback-deps">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depends On</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Package Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <em>No dependencies on ROS packages.</em>
+            
+          </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">System Dependencies</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                </thead>
+                <tbody>
+                  
+                    
+                      <tr class="danger">
+                        <td>linux-headers</td>
+                      </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
-      <div class="panel-body">
-          
-      </div>
-    </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Depended On By</h3>
-      </div>
-      <div class="panel-body">
-        <em>Not currently computed.</em>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Dependant Packages</h3>
+          </div>
+          <div class="panel-body">
+            
+              <table class="table table-condensed table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Repo</th>
+                  <th class="text-center">Deps</th>
+                </thead>
+                <tbody>
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_base_drive_chain/github-ipa320-cob_driver#diamondback">cob_base_drive_chain</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_base_drive_chain/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_generic_can/github-ipa320-cob_driver#diamondback">cob_generic_can</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_generic_can/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_powercube_chain/github-ipa320-cob_driver#diamondback">cob_powercube_chain</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_powercube_chain/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                    
+                    
+                    <tr>
+                      <td><a href="/p/cob_sdh/github-ipa320-cob_driver#diamondback">cob_sdh</a></td>
+                      <td><a href="/r/cob_driver/github-ipa320-cob_driver">github-ipa320-cob_driver</a></td>
+                      <td class="text-center">
+                        
+                        <a href="/p/cob_sdh/github-ipa320-cob_driver#diamondback-deps" >
+                          <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                      </td>
+                    </tr>
+                    
+                  
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1866,12 +2764,12 @@ $(function() {
   <div class="tab-pane" id="diamondback-assets">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Launchfiles</h3>
+        <h3 class="panel-title">Launch files</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No launch files found</em>
+        
       </div>
     </div>
 
@@ -1880,9 +2778,9 @@ $(function() {
         <h3 class="panel-title">Messages</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No message files found.</em>
+        
       </div>
     </div>
 
@@ -1891,9 +2789,9 @@ $(function() {
         <h3 class="panel-title">Services</h3>
       </div>
       <div class="panel-body">
-        <ul>
-          
-        </ul>
+        
+          <em>No service files found</em>
+        
       </div>
     </div>
 
@@ -1902,28 +2800,35 @@ $(function() {
         <h3 class="panel-title">Plugins</h3>
       </div>
       <div class="panel-body">
-        <em>Not currently indexed.</em>
+        
+          <em>No plugins found.</em>
+        
       </div>
     </div>
-
   </div>
 </div>
 
-<script>
-// Javascript to enable link to tab
-$(function() {
-  var url = document.location.toString();
-  if (url.match('#')) {
-      $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-  } 
+<script src="/js/package_body_tabs.js"></script>
 
-  // Change hash for page-reload
-  $('.nav-tabs a').on('shown', function (e) {
-      window.location.hash = e.target.hash;
-  })
-});
-</script>
+          </div>
+          <div class="col-md-2 hidden-xs hidden-sm">
+            
+            
+            
 
+
+
+<div class="list-group list-group-sm ">
+  <a class="list-group-item" target="_blank" href="http://docs.ros.org/diamondback/api/libpcan/html/" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-file"></span> API Docs</a>
+  <a class="list-group-item" target="_blank" href="https://github.com//ipa320/cob_extern/tree/diamondback/libpcan"><span class="glyphicon glyphicon-folder-open" style="margin-right:5px;"></span> Browse Code</a>
+  <a class="list-group-item" target="_blank" href="http://answers.ros.org/questions/scope:all/sort:activity-desc/tags:libpcan/page:1/"><span style="margin-right: 5px;" class="glyphicon glyphicon-question-sign"></span> Get Help</a>
+  <a class="list-group-item " target="_blank" href="http://wiki.ros.org/libpcan?distro=diamondback"><span style="margin-right: 5px;" class="glyphicon glyphicon-info-sign"></span> Wiki</a>
+  <a class="list-group-item " target="_blank" href="http://http404error.github.io/roseco/graph.html?id=ros.json&focus=libpcan&height=1&depth=2&tred=standard&metagroup=false&colorby=Health&direction=LR" disabled><span style="margin-right: 5px;" class="glyphicon glyphicon-tree-deciduous"></span> Eco</a>
+  
+</div>
+
+          </div>
+        </div>
       
     </div>
   </div>
@@ -1950,7 +2855,7 @@ $(function() {
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">

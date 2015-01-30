@@ -20,9 +20,12 @@
     <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/jquery-cookie-1.4.1/jquery.cookie.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/js/ga.js"></script>
+    <script type="text/javascript" src="/js/ga.js" async></script>
     <script type="text/javascript" src="/js/toc.js"></script>
 
+    <!-- Pre-fetch search index files -->
+    
+    
 </head>
 
 
@@ -39,16 +42,51 @@
           <div class="row">
             <!-- title -->
             <div class="col-xs-12 col-sm-3 col-md-3" style="white-space:nowrap;">
-              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex.github.io/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
+              <a class="site-title" href="/">ROS Index</a> <sup><a href="https://github.com/rosindex/rosindex/issues/new" style="vertical-align:super;" class="label label-warning" target="_blank">BETA</a></sup>
             </div>
 
             <!-- main links -->
             <div class="col-xs-12 col-sm-9 col-md-9 text-right">
-              <a class="btn btn-link" href="/about">About</a>
-              <a class="btn btn-link" href="/packages">Packages</a>
-              <a class="btn btn-link" href="/repos">Repos</a>
-              <a class="btn btn-link" href="/contribute">Contribute</a>
-              <a class="btn btn-link" href="/stats">Stats</a>
+              <ul class="list-inline" style="margin-bottom:0px;">
+                <li><a class="btn btn-link" href="/about">About</a></li>
+
+                <li class="dropdown">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Index <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a href="/packages/page/1/time/">Package List</a></li>
+                    <li><a href="/repos/page/1/time/">Repository List</a></li>
+
+                    <li class="divider"></li>
+
+                    <li class="disabled"><a href="/srvs/">Nodes</a></li>
+                    <li class="disabled"><a href="/msgs/">Messages</a></li>
+                    <li class="disabled"><a href="/srvs/">Services</a></li>
+                    <li class="disabled"><a href="/srvs/">Plugins</a></li>
+
+                    <li class="divider"></li>
+
+                    <li><a href="/deps/">System Dependencies</a></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown disabled">
+                  <button id="dLabel" class="btn btn-link" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Doc <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li class="disabled"><a href="/categories/">Categories</a></li>
+                    <li class="disabled"><a href="/tutorials">Tutorials</a></li>
+                    <li class="disabled"><a href="/readmes">Readmes</a></li>
+                    <li class="disabled"><a href="/apis">APIs</a></li>
+                  </ul>
+                </li>
+
+                <li><a class="btn btn-link" href="/contribute">Contribute</a></li>
+                <li><a class="btn btn-link" href="/stats">Stats</a></li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -109,7 +147,11 @@
 
 <div id="distro-switch" class="btn-group btn-group-justified" data-toggle="buttons">
   
-    <label id="jade-option" class="distro-button btn btn-xs btn-default" href="#jade" data="jade">
+    <label id="kinetic-option" class="distro-button btn btn-xs btn-primary" href="#kinetic" data="kinetic">
+      <input type="radio" name="options" id="kinetic-radio" autocomplete="off"> kinetic
+    </label>
+  
+    <label id="jade-option" class="distro-button btn btn-xs btn-primary" href="#jade" data="jade">
       <input type="radio" name="options" id="jade-radio" autocomplete="off"> jade
     </label>
   
@@ -220,19 +262,11 @@
 </div>
 
 
-  <div class="distro distro-jade">
+  <div class="distro distro-kinetic">
     <div class="container-fluid">
       
-        <div class="alert alert-warning" role="alert">No version for distro <strong>jade</strong>. Known supported distros are highlighted in the buttons above.</div>
-      
-    </div>
-  </div>
-
-  <div class="distro distro-indigo">
-    <div class="container-fluid">
-      
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -255,7 +289,7 @@
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-01-30
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
         </span>
       </td>
     </tr>
@@ -264,9 +298,9 @@
       <td>
         
           
-            <span class="label label-primary">
+            <span class="label label-success">
           
-          MAINTAINED
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -298,17 +332,27 @@
                 
                   <tr>
                     <td><a href="/p/libmavconn/github-mavlink-mavros">libmavconn</a></td>
-                    <td>0.10.0</td>
+                    <td>0.18.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/mavros/github-mavlink-mavros">mavros</a></td>
-                    <td>0.10.0</td>
+                    <td>0.18.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/mavros_extras/github-mavlink-mavros">mavros_extras</a></td>
-                    <td>0.10.0</td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros_msgs/github-mavlink-mavros">mavros_msgs</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/test_mavros/github-mavlink-mavros">test_mavros</a></td>
+                    <td>0.18.2</td>
                   </tr>
                 
                 </tbody>
@@ -332,10 +376,16 @@
 <ul>
 <li>Since 2014-08-11 this repository contains several packages.</li>
 <li>Since 2014-11-02 hydro support splited from master to hydro-devel branch.</li>
+<li>Since 2015-03-04 all packages also dual licensed under terms of BSD license.</li>
+<li>Since 2015-08-10 all messages moved to mavros_msgs package</li>
+<li>Since 2016-02-05 (v0.17) frame conversion changed again</li>
+<li>Since 2016-06-22 (pre v0.18) Indigo and Jade separated from master to indigo-devel branch.</li>
 </ul>
+
 <h2 id="mavros-package">mavros package</h2>
 
-<p>It is the main package, please see it's <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md">README</a>.</p>
+<p>It is the main package, please see it's <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md">README</a>.
+Here you may read <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation">installation instructions</a>.</p>
 
 <h2 id="mavros_extras-package">mavros_extras package</h2>
 
@@ -346,6 +396,15 @@
 <p>This package contain mavconn library, see it's <a href="https://github.com/mavlink/mavros/blob/master/libmavconn/README.md">README</a>.
 LibMAVConn may be used outside of ROS environment.</p>
 
+<h2 id="test_mavros-package">test_mavros package</h2>
+
+<p>This package contain hand-tests and <a href="https://github.com/mavlink/mavros/blob/master/test_mavros/README.md">manual page</a> for APM and PX4 SITL.
+Please see <a href="https://github.com/mavlink/mavros/blob/master/test_mavros/README.md">README</a> first!</p>
+
+<h2 id="mavros_msgs-package">mavros_msgs package</h2>
+
+<p>This package contain messages and services used in mavros.</p>
+
 <h2 id="support-forums-and-chats">Support forums and chats</h2>
 
 <p>Please ask your questions not related to bugs/feauture requests on:</p>
@@ -355,18 +414,19 @@ LibMAVConn may be used outside of ROS environment.</p>
 <li><a href="https://gitter.im/mavlink/mavros">Mavros on Gitter IM</a></li>
 <li><a href="https://gitter.im/PX4/Firmware">PX4/Firmware on Gitter IM</a></li>
 </ul>
+
 <p>We'd like to keep the project bugtracker as free as possible, so please contact via the above methods. You can also PM us via Gitter.</p>
 
 <h2 id="ci-statuses">CI Statuses</h2>
 
 <ul>
-<li>ROS Hydro: <a href="http://jenkins.ros.org/job/devel-hydro-mavros/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-hydro-mavros" alt="Hydro build status"></a>
+<li>ROS Indigo:  <a href="http://build.ros.org/job/Idev__mavros__ubuntu_trusty_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Idev__mavros__ubuntu_trusty_amd64" alt="Build Status"></a>
 </li>
-<li>ROS Indigo: <a href="http://jenkins.ros.org/job/devel-indigo-mavros/"><img src="http://jenkins.ros.org/buildStatus/icon?job=devel-indigo-mavros" alt="Indigo build status"></a>
+<li>ROS Jade:    <a href="http://build.ros.org/job/Jdev__mavros__ubuntu_trusty_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Jdev__mavros__ubuntu_trusty_amd64" alt="Build Status"></a>
 </li>
-<li>Travis Hydro (PX4): <a href="https://travis-ci.org/mavlink/mavros"><img src="https://travis-ci.org/mavlink/mavros.svg?branch=master" alt="Hydro px4 status"></a>
+<li>ROS Kinetic: <a href="http://build.ros.org/job/Kdev__mavros__ubuntu_xenial_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Kdev__mavros__ubuntu_xenial_amd64" alt="Build Status"></a>
 </li>
-<li>Travis Hydro (Coverity Scan): <a href="https://travis-ci.org/mavlink/mavros"><img src="https://travis-ci.org/mavlink/mavros.svg?branch=coverity_scan" alt="Hydro scan status"></a>
+<li>Travis master on Indigo &amp; Jade: <a href="https://travis-ci.org/mavlink/mavros"><img src="https://travis-ci.org/mavlink/mavros.svg?branch=master" alt="travis status"></a>
 </li>
 </ul>
 </div></body></html>
@@ -374,15 +434,18 @@ LibMAVConn may be used outside of ROS environment.</p>
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
 
-  <div class="distro distro-hydro">
+  <div class="distro distro-jade">
     <div class="container-fluid">
       
+        
         <div class="panel panel-default">
-          
           
           <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
           <div class="panel-body" style="overflow-x: auto">
@@ -399,13 +462,13 @@ LibMAVConn may be used outside of ROS environment.</p>
     </tr>
     <tr>
       <td class="text-right"><b>VCS Version</b></td>
-      <td><span class="label label-default">hydro-devel</span></td>
+      <td><span class="label label-default">master</span></td>
     </tr>
     <tr>
       <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
       <td>
         
-          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2014-11-04
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
         </span>
       </td>
     </tr>
@@ -414,9 +477,9 @@ LibMAVConn may be used outside of ROS environment.</p>
       <td>
         
           
-            <span class="label label-primary">
+            <span class="label label-success">
           
-          MAINTAINED
+          DEVELOPED
         </span>
       </td>
     </tr>
@@ -448,17 +511,375 @@ LibMAVConn may be used outside of ROS environment.</p>
                 
                   <tr>
                     <td><a href="/p/libmavconn/github-mavlink-mavros">libmavconn</a></td>
-                    <td>0.8.5</td>
+                    <td>0.18.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/mavros/github-mavlink-mavros">mavros</a></td>
-                    <td>0.8.5</td>
+                    <td>0.18.2</td>
                   </tr>
                 
                   <tr>
                     <td><a href="/p/mavros_extras/github-mavlink-mavros">mavros_extras</a></td>
-                    <td>0.8.5</td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros_msgs/github-mavlink-mavros">mavros_msgs</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/test_mavros/github-mavlink-mavros">test_mavros</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="mavros">MAVROS</h1>
+
+<p><a href="https://gitter.im/mavlink/mavros?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a></p>
+
+<p>MAVLink extendable communication node for ROS.</p>
+
+<ul>
+<li>Since 2014-08-11 this repository contains several packages.</li>
+<li>Since 2014-11-02 hydro support splited from master to hydro-devel branch.</li>
+<li>Since 2015-03-04 all packages also dual licensed under terms of BSD license.</li>
+<li>Since 2015-08-10 all messages moved to mavros_msgs package</li>
+<li>Since 2016-02-05 (v0.17) frame conversion changed again</li>
+<li>Since 2016-06-22 (pre v0.18) Indigo and Jade separated from master to indigo-devel branch.</li>
+</ul>
+
+<h2 id="mavros-package">mavros package</h2>
+
+<p>It is the main package, please see it's <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md">README</a>.
+Here you may read <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation">installation instructions</a>.</p>
+
+<h2 id="mavros_extras-package">mavros_extras package</h2>
+
+<p>This package contain some extra nodes and plugins for mavros, please see it's <a href="https://github.com/mavlink/mavros/blob/master/mavros_extras/README.md">README</a>.</p>
+
+<h2 id="libmavconn-package">libmavconn package</h2>
+
+<p>This package contain mavconn library, see it's <a href="https://github.com/mavlink/mavros/blob/master/libmavconn/README.md">README</a>.
+LibMAVConn may be used outside of ROS environment.</p>
+
+<h2 id="test_mavros-package">test_mavros package</h2>
+
+<p>This package contain hand-tests and <a href="https://github.com/mavlink/mavros/blob/master/test_mavros/README.md">manual page</a> for APM and PX4 SITL.
+Please see <a href="https://github.com/mavlink/mavros/blob/master/test_mavros/README.md">README</a> first!</p>
+
+<h2 id="mavros_msgs-package">mavros_msgs package</h2>
+
+<p>This package contain messages and services used in mavros.</p>
+
+<h2 id="support-forums-and-chats">Support forums and chats</h2>
+
+<p>Please ask your questions not related to bugs/feauture requests on:</p>
+
+<ul>
+<li><a href="https://groups.google.com/forum/#!forum/px4users">px4users Google Group (Mailing List) </a></li>
+<li><a href="https://gitter.im/mavlink/mavros">Mavros on Gitter IM</a></li>
+<li><a href="https://gitter.im/PX4/Firmware">PX4/Firmware on Gitter IM</a></li>
+</ul>
+
+<p>We'd like to keep the project bugtracker as free as possible, so please contact via the above methods. You can also PM us via Gitter.</p>
+
+<h2 id="ci-statuses">CI Statuses</h2>
+
+<ul>
+<li>ROS Indigo:  <a href="http://build.ros.org/job/Idev__mavros__ubuntu_trusty_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Idev__mavros__ubuntu_trusty_amd64" alt="Build Status"></a>
+</li>
+<li>ROS Jade:    <a href="http://build.ros.org/job/Jdev__mavros__ubuntu_trusty_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Jdev__mavros__ubuntu_trusty_amd64" alt="Build Status"></a>
+</li>
+<li>ROS Kinetic: <a href="http://build.ros.org/job/Kdev__mavros__ubuntu_xenial_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Kdev__mavros__ubuntu_xenial_amd64" alt="Build Status"></a>
+</li>
+<li>Travis master on Indigo &amp; Jade: <a href="https://travis-ci.org/mavlink/mavros"><img src="https://travis-ci.org/mavlink/mavros.svg?branch=master" alt="travis status"></a>
+</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-indigo">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/mavlink/mavros.git">https://github.com/mavlink/mavros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">master</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2016-07-03
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/libmavconn/github-mavlink-mavros">libmavconn</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros/github-mavlink-mavros">mavros</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros_extras/github-mavlink-mavros">mavros_extras</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros_msgs/github-mavlink-mavros">mavros_msgs</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/test_mavros/github-mavlink-mavros">test_mavros</a></td>
+                    <td>0.18.2</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">README</h3></div>
+          <div class="panel-body">
+            
+              <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="rendered-markdown">
+<h1 id="mavros">MAVROS</h1>
+
+<p><a href="https://gitter.im/mavlink/mavros?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a></p>
+
+<p>MAVLink extendable communication node for ROS.</p>
+
+<ul>
+<li>Since 2014-08-11 this repository contains several packages.</li>
+<li>Since 2014-11-02 hydro support splited from master to hydro-devel branch.</li>
+<li>Since 2015-03-04 all packages also dual licensed under terms of BSD license.</li>
+<li>Since 2015-08-10 all messages moved to mavros_msgs package</li>
+<li>Since 2016-02-05 (v0.17) frame conversion changed again</li>
+<li>Since 2016-06-22 (pre v0.18) Indigo and Jade separated from master to indigo-devel branch.</li>
+</ul>
+
+<h2 id="mavros-package">mavros package</h2>
+
+<p>It is the main package, please see it's <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md">README</a>.
+Here you may read <a href="https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation">installation instructions</a>.</p>
+
+<h2 id="mavros_extras-package">mavros_extras package</h2>
+
+<p>This package contain some extra nodes and plugins for mavros, please see it's <a href="https://github.com/mavlink/mavros/blob/master/mavros_extras/README.md">README</a>.</p>
+
+<h2 id="libmavconn-package">libmavconn package</h2>
+
+<p>This package contain mavconn library, see it's <a href="https://github.com/mavlink/mavros/blob/master/libmavconn/README.md">README</a>.
+LibMAVConn may be used outside of ROS environment.</p>
+
+<h2 id="test_mavros-package">test_mavros package</h2>
+
+<p>This package contain hand-tests and <a href="https://github.com/mavlink/mavros/blob/master/test_mavros/README.md">manual page</a> for APM and PX4 SITL.
+Please see <a href="https://github.com/mavlink/mavros/blob/master/test_mavros/README.md">README</a> first!</p>
+
+<h2 id="mavros_msgs-package">mavros_msgs package</h2>
+
+<p>This package contain messages and services used in mavros.</p>
+
+<h2 id="support-forums-and-chats">Support forums and chats</h2>
+
+<p>Please ask your questions not related to bugs/feauture requests on:</p>
+
+<ul>
+<li><a href="https://groups.google.com/forum/#!forum/px4users">px4users Google Group (Mailing List) </a></li>
+<li><a href="https://gitter.im/mavlink/mavros">Mavros on Gitter IM</a></li>
+<li><a href="https://gitter.im/PX4/Firmware">PX4/Firmware on Gitter IM</a></li>
+</ul>
+
+<p>We'd like to keep the project bugtracker as free as possible, so please contact via the above methods. You can also PM us via Gitter.</p>
+
+<h2 id="ci-statuses">CI Statuses</h2>
+
+<ul>
+<li>ROS Indigo:  <a href="http://build.ros.org/job/Idev__mavros__ubuntu_trusty_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Idev__mavros__ubuntu_trusty_amd64" alt="Build Status"></a>
+</li>
+<li>ROS Jade:    <a href="http://build.ros.org/job/Jdev__mavros__ubuntu_trusty_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Jdev__mavros__ubuntu_trusty_amd64" alt="Build Status"></a>
+</li>
+<li>ROS Kinetic: <a href="http://build.ros.org/job/Kdev__mavros__ubuntu_xenial_amd64/"><img src="http://build.ros.org/buildStatus/icon?job=Kdev__mavros__ubuntu_xenial_amd64" alt="Build Status"></a>
+</li>
+<li>Travis master on Indigo &amp; Jade: <a href="https://travis-ci.org/mavlink/mavros"><img src="https://travis-ci.org/mavlink/mavros.svg?branch=master" alt="travis status"></a>
+</li>
+</ul>
+</div></body></html>
+
+            
+          </div>
+        </div>
+
+        
+        
+      
+    </div>
+  </div>
+
+  <div class="distro distro-hydro">
+    <div class="container-fluid">
+      
+        
+        <div class="panel panel-default">
+          
+          <div class="panel-heading"><h3 class="panel-title">Repository Summary</h3></div>
+          <div class="panel-body" style="overflow-x: auto">
+            
+
+  <table class="table table-condensed">
+    <tr>
+      <td style="width:100px;" class="text-right"><b>Checkout URI</b></td>
+      <td><a class="label label-default" href="https://github.com/mavlink/mavros.git">https://github.com/mavlink/mavros.git</a></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Type</b></td>
+      <td><span class="label label-default">git</span></td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>VCS Version</b></td>
+      <td><span class="label label-default">hydro-devel</span></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;" class="text-right"><b>Last Updated</b></div>
+      <td>
+        
+          <span class="label label-default"><span class="glyphicon glyphicon-time"></span> 2015-03-04
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Dev Status</b></td>
+      <td>
+        
+          
+            <span class="label label-success">
+          
+          DEVELOPED
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-right"><b>Released</b></td>
+      <td>
+        
+          <span class="label label-primary"><span class="glyphicon glyphicon-flash"></span> RELEASED
+        </span>
+      </td>
+    </tr>
+  </table>
+
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3 class="panel-title">Packages</h3></div>
+          <div class="panel-body">
+            
+            
+              <table class="table table-condensed table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  <tr>
+                    <td><a href="/p/libmavconn/github-mavlink-mavros">libmavconn</a></td>
+                    <td>0.8.6</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros/github-mavlink-mavros">mavros</a></td>
+                    <td>0.8.6</td>
+                  </tr>
+                
+                  <tr>
+                    <td><a href="/p/mavros_extras/github-mavlink-mavros">mavros_extras</a></td>
+                    <td>0.8.6</td>
                   </tr>
                 
                 </tbody>
@@ -509,6 +930,9 @@ MAVConn may be used outside of ROS environment.</p>
             
           </div>
         </div>
+
+        
+        
       
     </div>
   </div>
@@ -567,7 +991,7 @@ MAVConn may be used outside of ROS environment.</p>
             <span class="username">rosindex</span>
           </a>
           |
-          <em>generated on 2015-01-30</em>
+          <em>generated on 2016-07-04</em>
         
         </div>
         <div class="col-sm-8 col-md-8 text-right">
